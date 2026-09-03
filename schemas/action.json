@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "action.json",
+  "title": "NPC Action",
+  "type": "object",
+  "required": ["name", "parameters"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parameters": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

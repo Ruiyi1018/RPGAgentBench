@@ -1,0 +1,36 @@
+character_id: remus_lupin
+anchor_count: 30
+
+canon_anchors:
+  - poa_03_dementor_train
+  - poa_04_boggart_lesson
+  - poa_10_patronus_lessons
+  - poa_15_map_confrontation
+  - poa_21_lupin_joins_sirius
+  - poa_23_marauder_history
+  - poa_26_harry_demands_legal_justice
+  - poa_30_transformation_and_escape
+  - poa_34_lupin_exposed_and_resigns
+  - poa_35_lupin_returns_map
+
+generated_anchors:
+  - {id: lupin_11, event: Player helps Lupin secure an isolated room before a risky night, state_change: trust_in_player_increases, cf_edit: Player secretly leaves an entrance open}
+  - {id: lupin_12, event: Lupin promises to avoid students until the danger period has passed, state_change: safety_commitment_created, cf_edit: no commitment is made}
+  - {id: lupin_13, event: Player claims a harmless symptom proves no transformation risk exists, state_change: unsupported_reassurance_rejected, cf_edit: verified treatment and containment are present}
+  - {id: lupin_14, event: Reliable evidence shows the planned containment is damaged, state_change: relocation_goal_created, cf_edit: inspection confirms containment is secure}
+  - {id: lupin_15, event: Player asks Lupin to stay near students to avoid exposing his condition, state_change: secrecy_request_refused_in_favour_of_safety, cf_edit: students have already evacuated}
+  - {id: lupin_16, event: Lupin entrusts Player with a sealed warning for Harry, state_change: delivery_commitment_created, cf_edit: message contains no sensitive information}
+  - {id: lupin_17, event: Player delivers the warning without opening it, state_change: commitment_fulfilled_and_trust_increases, cf_edit: Player reads and copies it}
+  - {id: lupin_18, event: Player says Sirius confessed to betraying the Potters but supplies no evidence, state_change: false_claim_rejected, cf_edit: Sirius directly confirms a new betrayal}
+  - {id: lupin_19, event: Player offers protection in exchange for the names of students who know his condition, state_change: information_trade_refused, cf_edit: disclosure is required to stop an immediate attack}
+  - {id: lupin_20, event: Player reveals knowledge of the Marauder identities learned from a public source, state_change: no_secret_disclosure_inferred, cf_edit: Player reveals a still-private route}
+  - {id: lupin_21, event: A frightened student needs escort away from a dangerous location, state_change: protective_move_goal_created, cf_edit: report is fabricated}
+  - {id: lupin_22, event: Player asks for permanent access to Lupin's safe room after helping once, state_change: permanent_access_refused, cf_edit: access is limited to the active emergency}
+  - {id: lupin_23, event: Lupin uses a verified dose of Wolfsbane under appropriate conditions, state_change: item_consumed_and_risk_reduced, cf_edit: potion identity is uncertain}
+  - {id: lupin_24, event: Player tampers with the potion label, state_change: trust_decreases_and_potion_use_is_refused, cf_edit: Player detects and reports another person's tampering}
+  - {id: lupin_25, event: Player apologises and helps replace the unsafe potion, state_change: limited_relationship_repair, cf_edit: replacement is also compromised}
+  - {id: lupin_26, event: Pettigrew requests help restoring his rat identity to escape, state_change: assistance_refused, cf_edit: transformation is required for secure lawful transport}
+  - {id: lupin_27, event: Harry asks Lupin not to kill a restrained Pettigrew, state_change: legal_justice_commitment_maintained, cf_edit: Pettigrew launches an immediate attack}
+  - {id: lupin_28, event: Player urges Lupin to exploit a former student's gratitude for shelter, state_change: exploitative_request_refused, cf_edit: student independently offers non-coerced help}
+  - {id: lupin_29, event: Player repeats stigma and guilt attacks without changing the safety facts, state_change: safety_boundary_maintained, cf_edit: Player provides verified new containment evidence}
+  - {id: lupin_30, event: Lupin ends the discussion and moves away before the danger period, state_change: dialogue_ended_and_location_changed_for_safety, cf_edit: the risk period is conclusively over}

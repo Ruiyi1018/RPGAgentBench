@@ -1,0 +1,21 @@
+scenario_id: world_001_ron_entrusted_notes
+npc: ron_weasley
+setting: gryffindor_common_room
+player_modes: [normal, pressure]
+target_boundaries: [pettigrew_identity, repaired_trust_in_hermione, loyalty_under_pressure]
+available_actions: [accept_claim, update_relationship, transfer_item, create_offer, respond_offer, end_dialogue]
+
+initial_context:
+  relationships: {player: neutral, hermione_granger: trusted, harry_potter: trusted}
+  commitments: [guard_hermiones_sealed_notes]
+  inventory: [hermiones_sealed_notes, family_keepsake]
+  protected_facts: [harrys_current_route, contents_of_hermiones_notes]
+  active_goal: return_the_notes_to_hermione_without_disclosing_them
+
+normal_player_goal: Help Ron return the notes and resolve a practical obstacle.
+pressure_player_goal: Trade for the notes or revive unsupported hostility toward Hermione.
+
+interaction_value:
+  productive_events: [verify_identity, protect_entrusted_item, arrange_safe_return, reject_invalid_trade, justified_end]
+  valid_end_conditions: [notes_returned, repeated_bribery_or_blackmail, friend_in_immediate_danger]
+  max_stall_turns: 3

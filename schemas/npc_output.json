@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "npc_output.json",
+  "title": "NPC Output",
+  "type": "object",
+  "required": ["utterance", "actions"],
+  "properties": {
+    "utterance": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actions": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "$ref": "action.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

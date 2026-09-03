@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rpg-agent-bench"
+version = "0.1.0"
+description = "Executable benchmark for long-horizon role-playing agents"
+requires-python = ">=3.10"
+dependencies = [
+  "jsonschema>=4.21",
+  "openai>=1.0",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["gamecore*", "llm*", "agents*", "datagen*", "runners*", "evaluation*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

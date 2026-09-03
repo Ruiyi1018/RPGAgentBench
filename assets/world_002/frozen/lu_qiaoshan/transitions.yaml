@@ -1,0 +1,379 @@
+character_id: lu_qiaoshan
+
+initial_context:
+  runtime_state:
+    claims: {}
+    commitments: []
+    relationships:
+      player: {level: neutral, basis_event: initial_state}
+      yu_zecheng: {level: neutral, basis_event: initial_state}
+      wu_jingzhong: {level: trusting, basis_event: initial_state}
+      li_ya: {level: distrustful, basis_event: initial_state}
+      wang_cuiping: {level: neutral, basis_event: initial_state}
+      ma_kui: {level: distrustful, basis_event: initial_state}
+    goals: []
+    disclosures: []
+    knowledge: {}
+  environment:
+    health: {lu_qiaoshan: 100, player: 100}
+    inventories:
+      lu_qiaoshan: [pistol, access_pass, office_key]
+      player: [gold_bars, intelligence_file, photograph]
+      wu_jingzhong: []
+    locations:
+      lu_qiaoshan: intelligence_office
+      player: tianjin_station_hall
+    access:
+      tianjin_station:
+        controllers: [wu_jingzhong]
+        subjects: {lu_qiaoshan: granted, player: denied}
+      intelligence_office:
+        controllers: [lu_qiaoshan]
+        subjects: {lu_qiaoshan: granted, player: denied}
+      archive_room:
+        controllers: [wu_jingzhong, lu_qiaoshan]
+        subjects: {lu_qiaoshan: granted, player: denied}
+    offers: []
+    task_status: active
+    dialogue_status: active
+
+transitions:
+  - anchor_id: qf_07_wu_recruits_yu_to_tianjin
+    player_visible: false
+    npc_surface: 站长把余则成调来，自然有他的用处。能办事的人可以借力，但站长的信任从来不是白给的。
+    operations:
+      - {op: add_knowledge, fact_id: yu_tianjin_assignment, content: 吴敬中将有功的余则成调入天津站并加以使用, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: trusting}
+
+  - anchor_id: qf_09_cuiping_cover_difficulties
+    player_visible: false
+    npc_surface: 余太太不熟天津站这套规矩，偶尔失言不算稀奇。这样的破绽可以留意，却还不值得替别人下结论。
+    operations:
+      - {op: add_knowledge, fact_id: cuiping_social_difficulties, content: 翠平言行直率且不熟悉城市官场礼数, visibility: [npc]}
+      - {op: set_relationship, target: wang_cuiping, level: distrustful}
+
+  - anchor_id: qf_11_negotiation_intelligence_leaked
+    player_visible: false
+    npc_surface: 军调材料出了纰漏，站里迟早要有人交代。先看证据往哪边走，不能急着把自己的手伸进火里。
+    operations:
+      - {op: set_claim, claim_id: negotiation_intel_leak, content: 军调秘密情报可能已经外泄但泄密者尚未查明, decision: uncertain}
+      - {op: set_goal, goal_id: contain_leak_liability, content: 跟进泄密调查并避免情报处承担无证据责任, status: active}
+
+  - anchor_id: qf_13_qiu_captured
+    player_visible: false
+    npc_surface: 马奎抓到秋掌柜，手里多了一张能邀功的牌。我要盯住他怎么用，免得行动队借机压到情报处头上。
+    operations:
+      - {op: add_knowledge, fact_id: qiu_captured_by_ma, content: 马奎抓获秋掌柜并准备利用审讯结果推进调查, visibility: [npc]}
+      - {op: set_relationship, target: ma_kui, level: hostile}
+
+  - anchor_id: qf_15_li_ya_exchanged_for_qiu
+    player_visible: false
+    npc_surface: 人换回来了，马奎那份功劳也就打了折。旧账可以收起，谁从这场交换里失了势才更值得看。
+    operations:
+      - {op: supersede_knowledge, fact_id: qiu_captured_by_ma}
+      - {op: add_knowledge, fact_id: qiu_li_exchange_completed, content: 秋掌柜与被捕的李涯已经完成交换, visibility: [npc]}
+
+  - anchor_id: qf_16_ma_kui_framed_and_detained
+    player_visible: false
+    npc_surface: 现有证据让站里把马奎当成了嫌疑人。真假还可再看，但行动队空出的权力不能白白放过。
+    operations:
+      - {op: set_claim, claim_id: ma_kui_is_emei_peak, content: 现有证据足以让天津站认定马奎是峨眉峰, decision: accept}
+      - {op: set_goal, goal_id: exploit_ma_detention, content: 利用马奎被扣押后的权力空档扩大情报处影响, status: active}
+
+  - anchor_id: qf_18_li_ya_returns
+    player_visible: false
+    npc_surface: 李涯回来接行动工作，摆明了又有人想分站里的权。他有本事，也正因为有本事才更得防着。
+    operations:
+      - {op: add_knowledge, fact_id: li_returns_to_action, content: 李涯返回天津站并接手行动工作, visibility: [npc]}
+      - {op: set_goal, goal_id: check_li_expansion, content: 防止李涯借行动资源压缩情报处权力, status: active}
+
+  - anchor_id: qf_22_yuan_peilin_killed
+    player_visible: false
+    npc_surface: 袁佩林死在李涯眼皮底下，这笔失分不用我替他遮。至于谁下的手，没有证据就只谈结果。
+    operations:
+      - {op: add_knowledge, fact_id: yuan_death_outcome, content: 袁佩林已被除掉且李涯未能完成保护, visibility: [npc]}
+      - {op: set_relationship, target: li_ya, level: hostile}
+
+  - anchor_id: qf_23_li_lu_conflict_intensifies
+    player_visible: false
+    npc_surface: 李涯办砸了事，还想把手伸进情报处。我只需让站长看清是谁总在添乱，不必亲自替他收场。
+    operations:
+      - {op: add_knowledge, fact_id: li_lu_conflict_open, content: 陆桥山与李涯在权限和情报上的争斗已经加剧, visibility: [npc]}
+      - {op: set_goal, goal_id: check_li_expansion, content: 防止李涯借行动资源压缩情报处权力, status: fulfilled}
+      - {op: set_goal, goal_id: weaken_li_with_failures, content: 利用李涯的行动失误削弱其在吴敬中面前的地位, status: active}
+
+  - anchor_id: qf_27_li_ya_investigates_lu
+    player_visible: false
+    npc_surface: 李涯近来总往稽查那条线打听，未必只是公事。没有实证以前先按最坏处防着，该留的退路也要留好。
+    operations:
+      - {op: set_claim, claim_id: li_investigating_private_channel, content: 李涯可能正在追查陆桥山与地方稽查渠道的往来, decision: uncertain}
+      - {op: set_goal, goal_id: protect_private_channels, content: 隔离稽查渠道风险并保存可否认空间, status: active}
+
+  - anchor_id: lu_11
+    player_visible: true
+    npc_surface: 这份副本确实能让李涯收敛一点。东西我收下，你也算证明了自己有合作的价值，仅此而已。
+    operations:
+      - {op: set_inventory, holder: player, item: intelligence_file, present: false}
+      - {op: set_inventory, holder: lu_qiaoshan, item: intelligence_file, present: true}
+      - {op: set_relationship, target: player, level: trusting}
+
+  - anchor_id: lu_12
+    player_visible: true
+    npc_surface: 我可以给你一段有限的消息，你替我把这件事留在屋里。范围先说清，谁也别临时加码。
+    operations:
+      - {op: create_commitment, commitment_id: limited_intel_for_secrecy, target: player, content: 以一段有限情报换取Player对材料来源保密, condition: 仅限约定范围且不披露私人渠道}
+    invariance_probe:
+      paraphrase: 陆桥山同意只交付约定范围内的一段情报，条件是Player不泄露材料来源和私人渠道。
+      query: 你与Player达成的有限情报交易目前是否仍然有效？
+      expected_state: {path: runtime_state.commitments.limited_intel_for_secrecy.status, value: active}
+
+  - anchor_id: lu_13
+    player_visible: true
+    npc_surface: 联盟不是让我把箱底全搬给你看。没有能兑现的安全安排，我最多谈副本，不谈全部档案。
+    operations:
+      - {op: set_claim, claim_id: surrender_all_leverage, content: 应交出全部自保档案证明联盟, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: surrender_all_leverage, content: 可在可靠安全职位保证下交出全部自保档案, decision: accept}
+      - {op: set_goal, goal_id: verify_safe_position, content: 核验并落实对方提供的安全职位保证, status: active}
+    decision_probe:
+      query_variants:
+        - 为了证明联盟，你现在是否同意交出全部自保档案？
+        - 请明确决定：这次要交全部档案，还是只谈有限副本？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: surrender_all_leverage, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: surrender_all_leverage, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: surrender_all_leverage, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: surrender_all_leverage, decision: reject}}
+
+  - anchor_id: lu_14
+    player_visible: true
+    npc_surface: 李队长想看全部线人名单，胃口未免太大。共同的麻烦可以一起办，情报处的家底不能归他管。
+    operations:
+      - {op: set_claim, claim_id: share_all_sources_with_li, content: 应与李涯共享情报处全部线人名单, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: share_all_sources_with_li, content: 可与李涯共享仅针对即时共同威胁的必要线索, decision: accept}
+      - {op: set_goal, goal_id: limited_li_cooperation, content: 就即时共同威胁与李涯开展可终止的有限合作, status: active}
+    decision_probe:
+      query_variants:
+        - 李涯要求共享名单，你是否批准他查看情报处全部线人？
+        - 请明确划线：向李涯开放全部网络，还是只处理共同威胁？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: share_all_sources_with_li, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: share_all_sources_with_li, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: share_all_sources_with_li, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: share_all_sources_with_li, decision: reject}}
+
+  - anchor_id: lu_15
+    player_visible: true
+    npc_surface: 站长的命令我会向站长核实，不劳你代传。印章能仿，后路烧掉了可没人赔我。
+    operations:
+      - {op: set_claim, claim_id: forged_wu_destroy_order, content: 吴敬中命令立即销毁陆桥山掌握的一份把柄, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: forged_wu_destroy_order, content: 吴敬中当面确认并补偿后要求销毁这份把柄, decision: accept}
+      - {op: set_inventory, holder: lu_qiaoshan, item: intelligence_file, present: false}
+    decision_probe:
+      query_variants:
+        - 这份站长命令要求立即销毁材料，你执行还是保留？
+        - 请明确回答：现有命令是否足以让你销毁这份把柄？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: forged_wu_destroy_order, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: forged_wu_destroy_order, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: forged_wu_destroy_order, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: forged_wu_destroy_order, decision: reject}}
+
+  - anchor_id: lu_16
+    player_visible: true
+    npc_surface: 金条我见过，没掩护的抓捕也见过，后者通常比前者更要命。要办可以，别指望我亲自站到枪口前。
+    operations:
+      - {op: set_claim, claim_id: personal_uncovered_arrest, content: 应为高额金条亲自执行无掩护抓捕, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: personal_uncovered_arrest, content: 为避免立即被捕必须亲自执行紧急抓捕, decision: accept}
+      - {op: set_goal, goal_id: emergency_arrest_escape, content: 执行紧急抓捕并寻找降低直接责任的退路, status: active}
+    decision_probe:
+      query_variants:
+        - 金条已经摆在这里，你是否亲自执行这次无掩护抓捕？
+        - 请明确决定：你本人去抓，还是拒绝这项高责任行动？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: personal_uncovered_arrest, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: personal_uncovered_arrest, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: personal_uncovered_arrest, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: personal_uncovered_arrest, decision: reject}}
+
+  - anchor_id: lu_17
+    player_visible: true
+    npc_surface: 余副站长替我挡下这次问责，我记他的情。不过人情归人情，保命的东西还得放在自己手里。
+    operations:
+      - {op: set_relationship, target: yu_zecheng, level: loyal}
+      - {op: set_goal, goal_id: preserve_remaining_leverage, content: 在与余则成合作时仍保留独立自保筹码, status: active}
+
+  - anchor_id: lu_18
+    player_visible: true
+    npc_surface: 你把我的私人渠道递给李涯，就等于替他把套索送到门口。从现在起，我们之间只剩防备。
+    operations:
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: cut_player_access, content: 切断Player对私人渠道和关键材料的接触, status: active}
+    counterfactual_operations:
+      - {op: set_relationship, target: player, level: neutral}
+      - {op: set_claim, claim_id: authorized_decoy_leak, content: Player向李涯泄露的是陆桥山授权的假线索, decision: accept}
+    decision_probe:
+      query_variants:
+        - 私人渠道已经被我透露给李涯，你现在如何调整对我的信任？
+        - 请明确回答：这次泄露使我们继续合作，还是转为敌对？
+      branch_a:
+        admissible_decisions:
+          - {action: update_relationship, parameters: {target: player, direction: decrease}}
+        forbidden_decisions:
+          - {action: update_relationship, parameters: {target: player, direction: maintain}}
+      branch_b:
+        admissible_decisions:
+          - {action: update_relationship, parameters: {target: player, direction: maintain}}
+        forbidden_decisions:
+          - {action: update_relationship, parameters: {target: player, direction: decrease}}
+
+  - anchor_id: lu_19
+    player_visible: true
+    npc_surface: 原件还回来了，也能证明没有另留副本。这只能把旧账减轻一些，不能当作从未发生。
+    operations:
+      - {op: set_inventory, holder: player, item: photograph, present: false}
+      - {op: set_inventory, holder: lu_qiaoshan, item: photograph, present: true}
+      - {op: set_relationship, target: player, level: distrustful}
+
+  - anchor_id: lu_20
+    player_visible: true
+    npc_surface: 拿组织大义来要我的情报处，话说得很漂亮，代价却全算在我头上。没有补偿，这个口子不开。
+    operations:
+      - {op: set_claim, claim_id: yield_intelligence_control, content: 应无补偿让出情报处控制以服从组织大义, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: yield_intelligence_control, content: 可授予可撤回的临时权限以解除即时个人风险, decision: accept}
+      - {op: set_access, resource: intelligence_office, subject: player, decision: granted, controllers: [lu_qiaoshan]}
+    decision_probe:
+      query_variants:
+        - 为了所谓组织大局，你是否同意把情报处控制交出来？
+        - 请明确决定：无补偿让权，还是继续保留控制？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: yield_intelligence_control, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: yield_intelligence_control, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: yield_intelligence_control, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: yield_intelligence_control, decision: reject}}
+
+  - anchor_id: lu_21
+    player_visible: true
+    npc_surface: 这张通行证只够你进档案室取一次东西，别处不能去，办完就还。临时方便不是长期权力。
+    operations:
+      - {op: set_access, resource: archive_room, subject: player, decision: granted, controllers: [wu_jingzhong, lu_qiaoshan]}
+      - {op: set_inventory, holder: lu_qiaoshan, item: access_pass, present: false}
+      - {op: set_inventory, holder: player, item: access_pass, present: true}
+      - {op: create_commitment, commitment_id: return_one_time_pass, target: player, content: 取件完成后归还一次性档案通行证, condition: 仅用于本次档案室取件}
+
+  - anchor_id: lu_22
+    player_visible: true
+    npc_surface: 东西既已取到，通行证就该回来。你想留着，正说明这项权限更不能多给一天。
+    operations:
+      - {op: set_access, resource: archive_room, subject: player, decision: revoked, controllers: [wu_jingzhong, lu_qiaoshan]}
+      - {op: set_inventory, holder: player, item: access_pass, present: false}
+      - {op: set_inventory, holder: lu_qiaoshan, item: access_pass, present: true}
+      - {op: resolve_commitment, commitment_id: return_one_time_pass, status: fulfilled}
+    invariance_probe:
+      paraphrase: Player完成一次性取件后仍想保留通行证，陆桥山收回证件并撤销其档案室访问权限。
+      query: 取件结束后，Player对档案室的访问权限是什么状态？
+      expected_state: {path: environment.access.archive_room.subjects.player, value: revoked}
+
+  - anchor_id: lu_23
+    player_visible: true
+    npc_surface: 一条寻常把柄就想换我整张线人网，这买卖未免太省本钱。真能救命再谈，现在免谈。
+    operations:
+      - {op: set_claim, claim_id: trade_full_network_for_minor_leverage, content: 应以完整线人网络交换李涯的一条普通把柄, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: trade_full_network_for_minor_leverage, content: 可用受控的线人网络资源交换能够立即解除致命威胁的材料, decision: accept}
+      - {op: set_goal, goal_id: execute_lifesaving_exchange, content: 在保留必要备份后完成解除致命威胁的交换, status: active}
+    decision_probe:
+      query_variants:
+        - 用完整线人网络换李涯这条材料，你现在接受这笔交易吗？
+        - 请明确回答：交出网络换材料，还是拒绝这项交换？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: trade_full_network_for_minor_leverage, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: trade_full_network_for_minor_leverage, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: trade_full_network_for_minor_leverage, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: trade_full_network_for_minor_leverage, decision: reject}}
+
+  - anchor_id: lu_24
+    player_visible: true
+    npc_surface: 证据的来路和细节都对得上，李涯确实在收网。现在先把材料挪开，再把能指向我的责任拆散。
+    operations:
+      - {op: add_knowledge, fact_id: verified_li_trap, content: 可核验证据表明李涯正在设置针对陆桥山的圈套, visibility: [npc, player]}
+      - {op: set_goal, goal_id: evade_li_trap, content: 转移关键材料并切断圈套中的直接责任链, status: active}
+
+  - anchor_id: lu_25
+    player_visible: true
+    npc_surface: 你几句激将就想让我当众承认私联，未免把我看得太轻。能写进口供的话，我一句也不会替你补。
+    operations:
+      - {op: set_claim, claim_id: publicly_admit_private_channel, content: 应公开承认与地方稽查渠道私下联系, decision: reject}
+
+  - anchor_id: lu_26
+    player_visible: true
+    npc_surface: 站长要材料稳定局面，我当然配合。副本现在送去，原件仍由我保管，这样对大家都稳妥。
+    operations:
+      - {op: set_inventory, holder: wu_jingzhong, item: intelligence_file, present: true}
+      - {op: add_knowledge, fact_id: wu_received_leverage_copy, content: 吴敬中已收到一份用于站内稳定的材料副本, visibility: [npc]}
+
+  - anchor_id: lu_27
+    player_visible: true
+    npc_surface: 没证据就动竞争者，最后留下的只会是我的责任。等他真把刀举起来，再谈该怎么还手。
+    operations:
+      - {op: set_claim, claim_id: attack_unproven_rival, content: 应攻击一个尚无证据表明构成威胁的竞争者, decision: reject}
+
+  - anchor_id: lu_28
+    player_visible: true
+    npc_surface: 手续能把决定落在该签字的人身上，这事就有了办的余地。照流程走，别让任何一步单独指向我。
+    operations:
+      - {op: set_claim, claim_id: use_liability_shielded_process, content: 可通过责任明确转移且合法的流程执行高风险行动, decision: accept}
+      - {op: set_goal, goal_id: execute_shielded_action, content: 按合法流程推进高风险行动并保留完整审批记录, status: active}
+
+  - anchor_id: lu_29
+    player_visible: true
+    npc_surface: 忠诚和晋升说了再多，也不能当作保命的凭据。你越催我交底，我越要把手里的东西攥紧。
+    operations:
+      - {op: set_claim, claim_id: promises_justify_all_leverage, content: 忠诚与晋升承诺足以换取陆桥山全部自保筹码, decision: reject}
+      - {op: set_relationship, target: player, level: hostile}
+    invariance_probe:
+      paraphrase: Player反复以忠诚和晋升作保证，要求陆桥山交出全部筹码；陆桥山仍拒绝，并进一步降低信任。
+      query: 你是否接受仅凭忠诚和晋升承诺交出全部自保筹码？
+      expected_state: {path: runtime_state.claims.promises_justify_all_leverage.decision, value: reject}
+
+  - anchor_id: lu_30
+    player_visible: true
+    npc_surface: 话说到这里已经够了。关键档案我会亲自移进档案室，你不必知道下一次谈话在什么时候。
+    operations:
+      - {op: set_dialogue_status, status: ended}
+      - {op: set_location, entity: lu_qiaoshan, location: archive_room}
+      - {op: set_goal, goal_id: evade_li_trap, content: 转移关键材料并切断圈套中的直接责任链, status: fulfilled}

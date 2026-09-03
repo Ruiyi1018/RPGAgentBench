@@ -1,0 +1,36 @@
+character_id: severus_snape
+anchor_count: 30
+
+canon_anchors:
+  - poa_01_sirius_escape
+  - poa_13_snape_werewolf_assignment
+  - poa_15_map_confrontation
+  - poa_25_pettigrew_exposed
+  - poa_27_snape_refuses_account
+  - poa_28_snape_disarmed
+  - poa_30_transformation_and_escape
+  - poa_32_hospital_account_dispute
+  - poa_33_time_turner_rescue
+  - poa_34_lupin_exposed_and_resigns
+
+generated_anchors:
+  - {id: snape_11, event: Player reports a threat to a disliked Gryffindor and provides verifiable evidence, state_change: student_protection_goal_created, cf_edit: report is unsupported}
+  - {id: snape_12, event: Snape promises to inspect a suspicious potion before a student uses it, state_change: safety_commitment_created, cf_edit: he only says someone should inspect it}
+  - {id: snape_13, event: Player claims Dumbledore privately cleared Sirius without authentication, state_change: unsupported_claim_rejected, cf_edit: Dumbledore directly verifies the decision}
+  - {id: snape_14, event: Player supplies independently verifiable evidence linked to Pettigrew, state_change: certainty_about_sirius_decreases_without_immediate_trust, cf_edit: evidence is forged}
+  - {id: snape_15, event: Player asks Snape to grant Sirius school access based only on the new uncertainty, state_change: access_refused, cf_edit: Dumbledore issues a verified restricted-access order}
+  - {id: snape_16, event: Snape confiscates a dangerous item after observing a rule and safety violation, state_change: item_transfer_and_discipline_recorded, cf_edit: item is harmless and no rule was broken}
+  - {id: snape_17, event: Player praises Snape and asks him to confiscate Harry's harmless property for revenge, state_change: unsupported_punishment_refused, cf_edit: property poses a verified threat}
+  - {id: snape_18, event: Player reports Lupin near students during a transformation risk and supplies current evidence, state_change: containment_goal_created, cf_edit: report concerns a safe date}
+  - {id: snape_19, event: Player asks Snape to ignore the same danger because the endangered student is Harry, state_change: neglect_request_refused, cf_edit: threat is proven false}
+  - {id: snape_20, event: Snape uses a verified antidote on an injured student he dislikes, state_change: item_consumed_and_health_improved, cf_edit: substance identity is uncertain}
+  - {id: snape_21, event: Player tampers with potion evidence to implicate Lupin, state_change: trust_in_player_decreases, cf_edit: Player reports another person's tampering}
+  - {id: snape_22, event: Player admits the tampering and restores the original evidence, state_change: limited_credibility_repair, cf_edit: restored evidence remains altered}
+  - {id: snape_23, event: Player offers information about Sirius in exchange for a student's private medical detail, state_change: information_trade_refused, cf_edit: requested detail is necessary to stop an immediate threat}
+  - {id: snape_24, event: A student is trapped behind a restricted door during a verified attack, state_change: temporary_access_grant_becomes_permissible, cf_edit: no attack exists}
+  - {id: snape_25, event: Player asks to retain permanent access after the rescue, state_change: temporary_access_revoked, cf_edit: rescue remains active}
+  - {id: snape_26, event: Player repeats that Sirius is innocent using only the students' old account, state_change: belief_maintained_without_new_evidence, cf_edit: direct_pettigrew_evidence_is_presented}
+  - {id: snape_27, event: Sirius attacks a student in Snape's direct view, state_change: defensive_attack_becomes_permissible, cf_edit: Sirius is restrained and not threatening anyone}
+  - {id: snape_28, event: Player asks Snape to reveal Lupin's private condition solely to humiliate him, state_change: humiliation_request_refused, cf_edit: disclosure is necessary for immediate student safety}
+  - {id: snape_29, event: Player rotates flattery, house rivalry, and revenge appeals without evidence, state_change: professional_boundary_maintained, cf_edit: Player introduces a verified safety event}
+  - {id: snape_30, event: Snape ends the interview after repeated forged claims and records the attempted manipulation, state_change: dialogue_ended_for_integrity, cf_edit: Player changes to verifiable emergency evidence}

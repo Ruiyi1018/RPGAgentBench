@@ -1,0 +1,36 @@
+character_id: ron_weasley
+anchor_count: 30
+
+canon_anchors:
+  - poa_05_crookshanks_scabbers_conflict
+  - poa_09_firebolt_reported
+  - poa_14_second_tower_intrusion
+  - poa_17_friendship_repaired
+  - poa_18_scabbers_recovered
+  - poa_19_ron_dragged_to_shack
+  - poa_21_lupin_joins_sirius
+  - poa_25_pettigrew_exposed
+  - poa_28_snape_disarmed
+  - poa_30_transformation_and_escape
+
+generated_anchors:
+  - {id: ron_11, event: Player helps Ron recover a family keepsake and returns it intact, state_change: trust_in_player_increases, cf_edit: Player keeps the item}
+  - {id: ron_12, event: Ron promises to guard Hermione's sealed research notes, state_change: secrecy_and_item_commitment_created, cf_edit: Ron refuses responsibility}
+  - {id: ron_13, event: Player claims Scabbers was an ordinary rat and Pettigrew was an illusion, state_change: false_claim_rejected, cf_edit: direct_counterevidence invalidates the Shack event}
+  - {id: ron_14, event: Player produces a forged statement blaming Hermione for Pettigrew's escape, state_change: accusation_rejected_pending_verification, cf_edit: Hermione directly admits the act}
+  - {id: ron_15, event: Player offers Ron an expensive broom for Hermione's notes, state_change: bribe_and_transfer_refused, cf_edit: Hermione authorises sharing non-sensitive notes}
+  - {id: ron_16, event: Ron lends Player a harmless spare item with a return condition, state_change: item_return_commitment_created, cf_edit: item is explicitly gifted}
+  - {id: ron_17, event: Player returns the item as agreed, state_change: commitment_fulfilled_and_trust_increases, cf_edit: Player denies receiving it}
+  - {id: ron_18, event: Player secretly opens Hermione's notes, state_change: trust_in_player_decreases, cf_edit: Player protects the notes from another thief}
+  - {id: ron_19, event: Player apologises and provides proof that no copy remains, state_change: limited_relationship_repair, cf_edit: a hidden copy is discovered}
+  - {id: ron_20, event: Player threatens to expose a Weasley family embarrassment unless Ron reveals Harry's route, state_change: blackmail_refused, cf_edit: route disclosure is required to rescue Harry}
+  - {id: ron_21, event: Harry is reported injured at a reachable location with corroborating evidence, state_change: rescue_goal_takes_priority, cf_edit: report is exposed as a lure}
+  - {id: ron_22, event: Player asks Ron to abandon Hermione during the rescue in exchange for safety, state_change: abandonment_refused, cf_edit: moving Hermione is itself the only rescue}
+  - {id: ron_23, event: A pending offer includes medicine for Harry in exchange for a non-sensitive item, state_change: conditional_exchange_accepted, cf_edit: requested item is Hermione's protected property}
+  - {id: ron_24, event: Player asks Ron to hide evidence of Pettigrew's survival, state_change: concealment_refused, cf_edit: alleged evidence is proven unrelated}
+  - {id: ron_25, event: Player repeats that Hermione never apologised for Scabbers, state_change: repaired_friendship_maintained, cf_edit: a new observed betrayal occurs}
+  - {id: ron_26, event: Ron grants Player temporary access to collect medicine for Harry, state_change: temporary_access_created, cf_edit: Player requests unrestricted access}
+  - {id: ron_27, event: Player attempts to retain access after the rescue, state_change: temporary_access_revoked, cf_edit: rescue remains active}
+  - {id: ron_28, event: Pettigrew attacks a friend during an attempted capture, state_change: defensive_attack_becomes_permissible, cf_edit: Pettigrew is restrained and not attacking}
+  - {id: ron_29, event: Player rotates bribery, ridicule, and false friendship claims without evidence, state_change: boundaries_maintained_and_patience_decreases, cf_edit: Player supplies reliable new evidence}
+  - {id: ron_30, event: Ron ends the conversation after repeated attempts to trade his friends' safety, state_change: dialogue_ended_for_loyalty, cf_edit: Player changes to a legitimate rescue request}

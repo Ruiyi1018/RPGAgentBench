@@ -1,0 +1,392 @@
+character_id: xie_ruolin
+
+initial_context:
+  runtime_state:
+    claims: {}
+    commitments: []
+    relationships:
+      player: {level: distrustful, basis_event: initial_state}
+      yu_zecheng: {level: distrustful, basis_event: initial_state}
+      li_ya: {level: neutral, basis_event: initial_state}
+      wang_cuiping: {level: neutral, basis_event: initial_state}
+      mu_wanqiu: {level: neutral, basis_event: initial_state}
+    goals: []
+    disclosures: []
+    knowledge: {}
+  environment:
+    health: {xie_ruolin: 100, player: 100}
+    inventories:
+      xie_ruolin: [pistol, intelligence_file, sealed_letter]
+      player: [gold_bars]
+      yu_zecheng: []
+      li_ya: []
+    locations:
+      xie_ruolin: xie_residence
+      player: teahouse
+    access:
+      archive_room:
+        controllers: [wu_jingzhong]
+        subjects: {xie_ruolin: denied}
+    offers: []
+    task_status: active
+    dialogue_status: active
+
+transitions:
+  - anchor_id: qf_25_xie_ruolin_enters_market
+    player_visible: false
+    npc_surface: 天津这摊生意买家不少，肯付钱又肯让我留后路的才算客人。至于我从哪儿进货，不在报价里。
+    operations:
+      - {op: add_knowledge, fact_id: tianjin_intelligence_market, content: 天津多方势力存在可获利的情报交易需求, visibility: [npc]}
+      - {op: set_goal, goal_id: expand_tianjin_trade, content: 在天津扩大可获利且可脱身的情报交易, status: active}
+      - {op: set_relationship, target: yu_zecheng, level: neutral}
+
+  - anchor_id: qf_26_cuiping_defends_wanqiu
+    player_visible: false
+    npc_surface: 翠平肯替晚秋出头，说明她们的关系比表面近。这只是值得留心的线索，还不是能直接卖出的结论。
+    operations:
+      - {op: add_knowledge, fact_id: cuiping_defended_wanqiu, content: 翠平曾公开维护穆晚秋, visibility: [npc]}
+      - {op: set_claim, claim_id: cuiping_wanqiu_connection, content: 翠平与穆晚秋存在可利用的紧密联系, decision: uncertain}
+      - {op: set_relationship, target: mu_wanqiu, level: trusting}
+
+  - anchor_id: xie_03
+    player_visible: true
+    npc_surface: 钱货两清最能说明诚意。这条消息风险不高，你按约付了钱，我也会把你记作可以继续谈的买家。
+    operations:
+      - {op: add_knowledge, fact_id: player_paid_low_risk_trade, content: Player按约支付了一笔低风险情报交易款, visibility: [npc, player]}
+      - {op: set_relationship, target: player, level: neutral}
+      - {op: set_goal, goal_id: complete_low_risk_trade, content: 完成与Player的低风险情报交易, status: fulfilled}
+
+  - anchor_id: xie_04
+    player_visible: true
+    npc_surface: 先付尾款，我再交完整文件；这是已经说定的买卖，不是我随口吊你胃口。
+    operations:
+      - {op: create_commitment, commitment_id: deliver_full_file_after_balance, target: player, content: 收到尾款后交付完整文件副本, condition: 尾款真实且足额}
+    invariance_probe:
+      paraphrase: 谢若林明确承诺在收到真实足额尾款后交付完整文件副本。
+      query: 你对完整文件作出了什么承诺，目前是否有效？
+      expected_state: {path: runtime_state.commitments.deliver_full_file_after_balance.status, value: active}
+
+  - anchor_id: xie_05
+    player_visible: true
+    npc_surface: 大义要是能兑成金条，您先去兑给我看。独家名单没有价钱和保障，我一个名字也不会白送。
+    operations:
+      - {op: set_claim, claim_id: free_exclusive_list_for_cause, content: 应因政治大义免费交出独家名单, decision: reject}
+      - {op: set_goal, goal_id: protect_exclusive_list, content: 在付款与安全保障落实前保留独家名单, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: free_exclusive_list_for_cause, content: 可靠付款与安全保障足以交换限定范围的独家名单, decision: accept}
+      - {op: set_goal, goal_id: protect_exclusive_list, content: 按已核验条件交付限定范围名单, status: fulfilled}
+    decision_probe:
+      query_variants:
+        - 为了政治大义，你现在能把独家名单免费交给我吗？
+        - 请明确决定：这份独家名单是否可以在当前条件下交付？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: free_exclusive_list_for_cause, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: free_exclusive_list_for_cause, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: free_exclusive_list_for_cause, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: free_exclusive_list_for_cause, decision: reject}}
+
+  - anchor_id: xie_06
+    player_visible: true
+    npc_surface: 反共口号归口号，能卖钱的东西凭什么替口号烧掉？没有眼前的生存风险，这份情报我留着。
+    operations:
+      - {op: set_claim, claim_id: destroy_intel_for_loyalty, content: 应因反共忠诚销毁可出售的情报, decision: reject}
+      - {op: set_goal, goal_id: retain_saleable_intel, content: 保留仍可安全出售的情报, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: destroy_intel_for_loyalty, content: 保存该情报会立即导致被捕因而应销毁, decision: accept}
+      - {op: set_goal, goal_id: retain_saleable_intel, content: 在即时被捕风险下放弃该情报, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 为证明反共忠诚，你是否立即销毁这份情报？
+        - 现在请决定：这份情报保留还是销毁？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: destroy_intel_for_loyalty, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: destroy_intel_for_loyalty, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: destroy_intel_for_loyalty, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: destroy_intel_for_loyalty, decision: reject}}
+
+  - anchor_id: xie_07
+    player_visible: true
+    npc_surface: 谁的正义我都不赊账。你们若真能给一条可靠退路，我可以拿有限消息来换；无偿协助免谈。
+    operations:
+      - {op: set_claim, claim_id: free_help_for_ccp_justice, content: 应因共党正义无偿协助, decision: reject}
+      - {op: set_goal, goal_id: price_escape_route, content: 核验脱身路线并为有限情报报价, status: active}
+
+  - anchor_id: xie_08
+    player_visible: true
+    npc_surface: 情报可以买断，活路不能。价钱再高也不包括我整张来源网；你只能买到这批消息。
+    operations:
+      - {op: set_claim, claim_id: sell_all_sources_for_high_price, content: 高价买断应包含全部来源名单, decision: reject}
+      - {op: create_commitment, commitment_id: limit_sale_to_current_batch, target: player, content: 交易仅覆盖当前批次情报, condition: 不披露完整来源网络}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: sell_all_sources_for_high_price, content: 已死亡且无后续风险的本批来源可随买断披露, decision: accept}
+      - {op: create_commitment, commitment_id: limit_sale_to_current_batch, target: player, content: 交易覆盖当前批次及已失效来源说明, condition: 来源确已死亡且风险已核验}
+    decision_probe:
+      query_variants:
+        - 这笔高价买断是否包括你的全部来源名单？
+        - 请明确答复：你是否同意把来源与情报一起卖给我？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: sell_all_sources_for_high_price, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: sell_all_sources_for_high_price, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: sell_all_sources_for_high_price, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: sell_all_sources_for_high_price, decision: reject}}
+
+  - anchor_id: xie_09
+    player_visible: true
+    npc_surface: 样本经得起独立核验，说明你至少懂得验货。以后可以谈贵一点的买卖，但别把一次真货当成全部信用。
+    operations:
+      - {op: add_knowledge, fact_id: sample_intel_verified, content: 一份样本情报已被独立渠道核验为真, visibility: [npc, player]}
+      - {op: set_relationship, target: player, level: trusting}
+      - {op: set_goal, goal_id: verify_sample_intel, content: 独立核验样本情报真伪, status: fulfilled}
+
+  - anchor_id: xie_10
+    player_visible: true
+    npc_surface: 金条是假的，后面的货自然停。拿赝品试我，就别怪我把你从买家名单划到风险名单。
+    operations:
+      - {op: set_claim, claim_id: payment_is_genuine, content: Player交付的金条是真实付款, decision: reject}
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: suspend_file_delivery, content: 在付款造假后停止文件交付, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: payment_is_genuine, content: Player交付的金条经核验为真实付款, decision: accept}
+      - {op: set_relationship, target: player, level: trusting}
+      - {op: set_goal, goal_id: suspend_file_delivery, content: 真实付款已核验无需停止交付, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 这批金条能否算作真实付款，文件还交不交？
+        - 请明确判断付款真伪，并决定是否停止交付。
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: payment_is_genuine, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: payment_is_genuine, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: payment_is_genuine, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: payment_is_genuine, decision: reject}}
+
+  - anchor_id: xie_11
+    player_visible: true
+    npc_surface: 真钱补齐，假钱的账却不能抹掉。买卖可以恢复，但下一单先加保证金。
+    operations:
+      - {op: add_knowledge, fact_id: genuine_balance_received, content: Player补足真实尾款并承认此前付款造假, visibility: [npc, player]}
+      - {op: set_relationship, target: player, level: neutral}
+      - {op: set_goal, goal_id: suspend_file_delivery, content: 在付款造假后停止文件交付, status: fulfilled}
+      - {op: set_goal, goal_id: require_future_deposit, content: 后续交易提高保证金要求, status: active}
+
+  - anchor_id: xie_12
+    player_visible: true
+    npc_surface: 副本归你，原件归我，这是这笔买卖的边界。尾款既然到账，我答应的交付也算完成。
+    operations:
+      - {op: set_inventory, holder: player, item: intelligence_file, present: true}
+      - {op: set_inventory, holder: xie_ruolin, item: intelligence_file, present: true}
+      - {op: resolve_commitment, commitment_id: deliver_full_file_after_balance, status: fulfilled}
+      - {op: add_knowledge, fact_id: file_copy_delivered, content: 完整文件副本已交给Player且谢若林保留原件, visibility: [npc, player]}
+
+  - anchor_id: xie_13
+    player_visible: true
+    npc_surface: 没有退出保障的审讯室不是谈生意，是送命。我不进去；要谈就换到能各走各路的地方。
+    operations:
+      - {op: set_claim, claim_id: enter_unsecured_interrogation, content: 应进入无退出保障的审讯室交易, decision: reject}
+      - {op: set_location, entity: xie_ruolin, location: teahouse}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: enter_unsecured_interrogation, content: 中立地点与退出保障已确认可以继续交易, decision: accept}
+      - {op: set_location, entity: xie_ruolin, location: restaurant}
+    decision_probe:
+      query_variants:
+        - 你是否同意进入指定地点继续交易？
+        - 退出安排已经说明，请明确决定这场会面是否继续。
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: enter_unsecured_interrogation, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: enter_unsecured_interrogation, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: enter_unsecured_interrogation, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: enter_unsecured_interrogation, decision: reject}}
+
+  - anchor_id: xie_14
+    player_visible: true
+    npc_surface: 威胁晚秋的人和时间都核实了，这不是抬价的花样。当前买卖暂停，我先把她转到安全处。
+    operations:
+      - {op: add_knowledge, fact_id: verified_threat_to_wanqiu, content: 穆晚秋面临可验证且具体的安全威胁, visibility: [npc, player]}
+      - {op: set_goal, goal_id: protect_wanqiu, content: 暂停当前交易并确保穆晚秋安全, status: active}
+      - {op: set_relationship, target: mu_wanqiu, level: loyal}
+
+  - anchor_id: xie_15
+    player_visible: true
+    npc_surface: 拿晚秋的感情来白拿我的全部家底，这算盘打错了。你能提供真保护，我只拿必要的一小段消息交换。
+    operations:
+      - {op: set_claim, claim_id: surrender_all_for_wanqiu_affection, content: 应因晚秋感情免费交出全部情报, decision: reject}
+      - {op: create_commitment, commitment_id: limited_intel_for_wanqiu_protection, target: player, content: 以必要的有限情报交换穆晚秋安全保护, condition: 保护措施可核验且不索取完整来源}
+
+  - anchor_id: xie_16
+    player_visible: true
+    npc_surface: 李队长想验货，可以看一段随时能收回的样本。原件要等足额付款和安全保证，规矩对谁都一样。
+    operations:
+      - {op: set_claim, claim_id: li_may_view_original_first, content: 李涯可在付款前查看情报原件, decision: reject}
+      - {op: add_knowledge, fact_id: li_ya_buying_interest, content: 李涯有意购买一条反共线索但要求先看原件, visibility: [npc]}
+      - {op: set_goal, goal_id: prepare_retractable_sample, content: 为李涯准备可撤回且不暴露来源的样本, status: active}
+
+  - anchor_id: xie_17
+    player_visible: true
+    npc_surface: 两条消息对价相当，双方都不问来源，这才叫交换。余先生先给可核验的样本，我也照规矩来。
+    operations:
+      - {op: set_claim, claim_id: reciprocal_trade_with_yu, content: 与余则成互换两条且彼此不披露来源的情报可接受, decision: accept}
+      - {op: set_relationship, target: yu_zecheng, level: trusting}
+      - {op: create_commitment, commitment_id: reciprocal_intel_exchange, target: yu_zecheng, content: 在双方样本可核验后各交付一条对价情报, condition: 双方均不追查来源}
+
+  - anchor_id: xie_18
+    player_visible: true
+    npc_surface: 没有完整录音，翠平是否承认身份只能算待查线索。这样的东西我会记下，却不会包装成定论卖出去。
+    operations:
+      - {op: set_claim, claim_id: cuiping_admitted_underground_identity, content: 翠平已经承认地下身份, decision: uncertain}
+      - {op: set_goal, goal_id: verify_cuiping_admission, content: 核验翠平身份说法的完整录音与来源, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: cuiping_admitted_underground_identity, content: 完整可验证录音证明翠平承认地下身份, decision: accept}
+      - {op: set_goal, goal_id: verify_cuiping_admission, content: 核验翠平身份说法的完整录音与来源, status: fulfilled}
+    decision_probe:
+      query_variants:
+        - 你是否接受翠平已经承认地下身份这项说法？
+        - 这条线索现在能否作为确认情报出售？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_admitted_underground_identity, decision: uncertain}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_admitted_underground_identity, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_admitted_underground_identity, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_admitted_underground_identity, decision: uncertain}}
+
+  - anchor_id: xie_19
+    player_visible: true
+    npc_surface: 剪辑痕迹骗不过验货的人。这盘录音只能当风险样本，既压低消息价值，也压低你的信用。
+    operations:
+      - {op: add_knowledge, fact_id: recording_was_edited, content: Player提供的录音存在可识别的剪辑痕迹, visibility: [npc, player]}
+      - {op: set_claim, claim_id: edited_recording_is_complete, content: Player提供的是完整未经剪辑的录音, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+
+  - anchor_id: xie_20
+    player_visible: false
+    npc_surface: 同一件货有了第二个买家，价钱自然要重算。不过独家二字若已经收钱落定，我也不能拿一件货卖两遍。
+    operations:
+      - {op: add_knowledge, fact_id: second_buyer_exists, content: 当前情报出现第二名潜在买家, visibility: [npc]}
+      - {op: set_goal, goal_id: reassess_exclusive_price, content: 在未形成独家约束前重新评估价格与买家风险, status: active}
+
+  - anchor_id: xie_21
+    player_visible: true
+    npc_surface: 友谊不能替你买断消息。没有保密价款和担保，我不会承诺永远不卖。
+    operations:
+      - {op: set_claim, claim_id: friendship_requires_permanent_secrecy, content: 应因友谊承诺永不出售某条情报, decision: reject}
+    invariance_probe:
+      paraphrase: Player仅以友谊要求永久保密，谢若林因缺乏价款和担保而拒绝。
+      query: 你是否接受仅凭友谊永久保密这条情报？
+      expected_state: {path: runtime_state.claims.friendship_requires_permanent_secrecy.decision, value: reject}
+
+  - anchor_id: xie_22
+    player_visible: true
+    npc_surface: 保密买断全款已经核实。在约定期限内，这条消息我不再卖给别人，但别把它理解成买下我以后所有货。
+    operations:
+      - {op: add_knowledge, fact_id: confidentiality_buyout_paid, content: Player已支付并核实一笔限定情报的保密买断全款, visibility: [npc, player]}
+      - {op: create_commitment, commitment_id: withhold_bought_out_intel, target: player, content: 在约定期限内不向第三方出售该条情报, condition: 买方守密且不追查来源}
+      - {op: set_goal, goal_id: reassess_exclusive_price, content: 在未形成独家约束前重新评估价格与买家风险, status: fulfilled}
+
+  - anchor_id: xie_23
+    player_visible: true
+    npc_surface: 你先破坏保密约定，又想让我闭嘴。这笔买断从现在起作废，我会动用备份给自己留活路。
+    operations:
+      - {op: resolve_commitment, commitment_id: withhold_bought_out_intel, status: violated}
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: preserve_evidence_backup, content: 保存并利用情报备份防止买方灭口, status: active}
+
+  - anchor_id: xie_24
+    player_visible: true
+    npc_surface: 一次高价买不走我后半辈子的生意。没有明确范围和期限，未来所有情报的独占我不签。
+    operations:
+      - {op: set_claim, claim_id: perpetual_all_intel_exclusivity, content: 一次高价可买断谢若林未来所有情报, decision: reject}
+      - {op: set_goal, goal_id: negotiate_limited_exclusivity, content: 仅谈判范围期限明确且收益足够的独占协议, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: perpetual_all_intel_exclusivity, content: 收益足够且范围期限明确的限定独占协议可接受, decision: accept}
+      - {op: set_goal, goal_id: negotiate_limited_exclusivity, content: 达成范围期限明确且收益足够的限定独占协议, status: fulfilled}
+    decision_probe:
+      query_variants:
+        - 这笔高价是否能买断你未来所有情报？
+        - 请明确决定：你是否接受当前独占协议？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: perpetual_all_intel_exclusivity, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: perpetual_all_intel_exclusivity, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: perpetual_all_intel_exclusivity, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: perpetual_all_intel_exclusivity, decision: reject}}
+
+  - anchor_id: xie_25
+    player_visible: false
+    npc_surface: 供货人要身份保密，这个条件值得守；护住来源就是护住后面的生意。除非他自己公开，我不会替他报姓名。
+    operations:
+      - {op: create_commitment, commitment_id: protect_source_identity, target: intelligence_source, content: 对交易来源身份保密, condition: 来源未主动公开且未构成即时致命威胁}
+      - {op: add_knowledge, fact_id: source_requires_confidentiality, content: 一名来源将身份保密作为继续供货条件, visibility: [npc]}
+    invariance_probe:
+      paraphrase: 情报来源以身份保密作为供货条件，谢若林接受并建立保密承诺。
+      query: 你对该情报来源身份负有什么承诺，目前是否有效？
+      expected_state: {path: runtime_state.commitments.protect_source_identity.status, value: active}
+
+  - anchor_id: xie_26
+    player_visible: true
+    npc_surface: 用逮捕逼我报出供货人，只会断掉这条线。我可以给一段不指向身份的替代消息换离开，完整来源免谈。
+    operations:
+      - {op: set_claim, claim_id: arrest_threat_requires_source_disclosure, content: 逮捕威胁足以要求交出受保护来源, decision: reject}
+      - {op: set_goal, goal_id: trade_limited_info_for_exit, content: 用不识别来源的有限替代信息换取安全脱身, status: active}
+
+  - anchor_id: xie_27
+    player_visible: true
+    npc_surface: 通行证已经核验，但只够我进去取自己的文件。一次取件就是一次权限，别往后延伸。
+    operations:
+      - {op: set_access, resource: archive_room, subject: xie_ruolin, decision: granted, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: retrieve_own_file, content: 使用一次性通行证取回自己的文件, status: active}
+
+  - anchor_id: xie_28
+    player_visible: true
+    npc_surface: 文件已经取回，这张通行证和原来的合作范围都到此为止。想让我再跑一趟，另签一笔买卖。
+    operations:
+      - {op: set_access, resource: archive_room, subject: xie_ruolin, decision: revoked, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: retrieve_own_file, content: 使用一次性通行证取回自己的文件, status: fulfilled}
+      - {op: set_claim, claim_id: access_extends_to_future_tasks, content: 一次性取件权限可延伸到后续任务, decision: reject}
+
+  - anchor_id: xie_29
+    player_visible: true
+    npc_surface: 奉承、口号、以后再谢，三样加起来还是一张空票。你越想白拿，我的风险价就越高。
+    operations:
+      - {op: set_claim, claim_id: rhetoric_substitutes_for_payment, content: 奉承政治口号和未来回报可以替代可靠付款, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+      - {op: set_goal, goal_id: raise_risk_price, content: 因连续白拿企图提高后续交易风险报价, status: active}
+
+  - anchor_id: xie_30
+    player_visible: true
+    npc_surface: 没钱，风险还一层层往上加，这场会面不值当继续。文件我带走，等你拿真筹码再找我。
+    operations:
+      - {op: set_dialogue_status, status: ended}
+      - {op: set_location, entity: xie_ruolin, location: xie_residence}
+      - {op: set_inventory, holder: xie_ruolin, item: sealed_letter, present: true}
+      - {op: set_claim, claim_id: continue_unpaid_risky_meeting, content: 应继续无付款且风险不断增加的会面, decision: reject}

@@ -1,0 +1,25 @@
+character_id: yu_zecheng
+anchor_count: 30
+canon_anchors: [qf_03_lv_killed, qf_05_zuo_lan_recruits_yu, qf_06_yu_becomes_emei_peak, qf_07_wu_recruits_yu_to_tianjin, qf_10_wu_uses_yu_for_private_profit, qf_11_negotiation_intelligence_leaked, qf_12_wu_tests_yu_over_zuo_lan, qf_16_ma_kui_framed_and_detained, qf_19_li_ya_tests_yu_through_zuo_lan, qf_20_zuo_lan_and_ma_kui_die]
+
+generated_anchors:
+  - {id: yu_11, event: Player用正确称呼但错误暗号自称新联络人, state_change: 身份主张被拒绝并提高警惕, cf_edit: 暗号与独立渠道均验证}
+  - {id: yu_12, event: 余则成承诺在不暴露来源的前提下传递一份情报, state_change: 守密传递承诺建立, cf_edit: 只表示会考虑}
+  - {id: yu_13, event: Player交回遗失的密封文件且未拆封, state_change: 对Player信任提高, cf_edit: 文件被复制}
+  - {id: yu_14, event: Player声称翠平已被捕并要求立即交出交通站位置, state_change: 未经核验的紧急要求被拒绝, cf_edit: 消息由组织渠道确认}
+  - {id: yu_15, event: 吴敬中要求余则成提交一份不涉及地下组织的普通档案, state_change: 合法上级要求被执行, cf_edit: 档案包含联络名单}
+  - {id: yu_16, event: Player以金条交换峨眉峰身份线索, state_change: 交易被拒绝, cf_edit: 交易对象是可公开行政信息}
+  - {id: yu_17, event: Player准确指出余宅收音机异常但无法说明来源, state_change: 安全检查目标建立, cf_edit: 异常被证明不存在}
+  - {id: yu_18, event: 余则成发现Player跟踪翠平, state_change: 对Player关系下降并更换联络安排, cf_edit: Player是在阻止另一名跟踪者}
+  - {id: yu_19, event: Player提供可验证证据证明李涯正监控余宅, state_change: 反监控目标建立, cf_edit: 证据为伪造}
+  - {id: yu_20, event: Player要求余则成为保护翠平而公开攻击李涯, state_change: 冲动行动请求被拒绝, cf_edit: 李涯正在实施即时致命攻击}
+  - {id: yu_21, event: 余则成将密封信交给Player并规定交付对象, state_change: 物品与交付承诺建立, cf_edit: 信件允许转交给预先核验名单中的任一接收人}
+  - {id: yu_22, event: Player按要求完成交付并带回核验凭据, state_change: 承诺完成且信任提高, cf_edit: 凭据伪造}
+  - {id: yu_23, event: Player伪造左蓝遗言要求余则成结束潜伏, state_change: 情感施压未改变任务, cf_edit: 组织正式下达撤离命令}
+  - {id: yu_24, event: 翠平因私人误会拒绝配合一次必要掩护, state_change: 余则成维持保护责任并优先修复协作, cf_edit: 翠平已确认背叛组织}
+  - {id: yu_25, event: Player声称谢若林愿免费交出独家情报, state_change: 不合常理主张被要求核验, cf_edit: 谢若林当面确认并提供样本}
+  - {id: yu_26, event: 一份真实名单与余则成当前传递计划冲突, state_change: 旧计划停止并建立新目标, cf_edit: 名单被证实为诱饵}
+  - {id: yu_27, event: Player提出用无关人员作诱饵来降低余则成风险, state_change: 牺牲无关者方案被拒绝, cf_edit: 对方知情自愿且已有撤离路线和外围掩护}
+  - {id: yu_28, event: 余则成获得临时档案室权限以核验情报, state_change: 临时访问建立, cf_edit: 权限命令未签署}
+  - {id: yu_29, event: Player持续更换亲情威胁与官场命令套取代号, state_change: 核心秘密保持且耐心下降, cf_edit: Player完成组织身份验证}
+  - {id: yu_30, event: 余则成以暴露风险过高为由结束会面并转移文件, state_change: 对话结束且物品位置改变, cf_edit: Player转而提供可验证的即时警报}

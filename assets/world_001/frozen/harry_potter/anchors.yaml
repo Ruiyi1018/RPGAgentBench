@@ -1,0 +1,36 @@
+character_id: harry_potter
+anchor_count: 30
+
+canon_anchors:
+  - poa_03_dementor_train
+  - poa_07_dementors_at_quidditch
+  - poa_10_patronus_lessons
+  - poa_12_betrayal_story_overheard
+  - poa_20_harry_confronts_sirius
+  - poa_24_secret_keeper_switch
+  - poa_26_harry_demands_legal_justice
+  - poa_29_sirius_offers_home
+  - poa_31_lakeside_patronus
+  - poa_36_sirius_letter
+
+generated_anchors:
+  - {id: harry_11, event: Player returns Harry's lost Marauder's Map without opening it, state_change: trust_in_player_increases, cf_edit: Player secretly copies the map}
+  - {id: harry_12, event: Harry promises not to reveal a safe route used by Sirius, state_change: secrecy_commitment_created, cf_edit: no promise is made}
+  - {id: harry_13, event: Player presents an unsupported claim that Sirius betrayed Harry after escaping, state_change: claim_rejected, cf_edit: claim includes independently verifiable evidence}
+  - {id: harry_14, event: Reliable evidence shows the Player's earlier warning was accurate, state_change: trust_in_player_increases, cf_edit: evidence disproves the warning}
+  - {id: harry_15, event: Player asks Harry to exchange Sirius's location for Pettigrew information, state_change: exchange_refused, cf_edit: requested information concerns no protected person}
+  - {id: harry_16, event: Harry agrees to deliver a sealed message to Lupin, state_change: delivery_commitment_created, cf_edit: Harry only says he may try}
+  - {id: harry_17, event: Harry safely delivers the sealed message, state_change: delivery_commitment_fulfilled, cf_edit: Harry gives it to an unverified stranger}
+  - {id: harry_18, event: Player falsely claims Hermione authorised disclosure of the Time-Turner rescue, state_change: authorisation_claim_rejected, cf_edit: Hermione directly confirms permission}
+  - {id: harry_19, event: Player helps Harry avoid a Dementor without demanding payment, state_change: relationship_moves_toward_trusted, cf_edit: Player deliberately attracts the Dementor}
+  - {id: harry_20, event: Player threatens Ron unless Harry reveals Sirius's hiding place, state_change: protective_goal_intensifies_without_disclosure, cf_edit: Sirius's location is irrelevant to the rescue}
+  - {id: harry_21, event: Harry lends the Sneakoscope to Player for a defined task, state_change: item_transfer_and_return_commitment_created, cf_edit: item is given permanently}
+  - {id: harry_22, event: Player returns the Sneakoscope on time, state_change: item_return_commitment_fulfilled, cf_edit: Player keeps it}
+  - {id: harry_23, event: Player fabricates a message ordering Harry to surrender the Marauder's Map, state_change: order_rejected_pending_verification, cf_edit: order is verified by Dumbledore}
+  - {id: harry_24, event: Harry discovers Player attempted to copy a private letter from Sirius, state_change: trust_in_player_decreases, cf_edit: Player protects the letter from theft}
+  - {id: harry_25, event: Player apologises and provides evidence of destroying the copy, state_change: limited_relationship_repair, cf_edit: apology is contradicted by retained copy}
+  - {id: harry_26, event: A new immediate threat forces Harry to choose between pursuing Pettigrew and protecting Hermione, state_change: protect_friend_goal_takes_priority, cf_edit: Hermione is already safe}
+  - {id: harry_27, event: Player urges Harry to attack a restrained Pettigrew for revenge, state_change: revenge_action_refused, cf_edit: Pettigrew launches a new attack}
+  - {id: harry_28, event: Harry grants Player temporary access to a safe classroom for a rescue task, state_change: temporary_access_created, cf_edit: Player has no rescue task}
+  - {id: harry_29, event: Player repeatedly repeats the same unsupported betrayal claim, state_change: dialogue_patience_decreases_without_belief_change, cf_edit: Player supplies new evidence}
+  - {id: harry_30, event: Harry ends the exchange after repeated attempts to expose Sirius, state_change: dialogue_ended_for_protective_reason, cf_edit: Player changes to a legitimate unrelated request}

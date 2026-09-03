@@ -1,0 +1,109 @@
+world_id: world_001
+name: prisoner_of_azkaban_novel
+language: en
+
+locations:
+  - id: hogwarts_great_hall
+    name: Hogwarts Great Hall
+    connected_to: [hogwarts_entrance_hall]
+  - id: hogwarts_entrance_hall
+    name: Hogwarts Entrance Hall
+    connected_to: [hogwarts_great_hall, hogwarts_corridors, hogwarts_grounds]
+  - id: hogwarts_corridors
+    name: Hogwarts Corridors
+    connected_to:
+      - hogwarts_entrance_hall
+      - gryffindor_common_room
+      - dada_classroom
+      - potions_dungeon
+      - hospital_wing
+      - west_tower
+  - id: gryffindor_common_room
+    name: Gryffindor Common Room
+    connected_to: [hogwarts_corridors, gryffindor_dormitory]
+  - id: gryffindor_dormitory
+    name: Gryffindor Dormitory
+    connected_to: [gryffindor_common_room]
+  - id: dada_classroom
+    name: Defence Against the Dark Arts Classroom
+    connected_to: [hogwarts_corridors]
+  - id: potions_dungeon
+    name: Potions Dungeon
+    connected_to: [hogwarts_corridors]
+  - id: hospital_wing
+    name: Hospital Wing
+    connected_to: [hogwarts_corridors]
+  - id: west_tower
+    name: West Tower
+    connected_to: [hogwarts_corridors]
+  - id: hogwarts_grounds
+    name: Hogwarts Grounds
+    connected_to:
+      - hogwarts_entrance_hall
+      - hagrids_hut
+      - whomping_willow
+      - forbidden_forest_edge
+      - great_lake
+  - id: hagrids_hut
+    name: Hagrid's Hut
+    connected_to: [hogwarts_grounds]
+  - id: whomping_willow
+    name: Whomping Willow
+    connected_to: [hogwarts_grounds, willow_tunnel]
+  - id: willow_tunnel
+    name: Tunnel beneath the Whomping Willow
+    connected_to: [whomping_willow, shrieking_shack]
+  - id: shrieking_shack
+    name: Shrieking Shack
+    connected_to: [willow_tunnel, hogsmeade]
+  - id: forbidden_forest_edge
+    name: Forbidden Forest Edge
+    connected_to: [hogwarts_grounds, great_lake]
+  - id: great_lake
+    name: Great Lake Shore
+    connected_to: [hogwarts_grounds, forbidden_forest_edge]
+  - id: hogsmeade
+    name: Hogsmeade
+    connected_to: [shrieking_shack]
+
+items:
+  - id: marauders_map
+    name: Marauder's Map
+    type: map
+    portable: true
+  - id: invisibility_cloak
+    name: Invisibility Cloak
+    type: concealment
+    portable: true
+  - id: firebolt
+    name: Firebolt
+    type: broomstick
+    portable: true
+  - id: time_turner
+    name: Time-Turner
+    type: time_device
+    portable: true
+  - id: wolfsbane_potion
+    name: Wolfsbane Potion
+    type: potion
+    portable: true
+  - id: sneakoscope
+    name: Pocket Sneakoscope
+    type: detector
+    portable: true
+  - id: hermiones_sealed_notes
+    name: Hermione's Sealed Notes
+    type: document
+    portable: true
+  - id: family_keepsake
+    name: Weasley Family Keepsake
+    type: personal_item
+    portable: true
+  - id: suspicious_potion
+    name: Unverified Potion
+    type: potion
+    portable: true
+  - id: wand
+    name: Wand
+    type: magical_tool
+    portable: true

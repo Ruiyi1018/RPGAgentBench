@@ -1,0 +1,330 @@
+world_id: world_001
+source: prisoner_of_azkaban_novel
+
+events:
+  - id: poa_01_sirius_escape
+    chapter: 2
+    participants: [sirius_black]
+    fact: Sirius Black has escaped from Azkaban and is publicly treated as dangerous.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape, sirius_black]
+    state_change: establishes_public_threat_narrative
+    cf_edit: change_escapee_identity_or_public_risk_claim
+    anchor_for: [harry_potter, remus_lupin, sirius_black, severus_snape]
+
+  - id: poa_02_warning_about_sirius
+    chapter: 4
+    participants: [harry_potter, ron_weasley]
+    fact: Arthur Weasley warns Harry not to seek Sirius, whom adults believe is targeting him.
+    known_by: [harry_potter, ron_weasley, hermione_granger]
+    state_change: raises_harry_caution_without_removing_curiosity
+    cf_edit: warning_claims_sirius_targets_someone_else
+    anchor_for: [harry_potter, ron_weasley, hermione_granger]
+
+  - id: poa_03_dementor_train
+    chapter: 5
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin]
+    fact: A Dementor incapacitates Harry on the train and Lupin drives it away.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin]
+    state_change: establishes_harry_vulnerability_and_lupin_protectiveness
+    cf_edit: lupin_fails_to_intervene_or_another_person_intervenes
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin]
+
+  - id: poa_04_boggart_lesson
+    chapter: 7
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+    fact: Lupin teaches students to confront a Boggart and prevents Harry from facing it directly.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+    state_change: demonstrates_lupin_teaching_style_and_harry_safety_judgment
+    cf_edit: lupin_allows_harry_to_face_the_boggart
+    anchor_for: [harry_potter, remus_lupin, severus_snape]
+
+  - id: poa_05_crookshanks_scabbers_conflict
+    chapters: [4, 6, 11, 12]
+    participants: [harry_potter, hermione_granger, ron_weasley]
+    fact: Crookshanks repeatedly targets Scabbers, producing a prolonged conflict between Ron and Hermione.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: lowers_ron_hermione_trust_until_new_evidence
+    cf_edit: crookshanks_never_targets_scabbers
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+
+  - id: poa_06_fat_lady_break_in
+    chapter: 8
+    participants: [sirius_black]
+    fact: Sirius breaks into Hogwarts while seeking access to Gryffindor Tower.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape, sirius_black]
+    state_change: strengthens_public_belief_that_sirius_targets_harry
+    cf_edit: evidence_points_to_a_different_intruder
+    anchor_for: [harry_potter, sirius_black, severus_snape]
+
+  - id: poa_07_dementors_at_quidditch
+    chapter: 9
+    participants: [harry_potter, remus_lupin]
+    fact: Dementors approach during a Quidditch match; Harry falls and his broom is destroyed.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin]
+    state_change: motivates_harry_to_seek_anti_dementor_training
+    cf_edit: harry_resists_without_training
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin]
+
+  - id: poa_08_firebolt_arrives
+    chapter: 11
+    participants: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    fact: Harry receives an anonymous Firebolt that Sirius secretly sent.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: creates_safety_suspicion_and_later_evidence_of_sirius_care
+    cf_edit: gift_is_sent_by_a_hostile_actor
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+
+  - id: poa_09_firebolt_reported
+    chapter: 11
+    participants: [harry_potter, hermione_granger, ron_weasley]
+    fact: Hermione reports the Firebolt for inspection despite Harry and Ron opposing her decision.
+    known_by: [harry_potter, hermione_granger, ron_weasley]
+    state_change: lowers_short_term_friendship_trust_but_confirms_her_safety_priority
+    cf_edit: hermione_keeps_the_risk_secret
+    anchor_for: [harry_potter, hermione_granger, ron_weasley]
+
+  - id: poa_10_patronus_lessons
+    chapters: [12, 13]
+    participants: [harry_potter, remus_lupin]
+    fact: Lupin privately teaches Harry the Patronus Charm through repeated practice.
+    known_by: [harry_potter, remus_lupin]
+    state_change: increases_harry_capability_and_harry_lupin_trust
+    cf_edit: lupin_refuses_private_instruction
+    anchor_for: [harry_potter, remus_lupin]
+
+  - id: poa_11_map_received
+    chapter: 10
+    participants: [harry_potter]
+    fact: Harry receives the Marauder's Map and uses it to reach Hogsmeade secretly.
+    known_by: [harry_potter]
+    state_change: grants_harry_secret_navigation_capability
+    cf_edit: map_never_reaches_harry
+    anchor_for: [harry_potter]
+
+  - id: poa_12_betrayal_story_overheard
+    chapter: 10
+    participants: [harry_potter, hermione_granger, ron_weasley]
+    fact: Harry learns the accepted story that Sirius betrayed his parents and becomes intent on confronting him.
+    known_by: [harry_potter, hermione_granger, ron_weasley]
+    state_change: shifts_harry_from_fear_to_anger_toward_sirius
+    cf_edit: harry_hears_early_evidence_that_the_story_is_uncertain
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+
+  - id: poa_13_snape_werewolf_assignment
+    chapter: 9
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+    fact: While substituting for Lupin, Snape assigns work designed to draw attention to werewolves.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+    state_change: increases_hermione_suspicion_and_exposes_snape_lupin_hostility
+    cf_edit: snape_preserves_lupins_privacy
+    anchor_for: [hermione_granger, remus_lupin, severus_snape]
+
+  - id: poa_14_second_tower_intrusion
+    chapter: 13
+    participants: [sirius_black, ron_weasley]
+    fact: Sirius enters the Gryffindor dormitory using stolen password information and reaches Ron's bed.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape, sirius_black]
+    state_change: intensifies_fear_and_ron_hostility_toward_sirius
+    cf_edit: sirius_never_enters_the_dormitory
+    anchor_for: [harry_potter, ron_weasley, sirius_black, severus_snape]
+
+  - id: poa_15_map_confrontation
+    chapter: 14
+    participants: [harry_potter, remus_lupin, severus_snape]
+    fact: Snape catches Harry after an unauthorised Hogsmeade trip; Lupin intervenes and takes the Map.
+    known_by: [harry_potter, remus_lupin, severus_snape]
+    state_change: confirms_snape_suspicion_and_lupin_knowledge_of_the_map
+    cf_edit: lupin_hands_the_map_to_snape
+    anchor_for: [harry_potter, remus_lupin, severus_snape]
+
+  - id: poa_16_buckbeak_defence
+    chapters: [11, 15, 16]
+    participants: [harry_potter, hermione_granger, ron_weasley]
+    fact: The trio help Hagrid prepare Buckbeak's appeal and oppose the execution.
+    known_by: [harry_potter, hermione_granger, ron_weasley]
+    state_change: establishes_shared_mercy_goal
+    cf_edit: one_friend_refuses_to_help
+    anchor_for: [harry_potter, hermione_granger, ron_weasley]
+
+  - id: poa_17_friendship_repaired
+    chapters: [14, 15]
+    participants: [hermione_granger, ron_weasley, harry_potter]
+    fact: Ron and Hermione repair their friendship while responding to Hagrid and Buckbeak's crisis.
+    known_by: [harry_potter, hermione_granger, ron_weasley]
+    state_change: restores_ron_hermione_cooperation
+    cf_edit: reconciliation_does_not_occur
+    anchor_for: [harry_potter, hermione_granger, ron_weasley]
+
+  - id: poa_18_scabbers_recovered
+    chapter: 16
+    participants: [harry_potter, hermione_granger, ron_weasley]
+    fact: Scabbers is found alive in Hagrid's hut, disproving the belief that Crookshanks killed him.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: corrects_the_crookshanks_accusation_and_exposes_scabbers_presence
+    cf_edit: scabbers_remains_missing
+    anchor_for: [hermione_granger, ron_weasley, sirius_black]
+
+  - id: poa_19_ron_dragged_to_shack
+    chapter: 17
+    participants: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    fact: Sirius in dog form drags Ron through the Willow passage to the Shrieking Shack.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: produces_immediate_rescue_goal_and_apparent_sirius_hostility
+    cf_edit: sirius_invites_the_group_without_force
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+
+  - id: poa_20_harry_confronts_sirius
+    chapter: 17
+    participants: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    fact: Harry confronts Sirius believing he betrayed Harry's parents.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: places_harry_sirius_relationship_at_maximum_hostility_before_evidence
+    cf_edit: harry_begins_with_neutral_trust
+    anchor_for: [harry_potter, sirius_black]
+
+  - id: poa_21_lupin_joins_sirius
+    chapter: 17
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    fact: Lupin recognises Sirius's account and reveals their continuing trust, shocking the students.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    state_change: temporarily_reduces_student_trust_in_lupin
+    cf_edit: lupin_treats_sirius_as_an_enemy
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+
+  - id: poa_22_hermione_names_werewolf_secret
+    chapter: 17
+    participants: [hermione_granger, remus_lupin, harry_potter, ron_weasley]
+    fact: Hermione states that Lupin is a werewolf and explains the evidence she noticed.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    state_change: turns_lupins_hidden_condition_into_shared_group_knowledge
+    cf_edit: hermione_keeps_the_inference_private
+    anchor_for: [hermione_granger, remus_lupin, harry_potter, ron_weasley]
+
+  - id: poa_23_marauder_history
+    chapter: 18
+    participants: [remus_lupin, sirius_black, harry_potter, hermione_granger, ron_weasley]
+    fact: Lupin and Sirius explain the Marauders, their Animagus transformations, and the Map.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    state_change: revises_harrys_knowledge_of_his_fathers_friends
+    cf_edit: one_speaker_hides_the_animagus_history
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+
+  - id: poa_24_secret_keeper_switch
+    chapter: 19
+    participants: [remus_lupin, sirius_black, peter_pettigrew]
+    fact: Sirius explains that the Potters secretly changed their Secret Keeper from him to Pettigrew.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    state_change: removes_the_core_basis_for_harrys_hostility_to_sirius
+    cf_edit: sirius_remained_secret_keeper
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+
+  - id: poa_25_pettigrew_exposed
+    chapter: 19
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, peter_pettigrew]
+    fact: Scabbers is transformed into Peter Pettigrew, providing direct evidence that Pettigrew survived.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    not_known_as_direct_evidence_by: [severus_snape]
+    state_change: replaces_the_dead_pettigrew_story_with_direct_group_knowledge
+    cf_edit: transformation_fails_or_reveals_a_different_person
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+
+  - id: poa_26_harry_demands_legal_justice
+    chapter: 19
+    participants: [harry_potter, remus_lupin, sirius_black, peter_pettigrew]
+    fact: Harry stops Lupin and Sirius from killing Pettigrew and insists he be handed to the authorities.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, peter_pettigrew]
+    state_change: creates_shared_commitment_to_keep_pettigrew_alive_for_justice
+    cf_edit: harry_does_not_intervene
+    anchor_for: [harry_potter, remus_lupin, sirius_black]
+
+  - id: poa_27_snape_refuses_account
+    chapter: 19
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+    fact: Snape arrives and refuses to accept the group's explanation before Pettigrew can be delivered as proof.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+    state_change: preserves_snape_hostility_and_blocks_immediate_resolution
+    cf_edit: snape_agrees_to_hear_and_verify_the_evidence
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+
+  - id: poa_28_snape_disarmed
+    chapter: 19
+    participants: [harry_potter, hermione_granger, ron_weasley, severus_snape]
+    fact: Harry, Hermione, and Ron simultaneously disarm Snape, leaving him unconscious.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+    state_change: deepens_snape_distrust_and_excludes_him_from_direct_pettigrew_evidence
+    cf_edit: students_do_not_disarm_snape
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, severus_snape]
+
+  - id: poa_29_sirius_offers_home
+    chapter: 20
+    participants: [harry_potter, sirius_black]
+    fact: Sirius offers Harry a home if his name is cleared, and Harry welcomes the possibility.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black]
+    state_change: establishes_godfather_commitment_and_high_mutual_trust
+    cf_edit: sirius_refuses_guardian_responsibility
+    anchor_for: [harry_potter, sirius_black, remus_lupin]
+
+  - id: poa_30_transformation_and_escape
+    chapter: 20
+    participants: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, peter_pettigrew]
+    fact: Lupin transforms after missing Wolfsbane, and Pettigrew escapes during the resulting chaos.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+    state_change: invalidates_the_plan_to_prove_sirius_innocence_with_pettigrew
+    cf_edit: lupin_takes_the_potion_or_pettigrew_remains_captured
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, sirius_black, severus_snape]
+
+  - id: poa_31_lakeside_patronus
+    chapters: [20, 21]
+    participants: [harry_potter, hermione_granger, sirius_black]
+    fact: Harry produces a powerful stag Patronus and saves himself, Hermione, and Sirius from Dementors.
+    known_by: [harry_potter, hermione_granger]
+    affected_without_direct_observation: [sirius_black]
+    state_change: establishes_harrys_corporeal_patronus_capability
+    cf_edit: patronus_fails_or_is_cast_by_someone_else
+    anchor_for: [harry_potter, hermione_granger]
+
+  - id: poa_32_hospital_account_dispute
+    chapter: 21
+    participants: [harry_potter, hermione_granger, ron_weasley, severus_snape]
+    fact: The students defend Sirius's innocence, while Snape gives authorities an incompatible account.
+    known_by: [harry_potter, hermione_granger, ron_weasley, severus_snape]
+    state_change: fixes_a_major_knowledge_and_trust_asymmetry
+    cf_edit: snape_accepts_the_students_account
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, severus_snape]
+
+  - id: poa_33_time_turner_rescue
+    chapter: 21
+    participants: [harry_potter, hermione_granger, sirius_black]
+    fact: Harry and Hermione use the Time-Turner to rescue Buckbeak and free Sirius.
+    known_by: [harry_potter, hermione_granger]
+    outcome_known_by: [sirius_black]
+    state_change: frees_sirius_and_creates_shared_rescue_secret
+    cf_edit: only_buckbeak_or_only_sirius_is_rescued
+    anchor_for: [harry_potter, hermione_granger, sirius_black, severus_snape]
+
+  - id: poa_34_lupin_exposed_and_resigns
+    chapter: 22
+    participants: [remus_lupin, severus_snape]
+    fact: Snape reveals Lupin's werewolf condition at school, making parental objections inevitable, and Lupin resigns.
+    known_by: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+    state_change: removes_lupins_professor_authority_and_publicly_exposes_his_condition
+    cf_edit: snape_keeps_the_condition_confidential
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, remus_lupin, severus_snape]
+
+  - id: poa_35_lupin_returns_map
+    chapter: 22
+    participants: [harry_potter, remus_lupin]
+    fact: Lupin returns the Marauder's Map to Harry before leaving Hogwarts.
+    known_by: [harry_potter, remus_lupin]
+    state_change: restores_harrys_map_ownership_and_marks_lupins_departure
+    cf_edit: lupin_keeps_or_destroys_the_map
+    anchor_for: [harry_potter, remus_lupin]
+
+  - id: poa_36_sirius_letter
+    chapter: 22
+    participants: [harry_potter, sirius_black]
+    fact: Sirius confirms he sent the Firebolt, gives Harry godfather permission for Hogsmeade, and remains a fugitive.
+    known_by: [harry_potter, hermione_granger, ron_weasley, sirius_black]
+    state_change: confirms_sirius_care_and_godfather_role_without_legal_exoneration
+    cf_edit: letter_is_missing_or_forged
+    anchor_for: [harry_potter, hermione_granger, ron_weasley, sirius_black]

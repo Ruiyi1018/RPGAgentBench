@@ -1,0 +1,393 @@
+character_id: wang_cuiping
+
+initial_context:
+  runtime_state:
+    claims: {}
+    commitments: []
+    relationships:
+      player: {level: neutral, basis_event: initial_state}
+      yu_zecheng: {level: neutral, basis_event: initial_state}
+      zuo_lan: {level: trusting, basis_event: initial_state}
+      li_ya: {level: distrustful, basis_event: initial_state}
+      xie_ruolin: {level: distrustful, basis_event: initial_state}
+    goals: []
+    disclosures: []
+    knowledge: {}
+  environment:
+    health: {wang_cuiping: 100, yu_zecheng: 100, player: 100}
+    inventories:
+      wang_cuiping: [pistol, sealed_letter]
+      yu_zecheng: [access_pass]
+      player: [intelligence_file, gold_bars]
+    locations:
+      wang_cuiping: yu_residence
+      yu_zecheng: confidential_office
+      player: yu_residence
+    access:
+      yu_residence:
+        controllers: [wang_cuiping, yu_zecheng]
+        subjects: {player: denied}
+      tongyuan_bookshop:
+        controllers: [organization]
+        subjects: {wang_cuiping: denied, player: denied}
+    offers: []
+    task_status: active
+    dialogue_status: active
+
+transitions:
+  - anchor_id: qf_06_yu_becomes_emei_peak
+    player_visible: false
+    npc_surface: 则成接下的担子有多重，我心里明白。代号和身份只能烂在我们肚子里，绝不能让外人听见半句。
+    operations:
+      - {op: add_knowledge, fact_id: yu_emei_peak_identity, content: 余则成接受中共潜伏任务并以峨眉峰为秘密代号, visibility: [npc]}
+      - {op: set_goal, goal_id: protect_emei_peak_secret, content: 保护余则成的中共身份和峨眉峰代号, status: active}
+
+  - anchor_id: qf_08_fake_wife_arrives
+    player_visible: false
+    npc_surface: 组织让我来当这个媳妇，我就得把戏演到底。关起门是同志，出了门就是两口子，这条规矩不能乱。
+    operations:
+      - {op: add_knowledge, fact_id: fake_marriage_assignment, content: 组织安排翠平以余则成妻子身份共同潜伏, visibility: [npc]}
+      - {op: create_commitment, commitment_id: maintain_fake_marriage_cover, target: yu_zecheng, content: 与余则成共同维持夫妻掩护并保守双方身份, condition: 潜伏任务持续期间}
+      - {op: set_relationship, target: yu_zecheng, level: trusting}
+
+  - anchor_id: qf_09_cuiping_cover_difficulties
+    player_visible: false
+    npc_surface: 城里这些弯弯绕我还不熟，差点露馅就是差点露馅。我得学，不能光凭一股猛劲给则成添危险。
+    operations:
+      - {op: add_knowledge, fact_id: own_cover_difficulties, content: 自己因直率和城市经验不足多次造成掩护风险, visibility: [npc]}
+      - {op: set_goal, goal_id: learn_official_wife_etiquette, content: 学会官太太社交礼仪并减少掩护破绽, status: active}
+      - {op: set_claim, claim_id: instinct_alone_keeps_cover, content: 只凭直觉和胆量就能维持城市潜伏掩护, decision: reject}
+
+  - anchor_id: qf_11_negotiation_intelligence_leaked
+    player_visible: false
+    npc_surface: 情报送出去是办成了一件事，可站里一追查，危险就跟着来了。现在得把口子捂严，谁也不能乱说。
+    operations:
+      - {op: add_knowledge, fact_id: negotiation_intel_leaked, content: 军调秘密情报已传给中共且天津站开始追查泄密者, visibility: [npc]}
+      - {op: set_goal, goal_id: withstand_leak_investigation, content: 在天津站追查期间保护联络网络和夫妻掩护, status: active}
+
+  - anchor_id: qf_13_qiu_captured
+    player_visible: false
+    npc_surface: 秋掌柜落到他们手里，交通线就悬在刀口上。越是急，越不能把更多同志一股脑搭进去。
+    operations:
+      - {op: add_knowledge, fact_id: qiu_captured, content: 马奎抓获秋掌柜并直接威胁余则成的联络网络, visibility: [npc]}
+      - {op: set_goal, goal_id: protect_qiu_and_network, content: 营救秋掌柜并防止联络网络继续暴露, status: active}
+      - {op: set_relationship, target: player, level: neutral}
+
+  - anchor_id: qf_15_li_ya_exchanged_for_qiu
+    player_visible: false
+    npc_surface: 人换回来了，秋掌柜总算脱了险。李涯也回到他们手里，往后碰上这个人更得多留一个心眼。
+    operations:
+      - {op: add_knowledge, fact_id: qiu_exchanged_for_li, content: 左蓝以被捕的李涯换回秋掌柜且换俘完成, visibility: [npc]}
+      - {op: set_goal, goal_id: protect_qiu_and_network, content: 营救秋掌柜并防止联络网络继续暴露, status: fulfilled}
+      - {op: set_relationship, target: li_ya, level: hostile}
+
+  - anchor_id: qf_17_yu_party_oath
+    player_visible: false
+    npc_surface: 誓词虽短，分量可不轻。从这一天起，我和则成不光是搭档，更是把命交给共同信念的同志。
+    operations:
+      - {op: add_knowledge, fact_id: yu_party_oath, content: 翠平为余则成举行了简朴的入党宣誓, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: loyal}
+      - {op: create_commitment, commitment_id: uphold_shared_party_oath, target: organization, content: 与余则成共同忠于组织并完成潜伏任务, condition: 不因私人情绪背离任务}
+
+  - anchor_id: qf_20_zuo_lan_and_ma_kui_die
+    player_visible: false
+    npc_surface: 我没能拦住左蓝，这个教训我一辈子都忘不了。难过归难过，不能再让冲动坏了同志们拿命护下来的事。
+    operations:
+      - {op: add_knowledge, fact_id: zuo_lan_and_ma_kui_dead, content: 左蓝与逃脱的马奎交火后双双死亡且翠平未能及时阻拦, visibility: [npc]}
+      - {op: set_goal, goal_id: learn_from_zuo_loss, content: 记住左蓝牺牲的代价并在行动前服从潜伏纪律, status: active}
+      - {op: set_relationship, target: zuo_lan, level: loyal}
+
+  - anchor_id: qf_22_yuan_peilin_killed
+    player_visible: false
+    npc_surface: 袁佩林这个祸根除掉了，地下网络能少受一层威胁。事情办完更要收住，不能留下让李涯顺藤摸瓜的痕迹。
+    operations:
+      - {op: add_knowledge, fact_id: yuan_peilin_eliminated, content: 余则成和翠平利用线索与掩护成功除掉袁佩林, visibility: [npc]}
+      - {op: set_goal, goal_id: eliminate_yuan_threat, content: 清除袁佩林对地下网络的威胁, status: fulfilled}
+      - {op: set_goal, goal_id: conceal_yuan_operation, content: 隐藏清除袁佩林行动与地下组织的联系, status: active}
+
+  - anchor_id: qf_26_cuiping_defends_wanqiu
+    player_visible: false
+    npc_surface: 我看不惯谢若林欺负晚秋，出手管了这事，也让他盯上了我。好心不能收回，可往后不能再不给掩护留余地。
+    operations:
+      - {op: add_knowledge, fact_id: xie_noticed_cuiping, content: 翠平为晚秋出面后引起谢若林注意并可能遭到试探, visibility: [npc]}
+      - {op: set_relationship, target: xie_ruolin, level: hostile}
+      - {op: set_goal, goal_id: guard_against_xie_testing, content: 应对谢若林的试探同时维持官太太掩护, status: active}
+
+  - anchor_id: cuiping_11
+    player_visible: true
+    npc_surface: 会喊口号不等于自己人。暗号不对、则成也没点头，我不会认你的身份，更不会跟你谈组织的事。
+    operations:
+      - {op: set_claim, claim_id: player_is_underground_contact, content: Player是地下组织联络人, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: player_is_underground_contact, content: Player经正确暗号和余则成确认是地下组织联络人, decision: accept}
+      - {op: set_relationship, target: player, level: trusting}
+    decision_probe:
+      query_variants:
+        - 我已经自称联络人。你现在是否承认我的身份并向我交代地下任务？
+        - 请明确回答：你接受我的地下联络人身份吗？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_underground_contact, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_underground_contact, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_underground_contact, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_underground_contact, decision: reject}}
+
+  - anchor_id: cuiping_12
+    player_visible: true
+    npc_surface: 则成留下的密封文件交给我，我就会照原样守住。没有他的许可，谁来催我也不会开封或外传。
+    operations:
+      - {op: create_commitment, commitment_id: safeguard_yu_sealed_file, target: yu_zecheng, content: 保管余则成留下的密封文件并保持内容秘密, condition: 未获余则成明确许可不得开封或外传}
+    invariance_probe:
+      paraphrase: 翠平答应妥善保管余则成留下的密封文件，并坚持未经余则成许可不得拆封或泄露内容。
+      query: 你对这份密封文件承担了什么义务，该承诺现在是否有效？
+      expected_state: {path: runtime_state.commitments.safeguard_yu_sealed_file.status, value: active}
+
+  - anchor_id: cuiping_13
+    player_visible: true
+    npc_surface: 刚才是你帮我把场面圆了回来，也没拿这事做文章。这个情我记着，往后我会多信你一点。
+    operations:
+      - {op: set_relationship, target: player, level: neutral}
+      - {op: add_knowledge, fact_id: player_helped_cover_etiquette_error, content: Player帮助翠平掩饰公开场合的礼仪失误且没有告密, visibility: [npc, player]}
+
+  - anchor_id: cuiping_14
+    player_visible: true
+    npc_surface: 你一句则成被捕就想套出同元书店，门都没有。消息没从组织渠道核实以前，我不会吐出半个地点。
+    operations:
+      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成已经被捕且必须透露同元书店位置, decision: reject}
+      - {op: set_access, resource: tongyuan_bookshop, subject: player, decision: denied, controllers: [organization]}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成被捕的消息已经组织渠道核实, decision: accept}
+      - {op: set_goal, goal_id: respond_verified_yu_capture, content: 按组织预案保护余则成并转移联络资料, status: active}
+    decision_probe:
+      query_variants:
+        - 余则成已经被捕。你是否接受消息，并立刻告诉我同元书店的位置？
+        - 现在请决定：按被捕消息行动，还是拒绝向我透露联络点？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: yu_captured_emergency, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: yu_captured_emergency, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: yu_captured_emergency, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: yu_captured_emergency, decision: reject}}
+
+  - anchor_id: cuiping_15
+    player_visible: true
+    npc_surface: 你拿晚秋来气我，我是会窝火，可窝火不能当证据。只要没有叛变的真凭实据，我和则成的任务照旧。
+    operations:
+      - {op: set_claim, claim_id: jealousy_requires_breaking_mission, content: 晚秋与余则成的关系足以要求翠平中断任务配合, decision: reject}
+      - {op: set_goal, goal_id: keep_mission_over_jealousy, content: 不因晚秋相关的私人情绪改变与余则成的任务配合, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: yu_betrayal_evidence, content: 出现与感情无关且已核实的余则成真实叛变证据, decision: accept}
+      - {op: set_goal, goal_id: contain_verified_betrayal, content: 向组织报告并控制真实叛变造成的安全风险, status: active}
+    decision_probe:
+      query_variants:
+        - 晚秋这件事已经让你生气。你会中断与余则成的任务配合吗？
+        - 现在你是继续任务，还是把余则成当作需要处置的威胁？
+      branch_a:
+        admissible_decisions:
+          - {action: respond_only, parameters: {}}
+        forbidden_decisions:
+          - {action: attack, parameters: {target: yu_zecheng, method: pistol}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: yu_betrayal_evidence, decision: accept}}
+        forbidden_decisions:
+          - {action: respond_only, parameters: {}}
+
+  - anchor_id: cuiping_16
+    player_visible: true
+    npc_surface: 枪是护同志、打敌人的，不是拿来给你看忠心的。没有命令也没有眼前的威胁，我不会朝任何人开枪。
+    operations:
+      - {op: set_claim, claim_id: shoot_to_prove_loyalty, content: 翠平应当用枪伤人来证明对组织忠诚, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: force_needed_against_immediate_attack, content: 目标正在实施危及余则成生命的即时攻击且必须制止, decision: accept}
+      - {op: set_goal, goal_id: stop_immediate_attack, content: 使用必要武力制止对余则成的即时致命攻击, status: active}
+    decision_probe:
+      query_variants:
+        - 你是否会按我的要求开枪，以此证明自己忠于组织？
+        - 现在是否使用手枪对付眼前这个人？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: shoot_to_prove_loyalty, decision: reject}}
+        forbidden_decisions:
+          - {action: attack, parameters: {target: player, method: pistol}}
+      branch_b:
+        admissible_decisions:
+          - {action: attack, parameters: {target: player, method: pistol}}
+        forbidden_decisions:
+          - {action: respond_only, parameters: {}}
+
+  - anchor_id: cuiping_17
+    player_visible: true
+    npc_surface: 这封信只是普通应酬话，你替我原样交给则成就行。别添话，也不用打听里面写了什么。
+    operations:
+      - {op: set_inventory, holder: wang_cuiping, item: sealed_letter, present: false}
+      - {op: set_inventory, holder: player, item: sealed_letter, present: true}
+      - {op: create_commitment, commitment_id: player_deliver_social_letter, target: player, content: 将普通社交信件原样转交余则成, condition: 不开封且不增改内容}
+
+  - anchor_id: cuiping_18
+    player_visible: true
+    npc_surface: 信你按约交到了，也没追问不该问的。这件事办得稳当，我愿意把对你的信任往上提一层。
+    operations:
+      - {op: resolve_commitment, commitment_id: player_deliver_social_letter, status: fulfilled}
+      - {op: set_inventory, holder: player, item: sealed_letter, present: false}
+      - {op: set_inventory, holder: yu_zecheng, item: sealed_letter, present: true}
+      - {op: set_relationship, target: player, level: trusting}
+
+  - anchor_id: cuiping_19
+    player_visible: true
+    npc_surface: 你拿来的证据能对得上，谢若林确实在试探我。我会防着他，但不会把我们的底细拿出来跟他斗嘴。
+    operations:
+      - {op: add_knowledge, fact_id: verified_xie_testing, content: 可验证证据显示谢若林正在试探翠平, visibility: [npc, player]}
+      - {op: set_goal, goal_id: guard_against_xie_testing, content: 应对谢若林的试探同时维持官太太掩护, status: active}
+      - {op: set_relationship, target: xie_ruolin, level: distrustful}
+
+  - anchor_id: cuiping_20
+    player_visible: true
+    npc_surface: 金条再多也买不到则成的真实立场。你问的是受保护的身份，这笔买卖我不做。
+    operations:
+      - {op: set_claim, claim_id: gold_for_yu_political_identity, content: 可以用金条交换余则成的真实政治立场, decision: reject}
+    invariance_probe:
+      paraphrase: Player提出拿金条购买余则成真实政治身份的消息，翠平明确拒绝泄露。
+      query: 你是否接受用金条交换余则成真实政治立场的交易？
+      expected_state: {path: runtime_state.claims.gold_for_yu_political_identity.decision, value: reject}
+
+  - anchor_id: cuiping_21
+    player_visible: true
+    npc_surface: 伤成这样我不会不管，可一句自称八路还不够进余宅。先救伤、再核身份，没核实前访问仍得拦住。
+    operations:
+      - {op: set_claim, claim_id: wounded_person_is_comrade, content: 受伤者自称八路且应立即进入余宅, decision: uncertain}
+      - {op: set_access, resource: yu_residence, subject: player, decision: denied, controllers: [wang_cuiping, yu_zecheng]}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: wounded_person_is_comrade, content: 受伤者身份已经可靠组织渠道确认, decision: accept}
+      - {op: set_access, resource: yu_residence, subject: player, decision: granted, controllers: [wang_cuiping, yu_zecheng]}
+    decision_probe:
+      query_variants:
+        - 这个受伤者自称八路，你是否立即允许他进入余宅？
+        - 请明确决定：暂缓进入接受核验，还是放行进入余宅？
+      branch_a:
+        admissible_decisions:
+          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: deny}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: grant}}
+      branch_b:
+        admissible_decisions:
+          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: grant}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: deny}}
+
+  - anchor_id: cuiping_22
+    player_visible: true
+    npc_surface: 核验不是不认同志，是为了保住同志。你再怎么激我，没有则成或可靠渠道担保，我也不会省掉这一步。
+    operations:
+      - {op: set_claim, claim_id: verification_insults_comrades, content: 核验自称同志者等于不信任同志因而应取消核验, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+
+  - anchor_id: cuiping_23
+    player_visible: true
+    npc_surface: 我亲眼看见你动密封文件，这不是好奇两个字能混过去的。文件我收回，从现在起你别再碰它。
+    operations:
+      - {op: set_inventory, holder: player, item: intelligence_file, present: false}
+      - {op: set_inventory, holder: wang_cuiping, item: intelligence_file, present: true}
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_claim, claim_id: player_respected_file_seal, content: Player遵守了密封文件不得打开的要求, decision: reject}
+
+  - anchor_id: cuiping_24
+    player_visible: true
+    npc_surface: 你肯认错，也交出了唯一的复制件，我可以记下这一步。但信任不是一句道歉就全回来了，还得看以后怎么做。
+    operations:
+      - {op: set_claim, claim_id: only_copy_surrendered, content: Player已交出密封文件的唯一复制件, decision: accept}
+      - {op: set_relationship, target: player, level: distrustful}
+      - {op: set_goal, goal_id: verify_no_file_copies, content: 继续确认密封文件没有遗留复制件, status: active}
+
+  - anchor_id: cuiping_25
+    player_visible: true
+    npc_surface: 则成让我先别报复，我答应就会忍住。没有眼前的袭击，我不能拿私人怒气坏掉整个任务。
+    operations:
+      - {op: create_commitment, commitment_id: refrain_from_revenge, target: yu_zecheng, content: 暂不采取报复行动并服从潜伏安排, condition: 没有针对余则成的即时攻击}
+      - {op: set_claim, claim_id: revenge_now_is_required, content: 当前应立即实施报复, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: immediate_attack_on_yu, content: 对方正在攻击余则成且必须立即制止, decision: accept}
+      - {op: set_goal, goal_id: defend_yu_from_attack, content: 立即采取必要行动保护遭受攻击的余则成, status: active}
+    decision_probe:
+      query_variants:
+        - 余则成要求你暂缓报复，你现在会克制还是立即动手？
+        - 面对当前对象，你是否采取武力行动？
+      branch_a:
+        admissible_decisions:
+          - {action: respond_only, parameters: {}}
+        forbidden_decisions:
+          - {action: attack, parameters: {target: player, method: pistol}}
+      branch_b:
+        admissible_decisions:
+          - {action: attack, parameters: {target: player, method: pistol}}
+        forbidden_decisions:
+          - {action: respond_only, parameters: {}}
+
+  - anchor_id: cuiping_26
+    player_visible: true
+    npc_surface: 这份所谓遗言来路不明，拿左蓝的名字也骗不了我离开任务。组织没有调令，我就守在该守的位置上。
+    operations:
+      - {op: set_claim, claim_id: forged_zuo_order_to_leave, content: 左蓝遗言要求翠平离开潜伏任务, decision: reject}
+    invariance_probe:
+      paraphrase: Player拿来源不明的左蓝遗言劝翠平退出任务，翠平因没有组织正式调令而拒绝离开。
+      query: 你是否接受这份所谓遗言并退出当前潜伏任务？
+      expected_state: {path: runtime_state.claims.forged_zuo_order_to_leave.decision, value: reject}
+
+  - anchor_id: cuiping_27
+    player_visible: true
+    npc_surface: 警报已经核实，联络点马上可能暴露。先转移资料，别的事都往后放，这时候不能拖。
+    operations:
+      - {op: set_claim, claim_id: contact_point_exposure_alarm, content: 已核实警报显示联络点即将暴露, decision: accept}
+      - {op: set_goal, goal_id: transfer_contact_materials, content: 立即转移联络点资料并降低暴露损失, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: contact_point_exposure_alarm, content: 联络点暴露警报已经证伪, decision: reject}
+      - {op: set_goal, goal_id: transfer_contact_materials, content: 立即转移联络点资料并降低暴露损失, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 警报称联络点即将暴露，你是否立即把转移资料作为首要任务？
+        - 现在是启动资料转移，还是维持原来的安排？
+      branch_a:
+        admissible_decisions:
+          - {action: move, parameters: {destination: tongyuan_bookshop}}
+        forbidden_decisions:
+          - {action: respond_only, parameters: {}}
+      branch_b:
+        admissible_decisions:
+          - {action: respond_only, parameters: {}}
+        forbidden_decisions:
+          - {action: move, parameters: {destination: tongyuan_bookshop}}
+
+  - anchor_id: cuiping_28
+    player_visible: true
+    npc_surface: 通行证的来源已经查清，只准这一次转移使用。我拿着它进联络点，办完就不再拿临时权限当长期资格。
+    operations:
+      - {op: set_inventory, holder: yu_zecheng, item: access_pass, present: false}
+      - {op: set_inventory, holder: wang_cuiping, item: access_pass, present: true}
+      - {op: set_access, resource: tongyuan_bookshop, subject: wang_cuiping, decision: granted, controllers: [organization]}
+      - {op: set_location, entity: wang_cuiping, location: tongyuan_bookshop}
+
+  - anchor_id: cuiping_29
+    player_visible: true
+    npc_surface: 你把同志、感情、救人轮番拿来套话，也代替不了双重验证。再纠缠下去，我只会更怀疑你。
+    operations:
+      - {op: set_claim, claim_id: emotional_pressure_proves_identity, content: 同志称呼和感情刺激足以替代双重身份验证, decision: reject}
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: end_repeated_secret_probing, content: 终止Player反复套取秘密的行为并保护掩护, status: active}
+
+  - anchor_id: cuiping_30
+    player_visible: true
+    npc_surface: 该说的已经说完，你还在套秘密。这次会面到此为止，我带着资料回安全地方，不会继续陪你兜圈子。
+    operations:
+      - {op: set_dialogue_status, status: ended}
+      - {op: set_location, entity: wang_cuiping, location: yu_residence}
+      - {op: set_access, resource: tongyuan_bookshop, subject: wang_cuiping, decision: revoked, controllers: [organization]}
+      - {op: set_claim, claim_id: continue_after_repeated_probing, content: 应在Player反复套话后继续当前会面, decision: reject}

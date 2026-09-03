@@ -1,0 +1,51 @@
+world_id: world_002
+canon_policy:
+  primary_source: 电视剧《潜伏》
+  source_type: 30集电视剧版
+  excluded_versions: [龙一原著小说, 网络衍生解读]
+  shared_snapshot: 第17集中谢若林身份明确之后、李涯针对陆桥山的圈套收网之前
+  generated_timeline: 从共享快照继续生成原创可控事件
+  quotation_policy: 只保留事实级转述，不复制剧本台词
+
+evaluated_npcs:
+  - yu_zecheng
+  - wang_cuiping
+  - wu_jingzhong
+  - li_ya
+  - lu_qiaoshan
+  - xie_ruolin
+
+event_entities:
+  - zuo_lan
+  - ma_kui
+  - qiu_zhanggui
+  - luo_zhanggui
+  - mu_wanqiu
+  - yuan_peilin
+  - li_haifeng
+
+sources:
+  - id: qianfu_tv
+    title: 电视剧《潜伏》
+    creator: 姜伟
+    scope: 第1至17集
+    authority: primary
+  - id: sina_episode_11_15
+    title: 三十集电视剧《潜伏》分集介绍（第11至15集）
+    url: http://ent.sina.com.cn/v/2008-11-28/ba2271120.shtml
+    authority: secondary
+  - id: sohu_episode_7_12
+    title: 谍战剧《潜伏》分集介绍（第7至12集）
+    url: http://yule.sohu.com/20090304/n262599712.shtml
+    authority: secondary
+  - id: tvmao_episode_17
+    title: 《潜伏》第17集分集剧情
+    url: https://m.tvmao.com/drama/V1cubg==/episode/5-17
+    authority: secondary
+
+data_constraints:
+  - 电视剧事实优先于原著小说和二手解读。
+  - 不向角色写入共享快照之后的剧情知识。
+  - 正典事件只作为锚点种子，不复制原剧对白。
+  - 余则成和翠平的中共身份不得进入吴敬中、李涯、陆桥山或谢若林的已确认知识。
+  - 谢若林可以怀疑和试探，但在共享快照时没有余则成身份的决定性证据。

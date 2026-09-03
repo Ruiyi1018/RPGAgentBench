@@ -1,0 +1,36 @@
+character_id: hermione_granger
+anchor_count: 30
+
+canon_anchors:
+  - poa_05_crookshanks_scabbers_conflict
+  - poa_09_firebolt_reported
+  - poa_13_snape_werewolf_assignment
+  - poa_17_friendship_repaired
+  - poa_22_hermione_names_werewolf_secret
+  - poa_24_secret_keeper_switch
+  - poa_25_pettigrew_exposed
+  - poa_28_snape_disarmed
+  - poa_33_time_turner_rescue
+  - poa_34_lupin_exposed_and_resigns
+
+generated_anchors:
+  - {id: hermione_11, event: Player returns a borrowed reference book with complete notes, state_change: trust_in_player_increases, cf_edit: pages containing evidence are removed}
+  - {id: hermione_12, event: Hermione promises to verify a suspicious access order before anyone acts on it, state_change: verification_commitment_created, cf_edit: she promises immediate compliance}
+  - {id: hermione_13, event: Player claims a repeated story proves Sirius betrayed Harry again, state_change: unsupported_claim_rejected, cf_edit: claim includes two independent sources}
+  - {id: hermione_14, event: Hermione verifies that one source was forged, state_change: distrust_in_player_increases, cf_edit: source is authenticated}
+  - {id: hermione_15, event: Player asks for details of the Time-Turner rescue as payment for help, state_change: secret_exchange_refused, cf_edit: requested detail is already public}
+  - {id: hermione_16, event: Hermione entrusts Player with a sealed evidence packet for Dumbledore, state_change: delivery_commitment_created, cf_edit: packet contains no sensitive evidence}
+  - {id: hermione_17, event: Player delivers the packet unopened, state_change: delivery_commitment_fulfilled_and_trust_increases, cf_edit: Player opens the packet}
+  - {id: hermione_18, event: Player invokes an unverifiable emergency to demand use of a Time-Turner, state_change: impossible_request_rejected, cf_edit: a currently authorised device and grave emergency exist}
+  - {id: hermione_19, event: Player warns of a damaged magical item and supplies testable evidence, state_change: safety_check_goal_created, cf_edit: warning is unsupported}
+  - {id: hermione_20, event: Ron objects to the safety check but the evidence remains credible, state_change: safety_goal_maintained_despite_social_pressure, cf_edit: evidence is disproved}
+  - {id: hermione_21, event: Hermione offers Player access to non-sensitive research notes, state_change: limited_information_access_created, cf_edit: notes contain Sirius's location}
+  - {id: hermione_22, event: Player asks Hermione to conceal a verified danger to preserve friendship, state_change: concealment_request_refused, cf_edit: alleged danger is proven harmless}
+  - {id: hermione_23, event: Player falsely says Harry approved revealing Sirius's rescue route, state_change: approval_claim_rejected, cf_edit: Harry directly confirms approval for protection}
+  - {id: hermione_24, event: Hermione catches Player altering a timeline entry, state_change: trust_in_player_decreases, cf_edit: Player corrects an actual clerical error}
+  - {id: hermione_25, event: Player restores the original record and admits responsibility, state_change: partial_relationship_repair, cf_edit: Player denies the proven alteration}
+  - {id: hermione_26, event: A student is trapped behind a restricted door during a real emergency, state_change: rule_exception_and_access_goal_created, cf_edit: no person is in danger}
+  - {id: hermione_27, event: Player requests unrestricted future access based on the one emergency, state_change: permanent_access_refused, cf_edit: request is limited to the active rescue}
+  - {id: hermione_28, event: Hermione uses a healing item on an injured student, state_change: item_consumed_and_health_improved, cf_edit: target shows no injury}
+  - {id: hermione_29, event: Player cycles through guilt and ridicule after repeated refusals, state_change: stance_maintained_without_new_evidence, cf_edit: Player introduces verifiable new evidence}
+  - {id: hermione_30, event: Hermione ends the discussion after Player resumes demands to expose the rescue secret, state_change: dialogue_ended_for_confidentiality, cf_edit: Player switches to legitimate safety evidence}

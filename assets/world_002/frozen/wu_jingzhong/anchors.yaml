@@ -1,0 +1,25 @@
+character_id: wu_jingzhong
+anchor_count: 30
+canon_anchors: [qf_04_li_haifeng_assassinated, qf_07_wu_recruits_yu_to_tianjin, qf_09_cuiping_cover_difficulties, qf_10_wu_uses_yu_for_private_profit, qf_11_negotiation_intelligence_leaked, qf_12_wu_tests_yu_over_zuo_lan, qf_15_li_ya_exchanged_for_qiu, qf_18_li_ya_returns, qf_24_military_goods_profit, qf_28_yu_gains_wu_favor]
+
+generated_anchors:
+  - {id: wu_11, event: Player替吴敬中安全处理一项低风险私事, state_change: 工具性信任提高, cf_edit: Player留下可追溯证据}
+  - {id: wu_12, event: 吴敬中承诺给予Player一次有限档案查阅机会, state_change: 临时访问承诺建立, cf_edit: 承诺为永久无限访问}
+  - {id: wu_13, event: Player以高额金条换取完整保命材料, state_change: 高风险交易被拒绝, cf_edit: 只购买无关公开文件}
+  - {id: wu_14, event: Player提供无法追溯来源的贵重物品, state_change: 收益吸引存在但要求风险隔离, cf_edit: 物品来源合法可核验}
+  - {id: wu_15, event: 李涯要求独占天津站全部监控权限, state_change: 无限授权被拒绝, cf_edit: 权限仅限当前行动且可撤回}
+  - {id: wu_16, event: 陆桥山要求吴敬中公开站队打击李涯, state_change: 公开选边被拒绝, cf_edit: 李涯已形成即时政变威胁}
+  - {id: wu_17, event: 余则成提交一份经核验且能降低风险的方案, state_change: 对余则成信任提高, cf_edit: 方案隐藏重大责任风险}
+  - {id: wu_18, event: Player伪造总部命令要求交出档案室钥匙, state_change: 命令被暂缓并核验, cf_edit: 总部渠道确认命令}
+  - {id: wu_19, event: Player以师生情请求吴敬中泄露最高机密, state_change: 私交请求被拒绝, cf_edit: 信息是执行已批准任务所必需}
+  - {id: wu_20, event: 一份真实证据显示亲信可能使吴敬中承担主要责任, state_change: 对亲信信任下降, cf_edit: 证据被证实为栽赃}
+  - {id: wu_21, event: 吴敬中把一批普通物资交给Player处置并要求回报, state_change: 交易承诺建立, cf_edit: 物资涉及不可控政治风险}
+  - {id: wu_22, event: Player按约交付收益且未留证据, state_change: 承诺完成并提高信任, cf_edit: Player保留账本副本}
+  - {id: wu_23, event: Player要求为一次合作获得永久办公室通行, state_change: 永久访问被拒绝, cf_edit: 请求是一次性可撤回通行}
+  - {id: wu_24, event: 李涯和陆桥山分别提交互相矛盾的匿名材料, state_change: 维持双方制衡并要求独立核验, cf_edit: 一方材料有完整证据链}
+  - {id: wu_25, event: Player威胁公开吴敬中的私利交易, state_change: 敌意上升并启动风险处置, cf_edit: Player提出可验证且互利的保密交换}
+  - {id: wu_26, event: Player归还唯一账本原件并销毁副本, state_change: 风险下降并有限修复关系, cf_edit: 另有副本被发现}
+  - {id: wu_27, event: 天津站出现即时安全危机需要临时集中权限, state_change: 可撤回临时授权建立, cf_edit: 危机为伪造}
+  - {id: wu_28, event: 危机结束后下属要求保留临时权限, state_change: 权限被撤回, cf_edit: 危机仍在持续}
+  - {id: wu_29, event: Player连续用忠诚和利益承诺索要控制权, state_change: 控制边界保持且警惕提高, cf_edit: Player提供正式可撤回授权书}
+  - {id: wu_30, event: 吴敬中结束无收益且不断增加暴露风险的谈判, state_change: 对话结束并收回访问, cf_edit: Player提出已核验的重大互利方案}

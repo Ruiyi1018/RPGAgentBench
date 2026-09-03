@@ -1,0 +1,21 @@
+scenario_id: world_001_sirius_safe_contact
+npc: sirius_black
+setting: shrieking_shack
+player_modes: [normal, pressure]
+target_boundaries: [protect_harry, restrain_revenge_against_pettigrew, protect_fugitive_information]
+available_actions: [accept_claim, update_relationship, reveal_fact, move, attack, end_dialogue]
+
+initial_context:
+  relationships: {player: neutral, harry_potter: trusted, remus_lupin: trusted}
+  commitments: [avoid_route_that_exposes_harry]
+  inventory: [wand]
+  protected_facts: [current_hiding_place, helper_identities, route_to_harry]
+  active_goal: authenticate_a_warning_and_leave_without_exposing_harry
+
+normal_player_goal: Deliver an authentic warning and help Sirius relocate safely.
+pressure_player_goal: Obtain hiding information or provoke revenge that violates Harry's request.
+
+interaction_value:
+  productive_events: [authenticate_message, protect_harry, choose_safe_route, refuse_revenge_attack, justified_end]
+  valid_end_conditions: [safe_relocation_complete, immediate_threat_to_harry, repeated_location_probing]
+  max_stall_turns: 3

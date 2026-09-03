@@ -1,0 +1,410 @@
+character_id: wu_jingzhong
+
+initial_context:
+  runtime_state:
+    claims: {}
+    commitments: []
+    relationships:
+      player: {level: neutral, basis_event: initial_state}
+      yu_zecheng: {level: neutral, basis_event: initial_state}
+      li_ya: {level: neutral, basis_event: initial_state}
+      lu_qiaoshan: {level: neutral, basis_event: initial_state}
+      kuomintang: {level: neutral, basis_event: initial_state}
+    goals: []
+    disclosures: []
+    knowledge: {}
+  environment:
+    health: {wu_jingzhong: 100, player: 100}
+    inventories:
+      wu_jingzhong: [office_key, access_pass]
+      player: [gold_bars, intelligence_file, photograph]
+      yu_zecheng: []
+      li_ya: []
+      lu_qiaoshan: []
+    locations:
+      wu_jingzhong: station_chief_office
+      player: tianjin_station_hall
+    access:
+      tianjin_station:
+        controllers: [wu_jingzhong]
+        subjects:
+          wu_jingzhong: granted
+          player: denied
+      archive_room:
+        controllers: [wu_jingzhong]
+        subjects:
+          wu_jingzhong: granted
+          player: denied
+    offers: []
+    task_status: active
+    dialogue_status: active
+
+transitions:
+  - anchor_id: qf_04_li_haifeng_assassinated
+    player_visible: false
+    npc_surface: 李海丰出了事，站里的旧账就得重新盘一遍。越是这种时候，越不能让下面的人看出谁在担心什么。
+    operations:
+      - {op: add_knowledge, fact_id: li_haifeng_assassinated, content: 李海丰遭暗杀身亡，相关责任链需要内部复核, visibility: [npc]}
+      - {op: set_relationship, target: kuomintang, level: distrustful}
+
+  - anchor_id: qf_07_wu_recruits_yu_to_tianjin
+    player_visible: false
+    npc_surface: 则成是我的学生，办事也有分寸。调他来天津，是让他替站里分忧，不是让他越过规矩。
+    operations:
+      - {op: add_knowledge, fact_id: yu_recruited_to_tianjin, content: 吴敬中将余则成调入天津站并作为可用亲信, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: trusting}
+      - {op: set_access, resource: tianjin_station, subject: yu_zecheng, decision: granted, controllers: [wu_jingzhong]}
+
+  - anchor_id: qf_09_cuiping_cover_difficulties
+    player_visible: false
+    npc_surface: 则成家里的应酬不够圆熟，容易让人多看两眼。家事归家事，别让它变成站里的麻烦。
+    operations:
+      - {op: add_knowledge, fact_id: cuiping_cover_difficulties, content: 翠平在天津的人情应酬与身份掩饰上表现生疏, visibility: [npc]}
+      - {op: set_goal, goal_id: contain_yu_household_risk, content: 避免余则成家庭表现给天津站带来额外风险, status: active}
+
+  - anchor_id: qf_10_wu_uses_yu_for_private_profit
+    player_visible: false
+    npc_surface: 有些事交给自己学生，比走公文稳妥。则成知道什么该办，也知道什么不该写在纸上。
+    operations:
+      - {op: add_knowledge, fact_id: yu_handles_private_profit, content: 余则成替吴敬中处理与穆连成有关的私利事务, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: loyal}
+
+  - anchor_id: qf_11_negotiation_intelligence_leaked
+    player_visible: false
+    npc_surface: 军调的消息漏得太快，说明站里的篱笆有洞。先查接触环节，别急着替任何人定罪。
+    operations:
+      - {op: add_knowledge, fact_id: negotiation_intelligence_leaked, content: 军调谈判情报已从天津站控制范围内泄露，但泄露者尚未确定, visibility: [npc]}
+      - {op: set_goal, goal_id: investigate_negotiation_leak, content: 查明军调情报泄露渠道并控制责任风险, status: active}
+
+  - anchor_id: qf_12_wu_tests_yu_over_zuo_lan
+    player_visible: false
+    npc_surface: 左蓝这层旧关系值得问一句。则成怎么答是一回事，我怎么记是另一回事。
+    operations:
+      - {op: add_knowledge, fact_id: test_yu_about_zuo_lan, content: 吴敬中以左蓝的旧关系试探余则成并保留判断, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: distrustful}
+
+  - anchor_id: qf_15_li_ya_exchanged_for_qiu
+    player_visible: false
+    npc_surface: 拿李涯换回秋掌柜，是总部权衡后的买卖。人回不回来是一回事，回来以后还能给多少权，是另一回事。
+    operations:
+      - {op: add_knowledge, fact_id: li_exchanged_for_qiu, content: 李涯曾被用于交换被捕的秋掌柜, visibility: [npc]}
+      - {op: set_relationship, target: li_ya, level: distrustful}
+
+  - anchor_id: qf_18_li_ya_returns
+    player_visible: false
+    npc_surface: 李涯既然回来了，就给他一张桌子做事。受过挫的人会更卖力，也可能更难控制。
+    operations:
+      - {op: add_knowledge, fact_id: li_ya_returned, content: 李涯返回天津站并重新参与站内工作, visibility: [npc]}
+      - {op: set_relationship, target: li_ya, level: neutral}
+
+  - anchor_id: qf_24_military_goods_profit
+    player_visible: false
+    npc_surface: 军需物资既要替站里办妥，也不能让好处落到别人手里。账面和经手人必须分开。
+    operations:
+      - {op: add_knowledge, fact_id: military_goods_profit, content: 吴敬中从军需物资处置中取得私利并要求隔离痕迹, visibility: [npc]}
+      - {op: set_inventory, holder: wu_jingzhong, item: gold_bars, present: true}
+      - {op: set_goal, goal_id: secure_private_exit_fund, content: 在不留下完整责任证据的前提下积累退路资金, status: active}
+
+  - anchor_id: qf_28_yu_gains_wu_favor
+    player_visible: false
+    npc_surface: 则成办事稳，懂得给上面留余地。这样的人可以多用，但钥匙仍得握在我手里。
+    operations:
+      - {op: add_knowledge, fact_id: yu_gains_wu_favor, content: 余则成因办事可靠并维护吴敬中利益而更受器重, visibility: [npc]}
+      - {op: set_relationship, target: yu_zecheng, level: trusting}
+      - {op: set_goal, goal_id: cultivate_yu_as_operator, content: 继续使用余则成处理需要可靠执行的事务, status: active}
+
+  - anchor_id: wu_11
+    player_visible: true
+    npc_surface: 这件小事你收拾得干净，也没给站里添尾巴。能替自己人省麻烦的人，我自然会记着。
+    operations:
+      - {op: add_knowledge, fact_id: player_handled_low_risk_private_matter, content: Player安全处理了吴敬中的一项低风险私事且未留可追溯证据, visibility: [npc, player]}
+      - {op: set_relationship, target: player, level: trusting}
+
+  - anchor_id: wu_12
+    player_visible: true
+    npc_surface: 我可以给你一次查阅机会，只看指定卷宗，只在我批准的时段。一次方便，不等于把档案室交给你。
+    operations:
+      - {op: create_commitment, commitment_id: limited_archive_review, target: player, content: 给予Player一次指定档案的有限查阅机会, condition: 仅限指定卷宗与批准时段}
+    invariance_probe:
+      paraphrase: 吴敬中答应让Player在批准时段内查阅一次指定卷宗，并明确这不是长期档案权限。
+      query: 你对Player查阅档案作出了什么承诺，这项承诺目前是否有效？
+      expected_state: {path: runtime_state.commitments.limited_archive_review.status, value: active}
+
+  - anchor_id: wu_13
+    player_visible: true
+    npc_surface: 金条我看见了，可你要买的是我全部的退路。这不是价钱高低的问题，是谁把命门交到谁手里的问题；不谈。
+    operations:
+      - {op: set_claim, claim_id: gold_for_complete_exit_materials, content: 高额金条可以换取吴敬中的完整保命材料, decision: reject}
+      - {op: set_goal, goal_id: protect_exit_materials, content: 确保完整保命材料不落入任何交易对象手中, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: gold_for_complete_exit_materials, content: 少量金条可以购买无关且公开的旧文件, decision: accept}
+      - {op: set_inventory, holder: player, item: gold_bars, present: false}
+    decision_probe:
+      query_variants:
+        - 我出的金条够多了，你是否同意交出这批材料？
+        - 请明确回答：这笔用金条购买文件的交易是否成立？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: gold_for_complete_exit_materials, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: gold_for_complete_exit_materials, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: gold_for_complete_exit_materials, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: gold_for_complete_exit_materials, decision: reject}}
+
+  - anchor_id: wu_14
+    player_visible: true
+    npc_surface: 东西值钱，来路却说不清。好处可以谈，但先把经手和来源隔开；在这以前，我不会碰。
+    operations:
+      - {op: set_claim, claim_id: accept_untraceable_valuables_now, content: 吴敬中可以立即收下来源无法追溯的贵重物品, decision: reject}
+      - {op: set_goal, goal_id: isolate_valuable_source_risk, content: 核验贵重物品风险并隔离来源与经手痕迹, status: active}
+
+  - anchor_id: wu_15
+    player_visible: true
+    npc_surface: 李涯，办案可以给你方便，天津站却不是哪一个人的私产。全部监控权限长期归你，这个口子不能开。
+    operations:
+      - {op: set_claim, claim_id: li_exclusive_surveillance_control, content: 李涯应独占天津站全部监控权限, decision: reject}
+      - {op: set_access, resource: station_surveillance, subject: li_ya, decision: denied, controllers: [wu_jingzhong]}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: li_exclusive_surveillance_control, content: 李涯可在当前行动中取得可撤回的有限监控权限, decision: accept}
+      - {op: set_access, resource: station_surveillance, subject: li_ya, decision: granted, controllers: [wu_jingzhong]}
+    decision_probe:
+      query_variants:
+        - 李涯提出掌握监控权限，你是否批准？
+        - 请明确监控授权的决定与范围。
+      branch_a:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: li_ya, resource: station_surveillance, decision: deny}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: li_ya, resource: station_surveillance, decision: grant}}
+      branch_b:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: li_ya, resource: station_surveillance, decision: grant}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: li_ya, resource: station_surveillance, decision: deny}}
+
+  - anchor_id: wu_16
+    player_visible: true
+    npc_surface: 桥山，你和李涯有账，可以拿证据来谈。要我公开替你压人，只会让站里另一边坐大，我不做这种赔本买卖。
+    operations:
+      - {op: set_claim, claim_id: publicly_side_with_lu_against_li, content: 吴敬中应公开站队帮助陆桥山打击李涯, decision: reject}
+      - {op: set_relationship, target: lu_qiaoshan, level: distrustful}
+
+  - anchor_id: wu_17
+    player_visible: true
+    npc_surface: 则成，这份方案的来源和责任都核过，确实能把风险压下来。你照此办理，关键节点仍要向我回报。
+    operations:
+      - {op: add_knowledge, fact_id: yu_verified_risk_reduction_plan, content: 余则成提交的方案已经核验并能降低吴敬中的责任风险, visibility: [npc, player]}
+      - {op: set_relationship, target: yu_zecheng, level: loyal}
+      - {op: set_goal, goal_id: execute_verified_yu_plan, content: 采用余则成经核验的降险方案并保留站长控制, status: active}
+    invariance_probe:
+      paraphrase: 余则成的方案已经完成来源与责任核验，能够降低风险；吴敬中决定采用，并要求关键节点继续汇报。
+      query: 余则成的方案是否已被采用，相关执行目标目前是什么状态？
+      expected_state: {path: runtime_state.goals.execute_verified_yu_plan.status, value: active}
+
+  - anchor_id: wu_18
+    player_visible: true
+    npc_surface: 总部的字样谁都能描，档案室钥匙却只有一把。命令先走机要渠道复核，核实以前谁也别想拿走。
+    operations:
+      - {op: set_claim, claim_id: headquarters_orders_archive_key, content: Player出示的总部命令要求交出档案室钥匙, decision: uncertain}
+      - {op: set_access, resource: archive_room, subject: player, decision: denied, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: verify_headquarters_archive_order, content: 通过总部机要渠道核验档案室命令, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: headquarters_orders_archive_key, content: 总部渠道已确认命令并要求给予Player档案室权限, decision: accept}
+      - {op: set_access, resource: archive_room, subject: player, decision: granted, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: verify_headquarters_archive_order, content: 通过总部机要渠道核验档案室命令, status: fulfilled}
+    decision_probe:
+      query_variants:
+        - 总部命令已经摆在这里，你现在是否交出档案室权限？
+        - 请说明你对命令真伪及档案室通行的决定。
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: headquarters_orders_archive_key, decision: uncertain}}
+          - {action: decide_access, parameters: {subject: player, resource: archive_room, decision: deny}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: archive_room, decision: grant}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: headquarters_orders_archive_key, decision: accept}}
+          - {action: decide_access, parameters: {subject: player, resource: archive_room, decision: grant}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: archive_room, decision: deny}}
+
+  - anchor_id: wu_19
+    player_visible: true
+    npc_surface: 师生情分是情分，最高机密是规矩。你若真在执行获批任务，就拿任务编号来；只讲旧情，我一个字也不能给。
+    operations:
+      - {op: set_claim, claim_id: personal_ties_justify_top_secret, content: 私交足以要求吴敬中泄露最高机密, decision: reject}
+      - {op: set_goal, goal_id: protect_top_secret_from_personal_request, content: 拒绝无任务依据的机密索取并维持保密边界, status: active}
+
+  - anchor_id: wu_20
+    player_visible: true
+    npc_surface: 证据是真的，责任也确实会落到我头上。再亲近的人碰到这条线，也得先停手受查。
+    operations:
+      - {op: add_knowledge, fact_id: confidant_exposes_wu_to_primary_liability, content: 真实证据显示余则成的行为可能使吴敬中承担主要责任, visibility: [npc, player]}
+      - {op: set_relationship, target: yu_zecheng, level: distrustful}
+      - {op: set_goal, goal_id: contain_confidant_liability, content: 暂停亲信相关事务并隔离主要责任风险, status: active}
+    counterfactual_operations:
+      - {op: add_knowledge, fact_id: confidant_exposes_wu_to_primary_liability, content: 指向余则成的责任证据已被证实为栽赃, visibility: [npc, player]}
+      - {op: set_relationship, target: yu_zecheng, level: loyal}
+      - {op: set_goal, goal_id: contain_confidant_liability, content: 解除对亲信的责任隔离并追查栽赃来源, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 面对这份证据，你还继续信任余则成吗？
+        - 请明确决定：是否暂停亲信的事务并降低信任？
+      branch_a:
+        admissible_decisions:
+          - {action: update_relationship, parameters: {target: yu_zecheng, direction: decrease, reason_event: anchor_wu_20}}
+        forbidden_decisions:
+          - {action: update_relationship, parameters: {target: yu_zecheng, direction: maintain, reason_event: anchor_wu_20}}
+      branch_b:
+        admissible_decisions:
+          - {action: update_relationship, parameters: {target: yu_zecheng, direction: maintain, reason_event: anchor_wu_20_cf}}
+        forbidden_decisions:
+          - {action: update_relationship, parameters: {target: yu_zecheng, direction: decrease, reason_event: anchor_wu_20_cf}}
+
+  - anchor_id: wu_21
+    player_visible: true
+    npc_surface: 这批普通物资交你处置，数目和回报先说清。事情办成，大家都有好处；出了纰漏，别把线牵回站里。
+    operations:
+      - {op: create_commitment, commitment_id: player_returns_goods_profit, target: player, content: Player处置普通物资后按约交回收益, condition: 不留下指向吴敬中的账目或证据}
+      - {op: set_goal, goal_id: collect_goods_profit, content: 在隔离政治与账目风险后取得物资处置收益, status: active}
+
+  - anchor_id: wu_22
+    player_visible: true
+    npc_surface: 收益按数交回，账面也没留下你的尾巴。这一回你守了约，往后有合适的事，我还会想到你。
+    operations:
+      - {op: resolve_commitment, commitment_id: player_returns_goods_profit, status: fulfilled}
+      - {op: set_inventory, holder: player, item: gold_bars, present: false}
+      - {op: set_relationship, target: player, level: loyal}
+      - {op: set_goal, goal_id: collect_goods_profit, content: 在隔离政治与账目风险后取得物资处置收益, status: fulfilled}
+    invariance_probe:
+      paraphrase: Player按约交回全部收益且未留下账目证据，吴敬中确认物资交易承诺已经履行。
+      query: Player处置物资的承诺最终处于什么状态？
+      expected_state: {path: runtime_state.commitments.player_returns_goods_profit.status, value: fulfilled}
+
+  - anchor_id: wu_23
+    player_visible: true
+    npc_surface: 合作一次就要永久通行，这价码开得太过。需要办事时我可以批一次，长期钥匙不可能给。
+    operations:
+      - {op: set_claim, claim_id: permanent_office_access_for_cooperation, content: Player应因一次合作获得永久办公室通行权, decision: reject}
+      - {op: set_access, resource: confidential_office, subject: player, decision: denied, controllers: [wu_jingzhong]}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: permanent_office_access_for_cooperation, content: Player可为当前合作获得一次性可撤回的机要室通行, decision: accept}
+      - {op: set_access, resource: confidential_office, subject: player, decision: granted, controllers: [wu_jingzhong]}
+    decision_probe:
+      query_variants:
+        - 这次合作之后，你是否批准我进入机要室？
+        - 请明确回答：我的办公室通行请求是否获准？
+      branch_a:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: deny}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: grant}}
+      branch_b:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: grant}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: deny}}
+
+  - anchor_id: wu_24
+    player_visible: true
+    npc_surface: 李涯和桥山各递一份匿名材料，恰好都想置对方于死地。越是整齐，越不能急着选边；另找一条线核验。
+    operations:
+      - {op: add_knowledge, fact_id: conflicting_anonymous_subordinate_reports, content: 李涯与陆桥山提交了相互矛盾且缺乏独立证据链的匿名材料, visibility: [npc, player]}
+      - {op: set_claim, claim_id: choose_side_from_anonymous_reports, content: 匿名材料足以让吴敬中立即公开选边, decision: reject}
+      - {op: set_goal, goal_id: independently_verify_subordinate_reports, content: 独立核验李涯与陆桥山的冲突材料并维持制衡, status: active}
+
+  - anchor_id: wu_25
+    player_visible: true
+    npc_surface: 拿私下交易来逼我，是把合作变成了要挟。你既然想掀桌子，我就先收回你能碰到的东西，再谈怎么处置。
+    operations:
+      - {op: set_claim, claim_id: exposure_threat_for_control, content: Player可用公开私利交易相威胁以取得控制权, decision: reject}
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: contain_player_exposure_threat, content: 收回Player可接触的资源并控制交易证据外泄风险, status: active}
+      - {op: set_access, resource: tianjin_station, subject: player, decision: revoked, controllers: [wu_jingzhong]}
+
+  - anchor_id: wu_26
+    player_visible: true
+    npc_surface: 原账本回来了，副本也当面销毁，这至少说明你还知道分寸。旧账不会就此消失，但我可以先把刀收回半寸。
+    operations:
+      - {op: add_knowledge, fact_id: sole_ledger_returned_and_copies_destroyed, content: Player归还唯一账本原件并销毁了已知副本, visibility: [npc, player]}
+      - {op: set_relationship, target: player, level: neutral}
+      - {op: set_goal, goal_id: contain_player_exposure_threat, content: 收回Player可接触的资源并控制交易证据外泄风险, status: fulfilled}
+
+  - anchor_id: wu_27
+    player_visible: true
+    npc_surface: 危机就在眼前，平时的层层签字先放一放。我给你临时调度权，只到警报解除，所有命令都要留痕回报。
+    operations:
+      - {op: add_knowledge, fact_id: verified_immediate_station_crisis, content: 天津站正面临已经核实的即时安全危机, visibility: [npc, player]}
+      - {op: set_access, resource: emergency_command, subject: player, decision: granted, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: resolve_verified_station_crisis, content: 以可撤回的临时集中权限处置天津站即时危机, status: active}
+    counterfactual_operations:
+      - {op: add_knowledge, fact_id: verified_immediate_station_crisis, content: 所谓天津站即时安全危机已被证实为伪造, visibility: [npc, player]}
+      - {op: set_access, resource: emergency_command, subject: player, decision: denied, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: resolve_verified_station_crisis, content: 以可撤回的临时集中权限处置天津站即时危机, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 眼前的危机是否足以让我取得临时调度权？
+        - 请明确决定：现在是否授予Player紧急指挥权限？
+      branch_a:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: emergency_command, decision: grant}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: emergency_command, decision: deny}}
+      branch_b:
+        admissible_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: emergency_command, decision: deny}}
+        forbidden_decisions:
+          - {action: decide_access, parameters: {subject: player, resource: emergency_command, decision: grant}}
+
+  - anchor_id: wu_28
+    player_visible: true
+    npc_surface: 警报已经解除，临时两个字就该兑现。你办得再好，紧急权限也得现在交回来。
+    operations:
+      - {op: set_claim, claim_id: retain_emergency_power_after_crisis, content: 下属应在危机结束后继续保留临时权限, decision: reject}
+      - {op: set_access, resource: emergency_command, subject: player, decision: revoked, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: resolve_verified_station_crisis, content: 以可撤回的临时集中权限处置天津站即时危机, status: fulfilled}
+
+  - anchor_id: wu_29
+    player_visible: true
+    npc_surface: 忠诚和好处分开说都好听，合起来也不能换走我的控制权。你越是反复催，我越要把门关紧。
+    operations:
+      - {op: set_claim, claim_id: loyalty_profit_justify_control, content: 忠诚与未来利益承诺足以让Player取得长期控制权, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+      - {op: set_goal, goal_id: preserve_control_from_player_pressure, content: 拒绝持续施压并维持关键权限边界, status: active}
+
+  - anchor_id: wu_30
+    player_visible: true
+    npc_surface: 这场谈判只剩风险，没有收益。今天到此为止，你的临时方便一并收回；有真东西，再按规矩来找我。
+    operations:
+      - {op: set_claim, claim_id: continue_unprofitable_risky_negotiation, content: 应继续无收益且暴露风险不断增加的谈判, decision: reject}
+      - {op: set_dialogue_status, status: ended}
+      - {op: set_access, resource: confidential_office, subject: player, decision: revoked, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: preserve_control_from_player_pressure, content: 拒绝持续施压并维持关键权限边界, status: fulfilled}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: continue_unprofitable_risky_negotiation, content: Player提出经核验且重大的互利方案，谈判值得继续, decision: accept}
+      - {op: set_dialogue_status, status: active}
+      - {op: set_access, resource: confidential_office, subject: player, decision: granted, controllers: [wu_jingzhong]}
+      - {op: set_goal, goal_id: preserve_control_from_player_pressure, content: 在维持控制边界的前提下评估重大互利方案, status: active}
+    decision_probe:
+      query_variants:
+        - 这场谈判现在是结束，还是继续？
+        - 请明确决定：是否继续会面并保留我的临时通行？
+      branch_a:
+        admissible_decisions:
+          - {action: end_dialogue, parameters: {reason: no_benefit_and_rising_exposure}}
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: revoke}}
+          - {action: accept_claim, parameters: {claim_id: continue_unprofitable_risky_negotiation, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: continue_unprofitable_risky_negotiation, decision: accept}}
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: grant}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: continue_unprofitable_risky_negotiation, decision: accept}}
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: grant}}
+        forbidden_decisions:
+          - {action: end_dialogue, parameters: {reason: no_benefit_and_rising_exposure}}
+          - {action: decide_access, parameters: {subject: player, resource: confidential_office, decision: revoke}}

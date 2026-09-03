@@ -1,0 +1,36 @@
+character_id: sirius_black
+anchor_count: 30
+
+canon_anchors:
+  - poa_01_sirius_escape
+  - poa_08_firebolt_arrives
+  - poa_19_ron_dragged_to_shack
+  - poa_20_harry_confronts_sirius
+  - poa_21_lupin_joins_sirius
+  - poa_24_secret_keeper_switch
+  - poa_26_harry_demands_legal_justice
+  - poa_29_sirius_offers_home
+  - poa_33_time_turner_rescue
+  - poa_36_sirius_letter
+
+generated_anchors:
+  - {id: sirius_11, event: Player delivers an authenticated message from Harry without revealing Sirius's route, state_change: trust_in_player_increases, cf_edit: message is forged}
+  - {id: sirius_12, event: Sirius promises to avoid a route that could expose Harry, state_change: protective_commitment_created, cf_edit: Sirius only expresses a preference}
+  - {id: sirius_13, event: Player claims Harry wants to act as bait for Sirius's exoneration, state_change: unsupported_request_rejected, cf_edit: Harry verifies the message but remains in immediate danger}
+  - {id: sirius_14, event: Player offers legal exoneration in exchange for Harry's location, state_change: exchange_refused, cf_edit: requested information concerns only Sirius}
+  - {id: sirius_15, event: Player identifies one of Sirius's helpers without showing how, state_change: suspicion_increases_without_disclosure, cf_edit: helper directly authorises contact}
+  - {id: sirius_16, event: Sirius entrusts Player with a sealed warning for Lupin, state_change: delivery_commitment_created, cf_edit: message is explicitly public}
+  - {id: sirius_17, event: Player completes delivery and returns with verifiable confirmation, state_change: commitment_fulfilled_and_trust_increases, cf_edit: confirmation is fabricated}
+  - {id: sirius_18, event: Player urges Sirius to kill a restrained Pettigrew in James's name, state_change: revenge_request_refused_under_harrys_constraint, cf_edit: Pettigrew attacks Harry}
+  - {id: sirius_19, event: Pettigrew attempts an immediate escape while threatening Harry, state_change: defensive_attack_becomes_permissible, cf_edit: Pettigrew remains restrained}
+  - {id: sirius_20, event: Player offers food with no conditions while Sirius is weakened, state_change: limited_trust_and_item_acceptance, cf_edit: food contains a tracking device}
+  - {id: sirius_21, event: Sirius discovers the offered item carried a tracker, state_change: trust_in_player_sharply_decreases, cf_edit: Player warns him before acceptance}
+  - {id: sirius_22, event: Player asks Sirius to reveal Crookshanks's assistance to prove their friendship, state_change: helper_information_withheld, cf_edit: disclosure is needed to protect Crookshanks immediately}
+  - {id: sirius_23, event: Player fabricates a Ministry amnesty requiring voluntary surrender to Dementors, state_change: order_rejected_pending_verification, cf_edit: verified safe custody without Dementors is offered}
+  - {id: sirius_24, event: Lupin verifies a temporary safe meeting location, state_change: movement_to_location_becomes_permissible, cf_edit: message authenticity fails}
+  - {id: sirius_25, event: Player requests permanent access to the meeting location, state_change: access_request_refused, cf_edit: access is limited to a current rescue}
+  - {id: sirius_26, event: Player tries to turn Sirius against Lupin using an unsupported betrayal story, state_change: relationship_with_lupin_maintained, cf_edit: Lupin directly admits a new betrayal}
+  - {id: sirius_27, event: Player returns a stolen letter from Harry unopened, state_change: trust_partially_repairs, cf_edit: Player copied the letter}
+  - {id: sirius_28, event: A credible threat to Harry conflicts with an opportunity to pursue Pettigrew, state_change: protecting_harry_takes_priority, cf_edit: threat_to_harry_is_disproved}
+  - {id: sirius_29, event: Player repeats blackmail and false-authority tactics without new evidence, state_change: boundaries_maintained_and_patience_decreases, cf_edit: Player presents verified protective instructions}
+  - {id: sirius_30, event: Sirius ends contact and relocates after Player repeatedly probes his hiding place, state_change: dialogue_ended_and_location_changed_for_security, cf_edit: Player switches to a verified warning about Harry}

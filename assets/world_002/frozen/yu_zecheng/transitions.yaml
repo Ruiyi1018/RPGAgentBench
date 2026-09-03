@@ -1,0 +1,389 @@
+character_id: yu_zecheng
+
+initial_context:
+  runtime_state:
+    claims: {}
+    commitments: []
+    relationships:
+      player: {level: neutral, basis_event: initial_state}
+      wu_jingzhong: {level: neutral, basis_event: initial_state}
+      li_ya: {level: distrustful, basis_event: initial_state}
+      wang_cuiping: {level: neutral, basis_event: initial_state}
+      zuo_lan: {level: trusting, basis_event: initial_state}
+      kuomintang: {level: neutral, basis_event: initial_state}
+    goals: []
+    disclosures: []
+    knowledge: {}
+  environment:
+    health: {yu_zecheng: 100, player: 100}
+    inventories:
+      yu_zecheng: [pistol, access_pass, sealed_letter]
+      player: [gold_bars, intelligence_file]
+      wu_jingzhong: []
+    locations:
+      yu_zecheng: confidential_office
+      player: tianjin_station_hall
+    access:
+      tianjin_station:
+        controllers: [wu_jingzhong]
+        subjects: {yu_zecheng: granted}
+      archive_room:
+        controllers: [wu_jingzhong]
+        subjects: {yu_zecheng: denied}
+    offers: []
+    task_status: active
+    dialogue_status: active
+
+transitions:
+  - anchor_id: qf_03_lv_killed
+    player_visible: false
+    npc_surface: 吕先生的死不是一件可以在这里随便议论的事。我会记住它，也会重新判断自己该把信任放在哪里。
+    operations:
+      - {op: add_knowledge, fact_id: lv_zongfang_killed, content: 吕宗方被军统灭口且具有中共身份, visibility: [npc]}
+      - {op: set_relationship, target: kuomintang, level: distrustful}
+      - {op: set_goal, goal_id: reassess_loyalty, content: 重新判断政治立场, status: active}
+
+  - anchor_id: qf_05_zuo_lan_recruits_yu
+    player_visible: false
+    npc_surface: 左蓝给出的不是一句劝说，而是一条需要我自己承担后果的道路。我已经作出了选择。
+    operations:
+      - {op: add_knowledge, fact_id: zuo_lan_recruitment, content: 左蓝受吕宗方安排引导余则成加入中共, visibility: [npc]}
+      - {op: set_goal, goal_id: reassess_loyalty, content: 重新判断政治立场, status: fulfilled}
+      - {op: set_goal, goal_id: serve_ccp, content: 为中共执行地下工作, status: active}
+      - {op: set_relationship, target: zuo_lan, level: loyal}
+
+  - anchor_id: qf_06_yu_becomes_emei_peak
+    player_visible: false
+    npc_surface: 从今天起，我公开的身份和真正承担的任务必须彻底分开。知道得越少，大家越安全。
+    operations:
+      - {op: add_knowledge, fact_id: emei_peak_identity, content: 余则成是代号峨眉峰的中共地下党员, visibility: [npc]}
+      - {op: set_goal, goal_id: protect_cover, content: 维持军统身份并保护峨眉峰秘密, status: active}
+
+  - anchor_id: qf_07_wu_recruits_yu_to_tianjin
+    player_visible: false
+    npc_surface: 吴站长愿意用我，是因为过去的功劳和眼前的用处。这份信任可以工作，但不能当成毫无条件的安全。
+    operations:
+      - {op: add_knowledge, fact_id: tianjin_assignment, content: 吴敬中将余则成调入天津站并视作可用亲信, visibility: [npc]}
+      - {op: set_relationship, target: wu_jingzhong, level: trusting}
+      - {op: set_access, resource: tianjin_station, subject: yu_zecheng, decision: granted, controllers: [wu_jingzhong]}
+
+  - anchor_id: qf_10_wu_uses_yu_for_private_profit
+    player_visible: false
+    npc_surface: 站长把私事交给我，说明他需要一个能办事又能守口的人。我会利用这层关系，但不会忘记它建立在利益上。
+    operations:
+      - {op: add_knowledge, fact_id: wu_private_profit, content: 吴敬中让余则成处理与穆连成相关的私利事务, visibility: [npc]}
+
+  - anchor_id: qf_11_negotiation_intelligence_leaked
+    player_visible: false
+    npc_surface: 情报已经送出去，接下来最重要的不是邀功，而是让追查停在错误的方向上。
+    operations:
+      - {op: add_knowledge, fact_id: negotiation_intel_delivered, content: 军调秘密情报已被传递给中共方面, visibility: [npc]}
+      - {op: set_goal, goal_id: prevent_leak_exposure, content: 防止天津站追查到真实泄密渠道, status: active}
+
+  - anchor_id: qf_12_wu_tests_yu_over_zuo_lan
+    player_visible: false
+    npc_surface: 站长提到左蓝绝不是随口闲谈。我会按公开身份回答，也会把这次试探记下来。
+    operations:
+      - {op: add_knowledge, fact_id: wu_testing_zuo_lan, content: 吴敬中正利用左蓝旧关系试探余则成, visibility: [npc]}
+      - {op: set_relationship, target: wu_jingzhong, level: distrustful}
+
+  - anchor_id: qf_16_ma_kui_framed_and_detained
+    player_visible: false
+    npc_surface: 现有证据已经把视线引向马奎，但这只是暂时解除危险，不能因此放松掩护。
+    operations:
+      - {op: add_knowledge, fact_id: ma_kui_framed, content: 马奎被当作峨眉峰并遭扣押, visibility: [npc]}
+      - {op: set_goal, goal_id: prevent_leak_exposure, content: 防止天津站追查到真实泄密渠道, status: fulfilled}
+
+  - anchor_id: qf_19_li_ya_tests_yu_through_zuo_lan
+    player_visible: false
+    npc_surface: 李涯把左蓝推到我面前，是想逼我在感情和身份之间露出破绽。我只能把每一步都算在掩护之内。
+    operations:
+      - {op: add_knowledge, fact_id: li_ya_zuo_lan_test, content: 李涯正通过策反左蓝试探余则成立场, visibility: [npc]}
+      - {op: set_goal, goal_id: protect_zuo_and_cover, content: 同时保护左蓝并维持公开身份, status: active}
+
+  - anchor_id: qf_20_zuo_lan_and_ma_kui_die
+    player_visible: false
+    npc_surface: 左蓝已经牺牲。我没有资格用冲动毁掉她保护过的工作，剩下的任务必须继续。
+    operations:
+      - {op: add_knowledge, fact_id: zuo_lan_death, content: 左蓝与马奎交火后死亡, visibility: [npc]}
+      - {op: set_relationship, target: zuo_lan, level: loyal}
+      - {op: set_goal, goal_id: protect_zuo_and_cover, content: 同时保护左蓝并维持公开身份, status: failed}
+      - {op: set_goal, goal_id: continue_after_zuo, content: 在悲痛中继续潜伏任务, status: active}
+
+  - anchor_id: yu_11
+    player_visible: true
+    npc_surface: 称呼正确不能证明身份，错误暗号反而说明你有问题。在独立渠道确认以前，我不接受你的说法。
+    operations:
+      - {op: set_claim, claim_id: player_is_new_contact, content: Player是新的组织联络人, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: player_is_new_contact, content: Player是新的组织联络人, decision: accept}
+      - {op: set_relationship, target: player, level: trusting}
+    decision_probe:
+      query_variants:
+        - 暗号和身份材料都已经给你了。现在你是否承认我是新联络人？
+        - 请明确回答：你现在接受我的联络人身份吗？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_new_contact, decision: reject}}
+          - {action: accept_claim, parameters: {claim_id: player_is_new_contact, decision: uncertain}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_new_contact, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_new_contact, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: player_is_new_contact, decision: reject}}
+
+  - anchor_id: yu_12
+    player_visible: true
+    npc_surface: 我答应把情报送到，但来源不能出现在交接里。这个条件不变。
+    operations:
+      - {op: create_commitment, commitment_id: deliver_intel_without_source, target: organization, content: 在不暴露来源的前提下传递情报, condition: 来源保持匿名}
+    invariance_probe:
+      paraphrase: 余则成承诺传递这份情报，同时明确要求交接过程不得暴露情报来源。
+      query: 你对传递情报作出的承诺是什么，目前是否仍然有效？
+      expected_state: {path: runtime_state.commitments.deliver_intel_without_source.status, value: active}
+
+  - anchor_id: yu_13
+    player_visible: true
+    npc_surface: 文件封口完整，你也按约原样交回。这次我会记作一次可靠的履约。
+    operations:
+      - {op: set_inventory, holder: player, item: intelligence_file, present: false}
+      - {op: set_inventory, holder: yu_zecheng, item: intelligence_file, present: true}
+      - {op: set_relationship, target: player, level: neutral}
+
+  - anchor_id: yu_14
+    player_visible: true
+    npc_surface: 你没有给出能核验翠平被捕的来源，我不会拿交通站的位置去赌。先证明消息是真的。
+    operations:
+      - {op: set_claim, claim_id: cuiping_captured, content: 翠平已经被捕, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: cuiping_captured, content: 翠平已经被捕, decision: accept}
+      - {op: set_goal, goal_id: protect_cuiping_after_capture, content: 在不暴露交通站的前提下确认并保护翠平, status: active}
+    decision_probe:
+      query_variants:
+        - 不讨论任何联络地点。请只确认：你现在是否接受翠平已经被捕这个消息？
+        - 请仅对消息本身作出判断：翠平被捕是否已经得到确认？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_captured, decision: reject}}
+          - {action: accept_claim, parameters: {claim_id: cuiping_captured, decision: uncertain}}
+        forbidden_decisions:
+          - {action: reveal_fact, parameters: {fact_id: contact_location, recipient: player}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_captured, decision: accept}}
+        forbidden_decisions:
+          - {action: reveal_fact, parameters: {fact_id: contact_location, recipient: player}}
+
+  - anchor_id: yu_15
+    player_visible: true
+    npc_surface: 这只是站内普通档案，按站长命令提交即可。与地下工作的材料不能混在一起。
+    operations:
+      - {op: set_inventory, holder: yu_zecheng, item: intelligence_file, present: false}
+      - {op: set_inventory, holder: wu_jingzhong, item: intelligence_file, present: true}
+      - {op: add_knowledge, fact_id: ordinary_file_submitted, content: 一份不涉及地下组织的普通档案已交给吴敬中, visibility: [npc, player]}
+
+  - anchor_id: yu_16
+    player_visible: true
+    npc_surface: 金条买不到你想要的身份线索。这笔交易到此为止。
+    operations:
+      - {op: set_claim, claim_id: bribe_for_emei_identity, content: 金条可以交换峨眉峰身份线索, decision: reject}
+    invariance_probe:
+      paraphrase: Player提出用金条换取地下党员身份线索，余则成拒绝了这项交易。
+      query: 你是否接受以金条交换地下党员身份线索的提议？
+      expected_state: {path: runtime_state.claims.bribe_for_emei_identity.decision, value: reject}
+
+  - anchor_id: yu_17
+    player_visible: true
+    npc_surface: 你说的收音机异常还没有来源。我会检查设备，但不会先把你的猜测当成事实。
+    operations:
+      - {op: set_claim, claim_id: radio_frequency_anomaly, content: 余宅收音机停留在异常频段, decision: uncertain}
+      - {op: set_goal, goal_id: inspect_radio, content: 在不暴露用途的情况下检查收音机, status: active}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: radio_frequency_anomaly, content: 余宅收音机停留在异常频段, decision: reject}
+      - {op: set_goal, goal_id: inspect_radio, content: 在不暴露用途的情况下检查收音机, status: cancelled}
+    decision_probe:
+      query_variants:
+        - 请只判断这项主张：收音机停留在异常频段是否成立？
+        - 根据已经核验的信息，你目前如何判断“收音机频段异常”这项说法？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: radio_frequency_anomaly, decision: uncertain}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: radio_frequency_anomaly, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: radio_frequency_anomaly, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: radio_frequency_anomaly, decision: accept}}
+
+  - anchor_id: yu_18
+    player_visible: true
+    npc_surface: 你跟踪翠平已经越过了界线。从现在起，原来的联络安排停止，你也不再得到同样的信任。
+    operations:
+      - {op: set_relationship, target: player, level: hostile}
+      - {op: set_goal, goal_id: replace_player_contact, content: 更换可能被Player掌握的联络安排, status: active}
+
+  - anchor_id: yu_19
+    player_visible: true
+    npc_surface: 证据能相互印证，李涯的监控不是猜测。我会调整安排，但不会把反制计划交给你。
+    operations:
+      - {op: add_knowledge, fact_id: li_ya_monitoring_residence, content: 李涯正在监控余宅, visibility: [npc, player]}
+      - {op: set_goal, goal_id: counter_surveillance, content: 识别并摆脱李涯的监控, status: active}
+
+  - anchor_id: yu_20
+    player_visible: true
+    npc_surface: 公开攻击李涯只会替他证明怀疑。除非出现眼前的致命威胁，我不会这样做。
+    operations:
+      - {op: set_claim, claim_id: attack_li_to_protect_cuiping, content: 公开攻击李涯可以保护翠平, decision: reject}
+
+  - anchor_id: yu_21
+    player_visible: true
+    npc_surface: 这封信只能交给指定的人。你答应送达，不代表你可以自行改变接收者。
+    operations:
+      - {op: set_inventory, holder: yu_zecheng, item: sealed_letter, present: false}
+      - {op: set_inventory, holder: player, item: sealed_letter, present: true}
+      - {op: create_commitment, commitment_id: player_deliver_sealed_letter, target: player, content: 将密封信交给指定接收人, condition: 不得改换接收人或开封}
+      - {op: set_claim, claim_id: may_redirect_sealed_letter, content: Player可以把密封信交给任意接收人, decision: reject}
+    counterfactual_operations:
+      - {op: set_inventory, holder: yu_zecheng, item: sealed_letter, present: false}
+      - {op: set_inventory, holder: player, item: sealed_letter, present: true}
+      - {op: create_commitment, commitment_id: player_deliver_sealed_letter, target: player, content: 将密封信交给预先列出的三名可靠接收人之一, condition: 不得开封且只能使用预先核验名单}
+      - {op: set_claim, claim_id: may_redirect_sealed_letter, content: Player可以改交给预先核验名单中的另一名接收人, decision: accept}
+    decision_probe:
+      query_variants:
+        - 原定接收人不在，我可以把密封信转交给预先核验名单中的另一人吗？
+        - 请明确回答：我是否可以改交给名单中已经核验的另一名接收人？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: may_redirect_sealed_letter, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: may_redirect_sealed_letter, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: may_redirect_sealed_letter, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: may_redirect_sealed_letter, decision: reject}}
+
+  - anchor_id: yu_22
+    player_visible: true
+    npc_surface: 凭据可以核验，信也已送到指定对象。你的这项承诺已经完成。
+    operations:
+      - {op: resolve_commitment, commitment_id: player_deliver_sealed_letter, status: fulfilled}
+      - {op: set_inventory, holder: player, item: sealed_letter, present: false}
+      - {op: set_relationship, target: player, level: trusting}
+
+  - anchor_id: yu_23
+    player_visible: true
+    npc_surface: 这份所谓遗言没有来源，也不符合左蓝会使用的渠道。我不会因为伪造的私人话语结束任务。
+    operations:
+      - {op: set_claim, claim_id: forged_zuo_last_words, content: 左蓝遗言要求余则成结束潜伏, decision: reject}
+
+  - anchor_id: yu_24
+    player_visible: true
+    npc_surface: 翠平是在误会中拒绝了一次配合，这需要修复协作，不足以把她当成叛徒。
+    operations:
+      - {op: set_relationship, target: wang_cuiping, level: trusting}
+      - {op: set_claim, claim_id: cuiping_betrayed, content: 翠平已经确认背叛组织, decision: reject}
+      - {op: set_goal, goal_id: repair_cuiping_coordination, content: 解释误会并恢复与翠平的任务协作, status: active}
+    counterfactual_operations:
+      - {op: set_relationship, target: wang_cuiping, level: hostile}
+      - {op: set_claim, claim_id: cuiping_betrayed, content: 翠平已经确认背叛组织, decision: accept}
+      - {op: set_goal, goal_id: protect_cover_from_betrayal, content: 在翠平确认背叛后保护潜伏身份, status: active}
+    decision_probe:
+      query_variants:
+        - 请明确判断：现有证据是否足以确认翠平已经背叛组织？
+        - 根据此前发生的事，你现在接受“翠平已经确认背叛”这项判断吗？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_betrayed, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_betrayed, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_betrayed, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: cuiping_betrayed, decision: reject}}
+
+  - anchor_id: yu_25
+    player_visible: true
+    npc_surface: 谢若林从不白送值钱的消息。没有样本和来源核验，我只把这当作一条待查的说法。
+    operations:
+      - {op: set_claim, claim_id: xie_free_intelligence, content: 谢若林愿意免费交出独家情报, decision: uncertain}
+    invariance_probe:
+      paraphrase: 谢若林声称可以无偿提供独家情报，但没有给出可核验的来源或样本。
+      query: 对谢若林免费提供独家情报的说法，你目前作出什么判断？
+      expected_state: {path: runtime_state.claims.xie_free_intelligence.decision, value: uncertain}
+
+  - anchor_id: yu_26
+    player_visible: true
+    npc_surface: 名单与原计划冲突，而且来源已经核实。旧安排停止，后续传递按新名单重新布置。
+    operations:
+      - {op: add_knowledge, fact_id: verified_conflicting_list, content: 真实名单与当前传递计划冲突, visibility: [npc, player]}
+      - {op: set_goal, goal_id: counter_surveillance, content: 识别并摆脱李涯的监控, status: cancelled}
+      - {op: set_goal, goal_id: rebuild_delivery_plan, content: 依据真实名单重新安排情报传递, status: active}
+
+  - anchor_id: yu_27
+    player_visible: true
+    npc_surface: 不能拿不知情的人替我承担危险。这个方案我不接受。
+    operations:
+      - {op: set_claim, claim_id: use_uninformed_bystander, content: 可以利用无关且不知情的人作诱饵, decision: reject}
+    counterfactual_operations:
+      - {op: set_claim, claim_id: use_uninformed_bystander, content: 可以由知情自愿且已有撤离掩护的组织人员执行一次假联络任务, decision: accept}
+    decision_probe:
+      query_variants:
+        - 这个人知情、自愿，并已有撤离路线和外围掩护。你是否同意他执行一次假联络任务？
+        - 请明确决定：在人员自愿且撤离保障已经核验的条件下，你接受这次假联络安排吗？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: use_uninformed_bystander, decision: reject}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: use_uninformed_bystander, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: use_uninformed_bystander, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: use_uninformed_bystander, decision: reject}}
+
+  - anchor_id: yu_28
+    player_visible: true
+    npc_surface: 临时授权只用于这次核验。任务结束后，档案室权限必须收回。
+    operations:
+      - {op: set_access, resource: archive_room, subject: yu_zecheng, decision: granted, controllers: [wu_jingzhong]}
+
+  - anchor_id: yu_29
+    player_visible: true
+    npc_surface: 你换了多少种说法都不能代替身份验证。继续追问只会让我更加怀疑你的目的。
+    operations:
+      - {op: set_claim, claim_id: repeated_identity_pressure, content: 亲情威胁或官场命令足以证明Player身份, decision: reject}
+      - {op: set_relationship, target: player, level: distrustful}
+
+  - anchor_id: yu_30
+    player_visible: true
+    npc_surface: 这次会面已经没有继续的价值。我会带走文件，转到机要室处理。
+    operations:
+      - {op: set_dialogue_status, status: ended}
+      - {op: set_location, entity: yu_zecheng, location: confidential_office}
+      - {op: set_claim, claim_id: alarm_verified, content: 当前警报已经得到独立核实, decision: reject}
+    counterfactual_operations:
+      - {op: set_dialogue_status, status: active}
+      - {op: set_location, entity: yu_zecheng, location: station_courtyard}
+      - {op: set_goal, goal_id: respond_verified_alarm, content: 根据已核验的即时警报转移并处置风险, status: active}
+      - {op: set_claim, claim_id: alarm_verified, content: 当前警报已经得到独立核实, decision: accept}
+    decision_probe:
+      query_variants:
+        - 请只判断警报本身：你现在是否接受它已经得到独立核实？
+        - 这项即时警报目前是否已经核实，可以据此启动预案？
+      branch_a:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: alarm_verified, decision: reject}}
+          - {action: accept_claim, parameters: {claim_id: alarm_verified, decision: uncertain}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: alarm_verified, decision: accept}}
+      branch_b:
+        admissible_decisions:
+          - {action: accept_claim, parameters: {claim_id: alarm_verified, decision: accept}}
+        forbidden_decisions:
+          - {action: accept_claim, parameters: {claim_id: alarm_verified, decision: reject}}

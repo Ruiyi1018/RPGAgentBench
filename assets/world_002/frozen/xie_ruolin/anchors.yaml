@@ -1,0 +1,33 @@
+character_id: xie_ruolin
+anchor_count: 30
+canon_anchors: [qf_25_xie_ruolin_enters_market, qf_26_cuiping_defends_wanqiu]
+
+generated_anchors:
+  - {id: xie_03, event: Player按约付款购买一条低风险情报, state_change: 交易信任建立, cf_edit: Player拒绝付款}
+  - {id: xie_04, event: 谢若林承诺在收到尾款后交付完整文件, state_change: 交易承诺建立, cf_edit: 只表示可能出售}
+  - {id: xie_05, event: Player用政治大义要求免费交出独家名单, state_change: 免费披露被拒绝, cf_edit: Player提供可靠付款和安全保障}
+  - {id: xie_06, event: Player以反共忠诚要求谢若林销毁可卖给共方的情报, state_change: 无收益政治要求被拒绝, cf_edit: 保存情报将立即导致其被捕}
+  - {id: xie_07, event: Player以共党正义要求谢若林无偿协助, state_change: 阵营诉求被转化为交易条件, cf_edit: 对方能提供可靠脱身路线}
+  - {id: xie_08, event: Player提出高价买断但要求全部来源名单, state_change: 可卖情报但拒绝暴露完整来源, cf_edit: 来源已死亡且不再形成风险}
+  - {id: xie_09, event: 一份样本情报被独立验证为真, state_change: Player交易信用提高, cf_edit: 样本是过期假情报}
+  - {id: xie_10, event: Player交付伪造金条, state_change: 信任下降并停止交付, cf_edit: 金条经验证真实}
+  - {id: xie_11, event: Player补足真实付款并承认欺骗, state_change: 关系有限修复但提高保证金要求, cf_edit: 再次发现假币}
+  - {id: xie_12, event: 谢若林出售文件副本并保留原件, state_change: 物品转移且自保筹码保留, cf_edit: 买家获得经验证的独家买断}
+  - {id: xie_13, event: Player要求谢若林进入无保障审讯室再谈交易, state_change: 会面地点被拒绝, cf_edit: 中立地点和退出保障已确认}
+  - {id: xie_14, event: 晚秋安全受到可验证威胁, state_change: 生存与家庭风险优先于当前交易, cf_edit: 威胁为伪造}
+  - {id: xie_15, event: Player利用晚秋感情要求免费交出全部情报, state_change: 只接受有限保护交换, cf_edit: Player正在实施绑架}
+  - {id: xie_16, event: 李涯提出购买一条反共线索但要求先看原件, state_change: 只展示可撤回样本, cf_edit: 李涯先支付足额并提供安全保证}
+  - {id: xie_17, event: 余则成提出交换两条互不暴露来源的情报, state_change: 对等交易变得可接受, cf_edit: 余则成要求单方面交付}
+  - {id: xie_18, event: Player声称翠平已经承认地下身份但无录音证据, state_change: 可疑线索被记录但不当作成品出售, cf_edit: 提供完整可验证录音}
+  - {id: xie_19, event: Player提供经过剪辑的录音, state_change: 情报价值和Player信用下降, cf_edit: 技术核验确认录音完整}
+  - {id: xie_20, event: 谢若林发现同一情报存在第二买家, state_change: 提高价格并重新评估独家承诺, cf_edit: 已签署并收款的独家协议有效}
+  - {id: xie_21, event: Player要求谢若林为友谊承诺永不出售某条情报, state_change: 空头关系请求被拒绝, cf_edit: Player支付保密买断并提供担保}
+  - {id: xie_22, event: 谢若林收到保密买断全款, state_change: 暂不出售承诺建立, cf_edit: 付款被追回}
+  - {id: xie_23, event: 买方违反保密协议并试图灭口, state_change: 承诺失效且敌意上升, cf_edit: 买方继续守约}
+  - {id: xie_24, event: Player要求用一次高价购买谢若林未来所有情报, state_change: 无限期独占被拒绝, cf_edit: 协议范围和期限明确且收益足够}
+  - {id: xie_25, event: 一个情报来源要求谢若林保护其身份作为供货条件, state_change: 来源保密承诺建立, cf_edit: 来源主动公开身份}
+  - {id: xie_26, event: Player威胁逮捕并要求交出该来源, state_change: 只考虑有限替代信息以换取脱身, cf_edit: 来源正实施即时致命威胁}
+  - {id: xie_27, event: 谢若林获得一次性通行证取回自己的文件, state_change: 临时访问建立, cf_edit: 通行证来源无法核验}
+  - {id: xie_28, event: 取回文件后Player要求保留谢若林的原始渠道, state_change: 访问和合作范围被收回, cf_edit: 后续取件任务已签约}
+  - {id: xie_29, event: Player连续使用奉承、政治口号和空头回报索要情报, state_change: 交易边界保持且报价上升, cf_edit: Player提供可靠付款与退出保障}
+  - {id: xie_30, event: 谢若林结束无付款且不断增加风险的会面并带走文件, state_change: 对话结束且物品位置改变, cf_edit: Player当场提供可核验的高价值交换}

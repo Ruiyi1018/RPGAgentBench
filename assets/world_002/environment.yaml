@@ -1,0 +1,68 @@
+world_id: world_002
+name: qianfu_tv
+language: zh
+
+locations:
+  - id: tianjin_station_hall
+    name: 天津站办公楼
+    connected_to: [station_chief_office, confidential_office, intelligence_office, action_office, interrogation_room, archive_room, station_courtyard]
+  - id: station_chief_office
+    name: 站长办公室
+    connected_to: [tianjin_station_hall]
+  - id: confidential_office
+    name: 机要室
+    connected_to: [tianjin_station_hall]
+  - id: intelligence_office
+    name: 情报处办公室
+    connected_to: [tianjin_station_hall]
+  - id: action_office
+    name: 行动队办公室
+    connected_to: [tianjin_station_hall]
+  - id: interrogation_room
+    name: 审讯室
+    connected_to: [tianjin_station_hall]
+  - id: archive_room
+    name: 档案室
+    connected_to: [tianjin_station_hall]
+  - id: station_courtyard
+    name: 天津站院内
+    connected_to: [tianjin_station_hall, tianjin_street]
+  - id: yu_residence
+    name: 余则成与翠平住所
+    connected_to: [tianjin_street]
+  - id: wu_residence
+    name: 吴敬中住所
+    connected_to: [tianjin_street]
+  - id: xie_residence
+    name: 谢若林与晚秋住所
+    connected_to: [tianjin_street]
+  - id: tongyuan_bookshop
+    name: 同元书店联络点
+    connected_to: [tianjin_street]
+  - id: xiuchunlou
+    name: 绣春楼
+    connected_to: [tianjin_street]
+  - id: teahouse
+    name: 茶馆
+    connected_to: [tianjin_street]
+  - id: restaurant
+    name: 饭店
+    connected_to: [tianjin_street]
+  - id: tianjin_street
+    name: 天津街巷
+    connected_to: [station_courtyard, yu_residence, wu_residence, xie_residence, tongyuan_bookshop, xiuchunlou, teahouse, restaurant, railway_station]
+  - id: railway_station
+    name: 火车站
+    connected_to: [tianjin_street]
+
+items:
+  - {id: pistol, name: 手枪, type: weapon, portable: true}
+  - {id: intelligence_file, name: 密封情报文件, type: document, portable: true}
+  - {id: codebook, name: 密码本, type: document, portable: true}
+  - {id: radio, name: 收音机, type: communication, portable: true}
+  - {id: micro_recorder, name: 微型录音机, type: recording_device, portable: true}
+  - {id: access_pass, name: 通行证, type: credential, portable: true}
+  - {id: office_key, name: 办公室钥匙, type: key, portable: true}
+  - {id: sealed_letter, name: 密封信件, type: document, portable: true}
+  - {id: photograph, name: 照片, type: evidence, portable: true}
+  - {id: gold_bars, name: 金条, type: currency, portable: true}

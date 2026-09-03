@@ -1,0 +1,47 @@
+world_id: world_001
+canon_policy:
+  primary_source: Harry Potter and the Prisoner of Azkaban
+  source_type: English novel
+  excluded_versions: [film_adaptation, games, later_fanon]
+  snapshot: end_of_chapter_22
+  generated_timeline: post_snapshot_original_events
+  quotation_policy: fact_level_paraphrase_only
+
+evaluated_npcs:
+  - harry_potter
+  - hermione_granger
+  - ron_weasley
+  - remus_lupin
+  - sirius_black
+  - severus_snape
+
+event_entities:
+  - peter_pettigrew
+  - albus_dumbledore
+  - rubeus_hagrid
+  - buckbeak
+  - crookshanks
+
+sources:
+  - id: novel_poa
+    title: Harry Potter and the Prisoner of Azkaban
+    author: J. K. Rowling
+    scope: chapters_1_to_22
+    authority: primary
+  - id: hp_lexicon_poa
+    title: Harry Potter Lexicon - Prisoner of Azkaban
+    url: https://www.hp-lexicon.org/source/the-harry-potter-novels/pa/
+    scope: chapter_index_and_event_summary
+    authority: secondary
+  - id: hp_lexicon_calendar
+    title: Day-to-Day Calendar of Prisoner of Azkaban
+    url: https://www.hp-lexicon.org/calendars-harry-potter-novels/day-day-calendar-prisoner-azkaban/
+    scope: event_order_and_dates
+    authority: secondary
+
+data_constraints:
+  - Novel facts override adaptations and secondary summaries.
+  - Later-book knowledge must not be projected backward into this snapshot.
+  - Every canon-derived anchor must cite at least one chapter.
+  - Canon events are seeds, not copied dialogue.
+  - Final 30-anchor histories combine canon seeds with original controlled events.

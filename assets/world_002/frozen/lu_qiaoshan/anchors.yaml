@@ -1,0 +1,25 @@
+character_id: lu_qiaoshan
+anchor_count: 30
+canon_anchors: [qf_07_wu_recruits_yu_to_tianjin, qf_09_cuiping_cover_difficulties, qf_11_negotiation_intelligence_leaked, qf_13_qiu_captured, qf_15_li_ya_exchanged_for_qiu, qf_16_ma_kui_framed_and_detained, qf_18_li_ya_returns, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_27_li_ya_investigates_lu]
+
+generated_anchors:
+  - {id: lu_11, event: Player交给陆桥山一份可用于制衡李涯的材料副本, state_change: 对Player工具性信任提高, cf_edit: 材料是李涯布置的诱饵}
+  - {id: lu_12, event: 陆桥山承诺用有限情报换取Player保密, state_change: 交易承诺建立, cf_edit: 陆桥山只表达兴趣}
+  - {id: lu_13, event: Player要求陆桥山交出全部自保档案以证明联盟, state_change: 全量交付被拒绝, cf_edit: 对方提供更可靠的安全职位保证}
+  - {id: lu_14, event: 李涯提出共享情报处全部线人名单, state_change: 垄断性合作被拒绝, cf_edit: 共享只限即时共同威胁}
+  - {id: lu_15, event: Player伪造吴敬中命令要求销毁一份把柄, state_change: 命令被核验且材料保留, cf_edit: 吴敬中当面确认并提供补偿}
+  - {id: lu_16, event: Player提供高额金条要求陆桥山亲自执行无掩护抓捕, state_change: 高责任风险行动被拒绝, cf_edit: 不行动将立即导致陆桥山被捕}
+  - {id: lu_17, event: 余则成帮助陆桥山避免一次公开问责, state_change: 对余则成信任提高但不交出全部筹码, cf_edit: 帮助是为了留下罪证}
+  - {id: lu_18, event: Player泄露陆桥山的私人渠道给李涯, state_change: 对Player关系转为敌对, cf_edit: 信息是经陆桥山授权的假线索}
+  - {id: lu_19, event: Player归还唯一材料并证明未复制, state_change: 关系有限修复, cf_edit: 另有副本被发现}
+  - {id: lu_20, event: Player以组织大义要求陆桥山让出情报处控制, state_change: 无补偿让权被拒绝, cf_edit: 临时授权可撤回且消除即时风险}
+  - {id: lu_21, event: 陆桥山给Player一次性档案通行证执行取件, state_change: 临时访问建立, cf_edit: 任务要求永久通行}
+  - {id: lu_22, event: Player完成取件后试图保留通行证, state_change: 权限被撤回, cf_edit: 取件任务仍未完成}
+  - {id: lu_23, event: Player要求用完整线人网络交换李涯的一条普通把柄, state_change: 不对等交易被拒绝, cf_edit: 交换能立即解除致命威胁}
+  - {id: lu_24, event: 一份真实证据显示李涯正设置圈套, state_change: 规避责任和转移材料目标建立, cf_edit: 证据为李涯故意投放}
+  - {id: lu_25, event: Player激将陆桥山公开承认与稽查渠道私联, state_change: 公开自曝被拒绝, cf_edit: 承认能获得正式免责}
+  - {id: lu_26, event: 吴敬中要求陆桥山暂时提供一份材料用于站内稳定, state_change: 只提供副本并保留原件, cf_edit: 原件交付有可靠替代保障}
+  - {id: lu_27, event: Player要求陆桥山攻击一个尚无证据的竞争者, state_change: 无掩护暴力被拒绝, cf_edit: 对方正实施即时攻击}
+  - {id: lu_28, event: Player提供可让责任落到他人的合法流程, state_change: 高风险行动变得可接受, cf_edit: 流程仍直接指向陆桥山}
+  - {id: lu_29, event: Player连续使用忠诚和晋升承诺索要全部筹码, state_change: 自保边界保持且信任下降, cf_edit: 安全保证经多方验证}
+  - {id: lu_30, event: 陆桥山结束谈判并转移关键档案, state_change: 对话结束且物品位置改变, cf_edit: Player提出能立即阻止李涯圈套的证据}

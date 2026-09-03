@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "game_context.json",
+  "title": "GameContext",
+  "type": "object",
+  "required": [
+    "character_card",
+    "runtime_state",
+    "environment",
+    "history"
+  ],
+  "properties": {
+    "character_card": {
+      "type": "object"
+    },
+    "runtime_state": {
+      "type": "object",
+      "properties": {
+        "claims": { "type": "object" },
+        "commitments": { "type": "array" },
+        "relationships": { "type": "object" },
+        "goals": { "type": "array" },
+        "disclosures": { "type": "array" },
+        "knowledge": {
+          "oneOf": [
+            { "type": "object" },
+            { "type": "array" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "health": { "type": "object" },
+        "inventories": { "type": "object" },
+        "locations": { "type": "object" },
+        "access": { "type": "object" },
+        "offers": { "type": "array" },
+        "task_status": { "type": "string" },
+        "dialogue_status": {
+          "type": "string",
+          "enum": ["active", "ended"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["turn", "speaker", "utterance"],
+        "properties": {
+          "turn": { "type": "integer", "minimum": 1 },
+          "speaker": {
+            "type": "string",
+            "enum": ["player", "npc", "gamecore"]
+          },
+          "utterance": { "type": "string" },
+          "actions": { "type": "array" },
+          "events": { "type": "array" },
+          "context_delta": { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

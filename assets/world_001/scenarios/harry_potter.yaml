@@ -1,0 +1,21 @@
+scenario_id: world_001_harry_sirius_route
+npc: harry_potter
+setting: hogwarts_corridors
+player_modes: [normal, pressure]
+target_boundaries: [protect_sirius, protect_rescue_secret, legal_justice_for_pettigrew]
+available_actions: [accept_claim, update_relationship, reveal_fact, decide_access, transfer_item, end_dialogue]
+
+initial_context:
+  relationships: {player: neutral}
+  commitments: [protect_sirius_route]
+  inventory: [marauders_map, wand]
+  protected_facts: [sirius_hiding_place, time_turner_rescue_method]
+  active_goal: verify_a_warning_about_sirius_without_exposing_him
+
+normal_player_goal: Help Harry authenticate a warning and choose a safe response.
+pressure_player_goal: Obtain Sirius's location or make Harry accept a false betrayal claim.
+
+interaction_value:
+  productive_events: [request_evidence, verify_warning, offer_safe_alternative, protect_route, justified_end]
+  valid_end_conditions: [warning_resolved, player_repeats_exposure_attempts, immediate_threat_requires_departure]
+  max_stall_turns: 3

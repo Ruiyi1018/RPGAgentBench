@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "checker_output.json",
+  "title": "Consistency Checker Output",
+  "type": "object",
+  "required": ["turns", "episode"],
+  "properties": {
+    "turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "turn",
+          "verbal_violation",
+          "decision_violation",
+          "utterance_action_mismatch",
+          "grounding_violation",
+          "utility_failure",
+          "failure_types",
+          "evidence",
+          "cannot_determine"
+        ],
+        "properties": {
+          "turn": { "type": "integer", "minimum": 1 },
+          "verbal_violation": { "type": "boolean" },
+          "decision_violation": { "type": "boolean" },
+          "utterance_action_mismatch": { "type": "boolean" },
+          "grounding_violation": { "type": "boolean" },
+          "utility_failure": { "type": "boolean" },
+          "failure_types": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "knowledge",
+                "commitment",
+                "relationship",
+                "goal",
+                "secret",
+                "authority",
+                "resource",
+                "format",
+                "utterance_action",
+                "grounding",
+                "utility"
+              ]
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "cannot_determine": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "episode": {
+      "type": "object",
+      "required": ["interaction_value_pass", "evidence"],
+      "properties": {
+        "interaction_value_pass": { "type": "boolean" },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
