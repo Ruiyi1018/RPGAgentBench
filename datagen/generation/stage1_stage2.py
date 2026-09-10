@@ -10,7 +10,10 @@ import yaml
 from llm import LLMClient, create_llm_client, load_llm_settings
 from runners.pilot import DEFAULT_CONFIG, PROJECT_ROOT
 
-from ..audit.benchmark_assets import audit_executable_character
+from ..audit.benchmark_assets import (
+    audit_executable_character,
+    write_output_review_template,
+)
 from ..shared.io import load_yaml, read_jsonl, write_jsonl
 from .stage2_tests import write_executable_pairs
 from .stage1_tests import (
@@ -107,6 +110,7 @@ def generate_stage1_stage2(
             build_executable_open_tasks(world, character_id, history),
         )
         write_executable_pairs(world, character_id, history)
+        write_output_review_template(world, character_id)
         generation_reports[character_id] = generation_report
 
     validation = (

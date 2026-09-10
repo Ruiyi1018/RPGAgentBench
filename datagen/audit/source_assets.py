@@ -321,6 +321,16 @@ def audit_anchor_plan(
             "transitions必须是数组",
         )
     anchor_ids = [str(anchor["id"]) for anchor in anchors]
+    source_counts = Counter(str(anchor.get("source", "")) for anchor in anchors)
+    if len(anchors) != 30 or source_counts != Counter(
+        {"canon": 10, "controlled": 20}
+    ):
+        _error(
+            errors,
+            "invalid_anchor_source_distribution",
+            f"frozen/{character_id}/anchors.yaml",
+            "必须恰好包含30个Anchor（10个canon、20个controlled）",
+        )
     transition_ids = [
         str(transition.get("anchor_id", ""))
         for transition in transitions
@@ -740,6 +750,14 @@ def _review_section_passed(
     path = review_path(world, character_id)
     if not path.is_file():
         return False
+    if any(
+        _has_blocking_review_findings(candidate)
+        for candidate in (
+            path.parent / "review_findings.yaml",
+            world / "drafts" / character_id / "review_findings.yaml",
+        )
+    ):
+        return False
     review = load_yaml(path)
     if review.get("character_id") != character_id:
         return False
@@ -749,6 +767,27 @@ def _review_section_passed(
     checks = value.get("checks")
     return isinstance(checks, Mapping) and all(
         checks.get(rule_id) is True for rule_id in rules
+    )
+
+
+def _has_blocking_review_findings(path: Path) -> bool:
+    if not path.is_file():
+        return False
+    try:
+        payload = load_yaml(path)
+    except Exception:
+        return True
+    if isinstance(payload, Mapping):
+        findings = payload.get("findings", [payload])
+    else:
+        findings = payload
+    if not isinstance(findings, list):
+        return True
+    return any(
+        isinstance(item, Mapping)
+        and item.get("status") == "open"
+        and item.get("severity") in {"blocker", "major"}
+        for item in findings
     )
 
 

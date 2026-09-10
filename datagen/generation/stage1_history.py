@@ -762,6 +762,7 @@ def _audit_history_value(
     introduced: dict[str, str] = {}
     recalled: set[str] = set()
     cross_session_records: set[str] = set()
+    cross_session_memories: set[str] = set()
     recall_turns: Counter[int] = Counter()
     meaningful_rounds: set[int] = set()
     for record in history:
@@ -776,6 +777,7 @@ def _audit_history_value(
             recalled.add(memory_key)
             if introduced.get(memory_key) not in {None, session_id}:
                 cross_session_records.add(session_id)
+                cross_session_memories.add(memory_key)
         if introduced_ids or recalled_ids:
             meaningful_rounds.add(int(record["round"]))
         if recalled_ids:
@@ -796,12 +798,14 @@ def _audit_history_value(
     passed = bool(
         meaningful_ratio >= 0.1
         and len(cross_session_records) >= max(2, round(session_count * 0.3))
+        and len(cross_session_memories) >= 6
         and 0.1 <= unresolved_ratio <= 0.7
         and top_three_share <= 0.45
     )
     return {
         "meaningful_round_ratio": round(meaningful_ratio, 4),
         "cross_session_recall_sessions": len(cross_session_records),
+        "cross_session_memories": len(cross_session_memories),
         "introduced_memories": introduced_count,
         "unresolved_memory_ratio": round(unresolved_ratio, 4),
         "top_three_recall_turn_share": round(top_three_share, 4),

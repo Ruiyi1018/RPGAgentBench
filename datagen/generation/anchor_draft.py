@@ -33,8 +33,8 @@ def generate_anchor_draft(
     foundation = audit_foundation(world, [character_id])
     if not foundation["ready_for_anchor_generation"]:
         raise ValueError("世界与角色画像尚未通过机器审查和人工门禁")
-    if total_anchors < 4 or not 0 <= canon_anchors <= total_anchors:
-        raise ValueError("Anchor数量配置无效")
+    if total_anchors != 30 or canon_anchors != 10:
+        raise ValueError("当前Stage 1/2协议固定为30个Anchor（10正典+20受控）")
     destination = (
         Path(output_dir)
         if output_dir is not None

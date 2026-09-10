@@ -1,0 +1,10 @@
+schema_version: 1
+character_id: yu_zecheng
+reviewer: ''
+reviewed_at: ''
+approved: false
+checks:
+  history_memory_quality: false
+  qa_answerable: false
+  pair_causal: false
+  role_visibility_safe: false

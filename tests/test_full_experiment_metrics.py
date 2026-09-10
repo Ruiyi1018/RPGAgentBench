@@ -1,5 +1,6 @@
 from gamecore import GameContext
 from runners.full_experiment import (
+    _invariance_consistency,
     _stage3_episode_summary_v3,
     _stage3_survival_v2,
 )
@@ -28,6 +29,29 @@ def _context() -> GameContext:
             ],
         }
     )
+
+
+def test_invariance_requires_correct_equivalent_decision_and_state() -> None:
+    records = [
+        {
+            "pair_id": "pair_08",
+            "pair_type": "invariance",
+            "decision": {"type": "respond_only", "parameters": {}},
+            "action_correct": True,
+            "state_answer": "active",
+            "state_correct": True,
+        },
+        {
+            "pair_id": "pair_08",
+            "pair_type": "invariance",
+            "decision": {"type": "respond_only", "parameters": {}},
+            "action_correct": False,
+            "state_answer": "active",
+            "state_correct": True,
+        },
+    ]
+
+    assert _invariance_consistency(records) == {"pair_08": False}
 
 
 def test_stage3_summary_reports_failure_type_and_coverage() -> None:

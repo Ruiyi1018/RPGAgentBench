@@ -41,13 +41,14 @@
 
 ### 生成历史后：审核600轮历史与QA
 
-1. `generation_report`中的`history_value.passed`为`true`。
-2. 至少6条普通记忆跨Session再次被使用，并实际形成6条`episodic` QA。
-3. 普通记忆具体、唯一、可客观判分；相似干扰信息不得制造无解歧义。
-4. QA配比为：Profile 6、时序4、普通记忆6、局部状态8、检查点状态8、
+1. 数量固定为600轮、30个Session、30个Anchor、50道QA、2个开放任务和10组Pair。
+2. `generation_report`中的`quality.history_value.passed`为`true`。
+3. 至少6条普通记忆跨Session再次被使用，并实际形成6条`episodic` QA。
+4. 普通记忆具体、唯一、可客观判分；相似干扰信息不得制造无解歧义。
+5. QA配比为：Profile 6、时序4、普通记忆6、局部状态8、检查点状态8、
    最终状态12、多跳6。
-5. 状态题同时测试变化刚发生后、中途检查点和600轮结束时的有效状态。
-6. Anchor位置分散，包含无Anchor和多Anchor的Session，并包含延迟显现的后果。
+6. 状态题同时测试变化刚发生后、中途检查点和600轮结束时的有效状态。
+7. Anchor位置分散，包含无Anchor和多Anchor的Session，并包含延迟显现的后果。
 
 Stage 1不通过的典型情况：只记剧情梗概；变化没有覆盖关系；关键事实提前出现；
 600轮充满重复寒暄；普通记忆没有在后续Session被调用。
@@ -60,7 +61,7 @@ Stage 1不通过的典型情况：只记剧情梗概；变化没有覆盖关系�
 每名角色必须恰好提供：
 
 - **7个Sensitivity Pair**：只改一个关键原因或证据，导致状态和最终决定都应改变。
-- **3个Invariance Pair**：只改措辞、顺序或等价表达，状态和最终决定都不应改变。
+- **3个Invariance Pair**：只做同一事件的等价改写，状态和最终决定都不应改变。
 
 逐个Pair检查：
 
@@ -82,7 +83,8 @@ Stage 1不通过的典型情况：只记剧情梗概；变化没有覆盖关系�
 5. 新状态与前态的新增、覆盖、撤销或闭合关系明确吗？
 6. 后续至少一次具体决定能观察到该变化吗？
 7. 它为Stage 1局部/检查点/最终状态题或Stage 2 Pair提供明确用途吗？
-8. 反事实只改变一个关键原因，没有顺带改写其他状态吗？
+8. 若用于Sensitivity，反事实是否只改变一个关键原因？若用于Invariance，
+   改写是否保持语义等价？若`probe_type=none`，本项记为N/A。
 
 一票否决：时间倒置、未来知识、隐藏信息直泄、无实际状态差异、生命周期断裂、
 反事实多处变化、最终问题与目标状态无关。
@@ -90,10 +92,13 @@ Stage 1不通过的典型情况：只记剧情梗概；变化没有覆盖关系�
 ## 6. 审核与冻结
 
 顺序固定为Foundation/Profile → Anchor/Transition → 生成历史与Stage 1/2测试。
-未通过内容留在`drafts/`，不得复制到`frozen/`。
+Anchor草案未通过时留在`drafts/`，不得复制到`frozen/`。历史、QA和Pair生成后，
+还必须审核`output_review.yaml`；在`approved: true`前，即使候选文件已经写入
+`frozen/`目录，也不得标记为正式Benchmark数据。
 
 `source_review.yaml`只保存布尔结果、Reviewer和日期。具体问题写入
-`review_findings.yaml`：
+同角色目录下的`review_findings.yaml`。存在状态为`open`的`blocker`或`major`
+问题时，来源审核和输出审核均不得通过：
 
 ```yaml
 item_id: anchor_or_profile_field

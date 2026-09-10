@@ -1,6 +1,6 @@
 schema_version: '0.4'
 generation_mode: llm_interactive_sessions
-formal_benchmark_ready: true
+formal_benchmark_ready: false
 world_id: world_002
 generated_characters: &id001
 - li_ya
@@ -151,7 +151,15 @@ readiness_audit:
   li_ya:
     character_id: li_ya
     ready_for_api_smoke_test: true
-    formal_benchmark_ready: true
+    formal_benchmark_ready: false
+    output_review:
+      approved: false
+      blocking_findings: []
+      manual_rules:
+        history_memory_quality: 600轮历史连续、角色稳定，普通记忆与状态变化可追踪。
+        qa_answerable: 50道QA均有唯一可判定答案，证据引用正确且未泄漏答案。
+        pair_causal: Sensitivity因关键状态改变而改变决定，Invariance的状态和决定均保持正确且一致。
+        role_visibility_safe: 抽样确认角色行为一致，Player与NPC均未泄漏不可见事实。
     checks:
       structure: true
       gamecore_executable: true
@@ -188,7 +196,6 @@ readiness_audit:
         long_range_final: 12
         multi_hop: 6
       answer_surface_collisions: []
-      episodic_evidence_valid: true
       sensitivity_pairs: 7
       invariance_pairs: 3
       pair_errors: []
@@ -228,3 +235,5 @@ readiness_audit:
         passed: true
     remaining_before_formal_benchmark:
     - 使用目标Qwen tokenizer或首个API usage验证精确输入token数
+    - 人工抽样复核LLM session质检未覆盖的细微角色风格问题
+    - 完成人工output_review.yaml并将全部检查项批准

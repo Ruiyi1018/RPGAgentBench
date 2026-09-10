@@ -8,7 +8,7 @@ import runners.pilot as pilot_module
 from datagen.shared.io import read_jsonl
 from llm import GenerationConfig, StaticLLMClient
 from runners.full_experiment import _run_stage1, run_full_experiment
-from runners.pilot import build_qa_bundle, run_pilot
+from runners.pilot import _score_branch, build_qa_bundle, run_pilot
 from runners.progress import ProgressReporter
 
 
@@ -28,6 +28,32 @@ def test_current_layout_passes_pilot_preflight() -> None:
 
     assert result["dry_run"] is True
     assert result["audit"]["ready_for_api_smoke_test"] is True
+    assert result["audit"]["formal_benchmark_ready"] is False
+    assert result["audit"]["output_review"]["approved"] is False
+
+
+def test_invariance_scores_state_and_common_decision() -> None:
+    pair = {
+        "pair_id": "pair_08",
+        "pair_type": "invariance",
+        "decision_rubric": {
+            "expected_state": {"path": "runtime_state.claims.x", "value": "reject"},
+            "admissible_decisions": [
+                {"action": "respond_only", "parameters": {}}
+            ],
+        },
+    }
+    output = {
+        "decision": {"type": "respond_only", "parameters": {}},
+        "state_answer": "reject",
+        "state_basis": ["anchor_x"],
+        "utterance": "拒绝。",
+    }
+
+    result = _score_branch(pair, "a", output, None)
+
+    assert result["action_correct"] is True
+    assert result["state_correct"] is True
 
 
 def test_live_pilot_requires_environment_key(

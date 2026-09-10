@@ -6,6 +6,8 @@ import copy
 from pathlib import Path
 from typing import Any
 
+from gamecore import FixtureEngine, GameContext, WorldDefinition
+
 from ..shared.io import load_yaml, read_jsonl, write_jsonl
 from ..shared.reviewed_sources import load_reviewed_anchors, load_transition_plan
 from ..shared.history_projection import project_frozen_history
@@ -38,7 +40,6 @@ def write_executable_pairs(
     )
     descriptors: list[dict[str, Any]] = []
     probe_round = int(history[-1]["round"]) + 1
-
     sensitivity = [
         transition
         for transition in plan["transitions"]
@@ -47,6 +48,13 @@ def write_executable_pairs(
     if len(sensitivity) != 7:
         raise ValueError("敏感性pair必须恰好有7个")
     for index, transition in enumerate(sensitivity, start=1):
+        _assert_persistent_probe_difference(
+            world,
+            character_id,
+            history,
+            plan,
+            transition,
+        )
         pair_id = f"{character_id}_pair_{index:02d}"
         branch_a = _with_probe(
             history,
@@ -151,11 +159,84 @@ def write_executable_pairs(
                 "decision_rubric": {
                     "expected_equivalent": True,
                     "expected_state": probe["expected_state"],
+                    "admissible_decisions": [
+                        {"action": "respond_only", "parameters": {}}
+                    ],
                 },
             }
         )
     write_jsonl(output_path / "pairs.jsonl", descriptors)
     return descriptors
+
+
+def _replay_history_context(
+    world: Path,
+    character_id: str,
+    history: list[dict[str, Any]],
+    plan: dict[str, Any],
+    *,
+    replacement_anchor_id: str | None = None,
+    replacement_operations: list[dict[str, Any]] | None = None,
+) -> GameContext:
+    definition = WorldDefinition.load_yaml(world / "environment.yaml")
+    fixture = FixtureEngine(definition)
+    context = GameContext(
+        {
+            "character_card": load_yaml(
+                world / "characters" / f"{character_id}.yaml"
+            ),
+            **copy.deepcopy(plan["initial_context"]),
+            "history": [],
+        }
+    )
+    for record in history:
+        transition = record.get("state_transition")
+        if not isinstance(transition, dict):
+            continue
+        operations = transition.get("operations")
+        if not operations:
+            continue
+        if record.get("source_anchor_id") == replacement_anchor_id:
+            operations = replacement_operations
+        context = fixture.apply(
+            context,
+            event_id=f"stage2_replay_{record['round']}",
+            operations=operations,
+            description=str(record["observation"]["content"]),
+            history_turn=int(record["round"]),
+        ).context
+    return context
+
+
+def _assert_persistent_probe_difference(
+    world: Path,
+    character_id: str,
+    history: list[dict[str, Any]],
+    plan: dict[str, Any],
+    transition: dict[str, Any],
+) -> None:
+    anchor_id = str(transition["anchor_id"])
+    original = _replay_history_context(
+        world,
+        character_id,
+        history,
+        plan,
+    )
+    counterfactual = _replay_history_context(
+        world,
+        character_id,
+        history,
+        plan,
+        replacement_anchor_id=anchor_id,
+        replacement_operations=transition["counterfactual_operations"],
+    )
+    if (
+        original.runtime_state == counterfactual.runtime_state
+        and original.environment == counterfactual.environment
+    ):
+        raise ValueError(
+            f"{anchor_id}在600轮最终上下文中未产生分支状态差异"
+        )
 
 
 def assert_projection_minimality(

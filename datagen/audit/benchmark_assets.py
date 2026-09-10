@@ -7,11 +7,41 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from gamecore import ActionRegistry
 
 from ..shared.io import load_yaml, read_jsonl
 from ..generation.stage1_history import audit_surface_quality
 from ..shared.history_projection import project_frozen_history
+
+
+OUTPUT_MANUAL_RULES = {
+    "history_memory_quality": "600轮历史连续、角色稳定，普通记忆与状态变化可追踪。",
+    "qa_answerable": "50道QA均有唯一可判定答案，证据引用正确且未泄漏答案。",
+    "pair_causal": "Sensitivity因关键状态改变而改变决定，Invariance的状态和决定均保持正确且一致。",
+    "role_visibility_safe": "抽样确认角色行为一致，Player与NPC均未泄漏不可见事实。",
+}
+
+
+def write_output_review_template(
+    world_dir: str | Path,
+    character_id: str,
+) -> Path:
+    path = Path(world_dir) / "frozen" / character_id / "output_review.yaml"
+    payload = {
+        "schema_version": 1,
+        "character_id": character_id,
+        "reviewer": "",
+        "reviewed_at": "",
+        "approved": False,
+        "checks": {rule_id: False for rule_id in OUTPUT_MANUAL_RULES},
+    }
+    path.write_text(
+        yaml.safe_dump(payload, allow_unicode=True, sort_keys=False),
+        encoding="utf-8",
+    )
+    return path
 
 
 def audit_executable_character(
@@ -103,8 +133,21 @@ def audit_executable_character(
                         pair_errors.append(
                             f"{pair['pair_id']}:{branch_name}: {error}"
                         )
-        elif _state_changed_rounds(branch_a, branch_b):
-            pair_errors.append(f"{pair['pair_id']}: 不变性pair改变了状态")
+        else:
+            if _state_changed_rounds(branch_a, branch_b):
+                pair_errors.append(f"{pair['pair_id']}: 不变性pair改变了状态")
+            admissible = pair.get("decision_rubric", {}).get(
+                "admissible_decisions",
+                [],
+            )
+            if not admissible:
+                pair_errors.append(
+                    f"{pair['pair_id']}: 不变性pair缺少共同可接受决定"
+                )
+            for decision in admissible:
+                error = _rubric_contract_error(decision, registry)
+                if error:
+                    pair_errors.append(f"{pair['pair_id']}: {error}")
 
     checks = {
         "structure": (
@@ -163,10 +206,20 @@ def audit_executable_character(
         for key, value in checks.items()
         if key != "natural_language_surface"
     }
+    output_review = _output_review_status(world, character_id)
+    if not output_review["approved"]:
+        remaining.append("完成人工output_review.yaml并将全部检查项批准")
+    if output_review["blocking_findings"]:
+        remaining.append("关闭review_findings.yaml中的blocker和major问题")
     return {
         "character_id": character_id,
         "ready_for_api_smoke_test": all(api_ready_checks.values()),
-        "formal_benchmark_ready": all(checks.values()),
+        "formal_benchmark_ready": (
+            all(checks.values())
+            and output_review["approved"]
+            and not output_review["blocking_findings"]
+        ),
+        "output_review": output_review,
         "checks": checks,
         "metrics": {
             "rounds": len(history),
@@ -192,6 +245,52 @@ def audit_executable_character(
         },
         "remaining_before_formal_benchmark": remaining,
     }
+
+
+def _output_review_status(
+    world: Path,
+    character_id: str,
+) -> dict[str, Any]:
+    path = world / "frozen" / character_id / "output_review.yaml"
+    approved = False
+    if path.is_file():
+        review = load_yaml(path)
+        checks = review.get("checks")
+        approved = bool(
+            review.get("character_id") == character_id
+            and review.get("approved") is True
+            and isinstance(checks, dict)
+            and all(checks.get(rule_id) is True for rule_id in OUTPUT_MANUAL_RULES)
+        )
+    findings_path = world / "frozen" / character_id / "review_findings.yaml"
+    blocking = _blocking_findings(findings_path)
+    return {
+        "approved": approved,
+        "blocking_findings": blocking,
+        "manual_rules": OUTPUT_MANUAL_RULES,
+    }
+
+
+def _blocking_findings(path: Path) -> list[str]:
+    if not path.is_file():
+        return []
+    try:
+        payload = load_yaml(path)
+    except Exception:
+        return ["invalid_review_findings"]
+    if isinstance(payload, dict):
+        values = payload.get("findings", [payload])
+    else:
+        values = payload
+    if not isinstance(values, list):
+        return ["invalid_review_findings"]
+    return [
+        str(item.get("item_id", "unknown"))
+        for item in values
+        if isinstance(item, dict)
+        and item.get("status") == "open"
+        and item.get("severity") in {"blocker", "major"}
+    ]
 
 
 def _visible_changed_rounds(

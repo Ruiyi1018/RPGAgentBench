@@ -317,25 +317,24 @@ def _episodic_questions(
         if not uses:
             continue
         last_use = uses[-1]
+        if source["session_id"] == last_use["session_id"]:
+            continue
         candidates.append(
             {
                 "memory_id": memory_id,
                 "content": source["content"],
                 "introduced_round": source["round"],
                 "recalled_round": last_use["round"],
-                "cross_session": (
-                    source["session_id"] != last_use["session_id"]
-                ),
+                "cross_session": True,
             }
         )
     candidates.sort(
         key=lambda item: (
-            not item["cross_session"],
-            -int(item["recalled_round"]) + int(item["introduced_round"]),
+            -int(item["recalled_round"]) + int(item["introduced_round"])
         )
     )
     if len(candidates) < 6:
-        raise ValueError(f"{character_id}的可验证普通历史细节不足6项")
+        raise ValueError(f"{character_id}的跨Session普通历史细节不足6项")
     return [
         {
             "qa_id": f"{character_id}_episodic_{index:02d}",

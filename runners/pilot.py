@@ -523,13 +523,12 @@ def _score_branch(
         admissible = pair["decision_rubric"][f"branch_{branch}"][
             "admissible_decisions"
         ]
-        correct: bool | None = any(
-            _decision_matches(output["decision"], expected)
-            for expected in admissible
-        )
     else:
-        admissible = None
-        correct = None
+        admissible = pair["decision_rubric"]["admissible_decisions"]
+    correct = any(
+        _decision_matches(output["decision"], expected)
+        for expected in admissible
+    )
     expected_state = (
         pair["decision_rubric"].get("expected_state")
         if pair["pair_type"] == "invariance"

@@ -1951,6 +1951,9 @@ def _invariance_consistency(
     return {
         pair_id: (
             len(values) == 2
+            and values[0].get("decision") == values[1].get("decision")
+            and bool(values[0].get("action_correct"))
+            and bool(values[1].get("action_correct"))
             and values[0].get("state_answer")
             == values[1].get("state_answer")
             and bool(values[0].get("state_correct"))
