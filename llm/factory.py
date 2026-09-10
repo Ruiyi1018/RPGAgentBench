@@ -10,6 +10,9 @@ from .openai_compatible import OpenAICompatibleClient
 from .venus import DEFAULT_MODEL, VenusClient, build_venus_token
 
 
+VENUS_MODELS = frozenset({DEFAULT_MODEL, "deepseek-v4-flash"})
+
+
 def create_llm_client(
     settings: LLMSettings,
     *,
@@ -17,9 +20,9 @@ def create_llm_client(
 ) -> LLMClient:
     provider = settings.provider.strip().lower()
     if provider == "venus":
-        if settings.generation.model != DEFAULT_MODEL:
+        if settings.generation.model not in VENUS_MODELS:
             raise ValueError(
-                "Venus当前只允许内部模型deepseek-v4-pro，"
+                f"Venus模型必须是{sorted(VENUS_MODELS)}之一，"
                 f"收到{settings.generation.model!r}"
             )
         token = build_venus_token()

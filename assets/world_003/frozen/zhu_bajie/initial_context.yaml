@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_sanzang:
+      level: trusting
+      basis_event: initial_state
+    sun_wukong:
+      level: distrustful
+      basis_event: initial_state
+    sha_wujing:
+      level: neutral
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    baigujing:
+      level: neutral
+      basis_event: initial_state
+    heihujing:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: zhu_bajie_goal_001
+    content: 找机会让师父继续赶路或得到食物
+    status: active
+    basis_event: initial_state
+  - id: zhu_bajie_goal_002
+    content: 在师父面前继续压低孙悟空的可信度
+    status: active
+    basis_event: initial_state
+  - id: zhu_bajie_goal_003
+    content: 避免被妖怪第三次变化牵连
+    status: forming
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    zhu_bajie_knowledge_001:
+      content: 孙悟空两次打死村姑和老妇人，唐僧已两次念紧箍咒责罚孙悟空
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhu_bajie_knowledge_002:
+      content: 猪八戒自己曾催促唐僧接受村姑的饭食，并说老妇人是村姑的娘
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhu_bajie_knowledge_003:
+      content: 唐僧对孙悟空已极不信任，队伍气氛很紧张
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhu_bajie_knowledge_004:
+      content: 孙悟空仍在提防妖怪再犯，但对猪八戒的挑拨已不满
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    zhu_bajie: 100
+    player: 100
+  inventories:
+    zhu_bajie: []
+    player: []
+  locations:
+    zhu_bajie: shandao
+    player: shandao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

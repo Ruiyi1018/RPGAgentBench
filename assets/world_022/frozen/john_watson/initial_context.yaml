@@ -1,0 +1,110 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sherlock_holmes:
+      level: trusting
+      basis_event: initial_state
+    greg_lestrade:
+      level: neutral
+      basis_event: initial_state
+    mycroft_holmes:
+      level: distrustful
+      basis_event: initial_state
+    molly_hooper:
+      level: neutral
+      basis_event: initial_state
+    mrs_hudson:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_01
+    content: Settle into 221B Baker Street and establish a stable daily routine after
+      leaving the army.
+    status: ongoing
+    basis_event: initial_state
+  - id: g_02
+    content: Decide how far to trust Sherlock Holmes during the serial suicide investigation.
+    status: ongoing
+    basis_event: initial_state
+  - id: g_03
+    content: Assist Sherlock without overstepping into official police work.
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_01:
+      content: Sherlock Holmes possesses unusual deductive abilities, demonstrated
+        during a riding crop experiment at St Bartholomew's Hospital.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_02:
+      content: Mrs Hudson is the landlady of 221B Baker Street.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_03:
+      content: Lestrade has formally brought Sherlock into the investigation of the
+        serial suicide case.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_04:
+      content: A pink phone belonging to the fourth victim has been identified as
+        key evidence.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_05:
+      content: The fourth victim was left-handed, based on small details Sherlock
+        observed at the crime scene.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_06:
+      content: Mycroft Holmes is Sherlock's brother and has arranged a private meeting
+        to question John.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_07:
+      content: The victims voluntarily took poison from the murderer.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_08:
+      content: A suspicious cab has been seen driving near locations connected to
+        the case.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_09:
+      content: Sherlock uses the skull at Baker Street as part of his private thinking
+        process.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_10:
+      content: Mycroft has warned John about the potential dangers of living with
+        Sherlock.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    john_watson: 100
+    player: 100
+  inventories:
+    john_watson: []
+    player: []
+  locations:
+    john_watson: 221b_baker_street
+    player: 221b_baker_street
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

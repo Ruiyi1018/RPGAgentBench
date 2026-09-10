@@ -1,0 +1,57 @@
+world_id: world_026
+canon_policy:
+  primary_source: 'My Little Pony: Friendship Is Magic episodes from the early-season
+    range after the main six ponies form their friendship group'
+  source_type: animated television series
+  excluded_versions:
+  - Equestria Girls films
+  - comic book series
+  - chapter books
+  - later-season episodes outside the shared snapshot
+  - pilot two-parter preceding the group's formal formation
+  shared_snapshot: Fixed early-season episode range after the group forms, including
+    events in Ponyville and nearby locations such as Sweet Apple Acres and the Everfree
+    Forest
+  generated_timeline: All anchor events are inferred strictly from episodes within
+    the shared snapshot and ordered chronologically by narrative sequence as presented
+    in that range
+  quotation_policy: Paraphrase all dialogue; never reproduce verbatim lines from any
+    episode
+evaluated_npcs:
+- twilight_sparkle
+- applejack
+- pinkie_pie
+- rainbow_dash
+- rarity
+- fluttershy
+event_entities:
+- Twilight Sparkle
+- Applejack
+- Pinkie Pie
+- Rainbow Dash
+- Rarity
+- Fluttershy
+sources:
+- id: source_001
+  title: 'My Little Pony: Friendship Is Magic early-season episode range'
+  creator: Lauren Faust and production team
+  scope: Animated episodes in the fixed early-season range after Twilight Sparkle,
+    Applejack, Pinkie Pie, Rainbow Dash, Rarity, and Fluttershy have formed their
+    friendship group, set primarily in Ponyville and nearby locations such as Sweet
+    Apple Acres and the Everfree Forest
+  authority: primary
+data_constraints:
+- Every event must be grounded only in the specified source and shared snapshot; no
+  later plot knowledge may be used.
+- No dialogue may be quoted verbatim; all speech must be paraphrased.
+- No invented URLs, chapter numbers, or episode numbers may appear.
+- Anchor-pool events must be sorted chronologically according to their in-universe
+  order within the snapshot.
+- Every anchor event must list at least one roster member in known_by and one roster
+  member in anchor_for.
+- Every cf_edit must be a real minimal alternative factual change; entries such as
+  none or N/A are not allowed.
+- Locations and items must occur in the source scope and snapshot only, not in other
+  chapters or adaptations.
+- Every location connection in connected_to must reference a location ID that appears
+  in the environment locations list.

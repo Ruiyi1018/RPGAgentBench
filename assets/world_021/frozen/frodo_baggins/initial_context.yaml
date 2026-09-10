@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    samwise_gamgee:
+      level: loyal
+      basis_event: initial_state
+    gandalf:
+      level: trusting
+      basis_event: initial_state
+    aragorn:
+      level: trusting
+      basis_event: initial_state
+    legolas:
+      level: trusting
+      basis_event: initial_state
+    gimli:
+      level: neutral
+      basis_event: initial_state
+    boromir:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Reach the other side of the Misty Mountains without losing the Ring.
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Stay with the Company and wait for Gandalf to find the Doors of Durin.
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Keep the Ring hidden from any watcher near the West-gate.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: Frodo carries the One Ring and left Rivendell with the Company of the
+        Ring.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: Caradhras rejected the Company with snow and rock, forcing retreat
+        from the Redhorn Pass.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: Gandalf now leads the Company toward the hidden West-gate of Moria.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_004:
+      content: Wargs attacked the Company by night before the return to Hollin.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_005:
+      content: Aragorn found signs that the Redhorn Gate may be watched.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_006:
+      content: Frodo became very cold and weary during the climb toward Caradhras,
+        and Sam carried him part of the way.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    frodo_baggins: 100
+    player: 100
+  inventories:
+    frodo_baggins: []
+    player: []
+  locations:
+    frodo_baggins: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

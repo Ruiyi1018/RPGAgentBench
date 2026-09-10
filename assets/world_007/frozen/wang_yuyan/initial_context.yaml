@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_feng:
+      level: neutral
+      basis_event: initial_state
+    duan_yu:
+      level: neutral
+      basis_event: initial_state
+    xu_zhu:
+      level: neutral
+      basis_event: initial_state
+    murong_fu:
+      level: loyal
+      basis_event: initial_state
+    jiumozhi:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: wg_001
+    content: 继续随慕容复行动，在必要时以武学知识助他识别对手
+    status: active
+    basis_event: initial_state
+  - id: wg_002
+    content: 不亲自卷入武力冲突，以言语自保
+    status: active
+    basis_event: initial_state
+  - id: wg_003
+    content: 弄清鸠摩智挑衅燕子坞武学后对慕容复的威胁程度
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    wk_001:
+      content: 段誉在曼陀山庄见过自己并表现出明显倾慕
+      status: active
+      visibility: private
+      source_event: initial_state
+    wk_002:
+      content: 鸠摩智曾到燕子坞挑战慕容氏武学，与慕容复立场对立
+      status: active
+      visibility: shared
+      source_event: initial_state
+    wk_003:
+      content: 慕容复怀有恢复大燕的图谋，外人未必尽知
+      status: active
+      visibility: private
+      source_event: initial_state
+    wk_004:
+      content: 自己熟读曼陀山庄所藏武学，但不会武功
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    wang_yuyan: 100
+    player: 100
+  inventories:
+    wang_yuyan: []
+    player: []
+  locations:
+    wang_yuyan: mantuo_villa
+    player: mantuo_villa
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

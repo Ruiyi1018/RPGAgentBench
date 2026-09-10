@@ -1,0 +1,90 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    chang_wei:
+      level: hostile
+      basis_event: initial_state
+    fang_tangjing:
+      level: distrustful
+      basis_event: initial_state
+    qi_qinshi:
+      level: trusting
+      basis_event: initial_state
+    lai_fu:
+      level: neutral
+      basis_event: initial_state
+    bao_tou:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 查清戚家案件案发经过与真凶
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_002
+    content: 获取足以反驳常威不在场证明的证据
+    status: pending
+    basis_event: initial_state
+  - id: goal_003
+    content: 让来福愿意在公堂上完整作证
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_004
+    content: 应对并拆解方唐镜的证据合法性异议
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 戚家案卷曾被调换，最初的案卷信息不完整
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 戚家现场曾被清理，可查物证明显减少
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_003:
+      content: 戚秦氏在陈述案发经过时有所隐瞒
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 来福掌握部分指向常威的关键信息
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_005:
+      content: 豹头在戚家发现一件血衣，但血迹已模糊不清
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_006:
+      content: 方唐镜可能利用程序漏洞排除对常威不利的证据
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_007:
+      content: 常威曾当堂否认所有指控并声称有不在场证明
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    bao_longxing: 100
+    player: 100
+  inventories:
+    bao_longxing: []
+    player: []
+  locations:
+    bao_longxing: loc_yamen
+    player: loc_yamen
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

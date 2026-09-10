@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    meredith_grey:
+      level: trusting
+      basis_event: initial_state
+    cristina_yang:
+      level: neutral
+      basis_event: initial_state
+    izzie_stevens:
+      level: neutral
+      basis_event: initial_state
+    george_omalley:
+      level: neutral
+      basis_event: initial_state
+    miranda_bailey:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Keep his relationship with Meredith private at Seattle Grace.
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Maintain his standing among the interns as an exceptionally skilled surgeon.
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Decide when and how much of his personal complication to reveal to Meredith.
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Meredith Grey is a new surgical intern at Seattle Grace.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k2:
+      content: He and Meredith met before they knew they were colleagues.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: His surgical reputation was reinforced after a complicated procedure.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k4:
+      content: His personal complication has the potential to affect Meredith.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k5:
+      content: Meredith wants the nature of their secrecy to change.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    derek_shepherd: 100
+    player: 100
+  inventories:
+    derek_shepherd: []
+    player: []
+  locations:
+    derek_shepherd: seattle_grace_hospital
+    player: seattle_grace_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

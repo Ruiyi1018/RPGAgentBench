@@ -1,0 +1,51 @@
+world_id: world_020
+name: Westeros and the Narrow Sea region, Season 1 before Eddard Stark's arrest
+locations:
+- id: winterfell
+  name: Winterfell
+  connected_to:
+  - kings_landing
+  - the_wall
+- id: kings_landing
+  name: King's Landing
+  connected_to:
+  - winterfell
+  - the_eyrie
+- id: the_wall
+  name: The Wall
+  connected_to:
+  - winterfell
+- id: the_eyrie
+  name: The Eyrie
+  connected_to:
+  - kings_landing
+- id: pentos
+  name: Pentos
+  connected_to: []
+- id: the_kingsroad
+  name: The Kingsroad
+  connected_to:
+  - winterfell
+  - kings_landing
+items:
+- id: iron_throne
+  name: Iron Throne
+  type: artifact
+  portable: false
+- id: ice_sword
+  name: Ice
+  type: weapon
+  portable: true
+- id: needle
+  name: Needle
+  type: weapon
+  portable: true
+- id: dragon_eggs
+  name: Dragon eggs
+  type: artifact
+  portable: true
+- id: longclaw
+  name: Longclaw
+  type: weapon
+  portable: true
+language: en

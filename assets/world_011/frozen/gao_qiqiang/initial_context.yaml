@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    an_xin:
+      level: neutral
+      basis_event: initial_state
+    li_xiang:
+      level: distrustful
+      basis_event: initial_state
+    tang_xiaolong:
+      level: hostile
+      basis_event: initial_state
+    tang_xiaohu:
+      level: distrustful
+      basis_event: initial_state
+    meng_yu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 尽量不影响自己的鱼摊继续经营
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 避免被警方单独当作主要责任人
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 维持弟弟妹妹眼前的安定生活
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kn_001:
+      content: 除夕夜旧厂街市场发生冲突，自己与唐家兄弟卷入其中
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_002:
+      content: 安欣在冲突后接触过自己，开始了解其家庭与经营处境
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_003:
+      content: 唐小龙在警方问询中把主要责任推给自己
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_004:
+      content: 自己长期在旧厂街市场卖鱼并照顾家人
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_005:
+      content: 自己请求安欣尽量不影响鱼摊经营
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_006:
+      content: 自己在旧屋整理账本，统计近期经营损失
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    gao_qiqiang: 100
+    player: 100
+  inventories:
+    gao_qiqiang: []
+    player: []
+  locations:
+    gao_qiqiang: loc_gao_old_house
+    player: loc_gao_old_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

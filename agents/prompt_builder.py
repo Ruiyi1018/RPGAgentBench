@@ -14,6 +14,8 @@ from gamecore import ActionRegistry, GameContext, WorldDefinition
 
 _PROMPT_HIDDEN_KEYS = {
     "evaluation_spec",
+    "stage3_contract",
+    "challenge_plan",
     "testable_boundaries",
     "target_boundaries",
     "challenge_space",
@@ -86,6 +88,7 @@ class StateAccess(str, Enum):
 class PromptBundle:
     system_prompt: str
     user_prompt: str
+    response_schema: Mapping[str, Any] | None = None
 
 
 class PromptIsolationError(ValueError):
@@ -96,14 +99,18 @@ class PromptBuilder:
     """Build role-specific prompts from whitelisted GameContext projections."""
 
     _PLACEHOLDER = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}")
+    _USER_SECTION = "\n{% user %}\n"
     _HIDDEN_KEYS = _PROMPT_HIDDEN_KEYS
     _PUBLIC_ACTIONS = {
+        "decide_claim",
         "create_commitment",
+        "resolve_commitment",
+        "update_relationship",
         "reveal_fact",
         "move",
         "transfer_item",
-        "create_offer",
-        "respond_offer",
+        "create_artifact",
+        "update_task",
         "use_item",
         "decide_access",
         "attack",
@@ -160,8 +167,9 @@ class PromptBuilder:
             StateAccess.HISTORY_ONLY,
             StateAccess.HISTORY_AND_STATE,
         }:
-            visible_history = self._history_projection(
-                prior_history, audience="npc"
+            visible_history = self._long_horizon_history(
+                prior_history,
+                audience="npc",
             )
         if state_access in {
             StateAccess.STATE_ONLY,
@@ -182,13 +190,14 @@ class PromptBuilder:
             "current_query": self._json(current_query),
             "actions": self._json(actions),
         }
+        system_prompt, user_prompt = self._render_role_prompt(
+            f"npc/online.{self.language}.j2",
+            values,
+        )
         return PromptBundle(
-            system_prompt=self._load(
-                f"npc/online_system.{self.language}.j2"
-            ),
-            user_prompt=self._render(
-                f"npc/online_user.{self.language}.j2", values
-            ),
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            response_schema=self._npc_output_schema(available_actions),
         )
 
     def build_player(
@@ -215,38 +224,145 @@ class PromptBuilder:
             "player_goal": self._json(scenario[goal_key]),
             "observation": self._json(self._player_observation(context)),
             "history": self._json(
-                self._history_projection(context.history, audience="player")
+                self._long_horizon_history(
+                    context.history,
+                    audience="player",
+                )
             ),
         }
+        system_prompt, user_prompt = self._render_role_prompt(
+            f"player/{mode}.{self.language}.j2",
+            values,
+        )
         return PromptBundle(
-            system_prompt=self._load(
-                f"player/{mode}_system.{self.language}.j2"
-            ),
-            user_prompt=self._render(
-                f"player/online_user.{self.language}.j2", values
-            ),
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            response_schema={
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["query"],
+                "properties": {
+                    "query": {"type": "string", "minLength": 1}
+                },
+            },
         )
 
     def build_checker(
         self,
         context: GameContext,
-        evaluation_spec: Mapping[str, Any],
+        role_contract: Mapping[str, Any],
+        *,
+        turns: Sequence[int],
+        prior_judgment: (
+            Mapping[str, Any]
+            | Sequence[Mapping[str, Any]]
+            | None
+        ) = None,
     ) -> PromptBundle:
-        if not evaluation_spec:
-            raise PromptIsolationError("Consistency Checker需要EvaluationSpec")
+        if not role_contract:
+            raise PromptIsolationError("Consistency Checker需要role_contract")
+        alignment_rules = [
+            copy.deepcopy(rule)
+            for rule in role_contract.get("rules", [])
+            if isinstance(rule, Mapping)
+            and rule.get("id") == "words_actions_state_alignment"
+        ]
+        if not alignment_rules:
+            alignment_rules = [
+                {
+                    "id": "words_actions_state_alignment",
+                    "statement": (
+                        "utterance、Action与GameCore实际状态变化必须表达"
+                        "同一个决定、对象和方向。"
+                    ),
+                }
+            ]
         values = {
-            "character_card": self._json(context.data["character_card"]),
-            "evaluation_spec": self._json(evaluation_spec),
-            "trajectory": self._json(context.to_dict()),
+            "role_contract": self._json({"rules": alignment_rules}),
+            "trajectory": self._json(
+                self._checker_trajectory(context, turns)
+            ),
+            "turns": self._json(list(turns)),
+            "prior_judgment": self._json(
+                prior_judgment
+                or ("未提供" if self.language == "zh" else "Not provided")
+            ),
         }
-        return PromptBundle(
-            system_prompt=self._load(
-                f"checker/consistency_system.{self.language}.j2"
-            ),
-            user_prompt=self._render(
-                f"checker/consistency_user.{self.language}.j2", values
-            ),
+        system_prompt, user_prompt = self._render_role_prompt(
+            f"checker/consistency.{self.language}.j2",
+            values,
         )
+        return PromptBundle(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            response_schema={
+                "type": "object",
+                "additionalProperties": False,
+                "required": ["failures"],
+                "properties": {
+                    "failures": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": False,
+                            "required": [
+                                "turn",
+                                "failure",
+                                "violated_rule",
+                                "evidence",
+                                "cannot_determine",
+                            ],
+                            "properties": {
+                                "turn": {
+                                    "type": "integer",
+                                    "enum": list(turns),
+                                },
+                                "failure": {"const": True},
+                                "violated_rule": {
+                                    "type": "string",
+                                    "enum": [
+                                        str(rule["id"])
+                                        for rule in alignment_rules
+                                    ],
+                                },
+                                "evidence": {
+                                    "type": "array",
+                                    "minItems": 1,
+                                    "items": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                    },
+                                },
+                                "cannot_determine": {"const": False},
+                            },
+                        },
+                    }
+                },
+            },
+        )
+
+    @staticmethod
+    def _checker_trajectory(
+        context: GameContext,
+        turns: Sequence[int],
+    ) -> dict[str, Any]:
+        full_history = list(context.history)
+        first_relevant_turn = max(1, min(int(turn) for turn in turns) - 5)
+        return {
+            "tracked_claims": {
+                claim_id: {
+                    "content": claim.get("content"),
+                    "decision": claim.get("decision"),
+                }
+                for claim_id, claim in context.runtime_state["claims"].items()
+                if isinstance(claim, Mapping)
+            },
+            "history": [
+                copy.deepcopy(entry)
+                for entry in full_history
+                if int(entry.get("turn", 0)) >= first_relevant_turn
+            ],
+        }
 
     def _load(self, relative_path: str) -> str:
         path = self.template_root / relative_path
@@ -270,6 +386,22 @@ class PromptBuilder:
             template,
         )
 
+    def _render_role_prompt(
+        self,
+        relative_path: str,
+        values: Mapping[str, str],
+    ) -> tuple[str, str]:
+        rendered = self._render(relative_path, values)
+        if rendered.count(self._USER_SECTION) != 1:
+            raise PromptIsolationError(
+                f"{relative_path}必须包含一个{{% user %}}分隔符"
+            )
+        system_prompt, user_prompt = rendered.split(
+            self._USER_SECTION,
+            maxsplit=1,
+        )
+        return system_prompt.strip(), user_prompt.strip()
+
     def _action_for_prompt(self, name: str) -> dict[str, Any]:
         spec = self.registry.get(name)
         parameters: dict[str, Any] = {}
@@ -278,6 +410,8 @@ class PromptBuilder:
                 "type": parameter.type,
                 "required": parameter.required,
             }
+            if parameter.meaning:
+                item["meaning"] = parameter.meaning
             if parameter.enum:
                 item["enum"] = list(parameter.enum)
             parameters[parameter_name] = item
@@ -285,7 +419,53 @@ class PromptBuilder:
             "name": spec.name,
             "description": spec.description,
             "parameters": parameters,
-            "usage": spec.body.strip(),
+            "effect": list(spec.updates),
+        }
+
+    def _npc_output_schema(
+        self,
+        available_actions: Sequence[str],
+    ) -> dict[str, Any]:
+        action_schemas: list[dict[str, Any]] = []
+        for name in available_actions:
+            spec = self.registry.get(name)
+            properties: dict[str, Any] = {}
+            required: list[str] = []
+            for parameter_name, parameter in spec.parameters.items():
+                field: dict[str, Any] = {"type": parameter.type}
+                if parameter.enum:
+                    field["enum"] = list(parameter.enum)
+                properties[parameter_name] = field
+                if parameter.required:
+                    required.append(parameter_name)
+            action_schemas.append(
+                {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "required": ["name", "parameters"],
+                    "properties": {
+                        "name": {"const": spec.name},
+                        "parameters": {
+                            "type": "object",
+                            "additionalProperties": False,
+                            "properties": properties,
+                            "required": required,
+                        },
+                    },
+                }
+            )
+        return {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["utterance", "actions"],
+            "properties": {
+                "utterance": {"type": "string", "minLength": 1},
+                "actions": {
+                    "type": "array",
+                    "maxItems": 2,
+                    "items": {"oneOf": action_schemas},
+                },
+            },
         }
 
     def _npc_character_card(
@@ -336,19 +516,14 @@ class PromptBuilder:
     ) -> dict[str, Any]:
         environment = context.environment
         actor = context.character_id
-        player_claims = {
+        claims = {
             claim_id: {
                 "content": copy.deepcopy(claim.get("content")),
                 "decision": claim.get("decision"),
             }
             for claim_id, claim in context.runtime_state["claims"].items()
-            if isinstance(claim, Mapping) and claim.get("source") == "player"
+            if isinstance(claim, Mapping)
         }
-        offers = [
-            copy.deepcopy(offer)
-            for offer in environment["offers"]
-            if offer.get("proposer") == actor or offer.get("recipient") == actor
-        ]
         access = {
             resource: copy.deepcopy(record)
             for resource, record in environment["access"].items()
@@ -359,6 +534,23 @@ class PromptBuilder:
             context,
             available_actions,
         )
+        active_commitments = [
+            {
+                key: copy.deepcopy(commitment.get(key))
+                for key in (
+                    "id",
+                    "target",
+                    "content",
+                    "expected_action",
+                    "expected_parameters",
+                    "due_turn",
+                    "created_turn",
+                )
+            }
+            for commitment in context.runtime_state["commitments"]
+            if isinstance(commitment, Mapping)
+            and commitment.get("status", "active") == "active"
+        ]
         return {
             "location": environment["locations"].get(actor),
             "inventory": copy.deepcopy(
@@ -370,11 +562,27 @@ class PromptBuilder:
                 for key, value in environment["locations"].items()
                 if key in {actor, "player"}
             },
-            "pending_offers": offers,
+            "artifacts": {
+                artifact_id: copy.deepcopy(artifact)
+                for artifact_id, artifact in environment["artifacts"].items()
+                if artifact.get("creator") == actor
+                or artifact.get("holder") == actor
+            },
             "access": access,
-            "task_status": environment["task_status"],
+            "tasks": [
+                {
+                    "id": goal.get("id"),
+                    "status": goal.get("status", "active"),
+                }
+                for goal in context.runtime_state["goals"]
+                if isinstance(goal, Mapping) and goal.get("id")
+            ],
             "dialogue_status": environment["dialogue_status"],
-            "player_claims": player_claims,
+            "interaction_deadline": environment.get(
+                "interaction_deadline"
+            ),
+            "claims": claims,
+            "active_commitments": active_commitments,
             "valid_action_arguments": valid_arguments,
         }
 
@@ -387,10 +595,10 @@ class PromptBuilder:
 
         environment = context.environment
         actor = context.character_id
-        player_claims = {
+        claims = {
             claim_id
             for claim_id, claim in context.runtime_state["claims"].items()
-            if isinstance(claim, Mapping) and claim.get("source") == "player"
+            if isinstance(claim, Mapping)
         }
         valid_event_ids = {
             str(event["id"])
@@ -405,14 +613,17 @@ class PromptBuilder:
             or actor in record.get("subjects", {})
         }
         valid_arguments: dict[str, list[str]] = {}
-        if "accept_claim" in available_actions:
-            valid_arguments["accept_claim.claim_id"] = sorted(player_claims)
-            valid_arguments["accept_claim.evidence_event"] = sorted(
+        if "decide_claim" in available_actions:
+            valid_arguments["decide_claim.claim_id"] = sorted(claims)
+            valid_arguments["decide_claim.evidence_event"] = sorted(
                 valid_event_ids
             )
         if "decide_access" in available_actions:
             valid_arguments["decide_access.resource"] = sorted(access)
             valid_arguments["decide_access.subject"] = ["player"]
+            valid_arguments["decide_access.reason_event"] = sorted(
+                valid_event_ids
+            )
         if "reveal_fact" in available_actions:
             valid_arguments["reveal_fact.fact_id"] = sorted(
                 context.runtime_state["knowledge"]
@@ -424,6 +635,12 @@ class PromptBuilder:
             )
             valid_arguments["update_relationship.reason_event"] = sorted(
                 valid_event_ids
+            )
+        if "create_commitment" in available_actions:
+            valid_arguments["create_commitment.expected_action"] = sorted(
+                action
+                for action in available_actions
+                if action not in {"create_commitment", "resolve_commitment"}
             )
         if "resolve_commitment" in available_actions:
             commitments = context.runtime_state["commitments"]
@@ -437,16 +654,24 @@ class PromptBuilder:
             valid_arguments["resolve_commitment.reason_event"] = sorted(
                 valid_event_ids
             )
-        if "respond_offer" in available_actions:
-            valid_arguments["respond_offer.offer_id"] = sorted(
-                str(offer["id"])
-                for offer in environment["offers"]
-                if offer.get("id")
-                and offer.get("status", "pending") == "pending"
-            )
         inventory = sorted(environment["inventories"].get(actor, []))
         if "transfer_item" in available_actions:
             valid_arguments["transfer_item.item"] = inventory
+            valid_arguments["transfer_item.source"] = [actor]
+            valid_arguments["transfer_item.destination"] = sorted(
+                holder
+                for holder in environment["inventories"]
+                if holder != actor
+            )
+        if "update_task" in available_actions:
+            valid_arguments["update_task.task_id"] = sorted(
+                str(goal["id"])
+                for goal in context.runtime_state["goals"]
+                if isinstance(goal, Mapping) and goal.get("id")
+            )
+            valid_arguments["update_task.reason_event"] = sorted(
+                valid_event_ids
+            )
         if "use_item" in available_actions:
             valid_arguments["use_item.item"] = inventory
         if "move" in available_actions:
@@ -514,6 +739,48 @@ class PromptBuilder:
                     item["actions"] = actions
             projected.append(item)
         return projected
+
+    def _long_horizon_history(
+        self,
+        history: Sequence[Mapping[str, Any]],
+        *,
+        audience: str,
+        recent_turns: int = 10,
+    ) -> dict[str, Any]:
+        projected = self._history_projection(history, audience=audience)
+        latest_turn = max(
+            (int(entry["turn"]) for entry in projected),
+            default=0,
+        )
+        cutoff = max(1, latest_turn - recent_turns + 1)
+        ledger: list[dict[str, Any]] = []
+        recent: list[dict[str, Any]] = []
+        for entry in projected:
+            if int(entry["turn"]) >= cutoff:
+                recent.append(entry)
+                continue
+            if entry["speaker"] == "npc" and entry.get("actions"):
+                ledger.append(
+                    {
+                        "turn": entry["turn"],
+                        "speaker": "npc",
+                        "actions": copy.deepcopy(entry["actions"]),
+                    }
+                )
+            elif (
+                entry["speaker"] == "gamecore"
+                and entry["utterance"]
+                not in {
+                    "动作已执行。",
+                    "本轮无状态动作。",
+                    "动作未生效。",
+                }
+            ):
+                ledger.append(entry)
+        return {
+            "state_event_ledger_before_recent_window": ledger,
+            "recent_history": recent,
+        }
 
     @staticmethod
     def _split_current_player_query(

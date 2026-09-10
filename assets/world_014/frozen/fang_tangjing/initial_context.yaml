@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bao_longxing:
+      level: hostile
+      basis_event: initial_state
+    chang_wei:
+      level: loyal
+      basis_event: initial_state
+    qi_qinshi:
+      level: hostile
+      basis_event: initial_state
+    lai_fu:
+      level: hostile
+      basis_event: initial_state
+    bao_tou:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_fang_001
+    content: 在重审公堂上阻止包龙星将血衣作为有效证据
+    status: active
+    basis_event: initial_state
+  - id: goal_fang_002
+    content: 用程序异议中断或延缓案件重审进程
+    status: active
+    basis_event: initial_state
+  - id: goal_fang_003
+    content: 削弱来福和戚秦氏等控方证人的证词可信度
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_fang_001:
+      content: 包龙星已开始重新查阅戚家案卷并转向认真调查
+      status: active
+      visibility: known_to_fang_tangjing_and_bao_longxing
+      source_event: initial_state
+    knowledge_fang_002:
+      content: 包龙星已提出血衣作为呈堂证据
+      status: active
+      visibility: known_to_fang_tangjing_and_bao_longxing
+      source_event: initial_state
+    knowledge_fang_003:
+      content: 常威在堂上否认所有指控并提供不在场证明
+      status: active
+      visibility: known_to_fang_tangjing_and_bao_longxing_and_chang_wei
+      source_event: initial_state
+    knowledge_fang_004:
+      content: 方唐镜自己曾调换案卷、提交伪证并利用程序漏洞排除部分证据
+      status: active
+      visibility: private_to_fang_tangjing
+      source_event: initial_state
+environment:
+  health:
+    fang_tangjing: 100
+    player: 100
+  inventories:
+    fang_tangjing: []
+    player: []
+  locations:
+    fang_tangjing: loc_yamen
+    player: loc_yamen
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

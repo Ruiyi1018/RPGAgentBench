@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rick_sanchez:
+      level: trusting
+      basis_event: initial_state
+    beth_smith:
+      level: trusting
+      basis_event: initial_state
+    jerry_smith:
+      level: neutral
+      basis_event: initial_state
+    summer_smith:
+      level: neutral
+      basis_event: initial_state
+    birdperson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: morty_goal_survive_adventure
+    content: Stay alive during the next excursion with Rick.
+    status: active
+    basis_event: initial_state
+  - id: morty_goal_avoid_school_trouble
+    content: Avoid worsening his grade problems and parental conflict over missing
+      school.
+    status: active
+    basis_event: initial_state
+  - id: morty_goal_understand_rick
+    content: Understand why Rick keeps choosing him and what Rick actually wants from
+      their adventures.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    morty_knows_rick_travels_dimensions:
+      content: Rick has been traveling through other dimensions and returned to the
+        Smith house.
+      status: active
+      visibility: private
+      source_event: initial_state
+    morty_knows_rick_needs_him:
+      content: Rick said he needed Morty's help and took him out of school through
+        the garage portal.
+      status: active
+      visibility: private
+      source_event: initial_state
+    morty_knows_mega_seeds:
+      content: Rick has been collecting mega seeds and has a plan involving them.
+      status: active
+      visibility: private
+      source_event: initial_state
+    morty_knows_family_suspects_trouble:
+      content: Jerry does not trust Rick and worries about Rick's effect on Morty.
+      status: active
+      visibility: private
+      source_event: initial_state
+    morty_knows_interdimensional_cable:
+      content: Rick showed the family an interdimensional cable box that can access
+        television from countless realities.
+      status: active
+      visibility: private
+      source_event: initial_state
+    morty_knows_parent_teacher_conflict:
+      content: At a parent-teacher conference, his grades caused family tension and
+        Jerry blamed Rick's influence.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    morty_smith: 100
+    player: 100
+  inventories:
+    morty_smith: []
+    player: []
+  locations:
+    morty_smith: smith_house
+    player: smith_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,231 @@
+world_id: world_005
+source: 曹雪芹、高鹗《红楼梦》前八十回（抄检大观园之前）
+events:
+- id: e_jia_baoyu_birth_jade
+  fact: 贾宝玉出生时口中衔玉，该玉被视为贾宝玉的命根子，贾府上下皆知其奇异来历。
+  known_by:
+  - jia_mu
+  - wang_xifeng
+  - xiren
+  state_change: 贾宝玉作为荣国府嫡孙天生异象，众人对其态度更添珍视。
+  cf_edit: 若贾宝玉出生时未衔玉，贾母与王夫人对其护佑方式可能不会如此特殊。
+  anchor_for:
+  - jia_baoyu
+- id: e_lin_daiyu_enters_jia
+  fact: 林黛玉因母亲去世、父亲安排，进入荣国府投靠外祖母贾母。
+  known_by:
+  - jia_mu
+  - jia_baoyu
+  - wang_xifeng
+  - xiren
+  state_change: 林黛玉正式成为荣国府常住成员，与贾母同院照管。
+  cf_edit: 若林黛玉未入贾府，荣国府内宝黛等人际关系无从建立。
+  anchor_for:
+  - lin_daiyu
+- id: e_jia_baoyu_lin_daiyu_first_meet
+  fact: 贾宝玉与林黛玉初次相见，双方皆有似曾相识之感。
+  known_by:
+  - jia_baoyu
+  - lin_daiyu
+  - jia_mu
+  state_change: 宝黛初会确立彼此特殊的情感起点。
+  cf_edit: 若二人初次相见毫无亲近感，后续宝黛感情难以为续。
+  anchor_for:
+  - jia_baoyu
+  - lin_daiyu
+- id: e_xue_baochai_enters_jia
+  fact: 薛宝钗随母兄进入京中，住进荣国府东北角梨香院。
+  known_by:
+  - jia_mu
+  - wang_xifeng
+  - xiren
+  state_change: 薛宝钗成为荣国府内与黛玉并立的重要亲眷。
+  cf_edit: 若薛家未住进荣国府，宝钗与荣国府诸人的日常交往难以形成。
+  anchor_for:
+  - xue_baochai
+- id: e_jia_baoyu_dream_red_chamber
+  fact: 贾宝玉在秦可卿安排下歇息后入梦，梦中经历警幻仙姑所示册页与曲文。
+  known_by:
+  - jia_baoyu
+  - xiren
+  state_change: 贾宝玉由梦进入对群钗命运图景的隐约感知，但尚未完全理解。
+  cf_edit: 若贾宝玉未做此梦，他对周围女子命运缺乏先兆性感受。
+  anchor_for:
+  - jia_baoyu
+- id: e_jia_baoyu_xiren_instruct
+  fact: 贾宝玉与袭人私下谈论梦中之事，袭人听后加以劝慰。
+  known_by:
+  - jia_baoyu
+  - xiren
+  state_change: 袭人成为贾宝玉贴身众人中最先知道其梦中心事者。
+  cf_edit: 若袭人未听贾宝玉讲述，她与宝玉之间信任深度会降低。
+  anchor_for:
+  - xiren
+- id: e_qingwen_tears_fan
+  fact: 晴雯与贾宝玉口角后，为消气撕坏扇子。
+  known_by:
+  - qingwen
+  - jia_baoyu
+  - xiren
+  state_change: 晴雯以刚烈举动显露与贾宝玉之间不拘主仆的分寸。
+  cf_edit: 若晴雯撕扇未发生，其与贾宝玉之间的特殊任性关系缺少醒目事件。
+  anchor_for:
+  - qingwen
+- id: e_wang_xifeng_manages_ning
+  fact: 王熙凤受贾珍委托协理宁国府，调度秦可卿丧事。
+  known_by:
+  - wang_xifeng
+  - jia_mu
+  - xiren
+  state_change: 王熙凤以果决手腕展现理家才能，并在两府积累更大权威。
+  cf_edit: 若王熙凤拒绝协理宁国府，她后来在荣国府的大权缺少关键展示机会。
+  anchor_for:
+  - wang_xifeng
+- id: e_jia_zheng_beats_baoyu
+  fact: 贾政因贾宝玉与琪官交往及金钏投井等事，重责贾宝玉。
+  known_by:
+  - jia_mu
+  - jia_baoyu
+  - xiren
+  - qingwen
+  state_change: 贾宝玉被打导致贾母、王夫人等极度紧张，园内秩序出现明显震动。
+  cf_edit: 若贾政未怒打贾宝玉，贾母与贾政为管教方式的冲突不会激烈爆发。
+  anchor_for:
+  - jia_baoyu
+- id: e_jia_baoyu_lin_daiyu_confession
+  fact: 贾宝玉向林黛玉倾诉肺腑之情，林黛玉又惊又感，二人情感更趋明确。
+  known_by:
+  - jia_baoyu
+  - lin_daiyu
+  state_change: 宝黛之间由日常牵挂上升为互明心迹的情感关系。
+  cf_edit: 若贾宝玉未能表白心迹，林黛玉长期疑虑状态不会出现关键转折。
+  anchor_for:
+  - lin_daiyu
+- id: e_jia_baoyu_xue_baochai_golden_lock
+  fact: 贾宝玉见薛宝钗所戴金锁，众人提起金玉相配之说。
+  known_by:
+  - jia_baoyu
+  - xue_baochai
+  - xiren
+  state_change: 金玉良缘成为贾府内若隐若现的舆论，影响宝黛钗三人关系。
+  cf_edit: 若宝钗金锁未引起金玉之说，荣国府对宝玉婚姻的讨论会少一层指向。
+  anchor_for:
+  - xue_baochai
+- id: e_jia_mu_visits_qingxu
+  fact: 贾母携荣国府众女眷往清虚观打醮，张道士为贾宝玉提亲。
+  known_by:
+  - jia_mu
+  - jia_baoyu
+  - wang_xifeng
+  state_change: 外提亲事触动贾母与宝黛钗三人关系的敏感神经。
+  cf_edit: 若清虚观张道士未提亲，贾母对宝玉婚事的公开态度不会如此早被试探。
+  anchor_for:
+  - jia_mu
+- id: e_jia_baoyu_attends_school
+  fact: 贾宝玉入家塾读书，与秦钟等人亲近，学业仍多荒疏。
+  known_by:
+  - jia_baoyu
+  - jia_mu
+  - xiren
+  state_change: 贾宝玉离家到塾中，使怡红院与荣国府日常短暂变化。
+  cf_edit: 若贾宝玉未入家塾，与秦钟等人交往及塾中纷争不会发生。
+  anchor_for:
+  - jia_baoyu
+- id: e_wang_xifeng_meets_liu
+  fact: 刘姥姥携板儿到荣国府求助，王熙凤加以周济。
+  known_by:
+  - wang_xifeng
+  - jia_mu
+  state_change: 贾府与刘姥姥建立往来，为后续刘姥姥再进荣国府留下因由。
+  cf_edit: 若王熙凤拒绝周济刘姥姥，贾府对外戚贫穷亲族的联系会中断。
+  anchor_for:
+  - wang_xifeng
+- id: e_jia_baoyu_visits_xiangyun
+  fact: 史湘云到荣国府暂住，与宝黛钗等人同聚。
+  known_by:
+  - jia_baoyu
+  - jia_mu
+  - xiren
+  state_change: 史湘云来府增加了大观园中的交往密度，也引出金麒麟等事。
+  cf_edit: 若史湘云未来荣国府，相关器物与人物关系难有交汇机会。
+  anchor_for:
+  - jia_baoyu
+- id: e_lin_daiyu_buries_flowers
+  fact: 林黛玉在大观园中葬花，并自伤身世，贾宝玉偶见后深为所动。
+  known_by:
+  - lin_daiyu
+  - jia_baoyu
+  state_change: 林黛玉借葬花流露出强烈自怜情绪，宝黛情感再加深。
+  cf_edit: 若林黛玉未葬花，她内心愁绪少了被贾宝玉撞见的直观场景。
+  anchor_for:
+  - lin_daiyu
+- id: e_jia_baoyu_gets_regulated
+  fact: 贾宝玉因言行与身份常受贾政、王夫人等规劝与管束。
+  known_by:
+  - jia_baoyu
+  - jia_mu
+  - xiren
+  state_change: 贾宝玉的不合规矩之举不断引发家族内部对管教方式的分歧。
+  cf_edit: 若无人敢管束贾宝玉，他离经叛道行为的家族压力会明显减弱。
+  anchor_for:
+  - jia_baoyu
+- id: e_jia_baoyu_loses_jade_rumor
+  fact: 贾府中一度传闻通灵宝玉丢失或离身，众人惊恐并四处寻找。
+  known_by:
+  - jia_mu
+  - xiren
+  - qingwen
+  state_change: 通灵宝玉的安危成为众人注意焦点，贾府气氛骤然紧张。
+  cf_edit: 若通灵宝玉从未出现丢失传闻，贾府对宝玉所佩之玉的依赖感不会如此外显。
+  anchor_for:
+  - jia_baoyu
+- id: e_xiren_advises_wang
+  fact: 袭人向王夫人进言，建议让贾宝玉与姐妹们保持适当距离。
+  known_by:
+  - xiren
+  - wang_xifeng
+  state_change: 王夫人对宝玉身边人事更为留心，袭人地位获得提升。
+  cf_edit: 若袭人未向王夫人进言，王夫人对怡红院的约束不会提前加强。
+  anchor_for:
+  - xiren
+- id: e_qingwen_sews_jacket
+  fact: 晴雯病中为贾宝玉补雀金裘上烧破的洞。
+  known_by:
+  - qingwen
+  - jia_baoyu
+  - xiren
+  state_change: 晴雯以拼命补裘表达对宝玉的忠诚，病情却因此加重。
+  cf_edit: 若晴雯未带病补裘，她与宝玉间的情分缺少这次强烈证明。
+  anchor_for:
+  - qingwen
+- id: e_jia_baoyu_celebrates_birthday
+  fact: 贾宝玉生日时，大观园众人在怡红院开宴庆贺。
+  known_by:
+  - jia_baoyu
+  - qingwen
+  - xiren
+  - xue_baochai
+  - lin_daiyu
+  state_change: 生日夜宴让大观园中众青年男女暂时突破日常礼法边界。
+  cf_edit: 若生日夜宴未发生，大观园群钗与宝玉共同越礼的欢聚缺少典型事件。
+  anchor_for:
+  - jia_baoyu
+- id: e_wang_xifeng_torments_jia_rui
+  fact: 贾瑞对王熙凤起意，王熙凤设计摆布，贾瑞因此致病。
+  known_by:
+  - wang_xifeng
+  - jia_baoyu
+  state_change: 王熙凤以狠辣手段树立不容冒犯的威名。
+  cf_edit: 若王熙凤未设计贾瑞，其阴狠一面缺乏直接展示。
+  anchor_for:
+  - wang_xifeng
+- id: e_jia_baoyu_lin_daiyu_quiet
+  fact: 贾宝玉与林黛玉常在潇湘馆等处相对无言，情意暗涌。
+  known_by:
+  - jia_baoyu
+  - lin_daiyu
+  state_change: 宝黛之间形成旁人难以插入的情感默契。
+  cf_edit: 若二人没有频繁独处相望的日常，他们特殊关系会失去大量铺垫。
+  anchor_for:
+  - jia_baoyu
+  - lin_daiyu

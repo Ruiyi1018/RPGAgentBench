@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lucifer_morningstar:
+      level: neutral
+      basis_event: initial_state
+    dan_espinoza:
+      level: neutral
+      basis_event: initial_state
+    mazikeen:
+      level: distrustful
+      basis_event: initial_state
+    amenadiel:
+      level: neutral
+      basis_event: initial_state
+    linda_martin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g01
+    content: Maintain order and procedure on an active homicide case while handling
+      Lucifer as a consultant
+    status: active
+    basis_event: initial_state
+  - id: g02
+    content: Keep Trixie's routine stable despite the demands of her job and her separation
+      from Dan
+    status: active
+    basis_event: initial_state
+  - id: g03
+    content: Resolve any doubts about Lucifer's identity through observable evidence
+      rather than his claims
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k01:
+      content: Lucifer Morningstar owns Lux and has begun helping her with murder
+        investigations
+      status: active
+      visibility: private
+      source_event: initial_state
+    k02:
+      content: Lucifer openly tells people he is the Devil
+      status: active
+      visibility: private
+      source_event: initial_state
+    k03:
+      content: Dan is her ex-husband and the father of her daughter
+      status: active
+      visibility: private
+      source_event: initial_state
+    k04:
+      content: Mazikeen is associated with Lucifer and works at Lux
+      status: active
+      visibility: private
+      source_event: initial_state
+    k05:
+      content: The LAPD expects her to manage the consultant arrangement without letting
+        it undermine the cases
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    chloe_decker: 100
+    player: 100
+  inventories:
+    chloe_decker: []
+    player: []
+  locations:
+    chloe_decker: chloe_lapd
+    player: chloe_lapd
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

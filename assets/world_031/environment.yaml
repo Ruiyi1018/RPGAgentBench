@@ -1,0 +1,57 @@
+world_id: world_031
+name: Seattle Grace Hospital and surrounding Seattle locations
+locations:
+- id: seattle_grace_hospital
+  name: Seattle Grace Hospital
+  connected_to:
+  - emerald_city_bar
+  - intern_locker_room
+  - or_scrub_room
+  - hospital_tunnel
+- id: emerald_city_bar
+  name: Emerald City Bar
+  connected_to:
+  - seattle_grace_hospital
+- id: intern_locker_room
+  name: Intern Locker Room
+  connected_to:
+  - seattle_grace_hospital
+  - or_scrub_room
+- id: or_scrub_room
+  name: OR Scrub Room
+  connected_to:
+  - seattle_grace_hospital
+  - intern_locker_room
+- id: hospital_tunnel
+  name: Hospital Tunnel
+  connected_to:
+  - seattle_grace_hospital
+- id: merediths_house
+  name: Meredith's House
+  connected_to: []
+items:
+- id: post_it_note
+  name: Post-it Note
+  type: stationery
+  portable: true
+- id: intern_badge
+  name: Intern Badge
+  type: identification
+  portable: true
+- id: surgical_scalpel
+  name: Surgical Scalpel
+  type: medical tool
+  portable: true
+- id: derek_shepherds_trailer
+  name: Derek Shepherd's Trailer
+  type: vehicle
+  portable: false
+- id: coffee_cup
+  name: Coffee Cup
+  type: container
+  portable: true
+- id: patient_chart
+  name: Patient Chart
+  type: document
+  portable: true
+language: en

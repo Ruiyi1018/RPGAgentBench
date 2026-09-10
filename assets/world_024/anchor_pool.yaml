@@ -1,0 +1,275 @@
+world_id: world_024
+source: Twilight novel by Stephenie Meyer
+events:
+- id: ae_001
+  fact: Bella Swan moves from Phoenix to Forks to live with her father Charlie.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella relocates to Forks and enrolls at the local high school.
+  cf_edit: Bella moves from Phoenix to Forks to live with her mother instead of her
+    father.
+  anchor_for:
+  - bella_swan
+- id: ae_002
+  fact: Edward Cullen initially reacts to Bella with visible tension and avoids her
+    in biology class.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella becomes confused and curious about Edward's hostile behavior.
+  cf_edit: Edward greets Bella warmly from the first day and sits beside her without
+    hesitation.
+  anchor_for:
+  - edward_cullen
+  - bella_swan
+- id: ae_003
+  fact: Edward stops an out-of-control van from crushing Bella in the school parking
+    lot by putting himself between her and the vehicle.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella realizes Edward possesses impossible speed and strength, deepening
+    the mystery around him.
+  cf_edit: The van hits Bella and she is hospitalized, with no one intervening.
+  anchor_for:
+  - edward_cullen
+  - bella_swan
+- id: ae_004
+  fact: Jacob Black, a family friend from La Push, tells Bella that the Cullens are
+    considered dangerous and are believed to stay away from the Quileute reservation
+    by old treaty.
+  known_by:
+  - bella_swan
+  - jacob_black
+  state_change: Bella receives her first cultural warning about the Cullen family
+    from Jacob.
+  cf_edit: Jacob tells Bella the Cullens are a respected local family with no unusual
+    history.
+  anchor_for:
+  - jacob_black
+- id: ae_005
+  fact: Edward reveals to Bella that he can read minds, but hers is the only mind
+    he cannot hear.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella learns about Edward's telepathic ability and her unique mental
+    shield.
+  cf_edit: Edward tells Bella he can hear her thoughts clearly like everyone else's.
+  anchor_for:
+  - edward_cullen
+  - bella_swan
+- id: ae_006
+  fact: Bella researches local legends and online sources about vampires, eventually
+    concluding that Edward is a vampire.
+  known_by:
+  - bella_swan
+  state_change: Bella accepts the supernatural explanation for Edward's abilities.
+  cf_edit: Bella concludes Edward is a gifted human with rare physical abilities.
+  anchor_for:
+  - bella_swan
+- id: ae_007
+  fact: In the meadow, Edward confirms to Bella that he is a vampire and explains
+    that his family drinks animal blood rather than human blood.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: The Cullen secret is fully revealed to Bella, marking her entry into
+    their world.
+  cf_edit: Edward denies being a vampire and claims his abilities come from a medical
+    condition.
+  anchor_for:
+  - edward_cullen
+  - bella_swan
+- id: ae_008
+  fact: Edward shows Bella how his skin sparkles in direct sunlight in the meadow.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella witnesses the physical proof of Edward's vampire nature.
+  cf_edit: Edward's skin remains unchanged in direct sunlight.
+  anchor_for:
+  - edward_cullen
+  - bella_swan
+- id: ae_009
+  fact: Edward takes Bella to the Cullen house and introduces her to his family.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: Bella formally meets the Cullen family members, including Alice, Carlisle,
+    and Rosalie.
+  cf_edit: Edward refuses to introduce Bella to his family and keeps their home secret.
+  anchor_for:
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+- id: ae_010
+  fact: Alice Cullen demonstrates her ability to see visions of future events and
+    takes an immediate liking to Bella.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  state_change: Bella learns about Alice's future vision and forms a friendship with
+    her.
+  cf_edit: Alice shows no special ability and remains distant from Bella.
+  anchor_for:
+  - alice_cullen
+- id: ae_011
+  fact: Carlisle Cullen explains the history of how he became a vampire and why he
+    chose to practice medicine and abstain from human blood.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - carlisle_cullen
+  state_change: Bella learns the origin and values of the Cullen family.
+  cf_edit: Carlisle refuses to discuss his past with Bella.
+  anchor_for:
+  - carlisle_cullen
+- id: ae_012
+  fact: Rosalie Hale remains cold and unwelcoming toward Bella during the visit to
+    the Cullen house.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - rosalie_hale
+  state_change: Bella perceives Rosalie's hostility and understands she is not fully
+    accepted by every Cullen.
+  cf_edit: Rosalie greets Bella warmly and embraces her as part of the family.
+  anchor_for:
+  - rosalie_hale
+- id: ae_013
+  fact: Edward plays piano for Bella at the Cullen house, revealing a personal and
+    artistic side.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella sees a deeper, vulnerable side of Edward beyond his supernatural
+    identity.
+  cf_edit: Edward refuses to play piano and leaves the room.
+  anchor_for:
+  - edward_cullen
+- id: ae_014
+  fact: Jacob Black warns Bella to be careful around Edward and implies the Cullens
+    are not human.
+  known_by:
+  - bella_swan
+  - jacob_black
+  state_change: Jacob openly shares Quileute suspicions with Bella after she has already
+    learned the truth.
+  cf_edit: Jacob gives Bella his blessing and encourages her relationship with Edward.
+  anchor_for:
+  - jacob_black
+- id: ae_015
+  fact: A nomadic vampire coven arrives in the area, attracted by the Cullens' presence.
+  known_by:
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  state_change: A new external threat enters the region, raising the Cullens' concern.
+  cf_edit: No outside vampires appear in the region during this period.
+  anchor_for:
+  - alice_cullen
+  - carlisle_cullen
+- id: ae_016
+  fact: Alice has visions of the nomadic vampires hunting in the area and possibly
+    targeting Bella.
+  known_by:
+  - alice_cullen
+  - edward_cullen
+  - carlisle_cullen
+  state_change: The Cullen family becomes aware of a direct threat to Bella's safety.
+  cf_edit: Alice's visions show no danger to anyone in Forks.
+  anchor_for:
+  - alice_cullen
+- id: ae_017
+  fact: The nomadic vampires use a baseball game as a cover, and the Cullens encounter
+    them while playing in a remote field during a thunderstorm.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: The Cullen family directly meets the hostile nomadic coven, including
+    the tracker James.
+  cf_edit: The Cullens play baseball without encountering any other vampires.
+  anchor_for:
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+- id: ae_018
+  fact: The tracker vampire James fixes his attention on Bella, recognizing her human
+    scent and seeing her as prey.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: Bella becomes the specific target of a dangerous hunting vampire.
+  cf_edit: James ignores Bella completely during the encounter.
+  anchor_for:
+  - edward_cullen
+- id: ae_019
+  fact: The Cullens form a plan to protect Bella by separating her from James and
+    hiding her away from Forks.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: Bella is placed under the collective protection of the Cullen family.
+  cf_edit: The Cullens decide Bella should stay at home alone and unguarded.
+  anchor_for:
+  - carlisle_cullen
+  - alice_cullen
+- id: ae_020
+  fact: Bella struggles with the idea of leaving Charlie behind without a proper explanation
+    and worries about his safety.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella's departure plan creates emotional conflict and concern for
+    her father.
+  cf_edit: Bella feels no concern about leaving Charlie and departs immediately.
+  anchor_for:
+  - bella_swan
+- id: ae_021
+  fact: Edward insists on staying close to Bella during the escape plan and is determined
+    to face James himself if necessary.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Edward commits himself to Bella's protection at personal risk.
+  cf_edit: Edward leaves Bella with Alice and goes away on his own.
+  anchor_for:
+  - edward_cullen
+- id: ae_022
+  fact: Jacob Black remains in La Push and is not directly involved in the Cullen
+    family's protective plan.
+  known_by:
+  - jacob_black
+  - bella_swan
+  state_change: Jacob is unaware of the immediate vampire threat and Bella's departure.
+  cf_edit: Jacob joins the Cullens to help protect Bella.
+  anchor_for:
+  - jacob_black
+- id: ae_023
+  fact: Rosalie reluctantly participates in the family defense, but remains emotionally
+    distant from the idea of risking themselves for a human.
+  known_by:
+  - rosalie_hale
+  - edward_cullen
+  - bella_swan
+  state_change: Rosalie's resentment toward the situation becomes more apparent to
+    Bella.
+  cf_edit: Rosalie volunteers eagerly and warmly supports Bella's protection.
+  anchor_for:
+  - rosalie_hale

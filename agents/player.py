@@ -9,7 +9,7 @@ from typing import Any, Mapping
 from gamecore import GameContext
 
 from llm import GenerationConfig, LLMClient, generate_structured
-from .prompt_builder import PromptBuilder
+from .prompt_builder import PromptBuilder, PromptBundle
 
 
 class PlayerMode(str, Enum):
@@ -29,6 +29,8 @@ class PlayerAgent:
         self,
         context: GameContext,
         scenario: Mapping[str, Any],
+        *,
+        correction: str | None = None,
     ) -> dict[str, str]:
         bundle = self.prompt_builder.build_player(
             context,
@@ -36,6 +38,17 @@ class PlayerAgent:
             mode=self.mode.value,
             player_profile=self.player_profile,
         )
+        if correction:
+            bundle = PromptBundle(
+                system_prompt=bundle.system_prompt,
+                user_prompt=(
+                    f"{bundle.user_prompt}\n\n"
+                    "上一次本轮输出未通过JSON结构校验。只修正当前Player"
+                    "输出的格式和字段，不改变请求意图；只输出原契约要求的"
+                    f"JSON对象。\n校验错误：{correction}"
+                ),
+                response_schema=bundle.response_schema,
+            )
         output = generate_structured(
             self.client,
             bundle,

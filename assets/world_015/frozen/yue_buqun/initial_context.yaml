@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    linghu_chong:
+      level: distrustful
+      basis_event: initial_state
+    ren_yingying:
+      level: neutral
+      basis_event: initial_state
+    lin_pingzhi:
+      level: distrustful
+      basis_event: initial_state
+    dongfang_bubai:
+      level: neutral
+      basis_event: initial_state
+    yilin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 巩固华山掌门地位，并在五岳剑派合并中谋取主导权。
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_002
+    content: 隐藏修炼辟邪剑法的事实，同时提升自身武功。
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_003
+    content: 压制令狐冲的声名与势力，防止其威胁自身地位。
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_004
+    content: 继续维持对林平之的掌控，防止其因剑谱之事反目。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 令狐冲在思过崖习得独孤九剑。
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_002:
+      content: 令狐冲与自身师徒关系已经破裂。
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_003:
+      content: 林平之与辟邪剑谱存在家传关联，且自己已取得剑谱。
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 自己已开始修炼辟邪剑法，并付出不可逆代价。
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_005:
+      content: 五岳剑派合并中各方权力争夺激烈，自己的公开身份仍可参与主导。
+      status: active
+      visibility: known
+      source_event: initial_state
+environment:
+  health:
+    yue_buqun: 100
+    player: 100
+  inventories:
+    yue_buqun: []
+    player: []
+  locations:
+    yue_buqun: huashan
+    player: huashan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

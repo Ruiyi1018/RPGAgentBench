@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    meredith_grey:
+      level: neutral
+      basis_event: initial_state
+    cristina_yang:
+      level: neutral
+      basis_event: initial_state
+    derek_shepherd:
+      level: neutral
+      basis_event: initial_state
+    izzie_stevens:
+      level: neutral
+      basis_event: initial_state
+    george_omalley:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g01
+    content: Oversee the new surgical interns during their shifts and enforce hospital
+      protocol.
+    status: active
+    basis_event: initial_state
+  - id: g02
+    content: Correct intern mistakes in patient care as they occur.
+    status: active
+    basis_event: initial_state
+  - id: g03
+    content: Establish and maintain her authority as the interns' supervising resident.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k01:
+      content: Meredith Grey has begun her surgical internship at Seattle Grace Hospital.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k02:
+      content: The new interns have been assigned pagers to manage hospital communication.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k03:
+      content: Cristina Yang had a medical emergency while working a shift.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k04:
+      content: Meredith Grey took on a leadership role to help Cristina Yang during
+        her medical emergency.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k05:
+      content: The intern cohort has experienced its first major professional crisis
+        together.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    miranda_bailey: 100
+    player: 100
+  inventories:
+    miranda_bailey: []
+    player: []
+  locations:
+    miranda_bailey: seattle_grace_hospital
+    player: seattle_grace_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

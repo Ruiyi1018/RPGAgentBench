@@ -1,0 +1,67 @@
+world_id: world_028
+canon_policy:
+  primary_source: Hannibal Season 1 episodes
+  source_type: Television series season
+  excluded_versions:
+  - Season 2 and Season 3 of Hannibal
+  - Hannibal novels by Thomas Harris
+  - Film adaptations such as Manhunter, The Silence of the Lambs, Hannibal, Red Dragon,
+    and Hannibal Rising
+  shared_snapshot: A fixed Season 1 episode range
+  generated_timeline: Yes, sorted chronologically within Season 1
+  quotation_policy: Paraphrase all facts; do not reproduce dialogue verbatim
+evaluated_npcs:
+- hannibal_lecter
+- will_graham
+- jack_crawford
+- alana_bloom
+- abigail_hobbs
+- beverly_katz
+event_entities:
+  characters:
+  - hannibal_lecter
+  - will_graham
+  - jack_crawford
+  - alana_bloom
+  - abigail_hobbs
+  - beverly_katz
+  locations:
+  - baltimore_maryland
+  - quantico_virginia
+  - fbi_academy
+  - baltimore_state_hospital_for_the_criminally_insane
+  - wolf_trap_virginia
+  - lecter_office
+  items:
+  - knife
+  - evidence_bags
+  - fbi_badge
+  catalog:
+  - hannibal_lecter
+  - will_graham
+  - jack_crawford
+  - alana_bloom
+  - abigail_hobbs
+  - beverly_katz
+  - baltimore_maryland
+  - quantico_virginia
+  - fbi_academy
+  - baltimore_state_hospital_for_the_criminally_insane
+  - wolf_trap_virginia
+  - lecter_office
+  - knife
+  - evidence_bags
+  - fbi_badge
+sources:
+- id: nbc_hannibal_s01
+  title: 'Hannibal: Season One'
+  creator: Bryan Fuller
+  scope: Season 1 episodes of the NBC television series Hannibal
+  authority: primary
+data_constraints:
+- All facts must be supported by Season 1 episode content from NBC Hannibal
+- Do not use knowledge from episodes outside the fixed Season 1 episode range
+- Do not use material from the Hannibal novels or film adaptations
+- Paraphrase instead of quoting dialogue directly
+- All anchor events must occur within the shared Season 1 snapshot
+- Location connections must reference only locations defined in the environment

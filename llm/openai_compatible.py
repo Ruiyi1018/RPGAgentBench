@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import http.client
 import json
+import socket
 import time
 import urllib.error
 import urllib.request
@@ -50,7 +52,18 @@ class OpenAICompatibleClient:
         if config.seed is not None:
             payload["seed"] = config.seed
         if self.json_mode:
-            payload["response_format"] = {"type": "json_object"}
+            payload["response_format"] = (
+                {
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "structured_output",
+                        "strict": True,
+                        "schema": dict(config.response_schema),
+                    },
+                }
+                if config.response_schema is not None
+                else {"type": "json_object"}
+            )
 
         endpoint = f"{self.base_url.rstrip('/')}/chat/completions"
         request = urllib.request.Request(
@@ -63,6 +76,7 @@ class OpenAICompatibleClient:
             method="POST",
         )
         for attempt in range(self.max_retries + 1):
+            retry_delay = min(2**attempt, 8)
             try:
                 with urllib.request.urlopen(
                     request,
@@ -85,8 +99,25 @@ class OpenAICompatibleClient:
                     raise APIClientError(
                         f"API请求失败 HTTP {error.code}: {detail}"
                     ) from error
-            except urllib.error.URLError as error:
+                if error.code == 429 and "insufficient_quota" in detail:
+                    retry_after = error.headers.get("Retry-After")
+                    try:
+                        retry_after_seconds = float(retry_after)
+                    except (TypeError, ValueError):
+                        retry_after_seconds = 60.0
+                    retry_delay = max(
+                        retry_after_seconds,
+                        60.0,
+                    )
+            except (
+                urllib.error.URLError,
+                http.client.HTTPException,
+                ConnectionError,
+                TimeoutError,
+                socket.timeout,
+            ) as error:
                 if attempt >= self.max_retries:
-                    raise APIClientError(f"API连接失败: {error.reason}") from error
-            time.sleep(min(2**attempt, 8))
+                    reason = getattr(error, "reason", str(error))
+                    raise APIClientError(f"API连接失败: {reason}") from error
+            time.sleep(retry_delay)
         raise APIClientError("API请求在重试后仍失败")

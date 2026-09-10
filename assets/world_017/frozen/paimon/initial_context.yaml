@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhongli:
+      level: trusting
+      basis_event: initial_state
+    hu_tao:
+      level: neutral
+      basis_event: initial_state
+    raiden_shogun:
+      level: distrustful
+      basis_event: initial_state
+    kamisato_ayaka:
+      level: trusting
+      basis_event: initial_state
+    wanderer:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: paimon_stay_with_traveler
+    content: 继续作为旅行者的旅伴行动，不单独脱离。
+    status: ongoing
+    basis_event: initial_state
+  - id: paimon_understand_raiden_change
+    content: 确认雷电将军在稻妻主线后的状态，并留意旅行者再次与其接触是否安全。
+    status: ongoing
+    basis_event: initial_state
+  - id: paimon_watch_wanderer
+    content: 在遇到流浪者时保持警惕，并观察其当前立场。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    paimon_zhongli_archon:
+      content: 知道钟离实际上是摩拉克斯，并在璃月请仙典仪与人治过渡过程中扮演关键角色。
+      status: active
+      visibility: private
+      source_event: initial_state
+    paimon_liyue_rites:
+      content: 见证过璃月送仙典仪、钟离与神之心转交相关安排，了解岩神之心未由钟离保留。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    paimon_wanderer_former_fatui:
+      content: 知道流浪者曾以愚人众相关身份活动，并已脱离该体系。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    paimon_raiden_gnosis:
+      content: 知道雷神之心未由雷电将军继续持有，而是经由相关人物转交至至冬一方。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    paimon_inazuma_conditions:
+      content: 亲自见证稻妻锁国令与眼狩令下的社会状况，并知道雷电将军后来对永恒路线有所修正。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    paimon: 100
+    player: 100
+  inventories:
+    paimon: []
+    player: []
+  locations:
+    paimon: inazuma_city
+    player: inazuma_city
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

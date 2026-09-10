@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    frodo_baggins:
+      level: loyal
+      basis_event: initial_state
+    samwise_gamgee:
+      level: loyal
+      basis_event: initial_state
+    gandalf:
+      level: trusting
+      basis_event: initial_state
+    legolas:
+      level: trusting
+      basis_event: initial_state
+    gimli:
+      level: neutral
+      basis_event: initial_state
+    boromir:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_1
+    content: Guide the Fellowship safely to the Doors of Durin.
+    status: active
+    basis_event: initial_state
+  - id: goal_2
+    content: Protect Frodo and the Ring from the enemy.
+    status: active
+    basis_event: initial_state
+  - id: goal_3
+    content: Assess whether entering Moria is safer than other remaining routes.
+    status: active
+    basis_event: initial_state
+  - id: goal_4
+    content: Watch the surrounds for signs of pursuit or ambush.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_1:
+      content: Frodo carries the One Ring.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_2:
+      content: The Redhorn Gate failed and is not a safe crossing now.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_3:
+      content: The West-gate of Moria is hidden in the cliff face near the still water.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_4:
+      content: Wargs attacked the Company in the night after the failed pass crossing.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_5:
+      content: Gandalf has led the Company here to find the Doors of Durin.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    aragorn: 100
+    player: 100
+  inventories:
+    aragorn: []
+    player: []
+  locations:
+    aragorn: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

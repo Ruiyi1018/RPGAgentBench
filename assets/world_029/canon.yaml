@@ -1,0 +1,40 @@
+world_id: world_029
+canon_policy:
+  primary_source: Rick and Morty Season 1 episodes 1-12
+  source_type: animated television series
+  excluded_versions:
+  - Season 2 and later episodes
+  - Comic books
+  - Manga
+  - Promotional shorts
+  - Video games
+  shared_snapshot: Season 1, episodes 1 through 12, as originally aired
+  generated_timeline: Events ordered by first explicit appearance or implied chronological
+    placement within the Season 1 episode range
+  quotation_policy: Paraphrase all dialogue; do not reproduce exact lines
+evaluated_npcs:
+- rick_sanchez
+- morty_smith
+- beth_smith
+- jerry_smith
+- summer_smith
+- birdperson
+event_entities:
+- characters
+- locations
+- items
+sources:
+- id: ram_s01
+  title: Rick and Morty Season 1
+  creator: Justin Roiland and Dan Harmon
+  scope: Episodes 1 through 12 of the first season
+  authority: primary
+data_constraints:
+- Only use facts shown or stated within Season 1 episodes 1 through 12
+- Do not use information from later seasons, comics, games, or other adaptations
+- Paraphrase all storyline details and dialogue
+- Anchor events must reflect the shared Season 1 snapshot
+- Connections between locations must reference defined location IDs only
+- Known_by and anchor_for values must reference roster character IDs only
+- Every canonical event must include a real minimal cf_edit
+- Every Longitudinal-core character must have ten canonical anchors

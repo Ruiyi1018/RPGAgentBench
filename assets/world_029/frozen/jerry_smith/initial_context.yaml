@@ -1,0 +1,67 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rick_sanchez:
+      level: hostile
+      basis_event: initial_state
+    morty_smith:
+      level: neutral
+      basis_event: initial_state
+    beth_smith:
+      level: neutral
+      basis_event: initial_state
+    summer_smith:
+      level: neutral
+      basis_event: initial_state
+    birdperson:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: jerry_goal_001
+    content: Convince Beth that Rick is a bad influence on the family
+    status: active
+    basis_event: initial_state
+  - id: jerry_goal_002
+    content: Protect Morty from Rick's adventures
+    status: active
+    basis_event: initial_state
+  - id: jerry_goal_003
+    content: Prove he can handle a family crisis on his own
+    status: latent
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    jerry_know_001:
+      content: Rick has returned to the Smith house and is using the garage as a workshop
+      status: active
+      visibility: shared
+      source_event: initial_state
+    jerry_know_002:
+      content: Beth is conflicted about whether to accept Rick back into the family
+      status: active
+      visibility: shared
+      source_event: initial_state
+    jerry_know_003:
+      content: An alternate version of Jerry appears successful and respected on interdimensional
+        cable
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    jerry_smith: 100
+    player: 100
+  inventories:
+    jerry_smith: []
+    player: []
+  locations:
+    jerry_smith: smith_house
+    player: smith_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

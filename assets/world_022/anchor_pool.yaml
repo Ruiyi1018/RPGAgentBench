@@ -1,0 +1,233 @@
+world_id: world_022
+source: 'Sherlock: A Study in Pink (2010)'
+events:
+- id: ae_01
+  fact: John Watson is introduced as an army doctor invalided home from Afghanistan.
+  known_by:
+  - john_watson
+  state_change: John enters civilian life in London after military service.
+  cf_edit: John remains on active duty in Afghanistan rather than returning to London.
+  anchor_for:
+  - john_watson
+- id: ae_02
+  fact: John Watson meets Sherlock Holmes for the first time in the lab at St Bartholomew's
+    Hospital.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  state_change: The central partnership of the case begins to form.
+  cf_edit: John misses the introduction at the hospital and returns to his bedsit
+    alone.
+  anchor_for:
+  - john_watson
+  - sherlock_holmes
+- id: ae_03
+  fact: Sherlock Holmes is shown to possess unusual deductive abilities during a demonstration
+    involving a riding crop.
+  known_by:
+  - john_watson
+  state_change: John witnesses Sherlock's exceptional observational skill firsthand.
+  cf_edit: Sherlock gives a conventional medical explanation instead of a deductive
+    display.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_04
+  fact: John Watson moves into 221B Baker Street as Sherlock Holmes's flatmate.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  - mrs_hudson
+  state_change: A shared residence and working partnership are established.
+  cf_edit: John cannot afford the rent and remains in his previous accommodation.
+  anchor_for:
+  - john_watson
+  - sherlock_holmes
+  - mrs_hudson
+- id: ae_05
+  fact: Mrs Hudson is introduced as the landlady of 221B Baker Street.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  state_change: The domestic authority at Baker Street becomes known to John and Sherlock.
+  cf_edit: The Baker Street flat is managed by an unseen letting agency instead of
+    Mrs Hudson.
+  anchor_for:
+  - mrs_hudson
+- id: ae_06
+  fact: Greg Lestrade consults Sherlock Holmes on a puzzling serial suicide case.
+  known_by:
+  - sherlock_holmes
+  - greg_lestrade
+  - john_watson
+  state_change: The police formally bring Sherlock into the investigation.
+  cf_edit: Lestrade keeps the case entirely within Scotland Yard and does not contact
+    Sherlock.
+  anchor_for:
+  - greg_lestrade
+  - sherlock_holmes
+- id: ae_07
+  fact: Molly Hooper interacts with Sherlock Holmes in the mortuary at St Bartholomew's
+    Hospital.
+  known_by:
+  - sherlock_holmes
+  - molly_hooper
+  state_change: Molly's professional and personal interest in Sherlock is established.
+  cf_edit: Molly is absent from the mortuary when Sherlock visits, so they do not
+    meet there.
+  anchor_for:
+  - molly_hooper
+- id: ae_08
+  fact: Sherlock identifies a pink phone as belonging to the fourth victim.
+  known_by:
+  - sherlock_holmes
+  - greg_lestrade
+  - john_watson
+  state_change: A key piece of physical evidence links the victims to the murderer.
+  cf_edit: The phone is overlooked as ordinary lost property and never enters the
+    case.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_09
+  fact: John Watson follows Sherlock to an active crime scene despite having no official
+    role.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  - greg_lestrade
+  state_change: John becomes an informal participant in the investigation.
+  cf_edit: John stays at Baker Street while Sherlock attends the crime scene alone.
+  anchor_for:
+  - john_watson
+- id: ae_10
+  fact: Sherlock notices that the fourth victim was left-handed by examining small
+    details at the scene.
+  known_by:
+  - sherlock_holmes
+  - john_watson
+  - greg_lestrade
+  state_change: A behavioral trait of the victim is established as case evidence.
+  cf_edit: The victim is misidentified as right-handed, leading the investigation
+    astray.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_11
+  fact: Mycroft Holmes arranges a private meeting with John Watson in a location away
+    from Baker Street.
+  known_by:
+  - john_watson
+  - mycroft_holmes
+  state_change: Mycroft begins monitoring John's connection to Sherlock.
+  cf_edit: Mycroft ignores John entirely and does not request a meeting.
+  anchor_for:
+  - mycroft_holmes
+  - john_watson
+- id: ae_12
+  fact: John Watson learns that Mycroft Holmes is Sherlock Holmes's brother.
+  known_by:
+  - john_watson
+  - mycroft_holmes
+  state_change: John becomes aware of a powerful figure watching over Sherlock.
+  cf_edit: Mycroft conceals his family connection from John during their meeting.
+  anchor_for:
+  - mycroft_holmes
+- id: ae_13
+  fact: Sherlock deduces that the victims voluntarily took poison from the murderer.
+  known_by:
+  - sherlock_holmes
+  - john_watson
+  - greg_lestrade
+  state_change: The method of the murders begins to be understood.
+  cf_edit: The case is treated as straightforward suicide with no external coercion.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_14
+  fact: Sherlock locates a pink suitcase belonging to the fourth victim.
+  known_by:
+  - sherlock_holmes
+  - john_watson
+  state_change: A victim's personal effects are recovered as evidence.
+  cf_edit: The suitcase is never found, leaving the victim's possessions unaccounted
+    for.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_15
+  fact: John Watson observes a suspicious cab driving near locations connected to
+    the case.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  state_change: The murderer's means of transport becomes a line of inquiry.
+  cf_edit: No unusual vehicle is noticed, and the cab is never linked to the case.
+  anchor_for:
+  - john_watson
+- id: ae_16
+  fact: Sherlock identifies the serial suicides as connected murders rather than independent
+    deaths.
+  known_by:
+  - sherlock_holmes
+  - greg_lestrade
+  - john_watson
+  state_change: The official police classification is challenged by Sherlock's analysis.
+  cf_edit: The police continue to treat the deaths as unrelated suicides.
+  anchor_for:
+  - greg_lestrade
+  - sherlock_holmes
+- id: ae_17
+  fact: Mycroft Holmes warns John Watson about the potential dangers of living with
+    Sherlock.
+  known_by:
+  - john_watson
+  - mycroft_holmes
+  state_change: Tension is introduced around John's safety and loyalty to Sherlock.
+  cf_edit: Mycroft offers no warning and shows no interest in John's domestic situation.
+  anchor_for:
+  - mycroft_holmes
+- id: ae_18
+  fact: Greg Lestrade shares forensic findings with Sherlock at Scotland Yard.
+  known_by:
+  - greg_lestrade
+  - sherlock_holmes
+  state_change: Police resources are made partially available to Sherlock's investigation.
+  cf_edit: Forensic reports remain sealed and are not shared with Sherlock.
+  anchor_for:
+  - greg_lestrade
+- id: ae_19
+  fact: Sherlock uses the skull at Baker Street as part of his private thinking process.
+  known_by:
+  - john_watson
+  state_change: John gains further insight into Sherlock's unusual working habits.
+  cf_edit: The skull is absent from the flat, and Sherlock works in silence.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_20
+  fact: Molly Hooper shares her professional opinion about the poison used in the
+    murders.
+  known_by:
+  - sherlock_holmes
+  - molly_hooper
+  state_change: Medical expertise aids Sherlock's developing theory of the crime.
+  cf_edit: Molly cannot determine the poison, delaying the toxicology analysis.
+  anchor_for:
+  - molly_hooper
+- id: ae_21
+  fact: Sherlock narrows the timeline of the murders and links them to a single pattern
+    of behavior.
+  known_by:
+  - sherlock_holmes
+  - john_watson
+  - greg_lestrade
+  state_change: The killer's methodical pattern becomes evidence of premeditation.
+  cf_edit: The timeline remains inconsistent, preventing a clear pattern from emerging.
+  anchor_for:
+  - sherlock_holmes
+- id: ae_22
+  fact: John Watson accompanies Sherlock to the National Antiquity Museum exhibition
+    hall in pursuit of a lead.
+  known_by:
+  - john_watson
+  - sherlock_holmes
+  state_change: The pair expands the search beyond the original crime scenes.
+  cf_edit: The museum lead is ignored, and the pair remain at Baker Street.
+  anchor_for:
+  - john_watson
+  - sherlock_holmes

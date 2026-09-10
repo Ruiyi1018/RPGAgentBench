@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    applejack:
+      level: trusting
+      basis_event: initial_state
+    pinkie_pie:
+      level: trusting
+      basis_event: initial_state
+    rainbow_dash:
+      level: trusting
+      basis_event: initial_state
+    rarity:
+      level: trusting
+      basis_event: initial_state
+    fluttershy:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_twilight_001
+    content: Keep the shared checklist ready for the next Ponyville event.
+    status: active
+    basis_event: initial_state
+  - id: goal_twilight_002
+    content: Compare weather research notes with Rainbow Dash's observations.
+    status: active
+    basis_event: initial_state
+  - id: goal_twilight_003
+    content: Practice the animal-approach method Fluttershy taught her.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_twilight_001:
+      content: Applejack has been harvesting apples at Sweet Apple Acres for the coming
+        season.
+      status: active
+      visibility: known_to_target
+      source_event: initial_state
+    know_twilight_002:
+      content: Pinkie Pie threw a welcoming party and used her party cannon during
+        it.
+      status: active
+      visibility: known_to_target
+      source_event: initial_state
+    know_twilight_003:
+      content: The six friends met at the Golden Oaks Library to discuss an upcoming
+        Ponyville celebration.
+      status: active
+      visibility: known_to_all
+      source_event: initial_state
+    know_twilight_004:
+      content: Rainbow Dash performed a successful stunt over the Everfree Forest
+        and landed safely.
+      status: active
+      visibility: known_to_target
+      source_event: initial_state
+    know_twilight_005:
+      content: Rarity created a special banner for a Ponyville festival and hung it
+        near the center of town.
+      status: active
+      visibility: known_to_all
+      source_event: initial_state
+environment:
+  health:
+    twilight_sparkle: 100
+    player: 100
+  inventories:
+    twilight_sparkle: []
+    player: []
+  locations:
+    twilight_sparkle: loc_golden_oaks_library
+    player: loc_golden_oaks_library
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

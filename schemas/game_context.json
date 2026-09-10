@@ -38,7 +38,9 @@
         "locations": { "type": "object" },
         "access": { "type": "object" },
         "offers": { "type": "array" },
+        "artifacts": { "type": "object" },
         "task_status": { "type": "string" },
+        "interaction_deadline": { "type": "integer", "minimum": 1 },
         "dialogue_status": {
           "type": "string",
           "enum": ["active", "ended"]

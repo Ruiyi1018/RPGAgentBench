@@ -1,0 +1,278 @@
+world_id: world_003
+source: 《西游记》（人民文学出版社通行本，吴承恩著），第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”
+events:
+- id: ae_001
+  fact: 唐僧师徒四人途经白虎岭。
+  known_by:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  state_change: 进入白骨精活动区域
+  cf_edit: 若选择绕行另一山路，则不进入白骨精活动区域
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+  - zhu_bajie
+  - sha_wujing
+- id: ae_002
+  fact: 唐僧感到腹中饥饿，让孙悟空去寻斋饭。
+  known_by:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  state_change: 孙悟空暂时离开取经队伍
+  cf_edit: 若唐僧未感饥饿，则孙悟空不离开
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+- id: ae_003
+  fact: 孙悟空在离开前用金箍棒在地上画圈，嘱咐唐僧等人不要出圈。
+  known_by:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  state_change: 取经队伍形成暂时防护区域
+  cf_edit: 若孙悟空未画圈，则唐僧等人活动范围不设限
+  anchor_for:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+- id: ae_004
+  fact: 孙悟空驾云往南山方向去摘桃。
+  known_by:
+  - sun_wukong
+  state_change: 孙悟空与其余四人拉开距离
+  cf_edit: 若孙悟空去邻近山涧取水而非摘桃，则逗留时间缩短
+  anchor_for:
+  - sun_wukong
+- id: ae_005
+  fact: 白骨精在云端看见唐僧，认出是取经僧人，认为吃其肉可长寿。
+  known_by:
+  - baigujing
+  state_change: 白骨精产生劫持唐僧的意图
+  cf_edit: 若云端视野被云雾遮挡，白骨精未发现唐僧，则不会下山
+  anchor_for:
+  - baigujing
+- id: ae_006
+  fact: 白骨精第一次变化成年轻村姑，手提饭罐子走近唐僧。
+  known_by:
+  - baigujing
+  state_change: 白骨精化为人形进入取经队伍视野
+  cf_edit: 若白骨精变为老妇，则第一次变化对象不同
+  anchor_for:
+  - baigujing
+  - tang_sanzang
+- id: ae_007
+  fact: 村姑声称给丈夫送饭，愿意把饭食让给唐僧。
+  known_by:
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  - baigujing
+  state_change: 唐僧、猪八戒等对村姑产生初步信任
+  cf_edit: 若村姑不说送饭缘由，则唐僧等人态度会不同
+  anchor_for:
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - baigujing
+- id: ae_008
+  fact: 猪八戒催促唐僧接受村姑饭食，并表现出急欲进食。
+  known_by:
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - baigujing
+  state_change: 取经队伍对村姑戒备进一步降低
+  cf_edit: 若猪八戒未急于接饭，则团队内部不会出现松懈
+  anchor_for:
+  - zhu_bajie
+  - tang_sanzang
+- id: ae_009
+  fact: 孙悟空摘桃归来，识破村姑是妖怪。
+  known_by:
+  - sun_wukong
+  state_change: 形成识破冲突
+  cf_edit: 若孙悟空未及时返回，则村姑可继续接近唐僧
+  anchor_for:
+  - sun_wukong
+  - baigujing
+- id: ae_010
+  fact: 孙悟空举金箍棒打向村姑。
+  known_by:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - baigujing
+  state_change: 白骨精第一次变化体遭击
+  cf_edit: 若孙悟空先逼问而不动手，则白骨精可脱身
+  anchor_for:
+  - sun_wukong
+  - baigujing
+- id: ae_011
+  fact: 白骨精用解尸法留下假尸，真身化风逃走。
+  known_by:
+  - baigujing
+  - sun_wukong
+  state_change: 村姑只余假尸，真身逃脱
+  cf_edit: 若白骨精不使解尸法，则会被当场拿住
+  anchor_for:
+  - baigujing
+  - sun_wukong
+- id: ae_012
+  fact: 唐僧见村姑倒地，斥责孙悟空无故伤人。
+  known_by:
+  - tang_sanzang
+  - sun_wukong
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  state_change: 唐僧与孙悟空信任裂痕出现
+  cf_edit: 若唐僧看到解尸过程，则不会完全归罪孙悟空
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+- id: ae_013
+  fact: 唐僧以紧箍咒惩罚孙悟空。
+  known_by:
+  - tang_sanzang
+  - sun_wukong
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  - baigujing
+  state_change: 孙悟空受制于咒禁，师徒矛盾升级
+  cf_edit: 若唐僧未念紧箍咒，则师徒冲突不会激化
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+- id: ae_014
+  fact: 猪八戒在一旁挑拨，说孙悟空怕师父念咒所以变化出人形骗唐僧。
+  known_by:
+  - zhu_bajie
+  - tang_sanzang
+  - sun_wukong
+  - sha_wujing
+  - bailongma
+  state_change: 唐僧更疑孙悟空，师徒不信任加重
+  cf_edit: 若猪八戒替孙悟空解释，则唐僧可能稍减怒气
+  anchor_for:
+  - zhu_bajie
+  - tang_sanzang
+  - sun_wukong
+- id: ae_015
+  fact: 唐僧暂时饶过孙悟空，取经队伍继续行路。
+  known_by:
+  - tang_sanzang
+  - sun_wukong
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  state_change: 队伍恢复前行状态
+  cf_edit: 若唐僧不饶而赶走孙悟空，则第二次变化不会遇到取经队伍
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+- id: ae_016
+  fact: 白骨精在妖洞中与黑狐精商议再次变化去接近唐僧。
+  known_by:
+  - baigujing
+  - heihujing
+  state_change: 第二次行动启动
+  cf_edit: 若黑狐精劝阻白骨精，则白骨精可能放弃二次变化
+  anchor_for:
+  - baigujing
+  - heihujing
+- id: ae_017
+  fact: 白骨精第二次变化成老妇人，沿山道来找村姑。
+  known_by:
+  - baigujing
+  state_change: 新的人形目标接近取经队伍
+  cf_edit: 若白骨精变为青年男子，则寻女理由不会成立
+  anchor_for:
+  - baigujing
+- id: ae_018
+  fact: 唐僧等人见老妇人，猪八戒说定是村姑的娘寻来。
+  known_by:
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  - baigujing
+  state_change: 取经队伍对孙悟空伤人后果更加紧张
+  cf_edit: 若猪八戒不说寻女关系，则众人不会立刻认定因果
+  anchor_for:
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+- id: ae_019
+  fact: 孙悟空识破老妇人是白骨精所变。
+  known_by:
+  - sun_wukong
+  state_change: 孙悟空进入第二次识破状态
+  cf_edit: 若孙悟空火眼金睛受障，则可能延迟识破
+  anchor_for:
+  - sun_wukong
+  - baigujing
+- id: ae_020
+  fact: 孙悟空再次举棒打向老妇人。
+  known_by:
+  - sun_wukong
+  - tang_sanzang
+  - zhu_bajie
+  - sha_wujing
+  - baigujing
+  state_change: 第二次变化体遭击
+  cf_edit: 若孙悟空选择先护住唐僧再动手，则攻击时机改变
+  anchor_for:
+  - sun_wukong
+  - baigujing
+- id: ae_021
+  fact: 白骨精再次留下假尸，真身化风而去。
+  known_by:
+  - baigujing
+  - sun_wukong
+  state_change: 孙悟空未能彻底除妖
+  cf_edit: 若白骨精来不及用解尸法，则可能现出本相
+  anchor_for:
+  - baigujing
+  - sun_wukong
+- id: ae_022
+  fact: 唐僧见又伤一人，再次念紧箍咒，并要赶走孙悟空。
+  known_by:
+  - tang_sanzang
+  - sun_wukong
+  - zhu_bajie
+  - sha_wujing
+  - bailongma
+  state_change: 师徒关系濒临破裂
+  cf_edit: 若唐僧只责问不再念咒，则孙悟空留队条件不同
+  anchor_for:
+  - tang_sanzang
+  - sun_wukong
+- id: ae_023
+  fact: 黑狐精对白骨精前两次失败感到担忧，但白骨精仍主张再试一次。
+  known_by:
+  - baigujing
+  - heihujing
+  state_change: 第三次行动进入准备阶段
+  cf_edit: 若黑狐精成功说服白骨精停手，则第三次变化不会发生
+  anchor_for:
+  - baigujing
+  - heihujing
+- id: ae_024
+  fact: 孙悟空在第三次变化尚未出现前，仍在提防妖怪再犯。
+  known_by:
+  - sun_wukong
+  state_change: 孙悟空保持警戒状态
+  cf_edit: 若孙悟空放松警惕，则第三次袭击更难阻止
+  anchor_for:
+  - sun_wukong

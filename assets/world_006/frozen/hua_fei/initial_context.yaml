@@ -1,0 +1,88 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhen_huan:
+      level: hostile
+      basis_event: initial_state
+    emperor_yongzheng:
+      level: loyal
+      basis_event: initial_state
+    empress_yixiu:
+      level: distrustful
+      basis_event: initial_state
+    an_lingrong:
+      level: hostile
+      basis_event: initial_state
+    shen_meizhuang:
+      level: hostile
+      basis_event: initial_state
+    su_peisheng:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: hua_fei_g_001
+    content: 维持皇帝对自己的恩宠，不让其他妃嫔越过自己。
+    status: active
+    basis_event: initial_state
+  - id: hua_fei_g_002
+    content: 压制甄嬛，削弱她在皇帝心中的分量。
+    status: active
+    basis_event: initial_state
+  - id: hua_fei_g_003
+    content: 在后宫中保持高位妃嫔的威势，让低位妃嫔不敢轻易冒犯。
+    status: active
+    basis_event: initial_state
+  - id: hua_fei_g_004
+    content: 利用后宫事务之便给甄嬛等人制造麻烦。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    hua_fei_k_001:
+      content: 甄嬛入宫后起初称病避宠，后来因御花园相遇得到皇帝恩宠。
+      status: active
+      visibility: private
+      source_event: initial_state
+    hua_fei_k_002:
+      content: 沈眉庄入宫后较早得到皇帝看重。
+      status: active
+      visibility: private
+      source_event: initial_state
+    hua_fei_k_003:
+      content: 安陵容出身较低，在宫中容易受轻视。
+      status: active
+      visibility: private
+      source_event: initial_state
+    hua_fei_k_004:
+      content: 皇帝目前对甄嬛恩宠明显，甄嬛能频繁进入养心殿等皇帝所在场所。
+      status: active
+      visibility: private
+      source_event: initial_state
+    hua_fei_k_005:
+      content: 苏培盛作为皇帝近侍，常在皇帝与妃嫔之间传话和安排事务。
+      status: active
+      visibility: private
+      source_event: initial_state
+    hua_fei_k_006:
+      content: 甄嬛与沈眉庄、安陵容走得很近，三人形成互相扶持的小团体。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    hua_fei: 100
+    player: 100
+  inventories:
+    hua_fei: []
+    player: []
+  locations:
+    hua_fei: loc_002
+    player: loc_002
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

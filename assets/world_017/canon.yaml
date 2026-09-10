@@ -1,0 +1,39 @@
+world_id: world_017
+canon_policy:
+  primary_source: 《原神》游戏内璃月与稻妻相关角色故事、语音、主线/传说任务及活动剧情，以4.3版本及此前游戏内容为限
+  source_type: 电子游戏
+  excluded_versions:
+  - 4.4及之后版本新增剧情
+  - 未实装的泄露内容
+  - 官方漫画、动画、小说中未在游戏内同步呈现的独立情节
+  - 限定联动活动中与提瓦特主线无关的纯联动剧情
+  shared_snapshot: 4.3版本结束时，璃月与稻妻可共同确认的角色状态；不假设任何角色此后行踪
+  generated_timeline: 按4.3版本既有信息综合排序，所有事件均为已发生或可确认的过去状态，不做未来推演
+  quotation_policy: 不逐字复制游戏内台词，仅做事实级转述
+evaluated_npcs:
+- zhongli
+- hu_tao
+- raiden_shogun
+- kamisato_ayaka
+- wanderer
+- paimon
+event_entities:
+- 钟离
+- 胡桃
+- 雷电将军
+- 神里绫华
+- 流浪者
+- 派蒙
+sources:
+- id: gi_game_43
+  title: 《原神》游戏内文本与语音（4.3版本及此前）
+  creator: miHoYo/HoYoverse
+  scope: 璃月与稻妻相关角色资料、任务记录、角色语音
+  authority: primary
+data_constraints:
+- 所有anchor事件必须能由4.3版本及此前游戏内内容直接或合理推出
+- 不写入任何4.4版本及之后新增的剧情变化
+- 不得伪造任务名、版本号或无出处的细节
+- 若某事件无法确认具体发生时段，仅保留大致时序，不标注精确章节号
+- 跨区角色关系只能在双方均已有明确游戏内互动记录时写入
+- 不把玩家行为或非官方二设当作正典

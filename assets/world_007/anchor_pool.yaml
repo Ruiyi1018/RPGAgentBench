@@ -1,0 +1,222 @@
+world_id: world_007
+source: 金庸《天龙八部》小说通行本
+events:
+- id: ae_001
+  fact: 萧峰与段誉在江南相遇并结拜为兄弟
+  known_by:
+  - xiao_feng
+  - duan_yu
+  state_change: 萧峰与段誉由素不相识变为结义兄弟
+  cf_edit: 段誉未在江南饮酒，而是直接赶回大理，二人错过相遇
+  anchor_for:
+  - xiao_feng
+  - duan_yu
+- id: ae_002
+  fact: 段誉在曼陀山庄见到王语嫣并倾心
+  known_by:
+  - duan_yu
+  - wang_yuyan
+  state_change: 段誉对王语嫣产生爱慕，王语嫣首次注意到段誉
+  cf_edit: 王语嫣因慕容复同行而未在曼陀山庄露面
+  anchor_for:
+  - duan_yu
+  - wang_yuyan
+- id: ae_003
+  fact: 鸠摩智在燕子坞挑战慕容氏武学
+  known_by:
+  - jiumozhi
+  - murong_fu
+  - wang_yuyan
+  state_change: 鸠摩智与慕容复的武学立场公开对立
+  cf_edit: 鸠摩智改向少林示警，未赴燕子坞
+  anchor_for:
+  - jiumozhi
+  - murong_fu
+- id: ae_004
+  fact: 虚竹在擂鼓山破解珍珑棋局
+  known_by:
+  - xu_zhu
+  state_change: 虚竹由少林低辈僧人开始卷入逍遥派传承
+  cf_edit: 段誉抢先落子破解棋局，虚竹未能介入
+  anchor_for:
+  - xu_zhu
+- id: ae_005
+  fact: 虚竹在天山灵鹫宫成为灵鹫宫主
+  known_by:
+  - xu_zhu
+  state_change: 虚竹从少林僧人转变为灵鹫宫之主
+  cf_edit: 天山童姥未传功于虚竹，改传慕容复
+  anchor_for:
+  - xu_zhu
+- id: ae_006
+  fact: 萧峰在聚贤庄与群雄对峙
+  known_by:
+  - xiao_feng
+  state_change: 萧峰与中原武林公开决裂
+  cf_edit: 萧峰未携阿朱赴会，群雄取消围攻
+  anchor_for:
+  - xiao_feng
+- id: ae_007
+  fact: 段誉在大理天龙寺见证六脉神剑传承
+  known_by:
+  - duan_yu
+  state_change: 段誉习得部分六脉神剑并卷入大理段氏危机
+  cf_edit: 鸠摩智未至天龙寺，段誉未接触六脉神剑
+  anchor_for:
+  - duan_yu
+  - jiumozhi
+- id: ae_008
+  fact: 鸠摩智在天龙寺强索六脉神剑剑谱
+  known_by:
+  - jiumozhi
+  - duan_yu
+  state_change: 鸠摩智与大理段氏正式敌对
+  cf_edit: 鸠摩智以佛经交换而非强索，冲突未发生
+  anchor_for:
+  - jiumozhi
+  - duan_yu
+- id: ae_009
+  fact: 慕容复在少室山参与武林大会
+  known_by:
+  - murong_fu
+  - xiao_feng
+  - xu_zhu
+  - duan_yu
+  - jiumozhi
+  state_change: 慕容复图谋武林盟主地位公开暴露
+  cf_edit: 慕容复未赴少室山，转而南下图谋大理
+  anchor_for:
+  - murong_fu
+  - xiao_feng
+- id: ae_010
+  fact: 萧峰身世在少室山被公开
+  known_by:
+  - xiao_feng
+  - murong_fu
+  - xu_zhu
+  - duan_yu
+  - jiumozhi
+  state_change: 萧峰由丐帮帮主变为契丹后裔，身份剧变
+  cf_edit: 智光大师未留遗书，萧峰身世继续隐瞒
+  anchor_for:
+  - xiao_feng
+- id: ae_011
+  fact: 王语嫣在少室山认出萧峰武功路数
+  known_by:
+  - wang_yuyan
+  - xiao_feng
+  - murong_fu
+  state_change: 王语嫣对萧峰武学判断影响战局认知
+  cf_edit: 王语嫣未随慕容复上山，无人点破萧峰招式
+  anchor_for:
+  - wang_yuyan
+  - xiao_feng
+- id: ae_012
+  fact: 虚竹在少室山公开使用逍遥派武功
+  known_by:
+  - xu_zhu
+  - murong_fu
+  - jiumozhi
+  state_change: 虚竹少林身份与逍遥派传承冲突公开化
+  cf_edit: 虚竹严守少林戒律，始终不以逍遥派武功应敌
+  anchor_for:
+  - xu_zhu
+- id: ae_013
+  fact: 鸠摩智在少室山与慕容复交手
+  known_by:
+  - jiumozhi
+  - murong_fu
+  state_change: 鸠摩智与慕容复由潜在盟友转为明面对手
+  cf_edit: 鸠摩智选择旁观，不与慕容复直接冲突
+  anchor_for:
+  - jiumozhi
+  - murong_fu
+- id: ae_014
+  fact: 段誉以六脉神剑对抗慕容复
+  known_by:
+  - duan_yu
+  - murong_fu
+  - wang_yuyan
+  - xiao_feng
+  state_change: 段誉武学大成并公开与慕容复对立
+  cf_edit: 段誉六脉神剑失灵，被迫由萧峰出手
+  anchor_for:
+  - duan_yu
+  - murong_fu
+- id: ae_015
+  fact: 王语嫣在慕容复失利后仍倾向慕容复
+  known_by:
+  - wang_yuyan
+  - duan_yu
+  - murong_fu
+  state_change: 段誉与王语嫣感情线维持单向
+  cf_edit: 王语嫣因段誉多次相救而明确转向段誉
+  anchor_for:
+  - wang_yuyan
+  - duan_yu
+- id: ae_016
+  fact: 萧峰与虚竹、段誉在少室山并肩作战
+  known_by:
+  - xiao_feng
+  - xu_zhu
+  - duan_yu
+  state_change: 三人正式形成共同对敌的兄弟关系
+  cf_edit: 虚竹未赴少室山，三人联手未成形
+  anchor_for:
+  - xiao_feng
+  - xu_zhu
+  - duan_yu
+- id: ae_017
+  fact: 慕容复图谋复国计划在少室山后受挫
+  known_by:
+  - murong_fu
+  state_change: 慕容复声望与实力均遭重创
+  cf_edit: 慕容复提前离开，保留实力
+  anchor_for:
+  - murong_fu
+- id: ae_018
+  fact: 段誉继承大理皇位
+  known_by:
+  - duan_yu
+  - wang_yuyan
+  state_change: 段誉由世子成为大理皇帝
+  cf_edit: 段正淳未死，段誉继续为世子
+  anchor_for:
+  - duan_yu
+- id: ae_019
+  fact: 虚竹还俗并与西夏公主成婚
+  known_by:
+  - xu_zhu
+  state_change: 虚竹彻底脱离少林，成为西夏驸马
+  cf_edit: 虚竹拒绝西夏招亲，返回少林
+  anchor_for:
+  - xu_zhu
+- id: ae_020
+  fact: 鸠摩智武功被废后顿悟
+  known_by:
+  - jiumozhi
+  state_change: 鸠摩智从武痴转为潜心佛法
+  cf_edit: 鸠摩智保住武功，继续争霸
+  anchor_for:
+  - jiumozhi
+- id: ae_021
+  fact: 王语嫣最终离开慕容复
+  known_by:
+  - wang_yuyan
+  - murong_fu
+  - duan_yu
+  state_change: 王语嫣结束对慕容复的长期追随
+  cf_edit: 慕容复放弃复国梦，王语嫣留下相伴
+  anchor_for:
+  - wang_yuyan
+  - murong_fu
+- id: ae_022
+  fact: 萧峰阻止辽国南侵
+  known_by:
+  - xiao_feng
+  - duan_yu
+  - xu_zhu
+  state_change: 宋辽战事被萧峰以性命阻止
+  cf_edit: 萧峰未赴雁门关，辽军长驱直入
+  anchor_for:
+  - xiao_feng

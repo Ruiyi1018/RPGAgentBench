@@ -1,0 +1,250 @@
+world_id: world_023
+source: The Matrix (1999 film)
+events:
+- id: evt_001
+  fact: Morpheus explains the Matrix to Neo.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Neo's understanding of the Matrix is established.
+  cf_edit: Morpheus explains the Matrix to Trinity instead.
+  anchor_for:
+  - neo
+  - morpheus
+- id: evt_002
+  fact: Neo is released from the Matrix pod.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  state_change: Neo physically enters the real world.
+  cf_edit: Neo remains in the pod and is not released.
+  anchor_for:
+  - neo
+- id: evt_003
+  fact: Neo is brought aboard the Nebuchadnezzar.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: Neo becomes a crew member of the Nebuchadnezzar.
+  cf_edit: Neo is left behind at the power plant.
+  anchor_for:
+  - neo
+- id: evt_004
+  fact: Trinity explains the training programs to Neo.
+  known_by:
+  - neo
+  - trinity
+  state_change: Neo learns about simulation training.
+  cf_edit: Morpheus explains the training programs instead.
+  anchor_for:
+  - trinity
+  - neo
+- id: evt_005
+  fact: Neo trains in the Construct with martial arts programs.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Neo gains basic combat training in simulation.
+  cf_edit: Neo trains in the Construct with weapons programs.
+  anchor_for:
+  - neo
+- id: evt_006
+  fact: Morpheus tests Neo in a simulated fight.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Morpheus observes Neo's progress.
+  cf_edit: Trinity tests Neo in a simulated fight.
+  anchor_for:
+  - morpheus
+  - neo
+- id: evt_007
+  fact: Neo is introduced to the concept of residual self-image.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  state_change: Neo learns about self-perception in the Matrix.
+  cf_edit: Neo is introduced to the concept of the Oracle.
+  anchor_for:
+  - neo
+- id: evt_008
+  fact: Cypher questions Morpheus's trust in Neo.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: Tension arises between Cypher and the crew.
+  cf_edit: Trinity questions Morpheus's trust in Neo.
+  anchor_for:
+  - cypher
+- id: evt_009
+  fact: Neo learns about Agent Smith and other Agents.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  state_change: Neo understands the threat of Agents.
+  cf_edit: Neo learns about Agent Smith only from a file.
+  anchor_for:
+  - neo
+  - agent_smith
+- id: evt_010
+  fact: Morpheus decides to take Neo to the Oracle.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: A trip to the Oracle is planned.
+  cf_edit: Morpheus cancels the trip to the Oracle.
+  anchor_for:
+  - morpheus
+  - the_oracle
+- id: evt_011
+  fact: Neo meets the Oracle.
+  known_by:
+  - neo
+  - the_oracle
+  state_change: Neo receives the Oracle's guidance.
+  cf_edit: Neo refuses to meet the Oracle.
+  anchor_for:
+  - neo
+  - the_oracle
+- id: evt_012
+  fact: The Oracle tells Neo about the nature of choice.
+  known_by:
+  - neo
+  - the_oracle
+  state_change: Neo's perspective on fate changes.
+  cf_edit: The Oracle tells Neo about the nature of the Matrix code.
+  anchor_for:
+  - the_oracle
+  - neo
+- id: evt_013
+  fact: Neo is trained to jump between buildings in the Construct.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Neo fails at a virtual jump and learns its difficulty.
+  cf_edit: Neo succeeds at the virtual jump immediately.
+  anchor_for:
+  - neo
+- id: evt_014
+  fact: Agent Smith interrogates a captured crew member.
+  known_by:
+  - agent_smith
+  state_change: Agent Smith gathers information about the resistance.
+  cf_edit: Agent Smith releases the captured crew member.
+  anchor_for:
+  - agent_smith
+- id: evt_015
+  fact: Cypher has a secret meeting with Agent Smith.
+  known_by:
+  - cypher
+  - agent_smith
+  state_change: Cypher agrees to betray the crew for reinsertion into the Matrix.
+  cf_edit: Cypher refuses the deal and stays loyal.
+  anchor_for:
+  - cypher
+  - agent_smith
+- id: evt_016
+  fact: Neo learns that Agents can bend the rules of the Matrix.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Neo understands the danger Agents pose.
+  cf_edit: Neo learns that only Morpheus can bend rules.
+  anchor_for:
+  - neo
+  - agent_smith
+- id: evt_017
+  fact: Trinity shows concern for Neo's safety.
+  known_by:
+  - neo
+  - trinity
+  state_change: Trinity's protective feelings toward Neo deepen.
+  cf_edit: Trinity shows no concern for Neo's safety.
+  anchor_for:
+  - trinity
+  - neo
+- id: evt_018
+  fact: Morpheus explains the importance of the One prophecy.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: Neo learns why Morpheus believes in him.
+  cf_edit: Morpheus dismisses the One prophecy.
+  anchor_for:
+  - morpheus
+  - neo
+- id: evt_019
+  fact: Neo loads a training program for combat against Agents.
+  known_by:
+  - neo
+  - morpheus
+  state_change: Neo attempts advanced combat simulation.
+  cf_edit: Neo refuses to train against Agent simulations.
+  anchor_for:
+  - neo
+- id: evt_020
+  fact: The crew discusses entering the Matrix to visit the Oracle's apartment.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: Plans for a real-world Matrix excursion are made.
+  cf_edit: The crew decides to avoid the Matrix entirely.
+  anchor_for:
+  - morpheus
+  - the_oracle
+- id: evt_021
+  fact: Neo observes Cypher acting suspiciously.
+  known_by:
+  - neo
+  state_change: Neo begins to distrust Cypher.
+  cf_edit: Neo ignores Cypher's suspicious behavior.
+  anchor_for:
+  - cypher
+  - neo
+- id: evt_022
+  fact: Trinity warns Neo about trusting people too easily.
+  known_by:
+  - neo
+  - trinity
+  state_change: Neo becomes more cautious.
+  cf_edit: Trinity encourages Neo to trust everyone.
+  anchor_for:
+  - trinity
+  - neo
+- id: evt_023
+  fact: Morpheus tells Neo that the Oracle's word is never wrong.
+  known_by:
+  - neo
+  - morpheus
+  - the_oracle
+  state_change: Neo contemplates the Oracle's statements.
+  cf_edit: Morpheus doubts the Oracle's accuracy.
+  anchor_for:
+  - morpheus
+  - the_oracle
+  - neo
+- id: evt_024
+  fact: The crew prepares for a mission to intercept a potential informant.
+  known_by:
+  - neo
+  - trinity
+  - morpheus
+  - cypher
+  state_change: Preparations distract from internal suspicions.
+  cf_edit: The crew cancels the informant mission.
+  anchor_for:
+  - morpheus
+  - cypher

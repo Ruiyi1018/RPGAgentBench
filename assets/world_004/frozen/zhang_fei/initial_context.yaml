@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_bei:
+      level: loyal
+      basis_event: initial_state
+    guan_yu:
+      level: trusting
+      basis_event: initial_state
+    zhuge_liang:
+      level: neutral
+      basis_event: initial_state
+    zhou_yu:
+      level: neutral
+      basis_event: initial_state
+    sun_quan:
+      level: distrustful
+      basis_event: initial_state
+    cao_cao:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 随刘备在夏口、江夏一带保存实力并准备迎击曹军
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 在孙刘联盟作战中率刘备军一部参战，与江东军合力对抗曹操
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 避免因自己急躁而破坏刘备与江东的联合
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 刘备在长坂坡被曹军追击时，张飞据水断桥喝阻追兵，为撤退争取时间
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 曹操已占领江陵，并率大军东下，刘备集团退至夏口一带
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_003:
+      content: 诸葛亮出使江东，正在促成孙刘联合抗曹
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 孙权方面已初步决定抗曹，但仍对刘备军实力和意图有所保留
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    zhang_fei: 100
+    player: 100
+  inventories:
+    zhang_fei: []
+    player: []
+  locations:
+    zhang_fei: xiakou
+    player: xiakou
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

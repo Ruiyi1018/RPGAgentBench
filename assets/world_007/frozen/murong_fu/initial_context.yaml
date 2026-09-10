@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_feng:
+      level: neutral
+      basis_event: initial_state
+    duan_yu:
+      level: neutral
+      basis_event: initial_state
+    xu_zhu:
+      level: neutral
+      basis_event: initial_state
+    wang_yuyan:
+      level: loyal
+      basis_event: initial_state
+    jiumozhi:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: murong_fu_goal_001
+    content: 恢复慕容氏声望，在武林中建立主导地位。
+    status: active
+    basis_event: initial_state
+  - id: murong_fu_goal_002
+    content: 观察并利用萧峰身世与江湖声望变化。
+    status: active
+    basis_event: initial_state
+  - id: murong_fu_goal_003
+    content: 继续笼络王语嫣，以利用其武学见识。
+    status: active
+    basis_event: initial_state
+  - id: murong_fu_goal_004
+    content: 防备鸠摩智对慕容氏武学的觊觎。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    murong_fu_knowledge_001:
+      content: 鸠摩智曾到燕子坞挑战慕容氏武学。
+      status: active
+      visibility: private
+      source_event: initial_state
+    murong_fu_knowledge_002:
+      content: 王语嫣对慕容复的武学路数熟悉，并多有襄助。
+      status: active
+      visibility: private
+      source_event: initial_state
+    murong_fu_knowledge_003:
+      content: 慕容氏世代图谋兴复故国的家族使命。
+      status: active
+      visibility: private
+      source_event: initial_state
+    murong_fu_knowledge_004:
+      content: 江湖上将“南慕容”与“北乔峰”并称。
+      status: active
+      visibility: public
+      source_event: initial_state
+    murong_fu_knowledge_005:
+      content: 萧峰身世在少室山被公开，涉及契丹后裔身份。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    murong_fu: 100
+    player: 100
+  inventories:
+    murong_fu: []
+    player: []
+  locations:
+    murong_fu: yanzi_wu
+    player: yanzi_wu
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

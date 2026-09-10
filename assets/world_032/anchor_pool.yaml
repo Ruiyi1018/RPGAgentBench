@@ -1,0 +1,305 @@
+world_id: world_032
+source: How I Met Your Mother Season 1 broadcast episodes
+events:
+- id: ae_001
+  fact: Ted meets Robin at MacLaren's Pub and is immediately smitten.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Robin enters the social circle; Ted's romantic pursuit begins.
+  cf_edit: Ted meets Robin at a coffee shop instead of the pub.
+  anchor_for:
+  - ted_mosby
+  - robin_scherbatsky
+- id: ae_002
+  fact: Ted steals a blue French horn from a restaurant for Robin.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Robin is charmed but overwhelmed; Ted's romantic gesture establishes
+    his personality.
+  cf_edit: Ted instead gives Robin a bouquet of flowers.
+  anchor_for:
+  - ted_mosby
+  - robin_scherbatsky
+- id: ae_003
+  fact: Marshall proposes to Lily with an engagement ring in their apartment.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Marshall and Lily move toward marriage; the engagement sets a central
+    dynamic.
+  cf_edit: Marshall proposes at MacLaren's instead of the apartment.
+  anchor_for:
+  - marshall_eriksen
+  - lily_aldrin
+- id: ae_004
+  fact: Barney introduces the concept of his 'playbook' at MacLaren's.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Barney's lifestyle and manipulative dating strategies are established.
+  cf_edit: Barney instead describes a simple pickup line without a playbook.
+  anchor_for:
+  - barney_stinson
+- id: ae_005
+  fact: Lily reveals she has applied to an art fellowship program.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Lily's long-suppressed artistic ambition surfaces, creating tension
+    with Marshall.
+  cf_edit: Lily reveals she has bought a new car instead.
+  anchor_for:
+  - lily_aldrin
+  - marshall_eriksen
+- id: ae_006
+  fact: Ted and Robin go on their first official date at the Liberty Bell bar.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Ted and Robin's romantic viability is tested.
+  cf_edit: Ted and Robin have their first date at a baseball game.
+  anchor_for:
+  - ted_mosby
+  - robin_scherbatsky
+- id: ae_007
+  fact: Robin reveals her past as a Canadian teen pop star.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Robin's backstory becomes public among the group, causing embarrassment.
+  cf_edit: Robin hides her pop star past and it is never revealed.
+  anchor_for:
+  - robin_scherbatsky
+- id: ae_008
+  fact: Ted invents the 'lemon law' for ending bad dates.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Ted establishes a personal rule that shapes his approach to dating.
+  cf_edit: Ted instead decides to never end a date early.
+  anchor_for:
+  - ted_mosby
+- id: ae_009
+  fact: Marshall takes a corporate job at MetroNatural Bank despite his environmental
+    law dreams.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Marshall compromises his values for financial stability, altering
+    his career path.
+  cf_edit: Marshall declines the corporate job and remains unemployed.
+  anchor_for:
+  - marshall_eriksen
+- id: ae_010
+  fact: Barney is mistakenly called 'Swarley' at MacLaren's, and the name sticks temporarily.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The nickname briefly alters how the group addresses Barney.
+  cf_edit: Barney is never given a nickname.
+  anchor_for:
+  - barney_stinson
+- id: ae_011
+  fact: A goat appears in Ted's apartment during a party.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The bizarre incident becomes a recurring reference among the friends.
+  cf_edit: No goat appears at any party.
+  anchor_for:
+  - ted_mosby
+- id: ae_012
+  fact: Robin gets a job at World Wide News after being fired from Metropolitan Magazine.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Robin's career trajectory shifts to a more prominent news position.
+  cf_edit: Robin stays at Metropolitan Magazine.
+  anchor_for:
+  - robin_scherbatsky
+- id: ae_013
+  fact: Ted finds a mysterious pineapple on his nightstand after a night of heavy
+    drinking.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The unexplained pineapple becomes an enduring mystery in the group's
+    lore.
+  cf_edit: Ted finds nothing unusual after the night.
+  anchor_for:
+  - ted_mosby
+- id: ae_014
+  fact: Lily and Marshall attend a wedding at The Altar venue where Ted reflects on
+    marriage.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Ted's views on marriage are influenced by the wedding experience.
+  cf_edit: Ted does not attend any wedding in Season 1.
+  anchor_for:
+  - ted_mosby
+- id: ae_015
+  fact: Barney brings a bar tab with the name 'Swarley' on it to show the group.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The nickname is physically documented, cementing the joke.
+  cf_edit: The bar tab has Barney's correct name.
+  anchor_for:
+  - barney_stinson
+- id: ae_016
+  fact: Marshall and Lily host a game night at their apartment that ends in chaos.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Group tensions surface during competitive play.
+  cf_edit: The game night proceeds without incident.
+  anchor_for:
+  - marshall_eriksen
+  - lily_aldrin
+- id: ae_017
+  fact: Ted keeps a pair of red cowboy boots found in his apartment.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The boots become a quirky talking point about Ted's past.
+  cf_edit: Ted throws away the boots immediately.
+  anchor_for:
+  - ted_mosby
+- id: ae_018
+  fact: Ranjit drives the group in his limousine for a special evening.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  - ranjit
+  state_change: Ranjit becomes a recurring, trusted driver for the friends.
+  cf_edit: The group uses a different driver.
+  anchor_for:
+  - ranjit
+- id: ae_019
+  fact: Barney shows the group a video of Robin's Canadian pop star past.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Robin's humiliation deepens when physical evidence is shown.
+  cf_edit: Barney never obtains the video.
+  anchor_for:
+  - robin_scherbatsky
+  - barney_stinson
+- id: ae_020
+  fact: Ted and Robin share a moment on the rooftop of their building.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  state_change: Their emotional connection strengthens despite earlier uncertainty.
+  cf_edit: Ted and Robin avoid a rooftop encounter.
+  anchor_for:
+  - ted_mosby
+  - robin_scherbatsky
+- id: ae_021
+  fact: Marshall decides to pursue environmental law again after quitting MetroNatural
+    Bank.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Marshall reclaims his original career aspiration.
+  cf_edit: Marshall stays at the bank permanently.
+  anchor_for:
+  - marshall_eriksen
+- id: ae_022
+  fact: Lily and Marshall host Thanksgiving at their apartment with the whole group.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: The holiday cements the group's chosen-family dynamic.
+  cf_edit: The group does not celebrate Thanksgiving together.
+  anchor_for:
+  - lily_aldrin
+  - marshall_eriksen
+- id: ae_023
+  fact: Barney introduces another elaborate scheme involving his playbook.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  - barney_stinson
+  - lily_aldrin
+  - marshall_eriksen
+  state_change: Barney's methodical approach to seduction continues without change.
+  cf_edit: Barney abandons the playbook permanently.
+  anchor_for:
+  - barney_stinson
+- id: ae_024
+  fact: Ted and Robin discuss the future of their relationship at MacLaren's booth.
+  known_by:
+  - ted_mosby
+  - robin_scherbatsky
+  state_change: They agree to redefine their relationship, setting up future uncertainty.
+  cf_edit: They decide to formalize their relationship immediately.
+  anchor_for:
+  - ted_mosby
+  - robin_scherbatsky

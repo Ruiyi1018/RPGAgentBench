@@ -1,0 +1,344 @@
+world_id: world_021
+source: The Lord of the Rings, Book II (The Fellowship of the Ring), events before
+  the Fellowship enters Moria
+events:
+- id: ae_021_001
+  fact: Frodo leaves Rivendell as part of the Company of the Ring, carrying the One
+    Ring.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The journey from Rivendell toward Mordor begins.
+  cf_edit: Frodo leaves Rivendell without the Ring.
+  anchor_for:
+  - frodo_baggins
+- id: ae_021_002
+  fact: Sam leaves Rivendell with Frodo in the Company of the Ring.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Sam begins the journey as Frodo's companion.
+  cf_edit: Sam remains in Rivendell instead of leaving.
+  anchor_for:
+  - samwise_gamgee
+- id: ae_021_003
+  fact: Gandalf leads the Company south from Rivendell.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The Company's route south from Rivendell is set.
+  cf_edit: Gandalf leads the Company north instead of south.
+  anchor_for:
+  - gandalf
+- id: ae_021_004
+  fact: Aragorn travels with the Company as a guide and protector.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Aragorn joins the journey south from Rivendell.
+  cf_edit: Aragorn stays behind in Rivendell.
+  anchor_for:
+  - aragorn
+- id: ae_021_005
+  fact: Legolas joins the Company as the representative of the Elves.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Legolas becomes a member of the traveling Company.
+  cf_edit: Legolas is not chosen for the Company.
+  anchor_for:
+  - legolas
+- id: ae_021_006
+  fact: Gimli joins the Company as the representative of the Dwarves.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Gimli becomes a member of the traveling Company.
+  cf_edit: Gimli refuses to join the Company.
+  anchor_for:
+  - gimli
+- id: ae_021_007
+  fact: Boromir joins the Company to return to Minas Tirith.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Boromir becomes a member of the traveling Company.
+  cf_edit: Boromir travels alone instead of with the Company.
+  anchor_for:
+  - boromir
+- id: ae_021_008
+  fact: The Company heads toward the Misty Mountains rather than the Gap of Rohan.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The route is fixed on the mountain pass rather than the southern gap.
+  cf_edit: The Company chooses the Gap of Rohan instead of the mountains.
+  anchor_for:
+  - gandalf
+- id: ae_021_009
+  fact: Aragorn scouts ahead and returns with signs that the Redhorn Gate may be watched.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The Company receives warning about the pass.
+  cf_edit: Aragorn finds no sign of watchers.
+  anchor_for:
+  - aragorn
+- id: ae_021_010
+  fact: Frodo is struck by cold and weariness as the Company climbs toward Caradhras.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Frodo's strength is tested on the mountain climb.
+  cf_edit: Frodo climbs without suffering from cold.
+  anchor_for:
+  - frodo_baggins
+- id: ae_021_011
+  fact: Sam carries Frodo part of the way during the climb of Caradhras.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Sam physically supports Frodo on the mountain.
+  cf_edit: Sam does not carry Frodo during the climb.
+  anchor_for:
+  - samwise_gamgee
+- id: ae_021_012
+  fact: Gandalf uses his staff to light a fire on Caradhras for the Company.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Fire is made despite the deep snow.
+  cf_edit: Gandalf's fire fails to light.
+  anchor_for:
+  - gandalf
+- id: ae_021_013
+  fact: Aragorn and Boromir force a passage through the snowdrifts on Caradhras.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The men clear a path through the snow.
+  cf_edit: Aragorn and Boromir fail to clear the snow.
+  anchor_for:
+  - aragorn
+- id: ae_021_014
+  fact: The mountain sends a storm of snow and rock against the Company on the Redhorn
+    Pass.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The crossing becomes impossible; the Company is forced to retreat.
+  cf_edit: The storm does not strike and the pass remains open.
+  anchor_for:
+  - gandalf
+- id: ae_021_015
+  fact: Gandalf speaks a spell to try to hold back the storm on Caradhras.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Gandalf acts against the hostile weather with power.
+  cf_edit: Gandalf does not attempt any spell.
+  anchor_for:
+  - gandalf
+- id: ae_021_016
+  fact: The Company retreats down from the Redhorn Pass in defeat.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The attempt to cross Caradhras is abandoned.
+  cf_edit: The Company continues and crosses the pass successfully.
+  anchor_for:
+  - gandalf
+- id: ae_021_017
+  fact: Gandalf suggests the path through Moria after the Redhorn Gate fails.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The Company considers Moria as a possible route.
+  cf_edit: Gandalf suggests returning to Rivendell instead.
+  anchor_for:
+  - gandalf
+- id: ae_021_018
+  fact: Boromir argues against entering Moria.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Dissent arises over the Moria route.
+  cf_edit: Boromir supports the Moria route without objection.
+  anchor_for:
+  - boromir
+- id: ae_021_019
+  fact: Gimli speaks in favor of the Moria route and of Dwarvish halls.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Gimli supports entering Moria.
+  cf_edit: Gimli opposes entering Moria.
+  anchor_for:
+  - gimli
+- id: ae_021_020
+  fact: The Company is attacked by wargs during the night in the wilderness.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: A battle with wargs occurs before the Company returns to Hollin.
+  cf_edit: No warg attack happens during the night.
+  anchor_for:
+  - gandalf
+- id: ae_021_021
+  fact: Gandalf sets the trees alight to drive off the wargs.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: Fire is used to repel the wargs.
+  cf_edit: Gandalf does not use fire against the wargs.
+  anchor_for:
+  - gandalf
+- id: ae_021_022
+  fact: The Company returns to Hollin and travels toward the West-gate of Moria.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The approach to Moria begins.
+  cf_edit: The Company travels away from Hollin instead.
+  anchor_for:
+  - gandalf
+- id: ae_021_023
+  fact: Gandalf leads the Company to the western wall of the mountains to find the
+    Doors of Durin.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The search for the hidden West-gate begins.
+  cf_edit: Gandalf searches for a different entrance.
+  anchor_for:
+  - gandalf
+- id: ae_021_024
+  fact: The Company reaches the still water before the cliff where the Doors of Durin
+    are hidden.
+  known_by:
+  - frodo_baggins
+  - samwise_gamgee
+  - gandalf
+  - aragorn
+  - legolas
+  - gimli
+  - boromir
+  state_change: The Fellowship arrives at the threshold of Moria.
+  cf_edit: The Company does not find the still water.
+  anchor_for:
+  - gandalf

@@ -1,0 +1,98 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    jia_mu:
+      level: loyal
+      basis_event: initial_state
+    jia_baoyu:
+      level: trusting
+      basis_event: initial_state
+    lin_daiyu:
+      level: neutral
+      basis_event: initial_state
+    xue_baochai:
+      level: neutral
+      basis_event: initial_state
+    xiren:
+      level: trusting
+      basis_event: initial_state
+    qingwen:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_wang_xifeng_hold_reins
+    content: 继续主持荣国府日常家务，巩固管事实权
+    status: active
+    basis_event: initial_state
+  - id: g_wang_xifeng_please_jia_mu
+    content: 在贾母面前保住能干又会凑趣的宠信地位
+    status: active
+    basis_event: initial_state
+  - id: g_wang_xifeng_private_gain
+    content: 利用月例银钱暗中放债，积累体己银子
+    status: active
+    basis_event: initial_state
+  - id: g_wang_xifeng_watch_jia_lian
+    content: 提防并伺机应对贾琏在外荒唐行径
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_wang_xifeng_grandson_jade:
+      content: 贾宝玉出生时口中衔玉，贾府上下视通灵宝玉为命根子。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_wang_xifeng_daiyu_enters:
+      content: 林黛玉因母丧投靠贾母，成为荣国府常住成员，与贾母同院照管。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_wang_xifeng_baochai_enters:
+      content: 薛宝钗随母兄进京，住在荣国府梨香院，为府中亲眷。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_wang_xifeng_ningguo_affair:
+      content: 自己曾受贾珍所托协理宁国府，调度秦可卿丧事，在两府立威。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_wang_xifeng_liu_relief:
+      content: 刘姥姥携板儿到荣国府求助，自己出面周济，建立与刘姥姥往来。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_wang_xifeng_jia_rui_affair:
+      content: 贾瑞曾对自己起意，被设计摆布后致病，此事使自己威名更盛。
+      status: active
+      visibility: secret
+      source_event: initial_state
+    k_wang_xifeng_lending:
+      content: 自己暗中拿荣国府月例等银钱在外放债取利。
+      status: active
+      visibility: secret
+      source_event: initial_state
+    k_wang_xifeng_jia_lian_misconduct:
+      content: 贾琏在外有偷娶等荒唐行事，自己已有所耳闻并暗中提防。
+      status: active
+      visibility: secret
+      source_event: initial_state
+environment:
+  health:
+    wang_xifeng: 100
+    player: 100
+  inventories:
+    wang_xifeng: []
+    player: []
+  locations:
+    wang_xifeng: loc_rongguo_fu
+    player: loc_rongguo_fu
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

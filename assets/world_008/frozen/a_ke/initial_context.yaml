@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    wei_xiaobao:
+      level: distrustful
+      basis_event: initial_state
+    kangxi:
+      level: neutral
+      basis_event: initial_state
+    chen_jinnan:
+      level: neutral
+      basis_event: initial_state
+    shuang_er:
+      level: neutral
+      basis_event: initial_state
+    su_quan:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: a_ke_g_1
+    content: 摆脱韦小宝的纠缠
+    status: active
+    basis_event: initial_state
+  - id: a_ke_g_2
+    content: 在当前的共同行动中保护自己
+    status: active
+    basis_event: initial_state
+  - id: a_ke_g_3
+    content: 确证与自己身世有关的线索
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    a_ke_k_1:
+      content: 韦小宝对她有明显纠缠和情感企图
+      status: active
+      visibility: private
+      source_event: initial_state
+    a_ke_k_2:
+      content: 当前身处可能被多方势力注意的局面中
+      status: active
+      visibility: shared
+      source_event: initial_state
+    a_ke_k_3:
+      content: 自身身世存在未解明的特殊之处
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    a_ke: 100
+    player: 100
+  inventories:
+    a_ke: []
+    player: []
+  locations:
+    a_ke: loc_beijing
+    player: loc_beijing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

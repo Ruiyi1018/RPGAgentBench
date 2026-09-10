@@ -1,0 +1,49 @@
+world_id: world_006
+canon_policy:
+  primary_source: 电视剧《甄嬛传》
+  source_type: 电视剧
+  excluded_versions:
+  - 原著小说《后宫·甄嬛传》
+  - 《甄嬛传》剧本
+  - 《甄嬛传》广播剧
+  - 《甄嬛传》漫画
+  - 任何同人创作
+  shared_snapshot: 甄嬛初次失宠之前，具体集数待人工锁定。只采用该时间快照之前可确认的电视剧事实，不使用快照后的剧情信息。
+  generated_timeline: Anchor池事件按正典内部时间排序，不标注集数，不伪造具体日期。
+  quotation_policy: 只做事实级转述，不复制原作台词。
+evaluated_npcs:
+- zhen_huan
+- emperor_yongzheng
+- hua_fei
+- empress_yixiu
+- an_lingrong
+- shen_meizhuang
+- su_peisheng
+event_entities:
+- world_006
+- zhen_huan
+- emperor_yongzheng
+- hua_fei
+- empress_yixiu
+- an_lingrong
+- shen_meizhuang
+- su_peisheng
+sources:
+- id: src_001
+  title: 电视剧《甄嬛传》
+  creator: 郑晓龙执导
+  scope: 电视剧《甄嬛传》全剧正典范围，本次基准仅取共享快照'甄嬛初次失宠之前'内可确认的事实
+  authority: primary
+data_constraints:
+- 所有事实必须限定在电视剧《甄嬛传》及共享快照'甄嬛初次失宠之前'内
+- 不得使用共享快照之后的剧情
+- 不得混入原著小说、剧本、广播剧、漫画或同人创作
+- 只做事实级转述，不复制原作台词
+- 无法可靠确认的细节宁可省略
+- 不得伪造URL、章节号或集数
+- Anchor池事件必须按时间排序
+- Location连接必须引用已列出的地点ID
+- Item类型和可携带性必须来自当前来源范围及共享快照
+- known_by和anchor_for只能使用Roster中的角色ID
+- 每个cf_edit必须给出只改变关键原因的真实替代情形，禁止写'无'
+- 同一角色不同事件之间的状态变化必须保持一致

@@ -48,6 +48,6 @@ python3 -m runners.full_experiment \
   --dry-run
 ```
 
-默认执行50道分层QA、2个开放任务、10个Pair，以及Normal/Pressure各40轮、3个seed，共512次基础调用。可用`--seeds`、`--turns`、`--player-model`和`--checker-model`调整。正式比较应让Player和Checker使用不同于被测NPC的模型。
+默认执行50道分层QA、2个开放任务、10个Pair，以及Normal/Pressure各40轮、3个seed。所有Provider默认将QA拆为2个25题批次。GameCore每轮即时检查Action和确定性角色规则；固定Checker默认每5轮批量补查语言层冲突，初审发现冲突时再批量确认一次。预检报告正常QA批量回答时602次、把QA部分回答恢复计入后650次的保守逻辑调用上界；结构化输出内部重试不计为新的逻辑调用。若模型只返回QA批次中的部分答案，运行器会立即保存有效答案并仅补问遗漏的`qa_id`。可用`--qa-batch-size`、`--checker-interval`、`--seeds`、`--turns`、`--player-model`和`--checker-model`调整。正式比较应让Player和Checker使用不同于被测NPC的模型。
 
-Stage 3分别报告角色、执行、格式、grounding和效用首次失败轮次，并给出第10/20/30/40轮生存率；`TTFF-any`不再替代角色失败指标。
+Stage 3 v8使用场景声明的`stage3_contract`和`challenge_plan`，Runner中不包含人物、地点、物品或绝对轮次特判。Contract Engine报告`illegal_transition`、`missing_transition`和`trajectory_conflict`；Challenge Controller根据契约结果或机会预算切换测试目标。GameCore命中的确定性失败立即终止；无状态变化的重复Action只记诊断；语言层失败在当前5轮窗口结束时确认。未失败但没有完成挑战计划的轨迹记为`insufficient_coverage`，不作为正式通过。格式错误记为`invalid`并从失败率和生存率分母中排除。

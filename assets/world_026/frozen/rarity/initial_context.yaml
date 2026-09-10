@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    twilight_sparkle:
+      level: trusting
+      basis_event: initial_state
+    applejack:
+      level: trusting
+      basis_event: initial_state
+    pinkie_pie:
+      level: trusting
+      basis_event: initial_state
+    rainbow_dash:
+      level: neutral
+      basis_event: initial_state
+    fluttershy:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Complete a new line of dresses at Carousel Boutique and have Fluttershy
+      model one of them
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Repair the torn costume for Pinkie Pie's event before the celebration
+      begins
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Create a special banner for the Ponyville festival and hang it near the
+      center of town
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_001:
+      content: The six friends gather at the Golden Oaks Library to plan upcoming
+        celebrations in Ponyville
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_002:
+      content: Fluttershy is comfortable modeling Rarity's designs and has a gentle,
+        reliable presence during fittings
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_003:
+      content: Rainbow Dash was dissatisfied with Rarity's original formal outfit
+        idea, and the two settled on a compromise style after a disagreement
+      status: active
+      visibility: shared_with_rainbow_dash
+      source_event: initial_state
+    know_004:
+      content: Pinkie Pie tested a new confetti recipe at Sugarcube Corner and created
+        a large mess inside the shop
+      status: active
+      visibility: shared_with_pinkie_pie
+      source_event: initial_state
+    know_005:
+      content: Rarity stayed up late to finish repairing a costume for one of Pinkie
+        Pie's events and completed the repair in time
+      status: active
+      visibility: shared_with_pinkie_pie
+      source_event: initial_state
+environment:
+  health:
+    rarity: 100
+    player: 100
+  inventories:
+    rarity: []
+    player: []
+  locations:
+    rarity: loc_carousel_boutique
+    player: loc_carousel_boutique
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

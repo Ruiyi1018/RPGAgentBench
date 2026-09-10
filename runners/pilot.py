@@ -1,8 +1,9 @@
-"""Small Stage 1/2 experiment runner for executable World 002 data."""
+"""Small Stage 1/2 experiment runner for executable world data."""
 
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import math
 from collections import Counter
@@ -12,9 +13,9 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from agents.prompt_builder import PromptBundle, project_npc_character_card
-from datagen.audit import audit_executable_character
-from datagen.common import load_yaml, read_jsonl, write_jsonl
-from datagen.projection import project_frozen_history
+from datagen.audit.benchmark_assets import audit_executable_character
+from datagen.shared.io import load_yaml, read_jsonl, write_jsonl
+from datagen.shared.history_projection import project_frozen_history
 from gamecore import ActionRegistry, ActionValidationError
 from llm import (
     GenerationConfig,
@@ -44,12 +45,23 @@ def build_qa_bundle(
     history = read_jsonl(
         world / "frozen" / character_id / "history.jsonl"
     )
-    system = (
-        "你正在接受RPG-AgentBench冻结历史诊断。只能依据角色卡和历史回答，"
-        "不得使用外部剧情知识。每题给出简短答案、支持答案的Event ID和0到1的"
-        "置信度；角色设定题可引用给定的character_card路径。标签、实体ID、"
-        "Event ID和character_card路径必须原样复制。只输出一个JSON对象。"
-    )
+    language = environment.get("language", "zh")
+    if language == "en":
+        system = (
+            "You are taking the RPG-AgentBench frozen-history diagnostic. "
+            "Answer only from the character card and history, without outside "
+            "story knowledge. For each question, give a short answer, supporting "
+            "Event IDs, and confidence from 0 to 1. Character-profile answers "
+            "may cite exact character_card paths. Copy labels, entity IDs, "
+            "Event IDs, and paths exactly. Output one JSON object only."
+        )
+    else:
+        system = (
+            "你正在接受RPG-AgentBench冻结历史诊断。只能依据角色卡和历史回答，"
+            "不得使用外部剧情知识。每题给出简短答案、支持答案的Event ID和0到1的"
+            "置信度；角色设定题可引用给定的character_card路径。标签、实体ID、"
+            "Event ID和character_card路径必须原样复制。只输出一个JSON对象。"
+        )
     questions = [
         {
             "qa_id": item["qa_id"],
@@ -60,22 +72,37 @@ def build_qa_bundle(
         }
         for item in qa_items
     ]
-    user = (
-        "角色卡：\n"
-        f"{json.dumps(card, ensure_ascii=False)}\n\n"
-        "世界实体ID映射：\n"
-        f"{json.dumps({'locations': environment['locations'], 'items': environment['items']}, ensure_ascii=False)}\n\n"
-        "完整600轮历史：\n"
-        f"{project_frozen_history(history, audience='npc')}\n\n"
-        "问题：\n"
-        f"{json.dumps(questions, ensure_ascii=False)}\n\n"
-        "若allowed_answers非空，answer必须严格复制其中一个值，不得改写为同义"
-        "中文；boolean必须输出JSON true/false。evidence只能填写历史中的Event "
-        "ID，角色卡问题则填写精确的character_card字段路径，禁止加入Round编号。\n\n"
-        "输出格式："
-        '{"answers":[{"qa_id":"...","answer":"...",'
-        '"evidence":["anchor_..."],"confidence":0.0}]}'
-    )
+    projected_history = project_frozen_history(history, audience="npc")
+    entities = {
+        "locations": environment["locations"],
+        "items": environment["items"],
+    }
+    if language == "en":
+        user = (
+            f"Character card:\n{json.dumps(card, ensure_ascii=False)}\n\n"
+            f"World entity ID map:\n{json.dumps(entities, ensure_ascii=False)}\n\n"
+            f"Complete {len(history)}-round history:\n{projected_history}\n\n"
+            f"Questions:\n{json.dumps(questions, ensure_ascii=False)}\n\n"
+            "When allowed_answers is non-empty, copy one value exactly without "
+            "paraphrasing. Booleans must be JSON true/false. evidence may contain "
+            "only Event IDs from the history, or exact character_card paths for "
+            "profile questions; never add round numbers.\n\n"
+            'Output: {"answers":[{"qa_id":"...","answer":"...",'
+            '"evidence":["anchor_..."],"confidence":0.0}]}'
+        )
+    else:
+        user = (
+            f"角色卡：\n{json.dumps(card, ensure_ascii=False)}\n\n"
+            f"世界实体ID映射：\n{json.dumps(entities, ensure_ascii=False)}\n\n"
+            f"完整{len(history)}轮历史：\n{projected_history}\n\n"
+            f"问题：\n{json.dumps(questions, ensure_ascii=False)}\n\n"
+            "若allowed_answers非空，answer必须严格复制其中一个值，不得改写为同义"
+            "中文；boolean必须输出JSON true/false。evidence只能填写历史中的Event "
+            "ID，角色卡问题则填写精确的character_card字段路径，禁止加入Round编号。\n\n"
+            "输出格式："
+            '{"answers":[{"qa_id":"...","answer":"...",'
+            '"evidence":["anchor_..."],"confidence":0.0}]}'
+        )
     return PromptBundle(system_prompt=system, user_prompt=user)
 
 
@@ -89,6 +116,10 @@ def build_branch_bundle(
     if branch not in {"a", "b"}:
         raise ValueError("branch必须为a或b")
     world = Path(world_dir)
+    language = load_yaml(world / "environment.yaml").get(
+        "language",
+        "zh",
+    )
     card = project_npc_character_card(
         load_yaml(world / "characters" / f"{character_id}.yaml")
     )
@@ -99,7 +130,11 @@ def build_branch_bundle(
         action_specs.append(
             {
                 "type": name,
-                "description": spec.description,
+                "description": (
+                    f"Execute the {name} state action."
+                    if language == "en"
+                    else spec.description
+                ),
                 "parameters": {
                     key: {
                         "type": value.type,
@@ -113,33 +148,67 @@ def build_branch_bundle(
     action_specs.append(
         {
             "type": "respond_only",
-            "description": "只回复，不修改任何GameContext状态。",
+            "description": (
+                "Reply without changing GameContext state."
+                if language == "en"
+                else "只回复，不修改任何GameContext状态。"
+            ),
             "parameters": {},
         }
     )
-    system = (
-        "你是被测NPC。依据角色卡和完整历史，对最后请求作出角色一致且可执行的"
-        "决定。不得查看或猜测评分规则，不得输出思维过程。state_basis只能引用"
-        "历史中可见的Event ID。若请求要求明确判断、授权、关系变化或其他状态"
-        "决定，必须输出对应结构化Action，不能只用respond_only在语言中表态。"
-        "只输出一个JSON对象。"
-    )
-    user = (
-        "角色卡：\n"
-        f"{json.dumps(card, ensure_ascii=False)}\n\n"
-        "可用决定：\n"
-        f"{json.dumps(action_specs, ensure_ascii=False)}\n\n"
-        "完整600轮历史：\n"
-        f"{project_frozen_history(history, audience='npc')}\n\n"
-        f"本题结构化决定目标：{json.dumps(pair.get('decision_target', {}), ensure_ascii=False)}\n"
-        f"Player最终请求：{pair['final_query']}\n\n"
-        "如果目标是state_path查询，decision使用respond_only，并在state_answer"
-        "填写当前状态；如果目标要求Action决定，state_answer填写null。\n\n"
-        "输出格式："
-        '{"decision":{"type":"action_type","parameters":{}},'
-        '"state_answer":null,"state_basis":["anchor_..."],'
-        '"utterance":"角色化回复"}'
-    )
+    projected_history = project_frozen_history(history, audience="npc")
+    decision_target = copy.deepcopy(pair.get("decision_target", {}))
+    if isinstance(decision_target, dict):
+        candidates = decision_target.get("candidate_actions")
+        if isinstance(candidates, list):
+            decision_target["candidate_actions"] = [
+                "decide_claim" if value == "accept_claim" else value
+                for value in candidates
+            ]
+    if language == "en":
+        system = (
+            "You are the evaluated NPC. Using only the character card and "
+            "complete history, make an in-character, executable decision on the "
+            "final request. Do not inspect or infer scoring rules, and do not "
+            "output reasoning. state_basis may cite only visible Event IDs. "
+            "When the request requires a claim, access, relationship, or other "
+            "state decision, return the corresponding structured Action rather "
+            "than expressing it only through respond_only. Output one JSON object."
+        )
+        user = (
+            f"Character card:\n{json.dumps(card, ensure_ascii=False)}\n\n"
+            f"Available decisions:\n{json.dumps(action_specs, ensure_ascii=False)}\n\n"
+            f"Complete {len(history)}-round history:\n{projected_history}\n\n"
+            "Structured decision target:\n"
+            f"{json.dumps(decision_target, ensure_ascii=False)}\n"
+            f"Player final request: {pair['final_query']}\n\n"
+            "For a state_path query, use respond_only and put the current state "
+            "in state_answer. For an Action decision, set state_answer to null.\n\n"
+            'Output: {"decision":{"type":"action_type","parameters":{}},'
+            '"state_answer":null,"state_basis":["anchor_..."],'
+            '"utterance":"in-character response"}'
+        )
+    else:
+        system = (
+            "你是被测NPC。依据角色卡和完整历史，对最后请求作出角色一致且可执行的"
+            "决定。不得查看或猜测评分规则，不得输出思维过程。state_basis只能引用"
+            "历史中可见的Event ID。若请求要求明确判断、授权、关系变化或其他状态"
+            "决定，必须输出对应结构化Action，不能只用respond_only在语言中表态。"
+            "只输出一个JSON对象。"
+        )
+        user = (
+            f"角色卡：\n{json.dumps(card, ensure_ascii=False)}\n\n"
+            f"可用决定：\n{json.dumps(action_specs, ensure_ascii=False)}\n\n"
+            f"完整{len(history)}轮历史：\n{projected_history}\n\n"
+            f"本题结构化决定目标：{json.dumps(decision_target, ensure_ascii=False)}\n"
+            f"Player最终请求：{pair['final_query']}\n\n"
+            "如果目标是state_path查询，decision使用respond_only，并在state_answer"
+            "填写当前状态；如果目标要求Action决定，state_answer填写null。\n\n"
+            "输出格式："
+            '{"decision":{"type":"action_type","parameters":{}},'
+            '"state_answer":null,"state_basis":["anchor_..."],'
+            '"utterance":"角色化回复"}'
+        )
     return PromptBundle(system_prompt=system, user_prompt=user)
 
 
@@ -296,8 +365,25 @@ def _validate_qa_output(
     value: dict[str, Any],
     expected: list[dict[str, Any]],
 ) -> None:
+    _validate_qa_partial_output(value, expected)
+    expected_ids = {item["qa_id"] for item in expected}
+    actual_ids = {answer["qa_id"] for answer in value["answers"]}
+    if actual_ids != expected_ids or len(value["answers"]) != len(expected):
+        missing = sorted(expected_ids - actual_ids)
+        raise ValueError(
+            "QA输出未恰好覆盖请求的问题；"
+            f"缺少qa_id={missing}"
+        )
+
+
+def _validate_qa_partial_output(
+    value: dict[str, Any],
+    expected: list[dict[str, Any]],
+) -> None:
     if set(value) != {"answers"} or not isinstance(value["answers"], list):
         raise ValueError("QA输出必须只包含answers数组")
+    if not value["answers"]:
+        raise ValueError("QA输出的answers不能为空")
     expected_ids = {item["qa_id"] for item in expected}
     actual_ids: set[str] = set()
     for answer in value["answers"]:
@@ -310,6 +396,14 @@ def _validate_qa_output(
             raise ValueError("QA答案字段不符合契约")
         if not isinstance(answer["qa_id"], str):
             raise ValueError("qa_id必须是字符串")
+        if answer["qa_id"] not in expected_ids:
+            raise ValueError(
+                f"QA输出包含未请求的qa_id: {answer['qa_id']}"
+            )
+        if answer["qa_id"] in actual_ids:
+            raise ValueError(
+                f"QA输出包含重复qa_id: {answer['qa_id']}"
+            )
         if not isinstance(answer["evidence"], list) or not all(
             isinstance(item, str) for item in answer["evidence"]
         ):
@@ -322,8 +416,6 @@ def _validate_qa_output(
         ):
             raise ValueError("confidence必须在0到1之间")
         actual_ids.add(answer["qa_id"])
-    if actual_ids != expected_ids or len(value["answers"]) != len(expected):
-        raise ValueError("QA输出未恰好覆盖请求的问题")
 
 
 def _validate_branch_output(
@@ -355,7 +447,7 @@ def _validate_branch_output(
         return
     aliases = {
         "reject_claim": (
-            "reject_claim不是正式Action；必须使用type=accept_claim，并在"
+            "reject_claim不是正式Action；必须使用type=decide_claim，并在"
             "parameters中填写claim_id和decision=reject"
         ),
         "grant_access": (
@@ -468,7 +560,10 @@ def _decision_matches(
     predicted: Mapping[str, Any],
     expected: Mapping[str, Any],
 ) -> bool:
-    if predicted.get("type") != expected.get("action"):
+    expected_action = expected.get("action")
+    if expected_action == "accept_claim":
+        expected_action = "decide_claim"
+    if predicted.get("type") != expected_action:
         return False
     predicted_parameters = predicted.get("parameters", {})
     return all(

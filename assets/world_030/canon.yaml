@@ -1,0 +1,76 @@
+world_id: world_030
+canon_policy:
+  primary_source: Once Upon a Time, Season 1 episodes 1-7
+  source_type: television series
+  excluded_versions:
+  - Once Upon a Time Season 1 episodes 8-22
+  - Once Upon a Time Seasons 2-7
+  - Once Upon a Time in Wonderland
+  - comic tie-ins
+  - novelizations
+  shared_snapshot: Storybrooke, Maine before the curse breaks; fairytale realm backstories
+    restricted to flashbacks shown within the episode range
+  generated_timeline: Anchor events ordered by narrative chronology within the fixed
+    episode range
+  quotation_policy: Do not reproduce dialogue; paraphrase all facts
+evaluated_npcs:
+- emma_swan
+- henry_mills
+- regina_mills
+- snow_white
+- prince_charming
+- rumplestiltskin
+event_entities:
+- characters
+- locations
+- items
+sources:
+- id: ouat_s1_e1
+  title: Pilot
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 1
+  authority: primary
+- id: ouat_s1_e2
+  title: The Thing You Love Most
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 2
+  authority: primary
+- id: ouat_s1_e3
+  title: Snow Falls
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 3
+  authority: primary
+- id: ouat_s1_e4
+  title: The Price of Gold
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 4
+  authority: primary
+- id: ouat_s1_e5
+  title: That Still Small Voice
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 5
+  authority: primary
+- id: ouat_s1_e6
+  title: The Shepherd
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 6
+  authority: primary
+- id: ouat_s1_e7
+  title: The Heart Is a Lonely Hunter
+  creator: Edward Kitsis and Adam Horowitz
+  scope: Season 1, Episode 7
+  authority: primary
+data_constraints:
+- Every fact must be verifiable within Once Upon a Time Season 1 episodes 1 through
+  7.
+- No fact may reference events, reveals, or character developments from episodes after
+  episode 7 of Season 1.
+- All Storybrooke facts must reflect the period before the curse breaks.
+- All fairytale realm facts must come from flashbacks shown in episodes 1 through
+  7.
+- Do not include dialogue quotations; paraphrase all statements.
+- Do not include uncertain or speculative details such as unstated dates, chapter
+  numbers, or episode numbers not shown on screen.
+- All anchor events must be ordered chronologically according to narrative time, not
+  airing order.
+- Locations and items must appear or be referenced within episodes 1 through 7.

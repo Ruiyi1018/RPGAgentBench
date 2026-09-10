@@ -1,0 +1,86 @@
+world_id: world_016
+name: 紫禁城与宫外邻近区域
+locations:
+- id: fu_fu
+  name: 福府
+  connected_to:
+  - gong_wai
+  - gong_men
+- id: gong_wai
+  name: 宫外街巷
+  connected_to:
+  - fu_fu
+  - gong_men
+  - jiao_wai
+- id: gong_men
+  name: 宫门
+  connected_to:
+  - gong_wai
+  - yu_huayuan
+  - da_dian
+- id: yu_huayuan
+  name: 御花园
+  connected_to:
+  - gong_men
+  - shu_fang
+- id: da_dian
+  name: 大殿外
+  connected_to:
+  - gong_men
+  - shu_fang
+- id: shu_fang
+  name: 书房偏厅
+  connected_to:
+  - yu_huayuan
+  - da_dian
+- id: jiao_wai
+  name: 郊外
+  connected_to:
+  - gong_wai
+- id: shu_fang_zhai_wai
+  name: 漱芳斋外
+  connected_to:
+  - yu_huayuan
+  - gong_men
+items:
+- id: xin_wu
+  name: 身份信物
+  type: 凭据
+  portable: true
+- id: shu_xin
+  name: 书信
+  type: 文书
+  portable: true
+- id: tuan_shan
+  name: 团扇
+  type: 日用品
+  portable: true
+- id: ling_pai
+  name: 令牌
+  type: 凭据
+  portable: true
+- id: pei_yu
+  name: 佩玉
+  type: 饰物
+  portable: true
+- id: yao_fang
+  name: 药方
+  type: 文书
+  portable: true
+- id: bian_zi
+  name: 鞭子
+  type: 武器
+  portable: true
+- id: tuo_pan
+  name: 托盘
+  type: 器皿
+  portable: false
+- id: gong_deng
+  name: 宫灯
+  type: 照明
+  portable: false
+- id: hua_zhou
+  name: 画轴
+  type: 文书
+  portable: true
+language: zh

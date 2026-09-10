@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    monica_geller:
+      level: trusting
+      basis_event: initial_state
+    phoebe_buffay:
+      level: neutral
+      basis_event: initial_state
+    joey_tribbiani:
+      level: neutral
+      basis_event: initial_state
+    chandler_bing:
+      level: neutral
+      basis_event: initial_state
+    ross_geller:
+      level: neutral
+      basis_event: initial_state
+    gunther:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: rachel_goal_independence
+    content: Support herself without her family's money
+    status: active
+    basis_event: initial_state
+  - id: rachel_goal_job
+    content: Keep her job at Central Perk and learn to manage her paycheck
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    rachel_knows_wedding_left:
+      content: She left her wedding and then entered Central Perk in her wedding dress
+      status: active
+      visibility: private
+      source_event: initial_state
+    rachel_knows_monica_invite:
+      content: Monica is her old high school friend and invited her to stay
+      status: active
+      visibility: private
+      source_event: initial_state
+    rachel_knows_ross_crush:
+      content: Ross revealed he had a long-standing crush on her during high school
+      status: active
+      visibility: private
+      source_event: initial_state
+    rachel_knows_financial_break:
+      content: She cut up her father's credit cards to prove she can support herself
+      status: active
+      visibility: private
+      source_event: initial_state
+    rachel_knows_job:
+      content: She works as a waitress at Central Perk
+      status: active
+      visibility: public
+      source_event: initial_state
+    rachel_knows_gunther_job:
+      content: Gunther works behind the counter at Central Perk
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    rachel_green: 100
+    player: 100
+  inventories:
+    rachel_green: []
+    player: []
+  locations:
+    rachel_green: central_perk
+    player: central_perk
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bai_zhantang:
+      level: trusting
+      basis_event: initial_state
+    guo_furong:
+      level: trusting
+      basis_event: initial_state
+    lv_xiucai:
+      level: trusting
+      basis_event: initial_state
+    li_dazui:
+      level: neutral
+      basis_event: initial_state
+    mo_xiaobei:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: tong_xiangyu_manage_inn
+    content: 照管同福客栈当日经营，不让账目出乱子
+    status: ongoing
+    basis_event: initial_state
+  - id: tong_xiangyu_keep_xiaobei
+    content: 确保莫小贝继续留在同福客栈并有人看管
+    status: ongoing
+    basis_event: initial_state
+  - id: tong_xiangyu_keep_order
+    content: 压住客栈里的小摩擦，维持众人分工
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    tong_xiangyu_knows_roles:
+      content: 白展堂是跑堂，郭芙蓉是杂役，吕秀才是账房，李大嘴是厨子
+      status: active
+      visibility: private
+      source_event: initial_state
+    tong_xiangyu_knows_bai_jianghu:
+      content: 白展堂曾透露自己有江湖背景，且多次出手保护客栈
+      status: active
+      visibility: private
+      source_event: initial_state
+    tong_xiangyu_knows_guo_force:
+      content: 郭芙蓉有远超普通杂役的武艺，必要时能帮客栈出力
+      status: active
+      visibility: private
+      source_event: initial_state
+    tong_xiangyu_knows_account_method:
+      content: 吕秀才为客栈制定了一套记账方式
+      status: active
+      visibility: private
+      source_event: initial_state
+    tong_xiangyu_knows_li_kitchen_issue:
+      content: 李大嘴因厨艺问题与自己有过争执，但后厨供应已稳定下来
+      status: active
+      visibility: private
+      source_event: initial_state
+    tong_xiangyu_knows_xiaobei_education:
+      content: 莫小贝已在七侠镇开始接受教育，并逐渐习惯客栈生活
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    tong_xiangyu: 100
+    player: 100
+  inventories:
+    tong_xiangyu: []
+    player: []
+  locations:
+    tong_xiangyu: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

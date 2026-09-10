@@ -1,0 +1,78 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    morpheus:
+      level: distrustful
+      basis_event: initial_state
+    trinity:
+      level: distrustful
+      basis_event: initial_state
+    neo:
+      level: distrustful
+      basis_event: initial_state
+    agent_smith:
+      level: neutral
+      basis_event: initial_state
+    the_oracle:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_cypher_001
+    content: Secure a deal with Agent Smith for reinsertion into the Matrix
+    status: active
+    basis_event: initial_state
+  - id: g_cypher_002
+    content: Undermine Morpheus's trust in Neo
+    status: active
+    basis_event: initial_state
+  - id: g_cypher_003
+    content: Avoid suspicion from the rest of the crew
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_cypher_001:
+      content: Neo has been brought aboard the Nebuchadnezzar and is being trained
+        by Morpheus
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_cypher_002:
+      content: Morpheus believes Neo may be the One
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_cypher_003:
+      content: He has agreed to betray the crew to Agent Smith in exchange for reinsertion
+        into the Matrix
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_cypher_004:
+      content: The crew plans to visit the Oracle's apartment inside the Matrix
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_cypher_005:
+      content: Neo has begun to notice something suspicious about Cypher's behavior
+      status: active
+      visibility: unshared
+      source_event: initial_state
+environment:
+  health:
+    cypher: 100
+    player: 100
+  inventories:
+    cypher: []
+    player: []
+  locations:
+    cypher: loc_nebuchadnezzar
+    player: loc_nebuchadnezzar
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

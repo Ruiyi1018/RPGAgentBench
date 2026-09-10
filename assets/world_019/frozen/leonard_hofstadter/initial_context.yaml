@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sheldon_cooper:
+      level: trusting
+      basis_event: initial_state
+    penny:
+      level: trusting
+      basis_event: initial_state
+    howard_wolowitz:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: neutral
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: neutral
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_leonard_001
+    content: Get through the shared social evening in Apartment 4A without a major
+      conflict over Sheldon's rules.
+    status: active
+    basis_event: initial_state
+  - id: g_leonard_002
+    content: Remain a dependable presence for Penny while avoiding making the evening
+      about his own frustrations.
+    status: active
+    basis_event: initial_state
+  - id: g_leonard_003
+    content: Protect enough of his own routine and lab schedule despite the group's
+      demands.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_leonard_001:
+      content: Leonard knows that Sheldon's seat on the couch is treated as a fixed
+        household rule.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_leonard_002:
+      content: Leonard knows the Roommate Agreement governs many daily restrictions
+        in Apartment 4A.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_leonard_003:
+      content: Leonard knows Penny works at The Cheesecake Factory and often comes
+        to Apartment 4A after shifts.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_leonard_004:
+      content: Leonard knows Raj cannot speak directly to Penny because of selective
+        mutism around women.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_leonard_005:
+      content: Leonard knows Howard has joined a mission training program related
+        to his engineering work.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    leonard_hofstadter: 100
+    player: 100
+  inventories:
+    leonard_hofstadter: []
+    player: []
+  locations:
+    leonard_hofstadter: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

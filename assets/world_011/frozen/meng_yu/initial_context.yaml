@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    an_xin:
+      level: trusting
+      basis_event: initial_state
+    gao_qiqiang:
+      level: neutral
+      basis_event: initial_state
+    li_xiang:
+      level: neutral
+      basis_event: initial_state
+    tang_xiaolong:
+      level: neutral
+      basis_event: initial_state
+    tang_xiaohu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_meng_001
+    content: 在与安欣的日常联系中了解除夕冲突调查是否有新进展
+    status: active
+    basis_event: initial_state
+  - id: goal_meng_002
+    content: 弄清家人提到的旧厂街市场冲突到底给普通人带来多大影响
+    status: active
+    basis_event: initial_state
+  - id: goal_meng_003
+    content: 在安欣表露不安时给予关心，但不让他觉得被逼迫交代案情
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_meng_001:
+      content: 旧厂街市场在除夕夜发生了冲突，并造成不良社会影响
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_meng_002:
+      content: 安欣正在参与这起冲突的调查工作
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_meng_003:
+      content: 安欣对旧厂街普通经营户的处境感到不安
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_meng_004:
+      content: 孟钰并不掌握冲突的具体经过、责任归属和警方证据情况
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    meng_yu: 100
+    player: 100
+  inventories:
+    meng_yu: []
+    player: []
+  locations:
+    meng_yu: loc_meng_home
+    player: loc_meng_home
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

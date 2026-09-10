@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    qin_feng:
+      level: trusting
+      basis_event: initial_state
+    si_nuo:
+      level: neutral
+      basis_event: initial_state
+    a_xiang:
+      level: trusting
+      basis_event: initial_state
+    kun_tai:
+      level: neutral
+      basis_event: initial_state
+    huang_lan_deng:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: tangren_goal_001
+    content: 与秦风会合并继续调查颂帕工坊命案
+    status: active
+    basis_event: initial_state
+  - id: tangren_goal_002
+    content: 确认警方追查自己的具体程度
+    status: active
+    basis_event: initial_state
+  - id: tangren_goal_003
+    content: 找出黄金佛像与命案的关联
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    tangren_k_001:
+      content: 颂帕工坊发生命案，警方正在追查相关线索。
+      status: active
+      visibility: shared_with_qin_feng
+      source_event: initial_state
+    tangren_k_002:
+      content: 颂帕与黄金佛像之间存在某种联系。
+      status: active
+      visibility: shared_with_qin_feng
+      source_event: initial_state
+    tangren_k_003:
+      content: 警方已把唐仁列为追查对象。
+      status: active
+      visibility: private_with_kun_tai
+      source_event: initial_state
+    tangren_k_004:
+      content: 阿香在调查中可能向自己提供帮助。
+      status: active
+      visibility: shared_with_a_xiang
+      source_event: initial_state
+environment:
+  health:
+    tang_ren: 100
+    player: 100
+  inventories:
+    tang_ren: []
+    player: []
+  locations:
+    tang_ren: loc_chinatown_street
+    player: loc_chinatown_street
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

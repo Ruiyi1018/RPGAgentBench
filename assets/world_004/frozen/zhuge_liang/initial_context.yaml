@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_bei:
+      level: loyal
+      basis_event: initial_state
+    sun_quan:
+      level: trusting
+      basis_event: initial_state
+    zhou_yu:
+      level: neutral
+      basis_event: initial_state
+    cao_cao:
+      level: hostile
+      basis_event: initial_state
+    guan_yu:
+      level: trusting
+      basis_event: initial_state
+    zhang_fei:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g001
+    content: 说服孙权坚定抗曹决心
+    status: 已完成
+    basis_event: initial_state
+  - id: g002
+    content: 使孙刘双方进入具体军事协调
+    status: 进行中
+    basis_event: initial_state
+  - id: g003
+    content: 为刘备集团争取赤壁战后立足之地
+    status: 进行中
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k001:
+      content: 刘琮已降曹操，荆州大部已失
+      status: active
+      visibility: public
+      source_event: initial_state
+    k002:
+      content: 刘备军在当阳长坂坡败后与关羽、刘琦会合，暂驻夏口一带
+      status: active
+      visibility: public
+      source_event: initial_state
+    k003:
+      content: 曹操占领江陵后获得荆州水军和军资
+      status: active
+      visibility: public
+      source_event: initial_state
+    k004:
+      content: 江东内部有主降与主战之争，孙权已倾向于主战
+      status: active
+      visibility: shared_with_sun_quan
+      source_event: initial_state
+    k005:
+      content: 周瑜已在孙权面前分析曹军不利因素，孙权决心与曹操开战
+      status: active
+      visibility: shared_with_sun_quan
+      source_event: initial_state
+    k006:
+      content: 周瑜对自己有忌惮，联盟内部仍存在猜忌
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    zhuge_liang: 100
+    player: 100
+  inventories:
+    zhuge_liang: []
+    player: []
+  locations:
+    zhuge_liang: chaisang
+    player: chaisang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

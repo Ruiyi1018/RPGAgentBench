@@ -1,0 +1,53 @@
+world_id: world_021
+name: Eriador and the western Misty Mountains before Moria
+locations:
+- id: rivendell
+  name: Rivendell
+  connected_to:
+  - hollin_ridge
+- id: hollin_ridge
+  name: Hollin Ridge
+  connected_to:
+  - rivendell
+  - caradhras_foothills
+- id: caradhras_foothills
+  name: Caradhras foothills
+  connected_to:
+  - hollin_ridge
+  - redhorn_pass
+- id: redhorn_pass
+  name: Redhorn Pass
+  connected_to:
+  - caradhras_foothills
+  - dimrill_dale
+- id: dimrill_dale
+  name: Dimrill Dale
+  connected_to:
+  - redhorn_pass
+  - moria_west_gate_approach
+- id: moria_west_gate_approach
+  name: The approach to the West-gate of Moria
+  connected_to:
+  - dimrill_dale
+items:
+- id: sting
+  name: Sting
+  type: sword
+  portable: true
+- id: glamdring
+  name: Glamdring
+  type: sword
+  portable: true
+- id: anduril
+  name: Andúril
+  type: sword
+  portable: true
+- id: narsil_shards
+  name: Shards of Narsil
+  type: relic
+  portable: true
+- id: mithril_coat
+  name: Mithril coat
+  type: armor
+  portable: true
+language: en

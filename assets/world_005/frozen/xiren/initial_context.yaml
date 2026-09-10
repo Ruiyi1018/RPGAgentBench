@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    jia_baoyu:
+      level: loyal
+      basis_event: initial_state
+    jia_mu:
+      level: trusting
+      basis_event: initial_state
+    wang_xifeng:
+      level: neutral
+      basis_event: initial_state
+    qingwen:
+      level: distrustful
+      basis_event: initial_state
+    lin_daiyu:
+      level: neutral
+      basis_event: initial_state
+    xue_baochai:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_xiren_care_baoyu
+    content: 照管贾宝玉起居，确保他安稳少出祸事。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_xiren_maintain_order
+    content: 维持怡红院日常秩序，避免丫头们言行出格。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_xiren_keep_wang_trust
+    content: 继续以识大体的表现获得王夫人信任。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_xiren_urge_distance
+    content: 找机会继续劝贾宝玉与姐妹们保持适当距离。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_xiren_baoyu_dream:
+      content: 贾宝玉曾梦见警幻仙姑所示册页曲文，并把梦中心事私下告诉了袭人。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiren_baoyu_liaisons:
+      content: 她清楚贾宝玉与林黛玉相处异常亲近，也留意到金玉之说在府中流传。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiren_qingwen_fan:
+      content: 她知道晴雯曾因口角后撕扇，与贾宝玉之间有不拘主仆的任性。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiren_advised_wang:
+      content: 她曾向王夫人进言，建议让贾宝玉与姐妹们保持适当距离。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiren_baoyu_beaten:
+      content: 她经历并知道贾政重责贾宝玉一事，明白贾府对宝玉言行极为敏感。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    xiren: 100
+    player: 100
+  inventories:
+    xiren: []
+    player: []
+  locations:
+    xiren: loc_yihong_yuan
+    player: loc_yihong_yuan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

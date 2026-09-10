@@ -1,0 +1,68 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    katniss_everdeen:
+      level: loyal
+      basis_event: initial_state
+    peeta_mellark:
+      level: neutral
+      basis_event: initial_state
+    haymitch_abernathy:
+      level: neutral
+      basis_event: initial_state
+    effie_trinket:
+      level: distrustful
+      basis_event: initial_state
+    president_snow:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: gale_goal_keep_families_fed
+    content: Keep hunting to feed his family and Katniss's family while she is gone
+    status: active
+    basis_event: initial_state
+  - id: gale_goal_say_goodbye_to_katniss
+    content: See Katniss in the Justice Building before she leaves for the Capitol
+    status: pending
+    basis_event: initial_state
+  - id: gale_goal_avoid_capitol_attention
+    content: Avoid drawing Peacekeeper attention to his illegal hunting after the
+      reaping
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    gale_know_katniss_volunteered:
+      content: Katniss volunteered as tribute to save Prim from the Games
+      status: active
+      visibility: private
+      source_event: initial_state
+    gale_know_reaping_outcome:
+      content: Peeta Mellark was named the male tribute for District 12
+      status: active
+      visibility: public
+      source_event: initial_state
+    gale_know_escape_discussion:
+      content: He and Katniss agreed before the reaping that running away with their
+        families was impossible
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    gale_hawthorne: 100
+    player: 100
+  inventories:
+    gale_hawthorne: []
+    player: []
+  locations:
+    gale_hawthorne: district_12_seam
+    player: district_12_seam
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

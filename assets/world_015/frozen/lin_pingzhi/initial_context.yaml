@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yue_buqun:
+      level: distrustful
+      basis_event: initial_state
+    linghu_chong:
+      level: neutral
+      basis_event: initial_state
+    ren_yingying:
+      level: neutral
+      basis_event: initial_state
+    dongfang_bubai:
+      level: neutral
+      basis_event: initial_state
+    yilin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: lin_pingzhi_g01
+    content: 查清并夺回林家辟邪剑谱
+    status: active
+    basis_event: initial_state
+  - id: lin_pingzhi_g02
+    content: 向余沧海等灭门仇人复仇
+    status: active
+    basis_event: initial_state
+  - id: lin_pingzhi_g03
+    content: 在华山派与岳不群身边自保，避免被利用而不自知
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    lin_pingzhi_k01:
+      content: 自己是福州福威镖局后人，家传辟邪剑谱引来灭门之祸
+      status: active
+      visibility: private
+      source_event: initial_state
+    lin_pingzhi_k02:
+      content: 岳不群收自己入门并许配岳灵珊，可能别有所图
+      status: active
+      visibility: private
+      source_event: initial_state
+    lin_pingzhi_k03:
+      content: 余沧海是灭门仇人之一
+      status: active
+      visibility: public
+      source_event: initial_state
+    lin_pingzhi_k04:
+      content: 自己与岳灵珊已成亲
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    lin_pingzhi: 100
+    player: 100
+  inventories:
+    lin_pingzhi: []
+    player: []
+  locations:
+    lin_pingzhi: huashan
+    player: huashan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

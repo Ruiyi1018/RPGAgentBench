@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhongli:
+      level: neutral
+      basis_event: initial_state
+    hu_tao:
+      level: neutral
+      basis_event: initial_state
+    kamisato_ayaka:
+      level: neutral
+      basis_event: initial_state
+    wanderer:
+      level: distrustful
+      basis_event: initial_state
+    paimon:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_raiden_maintain_rule
+    content: 继续以雷电将军身份维持稻妻统治
+    status: active
+    basis_event: initial_state
+  - id: goal_raiden_reexamine_eternity
+    content: 重新评估永恒路线，调整锁国与眼狩令后的政策
+    status: active
+    basis_event: initial_state
+  - id: goal_raiden_manage_wanderer_fact
+    content: 处理流浪者与自己渊源被揭露后的影响
+    status: latent
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_raiden_eternity_reevaluation:
+      content: 雷电将军已在稻妻主线末期经历对永恒路线的重新评估
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_raiden_wanderer_origin:
+      content: 流浪者原是她相关计划中被舍弃的人偶
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_raiden_gnosis_transferred:
+      content: 雷神之心已转交至至冬一方
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    raiden_shogun: 100
+    player: 100
+  inventories:
+    raiden_shogun: []
+    player: []
+  locations:
+    raiden_shogun: tenshukaku
+    player: tenshukaku
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

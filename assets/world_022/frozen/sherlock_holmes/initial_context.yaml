@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    john_watson:
+      level: trusting
+      basis_event: initial_state
+    greg_lestrade:
+      level: neutral
+      basis_event: initial_state
+    mycroft_holmes:
+      level: distrustful
+      basis_event: initial_state
+    molly_hooper:
+      level: neutral
+      basis_event: initial_state
+    mrs_hudson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_01
+    content: Prove the serial suicides are connected murders
+    status: active
+    basis_event: initial_state
+  - id: g_02
+    content: Identify how the murderer persuades victims to take poison voluntarily
+    status: active
+    basis_event: initial_state
+  - id: g_03
+    content: Use the pink phone and pink suitcase to close the evidential gap
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_01:
+      content: The fourth victim was left-handed
+      status: active
+      visibility: shared_with_john_and_lestrade
+      source_event: initial_state
+    k_02:
+      content: The pink phone belonged to the fourth victim
+      status: active
+      visibility: shared_with_john_and_lestrade
+      source_event: initial_state
+    k_03:
+      content: The pink suitcase belongs to the fourth victim
+      status: active
+      visibility: shared_with_john
+      source_event: initial_state
+    k_04:
+      content: The victims appear to have taken poison voluntarily
+      status: active
+      visibility: shared_with_john_and_lestrade
+      source_event: initial_state
+    k_05:
+      content: The cab John noticed may be central to the murderer's movements
+      status: active
+      visibility: shared_with_john
+      source_event: initial_state
+environment:
+  health:
+    sherlock_holmes: 100
+    player: 100
+  inventories:
+    sherlock_holmes: []
+    player: []
+  locations:
+    sherlock_holmes: 221b_baker_street
+    player: 221b_baker_street
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lucifer_morningstar:
+      level: neutral
+      basis_event: initial_state
+    chloe_decker:
+      level: neutral
+      basis_event: initial_state
+    dan_espinoza:
+      level: neutral
+      basis_event: initial_state
+    mazikeen:
+      level: neutral
+      basis_event: initial_state
+    amenadiel:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Establish a working therapeutic relationship with Lucifer and gather
+      a clinical history
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Understand the origin and function of Lucifer's claim to be the Devil
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Preserve professional boundaries and confidentiality in all sessions
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Lucifer Morningstar is a nightclub owner in Los Angeles who has become
+        her patient
+      status: active
+      visibility: public
+      source_event: initial_state
+    k2:
+      content: Lucifer openly tells people he is the Devil and displays unusual charisma
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: Lucifer has begun working with the LAPD as a consultant while attending
+        therapy
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    linda_martin: 100
+    player: 100
+  inventories:
+    linda_martin: []
+    player: []
+  locations:
+    linda_martin: linda_office
+    player: linda_office
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

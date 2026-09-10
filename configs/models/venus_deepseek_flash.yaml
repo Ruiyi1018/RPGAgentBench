@@ -1,0 +1,14 @@
+provider: venus
+base_url: https://v2.open.venus.woa.com/llmproxy
+api_key_env: VENUS_API_KEY
+env_file: .env
+timeout_seconds: 300
+max_attempts: 3
+
+generation:
+  model: deepseek-v4-flash
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 4096
+  seed: 42
+  max_format_retries: 1

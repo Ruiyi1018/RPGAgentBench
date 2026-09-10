@@ -1,0 +1,43 @@
+world_id: world_007
+canon_policy:
+  primary_source: 金庸《天龙八部》小说通行本
+  source_type: 长篇武侠小说
+  excluded_versions:
+  - 电视剧改编
+  - 漫画改编
+  - 游戏改编
+  - 连载版异文
+  shared_snapshot: 六名角色共同活跃、故事主线密集交汇的叙事段落，具体章节范围待人工锁定
+  generated_timeline: 仅按已锁定共享快照内可确认事件排序，不推断快照外时间
+  quotation_policy: 只做事实级转述，不复制原作台词
+evaluated_npcs:
+- xiao_feng
+- duan_yu
+- xu_zhu
+- murong_fu
+- wang_yuyan
+- jiumozhi
+event_entities:
+- 人物
+- 地点
+- 物品
+- 武功
+- 门派
+- 事件
+- 身份
+sources:
+- id: tianlong_novel_common
+  title: 天龙八部
+  creator: 金庸
+  scope: 通行小说正典内容，不含改编版本
+  authority: primary
+data_constraints:
+- 所有事实必须限定在《天龙八部》小说通行本及已锁定共享快照内
+- 不得使用快照后剧情或改编版本内容
+- Anchor池事件必须按时间排序
+- 每个cf_edit必须给出只改变关键原因的真实替代情形
+- 地点和物品只能来自当前来源范围及共享快照
+- 无法可靠确认的细节一律省略
+- 不得伪造URL、章节号或集数
+- 只有入选Longitudinal层的角色才需要满足每角色10个正典Anchor
+- Catalog角色不要求全部进入Anchor池

@@ -1,4 +1,4 @@
-"""Atomic Action execution and auditable transition logging."""
+"""Per-Action execution and auditable transition logging."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Collection, Mapping
 
-from .action_registry import ActionRegistry
+from .action_registry import ActionRegistry, ActionSpec
 from .context import GameContext, WorldDefinition
 from .errors import ActionValidationError
 from .handlers import HANDLERS, Handler
@@ -20,10 +20,12 @@ class TransitionResult:
     events: tuple[dict[str, Any], ...]
     violations: tuple[dict[str, str], ...]
     public_observation: str
+    preflight_failed: bool = False
+    """True when the whole turn was discarded before any Action ran."""
 
 
 class GameCoreEngine:
-    """Apply at most two NPC actions as one deterministic transaction."""
+    """Apply at most two NPC actions, each as its own deterministic step."""
 
     def __init__(
         self,
@@ -117,11 +119,16 @@ class GameCoreEngine:
         *,
         allowed_actions: Collection[str] | None = None,
     ) -> TransitionResult:
-        """Execute one NPC output without semantic retries or auto-correction."""
+        """Apply each Action independently; only malformed output is rejected."""
 
         turn = self._current_turn(context)
         try:
             utterance, actions = self._validate_npc_output(npc_output)
+            if context.environment["dialogue_status"] != "active":
+                raise ActionValidationError(
+                    "dialogue_already_ended", "对话已经结束"
+                )
+            specs = self._preflight(actions, allowed_actions)
         except ActionValidationError as error:
             return self._rejected_result(
                 context,
@@ -133,55 +140,54 @@ class GameCoreEngine:
                 error,
             )
 
-        if context.environment["dialogue_status"] != "active":
-            return self._rejected_result(
-                context,
-                turn,
-                utterance,
-                actions,
-                ActionValidationError(
-                    "dialogue_already_ended", "对话已经结束"
-                ),
-            )
-
         working = context.clone()
         before = working.to_dict()
         events: list[dict[str, Any]] = []
-        try:
-            for index, action in enumerate(actions, start=1):
-                if (
-                    allowed_actions is not None
-                    and action.get("name") not in allowed_actions
-                ):
-                    raise ActionValidationError(
-                        "action_not_available",
-                        f"本场景未提供Action: {action.get('name')}",
-                    )
-                spec = self.registry.validate_call(action)
-                handler = self.handlers[spec.handler]
-                event_id = f"event_{turn}_{index}"
-                events.append(
-                    handler(
-                        working,
-                        self.world,
-                        action["parameters"],
-                        event_id,
-                        turn,
-                    )
+        violations: list[dict[str, str]] = []
+        entry_events: list[dict[str, Any]] = []
+        for index, (action, spec) in enumerate(
+            zip(actions, specs), start=1
+        ):
+            candidate = working.clone()
+            try:
+                event = self.handlers[spec.handler](
+                    candidate,
+                    self.world,
+                    action["parameters"],
+                    f"event_{turn}_{index}",
+                    turn,
                 )
-        except ActionValidationError as error:
-            return self._rejected_result(
-                context, turn, utterance, actions, error
-            )
+            except ActionValidationError as error:
+                violations.append(
+                    {
+                        "code": error.code,
+                        "message": error.message,
+                        "type": "decision_violation",
+                        "action": str(action["name"]),
+                    }
+                )
+                entry_events.append(
+                    {
+                        "id": f"violation_{turn}_{index}",
+                        "type": "decision_violation",
+                        "code": error.code,
+                        "action": str(action["name"]),
+                    }
+                )
+                continue
+            working = candidate
+            events.append(event)
+            entry_events.append(copy.deepcopy(event))
 
         delta = self._state_delta(before, working.data)
+        observation = self._observation(len(events), len(violations))
         working.append_history(
             {
                 "turn": turn,
                 "speaker": "npc",
                 "utterance": utterance,
                 "actions": copy.deepcopy(actions),
-                "events": copy.deepcopy(events),
+                "events": entry_events,
                 "context_delta": delta,
             }
         )
@@ -189,12 +195,15 @@ class GameCoreEngine:
             {
                 "turn": turn,
                 "speaker": "gamecore",
-                "utterance": "动作已执行。" if actions else "本轮无状态动作。",
+                "utterance": observation,
                 "events": [
                     {
                         "id": f"transition_{turn}",
-                        "type": "transition_accepted",
-                        "action_count": len(actions),
+                        "type": "transition_accepted"
+                        if not violations
+                        else "transition_partial",
+                        "action_count": len(events),
+                        "rejected_action_count": len(violations),
                     }
                 ],
             }
@@ -202,11 +211,47 @@ class GameCoreEngine:
         working.validate()
         return TransitionResult(
             context=working,
-            accepted=True,
+            accepted=not violations,
             events=tuple(events),
-            violations=(),
-            public_observation="动作已执行。" if actions else "本轮无状态动作。",
+            violations=tuple(violations),
+            public_observation=observation,
         )
+
+    def _preflight(
+        self,
+        actions: list[dict[str, Any]],
+        allowed_actions: Collection[str] | None,
+    ) -> list[ActionSpec]:
+        """Validate Action shape and availability before touching state."""
+
+        specs: list[ActionSpec] = []
+        for index, action in enumerate(actions, start=1):
+            if (
+                allowed_actions is not None
+                and action.get("name") not in allowed_actions
+            ):
+                raise ActionValidationError(
+                    "action_not_available",
+                    f"本场景未提供Action: {action.get('name')}",
+                )
+            if (
+                action.get("name") == "end_dialogue"
+                and index != len(actions)
+            ):
+                raise ActionValidationError(
+                    "end_dialogue_not_final",
+                    "end_dialogue必须是本轮最后一个Action",
+                )
+            specs.append(self.registry.validate_call(action))
+        return specs
+
+    @staticmethod
+    def _observation(applied: int, rejected: int) -> str:
+        if rejected and applied:
+            return "部分动作已执行，其余未生效。"
+        if rejected:
+            return "动作未生效。"
+        return "动作已执行。" if applied else "本轮无状态动作。"
 
     @staticmethod
     def _validate_npc_output(
@@ -316,4 +361,5 @@ class GameCoreEngine:
             events=(),
             violations=(violation,),
             public_observation="动作未生效。",
+            preflight_failed=True,
         )

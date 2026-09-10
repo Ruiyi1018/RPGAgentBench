@@ -1,0 +1,70 @@
+world_id: world_004
+name: 赤壁前夕
+locations:
+- id: xiangyang
+  name: 襄阳
+  connected_to:
+  - xinye
+  - xiakou
+  - jiangling
+- id: xinye
+  name: 新野
+  connected_to:
+  - xiangyang
+  - fancheng
+- id: fancheng
+  name: 樊城
+  connected_to:
+  - xinye
+  - xiangyang
+- id: xiakou
+  name: 夏口
+  connected_to:
+  - xiangyang
+  - jiangling
+  - chaisang
+- id: jiangling
+  name: 江陵
+  connected_to:
+  - xiangyang
+  - xiakou
+  - wulin
+- id: chaisang
+  name: 柴桑
+  connected_to:
+  - xiakou
+  - wulin
+  - sanshankou
+- id: wulin
+  name: 乌林
+  connected_to:
+  - jiangling
+  - chaisang
+  - sanshankou
+- id: sanshankou
+  name: 三江口
+  connected_to:
+  - chaisang
+  - wulin
+items:
+- id: qinglong_sword
+  name: 青龙偃月刀
+  type: 武器
+  portable: true
+- id: zhangba_spear
+  name: 丈八蛇矛
+  type: 武器
+  portable: true
+- id: yuchang_sword
+  name: 玉玺
+  type: 信物
+  portable: true
+- id: arrow_order
+  name: 箭矢军令
+  type: 军令
+  portable: true
+- id: lianhuan_plan
+  name: 连环计书信
+  type: 文书
+  portable: true
+language: zh

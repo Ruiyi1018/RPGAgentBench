@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    qianlong:
+      level: neutral
+      basis_event: initial_state
+    xiao_yanzi:
+      level: hostile
+      basis_event: initial_state
+    ziwei:
+      level: distrustful
+      basis_event: initial_state
+    yongqi:
+      level: distrustful
+      basis_event: initial_state
+    er_kang:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: 查清小燕子的真实来历
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: 阻止来历不明之人在宫中继续立足
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: 促使乾隆相信小燕子身份存在疑点
+    status: active
+    basis_event: initial_state
+  - id: g4
+    content: 防止永琪、尔康等人包庇小燕子
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: 小燕子在宫中行为异常，来历存疑
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: 永琪和尔康公开偏向小燕子
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: 宫中已有关于小燕子身份的说法传入乾隆耳中，但无正式定论
+      status: active
+      visibility: private
+      source_event: initial_state
+    k4:
+      content: 皇后已在乾隆面前要求严查小燕子身份
+      status: active
+      visibility: shared_with_qianlong
+      source_event: initial_state
+    k5:
+      content: 紫薇可能才是真正与皇室有血脉关联者
+      status: active
+      visibility: rumor
+      source_event: initial_state
+environment:
+  health:
+    empress_huanzhu: 100
+    player: 100
+  inventories:
+    empress_huanzhu: []
+    player: []
+  locations:
+    empress_huanzhu: shu_fang
+    player: shu_fang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

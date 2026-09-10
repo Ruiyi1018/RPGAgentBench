@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sun_wukong:
+      level: hostile
+      basis_event: initial_state
+    tang_sanzang:
+      level: neutral
+      basis_event: initial_state
+    zhu_bajie:
+      level: neutral
+      basis_event: initial_state
+    sha_wujing:
+      level: neutral
+      basis_event: initial_state
+    heihujing:
+      level: trusting
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 第三次变化接近唐僧，寻找孙悟空不在或队伍松懈时动手
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 避免真身被孙悟空识破后当场拿住
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 利用唐僧对孙悟空的疑心，让取经队伍内部继续不稳
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 唐僧师徒已进入白虎岭，唐僧曾因饥饿让孙悟空去寻食物
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 孙悟空两次识破自己变化，并打毁村姑与老妇人两具假身
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: 唐僧因连续见伤者而斥责孙悟空，并两次念紧箍咒
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: 猪八戒在队伍中表现过贪吃和对孙悟空的不满，可被利用
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_005:
+      content: 黑狐精对前两次失败表示担忧，但白骨精已决定再试一次
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    baigujing: 100
+    player: 100
+  inventories:
+    baigujing: []
+    player: []
+  locations:
+    baigujing: yaodong
+    player: yaodong
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

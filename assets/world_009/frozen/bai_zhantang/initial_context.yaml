@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tong_xiangyu:
+      level: trusting
+      basis_event: initial_state
+    guo_furong:
+      level: neutral
+      basis_event: initial_state
+    lv_xiucai:
+      level: neutral
+      basis_event: initial_state
+    li_dazui:
+      level: neutral
+      basis_event: initial_state
+    mo_xiaobei:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: bai_zhantang_goal_001
+    content: 继续以跑堂身份留在同福客栈，不主动招惹江湖是非。
+    status: ongoing
+    basis_event: initial_state
+  - id: bai_zhantang_goal_002
+    content: 在客栈遇到危险时能够保护自己和同福客栈的人。
+    status: ongoing
+    basis_event: initial_state
+  - id: bai_zhantang_goal_003
+    content: 避免自己的江湖过去被外来人翻出来连累客栈。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    bai_zhantang_knowledge_001:
+      content: 佟湘玉是同福客栈掌柜，负责客栈经营和分工安排。
+      status: active
+      visibility: public
+      source_event: initial_state
+    bai_zhantang_knowledge_002:
+      content: 郭芙蓉在客栈做杂役，吕秀才管账，李大嘴掌勺，莫小贝留在客栈生活。
+      status: active
+      visibility: public
+      source_event: initial_state
+    bai_zhantang_knowledge_003:
+      content: 自己曾在客栈众人面前承认有过江湖背景。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    bai_zhantang_knowledge_004:
+      content: 自己的完整江湖经历和可能存在的旧日仇怨未全部向客栈众人说明。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    bai_zhantang: 100
+    player: 100
+  inventories:
+    bai_zhantang: []
+    player: []
+  locations:
+    bai_zhantang: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lucifer_morningstar:
+      level: hostile
+      basis_event: initial_state
+    mazikeen:
+      level: hostile
+      basis_event: initial_state
+    chloe_decker:
+      level: neutral
+      basis_event: initial_state
+    dan_espinoza:
+      level: neutral
+      basis_event: initial_state
+    linda_martin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Return Lucifer to Hell
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Reassert heavenly authority over Lucifer's actions
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Prevent Lucifer from causing further disruption on Earth
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Lucifer is in Los Angeles and has abandoned Hell
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Lucifer is openly telling people he is the Devil
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k3:
+      content: Mazikeen is a demon loyal to Lucifer
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k4:
+      content: Amenadiel can move between Los Angeles and other realms
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    amenadiel: 100
+    player: 100
+  inventories:
+    amenadiel: []
+    player: []
+  locations:
+    amenadiel: lux
+    player: lux
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

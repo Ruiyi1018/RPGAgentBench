@@ -1,0 +1,30 @@
+schema_version: 1
+world_id: world_012
+status: generated
+human_approved: false
+machine_audit:
+  world: /data/workspace/gamenpc_bmk/rpg_agent_bench/assets/world_012
+  characters:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  - laolao
+  machine_passed: true
+  human_approved: false
+  ready_for_anchor_generation: false
+  manual_rules:
+    source_scope_resolved: 正典来源、版本、时间快照和排除范围明确。
+    snapshot_consistent: 角色画像只包含共享时间快照内已经成立的信息。
+    snapshot_role_consistent: 角色职务、阵营、存活、位置和权限与时间快照及首个Anchor一致。
+    future_knowledge_excluded: 未来经历、未来关系和角色尚未知晓的事件未倒灌进Profile。
+    character_source_grounded: 身份、经历、立场、能力和关系均可由来源支持。
+    public_private_separated: 逐项区分公开事实、NPC私密知识、传闻和未知信息。
+    player_role_bounded: Player的身份、能力、可接触材料和临时授权边界明确且前后一致。
+    boundaries_behavioral: 角色边界描述为可观察行为，而非抽象人格形容词。
+    relationships_directional: 关系按角色视角分别描述，不把单向信任自动写成双向关系。
+    style_source_grounded: 语言风格来自角色稳定表达习惯，不使用剧情流程或固定办事模板代替风格。
+    world_affordances_sufficient: 地点、物品和权限足以承载计划测试的行为。
+  errors: []
+next_step: 按datagen/audit/HUMAN_REVIEW_RULES.md审核，再更新各角色source_review.yaml

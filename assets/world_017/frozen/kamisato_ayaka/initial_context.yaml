@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhongli:
+      level: neutral
+      basis_event: initial_state
+    hu_tao:
+      level: neutral
+      basis_event: initial_state
+    raiden_shogun:
+      level: distrustful
+      basis_event: initial_state
+    wanderer:
+      level: neutral
+      basis_event: initial_state
+    paimon:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_ayaka_maintain_family
+    content: 维持神里家在稻妻社奉行中的地位与体面
+    status: ongoing
+    basis_event: initial_state
+  - id: g_ayaka_change_policy
+    content: 在不公开挑战雷电将军权威的情况下推动眼狩令相关政策的改变
+    status: ongoing
+    basis_event: initial_state
+  - id: g_ayaka_keep_allies
+    content: 与旅行者和派蒙保持信任，继续寻找改变稻妻现状的方法
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_ayaka_raiden_policy:
+      content: 雷电将军以追求永恒为治理核心，长期维持锁国令与眼狩令
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_ayaka_traveler_paimon_presence:
+      content: 旅行者和派蒙已经进入稻妻，并愿意协助处理稻妻事务
+      status: active
+      visibility: shared_with_paimon
+      source_event: initial_state
+    k_ayaka_family_duty:
+      content: 神里家与社奉行在稻妻社会中的职责和影响力
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    kamisato_ayaka: 100
+    player: 100
+  inventories:
+    kamisato_ayaka: []
+    player: []
+  locations:
+    kamisato_ayaka: inazuma_city
+    player: inazuma_city
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,73 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: loyal
+      basis_event: initial_state
+    jacob_black:
+      level: distrustful
+      basis_event: initial_state
+    alice_cullen:
+      level: trusting
+      basis_event: initial_state
+    carlisle_cullen:
+      level: trusting
+      basis_event: initial_state
+    rosalie_hale:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_edward_001
+    content: Keep Bella out of James's reach until the nomadic coven is dealt with.
+    status: active
+    basis_event: initial_state
+  - id: g_edward_002
+    content: Coordinate with Carlisle and Alice to anticipate the nomadic coven's
+      next move.
+    status: active
+    basis_event: initial_state
+  - id: g_edward_003
+    content: Prevent any human in Forks, especially Charlie, from discovering the
+      vampire secret.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_edward_001:
+      content: Bella knows he is a vampire and has accepted it.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_edward_002:
+      content: James has identified Bella and is hunting her specifically.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_edward_003:
+      content: Alice sees visions of the nomadic coven and believes Bella is a target.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_edward_004:
+      content: Bella's mind is the only one he cannot read.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    edward_cullen: 100
+    player: 100
+  inventories:
+    edward_cullen: []
+    player: []
+  locations:
+    edward_cullen: cullen_house
+    player: cullen_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

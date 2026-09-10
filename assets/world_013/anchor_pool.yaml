@@ -1,0 +1,243 @@
+world_id: world_013
+source: 电影《唐人街探案》（2015）
+events:
+- id: ev_001
+  fact: 秦风抵达曼谷并前往唐仁侦探社寻找唐仁。
+  known_by:
+  - qin_feng
+  state_change: 秦风进入曼谷案件环境
+  cf_edit: 秦风抵达后直接去警局而不是侦探社，导致与唐仁会合时间推迟并改变前期调查路径。
+  anchor_for:
+  - qin_feng
+- id: ev_002
+  fact: 唐仁在侦探社向秦风介绍自己当前在曼谷唐人街的活动。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 两人建立初步合作关系
+  cf_edit: 唐仁因临时外出未在侦探社，秦风只能通过阿香了解唐仁行踪，延迟了两人共同行动。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_003
+  fact: 阿香出现在唐仁侦探社附近，与秦风或唐仁发生短暂接触。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - a_xiang
+  state_change: 阿香进入调查外围关系
+  cf_edit: 阿香当时未在侦探社附近，改为之后在唐人街街口偶然碰见，使秦风和唐仁失去一个即时信息来源。
+  anchor_for:
+  - a_xiang
+- id: ev_004
+  fact: 秦风与唐仁得知颂帕工坊发生命案。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 案件成为二人核心调查目标
+  cf_edit: 命案消息由坤泰稍后才通知唐仁，而非在侦探社阶段得知，延后两人对案件的介入。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_005
+  fact: 唐仁向秦风介绍死者颂帕与黄金佛像的事。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 黄金佛像成为关键物品线索
+  cf_edit: 唐仁没来得及介绍黄金佛像，秦风在颂帕工坊自行发现佛像后才知道其存在，改变线索发现顺序。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_006
+  fact: 秦风与唐仁前往颂帕工坊查看现场。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 现场勘查启动
+  cf_edit: 颂帕工坊被警方提前封锁禁止进入，二人只能通过黄兰登了解现场，无法直接观察密室。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_007
+  fact: 在颂帕工坊内发现监控录像设备与录像资料。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 监控录像成为时间线关键证据
+  cf_edit: 监控设备已被凶手破坏且无法恢复，二人只能依赖证人口供，录像线索缺失。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_008
+  fact: 秦风与唐仁查看监控录像后关注到凶手进入工坊的时间片段。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 锁定作案时间窗口
+  cf_edit: 录像时间戳被证明经过修改，二人无法立刻信任录像，转而重新寻找旁证。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_009
+  fact: 坤泰以警局人员身份接触唐仁和秦风，询问案件相关信息。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - kun_tai
+  state_change: 坤泰进入案件调查网络
+  cf_edit: 坤泰被上级安排去处理另一案件，未及时接触唐仁，导致警方内部信息进入主线的时间推迟。
+  anchor_for:
+  - kun_tai
+- id: ev_010
+  fact: 黄兰登负责颂帕命案的警方调查。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - kun_tai
+  - huang_lan_deng
+  state_change: 警方调查正式主导者明确
+  cf_edit: 黄兰登被停职，改由陌生警官负责颂帕案，使唐仁和秦风在警局内的情报获取难度提高。
+  anchor_for:
+  - huang_lan_deng
+- id: ev_011
+  fact: 秦风与唐仁在唐人街询问案发前后路人行踪。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 民间线索收集进入唐人街范围
+  cf_edit: 唐人街突然下雨导致行人稀少，二人问不到有效目击证词，调查重心被迫转向物证。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_012
+  fact: 秦风与唐仁在曼谷街头遭遇追捕，被迫转入停车场。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - a_xiang
+  state_change: 调查由公开活动转为躲避状态
+  cf_edit: 追捕发生在狭窄巷道而非停车场，二人无法利用车辆掩护，被逼入死路后由阿香另寻方式解围。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+  - a_xiang
+- id: ev_013
+  fact: 阿香在调查过程中为唐仁或秦风提供帮助。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - a_xiang
+  state_change: 阿香从外围关系变为实质协助者
+  cf_edit: 阿香因被警告而拒绝协助，只提供一句不明确的提示，使二人失去关键行动支持。
+  anchor_for:
+  - a_xiang
+- id: ev_014
+  fact: 坤泰私下向唐仁透露警方正在追查唐仁。
+  known_by:
+  - tang_ren
+  - kun_tai
+  state_change: 唐仁从被调查者变为潜逃关联人
+  cf_edit: 坤泰为避免问责没有提前透露，唐仁在公开场合被黄兰登撞见后才知道自己已被追查。
+  anchor_for:
+  - tang_ren
+  - kun_tai
+- id: ev_015
+  fact: 秦风与唐仁进入医院调查与案件相关的线索。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 医院进入案件地点网络
+  cf_edit: 医院因突发急诊封锁，二人无法进入，只能改由坤泰事后转述内部情况。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_016
+  fact: 思诺在学校附近被秦风与唐仁询问。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - si_nuo
+  state_change: 思诺介入案件线索链
+  cf_edit: 思诺当时被老师叫走，没有接受询问，导致她与案件的关系延后至另一地点才被发现。
+  anchor_for:
+  - si_nuo
+- id: ev_017
+  fact: 思诺在咖啡馆与秦风或唐仁见面，谈及相关信息。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - si_nuo
+  state_change: 咖啡馆成为信息交换点
+  cf_edit: 咖啡馆临时关门，改为在街边谈话，被路人打断，关键信息只传达了一半。
+  anchor_for:
+  - si_nuo
+- id: ev_018
+  fact: 秦风与唐仁再次查看案件卷宗，梳理颂帕工坊密室结构。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 密室结构成为核心推理对象
+  cf_edit: 案件卷宗被警方收走，二人只能凭现场记忆推理，遗漏了一扇暗门。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_019
+  fact: 坤泰在警局内部帮助唐仁接触案件相关证据。
+  known_by:
+  - tang_ren
+  - kun_tai
+  state_change: 警方证据进入民间调查链
+  cf_edit: 坤泰被发现协助外人而被调离档案室，导致唐仁无法接触现场物证照片。
+  anchor_for:
+  - kun_tai
+- id: ev_020
+  fact: 黄兰登在警局与唐仁或秦风发生正面冲突。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - huang_lan_deng
+  state_change: 黄兰登与主角方对立关系强化
+  cf_edit: 黄兰登当时临时外出，换成另一名警员盘问二人，使黄兰登对唐仁的追捕线暂时中断。
+  anchor_for:
+  - huang_lan_deng
+- id: ev_021
+  fact: 秦风根据监控录像与现场痕迹推理出凶手可能熟悉工坊内部。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 推理焦点从不特定凶手转向熟人作案
+  cf_edit: 现场痕迹被警方取证时意外破坏，秦风无法确认这一点，导致熟人作案假设晚一步出现。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_022
+  fact: 唐仁与秦风在停车场复盘当前证据与嫌疑人范围。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 停车场成为阶段性推理地点
+  cf_edit: 停车场保安提前驱赶二人，复盘改在河岸旁进行，环境嘈杂导致部分证据被误解。
+  anchor_for:
+  - qin_feng
+  - tang_ren
+- id: ev_023
+  fact: 思诺向秦风提供与案件有关的个人信息或观察。
+  known_by:
+  - qin_feng
+  - tang_ren
+  - si_nuo
+  state_change: 思诺的信息推动推理方向改变
+  cf_edit: 思诺临时改口，只说了与案件无关的学校话题，使真正线索延迟到之后另一次见面才出现。
+  anchor_for:
+  - si_nuo
+- id: ev_024
+  fact: 唐仁与秦风确认颂帕工坊内黄金佛像与案件存在关联。
+  known_by:
+  - qin_feng
+  - tang_ren
+  state_change: 黄金佛像被纳入案件动机分析
+  cf_edit: 黄金佛像在两人到达前已被转移，现场只留下底座痕迹，动机分析因此缺少直观物证。
+  anchor_for:
+  - qin_feng
+  - tang_ren

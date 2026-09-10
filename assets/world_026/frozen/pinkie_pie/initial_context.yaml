@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    twilight_sparkle:
+      level: trusting
+      basis_event: initial_state
+    applejack:
+      level: trusting
+      basis_event: initial_state
+    rainbow_dash:
+      level: trusting
+      basis_event: initial_state
+    rarity:
+      level: trusting
+      basis_event: initial_state
+    fluttershy:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Organize a lively but manageable welcome or surprise celebration in Ponyville.
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Clean up Sugarcube Corner after the confetti test so the shop remains
+      usable.
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Help deliver apples and party supplies to the festival site without derailing
+      the schedule.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_001:
+      content: Pinkie Pie used her party cannon during a welcoming party for a new
+        arrival in Ponyville.
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_002:
+      content: Pinkie Pie organized a surprise celebration at Sugarcube Corner and
+        decorated it with streamers.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_003:
+      content: Pinkie Pie tested a new confetti recipe at Sugarcube Corner and caused
+        a large confetti mess inside the shop.
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_004:
+      content: The group practices a coordinated routine for public performances from
+        a clearing near Ponyville.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_005:
+      content: Fluttershy suggested quieter music to calm a frightened rabbit before
+        a party.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    pinkie_pie: 100
+    player: 100
+  inventories:
+    pinkie_pie: []
+    player: []
+  locations:
+    pinkie_pie: loc_ponyville
+    player: loc_ponyville
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

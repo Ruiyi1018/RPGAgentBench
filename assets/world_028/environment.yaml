@@ -1,0 +1,49 @@
+world_id: world_028
+name: Season 1 Hannibal environment
+locations:
+- id: baltimore_maryland
+  name: Baltimore, Maryland
+  connected_to:
+  - quantico_virginia
+  - wolf_trap_virginia
+  - lecter_office
+  - baltimore_state_hospital_for_the_criminally_insane
+- id: quantico_virginia
+  name: Quantico, Virginia
+  connected_to:
+  - baltimore_maryland
+  - fbi_academy
+  - wolf_trap_virginia
+- id: fbi_academy
+  name: FBI Academy
+  connected_to:
+  - quantico_virginia
+  - baltimore_maryland
+- id: baltimore_state_hospital_for_the_criminally_insane
+  name: Baltimore State Hospital for the Criminally Insane
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+- id: wolf_trap_virginia
+  name: Wolf Trap, Virginia
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+- id: lecter_office
+  name: Hannibal Lecter's Baltimore office
+  connected_to:
+  - baltimore_maryland
+items:
+- id: knife
+  name: Large hunting knife
+  type: weapon
+  portable: true
+- id: evidence_bags
+  name: FBI evidence bags
+  type: forensic equipment
+  portable: true
+- id: fbi_badge
+  name: FBI credential badge
+  type: identification
+  portable: true
+language: en

@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    cao_cao:
+      level: hostile
+      basis_event: initial_state
+    liu_bei:
+      level: neutral
+      basis_event: initial_state
+    zhuge_liang:
+      level: neutral
+      basis_event: initial_state
+    guan_yu:
+      level: neutral
+      basis_event: initial_state
+    zhang_fei:
+      level: neutral
+      basis_event: initial_state
+    zhou_yu:
+      level: trusting
+      basis_event: initial_state
+    sun_quan:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g001
+    content: 确立并维持江东主战路线，压制内部投降呼声
+    status: in_progress
+    basis_event: initial_state
+  - id: g002
+    content: 促成并维持孙刘联合，共同对抗曹操
+    status: in_progress
+    basis_event: initial_state
+  - id: g003
+    content: 任命周瑜等将领，完成抗曹军事部署
+    status: in_progress
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k001:
+      content: 曹操占据江陵，致书孙权要求归降或决战
+      status: active
+      visibility: public
+      source_event: initial_state
+    k002:
+      content: 鲁肃在荆州遇见刘备，并促成诸葛亮到柴桑
+      status: active
+      visibility: public
+      source_event: initial_state
+    k003:
+      content: 周瑜从鄱阳返回，力主抗曹，孙权已决定开战
+      status: active
+      visibility: public
+      source_event: initial_state
+    k004:
+      content: 孙权已当众砍断案角，表示再言投降者与案同
+      status: active
+      visibility: public
+      source_event: initial_state
+    k005:
+      content: 孙刘双方已在联合抗曹上进入军事协调阶段
+      status: active
+      visibility: public
+      source_event: initial_state
+    k006:
+      content: 孙权对刘备、诸葛亮仍有防范，但暂时以抗曹为先
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    sun_quan: 100
+    player: 100
+  inventories:
+    sun_quan: []
+    player: []
+  locations:
+    sun_quan: chaisang
+    player: chaisang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

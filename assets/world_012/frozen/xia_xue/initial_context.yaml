@@ -1,0 +1,73 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_mei:
+      level: neutral
+      basis_event: initial_state
+    xia_donghai:
+      level: trusting
+      basis_event: initial_state
+    liu_xing:
+      level: neutral
+      basis_event: initial_state
+    xia_yu:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_xia_xue_001
+    content: 完成当前阶段的学习任务，并保持自己的学习节奏。
+    status: active
+    basis_event: initial_state
+  - id: g_xia_xue_002
+    content: 在家庭生活中争取自己的空间和习惯得到尊重。
+    status: active
+    basis_event: initial_state
+  - id: g_xia_xue_003
+    content: 逐步适应与继母刘梅及刘星的共同生活。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_xia_xue_001:
+      content: 家庭已经重组，自己与父亲、继母、刘星、夏雨共同生活。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xia_xue_002:
+      content: 刘梅负责较多家务和日常管理，夏东海会参与家庭沟通和调解。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xia_xue_003:
+      content: 刘星在作业和生活习惯上经常表现散漫。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xia_xue_004:
+      content: 夏雨作为弟弟有更多依赖父母的行为。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xia_xue_005:
+      content: 晚餐时间常是一家人聚集在餐厅交流的固定时段。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    xia_xue: 100
+    player: 100
+  inventories:
+    xia_xue: []
+    player: []
+  locations:
+    xia_xue: loc_woshi_haizi
+    player: loc_woshi_haizi
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tong_xiangyu:
+      level: trusting
+      basis_event: initial_state
+    bai_zhantang:
+      level: trusting
+      basis_event: initial_state
+    guo_furong:
+      level: loyal
+      basis_event: initial_state
+    li_dazui:
+      level: neutral
+      basis_event: initial_state
+    mo_xiaobei:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_lv_001
+    content: 维持同福客栈账目清楚
+    status: ongoing
+    basis_event: initial_state
+  - id: g_lv_002
+    content: 保持与郭芙蓉的亲近关系
+    status: ongoing
+    basis_event: initial_state
+  - id: g_lv_003
+    content: 巩固自己在客栈中不可替代的账房作用
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_lv_001:
+      content: 佟湘玉是同福客栈掌柜，众人默认其安排
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_lv_002:
+      content: 白展堂有江湖背景，并多次在关键时刻保护客栈
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_lv_003:
+      content: 郭芙蓉会武功，不只是普通杂役
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_lv_004:
+      content: 郭芙蓉与自己的关系已超出普通同僚
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_lv_005:
+      content: 莫小贝仍留在同福客栈生活，并接受管教
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_lv_006:
+      content: 自己为同福客栈制定了一套记账方式
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    lv_xiucai: 100
+    player: 100
+  inventories:
+    lv_xiucai: []
+    player: []
+  locations:
+    lv_xiucai: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

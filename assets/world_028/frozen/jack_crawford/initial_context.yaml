@@ -1,0 +1,178 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hannibal_lecter:
+      level: trusting
+      basis_event: initial_state
+    will_graham:
+      level: trusting
+      basis_event: initial_state
+    alana_bloom:
+      level: trusting
+      basis_event: initial_state
+    abigail_hobbs:
+      level: neutral
+      basis_event: initial_state
+    beverly_katz:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: stop_shrike_case
+    content: Identify and stop the killer or killers behind the Minnesota Shrike abductions
+      and the copycat staging.
+    status: active
+    basis_event: initial_state
+  - id: manage_will_stability
+    content: Keep Will Graham functional enough to continue profiling without letting
+      him break down.
+    status: active
+    basis_event: initial_state
+  - id: control_investigation
+    content: Maintain FBI control over the investigation despite reliance on outside
+      consultants.
+    status: active
+    basis_event: initial_state
+  - id: assess_abigail
+    content: Determine whether Abigail Hobbs is a victim, witness, or accomplice.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    will_joins_investigation:
+      content: Will Graham was persuaded by Jack Crawford to assist the FBI Behavioral
+        Science Unit with a series of abductions of college girls.
+      status: active
+      visibility: private
+      source_event: initial_state
+    hannibal_meets_jack:
+      content: Jack Crawford first encountered Hannibal Lecter as a local Baltimore
+        psychiatrist while searching for expert help on the abduction case.
+      status: active
+      visibility: private
+      source_event: initial_state
+    will_first_meets_hannibal:
+      content: Will Graham met Hannibal Lecter for the first time during Jack Crawford's
+        introduction, and Hannibal offered Will breakfast in his office.
+      status: active
+      visibility: private
+      source_event: initial_state
+    hobbs_case_begins:
+      content: The investigation shifted to Garrett Jacob Hobbs, a Minnesota father
+        suspected in a string of murders and abductions.
+      status: active
+      visibility: private
+      source_event: initial_state
+    hobbs_death:
+      content: Will Graham arrived at the Hobbs residence in time to see Garrett Jacob
+        Hobbs kill his wife and move toward Abigail Hobbs, and Will shot Hobbs dead.
+      status: active
+      visibility: private
+      source_event: initial_state
+    abigail_hospitalized:
+      content: Abigail Hobbs was hospitalized in critical condition with a cut throat
+        after the confrontation at her family home.
+      status: active
+      visibility: private
+      source_event: initial_state
+    hannibal_recommended_for_will:
+      content: Jack Crawford approved Hannibal Lecter as an unofficial psychiatrist
+        to support Will Graham after the Hobbs shooting.
+      status: active
+      visibility: private
+      source_event: initial_state
+    will_begins_therapy:
+      content: Will Graham began regular therapy sessions with Hannibal Lecter to
+        manage the psychological burden of criminal profiling.
+      status: active
+      visibility: private
+      source_event: initial_state
+    alana_returns_to_baltimore:
+      content: Alana Bloom returned to Baltimore and became involved in the investigation
+        as a psychiatric consultant who knows both Will Graham and Hannibal Lecter.
+      status: active
+      visibility: private
+      source_event: initial_state
+    abigail_questioned_by_fbi:
+      content: The FBI questioned Abigail Hobbs about her father's crimes while she
+        was recovering in the hospital.
+      status: active
+      visibility: private
+      source_event: initial_state
+    beverly_examines_evidence:
+      content: Beverly Katz led forensic analysis of evidence from crime scenes related
+        to the Minnesota Shrike case.
+      status: active
+      visibility: private
+      source_event: initial_state
+    hannibal_examines_will:
+      content: Hannibal Lecter informally evaluated Will Graham's mental state and
+        told Jack Crawford that Will is fragile.
+      status: active
+      visibility: private
+      source_event: initial_state
+    copycat_killer_investigation:
+      content: Will Graham and the FBI investigated a copycat killer who staged crimes
+        mirroring Garrett Jacob Hobbs's murders.
+      status: active
+      visibility: private
+      source_event: initial_state
+    abigail_returns_to_baltimore:
+      content: Abigail Hobbs was brought back to Baltimore so the FBI could continue
+        questioning her about the copycat murders.
+      status: active
+      visibility: private
+      source_event: initial_state
+    jack_orders_will_evaluation:
+      content: Jack Crawford ordered a formal psychological evaluation of Will Graham
+        after concerns about his ability to handle field work.
+      status: active
+      visibility: private
+      source_event: initial_state
+    alana_defends_will:
+      content: Alana Bloom argued to Jack Crawford that Will Graham is valuable to
+        the FBI and should continue consulting despite his instability.
+      status: active
+      visibility: private
+      source_event: initial_state
+    beverly_warns_will:
+      content: Beverly Katz warned Will Graham that some forensic findings in the
+        copycat case point toward deliberate staging rather than simple imitation.
+      status: active
+      visibility: private
+      source_event: initial_state
+    abigail_faces_accusations:
+      content: The FBI treated Abigail Hobbs as a possible accomplice or material
+        witness in her father's crimes as new questions arose about what she knew.
+      status: active
+      visibility: private
+      source_event: initial_state
+    will_trusts_hannibal:
+      content: Will Graham began to rely on Hannibal Lecter as his closest confidant
+        and defended Hannibal when others questioned his role in the case.
+      status: active
+      visibility: private
+      source_event: initial_state
+    season_one_investigation_ongoing:
+      content: The FBI team remains engaged in an unfolding series of murders connected
+        to the original Shrike case and to the people around Will Graham.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    jack_crawford: 100
+    player: 100
+  inventories:
+    jack_crawford: []
+    player: []
+  locations:
+    jack_crawford: quantico_virginia
+    player: quantico_virginia
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

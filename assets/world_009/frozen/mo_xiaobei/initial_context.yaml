@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tong_xiangyu:
+      level: trusting
+      basis_event: initial_state
+    bai_zhantang:
+      level: trusting
+      basis_event: initial_state
+    guo_furong:
+      level: trusting
+      basis_event: initial_state
+    lv_xiucai:
+      level: trusting
+      basis_event: initial_state
+    li_dazui:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 在同福客栈继续安稳生活，不被送走
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 在佟湘玉管束下尽量少被责备
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 与同福客栈众人保持熟悉亲近的关系
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 佟湘玉是负责照顾和管束自己的人，并决定她可以留在同福客栈
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 同福客栈里白展堂、郭芙蓉、吕秀才、李大嘴各自有不同分工
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_003:
+      content: 自己需要在七侠镇接受教育或被身边人教导
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 同福客栈众人会共同处理日常麻烦，自己多数时候是受照顾的对象
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    mo_xiaobei: 100
+    player: 100
+  inventories:
+    mo_xiaobei: []
+    player: []
+  locations:
+    mo_xiaobei: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

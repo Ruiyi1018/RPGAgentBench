@@ -1,0 +1,75 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    snow_white:
+      level: trusting
+      basis_event: initial_state
+    emma_swan:
+      level: neutral
+      basis_event: initial_state
+    henry_mills:
+      level: neutral
+      basis_event: initial_state
+    regina_mills:
+      level: hostile
+      basis_event: initial_state
+    rumplestiltskin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Survive the attack on his carriage and understand who saved him.
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Overcome the sleeping curse so that Snow White can be restored.
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Plan resistance to the Evil Queen's curse alongside Snow White.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: He was pulled from a carriage after an attack and met Snow White when
+        she robbed him.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Snow White learned he was engaged to another, and they parted after
+        their quest.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: He and Snow White met again and married after he broke a sleeping spell
+        placed on her.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: Snow White believes their child will be the one to save everyone from
+        the Evil Queen's curse.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    prince_charming: 100
+    player: 100
+  inventories:
+    prince_charming: []
+    player: []
+  locations:
+    prince_charming: fairytale_realm
+    player: fairytale_realm
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

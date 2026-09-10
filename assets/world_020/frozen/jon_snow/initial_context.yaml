@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    eddard_stark:
+      level: trusting
+      basis_event: initial_state
+    catelyn_stark:
+      level: distrustful
+      basis_event: initial_state
+    arya_stark:
+      level: loyal
+      basis_event: initial_state
+    tyrion_lannister:
+      level: neutral
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    cersei_lannister:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Become a sworn brother of the Night's Watch
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Protect Samwell Tarly from the other recruits
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Prove he is more than a bastard
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: Eddard Stark executed a deserter from the Night's Watch at Winterfell
+        and explained that the man died bravely but deserted his post.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: The Stark children were each given a direwolf pup; Jon took a small
+        white runt for himself.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_003:
+      content: King Robert Baratheon and the royal court visited Winterfell, and Jon
+        was seated below the salt because he is a bastard.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: He chose to join the Night's Watch and traveled to the Wall with Benjen
+        Stark.
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_005:
+      content: At the Wall he has befriended Samwell Tarly and begun training with
+        the other recruits.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    jon_snow: 100
+    player: 100
+  inventories:
+    jon_snow: []
+    player: []
+  locations:
+    jon_snow: the_wall
+    player: the_wall
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

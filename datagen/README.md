@@ -1,46 +1,121 @@
-# Data Generation
+# Data generation
 
-离线数据生成，不参与正式评测运行。
+`datagen/pipeline.py`是唯一CLI主入口，位于`datagen/`顶层；生成器与审核器
+分别放入独立子目录。
 
-当前实现：
+## 目录与产物
 
-- `history_sources.py`：读取人工审核的Anchor与Transition；
-- `llm_history.py`：规划连续session，并分块生成Player/NPC对话；
-- `projection.py`：只向模型投影消息与其可见的事件，隔离答案和内部状态；
-- `executable_qa.py`：生成Profile、Temporal、Local、Checkpoint、Long-range Final和Multi-hop六层QA；
-- `executable_branches.py`：在完整历史后追加最小反事实Probe；
-- `audit.py`：审计可执行性、可见性、语言重复、QA和Pair；
-- `validate.py`：检查轮数、消息、锚点、QA证据、Pair配比和分支最小性；
-- `generate_world.py`：世界级离线生成入口。
+```text
+datagen/
+  pipeline.py                       # 统一CLI主入口
+  generation/
+    catalog_foundation.py           # 从32-world catalog批量生成Foundation/Profile
+    foundation.py                   # 基础资产空骨架
+    anchor_draft.py                 # Stage 1/2共享前置草案
+    stage1_history.py               # Stage 1连续历史
+    stage1_tests.py                 # Stage 1 QA与开放任务
+    stage2_tests.py                 # Stage 2最小反事实分支
+    stage1_stage2.py                # Stage 1+2完整生成编排
+  audit/
+    source_assets.py                # 基础资产、Anchor与Transition门禁
+    benchmark_assets.py             # 已生成Stage 1/2资产审计
+    validation.py                   # Stage 1/2数量与结构验证
+    HUMAN_REVIEW_RULES.md           # Foundation/Profile/Anchor人工规则
+  shared/
+    io.py                           # YAML/JSONL读写
+    reviewed_sources.py             # 只读取审核通过的来源资产
+    history_projection.py           # Player/NPC可见历史投影
+```
 
-在线场景由`assets/<world>/scenarios/`定义，`EvaluationSpec`只提供给Checker和确定性审计，不进入NPC Prompt。
+- 基础资产：`generation/foundation.py`生成`canon.yaml`、
+  `environment.yaml`、角色卡等空骨架。
+- Stage 1/2共享前置：`generation/anchor_draft.py`生成
+  `drafts/<npc>/anchors.yaml`、`transitions.yaml`和生成报告。
+- Stage 1历史：`generation/stage1_history.py`生成
+  `frozen/<npc>/history.jsonl`。
+- Stage 1测试：`generation/stage1_tests.py`生成`qa.jsonl`和
+  `open_tasks.jsonl`。
+- Stage 2测试：`generation/stage2_tests.py`生成
+  `branches/<npc>/pairs.jsonl`及分支历史。
+- Stage 3场景：当前没有datagen生成器，使用人工审核的
+  `scenarios/*.yaml`。
 
-World 002生成命令：
+`stage1_stage2.py`按顺序调用Stage 1和Stage 2生成器，并写
+`generated_manifest.yaml`。它不生成Stage 3数据。
+
+## 主入口
+
+所有全局参数放在`generate`或`audit`之前。
+
+按审核目录批量生成未批准的Foundation与Profile草案：
 
 ```bash
-python3 -m datagen.generate_world \
-  --world assets/world_002 \
+python3 -m datagen.pipeline generate catalog-foundation \
+  --catalog configs/datagen/world_catalog.yaml \
+  --config configs/models/venus_deepseek.yaml \
+  --workers 4
+```
+
+该命令跳过现有`world_001/002`，逐世界写入`world_003–032`。所有
+`source_review.yaml`检查默认为`false`，必须按
+[`audit/HUMAN_REVIEW_RULES.md`](audit/HUMAN_REVIEW_RULES.md)人工审核。
+
+创建基础资产空骨架：
+
+```bash
+python3 -m datagen.pipeline \
+  --world assets/world_003 \
+  --character npc_one \
+  --character npc_two \
+  generate foundation \
+  --world-id world_003 \
+  --name example_world \
+  --language zh
+```
+
+生成并审核Anchor草案：
+
+```bash
+python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
+  audit foundation
+
+python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
+  generate anchor-draft --config configs/models/venus_deepseek.yaml
+
+python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
+  audit anchors
+```
+
+生成Stage 1与Stage 2正式数据：
+
+```bash
+python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
+  generate stage1-2 \
+  --config configs/models/venus_deepseek.yaml \
   --rounds 600 \
   --pairs 10 \
   --workers 12
 ```
 
-只生成已修复的余则成数据：
+审核已生成的Stage 1/2数据：
 
 ```bash
-python3 -m datagen.generate_world \
-  --world assets/world_002 \
-  --character yu_zecheng \
-  --workers 12
+python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
+  audit outputs --rounds 600 --pairs 10
 ```
 
-每名NPC生成：
+查看完整命令：
 
-- `frozen/{npc_id}/history.jsonl`：600轮、1,200条消息；
-- `frozen/{npc_id}/qa.jsonl`：50个结构化QA；
-- `frozen/{npc_id}/open_tasks.jsonl`：2个开放回复任务；
-- `branches/{npc_id}/pairs.jsonl`：10个Pair定义。
+```bash
+python3 -m datagen.pipeline --help
+python3 -m datagen.pipeline --world assets/world_002 generate --help
+python3 -m datagen.pipeline --world assets/world_002 audit --help
+```
 
-默认配置为`configs/models/venus_deepseek.yaml`，规划、对话生成和质量
-审计均通过Venus调用内部`deepseek-v4-pro`。Stage 2两条分支共享完整
-历史，只在末尾Probe事件上保留一处可见差异。
+## 门禁边界
+
+- LLM生成的Anchor/Transition只写入`drafts/`，不能直接作为正式数据。
+- 人工确认后复制到`frozen/<npc>/`，并通过`audit anchors`。
+- Stage 1/2生成前会再次检查基础资产和Anchor门禁。
+- 历史质量失败时只保留工作报告，不写入正式资产。
+- Stage 3场景只包含初始状态和contracts，不预生成测试轨迹。

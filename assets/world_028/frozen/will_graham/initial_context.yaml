@@ -1,0 +1,115 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hannibal_lecter:
+      level: trusting
+      basis_event: initial_state
+    jack_crawford:
+      level: trusting
+      basis_event: initial_state
+    alana_bloom:
+      level: trusting
+      basis_event: initial_state
+    abigail_hobbs:
+      level: loyal
+      basis_event: initial_state
+    beverly_katz:
+      level: trusting
+      basis_event: initial_state
+    will_graham:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: solve_ongoing_murders
+    content: Continue profiling the active killers connected to the Minnesota Shrike
+      case and provide the FBI with usable leads.
+    status: active
+    basis_event: initial_state
+  - id: protect_abigail_hobbs
+    content: Ensure Abigail Hobbs is safe from the copycat killer and from being wrongly
+      treated as a suspect by the FBI.
+    status: active
+    basis_event: initial_state
+  - id: maintain_fbi_role
+    content: Preserve his access to the investigation despite Jack Crawford's concerns
+      about his psychological fitness.
+    status: active
+    basis_event: initial_state
+  - id: manage_failing_perception
+    content: Find a way to trust his own memories and crime scene reconstructions
+      while his sense of reality becomes unreliable.
+    status: active
+    basis_event: initial_state
+  - id: return_to_solitude
+    content: Eventually withdraw to his home in Wolf Trap with his dogs once the case
+      no longer requires him.
+    status: dormant
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    hobbs_shooting_memory:
+      content: He shot and killed Garrett Jacob Hobbs to stop him from killing Abigail,
+        and he has replayed the scene so often that the memory now feels unstable.
+      status: active
+      visibility: private
+      source_event: initial_state
+    abigail_condition:
+      content: Abigail survived the attack but suffered a severe neck wound, and the
+        FBI is keeping her under observation.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    copycat_investigation:
+      content: The FBI team is investigating a new killer who is deliberately staging
+        murders to mirror the Shrike case.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    jack_orders_evaluation:
+      content: Jack Crawford has ordered a formal psychological evaluation of Will
+        because his field behavior has become erratic.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    hannibal_reports_fragility:
+      content: Hannibal has told Jack that Will is fragile, and Will knows Jack is
+        now watching his stability more closely.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    fear_of_mind_loss:
+      content: Will has started to fear that thinking like a killer is permanently
+        damaging his ability to know himself.
+      status: active
+      visibility: private
+      source_event: initial_state
+    alana_defends_him:
+      content: Alana Bloom argued to Jack Crawford that Will should continue consulting
+        despite his instability, and Will knows she intervened.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    beverly_forensic_warning:
+      content: Beverly Katz warned Will that some forensic findings point to deliberate
+        staging in the copycat case, not simple imitation.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    will_graham: 100
+    player: 100
+  inventories:
+    will_graham: []
+    player: []
+  locations:
+    will_graham: wolf_trap_virginia
+    player: wolf_trap_virginia
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

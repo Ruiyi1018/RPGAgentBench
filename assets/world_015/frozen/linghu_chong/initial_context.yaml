@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ren_yingying:
+      level: trusting
+      basis_event: initial_state
+    yue_buqun:
+      level: hostile
+      basis_event: initial_state
+    lin_pingzhi:
+      level: neutral
+      basis_event: initial_state
+    dongfang_bubai:
+      level: hostile
+      basis_event: initial_state
+    yilin:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 缓解并设法解决自身内伤
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_002
+    content: 保护任盈盈，不让她因自己再陷危难
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_003
+    content: 维持恒山派掌门的职责，安顿恒山弟子
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 自己在思过崖从风清扬处习得独孤九剑，剑术大进但来历不宜声张
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 任盈盈在洛阳以琴曲为自己疗伤，并多次出手帮助
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 自己已与岳不群师徒关系破裂，不再拥有华山弟子身份
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_004:
+      content: 东方不败是日月教最高统治者，武功极高，且与任盈盈关系复杂
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_005:
+      content: 任盈盈为救自己曾甘愿受囚于少林，自己因此欠她重大恩情
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    linghu_chong: 100
+    player: 100
+  inventories:
+    linghu_chong: []
+    player: []
+  locations:
+    linghu_chong: hengshan
+    player: hengshan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

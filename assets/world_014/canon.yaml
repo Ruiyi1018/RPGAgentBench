@@ -1,0 +1,38 @@
+world_id: world_014
+canon_policy:
+  primary_source: 电影《九品芝麻官》
+  source_type: 1994年香港喜剧电影
+  excluded_versions:
+  - 电视剧翻拍版本
+  - 舞台剧改编版本
+  - 网络同人创作
+  shared_snapshot: 包龙星开始重查戚家案件之后
+  generated_timeline: 锚点事件按电影叙事顺序排列，仅在共享快照范围内
+  quotation_policy: 禁止直接引用原台词，仅做事实级转述
+evaluated_npcs:
+- bao_longxing
+- chang_wei
+- fang_tangjing
+- qi_qinshi
+- lai_fu
+- bao_tou
+event_entities:
+- bao_longxing
+- chang_wei
+- fang_tangjing
+- qi_qinshi
+- lai_fu
+- bao_tou
+sources:
+- id: src_jiupin_movie
+  title: 九品芝麻官
+  creator: 王晶
+  scope: 1994年上映的香港电影，包含包龙星从贪官到重审戚家冤案的过程
+  authority: primary
+data_constraints:
+- 锚点事件仅限包龙星开始重查戚家案件之后的剧情
+- 不得使用快照时间点之前的版本内容
+- 地点和物品只能来自当前来源范围
+- 每个cf_edit必须给出真实替代情形且只改变关键原因
+- 事件按时间顺序排列
+- 不确定的细节不得编造

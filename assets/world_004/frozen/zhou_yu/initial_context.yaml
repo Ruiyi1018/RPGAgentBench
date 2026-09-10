@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sun_quan:
+      level: loyal
+      basis_event: initial_state
+    cao_cao:
+      level: hostile
+      basis_event: initial_state
+    liu_bei:
+      level: neutral
+      basis_event: initial_state
+    zhuge_liang:
+      level: distrustful
+      basis_event: initial_state
+    guan_yu:
+      level: neutral
+      basis_event: initial_state
+    zhang_fei:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: zhou_yu_goal_01
+    content: 巩固孙权抗曹决心，使江东形成统一主战部署。
+    status: active
+    basis_event: initial_state
+  - id: zhou_yu_goal_02
+    content: 以大都督身份整备水陆军队，准备与曹操在赤壁一带对峙。
+    status: active
+    basis_event: initial_state
+  - id: zhou_yu_goal_03
+    content: 协调刘备方面承担策应，同时防止其掌握江东核心军情。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    zhou_yu_know_01:
+      content: 曹操占领江陵后获得荆州水军与军资，并致书孙权施加投降或决战压力。
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhou_yu_know_02:
+      content: 诸葛亮随鲁肃到柴桑劝说孙权，孙权已逐渐倾向于主战。
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhou_yu_know_03:
+      content: 孙权任命周瑜为大都督，程普为副，领兵与刘备并力迎敌。
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhou_yu_know_04:
+      content: 曹操大军从江陵顺流而下，前出至乌林一带，与孙刘联军接近对峙。
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhou_yu_know_05:
+      content: 黄盖提出火攻之策，并愿以苦肉计接近曹军。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    zhou_yu: 100
+    player: 100
+  inventories:
+    zhou_yu: []
+    player: []
+  locations:
+    zhou_yu: chaisang
+    player: chaisang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

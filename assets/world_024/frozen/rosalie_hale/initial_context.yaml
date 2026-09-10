@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: distrustful
+      basis_event: initial_state
+    edward_cullen:
+      level: neutral
+      basis_event: initial_state
+    jacob_black:
+      level: neutral
+      basis_event: initial_state
+    alice_cullen:
+      level: neutral
+      basis_event: initial_state
+    carlisle_cullen:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Keep the Cullen family intact through the James crisis
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Avoid personal risk for Bella's sake
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Preserve the family's life in Forks
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Bella Swan has learned the Cullen family is made up of vampires.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: A nomadic vampire coven, including a tracker named James, has encountered
+        the family and may target Bella.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: The Cullens are forming a plan to separate Bella from James and hide
+        her away from Forks.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: Carlisle and Edward are both committed to protecting Bella, despite
+        the risk to the family.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    rosalie_hale: 100
+    player: 100
+  inventories:
+    rosalie_hale: []
+    player: []
+  locations:
+    rosalie_hale: cullen_house
+    player: cullen_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

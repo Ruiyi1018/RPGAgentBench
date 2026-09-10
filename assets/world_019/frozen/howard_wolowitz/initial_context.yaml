@@ -1,0 +1,112 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sheldon_cooper:
+      level: neutral
+      basis_event: initial_state
+    leonard_hofstadter:
+      level: trusting
+      basis_event: initial_state
+    penny:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: trusting
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: neutral
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: loyal
+      basis_event: initial_state
+    howard_wolowitz:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Complete mission training and earn recognition for the aerospace work.
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Keep Bernadette feeling secure and valued in the relationship.
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Maintain his standing in the friend group despite teasing about his lack
+      of a doctorate.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Penny works as a waitress at The Cheesecake Factory.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_002:
+      content: Bernadette earned her doctorate in microbiology.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_003:
+      content: Raj has difficulty speaking directly to women without alcohol or similar
+        aids.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_004:
+      content: Sheldon enforces a fixed weekly schedule for meals, laundry, and television.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_005:
+      content: Leonard and Penny have entered a romantic relationship.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_006:
+      content: Amy Farrah Fowler was matched with Sheldon through a dating service
+        set up by Howard and Raj.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_007:
+      content: Howard has been selected for a space flight related to his engineering
+        work.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_008:
+      content: Howard and Bernadette met through a connection arranged by Penny.
+      status: active
+      visibility: known
+      source_event: initial_state
+    k_009:
+      content: Howard feels privately anxious about space flight despite projecting
+        confidence.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_010:
+      content: Howard believes his engineering skill compensates for lacking a doctorate.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    howard_wolowitz: 100
+    player: 100
+  inventories:
+    howard_wolowitz: []
+    player: []
+  locations:
+    howard_wolowitz: university_campus
+    player: university_campus
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

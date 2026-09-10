@@ -1,0 +1,70 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    baigujing:
+      level: trusting
+      basis_event: initial_state
+    sun_wukong:
+      level: hostile
+      basis_event: initial_state
+    tang_sanzang:
+      level: neutral
+      basis_event: initial_state
+    zhu_bajie:
+      level: neutral
+      basis_event: initial_state
+    sha_wujing:
+      level: neutral
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 劝白骨精慎重考虑第三次变化，避免再招来孙悟空报复。
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 在洞府中保守白骨精的计划和失败经过，不外泄给取经队伍。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 白骨精已两次变化成凡人接近唐僧，均被孙悟空识破并打中变化体。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 白骨精用解尸法脱身，真身未被孙悟空捉住。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: 孙悟空仍然留在取经队伍中，并且还在提防妖怪再犯。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: 白骨精仍主张再试一次，第三次变化尚未开始。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    heihujing: 100
+    player: 100
+  inventories:
+    heihujing: []
+    player: []
+  locations:
+    heihujing: yaodong
+    player: yaodong
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

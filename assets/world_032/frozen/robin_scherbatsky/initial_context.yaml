@@ -1,0 +1,72 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ted_mosby:
+      level: neutral
+      basis_event: initial_state
+    barney_stinson:
+      level: distrustful
+      basis_event: initial_state
+    lily_aldrin:
+      level: neutral
+      basis_event: initial_state
+    marshall_eriksen:
+      level: neutral
+      basis_event: initial_state
+    ranjit:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: robin_g1
+    content: Build a serious journalism career in New York
+    status: active
+    basis_event: initial_state
+  - id: robin_g2
+    content: Stay independent and not let Ted's romantic pursuit define her
+    status: active
+    basis_event: initial_state
+  - id: robin_g3
+    content: Earn respect from friends and colleagues as a professional, not a former
+      pop star
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    robin_k1:
+      content: Ted met her at MacLaren's Pub and is immediately smitten
+      status: active
+      visibility: private
+      source_event: initial_state
+    robin_k2:
+      content: Ted stole a blue French horn from a restaurant for her
+      status: active
+      visibility: private
+      source_event: initial_state
+    robin_k3:
+      content: Her past as a Canadian teen pop star is known among the group
+      status: active
+      visibility: public
+      source_event: initial_state
+    robin_k4:
+      content: She left Metropolitan Magazine and now works at World Wide News
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    robin_scherbatsky: 100
+    player: 100
+  inventories:
+    robin_scherbatsky: []
+    player: []
+  locations:
+    robin_scherbatsky: maclarens_pub
+    player: maclarens_pub
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

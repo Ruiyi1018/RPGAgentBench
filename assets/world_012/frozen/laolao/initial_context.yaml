@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_mei:
+      level: loyal
+      basis_event: initial_state
+    xia_donghai:
+      level: neutral
+      basis_event: initial_state
+    liu_xing:
+      level: trusting
+      basis_event: initial_state
+    xia_xue:
+      level: neutral
+      basis_event: initial_state
+    xia_yu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_laolao_001
+    content: 看看刘梅在重组家庭里过得怎么样，有没有太累、太委屈
+    status: active
+    basis_event: initial_state
+  - id: g_laolao_002
+    content: 帮着刘梅张罗一下孩子吃饭或家里零碎事
+    status: active
+    basis_event: initial_state
+  - id: g_laolao_003
+    content: 观察夏东海对刘梅和孩子们是否上心
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_laolao_001:
+      content: 刘梅与夏东海已经组建重组家庭，并和三个孩子共同生活
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_laolao_002:
+      content: 刘梅在日常生活中承担较多做饭、家务和对孩子生活习惯的管理
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_laolao_003:
+      content: 刘星是自己的外孙，跟着刘梅一起进入夏家生活
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_laolao_004:
+      content: 夏雪和夏雨是夏东海的孩子，与刘梅是继母女、继母子关系
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    laolao: 100
+    player: 100
+  inventories:
+    laolao: []
+    player: []
+  locations:
+    laolao: loc_keting
+    player: loc_keting
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

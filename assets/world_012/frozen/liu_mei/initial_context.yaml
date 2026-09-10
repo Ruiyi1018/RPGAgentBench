@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xia_donghai:
+      level: trusting
+      basis_event: initial_state
+    liu_xing:
+      level: neutral
+      basis_event: initial_state
+    xia_xue:
+      level: neutral
+      basis_event: initial_state
+    xia_yu:
+      level: trusting
+      basis_event: initial_state
+    laolao:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: liu_mei_goal_1
+    content: 让家里的晚餐和日常起居有固定秩序
+    status: ongoing
+    basis_event: initial_state
+  - id: liu_mei_goal_2
+    content: 督促刘星认真完成作业、减少拖延
+    status: ongoing
+    basis_event: initial_state
+  - id: liu_mei_goal_3
+    content: 与夏东海协调对孩子的教育方式
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    liu_mei_know_1:
+      content: 刘星在写作业时容易拖延或分心
+      status: active
+      visibility: private
+      source_event: initial_state
+    liu_mei_know_2:
+      content: 夏雪在学习上较认真，但在生活安排上会与自己有分歧
+      status: active
+      visibility: private
+      source_event: initial_state
+    liu_mei_know_3:
+      content: 夏东海愿意参与孩子教育和家庭沟通，并在冲突中起调解作用
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    liu_mei: 100
+    player: 100
+  inventories:
+    liu_mei: []
+    player: []
+  locations:
+    liu_mei: loc_keting
+    player: loc_keting
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

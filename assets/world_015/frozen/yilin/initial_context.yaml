@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    linghu_chong:
+      level: trusting
+      basis_event: initial_state
+    ren_yingying:
+      level: neutral
+      basis_event: initial_state
+    yue_buqun:
+      level: distrustful
+      basis_event: initial_state
+    lin_pingzhi:
+      level: neutral
+      basis_event: initial_state
+    dongfang_bubai:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: yilin_goal_001
+    content: 保持尼姑身份，不使恒山派因自己的感情蒙羞。
+    status: ongoing
+    basis_event: initial_state
+  - id: yilin_goal_002
+    content: 在令狐冲有难时能及时救助，报还恩义。
+    status: ongoing
+    basis_event: initial_state
+  - id: yilin_goal_003
+    content: 克制对令狐冲的情意，避免被外人坐实私情。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    yilin_knowledge_001:
+      content: 令狐冲现在已是恒山派掌门。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    yilin_knowledge_002:
+      content: 令狐冲多次受伤，自己曾帮助或照料过他。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    yilin_knowledge_003:
+      content: 她心里对令狐冲有超出恩义的感情，但从未公开承认。
+      status: active
+      visibility: private
+      source_event: initial_state
+    yilin_knowledge_004:
+      content: 令狐冲与任盈盈有较深关联，任盈盈曾帮助令狐冲。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    yilin_knowledge_005:
+      content: 岳不群与令狐冲师徒关系已经破裂。
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    yilin: 100
+    player: 100
+  inventories:
+    yilin: []
+    player: []
+  locations:
+    yilin: hengshan
+    player: hengshan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

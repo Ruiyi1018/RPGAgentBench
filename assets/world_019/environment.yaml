@@ -1,0 +1,108 @@
+world_id: world_019
+name: Pasadena, California and associated spaces within the shared snapshot
+locations:
+- id: apartment_4a
+  name: Apartment 4A
+  connected_to:
+  - apartment_4b
+  - stairwell
+  - building_laundry
+- id: apartment_4b
+  name: Apartment 4B
+  connected_to:
+  - apartment_4a
+  - stairwell
+- id: stairwell
+  name: Building stairwell
+  connected_to:
+  - apartment_4a
+  - apartment_4b
+  - building_lobby
+- id: building_lobby
+  name: Building lobby
+  connected_to:
+  - stairwell
+  - apartment_4a
+  - apartment_4b
+- id: building_laundry
+  name: Building laundry room
+  connected_to:
+  - apartment_4a
+- id: university_cafeteria
+  name: University cafeteria
+  connected_to:
+  - university_campus
+- id: university_campus
+  name: Caltech campus
+  connected_to:
+  - university_cafeteria
+  - sheldon_office
+  - leonard_lab
+- id: sheldon_office
+  name: Sheldon's office
+  connected_to:
+  - university_campus
+- id: leonard_lab
+  name: Leonard's lab
+  connected_to:
+  - university_campus
+- id: cheesecake_factory
+  name: The Cheesecake Factory restaurant
+  connected_to:
+  - penny_work_area
+- id: penny_work_area
+  name: Penny's work area at the restaurant
+  connected_to:
+  - cheesecake_factory
+- id: comic_book_store
+  name: The comic book store
+  connected_to:
+  - street
+- id: street
+  name: Street outside the apartment building
+  connected_to:
+  - comic_book_store
+  - building_lobby
+  - cheesecake_factory
+items:
+- id: couch
+  name: Couch in Apartment 4A
+  type: furniture
+  portable: false
+- id: whiteboard
+  name: Whiteboard in Apartment 4A
+  type: furniture
+  portable: false
+- id: sheldon_spot
+  name: Sheldon's designated seat on the couch
+  type: furniture spot
+  portable: false
+- id: takeout_menu
+  name: Takeout menu collection
+  type: printed material
+  portable: true
+- id: game_console
+  name: Video game console
+  type: electronic device
+  portable: false
+- id: laptop_leonard
+  name: Leonard's laptop
+  type: electronic device
+  portable: true
+- id: laptop_sheldon
+  name: Sheldon's laptop
+  type: electronic device
+  portable: true
+- id: roommate_agreement
+  name: Roommate Agreement
+  type: document
+  portable: true
+- id: door_knock_sequence
+  name: Sheldon's triple knock sequence
+  type: behavioral ritual
+  portable: false
+- id: penny_wine_glass
+  name: Penny's wine glass
+  type: drinkware
+  portable: true
+language: en

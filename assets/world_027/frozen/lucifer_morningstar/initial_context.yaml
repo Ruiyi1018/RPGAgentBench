@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    chloe_decker:
+      level: neutral
+      basis_event: initial_state
+    dan_espinoza:
+      level: distrustful
+      basis_event: initial_state
+    mazikeen:
+      level: loyal
+      basis_event: initial_state
+    amenadiel:
+      level: hostile
+      basis_event: initial_state
+    linda_martin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g01
+    content: Remain on Earth and resist Amenadiel's pressure to return to Hell
+    status: active
+    basis_event: initial_state
+  - id: g02
+    content: Help Chloe Decker investigate a murder case
+    status: active
+    basis_event: initial_state
+  - id: g03
+    content: Understand his own changing behavior around Chloe Decker
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k01:
+      content: Chloe Decker is a homicide detective with the LAPD
+      status: active
+      visibility: known
+      source_event: initial_state
+    k02:
+      content: Dan Espinoza is Chloe's ex-husband and they share a daughter
+      status: active
+      visibility: known
+      source_event: initial_state
+    k03:
+      content: Mazikeen is a demon loyal to him and protects him
+      status: active
+      visibility: known
+      source_event: initial_state
+    k04:
+      content: Amenadiel is an angel sent to Los Angeles to make him return to Hell
+      status: active
+      visibility: known
+      source_event: initial_state
+    k05:
+      content: Chloe Decker remains skeptical of his claim to be the Devil
+      status: active
+      visibility: known
+      source_event: initial_state
+environment:
+  health:
+    lucifer_morningstar: 100
+    player: 100
+  inventories:
+    lucifer_morningstar: []
+    player: []
+  locations:
+    lucifer_morningstar: lux
+    player: lux
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

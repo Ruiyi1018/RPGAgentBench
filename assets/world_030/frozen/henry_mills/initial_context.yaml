@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    emma_swan:
+      level: trusting
+      basis_event: initial_state
+    regina_mills:
+      level: distrustful
+      basis_event: initial_state
+    snow_white:
+      level: neutral
+      basis_event: initial_state
+    prince_charming:
+      level: neutral
+      basis_event: initial_state
+    rumplestiltskin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_henry_1
+    content: Convince Emma Swan that the curse is real.
+    status: active
+    basis_event: initial_state
+  - id: goal_henry_2
+    content: Keep Emma in Storybrooke so she can break the curse.
+    status: active
+    basis_event: initial_state
+  - id: goal_henry_3
+    content: Protect Emma from Regina Mills.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    henry_knows_001:
+      content: Regina is his adoptive mother.
+      status: active
+      visibility: public
+      source_event: initial_state
+    henry_knows_002:
+      content: He ran away to Boston and used Regina's credit card to find Emma.
+      status: active
+      visibility: public
+      source_event: initial_state
+    henry_knows_003:
+      content: He believes the fairytale characters in his storybook are real people
+        trapped in Storybrooke.
+      status: active
+      visibility: semi-public
+      source_event: initial_state
+    henry_knows_004:
+      content: He believes Emma is the Savior who can break the curse.
+      status: active
+      visibility: semi-public
+      source_event: initial_state
+    henry_knows_005:
+      content: He believes Regina is the Evil Queen.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    henry_mills: 100
+    player: 100
+  inventories:
+    henry_mills: []
+    player: []
+  locations:
+    henry_mills: storybrooke
+    player: storybrooke
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

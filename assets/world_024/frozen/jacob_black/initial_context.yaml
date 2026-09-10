@@ -1,0 +1,65 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: trusting
+      basis_event: initial_state
+    edward_cullen:
+      level: distrustful
+      basis_event: initial_state
+    alice_cullen:
+      level: distrustful
+      basis_event: initial_state
+    carlisle_cullen:
+      level: distrustful
+      basis_event: initial_state
+    rosalie_hale:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Warn Bella about the danger he believes the Cullens represent
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Remain in La Push and avoid direct involvement with the Cullens
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: The Cullens are considered dangerous by the Quileute community and
+        stay away from La Push under an old treaty
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Bella is involved with Edward Cullen and disregards some of the warnings
+        Jacob has given her
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: Bella has now learned Edward's secret, but Jacob does not know the
+        full details of how that happened
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    jacob_black: 100
+    player: 100
+  inventories:
+    jacob_black: []
+    player: []
+  locations:
+    jacob_black: la_push
+    player: la_push
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

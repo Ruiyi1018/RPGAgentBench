@@ -1,0 +1,100 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    catelyn_stark:
+      level: hostile
+      basis_event: initial_state
+    eddard_stark:
+      level: hostile
+      basis_event: initial_state
+    arya_stark:
+      level: neutral
+      basis_event: initial_state
+    jon_snow:
+      level: neutral
+      basis_event: initial_state
+    cersei_lannister:
+      level: distrustful
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Leave the Eyrie without being executed or returned to a cell
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Rejoin his father Tywin's army and regain a place in Lannister affairs
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Investigate the accusation about Bran Stark without admitting guilt
+    status: pending
+    basis_event: initial_state
+  - id: g4
+    content: Keep Bronn useful and paid, so he remains loyal as long as the coin lasts
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Catelyn Stark accused him publicly of sending an assassin after Bran
+        Stark and took him prisoner at the crossroads inn
+      status: active
+      visibility: public
+      source_event: initial_state
+    k2:
+      content: At the Eyrie he demanded a trial by combat and Bronn defeated the Eyrie's
+        champion
+      status: active
+      visibility: public
+      source_event: initial_state
+    k3:
+      content: His freedom after the trial depends on a sellsword champion and his
+        family's name, not on a legal pardon
+      status: active
+      visibility: private
+      source_event: initial_state
+    k4:
+      content: He knows Bran Stark was crippled by a fall, but he does not know exactly
+        how it happened or who sent the assassin
+      status: active
+      visibility: public
+      source_event: initial_state
+    k5:
+      content: He believes he is being used as a convenient scapegoat because he is
+        a Lannister and a dwarf
+      status: active
+      visibility: private
+      source_event: initial_state
+    k6:
+      content: He knows the Eyrie's high hall and court procedure because he has studied
+        history and law
+      status: active
+      visibility: public
+      source_event: initial_state
+    k7:
+      content: He is aware that King Robert's court and his own family are dangerous
+        political terrain, but he is not yet focused on seizing the throne himself
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    tyrion_lannister: 100
+    player: 100
+  inventories:
+    tyrion_lannister: []
+    player: []
+  locations:
+    tyrion_lannister: the_eyrie
+    player: the_eyrie
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

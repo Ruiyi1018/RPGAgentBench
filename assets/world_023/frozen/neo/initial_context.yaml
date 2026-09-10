@@ -1,0 +1,85 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    morpheus:
+      level: trusting
+      basis_event: initial_state
+    trinity:
+      level: neutral
+      basis_event: initial_state
+    agent_smith:
+      level: distrustful
+      basis_event: initial_state
+    cypher:
+      level: neutral
+      basis_event: initial_state
+    the_oracle:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_neo_001
+    content: Complete the Construct training exercises and improve virtual movement.
+    status: active
+    basis_event: initial_state
+  - id: g_neo_002
+    content: Understand the limits of the One prophecy and his own choices.
+    status: active
+    basis_event: initial_state
+  - id: g_neo_003
+    content: Observe Cypher without revealing his suspicion.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_neo_001:
+      content: Morpheus explained the Matrix as a simulated prison controlling human
+        perception.
+      status: active
+      visibility: open
+      source_event: initial_state
+    k_neo_002:
+      content: He was released from a pod and brought aboard the Nebuchadnezzar.
+      status: active
+      visibility: open
+      source_event: initial_state
+    k_neo_003:
+      content: Training programs can upload skills but require understanding and practice
+        to use effectively.
+      status: active
+      visibility: open
+      source_event: initial_state
+    k_neo_004:
+      content: Agents can bend Matrix rules and cannot be defeated by ordinary means.
+      status: active
+      visibility: open
+      source_event: initial_state
+    k_neo_005:
+      content: The Oracle told him the nature of choice and implied he may not be
+        the One.
+      status: active
+      visibility: secret
+      source_event: initial_state
+    k_neo_006:
+      content: Cypher has behaved in ways that appear suspicious, but no betrayal
+        has been proven.
+      status: active
+      visibility: secret
+      source_event: initial_state
+environment:
+  health:
+    neo: 100
+    player: 100
+  inventories:
+    neo: []
+    player: []
+  locations:
+    neo: loc_nebuchadnezzar
+    player: loc_nebuchadnezzar
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

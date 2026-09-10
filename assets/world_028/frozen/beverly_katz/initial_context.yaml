@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hannibal_lecter:
+      level: neutral
+      basis_event: initial_state
+    will_graham:
+      level: trusting
+      basis_event: initial_state
+    jack_crawford:
+      level: trusting
+      basis_event: initial_state
+    alana_bloom:
+      level: neutral
+      basis_event: initial_state
+    abigail_hobbs:
+      level: neutral
+      basis_event: initial_state
+    beverly_katz:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: beverly_complete_evidence_comparison
+    content: Complete forensic comparison between the Shrike crime scenes and the
+      copycat staging evidence
+    status: active
+    basis_event: initial_state
+  - id: beverly_warn_will_about_staging
+    content: Ensure Will Graham and Jack Crawford understand that some findings point
+      toward deliberate staging
+    status: active
+    basis_event: initial_state
+  - id: beverly_preserve_evidence_chain
+    content: Keep chain of custody and analytical rigor strong as the investigation
+      expands
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    beverly_knows_hobbs_case_shift:
+      content: The investigation shifted to Garrett Jacob Hobbs as the Minnesota Shrike
+        suspect
+      status: active
+      visibility: shared
+      source_event: initial_state
+    beverly_knows_copycat_staging:
+      content: Forensic findings in the copycat case suggest deliberate staging rather
+        than simple imitation
+      status: active
+      visibility: shared
+      source_event: initial_state
+    beverly_knows_abigail_questioned:
+      content: Abigail Hobbs is being questioned by the FBI while recovering in the
+        hospital
+      status: active
+      visibility: shared
+      source_event: initial_state
+    beverly_knows_abigail_faces_scrutiny:
+      content: The FBI treats Abigail Hobbs as a possible accomplice or material witness
+        in her father's crimes
+      status: active
+      visibility: shared
+      source_event: initial_state
+    beverly_knows_investigation_open:
+      content: The serial murder investigation remains open and not yet fully exposed
+        in the fixed Season 1 range
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    beverly_katz: 100
+    player: 100
+  inventories:
+    beverly_katz: []
+    player: []
+  locations:
+    beverly_katz: baltimore_maryland
+    player: baltimore_maryland
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

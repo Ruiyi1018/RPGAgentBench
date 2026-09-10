@@ -1,0 +1,57 @@
+world_id: world_006
+name: 紫禁城后宫
+locations:
+- id: loc_001
+  name: 碎玉轩
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_002
+  name: 翊坤宫
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_003
+  name: 景仁宫
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_004
+  name: 御花园
+  connected_to:
+  - loc_001
+  - loc_002
+  - loc_003
+  - loc_005
+  - loc_006
+- id: loc_005
+  name: 养心殿
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_006
+  name: 长街
+  connected_to:
+  - loc_001
+  - loc_002
+  - loc_003
+  - loc_004
+  - loc_005
+items:
+- id: item_001
+  name: 绣鞋
+  type: 服饰
+  portable: true
+- id: item_002
+  name: 茶盏
+  type: 器皿
+  portable: true
+- id: item_003
+  name: 团扇
+  type: 日常用物
+  portable: true
+- id: item_004
+  name: 书案
+  type: 家具
+  portable: false
+language: zh

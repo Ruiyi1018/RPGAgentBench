@@ -1,0 +1,93 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    jia_baoyu:
+      level: loyal
+      basis_event: initial_state
+    lin_daiyu:
+      level: loyal
+      basis_event: initial_state
+    xue_baochai:
+      level: trusting
+      basis_event: initial_state
+    wang_xifeng:
+      level: trusting
+      basis_event: initial_state
+    qingwen:
+      level: neutral
+      basis_event: initial_state
+    xiren:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: jia_mu_goal_maintain_order
+    content: 维持荣国府内宅秩序与表面尊荣，防止后辈争斗伤及家族体面
+    status: ongoing
+    basis_event: initial_state
+  - id: jia_mu_goal_protect_baoyu
+    content: 护住贾宝玉，不令其受过度管教或伤害，同时不让他荒唐到不可收拾
+    status: ongoing
+    basis_event: initial_state
+  - id: jia_mu_goal_balance_marriage_discourse
+    content: 在宝黛钗等亲眷共处中维持平衡，对宝玉婚事不轻易公开定论
+    status: ongoing
+    basis_event: initial_state
+  - id: jia_mu_goal_keep_domestic_authority
+    content: 虽年高不问琐务，仍要在重大事务上让人知道家中大事须经自己首肯
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_jia_mu_baoyu_jade:
+      content: 贾宝玉出生时口中衔玉，贾母知道其奇异来历，也明白府中上下因此对宝玉格外珍视
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_daiyu_arrival:
+      content: 林黛玉因母丧被父亲安排进荣国府，贾母怜惜并亲自安置她在自己院中照管
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_baochai_presence:
+      content: 薛宝钗随母兄住进荣国府东北角梨香院，贾母以亲眷礼相待
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_wang_xifeng_ability:
+      content: 王熙凤协理宁国府时展现理家才能，贾母知道她手腕强硬、能压住场面
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_baoyu_beaten:
+      content: 贾宝玉因外事被贾政责打，贾母闻讯前去制止，知道事态严重
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_qingxu_matchmaking:
+      content: 清虚观打醮时张道士为贾宝玉提亲，贾母以宝玉年纪尚小等说法未应允
+      status: active
+      visibility: internal
+      source_event: initial_state
+    k_jia_mu_liu_laolao:
+      content: 王熙凤曾周济刘姥姥，贾母知道贾府与这门贫寒亲族有来往
+      status: active
+      visibility: internal
+      source_event: initial_state
+environment:
+  health:
+    jia_mu: 100
+    player: 100
+  inventories:
+    jia_mu: []
+    player: []
+  locations:
+    jia_mu: loc_jia_mu_yard
+    player: loc_jia_mu_yard
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bao_longxing:
+      level: trusting
+      basis_event: initial_state
+    chang_wei:
+      level: distrustful
+      basis_event: initial_state
+    fang_tangjing:
+      level: distrustful
+      basis_event: initial_state
+    qi_qinshi:
+      level: neutral
+      basis_event: initial_state
+    lai_fu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: bao_tou_goal_001
+    content: 跟着包龙星把重查戚家案的差事应付过去
+    status: active
+    basis_event: initial_state
+  - id: bao_tou_goal_002
+    content: 避免自己与常威、方唐镜正面冲突
+    status: active
+    basis_event: initial_state
+  - id: bao_tou_goal_003
+    content: 若包龙星继续深查，尽量推掉危险任务
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    bao_tou_knowledge_001:
+      content: 包龙星正在重新追查戚家案，并让他参与搜查和跑腿
+      status: active
+      visibility: private
+      source_event: initial_state
+    bao_tou_knowledge_002:
+      content: 常威和方唐镜在案中很有势力，不容易对付
+      status: active
+      visibility: private
+      source_event: initial_state
+    bao_tou_knowledge_003:
+      content: 戚家现场被搜查时，物证可能已经被转移或破坏
+      status: active
+      visibility: private
+      source_event: initial_state
+    bao_tou_knowledge_004:
+      content: 来福是案件潜在证人，但胆子很小，可能不敢开口
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    bao_tou: 100
+    player: 100
+  inventories:
+    bao_tou: []
+    player: []
+  locations:
+    bao_tou: loc_yamen
+    player: loc_yamen
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

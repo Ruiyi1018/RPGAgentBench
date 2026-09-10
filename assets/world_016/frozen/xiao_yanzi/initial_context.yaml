@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ziwei:
+      level: loyal
+      basis_event: initial_state
+    yongqi:
+      level: trusting
+      basis_event: initial_state
+    er_kang:
+      level: trusting
+      basis_event: initial_state
+    qianlong:
+      level: neutral
+      basis_event: initial_state
+    empress_huanzhu:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: xiao_yanzi_goal_001
+    content: 在皇后逼问下不露出紫薇身世细节
+    status: active
+    basis_event: initial_state
+  - id: xiao_yanzi_goal_002
+    content: 保住自己能在宫中继续等待解释机会的余地
+    status: active
+    basis_event: initial_state
+  - id: xiao_yanzi_goal_003
+    content: 配合永琪和尔康，让紫薇有机会当面见乾隆
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    xiao_yanzi_k_001:
+      content: 紫薇是真正与乾隆有血脉关联的人，身份尚未得到乾隆正式确认
+      status: active
+      visibility: shared
+      source_event: initial_state
+    xiao_yanzi_k_002:
+      content: 皇后已在宫中注意到自己行为异常，并在御花园派人责问
+      status: active
+      visibility: private
+      source_event: initial_state
+    xiao_yanzi_k_003:
+      content: 永琪和尔康愿意帮助促成向乾隆当面解释的机会
+      status: active
+      visibility: shared
+      source_event: initial_state
+    xiao_yanzi_k_004:
+      content: 自己并非真正身份拥有者，只是一时被误认入宫
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    xiao_yanzi: 100
+    player: 100
+  inventories:
+    xiao_yanzi: []
+    player: []
+  locations:
+    xiao_yanzi: yu_huayuan
+    player: yu_huayuan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

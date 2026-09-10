@@ -1,0 +1,85 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    twilight_sparkle:
+      level: trusting
+      basis_event: initial_state
+    pinkie_pie:
+      level: trusting
+      basis_event: initial_state
+    rainbow_dash:
+      level: trusting
+      basis_event: initial_state
+    rarity:
+      level: trusting
+      basis_event: initial_state
+    fluttershy:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_applejack_001
+    content: Finish the current apple harvest at Sweet Apple Acres
+    status: active
+    basis_event: initial_state
+  - id: g_applejack_002
+    content: Deliver a fresh cartload of apples to Ponyville for the group
+    status: active
+    basis_event: initial_state
+  - id: g_applejack_003
+    content: Repair the damaged fence at the edge of Sweet Apple Acres
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_applejack_001:
+      content: Sweet Apple Acres is behind schedule on harvesting for the coming season
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_applejack_002:
+      content: A fence at the edge of Sweet Apple Acres is damaged and needs repair
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_applejack_003:
+      content: The six friends meet at the Golden Oaks Library to plan upcoming Ponyville
+        events
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_applejack_004:
+      content: Rainbow Dash cleared cloud cover over Sweet Apple Acres to help the
+        orchard
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_applejack_005:
+      content: Pinkie Pie learned how to press apple cider at Sweet Apple Acres and
+        added an unusual flavoring to one batch
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_applejack_006:
+      content: Twilight Sparkle uses a shared checklist to coordinate tasks for Ponyville
+        events
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    applejack: 100
+    player: 100
+  inventories:
+    applejack: []
+    player: []
+  locations:
+    applejack: loc_sweet_apple_acres
+    player: loc_sweet_apple_acres
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

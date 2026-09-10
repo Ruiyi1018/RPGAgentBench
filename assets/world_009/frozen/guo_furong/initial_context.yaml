@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tong_xiangyu:
+      level: trusting
+      basis_event: initial_state
+    bai_zhantang:
+      level: trusting
+      basis_event: initial_state
+    lv_xiucai:
+      level: trusting
+      basis_event: initial_state
+    li_dazui:
+      level: neutral
+      basis_event: initial_state
+    mo_xiaobei:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: guo_furong_goal_001
+    content: 继续做好同福客栈杂役分内的事
+    status: active
+    basis_event: initial_state
+  - id: guo_furong_goal_002
+    content: 在客栈遇到麻烦时能帮上忙
+    status: active
+    basis_event: initial_state
+  - id: guo_furong_goal_003
+    content: 维持与吕秀才之间亲近但不失控的关系
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    guo_furong_knowledge_001:
+      content: 佟湘玉是同福客栈掌柜，众人默认其安排
+      status: active
+      visibility: public
+      source_event: initial_state
+    guo_furong_knowledge_002:
+      content: 白展堂有江湖背景并多次在关键时刻保护客栈
+      status: active
+      visibility: public
+      source_event: initial_state
+    guo_furong_knowledge_003:
+      content: 吕秀才任账房，自己与吕秀才关系亲近且曾发生争执后和好
+      status: active
+      visibility: private
+      source_event: initial_state
+    guo_furong_knowledge_004:
+      content: 莫小贝被接到同福客栈居住并接受管教
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    guo_furong: 100
+    player: 100
+  inventories:
+    guo_furong: []
+    player: []
+  locations:
+    guo_furong: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

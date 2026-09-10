@@ -1,0 +1,68 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    neo:
+      level: trusting
+      basis_event: initial_state
+    morpheus:
+      level: loyal
+      basis_event: initial_state
+    agent_smith:
+      level: hostile
+      basis_event: initial_state
+    cypher:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Ensure Neo completes his training without being discovered by Agents.
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Maintain operational security on the Nebuchadnezzar.
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Watch Cypher for signs that his resentment endangers the crew.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Neo was released from the Matrix pod and brought aboard the Nebuchadnezzar.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_002:
+      content: Cypher questions Morpheus's trust in Neo.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_003:
+      content: She has romantic feelings for Neo.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: Morpheus plans to take Neo to the Oracle.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    trinity: 100
+    player: 100
+  inventories:
+    trinity: []
+    player: []
+  locations:
+    trinity: loc_nebuchadnezzar
+    player: loc_nebuchadnezzar
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

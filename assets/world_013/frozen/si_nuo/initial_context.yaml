@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    qin_feng:
+      level: neutral
+      basis_event: initial_state
+    tang_ren:
+      level: distrustful
+      basis_event: initial_state
+    a_xiang:
+      level: neutral
+      basis_event: initial_state
+    kun_tai:
+      level: neutral
+      basis_event: initial_state
+    huang_lan_deng:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: si_nuo_goal_001
+    content: 判断秦风与唐仁询问自己的真实目的
+    status: active
+    basis_event: initial_state
+  - id: si_nuo_goal_002
+    content: 避免在学校周边卷入明显麻烦
+    status: active
+    basis_event: initial_state
+  - id: si_nuo_goal_003
+    content: 只提供自己确定看到或听到的信息
+    status: passive
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    si_nuo_know_001:
+      content: 秦风与唐仁正在学校附近询问与案件有关的情况
+      status: active
+      visibility: private
+      source_event: initial_state
+    si_nuo_know_002:
+      content: 自己对颂帕工坊没有直接进入和查看内部的能力
+      status: active
+      visibility: private
+      source_event: initial_state
+    si_nuo_know_003:
+      content: 唐人街及学校周边最近有案件调查氛围，但不掌握警方结论
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    si_nuo: 100
+    player: 100
+  inventories:
+    si_nuo: []
+    player: []
+  locations:
+    si_nuo: loc_school
+    player: loc_school
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

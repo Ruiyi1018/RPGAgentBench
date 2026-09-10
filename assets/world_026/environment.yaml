@@ -1,0 +1,57 @@
+world_id: world_026
+name: Ponyville and surrounding region
+locations:
+- id: loc_ponyville
+  name: Ponyville
+  connected_to:
+  - loc_sweet_apple_acres
+  - loc_everfree_forest
+  - loc_sugarcube_corner
+  - loc_carousel_boutique
+  - loc_golden_oaks_library
+- id: loc_sweet_apple_acres
+  name: Sweet Apple Acres
+  connected_to:
+  - loc_ponyville
+- id: loc_everfree_forest
+  name: Everfree Forest
+  connected_to:
+  - loc_ponyville
+- id: loc_sugarcube_corner
+  name: Sugarcube Corner
+  connected_to:
+  - loc_ponyville
+- id: loc_carousel_boutique
+  name: Carousel Boutique
+  connected_to:
+  - loc_ponyville
+- id: loc_golden_oaks_library
+  name: Golden Oaks Library
+  connected_to:
+  - loc_ponyville
+items:
+- id: item_elements_harmony
+  name: Elements of Harmony
+  type: artifact
+  portable: true
+- id: item_cutie_mark_crusaders_cape
+  name: Cutie Mark Crusaders cape
+  type: clothing
+  portable: true
+- id: item_rainbow_dash_gala_dress
+  name: Rainbow Dash's Grand Galloping Gala dress
+  type: clothing
+  portable: true
+- id: item_pinkie_pie_party_cannon
+  name: Pinkie Pie's party cannon
+  type: party equipment
+  portable: true
+- id: item_fluttershy_animal_food
+  name: Fluttershy's animal feed bucket
+  type: animal care item
+  portable: true
+- id: item_applejack_apple_cart
+  name: Applejack's apple cart
+  type: cart
+  portable: false
+language: en

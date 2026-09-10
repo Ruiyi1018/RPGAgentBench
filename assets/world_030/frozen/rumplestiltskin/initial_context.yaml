@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    regina_mills:
+      level: neutral
+      basis_event: initial_state
+    emma_swan:
+      level: neutral
+      basis_event: initial_state
+    henry_mills:
+      level: neutral
+      basis_event: initial_state
+    snow_white:
+      level: neutral
+      basis_event: initial_state
+    prince_charming:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Leverage Emma Swan's presence to advance his own long-term position.
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Maintain the Mr. Gold persona without exposing his true identity.
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Extract a meaningful favor from Regina in exchange for helping with Emma.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: He is Mr. Gold in Storybrooke and Rumplestiltskin in the fairytale
+        realm.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Regina asked him to remove Emma Swan from town and he demanded a favor
+        in return.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: He met Snow White in a fairytale prison cell under the Evil Queen's
+        control.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: Emma Swan's arrival has started a chain of events he says is already
+        in motion.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_005:
+      content: The curse is real and Emma may be connected to breaking it.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    rumplestiltskin: 100
+    player: 100
+  inventories:
+    rumplestiltskin: []
+    player: []
+  locations:
+    rumplestiltskin: storybrooke
+    player: storybrooke
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

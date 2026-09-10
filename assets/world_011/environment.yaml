@@ -1,0 +1,46 @@
+world_id: world_011
+name: 京海市早期环境
+locations:
+- id: loc_jinghai_market
+  name: 京海旧厂街市场
+  connected_to:
+  - loc_gao_old_house
+  - loc_police_station
+  - loc_tang_shop
+- id: loc_gao_old_house
+  name: 高启强旧屋
+  connected_to:
+  - loc_jinghai_market
+  - loc_tang_shop
+- id: loc_tang_shop
+  name: 唐家兄弟经营的店铺
+  connected_to:
+  - loc_jinghai_market
+  - loc_gao_old_house
+- id: loc_police_station
+  name: 京海市刑侦支队
+  connected_to:
+  - loc_jinghai_market
+  - loc_meng_home
+- id: loc_meng_home
+  name: 孟钰家
+  connected_to:
+  - loc_police_station
+items:
+- id: item_black_bag
+  name: 黑色皮包
+  type: 箱包
+  portable: true
+- id: item_cctv_tape
+  name: 市场监控录像带
+  type: 证据
+  portable: true
+- id: item_fish_scale
+  name: 鱼贩电子秤
+  type: 经营工具
+  portable: true
+- id: item_gao_notebook
+  name: 高启强记账本
+  type: 纸质记录
+  portable: true
+language: zh

@@ -1,0 +1,261 @@
+world_id: world_008
+source: 鹿鼎记
+events:
+- id: ev_001
+  fact: 韦小宝在扬州丽春院出生长大，母亲是韦春花。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 确立韦小宝的出身背景。
+  cf_edit: 韦小宝若出生在北京官宦之家，则不会在丽春院形成市井机变性格。
+  anchor_for:
+  - wei_xiaobao
+- id: ev_002
+  fact: 韦小宝因偶然机会进入皇宫，以假太监身份开始宫廷活动。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  state_change: 韦小宝进入宫廷权力空间。
+  cf_edit: 韦小宝若未混入皇宫而是留在扬州，则不会与康熙建立直接联系。
+  anchor_for:
+  - wei_xiaobao
+  - kangxi
+- id: ev_003
+  fact: 康熙在宫廷环境中登基为帝，起初由辅政大臣辅佐。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 确立康熙的皇帝身份和权力基础。
+  cf_edit: 康熙若未登基而只是宗室子弟，则不会与韦小宝形成君臣关系。
+  anchor_for:
+  - kangxi
+- id: ev_004
+  fact: 韦小宝与康熙初次见面时并不知对方是皇帝，二人以亲近方式结识。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  state_change: 建立韦小宝与康熙的私人关系。
+  cf_edit: 韦小宝若一开始便知康熙身份，则不会形成后来的特殊信任。
+  anchor_for:
+  - wei_xiaobao
+  - kangxi
+- id: ev_005
+  fact: 陈近南任天地会总舵主，以反清复明为宗旨。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 确立陈近南的天地会领袖身份。
+  cf_edit: 陈近南若未任总舵主而只是普通会众，则无法推动韦小宝卷入天地会。
+  anchor_for:
+  - chen_jinnan
+- id: ev_006
+  fact: 韦小宝拜陈近南为师，加入天地会。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 韦小宝获得天地会身份，形成双重阵营。
+  cf_edit: 韦小宝若拒绝拜师，则不会成为天地会骨干。
+  anchor_for:
+  - wei_xiaobao
+  - chen_jinnan
+- id: ev_007
+  fact: 双儿作为侍女陪伴韦小宝左右，对韦小宝忠诚。
+  known_by:
+  - wei_xiaobao
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 双儿进入韦小宝的生活与行动体系。
+  cf_edit: 双儿若未成为韦小宝侍女，则难以在后续行动中及时协助韦小宝。
+  anchor_for:
+  - shuang_er
+  - wei_xiaobao
+- id: ev_008
+  fact: 阿珂与韦小宝产生情感纠葛，并带有特殊身世背景。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 韦小宝与阿珂建立情感联系。
+  cf_edit: 阿珂若与韦小宝无情感纠葛，则韦小宝不会因她卷入相关冲突。
+  anchor_for:
+  - a_ke
+  - wei_xiaobao
+- id: ev_009
+  fact: 苏荃作为神龙教重要人物，与韦小宝形成特殊关系。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 苏荃与韦小宝关系进入共同行动层面。
+  cf_edit: 苏荃若在神龙教中无权力，则无法在关键场景中影响韦小宝。
+  anchor_for:
+  - su_quan
+  - wei_xiaobao
+- id: ev_010
+  fact: 韦小宝在清廷获得康熙重用，被派办差并接触各方势力。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 韦小宝在清廷体系内地位提升。
+  cf_edit: 韦小宝若未获康熙重用，则无法以钦差身份参与后续多方行动。
+  anchor_for:
+  - wei_xiaobao
+  - kangxi
+- id: ev_011
+  fact: 韦小宝在办差过程中继续以天地会香主身份活动。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 韦小宝同时保持清廷与天地会双重身份。
+  cf_edit: 韦小宝若只保持单一阵营身份，则不会形成核心戏剧冲突。
+  anchor_for:
+  - wei_xiaobao
+  - chen_jinnan
+- id: ev_012
+  fact: 康熙命韦小宝铲除鳌拜势力。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  state_change: 韦小宝完成清廷交办的重要政治任务。
+  cf_edit: 康熙若未授权韦小宝参与铲除鳌拜，则韦小宝无法迅速积累政治资本。
+  anchor_for:
+  - kangxi
+  - wei_xiaobao
+- id: ev_013
+  fact: 陈近南安排韦小宝在天地会内承担联络和行动任务。
+  known_by:
+  - wei_xiaobao
+  - chen_jinnan
+  state_change: 韦小宝获得天地会内部信任和任务。
+  cf_edit: 陈近南若未安排韦小宝承担任务，则天地会线难以持续推进。
+  anchor_for:
+  - chen_jinnan
+  - wei_xiaobao
+- id: ev_014
+  fact: 双儿在危急时刻多次保护韦小宝。
+  known_by:
+  - wei_xiaobao
+  - shuang_er
+  state_change: 双儿成为韦小宝安全保障的重要角色。
+  cf_edit: 双儿若未在危急时出手，则韦小宝可能无法逃脱某些险境。
+  anchor_for:
+  - shuang_er
+  - wei_xiaobao
+- id: ev_015
+  fact: 阿珂与韦小宝在行动中共同面对外部威胁。
+  known_by:
+  - wei_xiaobao
+  - a_ke
+  state_change: 阿珂被卷入韦小宝的冒险网络。
+  cf_edit: 阿珂若未在行动中与韦小宝共同面对威胁，则两人关系缺少共同经历。
+  anchor_for:
+  - a_ke
+  - wei_xiaobao
+- id: ev_016
+  fact: 苏荃与韦小宝在神龙教相关事件中形成合作。
+  known_by:
+  - wei_xiaobao
+  - su_quan
+  state_change: 苏荃与韦小宝建立直接合作关系。
+  cf_edit: 苏荃若未在神龙教事件中与韦小宝合作，则不会形成后续共同立场。
+  anchor_for:
+  - su_quan
+  - wei_xiaobao
+- id: ev_017
+  fact: 韦小宝周旋于清廷和天地会之间，隐藏自身双重角色。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 双重身份矛盾持续升级。
+  cf_edit: 韦小宝若无法隐藏双重角色，则可能过早暴露并失去一方信任。
+  anchor_for:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+- id: ev_018
+  fact: 康熙对韦小宝的忠诚产生疑虑，但仍给予机会。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  state_change: 君臣信任出现裂缝。
+  cf_edit: 康熙若完全信任韦小宝，则不会出现后续对韦小宝的试探。
+  anchor_for:
+  - kangxi
+  - wei_xiaobao
+- id: ev_019
+  fact: 陈近南在天地会事务中面临清廷追捕和内部压力。
+  known_by:
+  - wei_xiaobao
+  - chen_jinnan
+  state_change: 陈近南的处境更加危险。
+  cf_edit: 陈近南若未面临追捕，则天地会主线不会以逃亡和隐藏为重要状态。
+  anchor_for:
+  - chen_jinnan
+  - wei_xiaobao
+- id: ev_020
+  fact: 韦小宝利用身份便利获取重要物品和信息。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 韦小宝在信息与资源上占据优势。
+  cf_edit: 韦小宝若没有身份便利，则难以获得影响局势的关键物品。
+  anchor_for:
+  - wei_xiaobao
+- id: ev_021
+  fact: 六名核心角色在共享时间快照内均处于可互动的活跃状态。
+  known_by:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan
+  state_change: 共享快照时间点包含所有关键角色。
+  cf_edit: 若快照时任一角色缺席，则无法形成六角色统一锚点。
+  anchor_for:
+  - wei_xiaobao
+  - kangxi
+  - chen_jinnan
+  - shuang_er
+  - a_ke
+  - su_quan

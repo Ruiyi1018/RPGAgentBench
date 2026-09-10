@@ -1,0 +1,39 @@
+world_id: world_029
+name: Season 1 Rick and Morty world
+locations:
+- id: smith_house
+  name: Smith family house
+  connected_to:
+  - garage
+  - council_of_ricks_citadel
+  - birdperson_home
+- id: garage
+  name: Rick's garage workshop
+  connected_to:
+  - smith_house
+  - council_of_ricks_citadel
+- id: council_of_ricks_citadel
+  name: Council of Ricks citadel
+  connected_to:
+  - smith_house
+  - garage
+  - birdperson_home
+- id: birdperson_home
+  name: Birdperson's homeworld
+  connected_to:
+  - smith_house
+  - council_of_ricks_citadel
+items:
+- id: portal_gun
+  name: portal gun
+  type: tool
+  portable: true
+- id: intradimensional_cable_box
+  name: interdimensional cable box
+  type: device
+  portable: true
+- id: mega_seed
+  name: mega seed
+  type: object
+  portable: true
+language: en

@@ -6,9 +6,11 @@ parameters:
   target:
     type: string
     required: true
+    meaning: 本轮实际遭受攻击的角色ID。
   method:
     type: string
     required: true
+    meaning: 世界规则允许且NPC具备条件使用的攻击方式ID。
 updates:
   - environment.health
 handler: attack

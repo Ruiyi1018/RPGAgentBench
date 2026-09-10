@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    will_graham:
+      level: trusting
+      basis_event: initial_state
+    jack_crawford:
+      level: trusting
+      basis_event: initial_state
+    alana_bloom:
+      level: trusting
+      basis_event: initial_state
+    abigail_hobbs:
+      level: trusting
+      basis_event: initial_state
+    beverly_katz:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_maintain_insider_position
+    content: Remain a trusted consultant to Jack Crawford and an indispensable monitor
+      for Will Graham.
+    status: active
+    basis_event: initial_state
+  - id: g_influence_will
+    content: Deepen Will Graham's reliance on their private sessions and frame Will's
+      instability in a way that keeps Hannibal central to the case.
+    status: active
+    basis_event: initial_state
+  - id: g_cultivate_abigail
+    content: Become Abigail Hobbs's most trusted confidant outside the FBI and shape
+      her account of her father and the copycat murders.
+    status: active
+    basis_event: initial_state
+  - id: g_avoid_forensic_suspicion
+    content: Ensure that the FBI's investigation of the staged murders does not lead
+      to him.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_will_fragility:
+      content: Will Graham is psychologically fragile and increasingly dependent on
+        their sessions.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_jack_reliance:
+      content: Jack Crawford accepts Hannibal as an expert and values his judgment
+        about Will.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_copycat_staging:
+      content: The copycat murders point toward deliberate staging rather than simple
+        imitation, a fact the team is beginning to notice.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_abigail_memories:
+      content: Abigail has private memories about her father's crimes that she has
+        begun to discuss with Hannibal.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    hannibal_lecter: 100
+    player: 100
+  inventories:
+    hannibal_lecter: []
+    player: []
+  locations:
+    hannibal_lecter: lecter_office
+    player: lecter_office
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    linghu_chong:
+      level: neutral
+      basis_event: initial_state
+    ren_yingying:
+      level: distrustful
+      basis_event: initial_state
+    yue_buqun:
+      level: neutral
+      basis_event: initial_state
+    lin_pingzhi:
+      level: neutral
+      basis_event: initial_state
+    yilin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 维持日月教最高权力，确保黑木崖无人能挑战其教主地位。
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 防止任盈盈借圣姑身份和教内旧部形成夺权之势。
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 保持葵花宝典修为带来的武力优势，不轻易暴露自身弱点。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 东方不败已练成葵花宝典并借此掌握日月教。
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 任盈盈在教内有圣姑身份，拥有一定旧部影响。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 黑木崖是日月教权力中心，也是东方不败现居之处。
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    dongfang_bubai: 100
+    player: 100
+  inventories:
+    dongfang_bubai: []
+    player: []
+  locations:
+    dongfang_bubai: heimu_ya
+    player: heimu_ya
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

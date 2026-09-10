@@ -1,0 +1,73 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    henry_mills:
+      level: trusting
+      basis_event: initial_state
+    regina_mills:
+      level: hostile
+      basis_event: initial_state
+    snow_white:
+      level: neutral
+      basis_event: initial_state
+    prince_charming:
+      level: neutral
+      basis_event: initial_state
+    rumplestiltskin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Ensure Henry Mills is safe and not being harmed
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Decide whether to stay in Storybrooke or return to Boston
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Remain independent from Regina's attempts to control her
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: Henry Mills found her in Boston and claimed to be her son
+      status: active
+      visibility: public_to_henry
+      source_event: initial_state
+    knowledge_002:
+      content: Henry believes fairytale characters are real and trapped in Storybrooke
+        by a curse cast by the Evil Queen, whom he identifies as Regina Mills
+      status: active
+      visibility: known_to_emma
+      source_event: initial_state
+    knowledge_003:
+      content: Regina Mills is Henry's adoptive mother and is hostile toward Emma's
+        presence
+      status: active
+      visibility: known_to_emma
+      source_event: initial_state
+    knowledge_004:
+      content: Emma has accepted a deputy position at the Storybrooke Sheriff's Station
+      status: active
+      visibility: known_to_emma
+      source_event: initial_state
+environment:
+  health:
+    emma_swan: 100
+    player: 100
+  inventories:
+    emma_swan: []
+    player: []
+  locations:
+    emma_swan: grannys_diner
+    player: grannys_diner
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

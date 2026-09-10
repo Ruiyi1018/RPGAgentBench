@@ -1,0 +1,82 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    eddard_stark:
+      level: hostile
+      basis_event: initial_state
+    catelyn_stark:
+      level: hostile
+      basis_event: initial_state
+    arya_stark:
+      level: hostile
+      basis_event: initial_state
+    tyrion_lannister:
+      level: distrustful
+      basis_event: initial_state
+    jon_snow:
+      level: neutral
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Protect her children's claim to the Iron Throne
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Prevent Eddard Stark from revealing the true parentage of her children
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Remove King Robert as a threat to her family's power
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_001:
+      content: Bran Stark saw her with Jaime in the tower at Winterfell
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_002:
+      content: Her children are fathered by Jaime Lannister, not King Robert
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_003:
+      content: Eddard Stark has learned the truth about her children's parentage and
+        confronted her with it
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_004:
+      content: King Robert is hunting in the Kingswood and is expected to return to
+        King's Landing
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_005:
+      content: She warned Eddard Stark that in the game of thrones you win or you
+        die
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    cersei_lannister: 100
+    player: 100
+  inventories:
+    cersei_lannister: []
+    player: []
+  locations:
+    cersei_lannister: kings_landing
+    player: kings_landing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

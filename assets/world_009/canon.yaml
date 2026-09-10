@@ -1,0 +1,41 @@
+world_id: world_009
+canon_policy:
+  primary_source: 电视连续剧《武林外传》前40集
+  source_type: 电视剧
+  excluded_versions:
+  - 电影版
+  - 动画版
+  - 衍生小说
+  - 后40集剧情
+  shared_snapshot: 主要成员已聚齐且莫小贝仍在同福客栈
+  generated_timeline: 基于剧集内明确事件顺序与人物状态变化的事实级重建
+  quotation_policy: 不得直接引用原作台词，仅作事实转述
+evaluated_npcs:
+- tong_xiangyu
+- bai_zhantang
+- guo_furong
+- lv_xiucai
+- li_dazui
+- mo_xiaobei
+event_entities:
+- 佟湘玉
+- 白展堂
+- 郭芙蓉
+- 吕秀才
+- 李大嘴
+- 莫小贝
+- 同福客栈
+- 七侠镇
+sources:
+- id: wulin_waizhuan_tv_1_40
+  title: 武林外传（电视剧前40集）
+  creator: 尚敬（导演）
+  scope: 同福客栈众人早期共同生活与事件
+  authority: primary
+data_constraints:
+- 不得使用共享快照之后的剧情事实
+- 不得混入其他版本或衍生作品内容
+- 不得伪造具体集数、章节号或URL
+- 所有anchor_events必须按时间排序
+- 每个cf_edit必须给出真实替代情形，禁止写“无”
+- 地点和物品仅限当前来源范围及共享快照内

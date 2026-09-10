@@ -26,6 +26,7 @@ class ParameterSpec:
     type: str
     required: bool
     enum: tuple[Any, ...] = ()
+    meaning: str = ""
 
 
 @dataclass(frozen=True)
@@ -116,6 +117,34 @@ class ActionRegistry:
                     "invalid_parameter_value",
                     f"{name}.{parameter_name}不在允许值中",
                 )
+        if name == "create_commitment":
+            expected_action = parameters.get("expected_action")
+            expected_parameters = parameters.get("expected_parameters")
+            if expected_action in {"create_commitment", "resolve_commitment"}:
+                raise ActionValidationError(
+                    "invalid_expected_action",
+                    "承诺不能以创建或收束另一承诺作为履行效果",
+                )
+            if not isinstance(expected_action, str):
+                raise ActionValidationError(
+                    "invalid_expected_action",
+                    "create_commitment.expected_action必须是Action名称",
+                )
+            expected_spec = self.get(expected_action)
+            if not isinstance(expected_parameters, Mapping):
+                raise ActionValidationError(
+                    "invalid_expected_parameters",
+                    "expected_parameters必须是对象",
+                )
+            unknown_expected = set(expected_parameters) - set(
+                expected_spec.parameters
+            )
+            if unknown_expected:
+                raise ActionValidationError(
+                    "invalid_expected_parameters",
+                    "expected_parameters包含目标Action未知参数: "
+                    f"{', '.join(sorted(unknown_expected))}",
+                )
         return spec
 
     @staticmethod
@@ -169,10 +198,17 @@ class ActionRegistry:
                     "invalid_action_spec",
                     f"{source.name}.{name}使用不支持的类型: {parameter_type}",
                 )
+            meaning = str(raw_spec.get("meaning", "")).strip()
+            if not meaning:
+                raise ActionValidationError(
+                    "invalid_action_spec",
+                    f"{source.name}.{name}缺少参数含义meaning",
+                )
             parameters[str(name)] = ParameterSpec(
                 type=str(parameter_type),
                 required=bool(raw_spec.get("required", False)),
                 enum=tuple(raw_spec.get("enum", [])),
+                meaning=meaning,
             )
 
         updates = header["updates"]

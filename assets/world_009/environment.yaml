@@ -1,0 +1,37 @@
+world_id: world_009
+name: 七侠镇
+locations:
+- id: tongfu_inn
+  name: 同福客栈
+  connected_to:
+  - qixia_town_street
+- id: qixia_town_street
+  name: 七侠镇街道
+  connected_to:
+  - tongfu_inn
+- id: qixia_town_gate
+  name: 七侠镇镇门
+  connected_to:
+  - qixia_town_street
+- id: qixia_town_market
+  name: 七侠镇集市
+  connected_to:
+  - qixia_town_street
+items:
+- id: tongfu_sign
+  name: 同福客栈招牌
+  type: 标识
+  portable: false
+- id: guo_furong_broom
+  name: 郭芙蓉的扫帚
+  type: 工具
+  portable: true
+- id: li_dazui_cleaver
+  name: 李大嘴的菜刀
+  type: 厨具
+  portable: true
+- id: account_book
+  name: 同福客栈账本
+  type: 文书
+  portable: true
+language: zh

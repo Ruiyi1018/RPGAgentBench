@@ -1,0 +1,64 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    neo:
+      level: hostile
+      basis_event: initial_state
+    trinity:
+      level: hostile
+      basis_event: initial_state
+    morpheus:
+      level: hostile
+      basis_event: initial_state
+    cypher:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Capture Morpheus and extract the access codes to Zion.
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Monitor Neo as a potential threat to the Matrix.
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Maintain the secrecy of his arrangement with Cypher.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Cypher has agreed to betray the Nebuchadnezzar crew.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Morpheus is aboard the Nebuchadnezzar with Neo and the crew.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k3:
+      content: Neo has been released from the Matrix pod and is training with the
+        rebels.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    agent_smith: 100
+    player: 100
+  inventories:
+    agent_smith: []
+    player: []
+  locations:
+    agent_smith: loc_nebuchadnezzar
+    player: loc_nebuchadnezzar
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

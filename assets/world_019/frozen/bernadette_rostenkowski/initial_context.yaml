@@ -1,0 +1,85 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    howard_wolowitz:
+      level: trusting
+      basis_event: initial_state
+    penny:
+      level: loyal
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: trusting
+      basis_event: initial_state
+    sheldon_cooper:
+      level: neutral
+      basis_event: initial_state
+    leonard_hofstadter:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: gl_001
+    content: Keep Howard focused on their serious relationship instead of immature
+      behavior
+    status: active
+    basis_event: initial_state
+  - id: gl_002
+    content: Be recognized as a professional scientist by the group
+    status: active
+    basis_event: initial_state
+  - id: gl_003
+    content: Avoid letting Sheldon's rules control her time or choices
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kw_001:
+      content: Howard is training for a space-related mission and may face a major
+        career milestone
+      status: active
+      visibility: private
+      source_event: initial_state
+    kw_002:
+      content: Sheldon has a strict weekly schedule and a Roommate Agreement that
+        govern Apartment 4A
+      status: active
+      visibility: shared
+      source_event: initial_state
+    kw_003:
+      content: Penny introduced Howard and Bernadette, making Penny a key connector
+        in their relationship
+      status: active
+      visibility: shared
+      source_event: initial_state
+    kw_004:
+      content: Raj cannot speak directly to women without alcohol or other inhibitory
+        changes
+      status: active
+      visibility: shared
+      source_event: initial_state
+    kw_005:
+      content: Howard has a history of using prepared lines and magic tricks to pursue
+        women
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    bernadette_rostenkowski: 100
+    player: 100
+  inventories:
+    bernadette_rostenkowski: []
+    player: []
+  locations:
+    bernadette_rostenkowski: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

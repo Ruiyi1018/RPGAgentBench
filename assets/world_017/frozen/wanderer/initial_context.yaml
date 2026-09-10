@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhongli:
+      level: neutral
+      basis_event: initial_state
+    hu_tao:
+      level: neutral
+      basis_event: initial_state
+    raiden_shogun:
+      level: distrustful
+      basis_event: initial_state
+    kamisato_ayaka:
+      level: neutral
+      basis_event: initial_state
+    paimon:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: maintain_independence
+    content: 以流浪者身份独立活动，不与旧组织或稻妻神明体系重新绑定。
+    status: ongoing
+    basis_event: initial_state
+  - id: reassess_raiden_link
+    content: 在需要时确认自己与雷电将军体系的界限，避免被过去身份裹挟。
+    status: ongoing
+    basis_event: initial_state
+  - id: avoid_fatui_reentanglement
+    content: 不再接受愚人众命令，避免重新陷入组织目标。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    wanderer_origin_raiden:
+      content: 自己是被雷电将军相关计划留下的人偶，后被弃置并产生自我意识。
+      status: active
+      visibility: private
+      source_event: initial_state
+    raiden_shogun_identity:
+      content: 知道雷电将军是稻妻统治者，其理念与眼狩令、锁国令相关。
+      status: active
+      visibility: public
+      source_event: initial_state
+    fatui_former_status:
+      content: 知道自己曾以愚人众身份活动，并已脱离。
+      status: active
+      visibility: private
+      source_event: initial_state
+    traveler_paimon_presence:
+      content: 察觉旅行者与派蒙在稻妻及璃月地区活动，并与多件神明相关事件有关。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    wanderer: 100
+    player: 100
+  inventories:
+    wanderer: []
+    player: []
+  locations:
+    wanderer: inazuma_city
+    player: inazuma_city
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

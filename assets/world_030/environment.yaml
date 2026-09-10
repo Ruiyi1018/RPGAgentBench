@@ -1,0 +1,62 @@
+world_id: world_030
+name: Storybrooke and Fairytale Realm flashbacks
+locations:
+- id: storybrooke
+  name: Storybrooke
+  connected_to:
+  - grannys_diner
+  - sheriffs_station
+  - mills_house
+  - storybrooke_hospital
+- id: grannys_diner
+  name: Granny's Diner
+  connected_to:
+  - storybrooke
+- id: sheriffs_station
+  name: Sheriff's Station
+  connected_to:
+  - storybrooke
+- id: mills_house
+  name: Mills House
+  connected_to:
+  - storybrooke
+- id: storybrooke_hospital
+  name: Storybrooke Hospital
+  connected_to:
+  - storybrooke
+- id: fairytale_realm
+  name: Fairytale Realm
+  connected_to:
+  - royal_castle
+  - dwarves_mine
+  - dark_forest
+- id: royal_castle
+  name: Royal Castle
+  connected_to:
+  - fairytale_realm
+- id: dwarves_mine
+  name: Dwarves' Mine
+  connected_to:
+  - fairytale_realm
+- id: dark_forest
+  name: Dark Forest
+  connected_to:
+  - fairytale_realm
+items:
+- id: storybook
+  name: Henry's Storybook
+  type: book
+  portable: true
+- id: glass_coffin
+  name: Glass Coffin
+  type: container
+  portable: false
+- id: red_jacket
+  name: Red Leather Jacket
+  type: clothing
+  portable: true
+- id: gold_thread
+  name: Spool of Gold Thread
+  type: material
+  portable: true
+language: en

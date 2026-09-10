@@ -1,0 +1,41 @@
+world_id: world_015
+name: 笑傲江湖修订本共享舞台
+locations:
+- id: huashan
+  name: 华山
+  connected_to:
+  - luoyang
+  - hengshan
+- id: luoyang
+  name: 洛阳
+  connected_to:
+  - huashan
+  - heimu_ya
+- id: heimu_ya
+  name: 黑木崖
+  connected_to:
+  - luoyang
+  - hengshan
+- id: hengshan
+  name: 恒山
+  connected_to:
+  - huashan
+  - heimu_ya
+items:
+- id: dushu_jiujian
+  name: 独孤九剑
+  type: 武学
+  portable: false
+- id: kuihua_baodian
+  name: 葵花宝典
+  type: 秘籍
+  portable: true
+- id: xiexing_jianpu
+  name: 辟邪剑谱
+  type: 秘籍
+  portable: true
+- id: qixian_qin
+  name: 七弦琴
+  type: 乐器
+  portable: true
+language: zh

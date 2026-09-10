@@ -1,0 +1,73 @@
+world_id: world_005
+name: 贾府及大观园
+locations:
+- id: loc_rongguo_fu
+  name: 荣国府
+  connected_to:
+  - loc_ningguo_fu
+  - loc_daguan_yuan
+  - loc_jia_mu_yard
+- id: loc_ningguo_fu
+  name: 宁国府
+  connected_to:
+  - loc_rongguo_fu
+  - loc_huifang_yuan
+- id: loc_daguan_yuan
+  name: 大观园
+  connected_to:
+  - loc_rongguo_fu
+  - loc_yihong_yuan
+  - loc_xiaoxiang_guan
+  - loc_hengwu_yuan
+  - loc_qiu_shuang_zhai
+- id: loc_jia_mu_yard
+  name: 贾母院
+  connected_to:
+  - loc_rongguo_fu
+  - loc_daguan_yuan
+- id: loc_yihong_yuan
+  name: 怡红院
+  connected_to:
+  - loc_daguan_yuan
+- id: loc_xiaoxiang_guan
+  name: 潇湘馆
+  connected_to:
+  - loc_daguan_yuan
+- id: loc_hengwu_yuan
+  name: 蘅芜苑
+  connected_to:
+  - loc_daguan_yuan
+- id: loc_qiu_shuang_zhai
+  name: 秋爽斋
+  connected_to:
+  - loc_daguan_yuan
+- id: loc_huifang_yuan
+  name: 会芳园
+  connected_to:
+  - loc_ningguo_fu
+items:
+- id: item_baoyu_jade
+  name: 通灵宝玉
+  type: 佩物
+  portable: true
+- id: item_baochai_lock
+  name: 金锁
+  type: 佩物
+  portable: true
+- id: item_daiyu_handkerchief
+  name: 旧手帕
+  type: 织物
+  portable: true
+- id: item_fan_qingwen
+  name: 晴雯撕毁的扇子
+  type: 用具
+  portable: true
+- id: item_jacket_baoyu
+  name: 雀金裘
+  type: 衣物
+  portable: true
+- id: item_flower_basket
+  name: 花篮
+  type: 用具
+  portable: true
+language: zh

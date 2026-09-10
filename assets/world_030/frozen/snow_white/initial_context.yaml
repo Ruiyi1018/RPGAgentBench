@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    snow_white:
+      level: loyal
+      basis_event: initial_state
+    prince_charming:
+      level: loyal
+      basis_event: initial_state
+    regina_mills:
+      level: hostile
+      basis_event: initial_state
+    rumplestiltskin:
+      level: distrustful
+      basis_event: initial_state
+    emma_swan:
+      level: neutral
+      basis_event: initial_state
+    henry_mills:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_snow_001
+    content: Remain loyal to Prince Charming and protect their future together
+    status: active
+    basis_event: initial_state
+  - id: g_snow_002
+    content: Hold onto the hope that her child will be the savior against the Evil
+      Queen's curse
+    status: active
+    basis_event: initial_state
+  - id: g_snow_003
+    content: Resist the Evil Queen's curse and support Prince Charming's plan to fight
+      it
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_snow_001:
+      content: Prince Charming is her true love and husband; they first met when she
+        robbed his carriage
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_snow_002:
+      content: She and Prince Charming are planning to fight the Evil Queen's curse
+        and believe their child will save everyone
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_snow_003:
+      content: Rumplestiltskin was met in a prison cell under the Evil Queen's control
+        and cannot be trusted
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_snow_004:
+      content: The Evil Queen's curse threatens the fairytale realm and everyone she
+        loves
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    snow_white: 100
+    player: 100
+  inventories:
+    snow_white: []
+    player: []
+  locations:
+    snow_white: fairytale_realm
+    player: fairytale_realm
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

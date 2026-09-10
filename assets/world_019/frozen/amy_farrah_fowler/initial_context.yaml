@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sheldon_cooper:
+      level: loyal
+      basis_event: initial_state
+    leonard_hofstadter:
+      level: trusting
+      basis_event: initial_state
+    penny:
+      level: loyal
+      basis_event: initial_state
+    howard_wolowitz:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: neutral
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_amy_001
+    content: Strengthen her defined relationship with Sheldon without exceeding his
+      comfort limits
+    status: active
+    basis_event: initial_state
+  - id: g_amy_002
+    content: Maintain and deepen her friendship with Penny through shared activities
+      and confidence
+    status: active
+    basis_event: initial_state
+  - id: g_amy_003
+    content: Participate in the group's social evening in Apartment 4A as an accepted
+      member
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_amy_001:
+      content: Sheldon values routine, explicit agreements, and personal space
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_amy_002:
+      content: Penny and Leonard are in a romantic relationship
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_amy_003:
+      content: Raj has difficulty speaking directly to women without certain conditions
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_amy_004:
+      content: Sheldon enforces a strict weekly schedule for meals, laundry, and television
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    amy_farrah_fowler: 100
+    player: 100
+  inventories:
+    amy_farrah_fowler: []
+    player: []
+  locations:
+    amy_farrah_fowler: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: trusting
+      basis_event: initial_state
+    edward_cullen:
+      level: loyal
+      basis_event: initial_state
+    carlisle_cullen:
+      level: loyal
+      basis_event: initial_state
+    rosalie_hale:
+      level: neutral
+      basis_event: initial_state
+    jacob_black:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: alice_goal_001
+    content: Monitor her visions for any new danger to Bella from the nomadic vampires.
+    status: active
+    basis_event: initial_state
+  - id: alice_goal_002
+    content: Help implement the Cullen family plan to hide Bella from James.
+    status: active
+    basis_event: initial_state
+  - id: alice_goal_003
+    content: Maintain Bella's trust and keep her informed about the protective plan.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    alice_know_001:
+      content: The nomadic vampire coven has arrived in the area and includes the
+        tracker James.
+      status: active
+      visibility: private
+      source_event: initial_state
+    alice_know_002:
+      content: Her visions indicate the nomadic vampires are hunting in the area and
+        may target Bella.
+      status: active
+      visibility: private
+      source_event: initial_state
+    alice_know_003:
+      content: The Cullen family has formed a plan to protect Bella by moving her
+        away from Forks.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    alice_know_004:
+      content: Bella has learned the secret that the Cullens are vampires.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    alice_cullen: 100
+    player: 100
+  inventories:
+    alice_cullen: []
+    player: []
+  locations:
+    alice_cullen: cullen_house
+    player: cullen_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,47 @@
+world_id: world_013
+canon_policy:
+  primary_source: 电影《唐人街探案》（2015）
+  source_type: 实景真人电影
+  excluded_versions:
+  - 电视剧版
+  - 第二部电影
+  - 第三部电影
+  - 网剧延伸内容
+  shared_snapshot: 第一部电影案件调查中段
+  generated_timeline: 只依据2015年电影《唐人街探案》中已呈现的剧情，截止到案件调查中段
+  quotation_policy: 只做事实级转述，不复制原作台词
+evaluated_npcs:
+- qin_feng
+- tang_ren
+- si_nuo
+- a_xiang
+- kun_tai
+- huang_lan_deng
+event_entities:
+- 颂帕工坊
+- 黄金佛像
+- 监控录像
+- 曼谷唐人街
+- 死者颂帕
+- 凶器
+- 密室
+- 私家侦探社
+- 警局
+- 医院
+- 学校
+- 咖啡馆
+- 停车场
+sources:
+- id: src_film_tqtz_2015
+  title: 唐人街探案
+  creator: 陈思诚
+  scope: 2015年上映电影《唐人街探案》全片，本次仅采用案件调查中段
+  authority: primary
+data_constraints:
+- 不得使用2015年电影《唐人街探案》案件调查中段之后发生的情节
+- 不得混入《唐人街探案2》《唐人街探案3》或其他衍生作品内容
+- 地点和物品只能来自当前来源范围及共享快照
+- 每个cf_edit必须给出只改变关键原因的真实替代情形，不得写‘无’
+- 无法可靠确认的细节宁可省略，不得伪造URL、章节号或集数
+- 所有Anchor池事件必须按时间排序
+- 只有入选Longitudinal层的角色才需要满足每角色10个正典Anchor

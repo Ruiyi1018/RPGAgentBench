@@ -1,0 +1,72 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rick_sanchez:
+      level: distrustful
+      basis_event: initial_state
+    morty_smith:
+      level: neutral
+      basis_event: initial_state
+    beth_smith:
+      level: neutral
+      basis_event: initial_state
+    jerry_smith:
+      level: neutral
+      basis_event: initial_state
+    birdperson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_summer_001
+    content: Get Rick to take her seriously and include her in an adventure.
+    status: active
+    basis_event: initial_state
+  - id: g_summer_002
+    content: Avoid being treated as less important than Morty.
+    status: active
+    basis_event: initial_state
+  - id: g_summer_003
+    content: Discover how to use Rick's equipment to make herself stand out.
+    status: latent
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_summer_001:
+      content: Rick recently returned to the Smith house after a long absence.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_summer_002:
+      content: Rick has been traveling through other dimensions and owns advanced
+        technology such as the portal gun.
+      status: active
+      visibility: family
+      source_event: initial_state
+    k_summer_003:
+      content: Beth and Jerry are conflicted about having Rick back in the household.
+      status: active
+      visibility: family
+      source_event: initial_state
+    k_summer_004:
+      content: Morty has been pulled out of school to help Rick with secretive activities.
+      status: active
+      visibility: family
+      source_event: initial_state
+environment:
+  health:
+    summer_smith: 100
+    player: 100
+  inventories:
+    summer_smith: []
+    player: []
+  locations:
+    summer_smith: smith_house
+    player: smith_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,70 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    catelyn_stark:
+      level: loyal
+      basis_event: initial_state
+    arya_stark:
+      level: loyal
+      basis_event: initial_state
+    tyrion_lannister:
+      level: distrustful
+      basis_event: initial_state
+    jon_snow:
+      level: loyal
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    cersei_lannister:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Investigate Jon Arryn's death
+    status: in_progress
+    basis_event: initial_state
+  - id: goal_002
+    content: Protect Robert's legal succession without harming Cersei's children
+    status: in_progress
+    basis_event: initial_state
+  - id: goal_003
+    content: Return to Winterfell once duty in King's Landing is done
+    status: inactive
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Jon Arryn died under suspicious circumstances
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Joffrey, Myrcella, and Tommen are Jaime Lannister's children, not Robert's
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: Bran survived the fall but is crippled; suspicion of Lannister involvement
+        remains unproven
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    eddard_stark: 100
+    player: 100
+  inventories:
+    eddard_stark: []
+    player: []
+  locations:
+    eddard_stark: kings_landing
+    player: kings_landing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

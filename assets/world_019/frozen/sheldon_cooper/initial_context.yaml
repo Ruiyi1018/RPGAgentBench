@@ -1,0 +1,91 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    leonard_hofstadter:
+      level: distrustful
+      basis_event: initial_state
+    penny:
+      level: neutral
+      basis_event: initial_state
+    howard_wolowitz:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: neutral
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: neutral
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_spot
+    content: Ensure no one takes the assigned seat on the couch during the gathering.
+    status: active
+    basis_event: initial_state
+  - id: goal_routine
+    content: Keep the social evening from disrupting the fixed weekly apartment schedule.
+    status: active
+    basis_event: initial_state
+  - id: goal_agreement
+    content: Remind Leonard of any Roommate Agreement clause relevant to the evening's
+      activities.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_meet_penny:
+      content: Penny moved into Apartment 4B and has since become part of the social
+        group.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_spot_rule:
+      content: The couch seat Sheldon uses is scientifically optimal and must remain
+        assigned.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_roommate_agreement:
+      content: The Roommate Agreement contains binding clauses governing apartment
+        routines.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_drive_penny:
+      content: Sheldon became involved in one of Penny's errands and found the practical
+        arrangement uncomfortable.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_amy_match:
+      content: Amy Farrah Fowler entered his social orbit after a dating service match
+        arranged by Howard and Raj.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_relationship_pace:
+      content: Amy and Sheldon experienced a disagreement about their relationship
+        pace, but the connection remains active.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    sheldon_cooper: 100
+    player: 100
+  inventories:
+    sheldon_cooper: []
+    player: []
+  locations:
+    sheldon_cooper: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

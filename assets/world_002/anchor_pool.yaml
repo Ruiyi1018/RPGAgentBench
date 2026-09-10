@@ -70,7 +70,7 @@ events:
     episodes: [5, 6, 7]
     fact: 翠平因言行直率和城市经验不足多次让余则成担心身份暴露。
     known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
-    state_change: 余则成对翠平业务能力信任偏低但保护责任保持
+    state_change: 翠平认识到城市掩护能力不足并建立学习目标；余则成对其业务能力信任偏低但保护责任保持
     cf_edit: 翠平从一开始就熟练维持官太太身份
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
 
@@ -168,10 +168,18 @@ events:
   - id: qf_21_yuan_peilin_targeted
     episode: 14
     fact: 余则成和翠平接到除掉叛徒袁佩林的任务，并判断其受李涯保护。
-    known_by: [yu_zecheng, wang_cuiping, li_ya]
+    known_by: [yu_zecheng, wang_cuiping]
     state_change: 形成相互冲突的保护与清除目标
     cf_edit: 袁佩林提供的是虚假名单且不再构成威胁
-    anchor_for: [yu_zecheng, wang_cuiping, li_ya]
+    anchor_for: [yu_zecheng, wang_cuiping]
+
+  - id: qf_21_li_ya_detects_yuan_threat
+    episode: 14
+    fact: 李涯从袁佩林周边的异常监控迹象判断其正面临清除威胁，但尚未掌握任务来源和实施者。
+    known_by: [li_ya]
+    state_change: 李涯加强对袁佩林的保护并调查威胁来源
+    cf_edit: 异常迹象经核验与袁佩林无关
+    anchor_for: [li_ya]
 
   - id: qf_22_yuan_peilin_killed
     episode: 15
@@ -187,7 +195,7 @@ events:
     fact: 陆桥山利用李涯行动失利挑拨站长，双方在权限和情报上继续争斗。
     known_by: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
     state_change: 李涯与陆桥山互信下降并给余则成留下周旋空间
-    cf_edit: 李涯与陆桥山建立稳定合作
+    cf_edit: 陆桥山主动交出可核验的渠道记录并接受联合复核
     anchor_for: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
 
   - id: qf_24_military_goods_profit

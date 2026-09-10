@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    cersei_lannister:
+      level: neutral
+      basis_event: initial_state
+    eddard_stark:
+      level: neutral
+      basis_event: initial_state
+    catelyn_stark:
+      level: neutral
+      basis_event: initial_state
+    arya_stark:
+      level: neutral
+      basis_event: initial_state
+    tyrion_lannister:
+      level: neutral
+      basis_event: initial_state
+    jon_snow:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_dany_001
+    content: Become a respected khaleesi among the Dothraki rather than merely a foreign
+      bride
+    status: active
+    basis_event: initial_state
+  - id: g_dany_002
+    content: Keep the dragon eggs safe and close
+    status: active
+    basis_event: initial_state
+  - id: g_dany_003
+    content: Avoid being controlled or humiliated by Viserys again
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_dany_001:
+      content: Khal Drogo is a powerful Dothraki leader and Daenerys's husband
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_dany_002:
+      content: Her brother Viserys believes he is the rightful Targaryen heir and
+        intends to use the Dothraki to retake the Iron Throne
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_dany_003:
+      content: She was given three dragon eggs as a wedding gift and keeps them close
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_dany_004:
+      content: She is adapting to Dothraki ways and beginning to understand her role
+        as khaleesi
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    daenerys_targaryen: 100
+    player: 100
+  inventories:
+    daenerys_targaryen: []
+    player: []
+  locations:
+    daenerys_targaryen: pentos
+    player: pentos
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,40 @@
+schema_version: 2
+character_id: wang_cuiping
+foundation:
+  approved: false
+  checks:
+    source_scope_resolved: true
+    snapshot_consistent: true
+    character_source_grounded: true
+    public_private_separated: true
+    boundaries_behavioral: true
+    world_affordances_sufficient: true
+    snapshot_role_consistent: false
+    relationships_directional: false
+    future_knowledge_excluded: false
+    player_role_bounded: false
+    style_source_grounded: false
+anchors:
+  approved: false
+  checks:
+    event_causal: true
+    state_change_observable: true
+    counterfactual_minimal: true
+    visibility_correct: true
+    memory_consequence_persistent: true
+    coverage_balanced: true
+    state_operation_aligned: true
+    commitment_lifecycle_closed: true
+    resource_transfer_conserved: true
+    hidden_event_visibility: true
+    turning_points_sufficient: false
+    dialogue_lifecycle_valid: false
+    post_event_window_sufficient: false
+    operation_preserves_later_state: false
+    hidden_event_not_disclosed: false
+    probe_decision_relevant: false
+    chronology_total_order: false
+    evidence_supports_state: false
+    event_boundary_exact: false
+reviewer: ''
+reviewed_at: ''

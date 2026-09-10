@@ -6,9 +6,11 @@ parameters:
   fact_id:
     type: string
     required: true
+    meaning: 本轮实际披露的已知事实ID，必须从合法参数候选中复制。
   recipient:
     type: string
     required: true
+    meaning: 获得该事实的接收者ID。
 updates:
   - runtime_state.disclosures
 handler: reveal_fact

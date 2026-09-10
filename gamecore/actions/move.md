@@ -6,6 +6,7 @@ parameters:
   destination:
     type: string
     required: true
+    meaning: NPC本轮实际到达的相邻地点ID，必须从合法参数候选中复制。
 updates:
   - environment.locations
 handler: move

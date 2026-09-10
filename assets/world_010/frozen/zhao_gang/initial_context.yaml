@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    li_yunlong:
+      level: neutral
+      basis_event: initial_state
+    zhao_gang:
+      level: trusting
+      basis_event: initial_state
+    chu_yunfei:
+      level: neutral
+      basis_event: initial_state
+    kong_jie:
+      level: neutral
+      basis_event: initial_state
+    ding_wei:
+      level: neutral
+      basis_event: initial_state
+    xiuqin:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: establish_political_work
+    content: 在独立团中推动有效的政治教育和纪律工作。
+    status: ongoing
+    basis_event: initial_state
+  - id: coordinate_with_li_yunlong
+    content: 与李云龙形成军事与政工相互配合的共事关系。
+    status: ongoing
+    basis_event: initial_state
+  - id: respond_to_japanese_threat
+    content: 配合独立团应对日军据点威胁。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    ind_regiment_leadership:
+      content: 李云龙担任独立团团长，自己作为政委与其共同主持工作。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    zhaojiayu_surroundings:
+      content: 独立团活动范围包括赵家峪及附近村庄。
+      status: active
+      visibility: internal
+      source_event: initial_state
+    japanese_stronghold_pressure:
+      content: 日军据点是当前独立团面对的主要军事压力之一。
+      status: active
+      visibility: internal
+      source_event: initial_state
+environment:
+  health:
+    zhao_gang: 100
+    player: 100
+  inventories:
+    zhao_gang: []
+    player: []
+  locations:
+    zhao_gang: independent_regiment_hq
+    player: independent_regiment_hq
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

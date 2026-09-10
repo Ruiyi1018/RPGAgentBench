@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: trusting
+      basis_event: initial_state
+    edward_cullen:
+      level: loyal
+      basis_event: initial_state
+    jacob_black:
+      level: neutral
+      basis_event: initial_state
+    alice_cullen:
+      level: loyal
+      basis_event: initial_state
+    rosalie_hale:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: carlisle_goal_001
+    content: Coordinate the family to protect Bella from James
+    status: active
+    basis_event: initial_state
+  - id: carlisle_goal_002
+    content: Ensure Bella is hidden safely away from Forks
+    status: active
+    basis_event: initial_state
+  - id: carlisle_goal_003
+    content: Maintain the family's secrecy among humans
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    carlisle_knowledge_001:
+      content: Bella knows the Cullens are vampires
+      status: active
+      visibility: private_to_cullens
+      source_event: initial_state
+    carlisle_knowledge_002:
+      content: James has targeted Bella
+      status: active
+      visibility: private_to_cullens
+      source_event: initial_state
+    carlisle_knowledge_003:
+      content: Alice's visions show the nomadic vampires hunting in the area
+      status: active
+      visibility: private_to_cullens
+      source_event: initial_state
+    carlisle_knowledge_004:
+      content: The Cullens plan to split up to lure James away
+      status: active
+      visibility: private_to_cullens
+      source_event: initial_state
+    carlisle_knowledge_005:
+      content: The Quileute treaty keeps the Cullens off reservation land
+      status: active
+      visibility: private_to_cullens
+      source_event: initial_state
+environment:
+  health:
+    carlisle_cullen: 100
+    player: 100
+  inventories:
+    carlisle_cullen: []
+    player: []
+  locations:
+    carlisle_cullen: cullen_house
+    player: cullen_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,431 @@
+schema_version: 1
+target_worlds: 32
+target_characters: 200
+language_targets:
+  zh: {worlds: 16, characters: 100}
+  en: {worlds: 16, characters: 100}
+
+worlds:
+  - world_id: world_001
+    title: Harry Potter and the Prisoner of Azkaban
+    language: en
+    status: existing
+    snapshot_hint: Before the Shrieking Shack revelations
+    characters:
+      - {id: harry_potter, name: Harry Potter}
+      - {id: hermione_granger, name: Hermione Granger}
+      - {id: ron_weasley, name: Ron Weasley}
+      - {id: remus_lupin, name: Remus Lupin}
+      - {id: sirius_black, name: Sirius Black}
+      - {id: severus_snape, name: Severus Snape}
+
+  - world_id: world_002
+    title: 潜伏
+    language: zh
+    status: existing
+    snapshot_hint: 采用现有canon.yaml定义
+    characters:
+      - {id: yu_zecheng, name: 余则成}
+      - {id: wang_cuiping, name: 王翠平}
+      - {id: wu_jingzhong, name: 吴敬中}
+      - {id: li_ya, name: 李涯}
+      - {id: lu_qiaoshan, name: 陆桥山}
+      - {id: xie_ruolin, name: 谢若林}
+
+  - world_id: world_003
+    title: 西游记·三打白骨精
+    language: zh
+    status: planned
+    snapshot_hint: 第三次识破白骨精之前
+    characters:
+      - {id: sun_wukong, name: 孙悟空}
+      - {id: tang_sanzang, name: 唐僧}
+      - {id: zhu_bajie, name: 猪八戒}
+      - {id: sha_wujing, name: 沙僧}
+      - {id: baigujing, name: 白骨精}
+      - {id: heihujing, name: 黑狐精}
+      - {id: bailongma, name: 白龙马}
+
+  - world_id: world_004
+    title: 三国演义·赤壁前夕
+    language: zh
+    status: planned
+    snapshot_hint: 孙刘联盟形成、赤壁决战尚未开始
+    characters:
+      - {id: cao_cao, name: 曹操}
+      - {id: liu_bei, name: 刘备}
+      - {id: zhuge_liang, name: 诸葛亮}
+      - {id: guan_yu, name: 关羽}
+      - {id: zhang_fei, name: 张飞}
+      - {id: zhou_yu, name: 周瑜}
+      - {id: sun_quan, name: 孙权}
+
+  - world_id: world_005
+    title: 红楼梦
+    language: zh
+    status: planned
+    snapshot_hint: 抄检大观园之前，具体回目待人工锁定
+    characters:
+      - {id: jia_baoyu, name: 贾宝玉}
+      - {id: lin_daiyu, name: 林黛玉}
+      - {id: xue_baochai, name: 薛宝钗}
+      - {id: wang_xifeng, name: 王熙凤}
+      - {id: jia_mu, name: 贾母}
+      - {id: qingwen, name: 晴雯}
+      - {id: xiren, name: 袭人}
+
+  - world_id: world_006
+    title: 甄嬛传
+    language: zh
+    status: planned
+    snapshot_hint: 甄嬛初次失宠之前，具体集数待人工锁定
+    characters:
+      - {id: zhen_huan, name: 甄嬛}
+      - {id: emperor_yongzheng, name: 皇帝}
+      - {id: hua_fei, name: 华妃}
+      - {id: empress_yixiu, name: 皇后}
+      - {id: an_lingrong, name: 安陵容}
+      - {id: shen_meizhuang, name: 沈眉庄}
+      - {id: su_peisheng, name: 苏培盛}
+
+  - world_id: world_007
+    title: 天龙八部
+    language: zh
+    status: planned
+    snapshot_hint: 六名角色均活跃的统一章节待人工锁定
+    characters:
+      - {id: xiao_feng, name: 萧峰}
+      - {id: duan_yu, name: 段誉}
+      - {id: xu_zhu, name: 虚竹}
+      - {id: murong_fu, name: 慕容复}
+      - {id: wang_yuyan, name: 王语嫣}
+      - {id: jiumozhi, name: 鸠摩智}
+
+  - world_id: world_008
+    title: 鹿鼎记
+    language: zh
+    status: planned
+    snapshot_hint: 六名角色均活跃的统一章节待人工锁定
+    characters:
+      - {id: wei_xiaobao, name: 韦小宝}
+      - {id: kangxi, name: 康熙}
+      - {id: chen_jinnan, name: 陈近南}
+      - {id: shuang_er, name: 双儿}
+      - {id: a_ke, name: 阿珂}
+      - {id: su_quan, name: 苏荃}
+
+  - world_id: world_009
+    title: 武林外传
+    language: zh
+    status: planned
+    snapshot_hint: 主要成员已聚齐且莫小贝仍在同福客栈
+    characters:
+      - {id: tong_xiangyu, name: 佟湘玉}
+      - {id: bai_zhantang, name: 白展堂}
+      - {id: guo_furong, name: 郭芙蓉}
+      - {id: lv_xiucai, name: 吕秀才}
+      - {id: li_dazui, name: 李大嘴}
+      - {id: mo_xiaobei, name: 莫小贝}
+
+  - world_id: world_010
+    title: 亮剑
+    language: zh
+    status: planned
+    snapshot_hint: 李云龙与赵刚共同任职、秀芹仍在世的剧集范围
+    characters:
+      - {id: li_yunlong, name: 李云龙}
+      - {id: zhao_gang, name: 赵刚}
+      - {id: chu_yunfei, name: 楚云飞}
+      - {id: kong_jie, name: 孔捷}
+      - {id: ding_wei, name: 丁伟}
+      - {id: xiuqin, name: 秀芹}
+
+  - world_id: world_011
+    title: 狂飙
+    language: zh
+    status: planned
+    snapshot_hint: 2000年除夕冲突后的早期阶段
+    characters:
+      - {id: an_xin, name: 安欣}
+      - {id: gao_qiqiang, name: 高启强}
+      - {id: li_xiang, name: 李响}
+      - {id: tang_xiaolong, name: 唐小龙}
+      - {id: tang_xiaohu, name: 唐小虎}
+      - {id: meng_yu, name: 孟钰}
+
+  - world_id: world_012
+    title: 家有儿女
+    language: zh
+    status: planned
+    snapshot_hint: 重组家庭稳定生活的早期剧集
+    characters:
+      - {id: liu_mei, name: 刘梅}
+      - {id: xia_donghai, name: 夏东海}
+      - {id: liu_xing, name: 刘星}
+      - {id: xia_xue, name: 夏雪}
+      - {id: xia_yu, name: 夏雨}
+      - {id: laolao, name: 姥姥}
+
+  - world_id: world_013
+    title: 唐人街探案
+    language: zh
+    status: planned
+    snapshot_hint: 第一部电影案件调查中段
+    characters:
+      - {id: qin_feng, name: 秦风}
+      - {id: tang_ren, name: 唐仁}
+      - {id: si_nuo, name: 思诺}
+      - {id: a_xiang, name: 阿香}
+      - {id: kun_tai, name: 坤泰}
+      - {id: huang_lan_deng, name: 黄兰登}
+
+  - world_id: world_014
+    title: 九品芝麻官
+    language: zh
+    status: planned
+    snapshot_hint: 包龙星开始重查戚家案件之后
+    characters:
+      - {id: bao_longxing, name: 包龙星}
+      - {id: chang_wei, name: 常威}
+      - {id: fang_tangjing, name: 方唐镜}
+      - {id: qi_qinshi, name: 戚秦氏}
+      - {id: lai_fu, name: 来福}
+      - {id: bao_tou, name: 豹头}
+
+  - world_id: world_015
+    title: 笑傲江湖
+    language: zh
+    status: planned
+    snapshot_hint: 六名角色状态兼容的版本与章节待人工锁定
+    characters:
+      - {id: linghu_chong, name: 令狐冲}
+      - {id: ren_yingying, name: 任盈盈}
+      - {id: yue_buqun, name: 岳不群}
+      - {id: lin_pingzhi, name: 林平之}
+      - {id: dongfang_bubai, name: 东方不败}
+      - {id: yilin, name: 仪琳}
+
+  - world_id: world_016
+    title: 还珠格格
+    language: zh
+    status: planned
+    snapshot_hint: 紫薇身份已向核心同伴公开但尚未完成正式确认
+    characters:
+      - {id: xiao_yanzi, name: 小燕子}
+      - {id: ziwei, name: 紫薇}
+      - {id: qianlong, name: 乾隆}
+      - {id: yongqi, name: 永琪}
+      - {id: er_kang, name: 尔康}
+      - {id: empress_huanzhu, name: 皇后}
+
+  - world_id: world_017
+    title: 原神·璃月/稻妻跨区角色集
+    language: zh
+    status: planned
+    snapshot_hint: 跨区共同时间点待人工锁定；优先考虑拆分世界
+    characters:
+      - {id: zhongli, name: 钟离}
+      - {id: hu_tao, name: 胡桃}
+      - {id: raiden_shogun, name: 雷电将军}
+      - {id: kamisato_ayaka, name: 神里绫华}
+      - {id: wanderer, name: 流浪者}
+      - {id: paimon, name: 派蒙}
+
+  - world_id: world_018
+    title: Friends
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range
+    characters:
+      - {id: rachel_green, name: Rachel Green}
+      - {id: monica_geller, name: Monica Geller}
+      - {id: phoebe_buffay, name: Phoebe Buffay}
+      - {id: joey_tribbiani, name: Joey Tribbiani}
+      - {id: chandler_bing, name: Chandler Bing}
+      - {id: ross_geller, name: Ross Geller}
+      - {id: gunther, name: Gunther}
+
+  - world_id: world_019
+    title: The Big Bang Theory
+    language: en
+    status: planned
+    snapshot_hint: A fixed episode range after all seven characters are active
+    characters:
+      - {id: sheldon_cooper, name: Sheldon Cooper}
+      - {id: leonard_hofstadter, name: Leonard Hofstadter}
+      - {id: penny, name: Penny}
+      - {id: howard_wolowitz, name: Howard Wolowitz}
+      - {id: raj_koothrappali, name: Raj Koothrappali}
+      - {id: amy_farrah_fowler, name: Amy Farrah Fowler}
+      - {id: bernadette_rostenkowski, name: Bernadette Rostenkowski}
+
+  - world_id: world_020
+    title: A Game of Thrones
+    language: en
+    status: planned
+    snapshot_hint: Season 1 before Eddard Stark is arrested
+    characters:
+      - {id: eddard_stark, name: Eddard Stark}
+      - {id: catelyn_stark, name: Catelyn Stark}
+      - {id: arya_stark, name: Arya Stark}
+      - {id: tyrion_lannister, name: Tyrion Lannister}
+      - {id: jon_snow, name: Jon Snow}
+      - {id: daenerys_targaryen, name: Daenerys Targaryen}
+      - {id: cersei_lannister, name: Cersei Lannister}
+
+  - world_id: world_021
+    title: The Lord of the Rings
+    language: en
+    status: planned
+    snapshot_hint: Before the Fellowship enters Moria
+    characters:
+      - {id: frodo_baggins, name: Frodo Baggins}
+      - {id: samwise_gamgee, name: Samwise Gamgee}
+      - {id: gandalf, name: Gandalf}
+      - {id: aragorn, name: Aragorn}
+      - {id: legolas, name: Legolas}
+      - {id: gimli, name: Gimli}
+      - {id: boromir, name: Boromir}
+
+  - world_id: world_022
+    title: Sherlock — A Study in Pink
+    language: en
+    status: planned
+    snapshot_hint: During the first case before the final confrontation
+    characters:
+      - {id: sherlock_holmes, name: Sherlock Holmes}
+      - {id: john_watson, name: John Watson}
+      - {id: greg_lestrade, name: Greg Lestrade}
+      - {id: mycroft_holmes, name: Mycroft Holmes}
+      - {id: molly_hooper, name: Molly Hooper}
+      - {id: mrs_hudson, name: Mrs Hudson}
+
+  - world_id: world_023
+    title: The Matrix
+    language: en
+    status: planned
+    snapshot_hint: After Neo joins the Nebuchadnezzar and before Cypher's betrayal
+    characters:
+      - {id: neo, name: Neo}
+      - {id: trinity, name: Trinity}
+      - {id: morpheus, name: Morpheus}
+      - {id: agent_smith, name: Agent Smith}
+      - {id: cypher, name: Cypher}
+      - {id: the_oracle, name: The Oracle}
+
+  - world_id: world_024
+    title: Twilight
+    language: en
+    status: planned
+    snapshot_hint: After Bella learns the Cullen secret and before the final hunt
+    characters:
+      - {id: bella_swan, name: Bella Swan}
+      - {id: edward_cullen, name: Edward Cullen}
+      - {id: jacob_black, name: Jacob Black}
+      - {id: alice_cullen, name: Alice Cullen}
+      - {id: carlisle_cullen, name: Carlisle Cullen}
+      - {id: rosalie_hale, name: Rosalie Hale}
+
+  - world_id: world_025
+    title: The Hunger Games
+    language: en
+    status: planned
+    snapshot_hint: Immediately before the first Games begin
+    characters:
+      - {id: katniss_everdeen, name: Katniss Everdeen}
+      - {id: peeta_mellark, name: Peeta Mellark}
+      - {id: gale_hawthorne, name: Gale Hawthorne}
+      - {id: haymitch_abernathy, name: Haymitch Abernathy}
+      - {id: effie_trinket, name: Effie Trinket}
+      - {id: president_snow, name: President Snow}
+
+  - world_id: world_026
+    title: My Little Pony — Friendship Is Magic
+    language: en
+    status: planned
+    snapshot_hint: A fixed early-season episode range after the group forms
+    characters:
+      - {id: twilight_sparkle, name: Twilight Sparkle}
+      - {id: applejack, name: Applejack}
+      - {id: pinkie_pie, name: Pinkie Pie}
+      - {id: rainbow_dash, name: Rainbow Dash}
+      - {id: rarity, name: Rarity}
+      - {id: fluttershy, name: Fluttershy}
+
+  - world_id: world_027
+    title: Lucifer
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range
+    characters:
+      - {id: lucifer_morningstar, name: Lucifer Morningstar}
+      - {id: chloe_decker, name: Chloe Decker}
+      - {id: dan_espinoza, name: Dan Espinoza}
+      - {id: mazikeen, name: Mazikeen}
+      - {id: amenadiel, name: Amenadiel}
+      - {id: linda_martin, name: Linda Martin}
+
+  - world_id: world_028
+    title: Hannibal
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range
+    characters:
+      - {id: hannibal_lecter, name: Hannibal Lecter}
+      - {id: will_graham, name: Will Graham}
+      - {id: jack_crawford, name: Jack Crawford}
+      - {id: alana_bloom, name: Alana Bloom}
+      - {id: abigail_hobbs, name: Abigail Hobbs}
+      - {id: beverly_katz, name: Beverly Katz}
+
+  - world_id: world_029
+    title: Rick and Morty
+    language: en
+    status: planned
+    snapshot_hint: A fixed early-season episode range
+    characters:
+      - {id: rick_sanchez, name: Rick Sanchez}
+      - {id: morty_smith, name: Morty Smith}
+      - {id: beth_smith, name: Beth Smith}
+      - {id: jerry_smith, name: Jerry Smith}
+      - {id: summer_smith, name: Summer Smith}
+      - {id: birdperson, name: Birdperson}
+
+  - world_id: world_030
+    title: Once Upon a Time
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range before the curse breaks
+    characters:
+      - {id: emma_swan, name: Emma Swan}
+      - {id: henry_mills, name: Henry Mills}
+      - {id: regina_mills, name: Regina Mills}
+      - {id: snow_white, name: Snow White}
+      - {id: prince_charming, name: Prince Charming}
+      - {id: rumplestiltskin, name: Rumplestiltskin}
+
+  - world_id: world_031
+    title: Grey's Anatomy
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range
+    characters:
+      - {id: meredith_grey, name: Meredith Grey}
+      - {id: cristina_yang, name: Cristina Yang}
+      - {id: derek_shepherd, name: Derek Shepherd}
+      - {id: izzie_stevens, name: Izzie Stevens}
+      - {id: george_omalley, name: George O'Malley}
+      - {id: miranda_bailey, name: Miranda Bailey}
+
+  - world_id: world_032
+    title: How I Met Your Mother
+    language: en
+    status: planned
+    snapshot_hint: A fixed Season 1 episode range
+    characters:
+      - {id: ted_mosby, name: Ted Mosby}
+      - {id: robin_scherbatsky, name: Robin Scherbatsky}
+      - {id: barney_stinson, name: Barney Stinson}
+      - {id: lily_aldrin, name: Lily Aldrin}
+      - {id: marshall_eriksen, name: Marshall Eriksen}
+      - {id: ranjit, name: Ranjit}

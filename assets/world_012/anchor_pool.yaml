@@ -1,0 +1,285 @@
+world_id: world_012
+source: 电视剧《家有儿女》第一季早期剧集及官方公开剧情资料
+events:
+- id: ae_001
+  fact: 刘梅与夏东海组建重组家庭后，一家人开始在同一住所共同生活。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  state_change: 家庭结构从两个单亲家庭变为重组家庭共同居住。
+  cf_edit: 如果双方未决定共同居住，则早期家庭日常不会在同一空间展开。
+  anchor_for:
+  - liu_mei
+  - xia_donghai
+- id: ae_002
+  fact: 刘梅作为母亲承担较多日常饮食和家务安排。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 家庭中形成刘梅主导家务的分工模式。
+  cf_edit: 如果夏东海承担主要家务，则厨房和餐厅场景会更多围绕他展开。
+  anchor_for:
+  - liu_mei
+- id: ae_003
+  fact: 夏东海以父亲身份参与子女教育和家庭沟通。
+  known_by:
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 父亲角色进入重组家庭日常教育场景。
+  cf_edit: 如果夏东海长期不参与家庭教育，则亲子沟通事件将主要由刘梅独自面对。
+  anchor_for:
+  - xia_donghai
+- id: ae_004
+  fact: 刘星作为刘梅的儿子，在重组家庭中与夏雪、夏雨成为兄弟姐妹。
+  known_by:
+  - liu_xing
+  - liu_mei
+  - xia_donghai
+  - xia_xue
+  - xia_yu
+  state_change: 刘星从独子状态进入多子女家庭关系。
+  cf_edit: 如果刘星没有随刘梅进入新家庭，则三人互动关系不会形成。
+  anchor_for:
+  - liu_xing
+- id: ae_005
+  fact: 夏雪作为夏东海的女儿，进入重组家庭后与刘梅形成继母女关系。
+  known_by:
+  - xia_xue
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_yu
+  state_change: 夏雪生活中出现继母角色和新的兄弟姐妹。
+  cf_edit: 如果夏雪没有进入重组家庭共同生活，则刘梅与夏雪的日常互动不会频繁发生。
+  anchor_for:
+  - xia_xue
+- id: ae_006
+  fact: 夏雨作为年纪较小的孩子，在家庭中常受到哥哥姐姐关注。
+  known_by:
+  - xia_yu
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  state_change: 家庭中形成对年幼成员的照顾关系。
+  cf_edit: 如果夏雨年龄与刘星相仿，则被照顾的互动模式会减弱。
+  anchor_for:
+  - xia_yu
+- id: ae_007
+  fact: 刘梅在做饭时间使用厨房准备家庭餐食。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 厨房成为刘梅高频活动空间，餐食准备成为家庭固定环节。
+  cf_edit: 如果家庭选择长期在外就餐，则厨房不会高频出现在日常事件中。
+  anchor_for:
+  - liu_mei
+- id: ae_008
+  fact: 夏东海在客厅与孩子们进行交流或调解矛盾。
+  known_by:
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 客厅成为父亲参与家庭沟通的重要地点。
+  cf_edit: 如果夏东海常在自己房间处理事情，则客厅亲子交流事件会减少。
+  anchor_for:
+  - xia_donghai
+- id: ae_009
+  fact: 刘星在家庭成员面前表现出调皮、好动的性格。
+  known_by:
+  - liu_xing
+  - liu_mei
+  - xia_donghai
+  - xia_xue
+  - xia_yu
+  state_change: 家庭对刘星的日常印象与其活泼行为相关联。
+  cf_edit: 如果刘星性格安静，则许多因调皮引发的事件不会发生。
+  anchor_for:
+  - liu_xing
+- id: ae_010
+  fact: 夏雪在家庭中表现出较成熟的言行，并重视学习。
+  known_by:
+  - xia_xue
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_yu
+  state_change: 夏雪在家庭中的形象与认真、成熟相关联。
+  cf_edit: 如果夏雪对学习不重视，则围绕作业和成绩的事件会减少。
+  anchor_for:
+  - xia_xue
+- id: ae_011
+  fact: 夏雨在家庭中提出与年龄相关的需求或问题。
+  known_by:
+  - xia_yu
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  state_change: 家庭需要回应夏雨作为年幼成员的需求。
+  cf_edit: 如果夏雨很少表达需求，则其他成员主动照顾他的事件会减少。
+  anchor_for:
+  - xia_yu
+- id: ae_012
+  fact: 刘梅与夏东海商量家庭事务，包括孩子的管教和生活安排。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  state_change: 夫妻形成共同商议家庭事务的沟通机制。
+  cf_edit: 如果夫妻各自决定家庭事务，则共同商量场景会明显减少。
+  anchor_for:
+  - liu_mei
+  - xia_donghai
+- id: ae_013
+  fact: 刘星在写作业时表现出拖延或分心。
+  known_by:
+  - liu_xing
+  - liu_mei
+  - xia_donghai
+  state_change: 作业问题成为家庭反复出现的关注点。
+  cf_edit: 如果刘星能独立完成作业，则不会因此引发家庭催促和管教。
+  anchor_for:
+  - liu_xing
+- id: ae_014
+  fact: 夏雪在书房或孩子卧室完成学习任务。
+  known_by:
+  - xia_xue
+  - xia_donghai
+  - liu_mei
+  state_change: 夏雪的学习行为固定在家庭学习空间中。
+  cf_edit: 如果夏雪常在客厅学习，则学习空间事件会转移到客厅。
+  anchor_for:
+  - xia_xue
+- id: ae_015
+  fact: 夏雨在家庭餐桌上提出与食物相关的偏好或要求。
+  known_by:
+  - xia_yu
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  state_change: 餐桌成为夏雨表达需求及家庭回应需求的场景。
+  cf_edit: 如果夏雨不挑食或无特殊偏好，则此类餐桌讨论会减少。
+  anchor_for:
+  - xia_yu
+- id: ae_016
+  fact: 刘梅和夏东海在客厅讨论如何协调对孩子的教育方式。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  state_change: 夫妻教育观念进入日常沟通议题。
+  cf_edit: 如果夫妻教育方式完全一致，则相关讨论冲突会减少。
+  anchor_for:
+  - liu_mei
+  - xia_donghai
+- id: ae_017
+  fact: 小区院子成为家庭成员或邻里偶遇互动的场所。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 外部活动空间进入家庭生活半径。
+  cf_edit: 如果家庭很少出门，则小区院子场景不会成为日常锚点。
+  anchor_for:
+  - liu_xing
+  - xia_xue
+  - xia_yu
+- id: ae_018
+  fact: 刘梅对孩子的生活习惯提出要求，如作息、卫生或饮食。
+  known_by:
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  - xia_donghai
+  state_change: 家庭形成母亲主导生活习惯管理的模式。
+  cf_edit: 如果刘梅不主动管理生活习惯，则相关管教事件会转移到夏东海或不被强调。
+  anchor_for:
+  - liu_mei
+- id: ae_019
+  fact: 夏东海在孩子与刘梅之间充当沟通缓冲或调解者。
+  known_by:
+  - xia_donghai
+  - liu_mei
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 父亲在家庭冲突中起到中介角色。
+  cf_edit: 如果夏东海不介入调解，则部分母子或继母女矛盾会直接升级。
+  anchor_for:
+  - xia_donghai
+- id: ae_020
+  fact: 刘星与夏雪、夏雨在家中发生日常小争执。
+  known_by:
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  - liu_mei
+  - xia_donghai
+  state_change: 兄弟姐妹间的摩擦成为家庭日常事件。
+  cf_edit: 如果三人很少发生争执，则家庭调解类事件会显著减少。
+  anchor_for:
+  - liu_xing
+  - xia_xue
+  - xia_yu
+- id: ae_021
+  fact: 夏雪与刘梅之间围绕生活安排出现意见分歧。
+  known_by:
+  - xia_xue
+  - liu_mei
+  - xia_donghai
+  state_change: 继母女关系进入磨合阶段。
+  cf_edit: 如果夏雪完全接受刘梅的安排，则继母女冲突事件不会成为锚点。
+  anchor_for:
+  - xia_xue
+  - liu_mei
+- id: ae_022
+  fact: 夏雨在需要帮助时首先寻找刘梅或夏东海。
+  known_by:
+  - xia_yu
+  - liu_mei
+  - xia_donghai
+  state_change: 夏雨形成对主要照顾者的依赖路径。
+  cf_edit: 如果夏雨更常找哥哥姐姐帮忙，则亲子援助事件会转向兄弟姐妹互动。
+  anchor_for:
+  - xia_yu
+- id: ae_023
+  fact: 刘星与夏东海之间出现关于学习和行为的沟通。
+  known_by:
+  - liu_xing
+  - xia_donghai
+  - liu_mei
+  state_change: 父亲角色进入对刘星的教育管理。
+  cf_edit: 如果夏东海不直接与刘星沟通，则刘星行为问题主要由刘梅处理。
+  anchor_for:
+  - liu_xing
+  - xia_donghai
+- id: ae_024
+  fact: 家庭在晚餐时间聚集在餐厅，形成固定的共同用餐场景。
+  known_by:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu
+  state_change: 晚餐时段成为全家信息交流和情感互动的重要节点。
+  cf_edit: 如果家庭成员作息时间完全错开，则共同用餐事件会消失。
+  anchor_for:
+  - liu_mei
+  - xia_donghai
+  - liu_xing
+  - xia_xue
+  - xia_yu

@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_sanzang:
+      level: loyal
+      basis_event: initial_state
+    sun_wukong:
+      level: neutral
+      basis_event: initial_state
+    zhu_bajie:
+      level: neutral
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    baigujing:
+      level: hostile
+      basis_event: initial_state
+    heihujing:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 继续挑担随唐僧西行，不因山中变故掉队。
+    status: 进行中
+    basis_event: initial_state
+  - id: goal_002
+    content: 在师父与大师兄因两次打死人形而起争执时，避免队伍彻底分裂。
+    status: 进行中
+    basis_event: initial_state
+  - id: goal_003
+    content: 对再出现的可疑人物保持提防，不轻易让师父接近。
+    status: 进行中
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 唐僧师徒四人已进入白虎岭，孙悟空曾在地上画圈并嘱咐不要离开。
+      status: active
+      visibility: self_and_party
+      source_event: initial_state
+    knowledge_002:
+      content: 村姑和老妇人先后出现，孙悟空两次声称其是妖怪并打死，唐僧与孙悟空因此严重失和。
+      status: active
+      visibility: self_and_party
+      source_event: initial_state
+    knowledge_003:
+      content: 猪八戒几次说孙悟空打死的是人，并指其用变化骗师父，唐僧因此念咒，甚至曾要赶走孙悟空。
+      status: active
+      visibility: self_and_party
+      source_event: initial_state
+    knowledge_004:
+      content: 自己无法靠眼力分辨村姑和老妇人是否真是妖怪。
+      status: active
+      visibility: self_only
+      source_event: initial_state
+    knowledge_005:
+      content: 山中出现妖怪变化的可能性很高，但第三次变化尚未出现。
+      status: active
+      visibility: self_and_party
+      source_event: initial_state
+environment:
+  health:
+    sha_wujing: 100
+    player: 100
+  inventories:
+    sha_wujing: []
+    player: []
+  locations:
+    sha_wujing: shandao
+    player: shandao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

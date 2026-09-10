@@ -1,0 +1,241 @@
+world_id: world_015
+source: 金庸《笑傲江湖》修订本正文
+events:
+- id: anchor_001
+  fact: 令狐冲在思过崖习得独孤九剑。
+  known_by:
+  - linghu_chong
+  state_change: 令狐冲从受内伤困扰的华山弟子变为掌握上乘剑法者，剑术能力大幅提升。
+  cf_edit: 若风清扬未在思过崖出现，令狐冲就无法习得独孤九剑，只能继续依靠原有华山剑法应对强敌。
+  anchor_for:
+  - linghu_chong
+- id: anchor_002
+  fact: 令狐冲在洛阳结识任盈盈，并接受她安排的琴曲疗伤。
+  known_by:
+  - linghu_chong
+  - ren_yingying
+  state_change: 令狐冲获得任盈盈信任与帮助，任盈盈从暗中关注转为直接介入令狐冲的疗伤与处境。
+  cf_edit: 若任盈盈未在洛阳现身，令狐冲将缺少琴曲疗伤与后续庇护，其江湖处境会显著恶化。
+  anchor_for:
+  - linghu_chong
+  - ren_yingying
+- id: anchor_003
+  fact: 令狐冲担任恒山派掌门。
+  known_by:
+  - linghu_chong
+  - ren_yingying
+  - yilin
+  state_change: 令狐冲由华山弃徒身份转为恒山派掌门，获得一派之主的名分与责任。
+  cf_edit: 若恒山派未在危局中推举令狐冲，他便不会拥有掌门身份，后续号令恒山弟子的情节将不会发生。
+  anchor_for:
+  - linghu_chong
+  - yilin
+- id: anchor_004
+  fact: 令狐冲与任盈盈并肩对抗东方不败。
+  known_by:
+  - linghu_chong
+  - ren_yingying
+  - dongfang_bubai
+  state_change: 令狐冲与任盈盈形成同生共死的战斗联盟，东方不败的权势受到直接挑战。
+  cf_edit: 若任盈盈未与令狐冲联手，便难以牵制东方不败，令狐冲将独自面对更强压迫。
+  anchor_for:
+  - linghu_chong
+  - ren_yingying
+  - dongfang_bubai
+- id: anchor_005
+  fact: 任盈盈出手为令狐冲缓解内伤。
+  known_by:
+  - linghu_chong
+  - ren_yingying
+  state_change: 令狐冲伤势得到阶段性控制，任盈盈对令狐冲的影响力进一步加深。
+  cf_edit: 若任盈盈没有及时出手，令狐冲可能因内伤发作而失去后续行动能力。
+  anchor_for:
+  - linghu_chong
+  - ren_yingying
+- id: anchor_006
+  fact: 任盈盈为救令狐冲甘愿受囚于少林。
+  known_by:
+  - linghu_chong
+  - ren_yingying
+  state_change: 任盈盈由自由之身转为囚禁状态，令狐冲因此欠下重大恩情。
+  cf_edit: 若任盈盈未选择以自身为质，令狐冲的命便无法保全，但她也不会因此陷入少林囚禁。
+  anchor_for:
+  - ren_yingying
+  - linghu_chong
+- id: anchor_007
+  fact: 任盈盈被日月教众人视为圣姑。
+  known_by:
+  - ren_yingying
+  - dongfang_bubai
+  state_change: 任盈盈在日月教内部拥有特殊身份，能够调度部分教众。
+  cf_edit: 若任盈盈没有圣姑身份，她便难以调动教众为令狐冲奔走。
+  anchor_for:
+  - ren_yingying
+- id: anchor_008
+  fact: 任盈盈参与黑木崖对东方不败的围攻。
+  known_by:
+  - ren_yingying
+  - dongfang_bubai
+  - linghu_chong
+  state_change: 任盈盈由被动躲避黑木崖势力转为主动反击，推动日月教权力变更。
+  cf_edit: 若任盈盈没有参与围攻，东方不败虽仍会与令狐冲交手，但黑木崖势力倾覆的过程会缺少她的调度。
+  anchor_for:
+  - ren_yingying
+  - dongfang_bubai
+- id: anchor_009
+  fact: 岳不群将林平之收为华山弟子。
+  known_by:
+  - yue_buqun
+  - lin_pingzhi
+  state_change: 林平之从落难公子转为华山门徒，岳不群获得接近辟邪剑谱的途径。
+  cf_edit: 若岳不群未收林平之入门，林平之便不会进入华山，岳不群也难以借他追查剑谱。
+  anchor_for:
+  - yue_buqun
+  - lin_pingzhi
+- id: anchor_010
+  fact: 岳不群取得辟邪剑谱并开始暗中修炼。
+  known_by:
+  - yue_buqun
+  state_change: 岳不群由华山掌门变为自宫练剑者，武功大进但心性与身体发生重大变化。
+  cf_edit: 若岳不群始终拿不到辟邪剑谱，他便不会以自残方式追求速成武功。
+  anchor_for:
+  - yue_buqun
+- id: anchor_011
+  fact: 岳不群与令狐冲师徒关系破裂。
+  known_by:
+  - yue_buqun
+  - linghu_chong
+  state_change: 令狐冲彻底失去华山弟子身份，岳不群也失去对令狐冲的师长约束。
+  cf_edit: 若岳不群没有公开决裂，令狐冲仍会受华山门规牵制，难以接任恒山掌门。
+  anchor_for:
+  - yue_buqun
+  - linghu_chong
+- id: anchor_012
+  fact: 岳不群在五岳剑派合并中争夺权力。
+  known_by:
+  - yue_buqun
+  - linghu_chong
+  - yilin
+  state_change: 岳不群从华山掌门进一步谋求五岳剑派主导权，成为公开的权谋竞争者。
+  cf_edit: 若岳不群没有暗中布局，五岳合并局面将缺少他的强力操控。
+  anchor_for:
+  - yue_buqun
+- id: anchor_013
+  fact: 林平之因家传辟邪剑谱被岳不群设计接近。
+  known_by:
+  - yue_buqun
+  - lin_pingzhi
+  state_change: 林平之从普通华山弟子变为被利用的棋子，逐渐察觉岳不群对剑谱的图谋。
+  cf_edit: 若岳不群对辟邪剑谱没有企图，林平之便不会长期陷入被师长算计的处境。
+  anchor_for:
+  - lin_pingzhi
+  - yue_buqun
+- id: anchor_014
+  fact: 林平之练成辟邪剑法后向余沧海复仇。
+  known_by:
+  - lin_pingzhi
+  state_change: 林平之由被追杀者转为复仇者，实力足以对抗曾经不可战胜的敌人。
+  cf_edit: 若林平之没有练成辟邪剑法，他即便找到余沧海也无法完成复仇。
+  anchor_for:
+  - lin_pingzhi
+- id: anchor_015
+  fact: 林平之与岳灵珊成亲。
+  known_by:
+  - lin_pingzhi
+  - yue_buqun
+  state_change: 林平之正式成为岳不群女婿，与华山派的关系更紧密也更具冲突。
+  cf_edit: 若林平之没有与岳灵珊成亲，他对岳不群阴谋的发现可能更晚。
+  anchor_for:
+  - lin_pingzhi
+  - yue_buqun
+- id: anchor_016
+  fact: 林平之发现岳不群窃取剑谱并最终与之反目。
+  known_by:
+  - lin_pingzhi
+  - yue_buqun
+  state_change: 林平之与岳不群由师徒姻亲变为敌对者，林平之对华山派彻底失去信任。
+  cf_edit: 若林平之没有发现岳不群窃取剑谱，他可能继续被蒙蔽并留在华山体系内。
+  anchor_for:
+  - lin_pingzhi
+  - yue_buqun
+- id: anchor_017
+  fact: 东方不败依靠葵花宝典成为日月教最高统治者。
+  known_by:
+  - dongfang_bubai
+  - ren_yingying
+  state_change: 东方不败完成夺权，日月教权力格局发生根本改变。
+  cf_edit: 若东方不败没有练成葵花宝典，他便难以压服教内旧势力并巩固统治。
+  anchor_for:
+  - dongfang_bubai
+- id: anchor_018
+  fact: 东方不败在黑木崖被令狐冲、任盈盈等人围攻致死。
+  known_by:
+  - dongfang_bubai
+  - linghu_chong
+  - ren_yingying
+  state_change: 日月教最高统治者死亡，黑木崖原有权力中心瓦解。
+  cf_edit: 若东方不败没有因修炼葵花宝典而性情孤居，围攻者或许更难接近并斩杀他。
+  anchor_for:
+  - dongfang_bubai
+  - linghu_chong
+  - ren_yingying
+- id: anchor_019
+  fact: 仪琳在江湖中屡次救助令狐冲。
+  known_by:
+  - yilin
+  - linghu_chong
+  state_change: 令狐冲多次得到仪琳帮助，仪琳对令狐冲的情意也不断加深。
+  cf_edit: 若仪琳没有在关键时刻救助令狐冲，令狐冲可能在受伤或困局中无法脱身。
+  anchor_for:
+  - yilin
+  - linghu_chong
+- id: anchor_020
+  fact: 仪琳面对令狐冲时因出家人身份克制情意。
+  known_by:
+  - yilin
+  - linghu_chong
+  state_change: 仪琳虽对令狐冲倾心，但始终以佛门身份约束自己，未跨过身份界限。
+  cf_edit: 若仪琳不是尼姑身份，她对令狐冲的感情表达便不会如此压抑。
+  anchor_for:
+  - yilin
+  - linghu_chong
+- id: anchor_021
+  fact: 令狐冲在思过崖经历剑法突破后仍承受内伤。
+  known_by:
+  - linghu_chong
+  state_change: 令狐冲剑法虽强，但内伤问题仍然存在，形成武功与身体状态的矛盾。
+  cf_edit: 若令狐冲没有在思过崖练剑时受伤，他便不会长期同时拥有高强剑法和重内伤。
+  anchor_for:
+  - linghu_chong
+- id: anchor_022
+  fact: 任盈盈在令狐冲接任恒山掌门过程中提供支持。
+  known_by:
+  - ren_yingying
+  - linghu_chong
+  - yilin
+  state_change: 任盈盈以实际行动支持令狐冲的新身份，恒山派与令狐冲的联系更稳固。
+  cf_edit: 若任盈盈没有提供支持，令狐冲虽仍可能接任，但难以迅速稳住恒山局面。
+  anchor_for:
+  - ren_yingying
+  - linghu_chong
+  - yilin
+- id: anchor_023
+  fact: 岳不群对令狐冲的声名与武功心生忌惮。
+  known_by:
+  - yue_buqun
+  - linghu_chong
+  state_change: 岳不群与令狐冲的关系由师徒裂痕升级为潜在对立，岳不群更倾向压制令狐冲。
+  cf_edit: 若令狐冲没有迅速成名并习得独孤九剑，岳不群便不会将他视为威胁。
+  anchor_for:
+  - yue_buqun
+  - linghu_chong
+- id: anchor_024
+  fact: 东方不败对任盈盈仍保留一定忌惮。
+  known_by:
+  - dongfang_bubai
+  - ren_yingying
+  state_change: 东方不败虽掌权，但未完全消除任盈盈在教内的影响，双方维持危险平衡。
+  cf_edit: 若任盈盈没有教内旧部与圣姑身份，东方不败便不会对她有所顾忌。
+  anchor_for:
+  - dongfang_bubai
+  - ren_yingying

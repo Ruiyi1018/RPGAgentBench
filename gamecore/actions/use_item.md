@@ -6,9 +6,11 @@ parameters:
   item:
     type: string
     required: true
+    meaning: NPC当前持有且本轮实际使用的物品ID。
   target:
     type: string
     required: true
+    meaning: 该物品实际作用的角色或对象ID。
 updates:
   - environment.inventories
   - environment.health

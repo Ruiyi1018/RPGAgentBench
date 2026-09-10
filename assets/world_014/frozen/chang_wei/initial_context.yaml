@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bao_longxing:
+      level: hostile
+      basis_event: initial_state
+    fang_tangjing:
+      level: trusting
+      basis_event: initial_state
+    qi_qinshi:
+      level: hostile
+      basis_event: initial_state
+    lai_fu:
+      level: hostile
+      basis_event: initial_state
+    bao_tou:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_changwei_escape_charge
+    content: 让戚家案无法定到自己头上
+    status: active
+    basis_event: initial_state
+  - id: goal_changwei_neutralize_testimony
+    content: 阻止来福或戚秦氏的证词形成稳定攻击
+    status: active
+    basis_event: initial_state
+  - id: goal_changwei_undermine_evidence
+    content: 通过方唐镜削弱新发现物证的法律效力
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_changwei_case_reopened:
+      content: 包龙星已开始重查戚家案并要求提审自己
+      status: active
+      visibility: public
+      source_event: initial_state
+    know_changwei_denial:
+      content: 自己已在堂上否认所有指控
+      status: active
+      visibility: public
+      source_event: initial_state
+    know_changwei_fang_defense:
+      content: 方唐镜已以讼师身份介入并公开为其辩护
+      status: active
+      visibility: public
+      source_event: initial_state
+    know_changwei_witness_pressure:
+      content: 来福因惧怕自己而可能翻供或不敢说出核心真相
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_changwei_scene_cleaned:
+      content: 戚家已被安排人手清理过，部分现场证据被削弱
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    chang_wei: 100
+    player: 100
+  inventories:
+    chang_wei: []
+    player: []
+  locations:
+    chang_wei: loc_yamen
+    player: loc_yamen
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

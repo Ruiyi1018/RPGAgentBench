@@ -1,0 +1,284 @@
+world_id: world_006
+source: 电视剧《甄嬛传》
+events:
+- id: ev_001
+  fact: 甄嬛入宫后被安置在碎玉轩居住。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - hua_fei
+  - empress_yixiu
+  - su_peisheng
+  state_change: 甄嬛从宫外女子正式成为后宫妃嫔，并开始以碎玉轩为主要居所。
+  cf_edit: 如果甄嬛入宫时被安置在更偏远的宫室而非碎玉轩，她与后宫核心区域的日常往来会明显减少。
+  anchor_for:
+  - zhen_huan
+- id: ev_002
+  fact: 甄嬛因不愿卷入后宫争斗，初期称病避宠。
+  known_by:
+  - zhen_huan
+  - shen_meizhuang
+  state_change: 甄嬛在后宫权力结构中暂时保持低调，未立即进入皇帝视野。
+  cf_edit: 如果甄嬛初期没有称病避宠，而是直接参与宫掖走动，她会更早面对华妃一派的敌意。
+  anchor_for:
+  - zhen_huan
+- id: ev_003
+  fact: 沈眉庄入宫后获得皇帝看重，并在妃嫔中较早得到恩宠。
+  known_by:
+  - emperor_yongzheng
+  - zhen_huan
+  - shen_meizhuang
+  - hua_fei
+  - empress_yixiu
+  - an_lingrong
+  - su_peisheng
+  state_change: 沈眉庄在后宫的地位和存在感上升，成为华妃等人的注意对象。
+  cf_edit: 如果沈眉庄没有较早获得皇帝看重，华妃初期的主要压制对象可能更集中于其他新入宫妃嫔。
+  anchor_for:
+  - shen_meizhuang
+- id: ev_004
+  fact: 安陵容因出身较低，入宫初期在后宫中受轻视。
+  known_by:
+  - an_lingrong
+  - zhen_huan
+  - shen_meizhuang
+  - hua_fei
+  - empress_yixiu
+  state_change: 安陵容形成自卑与敏感心态，并促使她与甄嬛、沈眉庄等人走近。
+  cf_edit: 如果安陵容入宫后没有频繁因出身受轻视，她不会那么早对周围人的态度产生强烈防备。
+  anchor_for:
+  - an_lingrong
+- id: ev_005
+  fact: 甄嬛在御花园中偶然遇见皇帝，但当时不知其真实身份。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  state_change: 甄嬛与皇帝之间产生接触，这一相遇后续推动甄嬛受宠。
+  cf_edit: 如果甄嬛在御花园中没有遇见过皇帝，她获得恩宠的时间和路径会被明显推迟。
+  anchor_for:
+  - zhen_huan
+- id: ev_006
+  fact: 甄嬛得知御花园中所遇之人是皇帝后，开始获得显著恩宠。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - hua_fei
+  - empress_yixiu
+  - an_lingrong
+  - shen_meizhuang
+  - su_peisheng
+  state_change: 甄嬛从避宠状态转变为受宠妃嫔，后宫局势随之变化。
+  cf_edit: 如果皇帝没有在御花园与甄嬛发展出好感，甄嬛不会在此时迅速进入后宫权力中心。
+  anchor_for:
+  - zhen_huan
+  - emperor_yongzheng
+- id: ev_007
+  fact: 甄嬛受宠后，华妃对甄嬛产生较强敌意。
+  known_by:
+  - zhen_huan
+  - hua_fei
+  - emperor_yongzheng
+  - empress_yixiu
+  - su_peisheng
+  state_change: 华妃将甄嬛视为威胁，后宫对立从分散转为围绕甄嬛与华妃的阵营化。
+  cf_edit: 如果华妃没有因甄嬛受宠而敌意升级，甄嬛前期的处境会少很多来自翊坤宫的压力。
+  anchor_for:
+  - hua_fei
+  - zhen_huan
+- id: ev_008
+  fact: 皇后在明面上对甄嬛表现出一定照顾，同时观察后宫争斗。
+  known_by:
+  - empress_yixiu
+  - zhen_huan
+  - shen_meizhuang
+  - an_lingrong
+  state_change: 皇后建立相对温和的表象，使部分妃嫔容易视她为可依靠者。
+  cf_edit: 如果皇后在明面上没有表现出照顾甄嬛，甄嬛初期可能更依赖沈眉庄与安陵容形成小团体。
+  anchor_for:
+  - empress_yixiu
+- id: ev_009
+  fact: 苏培盛作为皇帝近侍，常在皇帝与妃嫔之间传递信息和安排事务。
+  known_by:
+  - emperor_yongzheng
+  - su_peisheng
+  - zhen_huan
+  - hua_fei
+  - empress_yixiu
+  state_change: 苏培盛在皇帝身边维持重要执行作用，其态度和安排会影响妃嫔与皇帝的接触。
+  cf_edit: 如果苏培盛没有在皇帝近前负责此类事务，很多妃嫔面见皇帝的机会和方式都会改变。
+  anchor_for:
+  - su_peisheng
+- id: ev_010
+  fact: 甄嬛与沈眉庄、安陵容形成较为亲近的姐妹关系。
+  known_by:
+  - zhen_huan
+  - shen_meizhuang
+  - an_lingrong
+  state_change: 三人彼此支持，在初期后宫环境中形成相对稳固的小团体。
+  cf_edit: 如果安陵容没有进入这个姐妹关系，沈眉庄和甄嬛在应对后宫压力时会缺少一个原本可依靠的盟友。
+  anchor_for:
+  - zhen_huan
+  - shen_meizhuang
+  - an_lingrong
+- id: ev_011
+  fact: 甄嬛在与皇帝互动中逐渐表现出不同于一般妃嫔的谈吐和见解。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  state_change: 皇帝对甄嬛的重视超出一般恩宠层面，开始与她进行更多交流。
+  cf_edit: 如果甄嬛没有在皇帝面前展现出这种谈吐，皇帝可能只将她视为普通受宠妃嫔。
+  anchor_for:
+  - zhen_huan
+- id: ev_012
+  fact: 沈眉庄在受宠后遭到华妃一方的排挤和对立。
+  known_by:
+  - shen_meizhuang
+  - hua_fei
+  - zhen_huan
+  - emperor_yongzheng
+  - empress_yixiu
+  state_change: 沈眉庄的处境从单纯得宠变为需要应对华妃势力打压。
+  cf_edit: 如果沈眉庄没有较早受宠并引起华妃注意，她会少一些来自华妃势力的直接针对。
+  anchor_for:
+  - shen_meizhuang
+- id: ev_013
+  fact: 甄嬛在宫中逐渐接触并了解皇后、华妃等高位妃嫔的权力格局。
+  known_by:
+  - zhen_huan
+  - empress_yixiu
+  - hua_fei
+  state_change: 甄嬛从初入宫时的陌生状态转为对后宫斗争结构和各方立场有基本认识。
+  cf_edit: 如果甄嬛长期避宠不涉足宫务往来，她对后宫权力格局的了解会严重滞后。
+  anchor_for:
+  - zhen_huan
+- id: ev_014
+  fact: 安陵容因自身处境不稳，对甄嬛和沈眉庄产生依赖感，但也容易受到外部拉拢影响。
+  known_by:
+  - an_lingrong
+  - zhen_huan
+  - shen_meizhuang
+  - empress_yixiu
+  state_change: 安陵容在姐妹关系与外部势力之间处于潜在摇摆状态。
+  cf_edit: 如果安陵容初期没有因出身和处境产生强烈依赖感，她面对外部拉拢时会更加保守。
+  anchor_for:
+  - an_lingrong
+- id: ev_015
+  fact: 皇帝对甄嬛的恩宠使甄嬛开始频繁进入养心殿等皇帝所在场所。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - su_peisheng
+  - hua_fei
+  - empress_yixiu
+  state_change: 甄嬛的活动范围扩大，与皇帝决策和日常活动产生更密切联系。
+  cf_edit: 如果皇帝没有让甄嬛频繁进入养心殿，甄嬛对皇帝的影响力不会在初期快速增长。
+  anchor_for:
+  - zhen_huan
+  - emperor_yongzheng
+- id: ev_016
+  fact: 华妃借后宫事务之便，对甄嬛等人施压，试图削弱甄嬛在皇帝心中的分量。
+  known_by:
+  - hua_fei
+  - zhen_huan
+  - shen_meizhuang
+  - empress_yixiu
+  - su_peisheng
+  state_change: 华妃从情绪敌意转向更实际的压制行为，后宫冲突进一步升级。
+  cf_edit: 如果华妃没有借事务之便施压，而只是保持敌意态度，甄嬛受宠后的阻力会小得多。
+  anchor_for:
+  - hua_fei
+- id: ev_017
+  fact: 甄嬛在应对华妃压力时，开始依托与皇帝的关系和姐妹支持寻找立足点。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - shen_meizhuang
+  - an_lingrong
+  - hua_fei
+  - empress_yixiu
+  state_change: 甄嬛从被动受宠转向有意识地维护自身位置，后宫权力竞争更加明显。
+  cf_edit: 如果甄嬛在受宠后没有积极应对华妃压力，她在后宫中的地位会更快受到削弱。
+  anchor_for:
+  - zhen_huan
+- id: ev_018
+  fact: 苏培盛在皇帝与甄嬛之间传递消息时，对甄嬛的态度较为配合。
+  known_by:
+  - su_peisheng
+  - zhen_huan
+  - emperor_yongzheng
+  state_change: 苏培盛在皇帝近前对甄嬛形成相对友好的实际关系，有助于甄嬛获得信息或机会。
+  cf_edit: 如果苏培盛对甄嬛保持冷淡或疏远，甄嬛在皇帝身边获取信息和安排会面的难度会增加。
+  anchor_for:
+  - su_peisheng
+  - zhen_huan
+- id: ev_019
+  fact: 沈眉庄受排挤后，仍与甄嬛保持互相关照。
+  known_by:
+  - shen_meizhuang
+  - zhen_huan
+  state_change: 沈眉庄与甄嬛的关系在外部压力下没有断裂，反而成为彼此的支撑。
+  cf_edit: 如果沈眉庄受排挤后疏远甄嬛，甄嬛在前期会失去最重要的盟友之一。
+  anchor_for:
+  - shen_meizhuang
+  - zhen_huan
+- id: ev_020
+  fact: 安陵容在甄嬛、沈眉庄与后宫其他势力之间，开始感受到身份差异带来的隔阂。
+  known_by:
+  - an_lingrong
+  - zhen_huan
+  - shen_meizhuang
+  state_change: 安陵容对姐妹关系的信任开始受到自身处境和外部环境的影响。
+  cf_edit: 如果安陵容没有强烈感受到身份差异带来的隔阂，她不会那么早对姐妹关系产生疑虑。
+  anchor_for:
+  - an_lingrong
+- id: ev_021
+  fact: 皇后利用后宫事务安排，逐渐促使华妃与甄嬛的矛盾公开化。
+  known_by:
+  - empress_yixiu
+  - hua_fei
+  - zhen_huan
+  - su_peisheng
+  state_change: 后宫冲突不再只是私下敌意，而开始通过具体事务公开显露。
+  cf_edit: 如果皇后没有利用事务安排推动双方冲突公开化，华妃与甄嬛的矛盾可能仍停留在私下较劲阶段。
+  anchor_for:
+  - empress_yixiu
+- id: ev_022
+  fact: 甄嬛在受宠过程中仍保持谨慎，并未完全依赖皇帝恩宠。
+  known_by:
+  - zhen_huan
+  - shen_meizhuang
+  - an_lingrong
+  state_change: 甄嬛在后宫中的行动带有一定自保意识，避免在形势不利时完全暴露弱点。
+  cf_edit: 如果甄嬛受宠后完全依赖皇帝恩宠而不再谨慎，她面对华妃和皇后压力时会更加被动。
+  anchor_for:
+  - zhen_huan
+- id: ev_023
+  fact: 后宫局势在甄嬛受宠后明显分化为支持或敌视甄嬛的不同力量。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - hua_fei
+  - empress_yixiu
+  - an_lingrong
+  - shen_meizhuang
+  - su_peisheng
+  state_change: 后宫权力斗争由分散状态进入以甄嬛为中心的集中冲突阶段。
+  cf_edit: 如果甄嬛受宠后后宫各方没有迅速分化，前期争斗会更加模糊而混乱。
+  anchor_for:
+  - zhen_huan
+  - hua_fei
+- id: ev_024
+  fact: 在甄嬛初次失宠之前，皇帝对甄嬛总体上仍保持明显恩宠。
+  known_by:
+  - zhen_huan
+  - emperor_yongzheng
+  - hua_fei
+  - empress_yixiu
+  - an_lingrong
+  - shen_meizhuang
+  - su_peisheng
+  state_change: 甄嬛在共享快照结束前仍处于受宠状态，但周边矛盾已逐渐累积。
+  cf_edit: 如果皇帝在此前已经不再明显恩宠甄嬛，那么初次失宠将提前，后续事态也不会形成当前格局。
+  anchor_for:
+  - zhen_huan
+  - emperor_yongzheng

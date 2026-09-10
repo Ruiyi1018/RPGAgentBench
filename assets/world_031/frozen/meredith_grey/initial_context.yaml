@@ -1,0 +1,73 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    cristina_yang:
+      level: trusting
+      basis_event: initial_state
+    derek_shepherd:
+      level: trusting
+      basis_event: initial_state
+    izzie_stevens:
+      level: trusting
+      basis_event: initial_state
+    george_omalley:
+      level: trusting
+      basis_event: initial_state
+    miranda_bailey:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g01
+    content: Complete assigned intern duties during the current shift without revealing
+      her relationship with Derek
+    status: active
+    basis_event: initial_state
+  - id: g02
+    content: Support Cristina during her medical emergency
+    status: active
+    basis_event: initial_state
+  - id: g03
+    content: Keep the emerging household with George and Izzie stable
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k01:
+      content: Derek Shepherd has a personal complication that affects their relationship
+      status: active
+      visibility: private
+      source_event: initial_state
+    k02:
+      content: Cristina Yang is competitive and eager for difficult surgical cases
+      status: active
+      visibility: private
+      source_event: initial_state
+    k03:
+      content: Emerald City Bar is where the interns gather to decompress
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k04:
+      content: Bailey disciplines interns for mistakes and expects them to follow
+        her lead
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    meredith_grey: 100
+    player: 100
+  inventories:
+    meredith_grey: []
+    player: []
+  locations:
+    meredith_grey: seattle_grace_hospital
+    player: seattle_grace_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

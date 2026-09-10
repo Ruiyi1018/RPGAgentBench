@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    linghu_chong:
+      level: trusting
+      basis_event: initial_state
+    yue_buqun:
+      level: neutral
+      basis_event: initial_state
+    lin_pingzhi:
+      level: neutral
+      basis_event: initial_state
+    dongfang_bubai:
+      level: distrustful
+      basis_event: initial_state
+    yilin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 稳住令狐冲的内伤与江湖处境
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 削减东方不败对日月教和黑木崖的掌控
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 保全可调动的旧部，不因私情折损无谓力量
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 令狐冲在洛阳结识自己，并接受琴曲疗伤
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_002:
+      content: 自己为救令狐冲曾被囚于少林
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 令狐冲已接任恒山掌门，且自己在过程中提供支持
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_004:
+      content: 东方不败依靠葵花宝典掌权，并对自己仍保有一定忌惮
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    ren_yingying: 100
+    player: 100
+  inventories:
+    ren_yingying: []
+    player: []
+  locations:
+    ren_yingying: heimu_ya
+    player: heimu_ya
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

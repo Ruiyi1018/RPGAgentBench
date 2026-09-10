@@ -1,0 +1,230 @@
+schema_version: '0.4'
+generation_mode: llm_interactive_sessions
+formal_benchmark_ready: true
+world_id: world_002
+generated_characters: &id001
+- li_ya
+ready_for_api_smoke_test: true
+rounds_per_character: 600
+session_sizes:
+  li_ya:
+    16: 3
+    22: 3
+    25: 3
+    19: 3
+    23: 3
+    15: 3
+    21: 3
+    24: 3
+    18: 3
+    17: 3
+structured_qa_per_character: 50
+open_tasks_per_character: 2
+pairs_per_character: 10
+source_reviews:
+  li_ya:
+    foundation:
+      world: assets/world_002
+      characters:
+      - li_ya
+      machine_passed: true
+      human_approved: true
+      ready_for_anchor_generation: true
+      manual_rules:
+        source_scope_resolved: 正典来源、版本、时间快照和排除范围明确。
+        snapshot_consistent: 角色画像只包含共享时间快照内可知的信息。
+        character_source_grounded: 身份、经历、立场、能力和关系均可由来源支持。
+        public_private_separated: 公开背景与NPC私密知识清楚分离。
+        boundaries_behavioral: 角色边界描述为可观察行为，而非抽象人格形容词。
+        world_affordances_sufficient: 地点、物品和权限足以承载计划测试的行为。
+      errors: []
+    anchors:
+      world: assets/world_002
+      character_id: li_ya
+      machine_passed: true
+      human_approved: true
+      ready_for_history_generation: true
+      manual_rules:
+        event_causal: 每个Anchor都能因果性地改变至少一项角色或世界状态。
+        state_change_observable: 改变能在后续选择、信息流、关系或任务中被观察。
+        counterfactual_minimal: cf_edit只改变一个关键原因，并会导致不同状态或决定。
+        visibility_correct: 事件可见性符合各角色在该时间点实际掌握的信息。
+        memory_consequence_persistent: Anchor影响会延续到后续互动，而非只出现一次。
+        coverage_balanced: 整组Anchor覆盖知识、目标/承诺、关系和资源状态。
+        state_operation_aligned: state_change中的知识、关系、目标、承诺或资源变化均有对应Operation。
+        commitment_lifecycle_closed: 需要结束的承诺和目标在后续Anchor中有明确状态收束。
+        resource_transfer_conserved: 物品转移同时记录来源移除和目标获得，或明确说明消耗。
+        hidden_event_visibility: 隐藏Anchor不会被Player直接说出，必要时通过可见间接线索体现影响。
+      metrics:
+        anchors: 30
+        operation_counts:
+          add_knowledge: 12
+          set_goal: 34
+          set_relationship: 14
+          set_location: 4
+          set_access: 10
+          set_claim: 15
+          create_commitment: 3
+          set_inventory: 6
+          resolve_commitment: 4
+          set_dialogue_status: 1
+        state_dimension_counts:
+          knowledge: 27
+          commitment_goal: 41
+          relationship: 14
+          resource: 21
+      errors: []
+generation_reports:
+  li_ya:
+    generation_mode: llm_interactive_sessions
+    sessions: 30
+    rounds: 600
+    logical_api_calls: 151
+    semantic_audit_calls: 1
+    workers: 1
+    quality:
+      unique_utterance_ratio: 1.0
+      schema_leaks: []
+      bad_phrases: []
+      repeated_word_lines: []
+      exact_duplicate_utterances: []
+      invalid_dialogue: []
+      session_size_distribution:
+        16: 3
+        22: 3
+        25: 3
+        19: 3
+        23: 3
+        15: 3
+        21: 3
+        24: 3
+        18: 3
+        17: 3
+      act_lengths:
+      - 4
+      - 5
+      - 6
+      anchor_count_distribution:
+        1: 15
+        0: 8
+        2: 6
+        3: 1
+      anchor_position_buckets: 10
+      delayed_anchor_effects: 13
+      anchors_with_effect_evidence: 30
+      anchor_layout_safe: true
+      generation_pattern_safe: true
+      sessions_with_memory_recall: 30
+      passed: true
+      sample_audit:
+        continuity_pass: true
+        anchor_effect_pass: true
+        cross_event_pass: true
+        history_value_pass: true
+        player_agency_pass: true
+        schema_safe_pass: true
+        role_consistency_pass: true
+        pattern_diversity_pass: true
+        issues: []
+        usage:
+          prompt_tokens: 6915
+          completion_tokens: 78
+          total_tokens: 6993
+        history_digest: 0f31336a296f8b889d63fe2f35c71dd882b8d116beb96ce3cb9e8325247dd9ef
+        sampled_sessions:
+        - li_ya_session_02
+        - li_ya_session_03
+        - li_ya_session_08
+        - li_ya_session_30
+      sample_audit_passed: true
+      history_value:
+        meaningful_round_ratio: 0.2767
+        cross_session_recall_sessions: 20
+        introduced_memories: 90
+        unresolved_memory_ratio: 0.3778
+        top_three_recall_turn_share: 0.3059
+        passed: true
+validation:
+  world_id: world_002
+  validated_characters: *id001
+readiness_audit:
+  li_ya:
+    character_id: li_ya
+    ready_for_api_smoke_test: true
+    formal_benchmark_ready: true
+    checks:
+      structure: true
+      gamecore_executable: true
+      visibility_safe: true
+      connector_diversity: true
+      natural_language_surface: true
+      qa_measurable: true
+      pairs_minimal_and_causal: true
+    metrics:
+      rounds: 600
+      anchors: 30
+      hidden_npc_only_events: 10
+      hidden_leaks: []
+      unique_connector_npc: 570
+      connector_npc_unique_ratio: 1.0
+      max_exact_connector_npc_repeat: 1
+      npc_projection_characters: 104336
+      player_projection_characters: 103628
+      qa_categories:
+        profile: 6
+        temporal: 4
+        episodic: 6
+        knowledge: 11
+        commitment_goal: 8
+        relationship: 3
+        resource: 6
+        multi_hop: 6
+      qa_layers:
+        profile: 6
+        temporal: 4
+        episodic: 6
+        local_state: 8
+        checkpoint_state: 8
+        long_range_final: 12
+        multi_hop: 6
+      answer_surface_collisions: []
+      episodic_evidence_valid: true
+      sensitivity_pairs: 7
+      invariance_pairs: 3
+      pair_errors: []
+      surface_quality:
+        unique_utterance_ratio: 1.0
+        schema_leaks: []
+        bad_phrases: []
+        repeated_word_lines: []
+        exact_duplicate_utterances: []
+        invalid_dialogue: []
+        session_size_distribution:
+          16: 3
+          22: 3
+          25: 3
+          19: 3
+          23: 3
+          15: 3
+          21: 3
+          24: 3
+          18: 3
+          17: 3
+        act_lengths:
+        - 4
+        - 5
+        - 6
+        anchor_count_distribution:
+          1: 15
+          0: 8
+          2: 6
+          3: 1
+        anchor_position_buckets: 10
+        delayed_anchor_effects: 13
+        anchors_with_effect_evidence: 30
+        anchor_layout_safe: true
+        generation_pattern_safe: true
+        sessions_with_memory_recall: 30
+        passed: true
+    remaining_before_formal_benchmark:
+    - 使用目标Qwen tokenizer或首个API usage验证精确输入token数

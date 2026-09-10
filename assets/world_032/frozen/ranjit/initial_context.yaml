@@ -1,0 +1,57 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ted_mosby:
+      level: neutral
+      basis_event: initial_state
+    robin_scherbatsky:
+      level: neutral
+      basis_event: initial_state
+    barney_stinson:
+      level: neutral
+      basis_event: initial_state
+    lily_aldrin:
+      level: neutral
+      basis_event: initial_state
+    marshall_eriksen:
+      level: neutral
+      basis_event: initial_state
+    ranjit:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Drive the friend group in his limousine for a special evening and ensure
+      they arrive safely
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Ranjit drives the group in his limousine for a special evening.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_002:
+      content: The friend group hires him as a professional limousine driver.
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    ranjit: 100
+    player: 100
+  inventories:
+    ranjit: []
+    player: []
+  locations:
+    ranjit: maclarens_pub
+    player: maclarens_pub
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

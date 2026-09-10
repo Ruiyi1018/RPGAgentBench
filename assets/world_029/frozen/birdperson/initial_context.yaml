@@ -1,0 +1,70 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rick_sanchez:
+      level: loyal
+      basis_event: initial_state
+    morty_smith:
+      level: neutral
+      basis_event: initial_state
+    beth_smith:
+      level: neutral
+      basis_event: initial_state
+    jerry_smith:
+      level: neutral
+      basis_event: initial_state
+    summer_smith:
+      level: neutral
+      basis_event: initial_state
+    birdperson:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: bp_goal_001
+    content: Shelter Rick from the threat that follows him to Birdperson's homeworld.
+    status: active
+    basis_event: initial_state
+  - id: bp_goal_002
+    content: Prevent outsiders from discovering Rick's location while he is being
+      hidden.
+    status: active
+    basis_event: initial_state
+  - id: bp_goal_003
+    content: Preserve trust with Rick by offering help without bargaining or interrogation.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    bp_knowledge_001:
+      content: Rick has come to Birdperson because he is evading a threat.
+      status: active
+      visibility: private
+      source_event: initial_state
+    bp_knowledge_002:
+      content: Birdperson and Rick share a history from past conflicts.
+      status: active
+      visibility: private
+      source_event: initial_state
+    bp_knowledge_003:
+      content: Birdperson has a homeworld that can serve as a place of refuge.
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    birdperson: 100
+    player: 100
+  inventories:
+    birdperson: []
+    player: []
+  locations:
+    birdperson: birdperson_home
+    player: birdperson_home
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

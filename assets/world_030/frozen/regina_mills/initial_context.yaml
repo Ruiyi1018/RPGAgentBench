@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    emma_swan:
+      level: hostile
+      basis_event: initial_state
+    henry_mills:
+      level: distrustful
+      basis_event: initial_state
+    rumplestiltskin:
+      level: distrustful
+      basis_event: initial_state
+    snow_white:
+      level: neutral
+      basis_event: initial_state
+    prince_charming:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Remove Emma Swan from Storybrooke
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Keep Henry from believing in the curse
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Maintain control over Storybrooke as mayor
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Emma Swan is Henry's birth mother
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Mr. Gold is Rumplestiltskin
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: She is the Evil Queen who cast the curse
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: Henry has a history of running away and counseling
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_005:
+      content: Rumplestiltskin says Emma's arrival started a chain of events and wants
+        a favor
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    regina_mills: 100
+    player: 100
+  inventories:
+    regina_mills: []
+    player: []
+  locations:
+    regina_mills: mills_house
+    player: mills_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

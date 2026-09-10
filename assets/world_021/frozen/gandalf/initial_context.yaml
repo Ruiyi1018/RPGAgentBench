@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    frodo_baggins:
+      level: loyal
+      basis_event: initial_state
+    samwise_gamgee:
+      level: trusting
+      basis_event: initial_state
+    aragorn:
+      level: trusting
+      basis_event: initial_state
+    legolas:
+      level: trusting
+      basis_event: initial_state
+    gimli:
+      level: trusting
+      basis_event: initial_state
+    boromir:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_gandalf_001
+    content: Find the hidden Doors of Durin on the western wall
+    status: active
+    basis_event: initial_state
+  - id: g_gandalf_002
+    content: Keep the Company together through the approach to Moria
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_gandalf_001:
+      content: The Redhorn Pass failed because the mountain sent a storm of snow and
+        rock against the Company.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_gandalf_002:
+      content: The West-gate of Moria is hidden in the cliff above the still water.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_gandalf_003:
+      content: Gandalf suggests the path through Moria after the Redhorn Gate fails.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    gandalf: 100
+    player: 100
+  inventories:
+    gandalf: []
+    player: []
+  locations:
+    gandalf: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

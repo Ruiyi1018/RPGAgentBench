@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    frodo_baggins:
+      level: loyal
+      basis_event: initial_state
+    gandalf:
+      level: trusting
+      basis_event: initial_state
+    aragorn:
+      level: trusting
+      basis_event: initial_state
+    legolas:
+      level: neutral
+      basis_event: initial_state
+    gimli:
+      level: neutral
+      basis_event: initial_state
+    boromir:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: sam_goal_001
+    content: Stay with Frodo through Moria and beyond
+    status: active
+    basis_event: initial_state
+  - id: sam_goal_002
+    content: Make sure Frodo eats and rests enough on the road
+    status: active
+    basis_event: initial_state
+  - id: sam_goal_003
+    content: Return safely to the Shire after the quest
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    sam_k_001:
+      content: The Redhorn Pass was blocked by a hostile storm and the Company had
+        to retreat.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    sam_k_002:
+      content: Gandalf has proposed the path through Moria, and Gimli favors it while
+        Boromir argued against it.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    sam_k_003:
+      content: The Company has reached the still water before the cliff where the
+        Doors of Durin are said to be hidden.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    sam_k_004:
+      content: Frodo was nearly overcome by cold and weariness on Caradhras, and Sam
+        carried him for part of the climb.
+      status: active
+      visibility: private
+      source_event: initial_state
+    sam_k_005:
+      content: Wargs attacked the Company in the wilderness, and Gandalf drove them
+        off with fire.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    samwise_gamgee: 100
+    player: 100
+  inventories:
+    samwise_gamgee: []
+    player: []
+  locations:
+    samwise_gamgee: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

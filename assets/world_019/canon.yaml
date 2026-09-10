@@ -1,0 +1,51 @@
+world_id: world_019
+canon_policy:
+  primary_source: The Big Bang Theory television series (seasons covering all seven
+    main characters active, up to a fixed snapshot range)
+  source_type: television series episodes
+  excluded_versions:
+  - later seasons beyond the shared snapshot
+  - spin-off series
+  - comic books
+  - novelizations
+  - behind-the-scenes materials
+  - deleted scenes
+  - alternate endings
+  shared_snapshot: A fixed episode range after all seven characters are active, with
+    events occurring within that interval only
+  generated_timeline: events are constructed only from broadcast facts within the
+    shared snapshot; no dates invented beyond in-universe references
+  quotation_policy: paraphrase all facts; do not copy dialogue verbatim
+evaluated_npcs:
+- sheldon_cooper
+- leonard_hofstadter
+- penny
+- howard_wolowitz
+- raj_koothrappali
+- amy_farrah_fowler
+- bernadette_rostenkowski
+event_entities:
+- sheldon_cooper
+- leonard_hofstadter
+- penny
+- howard_wolowitz
+- raj_koothrappali
+- amy_farrah_fowler
+- bernadette_rostenkowski
+sources:
+- id: source_tbbt_001
+  title: The Big Bang Theory episodes (main series, shared snapshot range)
+  creator: Chuck Lorre and Bill Prady
+  scope: All broadcast story facts for the seven main characters up to the shared
+    snapshot, no later plot knowledge
+  authority: primary
+  type: television series episodes
+data_constraints:
+- Every event fact must be supported by the primary source within the shared snapshot.
+- No later plot knowledge may be used.
+- Facts must be paraphrased and not quoted verbatim.
+- Only the seven listed characters may populate known_by and anchor_for.
+- cf_edit must offer a real, minimal alternative to the event fact.
+- No uncertain details may be asserted.
+- Every location connection must reference a listed location ID.
+- Anchor events must be sorted chronologically as far as the shared snapshot allows.

@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_xiaolong:
+      level: loyal
+      basis_event: initial_state
+    gao_qiqiang:
+      level: distrustful
+      basis_event: initial_state
+    an_xin:
+      level: distrustful
+      basis_event: initial_state
+    li_xiang:
+      level: distrustful
+      basis_event: initial_state
+    meng_yu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_keep_shop_after_conflict
+    content: 维持店铺在旧厂街市场继续经营，不让警方调查导致店铺停摆
+    status: active
+    basis_event: initial_state
+  - id: goal_align_with_tang_xiaolong
+    content: 在对外说辞上与唐小龙保持一致，避免被单独突破
+    status: active
+    basis_event: initial_state
+  - id: goal_hide_cash_transfer
+    content: 不让自己转移部分店铺现金的行为引起警方注意
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kn_tang_xiaohu_eve_conflict:
+      content: 除夕夜旧厂街市场发生冲突，高启强与唐家兄弟等人卷入纠纷
+      status: active
+      visibility: shared
+      source_event: initial_state
+    kn_tang_xiaohu_xiaolong_blames_gao:
+      content: 唐小龙在警方问询中把主要责任推向高启强
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_tang_xiaohu_shop_cash_transfer:
+      content: 自己私下把部分店铺现金转移，以规避可能调查
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_tang_xiaohu_unified_statement:
+      content: 唐小龙要求店铺和市场相关商户统一口径应对警方
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    tang_xiaohu: 100
+    player: 100
+  inventories:
+    tang_xiaohu: []
+    player: []
+  locations:
+    tang_xiaohu: loc_tang_shop
+    player: loc_tang_shop
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

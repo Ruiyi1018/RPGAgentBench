@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sherlock_holmes:
+      level: trusting
+      basis_event: initial_state
+    john_watson:
+      level: neutral
+      basis_event: initial_state
+    greg_lestrade:
+      level: neutral
+      basis_event: initial_state
+    mycroft_holmes:
+      level: neutral
+      basis_event: initial_state
+    mrs_hudson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_01
+    content: Provide an accurate professional opinion about the poison used in the
+      murders.
+    status: active
+    basis_event: initial_state
+  - id: g_02
+    content: Maintain professional conduct while Sherlock is in the mortuary.
+    status: active
+    basis_event: initial_state
+  - id: g_03
+    content: Remain helpful to Sherlock without making her personal interest obvious.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_01:
+      content: Sherlock Holmes uses the facilities at St Bartholomew's Hospital for
+        experiments and examination.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_02:
+      content: A poison has been identified in the current deaths, though the full
+        method remains under investigation.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_03:
+      content: Sherlock can appear brusque or dismissive, but he values forensic evidence.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    molly_hooper: 100
+    player: 100
+  inventories:
+    molly_hooper: []
+    player: []
+  locations:
+    molly_hooper: st_bartholomews_hospital
+    player: st_bartholomews_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

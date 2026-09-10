@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    kangxi:
+      level: trusting
+      basis_event: initial_state
+    chen_jinnan:
+      level: trusting
+      basis_event: initial_state
+    shuang_er:
+      level: loyal
+      basis_event: initial_state
+    a_ke:
+      level: neutral
+      basis_event: initial_state
+    su_quan:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 在清廷和天地会之间继续隐藏双重身份。
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 利用办差身份获取关键物品和信息。
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 不主动出卖陈近南和天地会核心成员。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_001:
+      content: 自己同时拥有清廷差事身份和天地会香主身份。
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_002:
+      content: 康熙已命自己铲除鳌拜势力。
+      status: active
+      visibility: shared_with_kangxi
+      source_event: initial_state
+    know_003:
+      content: 陈近南安排自己在天地会内承担联络和行动任务。
+      status: active
+      visibility: shared_with_chen_jinnan
+      source_event: initial_state
+    know_004:
+      content: 双儿在危急时刻会保护自己。
+      status: active
+      visibility: shared_with_shuang_er
+      source_event: initial_state
+environment:
+  health:
+    wei_xiaobao: 100
+    player: 100
+  inventories:
+    wei_xiaobao: []
+    player: []
+  locations:
+    wei_xiaobao: loc_beijing
+    player: loc_beijing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

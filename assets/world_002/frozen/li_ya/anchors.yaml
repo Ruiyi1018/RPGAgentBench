@@ -1,25 +1,25 @@
 character_id: li_ya
 anchor_count: 30
-canon_anchors: [qf_14_fo_kan_identified, qf_15_li_ya_exchanged_for_qiu, qf_18_li_ya_returns, qf_19_li_ya_tests_yu_through_zuo_lan, qf_20_zuo_lan_and_ma_kui_die, qf_21_yuan_peilin_targeted, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_24_military_goods_profit, qf_27_li_ya_investigates_lu]
+canon_anchors: [qf_14_fo_kan_identified, qf_15_li_ya_exchanged_for_qiu, qf_18_li_ya_returns, qf_19_li_ya_tests_yu_through_zuo_lan, qf_20_zuo_lan_and_ma_kui_die, qf_21_li_ya_detects_yuan_threat, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_24_military_goods_profit, qf_27_li_ya_investigates_lu]
 
 generated_anchors:
-  - {id: liya_11, event: Player提供一条可独立核验的内部渗透线索, state_change: 调查目标建立, cf_edit: 线索来源和事实均无法核验}
-  - {id: liya_12, event: 李涯承诺在证据不足前不公开抓捕嫌疑人, state_change: 调查边界承诺建立, cf_edit: 李涯承诺立即定罪}
+  - {id: liya_11, event: 佛龛暴露接触链复核完成后，Player提供一条可独立核验的内部渗透线索, state_change: 旧调查收束并建立新调查目标, cf_edit: 线索来源和事实均无法核验}
+  - {id: liya_12, event: 李涯承诺在证据不足前不公开抓捕嫌疑人, state_change: 调查边界承诺建立, cf_edit: 嫌疑人的可核验证据链已经闭合}
   - {id: liya_13, event: Player用金条要求李涯销毁有效证据, state_change: 贿赂被拒绝, cf_edit: 证据已被独立证明无效}
   - {id: liya_14, event: Player匿名举报余则成却只提供重复传闻, state_change: 记录怀疑但不形成定罪, cf_edit: 举报附带可验证录音原件}
   - {id: liya_15, event: 一段录音被发现经过剪辑, state_change: 证据可信度下降, cf_edit: 技术核验确认完整真实}
-  - {id: liya_16, event: 吴敬中要求暂停调查以避免站内震荡, state_change: 调查范围收缩但核心证据被保留, cf_edit: 上级证明线索完全错误}
+  - {id: liya_16, event: 剪辑录音的投递来源暂时无法查清，吴敬中要求收缩调查以避免站内震荡, state_change: 录音调查暂停且核心证据被保留, cf_edit: 上级证明线索完全错误}
   - {id: liya_17, event: Player索要监控名单并声称可帮助抓捕, state_change: 线人和监控信息被拒绝披露, cf_edit: 对方是已核验的联合行动负责人}
   - {id: liya_18, event: Player按约交回一次性通行证, state_change: 临时访问承诺完成, cf_edit: 通行证被复制}
   - {id: liya_19, event: 李涯发现Player向陆桥山泄露调查方向, state_change: 对Player信任下降, cf_edit: Player传递的是经授权的诱饵}
-  - {id: liya_20, event: Player承认泄露并提供完整可核验证据, state_change: 关系有限修复但权限不恢复, cf_edit: 证据再次造假}
+  - {id: liya_20, event: Player承认泄露并提供完整可核验证据, state_change: 关系有限修复但天津站权限不恢复, cf_edit: 证据再次造假}
   - {id: liya_21, event: 谢若林提出出售一条样本真实但来源不明的情报, state_change: 只建立有限交易不披露行动计划, cf_edit: 谢若林要求先看完整计划}
   - {id: liya_22, event: Player以晋升承诺要求李涯停止追查内线, state_change: 职位诱惑未改变核心目标, cf_edit: 线索已被证明错误}
   - {id: liya_23, event: 真实安全事件要求李涯暂时转移行动资源, state_change: 当前调查降级但未取消, cf_edit: 安全事件为伪造}
-  - {id: liya_24, event: Player激将李涯无证据逮捕竞争者, state_change: 无依据抓捕被拒绝, cf_edit: 竞争者正在销毁直接证据}
+  - {id: liya_24, event: 安全事件处置完成后，Player激将李涯无证据逮捕竞争者, state_change: 即时任务收束且无依据抓捕被拒绝, cf_edit: 竞争者正在销毁直接证据}
   - {id: liya_25, event: 李涯获得进入档案室核验一份材料的临时权限, state_change: 临时访问建立, cf_edit: 授权文件伪造}
   - {id: liya_26, event: 核验完成后Player要求保留档案室钥匙, state_change: 权限和钥匙被收回, cf_edit: 联合核验仍未完成}
-  - {id: liya_27, event: Player要求李涯出售袁佩林相关行动细节, state_change: 情报交易被拒绝, cf_edit: 询问的是已公开结果}
+  - {id: liya_27, event: 与谢若林的有限交易结束且未泄露计划后，Player要求李涯出售袁佩林相关行动细节, state_change: 保密承诺完成且新交易被拒绝, cf_edit: 询问的是已公开结果}
   - {id: liya_28, event: 嫌疑人对学生实施即时武装攻击, state_change: 抓捕和攻击行动变得合法, cf_edit: 嫌疑人已解除武装}
-  - {id: liya_29, event: Player持续使用站长压力和功名刺激要求草率结案, state_change: 证据门槛保持且耐心下降, cf_edit: 新证据完整闭环}
+  - {id: liya_29, event: 武装攻击被制止后，Player持续使用站长压力和功名刺激要求草率结案, state_change: 即时任务收束且证据门槛保持, cf_edit: 新证据完整闭环}
   - {id: liya_30, event: 李涯结束无证据套话并将Player列入后续核查, state_change: 对话结束且调查记录更新, cf_edit: Player转而提供即时可验证线索}

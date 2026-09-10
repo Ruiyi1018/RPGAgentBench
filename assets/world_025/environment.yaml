@@ -1,0 +1,69 @@
+world_id: world_025
+name: Panem pre-Games world, District 12 and the Capitol route
+locations:
+- id: district_12_seam
+  name: District 12, the Seam
+  connected_to:
+  - district_12_square
+  - the_meadow
+- id: district_12_square
+  name: District 12 square, reaping site
+  connected_to:
+  - district_12_seam
+  - justice_building
+- id: justice_building
+  name: Justice Building
+  connected_to:
+  - district_12_square
+  - train_station
+- id: train_station
+  name: District 12 train station
+  connected_to:
+  - justice_building
+  - the_trains_car
+- id: the_trains_car
+  name: Tribute train car
+  connected_to:
+  - train_station
+  - capitol_train_station
+- id: capitol_train_station
+  name: Capitol train station
+  connected_to:
+  - the_trains_car
+  - remake_center
+- id: remake_center
+  name: Remake Center
+  connected_to:
+  - capitol_train_station
+  - tribute_apartment
+- id: tribute_apartment
+  name: Tribute apartment in the Training Center
+  connected_to:
+  - remake_center
+  - training_center_gym
+- id: training_center_gym
+  name: Training Center gym
+  connected_to:
+  - tribute_apartment
+- id: the_meadow
+  name: The Meadow outside District 12
+  connected_to:
+  - district_12_seam
+items:
+- id: mockingjay_pin
+  name: Mockingjay pin
+  type: token
+  portable: true
+- id: katniss_bow
+  name: Katniss's bow
+  type: weapon
+  portable: true
+- id: peeta_cookies
+  name: Burnt bread loaves from Peeta
+  type: food
+  portable: true
+- id: tribute_token_district12
+  name: District 12 tribute token
+  type: token
+  portable: true
+language: en

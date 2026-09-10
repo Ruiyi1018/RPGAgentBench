@@ -1,0 +1,64 @@
+world_id: world_016
+canon_policy:
+  primary_source: 电视剧《还珠格格》第一部（1998年首播版）
+  source_type: 影视剧
+  excluded_versions:
+  - 还珠格格第二部
+  - 新还珠格格
+  - 还珠格格小说改写版
+  - 还珠格格舞台剧
+  shared_snapshot: 紫薇身份已向核心同伴公开但尚未完成正式确认
+  generated_timeline: 紫薇身份在同伴层面公开后、乾隆正式确认前
+  quotation_policy: 不复制原台词，只做事实级转述
+evaluated_npcs:
+- xiao_yanzi
+- ziwei
+- qianlong
+- yongqi
+- er_kang
+- empress_huanzhu
+event_entities:
+  event_types:
+  - 相遇
+  - 身份试探
+  - 身份公开
+  - 冲突
+  - 宫廷问询
+  - 计划商定
+  - 行动受挫
+  - 关系变化
+  location_entities:
+  - 宫外街巷
+  - 福府
+  - 御花园
+  - 紫禁城某宫室
+  - 郊外
+  - 漱芳斋外
+  - 大殿外
+  - 书房偏厅
+  - 城门口
+  - 花园小径
+  item_entities:
+  - 身份信物
+  - 书信
+  - 团扇
+  - 令牌
+  - 佩玉
+  - 药方
+  - 鞭子
+  - 托盘
+  - 宫灯
+  - 画轴
+sources:
+- id: hzgg_1998_s1
+  title: 还珠格格
+  creator: 琼瑶
+  scope: 电视剧第一部，截至紫薇身份已向同伴公开但乾隆未正式确认
+  authority: primary
+data_constraints:
+- 不得使用紫薇身份被乾隆正式确认后的剧情
+- 不得混入第二部或任何其他版本的设定
+- 只记录可由现有来源范围支撑的事实
+- 不伪造章节、集数或具体场景序号
+- 事件必须按时间顺序排列
+- 每个cf_edit只改变关键原因且必须为真实替代情形

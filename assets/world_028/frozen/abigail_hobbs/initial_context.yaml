@@ -1,0 +1,61 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hannibal_lecter:
+      level: neutral
+      basis_event: initial_state
+    will_graham:
+      level: neutral
+      basis_event: initial_state
+    jack_crawford:
+      level: distrustful
+      basis_event: initial_state
+    alana_bloom:
+      level: neutral
+      basis_event: initial_state
+    beverly_katz:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Preserve legal and personal safety while the FBI questions her about
+      her father
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Recover enough physical and emotional stability to leave institutional
+      care
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Her father killed her mother and moved toward her before being shot
+        by Will Graham
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: She is being brought back to Baltimore so the FBI can continue questioning
+        her about the copycat murders
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    abigail_hobbs: 100
+    player: 100
+  inventories:
+    abigail_hobbs: []
+    player: []
+  locations:
+    abigail_hobbs: baltimore_state_hospital_for_the_criminally_insane
+    player: baltimore_state_hospital_for_the_criminally_insane
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

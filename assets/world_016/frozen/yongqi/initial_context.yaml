@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_yanzi:
+      level: loyal
+      basis_event: initial_state
+    ziwei:
+      level: trusting
+      basis_event: initial_state
+    qianlong:
+      level: neutral
+      basis_event: initial_state
+    yongqi:
+      level: loyal
+      basis_event: initial_state
+    er_kang:
+      level: trusting
+      basis_event: initial_state
+    empress_huanzhu:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: yongqi_goal_001
+    content: 协助小燕子在宫中稳住局面
+    status: active
+    basis_event: initial_state
+  - id: yongqi_goal_002
+    content: 与尔康合作争取让紫薇有机会向乾隆说明实情
+    status: active
+    basis_event: initial_state
+  - id: yongqi_goal_003
+    content: 避免皇后借身份问题进一步伤害同伴
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    yongqi_know_001:
+      content: 紫薇被核心同伴视为真正与乾隆有血缘关联的人，但乾隆尚未正式确认
+      status: active
+      visibility: shared_with_core_allies
+      source_event: initial_state
+    yongqi_know_002:
+      content: 皇后已在乾隆面前指控小燕子身份可疑，宫中进入核问阶段
+      status: active
+      visibility: shared_with_core_allies
+      source_event: initial_state
+    yongqi_know_003:
+      content: 尔康与紫薇曾利用书信尝试向乾隆陈述身世
+      status: active
+      visibility: shared_with_core_allies
+      source_event: initial_state
+    yongqi_know_004:
+      content: 紫薇已在同伴安排下进入宫禁范围，准备面见乾隆
+      status: active
+      visibility: shared_with_core_allies
+      source_event: initial_state
+environment:
+  health:
+    yongqi: 100
+    player: 100
+  inventories:
+    yongqi: []
+    player: []
+  locations:
+    yongqi: shu_fang
+    player: shu_fang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

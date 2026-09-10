@@ -1,0 +1,71 @@
+world_id: world_031
+canon_policy:
+  primary_source: Grey's Anatomy Season 1 episode transcripts
+  source_type: television show
+  excluded_versions:
+  - Later seasons
+  - Spin-off series
+  - Novelizations
+  - Unofficial wikis
+  - Fan fiction
+  shared_snapshot: Fixed Season 1 episode range
+  generated_timeline: Chronological ordering of Season 1 anchor events
+  quotation_policy: Paraphrase only; do not reproduce verbatim dialogue; no episode
+    numbers
+evaluated_npcs:
+- meredith_grey
+- cristina_yang
+- derek_shepherd
+- izzie_stevens
+- george_omalley
+- miranda_bailey
+event_entities:
+- id: sg_surgical_intern_program
+  name: Surgical Intern Program
+- id: seattle_grace_hospital
+  name: Seattle Grace Hospital
+- id: prom_night
+  name: Prom Night
+- id: denny_duquette
+  name: Denny Duquette
+- id: unidentified_dnr_patient
+  name: Unidentified DNR Patient
+- id: katie_bryce
+  name: Katie Bryce
+- id: ellis_grey
+  name: Ellis Grey
+- id: richard_webber
+  name: Richard Webber
+- id: preston_burke
+  name: Preston Burke
+- id: doc_the_dog
+  name: Doc the Dog
+- id: joe
+  name: Joe
+- id: emerald_city_bar
+  name: Emerald City Bar
+- id: intern_locker_room
+  name: Intern Locker Room
+- id: or_scrub_room
+  name: OR Scrub Room
+- id: hospital_tunnel
+  name: Hospital Tunnel
+- id: chief_resident_morning_rounds
+  name: Chief Resident Morning Rounds
+sources:
+- id: s1_episodes
+  title: Grey's Anatomy Season 1
+  creator: Shonda Rhimes
+  scope: Season 1 episodes 1-9
+  authority: primary
+data_constraints:
+- Every anchor event fact must be supported by Season 1 episode content only.
+- No episode numbers may be referenced in any field.
+- No later season plot knowledge may be used.
+- Quotations must be paraphrased, never copied verbatim.
+- Anchor events must be sorted chronologically.
+- Connected locations must reference existing location IDs only.
+- All known_by and anchor_for entries must use roster IDs only.
+- No invented URLs, chapter numbers, or external references.
+- Every cf_edit must be a meaningful alternative expression, never empty or N/A.
+- Events must not include invented character reactions beyond the source.

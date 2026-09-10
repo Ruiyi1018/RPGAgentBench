@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    robin_scherbatsky:
+      level: trusting
+      basis_event: initial_state
+    barney_stinson:
+      level: trusting
+      basis_event: initial_state
+    lily_aldrin:
+      level: loyal
+      basis_event: initial_state
+    marshall_eriksen:
+      level: loyal
+      basis_event: initial_state
+    ranjit:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Win Robin's romantic interest without scaring her away.
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Feel less left out of the couples around him, especially Marshall and
+      Lily.
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Advance his architecture career in New York.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Ted knows he is looking for a serious long-term partner and is not
+        satisfied with casual dating.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Ted knows he stole the blue French horn for Robin on their first night
+        knowing each other.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_003:
+      content: Ted knows the lemon law is a personal rule he invented for ending bad
+        dates early.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_004:
+      content: Ted knows a goat appeared in his apartment during a party and does
+        not know how it got there.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    ted_mosby: 100
+    player: 100
+  inventories:
+    ted_mosby: []
+    player: []
+  locations:
+    ted_mosby: maclarens_pub
+    player: maclarens_pub
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

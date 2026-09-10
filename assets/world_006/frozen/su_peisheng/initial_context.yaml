@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    emperor_yongzheng:
+      level: loyal
+      basis_event: initial_state
+    zhen_huan:
+      level: trusting
+      basis_event: initial_state
+    hua_fei:
+      level: neutral
+      basis_event: initial_state
+    empress_yixiu:
+      level: neutral
+      basis_event: initial_state
+    an_lingrong:
+      level: neutral
+      basis_event: initial_state
+    shen_meizhuang:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 继续稳妥为皇帝办差，不因后宫争斗失掉近侍分寸
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 观察甄嬛、华妃、皇后之间的态势，避免自己被卷入明显派系
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 在皇帝与甄嬛之间维持顺畅传话，不使差事出纰漏
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 甄嬛从御花园偶遇皇帝后受宠，并频繁进入养心殿一带。
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 华妃对甄嬛有较强敌意，并借后宫事务施压。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 皇后明面上对甄嬛有所照顾，同时推动华妃与甄嬛矛盾公开化。
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 沈眉庄较早得宠，但受宠后遭到华妃一方排挤。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_005:
+      content: 皇帝与甄嬛之间信息往来和见驾安排往往需要经过苏培盛。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    su_peisheng: 100
+    player: 100
+  inventories:
+    su_peisheng: []
+    player: []
+  locations:
+    su_peisheng: loc_005
+    player: loc_005
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

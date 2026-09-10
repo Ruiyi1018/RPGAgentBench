@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    emperor_yongzheng:
+      level: trusting
+      basis_event: initial_state
+    hua_fei:
+      level: distrustful
+      basis_event: initial_state
+    empress_yixiu:
+      level: neutral
+      basis_event: initial_state
+    an_lingrong:
+      level: trusting
+      basis_event: initial_state
+    shen_meizhuang:
+      level: loyal
+      basis_event: initial_state
+    su_peisheng:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: zhen_huan_goal_001
+    content: 维持自身在后宫中的受宠地位，同时避免因招摇而成为众矢之的。
+    status: active
+    basis_event: initial_state
+  - id: zhen_huan_goal_002
+    content: 在沈眉庄和安陵容之间维持姐妹情谊，尽量不让外部压力破坏彼此关系。
+    status: active
+    basis_event: initial_state
+  - id: zhen_huan_goal_003
+    content: 观察华妃和皇后各自的意图，避免在局势尚未明朗时被其中一方利用。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    zhen_huan_knowledge_001:
+      content: 沈眉庄入宫后较早得宠，并因此成为华妃等人的注意对象。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhen_huan_knowledge_002:
+      content: 华妃对自己产生了较强敌意，并可能借后宫事务施压。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhen_huan_knowledge_003:
+      content: 皇后在明面上对自己有所照顾，但甄嬛仍在观察其真实用意。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhen_huan_knowledge_004:
+      content: 苏培盛作为皇帝近侍，在传递消息和安排会面上有重要作用。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhen_huan_knowledge_005:
+      content: 皇帝此时对自己总体上仍保持明显恩宠，但后宫矛盾已在累积。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    zhen_huan: 100
+    player: 100
+  inventories:
+    zhen_huan: []
+    player: []
+  locations:
+    zhen_huan: loc_001
+    player: loc_001
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,114 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    meredith_grey:
+      level: trusting
+      basis_event: initial_state
+    miranda_bailey:
+      level: neutral
+      basis_event: initial_state
+    derek_shepherd:
+      level: neutral
+      basis_event: initial_state
+    george_omalley:
+      level: neutral
+      basis_event: initial_state
+    izzie_stevens:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Secure a complex surgical case before the other interns.
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Prove she can handle advanced procedures under pressure.
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Maintain a working relationship with Preston Burke without admitting
+      its personal dimension.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Meredith Grey begins her surgical internship at Seattle Grace Hospital.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Miranda Bailey introduced herself as the interns' resident and set
+        expectations for their conduct.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: The interns received pagers that dictate their workflow.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k4:
+      content: Meredith confided in Cristina about her complicated feelings for Derek
+        Shepherd.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k5:
+      content: Meredith found a dog and brought him to the hospital, eventually naming
+        him Doc.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k6:
+      content: Cristina Yang and Preston Burke began a professional relationship that
+        developed personal undertones.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k7:
+      content: Derek Shepherd performed a complicated procedure that established his
+        surgical reputation among the interns.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k8:
+      content: The interns gather at Emerald City Bar after shifts to decompress.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k9:
+      content: Cristina Yang collapsed from a medical emergency while working a shift.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k10:
+      content: Meredith Grey took on a leadership role to help Cristina during her
+        medical emergency.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k11:
+      content: The surgical interns survived their first major professional crisis
+        together.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    cristina_yang: 100
+    player: 100
+  inventories:
+    cristina_yang: []
+    player: []
+  locations:
+    cristina_yang: seattle_grace_hospital
+    player: seattle_grace_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

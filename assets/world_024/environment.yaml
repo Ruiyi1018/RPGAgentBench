@@ -1,0 +1,51 @@
+world_id: world_024
+name: Forks and surrounding area
+locations:
+- id: forks
+  name: Forks, Washington
+  connected_to:
+  - la_push
+  - cullen_house
+  - forks_high_school
+  - meadow
+- id: la_push
+  name: La Push
+  connected_to:
+  - forks
+  - first_beach
+- id: first_beach
+  name: First Beach
+  connected_to:
+  - la_push
+- id: cullen_house
+  name: Cullen house
+  connected_to:
+  - forks
+  - meadow
+- id: forks_high_school
+  name: Forks High School
+  connected_to:
+  - forks
+- id: meadow
+  name: The meadow
+  connected_to:
+  - cullen_house
+  - forks
+items:
+- id: truck
+  name: Bella's red pickup truck
+  type: vehicle
+  portable: false
+- id: microscope
+  name: Biology microscope
+  type: tool
+  portable: true
+- id: vampire_book
+  name: Book about vampire legends
+  type: document
+  portable: true
+- id: locket
+  name: A small keepsake given to Bella
+  type: jewelry
+  portable: true
+language: en

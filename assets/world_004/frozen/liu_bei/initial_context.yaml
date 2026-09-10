@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    cao_cao:
+      level: hostile
+      basis_event: initial_state
+    zhuge_liang:
+      level: loyal
+      basis_event: initial_state
+    guan_yu:
+      level: loyal
+      basis_event: initial_state
+    zhang_fei:
+      level: loyal
+      basis_event: initial_state
+    zhou_yu:
+      level: neutral
+      basis_event: initial_state
+    sun_quan:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g001
+    content: 在夏口、樊口一带稳定军民，恢复基本秩序。
+    status: 进行中
+    basis_event: initial_state
+  - id: g002
+    content: 与周瑜完成初步协同，确保孙刘联军能共同应对东进的曹军。
+    status: 进行中
+    basis_event: initial_state
+  - id: g003
+    content: 保存本部兵力，避免在赤壁决战前再次被曹操击溃。
+    status: 进行中
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k001:
+      content: 曹操已南下，刘琮投降，荆州大部已归曹操。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k002:
+      content: 本部在长坂坡被曹军精锐追上并损失惨重，现与关羽、刘琦等会合于夏口、樊口一带。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k003:
+      content: 诸葛亮已出使江东，向孙权陈述联合抗曹之策，联盟正在形成。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k004:
+      content: 周瑜将从江东率军正面迎击曹操，刘备部承担策应，但具体部署尚未完全敲定。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    liu_bei: 100
+    player: 100
+  inventories:
+    liu_bei: []
+    player: []
+  locations:
+    liu_bei: xiakou
+    player: xiakou
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

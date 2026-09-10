@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    will_graham:
+      level: trusting
+      basis_event: initial_state
+    jack_crawford:
+      level: trusting
+      basis_event: initial_state
+    hannibal_lecter:
+      level: trusting
+      basis_event: initial_state
+    abigail_hobbs:
+      level: trusting
+      basis_event: initial_state
+    beverly_katz:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_alana_001
+    content: Persuade Jack Crawford to keep Will Graham on the investigation while
+      monitoring him closely.
+    status: active
+    basis_event: initial_state
+  - id: goal_alana_002
+    content: Help Abigail Hobbs feel safe enough to be honest without being manipulated
+      by the FBI.
+    status: active
+    basis_event: initial_state
+  - id: goal_alana_003
+    content: Maintain a professional relationship with Hannibal Lecter while offering
+      independent psychiatric advice.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_alana_001:
+      content: Alana knows that Will Graham is losing confidence in his own perceptions
+        and fears his empathy is damaging him.
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_alana_002:
+      content: Alana knows that Jack Crawford ordered a formal psychiatric evaluation
+        of Will and that Will's fitness for field work is in question.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_alana_003:
+      content: Alana knows that Hannibal Lecter is treating Will and that Jack is
+        relying on Hannibal's reports about Will's stability.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_alana_004:
+      content: Alana knows that Abigail Hobbs has been moved from the main hospital
+        and may be brought back to Baltimore for further questioning.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_alana_005:
+      content: Alana knows that the FBI has begun to treat Abigail as a possible accomplice
+        or material witness, not only as a victim.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    alana_bloom: 100
+    player: 100
+  inventories:
+    alana_bloom: []
+    player: []
+  locations:
+    alana_bloom: baltimore_maryland
+    player: baltimore_maryland
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

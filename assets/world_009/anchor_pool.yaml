@@ -1,0 +1,288 @@
+world_id: world_009
+source: 电视连续剧《武林外传》前40集
+events:
+- id: ae_001
+  fact: 佟湘玉成为同福客栈掌柜，开始主持客栈经营
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 同福客栈进入佟湘玉管理时期
+  cf_edit: 若佟湘玉未接下客栈，而是返回原籍，客栈将由他人经营
+  anchor_for:
+  - tong_xiangyu
+- id: ae_002
+  fact: 白展堂在同福客栈以跑堂身份留下
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 白展堂成为客栈日常成员
+  cf_edit: 若白展堂未被佟湘玉收留，而是离开七侠镇，客栈缺少跑堂
+  anchor_for:
+  - bai_zhantang
+- id: ae_003
+  fact: 郭芙蓉在同福客栈开始以杂役身份工作
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 郭芙蓉成为客栈常驻人员
+  cf_edit: 若郭芙蓉没有因故滞留在七侠镇，她可能继续在外闯荡
+  anchor_for:
+  - guo_furong
+- id: ae_004
+  fact: 吕秀才在同福客栈担任账房
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 吕秀才正式参与客栈账务管理
+  cf_edit: 若吕秀才未被聘为账房，他可能只能继续在客栈外谋生
+  anchor_for:
+  - lv_xiucai
+- id: ae_005
+  fact: 李大嘴成为同福客栈厨子
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 客栈有了固定厨师
+  cf_edit: 若李大嘴没有接任厨子，客栈后厨将无人稳定掌勺
+  anchor_for:
+  - li_dazui
+- id: ae_006
+  fact: 莫小贝被接到同福客栈居住并上学
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 莫小贝成为客栈日常生活的一员
+  cf_edit: 若莫小贝没有被接到同福客栈，她可能仍留在原籍由他人照看
+  anchor_for:
+  - mo_xiaobei
+- id: ae_007
+  fact: 佟湘玉确立自己在客栈中的掌柜权威，众人默认其安排
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 客栈内部形成以佟湘玉为中心的分工秩序
+  cf_edit: 若佟湘玉态度软弱，客栈初期可能出现无人统筹的局面
+  anchor_for:
+  - tong_xiangyu
+- id: ae_008
+  fact: 白展堂被发现轻功与江湖经验丰富，开始在关键时刻协助客栈应对麻烦
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  state_change: 白展堂从普通跑堂变为客栈实际护卫力量
+  cf_edit: 若白展堂完全不显露江湖经验，客栈遇到危机时会更被动
+  anchor_for:
+  - bai_zhantang
+- id: ae_009
+  fact: 郭芙蓉与吕秀才开始产生亲近关系
+  known_by:
+  - guo_furong
+  - lv_xiucai
+  state_change: 两人关系从普通同僚向特殊情感发展
+  cf_edit: 若郭芙蓉没有与吕秀才频繁互动，两人关系可能停留在普通朋友
+  anchor_for:
+  - guo_furong
+  - lv_xiucai
+- id: ae_010
+  fact: 李大嘴在客栈后厨形成自己的一套做菜习惯
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 客栈饭菜风格稳定下来
+  cf_edit: 若李大嘴频繁更换菜式且无固定习惯，客栈经营会受到影响
+  anchor_for:
+  - li_dazui
+- id: ae_011
+  fact: 莫小贝开始习惯同福客栈的生活并接受众人管教
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 莫小贝逐渐融入客栈日常秩序
+  cf_edit: 若莫小贝始终抗拒留在客栈，佟湘玉可能需要另做安置
+  anchor_for:
+  - mo_xiaobei
+- id: ae_012
+  fact: 佟湘玉因经营压力显露对客栈收入的强烈关注
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  state_change: 客栈经营进入精打细算阶段
+  cf_edit: 若佟湘玉对收入不敏感，客栈可能很快陷入亏损
+  anchor_for:
+  - tong_xiangyu
+- id: ae_013
+  fact: 白展堂在众人面前承认自己曾有过江湖背景
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  state_change: 白展堂的过去不再是客栈内部秘密
+  cf_edit: 若白展堂始终隐瞒到底，众人对他的信任反而可能产生隔阂
+  anchor_for:
+  - bai_zhantang
+- id: ae_014
+  fact: 郭芙蓉展现出远超普通杂役的武艺，开始在客栈事务中出力
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  state_change: 郭芙蓉从单纯杂役变为客栈武力来源之一
+  cf_edit: 若郭芙蓉刻意隐藏武艺，客栈遇袭时人手更加不足
+  anchor_for:
+  - guo_furong
+- id: ae_015
+  fact: 吕秀才为同福客栈制定一套记账方式
+  known_by:
+  - tong_xiangyu
+  - lv_xiucai
+  state_change: 客栈账目管理趋于规范
+  cf_edit: 若吕秀才没有建立记账方式，客栈收支容易混乱
+  anchor_for:
+  - lv_xiucai
+- id: ae_016
+  fact: 李大嘴因厨艺问题与佟湘玉产生过经营上的争执
+  known_by:
+  - tong_xiangyu
+  - li_dazui
+  state_change: 后厨与掌柜之间出现短暂摩擦
+  cf_edit: 若李大嘴毫不坚持自己的做菜方式，后厨问题会以另一种方式积累
+  anchor_for:
+  - li_dazui
+- id: ae_017
+  fact: 莫小贝在七侠镇开始进入学堂或受教于身边人
+  known_by:
+  - tong_xiangyu
+  - mo_xiaobei
+  - lv_xiucai
+  state_change: 莫小贝的生活被纳入教育安排
+  cf_edit: 若莫小贝完全不接受教育，佟湘玉会面临照管失责的压力
+  anchor_for:
+  - mo_xiaobei
+- id: ae_018
+  fact: 郭芙蓉与吕秀才因日常分歧发生争执后又和好
+  known_by:
+  - guo_furong
+  - lv_xiucai
+  state_change: 两人关系经历起伏但未破裂
+  cf_edit: 若争执持续升级而不和好，客栈内部关系会明显紧张
+  anchor_for:
+  - guo_furong
+  - lv_xiucai
+- id: ae_019
+  fact: 佟湘玉决定让莫小贝继续留在同福客栈生活
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 莫小贝在同福客栈的长期居留得到确认
+  cf_edit: 若佟湘玉认为莫小贝应被送走，客栈人员构成将发生重大变化
+  anchor_for:
+  - tong_xiangyu
+  - mo_xiaobei
+- id: ae_020
+  fact: 白展堂在同福客栈多次以行动保护众人
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 白展堂成为客栈公认的重要保护者
+  cf_edit: 若白展堂在关键时刻不出手，客栈可能遭受更直接损失
+  anchor_for:
+  - bai_zhantang
+- id: ae_021
+  fact: 吕秀才在同福客栈中逐渐确立不可或缺的文书角色
+  known_by:
+  - tong_xiangyu
+  - lv_xiucai
+  state_change: 账房功能与客栈日常运转深度绑定
+  cf_edit: 若吕秀才离开账房职位，佟湘玉必须另找可靠人选
+  anchor_for:
+  - lv_xiucai
+- id: ae_022
+  fact: 郭芙蓉在同福客栈被佟湘玉视为得力杂役
+  known_by:
+  - tong_xiangyu
+  - guo_furong
+  state_change: 郭芙蓉在客栈分工中地位提升
+  cf_edit: 若郭芙蓉做事敷衍，佟湘玉可能重新考虑她的去留
+  anchor_for:
+  - guo_furong
+- id: ae_023
+  fact: 李大嘴在客栈中形成稳定的后厨供应节奏
+  known_by:
+  - tong_xiangyu
+  - li_dazui
+  state_change: 客栈餐饮供应进入稳定周期
+  cf_edit: 若李大嘴无法稳定供餐，客栈客人会明显减少
+  anchor_for:
+  - li_dazui
+- id: ae_024
+  fact: 莫小贝与同福客栈众人共同经历多次日常事件，成为集体中受照顾的对象
+  known_by:
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui
+  - mo_xiaobei
+  state_change: 莫小贝与客栈众人的生活联系进一步巩固
+  cf_edit: 若莫小贝长期被排除在集体活动之外，她与客栈众人的情感联系会减弱
+  anchor_for:
+  - mo_xiaobei
+  - tong_xiangyu
+  - bai_zhantang
+  - guo_furong
+  - lv_xiucai
+  - li_dazui

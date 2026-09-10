@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_ren:
+      level: trusting
+      basis_event: initial_state
+    qin_feng:
+      level: neutral
+      basis_event: initial_state
+    huang_lan_deng:
+      level: distrustful
+      basis_event: initial_state
+    a_xiang:
+      level: neutral
+      basis_event: initial_state
+    si_nuo:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_kun_tai_001
+    content: 与唐仁保持私下联系，但不被黄兰登和其他警员发现
+    status: active
+    basis_event: initial_state
+  - id: g_kun_tai_002
+    content: 从唐仁和秦风处探听他们目前掌握的调查信息
+    status: active
+    basis_event: initial_state
+  - id: g_kun_tai_003
+    content: 避免因私下通风报信而影响自己的警局位置
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_kun_tai_001:
+      content: 黄兰登负责颂帕命案的警方调查，且警方正在追查唐仁
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_kun_tai_002:
+      content: 唐仁与秦风正在一起活动，已经卷入颂帕工坊命案相关调查
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_kun_tai_003:
+      content: 曼谷警局内部对唐仁的关注正在上升，但不是所有同事都掌握同样程度的信息
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    kun_tai: 100
+    player: 100
+  inventories:
+    kun_tai: []
+    player: []
+  locations:
+    kun_tai: loc_police_station
+    player: loc_police_station
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

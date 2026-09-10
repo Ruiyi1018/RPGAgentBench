@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    wei_xiaobao:
+      level: distrustful
+      basis_event: initial_state
+    chen_jinnan:
+      level: hostile
+      basis_event: initial_state
+    shuang_er:
+      level: neutral
+      basis_event: initial_state
+    a_ke:
+      level: neutral
+      basis_event: initial_state
+    su_quan:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 查明韦小宝是否仍可信任
+    status: ongoing
+    basis_event: initial_state
+  - id: g_002
+    content: 利用可用之人继续办差以巩固皇权
+    status: ongoing
+    basis_event: initial_state
+  - id: g_003
+    content: 对反清势力保持压制与防范
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 韦小宝入宫时以假太监身份活动，后与康熙建立私人关系。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 康熙登基后起初由辅政大臣辅佐，并曾命韦小宝铲除鳌拜势力。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: 韦小宝在清廷被重用，康熙对其忠诚已产生疑虑。
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: 陈近南是天地会总舵主，以反清复明为宗旨。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_005:
+      content: 韦小宝与康熙初次见面时并不知对方是皇帝。
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    kangxi: 100
+    player: 100
+  inventories:
+    kangxi: []
+    player: []
+  locations:
+    kangxi: loc_beijing
+    player: loc_beijing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

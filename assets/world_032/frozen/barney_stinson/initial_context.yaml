@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ted_mosby:
+      level: loyal
+      basis_event: initial_state
+    robin_scherbatsky:
+      level: neutral
+      basis_event: initial_state
+    lily_aldrin:
+      level: trusting
+      basis_event: initial_state
+    marshall_eriksen:
+      level: trusting
+      basis_event: initial_state
+    ranjit:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_barney_001
+    content: Maintain his status as the group's expert on dating and nightlife
+    status: active
+    basis_event: initial_state
+  - id: goal_barney_002
+    content: Pursue casual romantic encounters using his playbook
+    status: active
+    basis_event: initial_state
+  - id: goal_barney_003
+    content: Prevent Ted from becoming too romantically serious about Robin
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_barney_001:
+      content: Ted met Robin at MacLaren's Pub and is immediately smitten
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_barney_002:
+      content: Ted stole a blue French horn for Robin
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_barney_003:
+      content: Marshall proposed to Lily with an engagement ring
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_barney_004:
+      content: The existence and basic nature of his playbook
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    barney_stinson: 100
+    player: 100
+  inventories:
+    barney_stinson: []
+    player: []
+  locations:
+    barney_stinson: maclarens_pub
+    player: maclarens_pub
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,214 @@
+world_id: world_014
+source: 电影《九品芝麻官》
+events:
+- id: ae_001
+  fact: 包龙星在衙门重新翻阅戚家案卷
+  known_by:
+  - bao_longxing
+  - fang_tangjing
+  state_change: 包龙星从敷衍审案转向认真调查
+  cf_edit: 案卷被方唐镜提前调换，包龙星最初得到的信息不完整
+  anchor_for:
+  - bao_longxing
+- id: ae_002
+  fact: 包龙星到戚家现场查看
+  known_by:
+  - bao_longxing
+  - qi_qinshi
+  state_change: 包龙星发现与先前审讯不同的线索
+  cf_edit: 戚家已被常威安排人手清理过，现场证据减少
+  anchor_for:
+  - bao_longxing
+  - qi_qinshi
+- id: ae_003
+  fact: 戚秦氏向包龙星陈述案发经过
+  known_by:
+  - bao_longxing
+  - qi_qinshi
+  state_change: 包龙星对戚秦氏供词产生新的疑问
+  cf_edit: 戚秦氏因惧怕常威报复而隐瞒了关键细节
+  anchor_for:
+  - qi_qinshi
+- id: ae_004
+  fact: 包龙星要求提审常威
+  known_by:
+  - bao_longxing
+  - chang_wei
+  - fang_tangjing
+  state_change: 案件重新进入对质阶段
+  cf_edit: 方唐镜以程序问题拖延提审，导致常威有时间串供
+  anchor_for:
+  - chang_wei
+- id: ae_005
+  fact: 常威在堂上否认所有指控
+  known_by:
+  - bao_longxing
+  - chang_wei
+  - fang_tangjing
+  state_change: 案件陷入供词冲突
+  cf_edit: 常威提供不在场证明，包龙星需额外寻找反证
+  anchor_for:
+  - chang_wei
+- id: ae_006
+  fact: 方唐镜以讼师身份介入重审
+  known_by:
+  - bao_longxing
+  - fang_tangjing
+  - chang_wei
+  state_change: 方唐镜开始公开为常威辩护
+  cf_edit: 方唐镜利用程序漏洞使部分证据被排除
+  anchor_for:
+  - fang_tangjing
+- id: ae_007
+  fact: 包龙星到牢中密会来福
+  known_by:
+  - bao_longxing
+  - lai_fu
+  state_change: 来福成为潜在突破口
+  cf_edit: 来福因害怕常威而拒绝开口，包龙星未能立即获得信息
+  anchor_for:
+  - lai_fu
+- id: ae_008
+  fact: 来福告诉包龙星部分真相
+  known_by:
+  - bao_longxing
+  - lai_fu
+  state_change: 包龙星获得指向常威的关键信息
+  cf_edit: 来福只说出次要细节，核心证据仍被隐瞒
+  anchor_for:
+  - lai_fu
+- id: ae_009
+  fact: 包龙星带豹头搜查新物证
+  known_by:
+  - bao_longxing
+  - bao_tou
+  state_change: 搜查行动可能改变案情走向
+  cf_edit: 物证已被转移，搜查结果不理想
+  anchor_for:
+  - bao_tou
+- id: ae_010
+  fact: 豹头在戚家发现隐藏的血衣
+  known_by:
+  - bao_longxing
+  - bao_tou
+  - qi_qinshi
+  state_change: 关键物证出现
+  cf_edit: 血衣被雨水冲刷，血迹模糊难以辨认
+  anchor_for:
+  - bao_tou
+  - qi_qinshi
+- id: ae_011
+  fact: 包龙星将血衣列为呈堂证据
+  known_by:
+  - bao_longxing
+  - fang_tangjing
+  state_change: 案件证据链开始成形
+  cf_edit: 方唐镜质疑血衣来源合法性，要求排除
+  anchor_for:
+  - bao_longxing
+- id: ae_012
+  fact: 方唐镜质疑血衣与案件的关联
+  known_by:
+  - fang_tangjing
+  - bao_longxing
+  - chang_wei
+  state_change: 庭审围绕证据效力展开争辩
+  cf_edit: 方唐镜提交伪证以削弱血衣可信度
+  anchor_for:
+  - fang_tangjing
+- id: ae_013
+  fact: 包龙星再次提审来福作证
+  known_by:
+  - bao_longxing
+  - lai_fu
+  - chang_wei
+  state_change: 来福的证词成为庭审焦点
+  cf_edit: 来福在堂上因恐惧而翻供
+  anchor_for:
+  - lai_fu
+- id: ae_014
+  fact: 常威当堂威胁来福
+  known_by:
+  - chang_wei
+  - lai_fu
+  - bao_longxing
+  state_change: 来福作证受到干扰
+  cf_edit: 常威以家人安危胁迫来福，使来福改变说法
+  anchor_for:
+  - chang_wei
+  - lai_fu
+- id: ae_015
+  fact: 包龙星请求保护来福
+  known_by:
+  - bao_longxing
+  - bao_tou
+  state_change: 豹头被指派保护关键证人
+  cf_edit: 豹头保护不力，来福在开庭前受到惊吓
+  anchor_for:
+  - bao_tou
+- id: ae_016
+  fact: 戚秦氏在堂上指认常威
+  known_by:
+  - qi_qinshi
+  - chang_wei
+  - bao_longxing
+  state_change: 直接指认加强了对常威的指控
+  cf_edit: 戚秦氏因情绪崩溃而无法完成指认
+  anchor_for:
+  - qi_qinshi
+  - chang_wei
+- id: ae_017
+  fact: 方唐镜提出程序异议
+  known_by:
+  - fang_tangjing
+  - bao_longxing
+  state_change: 重审进程被暂时中断
+  cf_edit: 方唐镜成功使案件延期审理
+  anchor_for:
+  - fang_tangjing
+- id: ae_018
+  fact: 包龙星找到新的辅助证据
+  known_by:
+  - bao_longxing
+  - bao_tou
+  state_change: 案件证据进一步充实
+  cf_edit: 新证据与案件关联性较弱，难以单独定案
+  anchor_for:
+  - bao_longxing
+- id: ae_019
+  fact: 豹头押送相关证物到衙门
+  known_by:
+  - bao_tou
+  - bao_longxing
+  state_change: 证物正式进入司法程序
+  cf_edit: 押送途中证物受损，影响证明力
+  anchor_for:
+  - bao_tou
+- id: ae_020
+  fact: 包龙星在堂上质问常威案发时间行踪
+  known_by:
+  - bao_longxing
+  - chang_wei
+  state_change: 常威的陈述出现矛盾
+  cf_edit: 常威提前准备好不在场证人，使矛盾被掩盖
+  anchor_for:
+  - chang_wei
+- id: ae_021
+  fact: 来福最终同意正式作证
+  known_by:
+  - lai_fu
+  - bao_longxing
+  state_change: 关键证词即将正式呈现
+  cf_edit: 来福作证时因紧张遗漏重要细节
+  anchor_for:
+  - lai_fu
+- id: ae_022
+  fact: 方唐镜与包龙星就证据合法性展开辩论
+  known_by:
+  - fang_tangjing
+  - bao_longxing
+  - chang_wei
+  state_change: 法庭进入法律程序攻防阶段
+  cf_edit: 方唐镜引用先例使部分证据被裁定无效
+  anchor_for:
+  - fang_tangjing

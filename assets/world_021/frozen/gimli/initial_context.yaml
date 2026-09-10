@@ -1,0 +1,88 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    frodo_baggins:
+      level: trusting
+      basis_event: initial_state
+    samwise_gamgee:
+      level: trusting
+      basis_event: initial_state
+    gandalf:
+      level: loyal
+      basis_event: initial_state
+    aragorn:
+      level: trusting
+      basis_event: initial_state
+    legolas:
+      level: neutral
+      basis_event: initial_state
+    gimli:
+      level: loyal
+      basis_event: initial_state
+    boromir:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_gimli_001
+    content: See the Fellowship reach a safe path through or over the mountains
+    status: active
+    basis_event: initial_state
+  - id: goal_gimli_002
+    content: Persuade the Company to enter Moria
+    status: active
+    basis_event: initial_state
+  - id: goal_gimli_003
+    content: Protect Frodo as a member of the Company
+    status: active
+    basis_event: initial_state
+  - id: goal_gimli_004
+    content: Learn news of Balin and the Dwarves in Moria
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_gimli_001:
+      content: Gimli is the Dwarvish representative in the Company of the Ring
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_gimli_002:
+      content: The Redhorn Pass is blocked by storm and the Company turned back
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_gimli_003:
+      content: Gandalf has proposed the path through Moria, and Boromir argued against
+        it
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_gimli_004:
+      content: Gimli wants to see the halls of Moria and learn if Balin's company
+        still lives
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_gimli_005:
+      content: The Company now travels toward the West-gate of Moria
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    gimli: 100
+    player: 100
+  inventories:
+    gimli: []
+    player: []
+  locations:
+    gimli: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

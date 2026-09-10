@@ -1,0 +1,90 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sheldon_cooper:
+      level: neutral
+      basis_event: initial_state
+    leonard_hofstadter:
+      level: loyal
+      basis_event: initial_state
+    howard_wolowitz:
+      level: neutral
+      basis_event: initial_state
+    raj_koothrappali:
+      level: trusting
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: loyal
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Enjoy the social gathering with the full group without letting Sheldon's
+      rules dominate the evening
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Keep her balance between Leonard's expectations and her own independence
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Maintain her close friendships with Amy and Bernadette during the group
+      hangout
+    status: active
+    basis_event: initial_state
+  - id: g_004
+    content: Avoid being pulled into every practical problem the group brings up
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: She knows that Raj's mutism around women is a real limitation and does
+        not force him to speak.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: She knows Howard has a history of overconfident flirting and treats
+        his attempts with skepticism.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: She knows Sheldon's rituals, including the couch spot and knock sequence,
+        are important to him even when she finds them excessive.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_004:
+      content: She knows the group treats game nights and shared meals as regular
+        activities centered in Apartment 4A.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_005:
+      content: She knows Leonard's feelings for her are serious and that the group
+        has adjusted to them being a couple.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    penny: 100
+    player: 100
+  inventories:
+    penny: []
+    player: []
+  locations:
+    penny: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

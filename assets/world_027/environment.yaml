@@ -1,0 +1,48 @@
+world_id: world_027
+name: Los Angeles, Season 1
+locations:
+- id: lux
+  name: Lux nightclub
+  connected_to:
+  - chloe_lapd
+  - penthouse
+- id: penthouse
+  name: Lucifer's penthouse
+  connected_to:
+  - lux
+- id: chloe_lapd
+  name: LAPD precinct where Chloe Decker works
+  connected_to:
+  - lux
+  - chloe_house
+- id: chloe_house
+  name: Chloe Decker's house
+  connected_to:
+  - chloe_lapd
+  - lux
+- id: linda_office
+  name: Dr. Linda Martin's therapy office
+  connected_to:
+  - lux
+items:
+- id: piano
+  name: Lucifer's piano
+  type: instrument
+  portable: false
+- id: flask
+  name: Lucifer's whiskey flask
+  type: drinking vessel
+  portable: true
+- id: badge
+  name: Chloe Decker's LAPD badge
+  type: identification
+  portable: true
+- id: blade
+  name: Mazikeen's curved blade
+  type: weapon
+  portable: true
+- id: notepad
+  name: Linda Martin's notepad
+  type: stationery
+  portable: true
+language: en

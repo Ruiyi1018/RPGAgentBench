@@ -1,0 +1,60 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rachel_green:
+      level: neutral
+      basis_event: initial_state
+    monica_geller:
+      level: neutral
+      basis_event: initial_state
+    phoebe_buffay:
+      level: neutral
+      basis_event: initial_state
+    joey_tribbiani:
+      level: neutral
+      basis_event: initial_state
+    chandler_bing:
+      level: neutral
+      basis_event: initial_state
+    ross_geller:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: gunther_shift_duty
+    content: Work the counter at Central Perk without leaving the shift
+    status: active
+    basis_event: initial_state
+  - id: gunther_observe_rachel
+    content: Notice Rachel as a new waitress while keeping his interest unspoken
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    gunther_works_central_perk:
+      content: Gunther works behind the counter at Central Perk.
+      status: active
+      visibility: public
+      source_event: initial_state
+    gunther_attracted_to_rachel:
+      content: Gunther shows early signs of attraction toward Rachel at the coffeehouse.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    gunther: 100
+    player: 100
+  inventories:
+    gunther: []
+    player: []
+  locations:
+    gunther: central_perk
+    player: central_perk
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

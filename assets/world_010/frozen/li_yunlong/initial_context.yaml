@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhao_gang:
+      level: neutral
+      basis_event: initial_state
+    chu_yunfei:
+      level: distrustful
+      basis_event: initial_state
+    kong_jie:
+      level: trusting
+      basis_event: initial_state
+    ding_wei:
+      level: trusting
+      basis_event: initial_state
+    xiuqin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: li_yunlong_goal_strengthen_hq
+    content: 把独立团团部的作战准备抓起来
+    status: active
+    basis_event: initial_state
+  - id: li_yunlong_goal_work_with_zhao
+    content: 和赵刚把独立团军事与政治工作理顺
+    status: active
+    basis_event: initial_state
+  - id: li_yunlong_goal_pressure_japanese
+    content: 利用赵家峪周边地形对日军据点形成压力
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    li_yunlong_knowledge_hq_terrain:
+      content: 独立团团部周边地形和赵家峪主要道路情况
+      status: active
+      visibility: private
+      source_event: initial_state
+    li_yunlong_knowledge_zhao_role:
+      content: 赵刚是上级派来的政委，负责独立团政治工作
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_yunlong_knowledge_chu_zone:
+      content: 楚云飞所部与独立团处于同一战区，彼此有分界
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_yunlong_knowledge_xiuqin_local:
+      content: 秀芹在赵家峪一带活动，熟悉地方群众情况
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    li_yunlong: 100
+    player: 100
+  inventories:
+    li_yunlong: []
+    player: []
+  locations:
+    li_yunlong: independent_regiment_hq
+    player: independent_regiment_hq
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

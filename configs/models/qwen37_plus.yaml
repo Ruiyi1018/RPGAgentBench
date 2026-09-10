@@ -1,0 +1,15 @@
+provider: dashscope
+base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+api_key_env: DASHSCOPE_API_KEY
+env_file: .env
+enable_thinking: false
+timeout_seconds: 300
+max_attempts: 5
+
+generation:
+  model: qwen3.7-plus-2026-05-26
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 4096
+  seed: 42
+  max_format_retries: 2

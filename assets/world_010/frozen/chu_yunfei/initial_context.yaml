@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    li_yunlong:
+      level: neutral
+      basis_event: initial_state
+    zhao_gang:
+      level: neutral
+      basis_event: initial_state
+    kong_jie:
+      level: neutral
+      basis_event: initial_state
+    ding_wei:
+      level: neutral
+      basis_event: initial_state
+    xiuqin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 确认所部在战区内的部署和主动态势
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 继续观察李云龙及独立团动向
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 在日军据点威胁下维持战区分界
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 李云龙担任八路军独立团团长
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_002:
+      content: 赵刚在独立团任政委，与李云龙共同任职
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 楚云飞与李云龙在同一战区活动，并保持相互注意
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 楚云飞掌握所部在本战区的军事部署
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    chu_yunfei: 100
+    player: 100
+  inventories:
+    chu_yunfei: []
+    player: []
+  locations:
+    chu_yunfei: japanese_stronghold
+    player: japanese_stronghold
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

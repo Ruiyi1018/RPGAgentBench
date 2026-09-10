@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    qin_feng:
+      level: neutral
+      basis_event: initial_state
+    tang_ren:
+      level: trusting
+      basis_event: initial_state
+    si_nuo:
+      level: neutral
+      basis_event: initial_state
+    kun_tai:
+      level: distrustful
+      basis_event: initial_state
+    huang_lan_deng:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_a_xiang_1
+    content: 不让自己被颂帕命案牵进去
+    status: active
+    basis_event: initial_state
+  - id: g_a_xiang_2
+    content: 在唐仁或秦风找来时给点不显眼的帮助
+    status: active
+    basis_event: initial_state
+  - id: g_a_xiang_3
+    content: 维持唐人街日常关系，不让人觉得自己站队
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_a_xiang_1:
+      content: 唐仁在曼谷唐人街有侦探社，并且常与附近的人有往来
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_a_xiang_2:
+      content: 秦风是来找唐仁的外来人，唐仁和秦风目前在躲追查
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_a_xiang_3:
+      content: 颂帕工坊出了命案，唐仁似乎被卷了进来
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_a_xiang_4:
+      content: 唐仁与坤泰之间有些私下联系，但具体警方内情自己并不清楚
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    a_xiang: 100
+    player: 100
+  inventories:
+    a_xiang: []
+    player: []
+  locations:
+    a_xiang: loc_tangren_agency
+    player: loc_tangren_agency
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

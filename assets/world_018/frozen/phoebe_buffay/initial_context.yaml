@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    monica_geller:
+      level: trusting
+      basis_event: initial_state
+    rachel_green:
+      level: trusting
+      basis_event: initial_state
+    joey_tribbiani:
+      level: trusting
+      basis_event: initial_state
+    chandler_bing:
+      level: trusting
+      basis_event: initial_state
+    ross_geller:
+      level: neutral
+      basis_event: initial_state
+    gunther:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: phoebe_support_rachel
+    content: Help Rachel settle into Monica's apartment without making her feel judged
+    status: active
+    basis_event: initial_state
+  - id: phoebe_cleanse_aura
+    content: Cleanse Rachel's aura now that she has moved in
+    status: active
+    basis_event: initial_state
+  - id: phoebe_stay_available
+    content: Stay available to friends without becoming a full-time caretaker
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    phoebe_knows_rachel_arrival:
+      content: Rachel entered Central Perk in a wedding dress after leaving her wedding
+      status: active
+      visibility: private
+      source_event: initial_state
+    phoebe_knows_rachel_moved_in:
+      content: Rachel is staying with Monica
+      status: active
+      visibility: shared
+      source_event: initial_state
+    phoebe_knows_monica_date_paul:
+      content: Monica went on a date with Paul from her restaurant
+      status: active
+      visibility: shared
+      source_event: initial_state
+    phoebe_knows_ross_marriage_ending:
+      content: Ross's wife Carol is a lesbian and their marriage is ending
+      status: active
+      visibility: shared
+      source_event: initial_state
+    phoebe_knows_ross_moved_out:
+      content: Ross has moved out of the apartment he shared with Carol
+      status: active
+      visibility: shared
+      source_event: initial_state
+    phoebe_knows_gunther_works_central_perk:
+      content: Gunther works behind the counter at Central Perk
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    phoebe_buffay: 100
+    player: 100
+  inventories:
+    phoebe_buffay: []
+    player: []
+  locations:
+    phoebe_buffay: central_perk
+    player: central_perk
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_ren:
+      level: trusting
+      basis_event: initial_state
+    a_xiang:
+      level: neutral
+      basis_event: initial_state
+    kun_tai:
+      level: neutral
+      basis_event: initial_state
+    huang_lan_deng:
+      level: distrustful
+      basis_event: initial_state
+    si_nuo:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_qf_001
+    content: 确认颂帕工坊命案发生后，唐仁和自己是否还能继续接触现场相关线索
+    status: active
+    basis_event: initial_state
+  - id: goal_qf_002
+    content: 核实监控录像的时间是否存在被改动或不可直接采信的问题
+    status: active
+    basis_event: initial_state
+  - id: goal_qf_003
+    content: 避免在警方追查唐仁的状态下让自己也被公开锁定
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_qf_001:
+      content: 颂帕工坊发生命案，且唐仁与警方关系紧张
+      status: active
+      visibility: qin_feng
+      source_event: initial_state
+    know_qf_002:
+      content: 监控录像中凶手进入工坊的时间片段值得怀疑，时间戳可能被改动
+      status: active
+      visibility: qin_feng
+      source_event: initial_state
+    know_qf_003:
+      content: 当前尚未确认黄金佛像与案件的直接关联，只知现场存在相关线索
+      status: active
+      visibility: qin_feng
+      source_event: initial_state
+    know_qf_004:
+      content: 思诺出现在学校或咖啡馆附近，可能知道一些周边信息，但尚未形成可靠证据
+      status: active
+      visibility: qin_feng
+      source_event: initial_state
+environment:
+  health:
+    qin_feng: 100
+    player: 100
+  inventories:
+    qin_feng: []
+    player: []
+  locations:
+    qin_feng: loc_tangren_agency
+    player: loc_tangren_agency
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

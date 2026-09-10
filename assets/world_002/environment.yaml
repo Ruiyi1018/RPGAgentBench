@@ -38,7 +38,10 @@ locations:
     connected_to: [tianjin_street]
   - id: tongyuan_bookshop
     name: 同元书店联络点
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, tongyuan_bookshop_exterior]
+  - id: tongyuan_bookshop_exterior
+    name: 同元书店外街面
+    connected_to: [tianjin_street, tongyuan_bookshop]
   - id: xiuchunlou
     name: 绣春楼
     connected_to: [tianjin_street]
@@ -50,7 +53,7 @@ locations:
     connected_to: [tianjin_street]
   - id: tianjin_street
     name: 天津街巷
-    connected_to: [station_courtyard, yu_residence, wu_residence, xie_residence, tongyuan_bookshop, xiuchunlou, teahouse, restaurant, railway_station]
+    connected_to: [station_courtyard, yu_residence, wu_residence, xie_residence, tongyuan_bookshop, tongyuan_bookshop_exterior, xiuchunlou, teahouse, restaurant, railway_station]
   - id: railway_station
     name: 火车站
     connected_to: [tianjin_street]
@@ -58,11 +61,15 @@ locations:
 items:
   - {id: pistol, name: 手枪, type: weapon, portable: true}
   - {id: intelligence_file, name: 密封情报文件, type: document, portable: true}
+  - {id: intelligence_file_copy, name: 情报文件复制件, type: document, portable: true}
   - {id: codebook, name: 密码本, type: document, portable: true}
   - {id: radio, name: 收音机, type: communication, portable: true}
   - {id: micro_recorder, name: 微型录音机, type: recording_device, portable: true}
   - {id: access_pass, name: 通行证, type: credential, portable: true}
   - {id: office_key, name: 办公室钥匙, type: key, portable: true}
+  - {id: archive_key, name: 档案室钥匙, type: key, portable: true}
   - {id: sealed_letter, name: 密封信件, type: document, portable: true}
+  - {id: yu_sealed_dossier, name: 余则成密封档案, type: document, portable: true}
+  - {id: contact_materials, name: 联络点待转移资料, type: document, portable: true}
   - {id: photograph, name: 照片, type: evidence, portable: true}
   - {id: gold_bars, name: 金条, type: currency, portable: true}

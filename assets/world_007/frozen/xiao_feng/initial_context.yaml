@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    duan_yu:
+      level: trusting
+      basis_event: initial_state
+    xu_zhu:
+      level: trusting
+      basis_event: initial_state
+    murong_fu:
+      level: distrustful
+      basis_event: initial_state
+    wang_yuyan:
+      level: neutral
+      basis_event: initial_state
+    jiumozhi:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_xiao_feng_001
+    content: 查清少室山身世公开背后的真相
+    status: active
+    basis_event: initial_state
+  - id: g_xiao_feng_002
+    content: 与段誉、虚竹保持兄弟信义，不令二人因己受累
+    status: active
+    basis_event: initial_state
+  - id: g_xiao_feng_003
+    content: 避免宋辽之间爆发大规模战事
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_xiao_feng_001:
+      content: 自己的契丹身世已在少室山被公开
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xiao_feng_002:
+      content: 段誉与自己在江南结拜为兄弟
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiao_feng_003:
+      content: 慕容复在少室山图谋武林盟主地位
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_xiao_feng_004:
+      content: 聚贤庄一役后自己与中原武林公开决裂
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    xiao_feng: 100
+    player: 100
+  inventories:
+    xiao_feng: []
+    player: []
+  locations:
+    xiao_feng: shaoshi_mountain
+    player: shaoshi_mountain
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

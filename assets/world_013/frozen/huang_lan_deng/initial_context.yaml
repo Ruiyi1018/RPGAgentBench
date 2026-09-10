@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    qin_feng:
+      level: hostile
+      basis_event: initial_state
+    tang_ren:
+      level: hostile
+      basis_event: initial_state
+    kun_tai:
+      level: neutral
+      basis_event: initial_state
+    a_xiang:
+      level: neutral
+      basis_event: initial_state
+    si_nuo:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_01
+    content: 继续负责颂帕命案的警方调查
+    status: active
+    basis_event: initial_state
+  - id: g_02
+    content: 追查并盘问唐仁与秦风
+    status: active
+    basis_event: initial_state
+  - id: g_03
+    content: 限制非警方人员接触案发现场和卷宗
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_01:
+      content: 颂帕工坊发生命案，自己是警方调查负责警官
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_02:
+      content: 唐仁是警方正在追查的对象
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_03:
+      content: 秦风与唐仁在案件中反复出现，属于需要盘查的介入者
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_04:
+      content: 颂帕工坊现场被封锁，非警方人员不应进入
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    huang_lan_deng: 100
+    player: 100
+  inventories:
+    huang_lan_deng: []
+    player: []
+  locations:
+    huang_lan_deng: loc_police_station
+    player: loc_police_station
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

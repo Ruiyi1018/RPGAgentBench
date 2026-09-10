@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    eddard_stark:
+      level: loyal
+      basis_event: initial_state
+    catelyn_stark:
+      level: distrustful
+      basis_event: initial_state
+    tyrion_lannister:
+      level: neutral
+      basis_event: initial_state
+    jon_snow:
+      level: loyal
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    cersei_lannister:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Continue training with Syrio Forel
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Warn her father about the danger she overheard
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Avoid becoming a traditional lady
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Knows her father discovered Needle and arranged lessons with Syrio
+        Forel
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Overheard a threatening conversation in the Red Keep about plans against
+        her father
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: Knows Jon Snow gave her Needle before leaving Winterfell
+      status: active
+      visibility: private
+      source_event: initial_state
+    k4:
+      content: Knows Syrio Forel is teaching her the Braavosi water dance
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    arya_stark: 100
+    player: 100
+  inventories:
+    arya_stark: []
+    player: []
+  locations:
+    arya_stark: kings_landing
+    player: kings_landing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

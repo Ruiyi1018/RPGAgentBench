@@ -1,0 +1,47 @@
+world_id: world_004
+canon_policy:
+  primary_source: 《三国演义》嘉靖本
+  source_type: 长篇章回小说
+  excluded_versions:
+  - 毛宗岗评本
+  - 电视剧改编本
+  shared_snapshot: 孙刘联盟形成、赤壁决战尚未开始
+  generated_timeline: 从曹操南征荆州前至赤壁决战前夕，按嘉靖本叙事顺序排列
+  quotation_policy: 禁止直接复制原文对话，只做事实级转述
+evaluated_npcs:
+- cao_cao
+- liu_bei
+- zhuge_liang
+- guan_yu
+- zhang_fei
+- zhou_yu
+- sun_quan
+event_entities:
+- 曹操
+- 刘备
+- 诸葛亮
+- 关羽
+- 张飞
+- 周瑜
+- 孙权
+- 刘表
+- 刘琮
+- 蔡瑁
+- 张允
+- 鲁肃
+- 黄盖
+- 蒋干
+- 糜竺
+- 孙乾
+sources:
+- id: sgyy_jiajing
+  title: 三国演义
+  creator: 罗贯中
+  scope: 嘉靖本所载自曹操南征荆州至赤壁决战前夕情节
+  authority: primary
+data_constraints:
+- 所有事实限定在嘉靖本范围内，且不得包含赤壁决战开始后的情节
+- 不得使用毛宗岗评本或电视剧改编本中的情节与人物设定
+- 不伪造具体卷数、回目编号或原文引文
+- 锚点事件按时间顺序排列，状态变化只描述事件带来的直接影响
+- cf_edit必须给出真实替代情形，不得写‘无’或空泛表述

@@ -1,0 +1,90 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    eddard_stark:
+      level: loyal
+      basis_event: initial_state
+    arya_stark:
+      level: loyal
+      basis_event: initial_state
+    tyrion_lannister:
+      level: hostile
+      basis_event: initial_state
+    jon_snow:
+      level: distrustful
+      basis_event: initial_state
+    cersei_lannister:
+      level: distrustful
+      basis_event: initial_state
+    daenerys_targaryen:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Protect Bran and the rest of her children from further harm
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Bring Tyrion Lannister to justice for the attempt on Bran's life
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Return to Winterfell or to her remaining children as soon as possible
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Bran survived the fall but remains unconscious and crippled; an assassin
+        later tried to kill him in his bed.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Littlefinger told her the dagger used by the assassin belonged to Tyrion
+        Lannister.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: She traveled secretly to King's Landing and met with Eddard and Littlefinger
+        before leaving.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: She seized Tyrion Lannister at the crossroads inn and brought him to
+        the Eyrie for judgment.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_005:
+      content: Tyrion demanded a trial by combat at the Eyrie, and his champion Bronn
+        won, securing his freedom.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_006:
+      content: Lysa Arryn is more unstable than Catelyn remembered and keeps her son
+        Robert close and sheltered.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    catelyn_stark: 100
+    player: 100
+  inventories:
+    catelyn_stark: []
+    player: []
+  locations:
+    catelyn_stark: the_eyrie
+    player: the_eyrie
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

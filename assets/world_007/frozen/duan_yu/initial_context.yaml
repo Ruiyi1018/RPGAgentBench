@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_feng:
+      level: loyal
+      basis_event: initial_state
+    xu_zhu:
+      level: loyal
+      basis_event: initial_state
+    wang_yuyan:
+      level: trusting
+      basis_event: initial_state
+    murong_fu:
+      level: hostile
+      basis_event: initial_state
+    jiumozhi:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_protect_allies
+    content: 在少室山混战中护住萧峰、虚竹等结义兄弟。
+    status: active
+    basis_event: initial_state
+  - id: goal_resolve_wang_yuyan
+    content: 厘清与王语嫣、慕容复之间的感情纠葛。
+    status: pending
+    basis_event: initial_state
+  - id: goal_avoid_throne
+    content: 避免被大理段氏权力斗争裹挟。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_sworn_brothers:
+      content: 萧峰、虚竹与段誉已在少室山并肩对敌，三人有结义情分。
+      status: active
+      visibility: known_to_all
+      source_event: initial_state
+    knowledge_wang_yuyan_feelings:
+      content: 王语嫣仍倾向慕容复，段誉的感情未获回应。
+      status: active
+      visibility: known_only_to_duan_yu
+      source_event: initial_state
+    knowledge_six_meridians_unstable:
+      content: 六脉神剑有时无法收发自如，实战中存在失灵风险。
+      status: active
+      visibility: known_only_to_duan_yu
+      source_event: initial_state
+environment:
+  health:
+    duan_yu: 100
+    player: 100
+  inventories:
+    duan_yu: []
+    player: []
+  locations:
+    duan_yu: shaoshi_mountain
+    player: shaoshi_mountain
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

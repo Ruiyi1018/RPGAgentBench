@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bao_longxing:
+      level: distrustful
+      basis_event: initial_state
+    chang_wei:
+      level: hostile
+      basis_event: initial_state
+    fang_tangjing:
+      level: hostile
+      basis_event: initial_state
+    qi_qinshi:
+      level: neutral
+      basis_event: initial_state
+    lai_fu:
+      level: neutral
+      basis_event: initial_state
+    bao_tou:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_lai_fu_001
+    content: 在不受常威报复的前提下保住自己安全
+    status: active
+    basis_event: initial_state
+  - id: g_lai_fu_002
+    content: 观察包龙星是否有能力保护自己，再决定是否多说
+    status: active
+    basis_event: initial_state
+  - id: g_lai_fu_003
+    content: 避免在公开堂审中成为常威发泄怒火的目标
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_lai_fu_001:
+      content: 来福知道常威与案件有关的部分情况，但不愿承认全部
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_lai_fu_002:
+      content: 来福曾向包龙星透露次要线索，但核心证据仍被隐瞒
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_lai_fu_003:
+      content: 来福害怕常威因作证而报复自己或家人
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    lai_fu: 100
+    player: 100
+  inventories:
+    lai_fu: []
+    player: []
+  locations:
+    lai_fu: loc_jail
+    player: loc_jail
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

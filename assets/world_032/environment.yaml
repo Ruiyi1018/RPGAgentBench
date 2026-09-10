@@ -1,0 +1,100 @@
+world_id: world_032
+name: New York City, Season 1
+locations:
+- id: maclarens_pub
+  name: MacLaren's Pub
+  connected_to:
+  - apartment_4d
+  - metropolitan_magazine
+- id: apartment_4d
+  name: Apartment 4D
+  connected_to:
+  - maclarens_pub
+  - robin_apartment
+  - metronatural_bank
+- id: robin_apartment
+  name: Robin's Apartment
+  connected_to:
+  - apartment_4d
+  - metropolitan_magazine
+- id: metronatural_bank
+  name: MetroNatural Bank
+  connected_to:
+  - apartment_4d
+- id: barneys_apartment
+  name: Barney's Apartment
+  connected_to:
+  - maclarens_pub
+  - apartment_4d
+- id: metropolitan_magazine
+  name: Metropolitan Magazine
+  connected_to:
+  - robin_apartment
+  - apartment_4d
+- id: liberty_bell
+  name: Liberty Bell
+  connected_to:
+  - maclarens_pub
+- id: world_wide_news
+  name: World Wide News
+  connected_to:
+  - metropolitan_magazine
+- id: the_altar
+  name: The Altar
+  connected_to:
+  - apartment_4d
+- id: marshall_office
+  name: Marshall's Office
+  connected_to:
+  - apartment_4d
+  - metronatural_bank
+- id: maclarens_booth
+  name: MacLaren's Booth
+  connected_to:
+  - maclarens_pub
+- id: the_apartment
+  name: The Apartment
+  connected_to:
+  - apartment_4d
+items:
+- id: yellow_umbrella
+  name: Yellow Umbrella
+  type: object
+  portable: true
+- id: blue_french_horn
+  name: Blue French Horn
+  type: object
+  portable: true
+- id: engagement_ring
+  name: Marshall's Engagement Ring
+  type: object
+  portable: true
+- id: swarley_bill
+  name: Swarley's Bar Tab
+  type: document
+  portable: true
+- id: robin_music_video
+  name: Robin's Music Video
+  type: media
+  portable: true
+- id: lemon_law_tie
+  name: Lemon Law Tie
+  type: object
+  portable: true
+- id: barneys_playbook
+  name: Barney's Playbook
+  type: document
+  portable: true
+- id: pineapple
+  name: The Pineapple
+  type: object
+  portable: true
+- id: goat
+  name: The Goat
+  type: animal
+  portable: false
+- id: red_cowboy_boots
+  name: Red Cowboy Boots
+  type: object
+  portable: true
+language: en

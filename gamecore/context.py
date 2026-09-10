@@ -190,6 +190,7 @@ class GameContext:
         environment.setdefault("locations", {})
         environment.setdefault("access", {})
         environment.setdefault("offers", [])
+        environment.setdefault("artifacts", {})
         environment.setdefault("task_status", "active")
         environment.setdefault("dialogue_status", "active")
         self.data.setdefault("history", [])

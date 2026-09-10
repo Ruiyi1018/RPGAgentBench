@@ -1,0 +1,45 @@
+world_id: world_012
+canon_policy:
+  primary_source: 电视剧《家有儿女》第一季早期剧集及官方公开剧情资料
+  source_type: 电视连续剧
+  excluded_versions:
+  - 《家有儿女》第二季及后续季
+  - 动画版
+  - 电影版
+  - 小说改编版
+  - 非官方同人创作
+  shared_snapshot: 重组家庭稳定生活的早期剧集，以第一季前段家庭日常为核心时间快照
+  generated_timeline: 基于第一季早期连续剧集内容推导的共享时间线，仅按可确认的情节顺序排列
+  quotation_policy: 不复制原作台词，仅做事实级转述；无法可靠确认的细节省略，不伪造章节号或集数
+evaluated_npcs:
+- liu_mei
+- xia_donghai
+- liu_xing
+- xia_xue
+- xia_yu
+- laolao
+event_entities:
+- 家庭日常
+- 学校事件
+- 邻里互动
+- 家庭规则
+- 饮食起居
+- 亲子沟通
+- 兄弟姐妹关系
+- 夫妻协作
+- 祖辈探望
+- 作业与学习
+sources:
+- id: src_jyzn_dyj
+  title: 家有儿女第一季
+  creator: 中国大陆情景喜剧《家有儿女》制作方
+  scope: 第一季早期重组家庭稳定生活相关剧情
+  authority: primary
+data_constraints:
+- 所有事实必须限定在《家有儿女》第一季早期重组家庭稳定生活剧情范围内
+- 不得使用第一季后期及后续季、动画版、电影版或其他版本剧情
+- 不做原作台词复制，只做事实级转述
+- 不伪造具体集数、日期、地点门牌号或URL
+- 无法可靠确认的细节宁可省略
+- Anchor池事件必须按从早到晚的时间排序
+- 所有已知角色和地点、物品必须来自当前共享快照及来源范围

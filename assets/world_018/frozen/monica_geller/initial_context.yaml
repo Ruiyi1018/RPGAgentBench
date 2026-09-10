@@ -1,0 +1,161 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rachel_green:
+      level: trusting
+      basis_event: initial_state
+    phoebe_buffay:
+      level: trusting
+      basis_event: initial_state
+    joey_tribbiani:
+      level: trusting
+      basis_event: initial_state
+    chandler_bing:
+      level: trusting
+      basis_event: initial_state
+    ross_geller:
+      level: loyal
+      basis_event: initial_state
+    gunther:
+      level: neutral
+      basis_event: initial_state
+    monica_geller:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: monica_g1
+    content: Help Rachel settle into independent life in Monica's apartment.
+    status: active
+    basis_event: initial_state
+  - id: monica_g2
+    content: Keep her apartment functioning as the group's reliable gathering place.
+    status: active
+    basis_event: initial_state
+  - id: monica_g3
+    content: Move on from the short-lived deception by Paul the wine guy without letting
+      it make her cynical.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    monica_k1:
+      content: Rachel left her wedding and arrived in a wedding dress at Central Perk.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k2:
+      content: Rachel is her old high school friend and now stays with her.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k3:
+      content: Ross revealed he had a long-standing crush on Rachel during high school.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k4:
+      content: Rachel cut up her father's credit cards to prove she can support herself.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k5:
+      content: Rachel got a waitress job at Central Perk.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k6:
+      content: Paul the wine guy falsely claimed to be impotent to gain her sympathy.
+      status: active
+      visibility: private
+      source_event: initial_state
+    monica_k7:
+      content: Ross's wife Carol is a lesbian and their marriage is ending.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k8:
+      content: Ross moved into a new apartment after separating from Carol.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k9:
+      content: Ross brought Marcel the monkey into the group's life.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k10:
+      content: Joey landed and then lost a job as Al Pacino's butt double.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k11:
+      content: Phoebe performed a cleansing ritual for Rachel after Rachel moved in.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k12:
+      content: Chandler complains about his office job and fears becoming like his
+        boss.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k13:
+      content: Chandler and Joey live in the apartment across from hers.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k14:
+      content: Ross's son Ben was born and Ross decided on the name Ben.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k15:
+      content: Rachel returned her engagement ring and formally ended her engagement.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k16:
+      content: Monica hosted Thanksgiving and the group watched the Underdog balloon
+        escape from her roof.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k17:
+      content: Rachel accidentally ruined part of the Thanksgiving potatoes.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k18:
+      content: Marcel escaped and got lost in the city before being found.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k19:
+      content: Rachel received her first paycheck and realized how little remained
+        after taxes.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    monica_k20:
+      content: The group watches a Spanish-language soap opera together.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    monica_geller: 100
+    player: 100
+  inventories:
+    monica_geller: []
+    player: []
+  locations:
+    monica_geller: monica_apartment
+    player: monica_apartment
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

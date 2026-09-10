@@ -1,0 +1,251 @@
+world_id: world_011
+source: 电视剧《狂飙》早期剧情
+events:
+- id: ev_001
+  fact: 除夕夜旧厂街市场发生冲突，高启强与唐家兄弟等人卷入纠纷
+  known_by:
+  - an_xin
+  - gao_qiqiang
+  - li_xiang
+  - tang_xiaolong
+  - tang_xiaohu
+  state_change: 旧厂街市场商户间矛盾公开化
+  cf_edit: 唐小龙在冲突发生前主动退让，放弃争抢摊位控制权，导致后续市场秩序未因同一导火索激化
+  anchor_for:
+  - an_xin
+  - gao_qiqiang
+  - tang_xiaolong
+  - tang_xiaohu
+- id: ev_002
+  fact: 安欣在冲突后接触高启强，开始了解其家庭与经营处境
+  known_by:
+  - an_xin
+  - gao_qiqiang
+  state_change: 安欣与高启强之间建立初步接触关系
+  cf_edit: 高启强在冲突后拒绝与安欣交谈并离开现场，使安欣无法第一时间了解其处境
+  anchor_for:
+  - an_xin
+  - gao_qiqiang
+- id: ev_003
+  fact: 李响参与调查除夕冲突，并对现场相关人员进行问询
+  known_by:
+  - li_xiang
+  - an_xin
+  - gao_qiqiang
+  state_change: 警方正式介入旧厂街市场冲突调查
+  cf_edit: 现场监控录像带在警方到达前被唐小虎提前取走，使调查无法锁定冲突关键过程
+  anchor_for:
+  - li_xiang
+  - an_xin
+  - gao_qiqiang
+- id: ev_004
+  fact: 唐小龙在警方问询中把主要责任推向高启强
+  known_by:
+  - tang_xiaolong
+  - gao_qiqiang
+  - li_xiang
+  - an_xin
+  state_change: 高启强面临被单独追责的风险
+  cf_edit: 唐小龙承认冲突由自己先动手，使警方调查方向转为追究唐家兄弟主要责任
+  anchor_for:
+  - tang_xiaolong
+  - gao_qiqiang
+  - li_xiang
+  - an_xin
+- id: ev_005
+  fact: 高启强向安欣说明自己长期在旧厂街市场卖鱼并照顾家人
+  known_by:
+  - gao_qiqiang
+  - an_xin
+  state_change: 安欣对高启强的家庭负担和社会处境形成认识
+  cf_edit: 高启强隐瞒弟弟妹妹的存在，使安欣误判其家庭压力程度
+  anchor_for:
+  - gao_qiqiang
+  - an_xin
+- id: ev_006
+  fact: 安欣回到刑侦支队后与李响讨论除夕冲突的初步调查方向
+  known_by:
+  - an_xin
+  - li_xiang
+  state_change: 安欣与李响形成协作调查的初步分工
+  cf_edit: 安欣因个人判断坚持单独调查，未与李响共享高启强提供的信息，导致调查节奏变慢
+  anchor_for:
+  - an_xin
+  - li_xiang
+- id: ev_007
+  fact: 唐小虎在冲突后留在市场处理摊位后续并安抚周边商户
+  known_by:
+  - tang_xiaohu
+  - tang_xiaolong
+  state_change: 唐家兄弟试图降低冲突对市场经营的影响
+  cf_edit: 唐小虎在冲突后离开市场不再露面，使市场商户对唐家兄弟的畏惧进一步加深
+  anchor_for:
+  - tang_xiaohu
+  - tang_xiaolong
+- id: ev_008
+  fact: 李响调取旧厂街市场周边监控录像带作为调查证据
+  known_by:
+  - li_xiang
+  - an_xin
+  state_change: 监控资料进入警方证据链
+  cf_edit: 市场监控探头在冲突当晚损坏，导致李响只能依赖口供而无法获得客观画面
+  anchor_for:
+  - li_xiang
+  - an_xin
+- id: ev_009
+  fact: 高启强向安欣请求尽量不影响自己的鱼摊经营
+  known_by:
+  - gao_qiqiang
+  - an_xin
+  state_change: 高启强在配合调查同时关注自身生计维持
+  cf_edit: 高启强主动提出暂停经营以配合调查，使安欣对其处境产生更强同情并改变调查重心
+  anchor_for:
+  - gao_qiqiang
+  - an_xin
+- id: ev_010
+  fact: 唐小龙在店铺内要求唐小虎统一口径应对警方
+  known_by:
+  - tang_xiaolong
+  - tang_xiaohu
+  state_change: 唐家兄弟围绕冲突叙述形成协调策略
+  cf_edit: 唐小虎拒绝听从唐小龙安排并准备向警方说明真相，导致兄弟间出现信任裂痕
+  anchor_for:
+  - tang_xiaolong
+  - tang_xiaohu
+- id: ev_011
+  fact: 安欣前往旧厂街市场实地查看冲突发生位置
+  known_by:
+  - an_xin
+  - li_xiang
+  state_change: 警方对现场环境形成直接勘察记录
+  cf_edit: 安欣在前往市场途中被临时调去处理另一起案件，使现场勘察延迟并影响证物固定
+  anchor_for:
+  - an_xin
+  - li_xiang
+- id: ev_012
+  fact: 高启强在自家旧屋整理账本，统计近期经营损失
+  known_by:
+  - gao_qiqiang
+  state_change: 高启强开始量化冲突对生计造成的影响
+  cf_edit: 账本在冲突中遗失，使高启强无法准确判断经营损失并影响其后续决策
+  anchor_for:
+  - gao_qiqiang
+- id: ev_013
+  fact: 李响发现唐小龙供述与市场商户说法存在明显出入
+  known_by:
+  - li_xiang
+  - an_xin
+  state_change: 警方对唐小龙口供可信度产生怀疑
+  cf_edit: 唐小龙提前与多名商户串通，使口供与周围说法一致，调查暂时无法突破
+  anchor_for:
+  - li_xiang
+  - an_xin
+  - tang_xiaolong
+- id: ev_014
+  fact: 孟钰与安欣在日常联系中问及除夕冲突调查进展
+  known_by:
+  - meng_yu
+  - an_xin
+  state_change: 孟钰开始关注安欣经手的案件
+  cf_edit: 孟钰因个人事务离开京海，未与安欣讨论案件，使安欣缺少外部意见参考
+  anchor_for:
+  - meng_yu
+  - an_xin
+- id: ev_015
+  fact: 安欣向李响建议继续寻找现场目击商户补充旁证
+  known_by:
+  - an_xin
+  - li_xiang
+  state_change: 调查重心扩展到现场旁证收集
+  cf_edit: 李响坚持先突破唐小龙口供，不采纳旁证优先思路，导致调查停滞数日
+  anchor_for:
+  - an_xin
+  - li_xiang
+- id: ev_016
+  fact: 唐小虎私下把部分店铺现金转移以规避可能调查
+  known_by:
+  - tang_xiaohu
+  - tang_xiaolong
+  state_change: 唐家兄弟在警方调查期间开始隐藏部分资金痕迹
+  cf_edit: 唐小虎将所有现金留在店内配合调查，使警方对唐家兄弟经济往来了解更加全面
+  anchor_for:
+  - tang_xiaohu
+  - tang_xiaolong
+- id: ev_017
+  fact: 高启强到店铺附近与唐小龙理论，要求对方不再把责任推给自己
+  known_by:
+  - gao_qiqiang
+  - tang_xiaolong
+  state_change: 高启强与唐小龙在调查期间发生直接对峙
+  cf_edit: 高启强选择忍让并放弃当面对质，使唐小龙更加确信可以单方面主导责任归属
+  anchor_for:
+  - gao_qiqiang
+  - tang_xiaolong
+- id: ev_018
+  fact: 李响将市场商户口供与现场位置进行比对，初步认定冲突核心在摊位争夺
+  known_by:
+  - li_xiang
+  - an_xin
+  state_change: 警方形成摊位争夺为核心矛盾的初步结论
+  cf_edit: 多份口供指向高启强先动手，使调查过早锁定单方责任
+  anchor_for:
+  - li_xiang
+  - an_xin
+  - gao_qiqiang
+- id: ev_019
+  fact: 安欣在旧厂街市场发现高启强因冲突导致鱼秤损坏
+  known_by:
+  - an_xin
+  - gao_qiqiang
+  state_change: 安欣进一步确认冲突对高启强日常经营造成实际损害
+  cf_edit: 高启强在安欣到达前已将损坏鱼秤更换，使安欣无法核实冲突造成的直接损失
+  anchor_for:
+  - an_xin
+  - gao_qiqiang
+- id: ev_020
+  fact: 孟钰从家人处听说旧厂街市场除夕冲突造成不良影响
+  known_by:
+  - meng_yu
+  state_change: 孟钰对案件社会影响形成初步判断
+  cf_edit: 孟钰家人对市场冲突只字未提，使孟钰延迟了解案件严重程度
+  anchor_for:
+  - meng_yu
+- id: ev_021
+  fact: 唐小龙指使唐小虎再去找市场商户强调统一说法
+  known_by:
+  - tang_xiaolong
+  - tang_xiaohu
+  state_change: 唐家兄弟扩大对目击商户的施压范围
+  cf_edit: 唐小虎拒绝再次出面，使唐小龙不得不亲自接触商户，留下更多口供破绽
+  anchor_for:
+  - tang_xiaolong
+  - tang_xiaohu
+- id: ev_022
+  fact: 安欣与李响汇总现有证据，认为需要对唐小龙进行二次问询
+  known_by:
+  - an_xin
+  - li_xiang
+  state_change: 调查进入针对唐小龙的深入问询准备阶段
+  cf_edit: 上级要求暂缓传唤唐小龙，使警方调查在关键节点被迫暂停
+  anchor_for:
+  - an_xin
+  - li_xiang
+  - tang_xiaolong
+- id: ev_023
+  fact: 高启强在旧屋中与弟弟妹妹相处，并暂缓去市场出摊
+  known_by:
+  - gao_qiqiang
+  state_change: 高启强家庭生活受到冲突后的短期扰动
+  cf_edit: 高启强为维持收入坚持照常出摊，使他在市场内再次与唐家兄弟发生摩擦
+  anchor_for:
+  - gao_qiqiang
+- id: ev_024
+  fact: 安欣向孟钰表露自己对旧厂街普通经营户处境感到不安
+  known_by:
+  - an_xin
+  - meng_yu
+  state_change: 安欣对案件社会背景产生个人层面的担忧
+  cf_edit: 安欣对孟钰隐瞒内心疑虑，使孟钰未能察觉案件对安欣造成的压力
+  anchor_for:
+  - an_xin
+  - meng_yu

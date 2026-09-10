@@ -212,6 +212,16 @@ class VenusClient:
                 "VenusClient同步接口不能在活动事件循环内调用"
             )
         model = config.model or DEFAULT_MODEL
+        response_format: dict[str, Any] = {"type": "json_object"}
+        if config.response_schema is not None:
+            response_format = {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "structured_output",
+                    "strict": True,
+                    "schema": dict(config.response_schema),
+                },
+            }
         result = asyncio.run(
             call_venus_api_result_async(
                 [
@@ -224,7 +234,7 @@ class VenusClient:
                     "top_p": config.top_p,
                     "max_tokens": config.max_tokens,
                     "seed": config.seed,
-                    "response_format": {"type": "json_object"},
+                    "response_format": response_format,
                 },
                 scene=self.scene,
                 token=self.api_key,

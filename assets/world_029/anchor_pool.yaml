@@ -1,0 +1,259 @@
+world_id: world_029
+source: Rick and Morty Season 1 episodes 1-12
+events:
+- id: ae_s1_ch001_001
+  fact: Rick returns to the Smith house after a long absence and reveals that he has
+    been traveling through other dimensions.
+  known_by:
+  - rick_sanchez
+  state_change: Rick is now present in the Smith household.
+  cf_edit: Rick returns to the Smith house after a short absence and reveals that
+    he has been traveling through other dimensions.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch001_002
+  fact: Rick announces that he needs Morty's help and takes him out of school through
+    the garage portal.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  state_change: Morty leaves school and begins traveling with Rick.
+  cf_edit: Rick announces that he needs Summer's help and takes her out of school
+    through the garage portal.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch001_003
+  fact: Morty learns that Rick has been collecting mega seeds and has a plan involving
+    them.
+  known_by:
+  - morty_smith
+  state_change: Morty gains awareness of Rick's seed-collecting activity.
+  cf_edit: Summer learns that Rick has been collecting mega seeds and has a plan involving
+    them.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch001_004
+  fact: Rick and Morty enter a giant's body to retrieve a mega seed from inside a
+    hostile organism.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  state_change: The seed retrieval mission moves into the giant's body.
+  cf_edit: Rick and Jerry enter a giant's body to retrieve a mega seed from inside
+    a hostile organism.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch002_001
+  fact: Rick brings Morty into the garage and asks him to help with a science demonstration
+    for school.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  state_change: Morty becomes involved in a new Rick project.
+  cf_edit: Rick brings Summer into the garage and asks her to help with a science
+    demonstration for school.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch002_002
+  fact: Rick creates a device that allows Morty to see alternate timelines and their
+    consequences.
+  known_by:
+  - rick_sanchez
+  state_change: A timeline-viewing device is created in the garage.
+  cf_edit: Rick creates a device that allows Jerry to see alternate timelines and
+    their consequences.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch002_003
+  fact: Morty is shaken after witnessing a parallel version of his family living different
+    lives.
+  known_by:
+  - morty_smith
+  state_change: Morty becomes emotionally affected by alternate-timeline knowledge.
+  cf_edit: Beth is shaken after witnessing a parallel version of her family living
+    different lives.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch003_001
+  fact: Beth considers whether she should accept Rick back into the family and expresses
+    mixed feelings to Jerry.
+  known_by:
+  - beth_smith
+  - jerry_smith
+  state_change: The family discusses Rick's place in their home.
+  cf_edit: Beth considers whether she should accept Birdperson back into the family
+    and expresses mixed feelings to Summer.
+  anchor_for:
+  - beth_smith
+- id: ae_s1_ch003_002
+  fact: Jerry tells Beth that he does not trust Rick and worries about the effect
+    on Morty.
+  known_by:
+  - jerry_smith
+  - beth_smith
+  state_change: Jerry's distrust of Rick becomes explicit.
+  cf_edit: Jerry tells Beth that he does not trust Birdperson and worries about the
+    effect on Summer.
+  anchor_for:
+  - jerry_smith
+- id: ae_s1_ch003_003
+  fact: Summer asks Rick if she can come along on an adventure to prove she is not
+    just a normal teenager.
+  known_by:
+  - summer_smith
+  - rick_sanchez
+  state_change: Summer expresses a desire to join Rick's adventures.
+  cf_edit: Summer asks Birdperson if she can come along on an adventure to prove she
+    is not just a normal teenager.
+  anchor_for:
+  - summer_smith
+- id: ae_s1_ch004_001
+  fact: Rick shows the family an interdimensional cable box that can access television
+    from countless realities.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  - beth_smith
+  - jerry_smith
+  - summer_smith
+  state_change: The family gains access to multiverse television.
+  cf_edit: Rick shows the family a portal gun that can access television from countless
+    realities.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch004_002
+  fact: Jerry becomes fascinated with an alternate version of himself who is successful
+    and respected.
+  known_by:
+  - jerry_smith
+  state_change: Jerry develops a fixation on his alternate self.
+  cf_edit: Beth becomes fascinated with an alternate version of herself who is successful
+    and respected.
+  anchor_for:
+  - jerry_smith
+- id: ae_s1_ch004_003
+  fact: Beth grows irritated when the family ignores her input about the cable box
+    programming.
+  known_by:
+  - beth_smith
+  state_change: Beth feels dismissed during family viewing.
+  cf_edit: Summer grows irritated when the family ignores her input about the cable
+    box programming.
+  anchor_for:
+  - beth_smith
+- id: ae_s1_ch005_001
+  fact: Morty meets a member of an alien species who becomes an ally during a survival
+    situation.
+  known_by:
+  - morty_smith
+  state_change: Morty forms a temporary alliance with an alien.
+  cf_edit: Morty meets a member of a robot species who becomes an ally during a survival
+    situation.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch005_002
+  fact: Rick is injured while trying to protect Morty from a hostile creature.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  state_change: Rick is physically hurt during the encounter.
+  cf_edit: Beth is injured while trying to protect Morty from a hostile creature.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch006_001
+  fact: The Smith family attends a parent-teacher conference where Morty's grades
+    cause tension.
+  known_by:
+  - beth_smith
+  - jerry_smith
+  - morty_smith
+  state_change: School performance becomes a family conflict.
+  cf_edit: The Smith family attends a parent-teacher conference where Summer's grades
+    cause tension.
+  anchor_for:
+  - beth_smith
+- id: ae_s1_ch006_002
+  fact: Jerry argues that Rick's influence is harming Morty's education.
+  known_by:
+  - jerry_smith
+  state_change: Jerry openly blames Rick for Morty's school problems.
+  cf_edit: Jerry argues that Beth's influence is harming Summer's education.
+  anchor_for:
+  - jerry_smith
+- id: ae_s1_ch007_001
+  fact: Summer uses Rick's equipment without permission and accidentally activates
+    a dangerous function.
+  known_by:
+  - summer_smith
+  state_change: Summer causes an accident in the garage.
+  cf_edit: Summer uses Birdperson's equipment without permission and accidentally
+    activates a dangerous function.
+  anchor_for:
+  - summer_smith
+- id: ae_s1_ch007_002
+  fact: Birdperson is introduced as an old friend of Rick's who fought alongside him
+    in past conflicts.
+  known_by:
+  - rick_sanchez
+  - birdperson
+  state_change: Birdperson enters the current story.
+  cf_edit: Birdperson is introduced as an old enemy of Rick's who fought against him
+    in past conflicts.
+  anchor_for:
+  - birdperson
+- id: ae_s1_ch008_001
+  fact: Rick and Morty travel to the Council of Ricks citadel and attract official
+    attention.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  state_change: The pair enters a major inter-dimensional political location.
+  cf_edit: Rick and Beth travel to the Council of Ricks citadel and attract official
+    attention.
+  anchor_for:
+  - rick_sanchez
+- id: ae_s1_ch008_002
+  fact: Morty is questioned by council-aligned Ricks who suspect Rick Sanchez of violations.
+  known_by:
+  - morty_smith
+  state_change: Morty is drawn into the Council's investigation.
+  cf_edit: Summer is questioned by council-aligned Ricks who suspect Rick Sanchez
+    of violations.
+  anchor_for:
+  - morty_smith
+- id: ae_s1_ch009_001
+  fact: Birdperson helps Rick evade a threat by hiding him temporarily at Birdperson's
+    homeworld.
+  known_by:
+  - birdperson
+  - rick_sanchez
+  state_change: Rick receives shelter from Birdperson.
+  cf_edit: Birdperson helps Beth evade a threat by hiding her temporarily at Birdperson's
+    homeworld.
+  anchor_for:
+  - birdperson
+- id: ae_s1_ch010_001
+  fact: Beth demands to know where Rick has been and questions whether he cares about
+    the family.
+  known_by:
+  - beth_smith
+  - rick_sanchez
+  state_change: Beth confronts Rick about his absence.
+  cf_edit: Beth demands to know where Jerry has been and questions whether he cares
+    about the family.
+  anchor_for:
+  - beth_smith
+- id: ae_s1_ch012_001
+  fact: The Smith family gathers after a major crisis and Rick admits that the family
+    matters to him more than he usually says.
+  known_by:
+  - rick_sanchez
+  - morty_smith
+  - beth_smith
+  - jerry_smith
+  - summer_smith
+  state_change: Rick expresses family attachment.
+  cf_edit: The Smith family gathers after a major crisis and Jerry admits that the
+    family matters to him more than he usually says.
+  anchor_for:
+  - rick_sanchez

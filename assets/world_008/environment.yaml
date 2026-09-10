@@ -1,0 +1,36 @@
+world_id: world_008
+name: 鹿鼎记
+locations:
+- id: loc_yangzhou
+  name: 扬州
+  connected_to:
+  - loc_beijing
+- id: loc_beijing
+  name: 北京
+  connected_to:
+  - loc_yangzhou
+  - loc_wutaishan
+- id: loc_wutaishan
+  name: 五台山
+  connected_to:
+  - loc_beijing
+- id: loc_shenlongdao
+  name: 神龙岛
+  connected_to: []
+- id: loc_yunnan
+  name: 云南
+  connected_to: []
+items:
+- id: item_dagger
+  name: 匕首
+  type: 武器
+  portable: true
+- id: item_map
+  name: 地图
+  type: 文书
+  portable: true
+- id: item_book
+  name: 四十二章经
+  type: 经书
+  portable: true
+language: zh

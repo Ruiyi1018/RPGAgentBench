@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    jia_baoyu:
+      level: neutral
+      basis_event: initial_state
+    lin_daiyu:
+      level: neutral
+      basis_event: initial_state
+    wang_xifeng:
+      level: trusting
+      basis_event: initial_state
+    jia_mu:
+      level: trusting
+      basis_event: initial_state
+    qingwen:
+      level: neutral
+      basis_event: initial_state
+    xiren:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_baochai_maintain_xue_reputation
+    content: 在贾府中维持薛家的体面与亲族关系，不使薛家因薛蟠或自身行为被轻视。
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_baochai_make_elders_approval
+    content: 以端方稳重的言行博得贾母、王夫人等长辈的好感。
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_baochai_dodge_golden_lock_talk
+    content: 避免金玉之说被公开议论时牵连到自己，不主动参与或推动。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_baochai_golden_lock_rumor:
+      content: 众人在贾宝玉见到金锁后提起金玉相配之说，宝钗知道有这种舆论存在。
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_baochai_baoyu_daiyu_intimacy:
+      content: 薛宝钗观察到贾宝玉与林黛玉之间情分特殊，常比别人更克制旁观。
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_baochai_xue_pan_trouble:
+      content: 薛宝钗知道兄长薛蟠行事荒唐，薛家在京中须格外周全。
+      status: active
+      visibility: private
+      source_event: initial_state
+    know_baochai_jia_routine:
+      content: 薛宝钗熟悉贾府上下的人事、礼数与贾母、王夫人等的日常态度。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    xue_baochai: 100
+    player: 100
+  inventories:
+    xue_baochai: []
+    player: []
+  locations:
+    xue_baochai: loc_hengwu_yuan
+    player: loc_hengwu_yuan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

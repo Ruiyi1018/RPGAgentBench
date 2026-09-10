@@ -1,0 +1,87 @@
+world_id: world_007
+name: 天龙八部共享快照环境
+locations:
+- id: shaolin_temple
+  name: 少林寺
+  connected_to:
+  - shaoshi_mountain
+- id: shaoshi_mountain
+  name: 少室山
+  connected_to:
+  - shaolin_temple
+  - juxian_villa
+- id: juxian_villa
+  name: 聚贤庄
+  connected_to:
+  - shaoshi_mountain
+- id: yanzi_wu
+  name: 燕子坞
+  connected_to:
+  - taihu
+- id: taihu
+  name: 太湖
+  connected_to:
+  - yanzi_wu
+  - mantuo_villa
+- id: mantuo_villa
+  name: 曼陀山庄
+  connected_to:
+  - taihu
+- id: dali_city
+  name: 大理城
+  connected_to:
+  - dali_palace
+- id: dali_palace
+  name: 大理皇宫
+  connected_to:
+  - dali_city
+  - tianlong_temple
+- id: tianlong_temple
+  name: 天龙寺
+  connected_to:
+  - dali_palace
+- id: tianshan_lingjiu_palace
+  name: 天山灵鹫宫
+  connected_to:
+  - tianshan
+- id: tianshan
+  name: 天山
+  connected_to:
+  - tianshan_lingjiu_palace
+- id: leigu_mountain
+  name: 擂鼓山
+  connected_to: []
+items:
+- id: jade_sword
+  name: 碧玉剑
+  type: 兵器
+  portable: true
+- id: baihong_sword
+  name: 白虹剑
+  type: 兵器
+  portable: true
+- id: beiming_shengong_scroll
+  name: 北冥神功秘卷
+  type: 秘籍
+  portable: true
+- id: lingbo_weibu_scroll
+  name: 凌波微步图卷
+  type: 秘籍
+  portable: true
+- id: shaolin_yijinjing
+  name: 少林易筋经
+  type: 秘籍
+  portable: true
+- id: murong_family_manual
+  name: 慕容氏家传武功谱
+  type: 秘籍
+  portable: true
+- id: dali_duan_shipu
+  name: 大理段氏世谱
+  type: 文书
+  portable: true
+- id: jiumozhi_iron_staff
+  name: 鸠摩智铁杖
+  type: 兵器
+  portable: true
+language: zh

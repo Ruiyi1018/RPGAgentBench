@@ -1,0 +1,46 @@
+world_id: world_021
+canon_policy:
+  primary_source: The Lord of the Rings, Book II (The Fellowship of the Ring), events
+    before the Fellowship enters Moria
+  source_type: novel
+  excluded_versions:
+  - The Lord of the Rings films
+  - The Hobbit
+  - The Silmarillion
+  - later chapters of The Fellowship of the Ring after the Watcher in the Water
+  shared_snapshot: The Fellowship has left Rivendell, attempted the Redhorn Gate,
+    and is now approaching the Doors of Durin
+  generated_timeline: Events are ordered chronologically from the Company's departure
+    from Rivendell to their arrival at the West-gate of Moria
+  quotation_policy: Paraphrase all facts; do not reproduce dialogue
+evaluated_npcs:
+- frodo_baggins
+- samwise_gamgee
+- gandalf
+- aragorn
+- legolas
+- gimli
+- boromir
+event_entities:
+- characters
+- locations
+- items
+sources:
+- id: lotr_fotr_book2
+  title: The Fellowship of the Ring, Book II
+  creator: J.R.R. Tolkien
+  scope: From the Council of Elrond and departure from Rivendell through the journey
+    south, the failed crossing of Caradhras, the retreat from the storm, the warg
+    attack, and the approach to the West-gate of Moria
+  authority: primary
+data_constraints:
+- Every fact must be traceable to Book II of The Fellowship of the Ring before the
+  Watcher in the Water scene.
+- No knowledge from later chapters, other books, films, or adaptations may be used.
+- All events must involve at least one member of the roster.
+- Paraphrase all facts; no direct quotation from the text.
+- Location and item names must appear within the specified source scope.
+- Anchor events must be ordered chronologically from Rivendell departure to arrival
+  at the Moria West-gate.
+- cf_edit for every event must be a genuine minimal counterfactual alternative, not
+  'none' or 'N/A'.

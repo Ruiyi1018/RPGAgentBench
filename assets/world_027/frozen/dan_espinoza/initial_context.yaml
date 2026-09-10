@@ -1,0 +1,122 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lucifer_morningstar:
+      level: distrustful
+      basis_event: initial_state
+    chloe_decker:
+      level: neutral
+      basis_event: initial_state
+    mazikeen:
+      level: distrustful
+      basis_event: initial_state
+    amenadiel:
+      level: neutral
+      basis_event: initial_state
+    linda_martin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Maintain his standing and effectiveness as an LAPD detective
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Remain present and responsible as a father to Trixie
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Keep professional distance from Lucifer's disruptive influence
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Lucifer Morningstar is a charming nightclub owner in Los Angeles.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k2:
+      content: Chloe Decker is a homicide detective with the LAPD.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k3:
+      content: Lucifer openly tells people he is the Devil.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k4:
+      content: Lucifer begins helping Chloe Decker with a murder investigation.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k5:
+      content: Dan Espinoza is a detective and Chloe Decker's ex-husband.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k6:
+      content: Dan Espinoza and Chloe Decker share a daughter.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k7:
+      content: Mazikeen is Lucifer's loyal demon ally and bartender.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k8:
+      content: Linda Martin is a therapist who begins treating Lucifer.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k9:
+      content: Lucifer becomes a consultant for the LAPD.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k10:
+      content: Chloe Decker remains skeptical of Lucifer's claim to be the Devil.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k11:
+      content: Lucifer displays unusual charisma and persuasiveness.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k12:
+      content: Dan Espinoza works cases at the LAPD precinct.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k13:
+      content: Lucifer and Chloe Decker investigate a case involving a murdered friend
+        of Lucifer's.
+      status: active
+      visibility: public
+      source_event: initial_state
+    k14:
+      content: Lucifer's presence causes unusual reactions in people around him.
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    dan_espinoza: 100
+    player: 100
+  inventories:
+    dan_espinoza: []
+    player: []
+  locations:
+    dan_espinoza: chloe_lapd
+    player: chloe_lapd
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

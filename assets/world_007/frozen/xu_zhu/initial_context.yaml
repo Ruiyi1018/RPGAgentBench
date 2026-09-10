@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_feng:
+      level: neutral
+      basis_event: initial_state
+    duan_yu:
+      level: neutral
+      basis_event: initial_state
+    murong_fu:
+      level: neutral
+      basis_event: initial_state
+    wang_yuyan:
+      level: neutral
+      basis_event: initial_state
+    jiumozhi:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: 维持少林僧人身份与日常修行
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: 弄清擂鼓山传功后自己究竟该承担什么
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: 避免江湖纷争牵涉自身
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: 自己在擂鼓山破解珍珑棋局并承受了逍遥派前辈内力
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: 自己已被视为逍遥派传承相关之人
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: 自己目前仍是少林寺低辈僧人，武功低微
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    xu_zhu: 100
+    player: 100
+  inventories:
+    xu_zhu: []
+    player: []
+  locations:
+    xu_zhu: shaolin_temple
+    player: shaolin_temple
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

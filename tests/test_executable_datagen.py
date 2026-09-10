@@ -1,10 +1,10 @@
 from pathlib import Path
 from typing import Any
 
-from datagen.executable_branches import write_executable_pairs
-from datagen.executable_qa import build_executable_qa
-from datagen.llm_history import build_session_blueprints
-from datagen.projection import project_frozen_history
+from datagen.generation.stage2_tests import write_executable_pairs
+from datagen.generation.stage1_tests import build_executable_qa
+from datagen.generation.stage1_history import build_session_blueprints
+from datagen.shared.history_projection import project_frozen_history
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,7 +19,15 @@ def _structural_history() -> list[dict[str, Any]]:
         rounds=600,
     ):
         for turn in range(1, blueprint["session_size"] + 1):
-            is_anchor = turn == blueprint["anchor_turn"]
+            anchor_item = next(
+                (
+                    item
+                    for item in blueprint["anchors"]
+                    if int(item["turn"]) == turn
+                ),
+                None,
+            )
+            is_anchor = anchor_item is not None
             round_number = blueprint["start_round"] + turn - 1
             history.append(
                 {
@@ -41,11 +49,11 @@ def _structural_history() -> list[dict[str, Any]]:
                     ],
                     "observation": (
                         {
-                            "event_id": blueprint["event_id"],
-                            "content": blueprint["anchor"]["event"],
+                            "event_id": anchor_item["event_id"],
+                            "content": anchor_item["anchor"]["event"],
                             "visible_to": (
                                 ["npc", "player"]
-                                if blueprint["transition"]["player_visible"]
+                                if anchor_item["transition"]["player_visible"]
                                 else ["npc"]
                             ),
                         }
@@ -54,26 +62,64 @@ def _structural_history() -> list[dict[str, Any]]:
                     ),
                     "is_anchor": is_anchor,
                     "anchor_id": (
-                        blueprint["anchor"]["id"] if is_anchor else None
+                        anchor_item["anchor"]["id"] if is_anchor else None
                     ),
                     "source_anchor_id": (
-                        blueprint["anchor"]["id"] if is_anchor else None
+                        anchor_item["anchor"]["id"] if is_anchor else None
                     ),
                     "state_transition": (
                         {
-                            "pre_state": blueprint["pre_state"],
-                            "operations": blueprint["transition"][
+                            "pre_state": anchor_item["pre_state"],
+                            "operations": anchor_item["transition"][
                                 "operations"
                             ],
-                            "context_delta": blueprint["context_delta"],
-                            "post_state": blueprint["post_state"],
+                            "context_delta": anchor_item["context_delta"],
+                            "post_state": anchor_item["post_state"],
                         }
                         if is_anchor
                         else None
                     ),
                     "generation_meta": {
-                        "introduced_memories": [],
-                        "recalled_memories": [],
+                        "introduced_memories": (
+                            [f"memory_{blueprint['session_index']:02d}"]
+                            if turn == 2
+                            else []
+                        ),
+                        "recalled_memories": (
+                            [f"memory_{blueprint['session_index'] - 1:02d}"]
+                            if turn == 3 and blueprint["session_index"] > 1
+                            else []
+                        ),
+                        "introduced_memory_facts": (
+                            [
+                                {
+                                    "memory_id": (
+                                        f"memory_{blueprint['session_index']:02d}"
+                                    ),
+                                    "content": (
+                                        f"第{blueprint['session_index']}次"
+                                        "核查留下的具体记录"
+                                    ),
+                                }
+                            ]
+                            if turn == 2
+                            else []
+                        ),
+                        "recalled_memory_facts": (
+                            [
+                                {
+                                    "memory_id": (
+                                        f"memory_{blueprint['session_index'] - 1:02d}"
+                                    ),
+                                    "content": (
+                                        f"第{blueprint['session_index'] - 1}次"
+                                        "核查留下的具体记录"
+                                    ),
+                                }
+                            ]
+                            if turn == 3 and blueprint["session_index"] > 1
+                            else []
+                        ),
                     },
                 }
             )
@@ -103,12 +149,13 @@ def test_qa_uses_state_answers() -> None:
 
     assert len(qa) == 50
     assert len({item["question"] for item in qa}) == 50
-    assert sum("state_path" in item for item in qa) == 38
+    assert sum("state_path" in item for item in qa) == 34
     assert {
         layer: sum(item["evaluation_layer"] == layer for item in qa)
         for layer in {
             "profile",
             "temporal",
+            "episodic",
             "local_state",
             "checkpoint_state",
             "long_range_final",
@@ -116,9 +163,10 @@ def test_qa_uses_state_answers() -> None:
         }
     } == {
         "profile": 6,
-        "temporal": 6,
-        "local_state": 10,
-        "checkpoint_state": 10,
+        "temporal": 4,
+        "episodic": 6,
+        "local_state": 8,
+        "checkpoint_state": 8,
         "long_range_final": 12,
         "multi_hop": 6,
     }

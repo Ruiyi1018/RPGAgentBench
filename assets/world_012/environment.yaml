@@ -1,0 +1,73 @@
+world_id: world_012
+name: 夏家重组家庭住所及周边
+locations:
+- id: loc_keting
+  name: 客厅
+  connected_to:
+  - loc_canting
+  - loc_woshi_fuqi
+  - loc_woshi_haizi
+- id: loc_canting
+  name: 餐厅
+  connected_to:
+  - loc_keting
+  - loc_chufang
+- id: loc_chufang
+  name: 厨房
+  connected_to:
+  - loc_canting
+- id: loc_woshi_fuqi
+  name: 夫妻卧室
+  connected_to:
+  - loc_keting
+- id: loc_woshi_haizi
+  name: 孩子卧室
+  connected_to:
+  - loc_keting
+  - loc_shufang
+- id: loc_shufang
+  name: 书房
+  connected_to:
+  - loc_woshi_haizi
+- id: loc_xiaoqu
+  name: 小区院子
+  connected_to:
+  - loc_keting
+items:
+- id: item_shubao_liuxing
+  name: 刘星书包
+  type: 学习用品
+  portable: true
+- id: item_shubao_xiaxue
+  name: 夏雪书包
+  type: 学习用品
+  portable: true
+- id: item_shubao_xiayu
+  name: 夏雨书包
+  type: 学习用品
+  portable: true
+- id: item_canzhuo
+  name: 餐桌
+  type: 家具
+  portable: false
+- id: item_shafa
+  name: 沙发
+  type: 家具
+  portable: false
+- id: item_dianshiji
+  name: 电视机
+  type: 家电
+  portable: false
+- id: item_guo
+  name: 炒菜锅
+  type: 厨具
+  portable: true
+- id: item_zuoye_liuxing
+  name: 刘星作业本
+  type: 学习用品
+  portable: true
+- id: item_zuoye_xiaxue
+  name: 夏雪作业本
+  type: 学习用品
+  portable: true
+language: zh

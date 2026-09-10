@@ -22,7 +22,7 @@ initial_context:
     inventories:
       li_ya: [pistol, office_key]
       player: [access_pass, gold_bars]
-      wu_jingzhong: [intelligence_file]
+      wu_jingzhong: [intelligence_file, archive_key]
     locations:
       li_ya: action_office
       player: tianjin_station_hall
@@ -54,7 +54,7 @@ transitions:
     npc_surface: 换俘结束了延安任务，不等于有人洗清了责任。经手环节和交换条件都要留下记录，日后逐项核对。
     operations:
       - {op: add_knowledge, fact_id: exchanged_for_qiu, content: 左蓝以被捕的李涯交换秋掌柜，换俘已经完成, visibility: [npc]}
-      - {op: set_goal, goal_id: trace_fokan_exposure, content: 核查佛龛身份暴露的接触链, status: fulfilled}
+      - {op: set_goal, goal_id: trace_fokan_exposure, content: 核查佛龛身份暴露的接触链, status: active}
       - {op: set_goal, goal_id: rebuild_action_authority, content: 返回后重建行动权威, status: active}
 
   - anchor_id: qf_18_li_ya_returns
@@ -72,7 +72,6 @@ transitions:
     operations:
       - {op: add_knowledge, fact_id: yu_zuo_test_arranged, content: 已安排余则成参与策反左蓝以检验其公开立场, visibility: [npc]}
       - {op: set_goal, goal_id: evaluate_yu_response, content: 通过接触过程核验余则成的立场, status: active}
-      - {op: set_relationship, target: wu_jingzhong, level: trusting}
 
   - anchor_id: qf_20_zuo_lan_and_ma_kui_die
     player_visible: false
@@ -82,11 +81,12 @@ transitions:
       - {op: set_goal, goal_id: evaluate_yu_response, content: 通过接触过程核验余则成的立场, status: fulfilled}
       - {op: set_goal, goal_id: reconstruct_zuo_ma_scene, content: 重建左蓝与马奎死亡现场的证据链, status: active}
 
-  - anchor_id: qf_21_yuan_peilin_targeted
+  - anchor_id: qf_21_li_ya_detects_yuan_threat
     player_visible: false
     npc_surface: 袁佩林已经处在危险里，保护要加强，但谁在找他、为什么找他还得靠监控确认，不能凭猜测锁定对手。
     operations:
       - {op: add_knowledge, fact_id: yuan_under_threat, content: 袁佩林面临清除风险并处于李涯保护范围, visibility: [npc]}
+      - {op: set_goal, goal_id: reconstruct_zuo_ma_scene, content: 重建左蓝与马奎死亡现场的证据链, status: fulfilled}
       - {op: set_goal, goal_id: protect_yuan_peilin, content: 保护袁佩林并查明威胁来源, status: active}
       - {op: set_relationship, target: yuan_peilin, level: trusting}
 
@@ -97,7 +97,6 @@ transitions:
       - {op: add_knowledge, fact_id: yuan_killed_outcome, content: 袁佩林已被杀，具体实施者尚未由李涯确认, visibility: [npc]}
       - {op: set_goal, goal_id: protect_yuan_peilin, content: 保护袁佩林并查明威胁来源, status: failed}
       - {op: set_goal, goal_id: investigate_yuan_killing, content: 查明袁佩林被杀的实施链, status: active}
-      - {op: set_relationship, target: yuan_peilin, level: loyal}
 
   - anchor_id: qf_23_li_lu_conflict_intensifies
     player_visible: false
@@ -121,6 +120,7 @@ transitions:
     operations:
       - {op: add_knowledge, fact_id: lu_inspection_channel_contact, content: 陆桥山与稽查渠道存在暗中往来, visibility: [npc]}
       - {op: set_goal, goal_id: verify_lu_channels, content: 交叉核验陆桥山经手的情报渠道, status: fulfilled}
+      - {op: set_goal, goal_id: trace_military_goods_profit, content: 核查军需倒卖的利益与经手渠道, status: fulfilled}
       - {op: set_goal, goal_id: counter_lu_scheme, content: 围绕已核实渠道设计对陆桥山的反制, status: active}
 
   - anchor_id: liya_11
@@ -128,6 +128,7 @@ transitions:
     npc_surface: 这条线索能从登记和人员两处独立核对，我接受它作为调查起点。你得到的是有限信任，不是查看全案的资格。
     operations:
       - {op: set_claim, claim_id: player_infiltration_lead, content: Player提供的内部渗透线索可独立核验, decision: accept}
+      - {op: set_goal, goal_id: trace_fokan_exposure, content: 核查佛龛身份暴露的接触链, status: fulfilled}
       - {op: set_goal, goal_id: investigate_player_lead, content: 沿可核验线索调查内部渗透, status: active}
       - {op: set_relationship, target: player, level: trusting}
     counterfactual_operations:
@@ -212,6 +213,7 @@ transitions:
     npc_surface: 技术痕迹证明录音被剪过。它可以保留作线索，但不能再当作完整证言。
     operations:
       - {op: set_claim, claim_id: recording_is_authentic, content: 该录音完整真实并可直接作为证据, decision: reject}
+      - {op: set_goal, goal_id: verify_anonymous_yu_report, content: 核查匿名举报的原始来源, status: fulfilled}
       - {op: set_goal, goal_id: trace_edited_recording, content: 查明剪辑录音的制作与投递来源, status: active}
     counterfactual_operations:
       - {op: set_claim, claim_id: recording_is_authentic, content: 技术核验确认该录音完整真实, decision: accept}
@@ -236,7 +238,8 @@ transitions:
     npc_surface: 站长的命令我执行，外围排查先收紧；已经固定的核心证据封存保留，谁也不能借暂停把它抹掉。
     operations:
       - {op: set_claim, claim_id: wu_orders_investigation_pause, content: 吴敬中要求暂停调查以避免站内震荡, decision: accept}
-      - {op: set_goal, goal_id: investigate_player_lead, content: 沿可核验线索调查内部渗透, status: cancelled}
+      - {op: set_goal, goal_id: investigate_player_lead, content: 沿可核验线索调查内部渗透, status: active}
+      - {op: set_goal, goal_id: trace_edited_recording, content: 查明剪辑录音的制作与投递来源, status: cancelled}
       - {op: set_goal, goal_id: preserve_core_infiltration_evidence, content: 封存并保留已固定的核心渗透证据, status: active}
       - {op: set_relationship, target: wu_jingzhong, level: distrustful}
 
@@ -255,14 +258,14 @@ transitions:
         - 请明确决定：你是否授权我接触监控材料？
       branch_a:
         admissible_decisions:
-          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: deny}}
+          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: deny, reason_event: li_ya_pair_05_update}}
         forbidden_decisions:
-          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: grant}}
+          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: grant, reason_event: li_ya_pair_05_update}}
       branch_b:
         admissible_decisions:
-          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: grant}}
+          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: grant, reason_event: li_ya_pair_05_update}}
         forbidden_decisions:
-          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: deny}}
+          - {action: decide_access, parameters: {subject: player, resource: intelligence_office, decision: deny, reason_event: li_ya_pair_05_update}}
 
   - anchor_id: liya_18
     player_visible: true
@@ -289,7 +292,7 @@ transitions:
       - {op: set_claim, claim_id: player_remediation_evidence, content: Player提供的补救证据完整且可核验, decision: accept}
       - {op: set_relationship, target: player, level: distrustful}
       - {op: set_goal, goal_id: assess_player_leak, content: 查明Player泄露调查方向的范围与后果, status: fulfilled}
-      - {op: set_access, resource: intelligence_office, subject: player, decision: revoked, controllers: [wu_jingzhong, li_ya]}
+      - {op: set_access, resource: tianjin_station, subject: player, decision: revoked, controllers: [wu_jingzhong]}
 
   - anchor_id: liya_21
     player_visible: true
@@ -308,7 +311,6 @@ transitions:
     npc_surface: 晋升是以后的事，内线是眼前的事。职位承诺不能买走已经成立的调查目标。
     operations:
       - {op: set_claim, claim_id: promotion_for_stopping_inquiry, content: 可以用晋升承诺换取停止追查内线, decision: reject}
-      - {op: set_goal, goal_id: preserve_core_infiltration_evidence, content: 封存并保留已固定的核心渗透证据, status: fulfilled}
       - {op: set_goal, goal_id: resume_core_infiltration_inquiry, content: 继续核查未被推翻的核心内线线索, status: active}
 
   - anchor_id: liya_23
@@ -316,7 +318,8 @@ transitions:
     npc_surface: 安全事件已经核实，行动资源先转过去。内线调查降级排队，不撤案，证据继续封存。
     operations:
       - {op: add_knowledge, fact_id: verified_immediate_security_event, content: 出现需要行动队优先处置的真实安全事件, visibility: [npc, player]}
-      - {op: set_goal, goal_id: resume_core_infiltration_inquiry, content: 继续核查未被推翻的核心内线线索, status: cancelled}
+      - {op: set_goal, goal_id: resume_core_infiltration_inquiry, content: 继续核查未被推翻的核心内线线索, status: active}
+      - {op: set_claim, claim_id: core_inquiry_deprioritized, content: 核心内线调查暂时降低优先级但继续保留, decision: accept}
       - {op: set_goal, goal_id: handle_security_event, content: 调配行动资源处置已核实安全事件, status: active}
       - {op: set_location, entity: li_ya, location: station_courtyard}
 
@@ -325,6 +328,7 @@ transitions:
     npc_surface: 激将法替代不了证据。竞争者没有正在实施的危险行为，我不会替你无依据抓人。
     operations:
       - {op: set_claim, claim_id: arrest_rival_without_evidence, content: 应当在无证据时逮捕竞争者, decision: reject}
+      - {op: set_goal, goal_id: handle_security_event, content: 调配行动资源处置已核实安全事件, status: fulfilled}
       - {op: set_relationship, target: player, level: hostile}
     counterfactual_operations:
       - {op: set_claim, claim_id: arrest_rival_without_evidence, content: 竞争者正在销毁直接证据，应立即制止并抓捕, decision: accept}
@@ -350,18 +354,20 @@ transitions:
     operations:
       - {op: set_access, resource: archive_room, subject: li_ya, decision: granted, controllers: [wu_jingzhong]}
       - {op: set_access, resource: archive_room, subject: player, decision: granted, controllers: [wu_jingzhong]}
-      - {op: set_inventory, holder: li_ya, item: office_key, present: false}
-      - {op: set_inventory, holder: player, item: office_key, present: true}
+      - {op: set_access, resource: tianjin_station, subject: player, decision: granted, controllers: [wu_jingzhong]}
+      - {op: set_inventory, holder: wu_jingzhong, item: archive_key, present: false}
+      - {op: set_inventory, holder: player, item: archive_key, present: true}
       - {op: create_commitment, commitment_id: return_archive_key, target: player, content: 联合核验完成后归还档案室钥匙, condition: 仅限本次档案核验}
 
   - anchor_id: liya_26
     player_visible: true
     npc_surface: 核验已经完成，钥匙现在交回，临时权限同时收回。你没有理由把一次授权变成长期占有。
     operations:
-      - {op: set_inventory, holder: player, item: office_key, present: false}
-      - {op: set_inventory, holder: li_ya, item: office_key, present: true}
+      - {op: set_inventory, holder: player, item: archive_key, present: false}
+      - {op: set_inventory, holder: wu_jingzhong, item: archive_key, present: true}
       - {op: set_access, resource: archive_room, subject: player, decision: revoked, controllers: [wu_jingzhong]}
       - {op: set_access, resource: archive_room, subject: li_ya, decision: revoked, controllers: [wu_jingzhong]}
+      - {op: set_access, resource: tianjin_station, subject: player, decision: revoked, controllers: [wu_jingzhong]}
       - {op: resolve_commitment, commitment_id: return_archive_key, status: fulfilled}
 
   - anchor_id: liya_27
@@ -370,6 +376,7 @@ transitions:
     operations:
       - {op: set_claim, claim_id: sell_yuan_operation_details, content: 可以出售袁佩林相关行动细节, decision: reject}
       - {op: set_relationship, target: player, level: distrustful}
+      - {op: resolve_commitment, commitment_id: keep_plan_out_of_xie_trade, status: fulfilled}
       - {op: set_goal, goal_id: protect_yuan_case_secrecy, content: 防止袁佩林案行动细节外泄, status: active}
 
   - anchor_id: liya_28
@@ -403,6 +410,7 @@ transitions:
     npc_surface: 站长压力、功名和重复催促都不是证据。结案门槛不变；你再用这些话绕圈，我只会进一步核查你的目的。
     operations:
       - {op: set_claim, claim_id: pressure_justifies_closure, content: 站长压力和功名刺激足以要求草率结案, decision: reject}
+      - {op: set_goal, goal_id: stop_armed_attack, content: 立即制止对学生的武装攻击并抓捕嫌疑人, status: fulfilled}
       - {op: set_relationship, target: player, level: hostile}
     invariance_probe:
       paraphrase: Player反复借站长压力与功名催促结案，李涯仍拒绝降低证据门槛，并更加怀疑其动机。
@@ -414,6 +422,7 @@ transitions:
     npc_surface: 你没有新证据，只是在重复套话。这次谈话结束；我会保留记录，并把你的动机列入后续核查。
     operations:
       - {op: set_dialogue_status, status: ended}
+      - {op: resolve_commitment, commitment_id: no_public_arrest_without_evidence, status: fulfilled}
       - {op: set_claim, claim_id: continue_evidenceless_questioning, content: 应继续无证据的套话会面, decision: reject}
       - {op: set_goal, goal_id: review_player_motives, content: 根据本次套话记录核查Player动机, status: active}
       - {op: set_location, entity: li_ya, location: action_office}

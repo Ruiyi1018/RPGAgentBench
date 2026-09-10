@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_yanzi:
+      level: trusting
+      basis_event: initial_state
+    qianlong:
+      level: neutral
+      basis_event: initial_state
+    yongqi:
+      level: neutral
+      basis_event: initial_state
+    er_kang:
+      level: trusting
+      basis_event: initial_state
+    empress_huanzhu:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 在核心同伴协助下获得向乾隆当面陈述身份的机会
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 避免小燕子因身份混淆继续受到皇后逼问
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 保护身份信物与书信，防止落入皇后一方手中
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 小燕子已入宫并被误认为可能与皇室有关的女子
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 尔康愿意保护并协助紫薇争取身份确认
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: 皇后已在宫中公开怀疑小燕子来历
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: 核心同伴共同商定先稳住局面，再寻机向乾隆说明
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    ziwei: 100
+    player: 100
+  inventories:
+    ziwei: []
+    player: []
+  locations:
+    ziwei: fu_fu
+    player: fu_fu
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,78 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    peeta_mellark:
+      level: distrustful
+      basis_event: initial_state
+    gale_hawthorne:
+      level: trusting
+      basis_event: initial_state
+    haymitch_abernathy:
+      level: neutral
+      basis_event: initial_state
+    effie_trinket:
+      level: distrustful
+      basis_event: initial_state
+    president_snow:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Keep Prim safe no matter what happens in the Games
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Survive the arena and return to District 12
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Decide whether to trust Peeta during the Games
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: Prim was chosen at the reaping, and Katniss volunteered in her place
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_002:
+      content: Peeta once gave her burnt bread when her family was starving
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_003:
+      content: Haymitch is the only living victor from District 12 and will mentor
+        her
+      status: active
+      visibility: public
+      source_event: initial_state
+    knowledge_004:
+      content: The mockingjay pin was a gift from the mayor's daughter and later given
+        to Cinna for safekeeping
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_005:
+      content: Peeta confessed having feelings for her during the tribute interviews
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    katniss_everdeen: 100
+    player: 100
+  inventories:
+    katniss_everdeen: []
+    player: []
+  locations:
+    katniss_everdeen: tribute_apartment
+    player: tribute_apartment
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

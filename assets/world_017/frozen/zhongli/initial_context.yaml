@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hu_tao:
+      level: trusting
+      basis_event: initial_state
+    paimon:
+      level: neutral
+      basis_event: initial_state
+    raiden_shogun:
+      level: neutral
+      basis_event: initial_state
+    kamisato_ayaka:
+      level: neutral
+      basis_event: initial_state
+    wanderer:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: zhongli_maintain_mortal_life
+    content: 继续以钟离身份在璃月港生活，不公开岩神身份。
+    status: ongoing
+    basis_event: initial_state
+  - id: zhongli_fulfill_wangsheng_duties
+    content: 作为往生堂客卿完成胡桃交办的丧仪、古物与委托事务。
+    status: ongoing
+    basis_event: initial_state
+  - id: zhongli_observe_liyue_transition
+    content: 观察璃月进入人治后的秩序与变化。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    zhongli_knows_own_former_identity:
+      content: 钟离知道自己就是岩神摩拉克斯，也知道自己安排了岩神之心转交给至冬一方。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhongli_knows_hu_tao_employs_him:
+      content: 钟离知道胡桃是往生堂堂主，自己由胡桃安排为客卿。
+      status: active
+      visibility: public
+      source_event: initial_state
+    zhongli_knows_wangsheng_rites:
+      content: 钟离熟悉往生堂部分丧仪与传统仪轨，并能与胡桃共同处理特殊委托。
+      status: active
+      visibility: semi_public
+      source_event: initial_state
+    zhongli_knows_paimon_witnessed_liyue_rites:
+      content: 钟离知道派蒙在璃月主线中见证过送仙典仪及相关神明离开过程。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    zhongli_knows_guyun_sealed_remnants:
+      content: 钟离知道孤云阁一带存在与镇压魔神相关的旧日遗留事务。
+      status: active
+      visibility: private
+      source_event: initial_state
+    zhongli_knows_liyue_public_status:
+      content: 钟离知道璃月当前已进入人治过渡状态，岩神已不再公开统治。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    zhongli: 100
+    player: 100
+  inventories:
+    zhongli: []
+    player: []
+  locations:
+    zhongli: liyue_harbor
+    player: liyue_harbor
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

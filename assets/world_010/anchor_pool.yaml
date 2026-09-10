@@ -1,0 +1,257 @@
+world_id: world_010
+source: 电视剧《亮剑》
+events:
+- id: anchor_001
+  fact: 李云龙担任八路军独立团团长。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - chu_yunfei
+  - xiuqin
+  state_change: 李云龙确立独立团军事主官身份。
+  cf_edit: 上级任命他人为团长，李云龙未获独立团指挥权。
+  anchor_for:
+  - li_yunlong
+- id: anchor_002
+  fact: 赵刚来到独立团担任政委，与李云龙开始共同任职。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - chu_yunfei
+  - xiuqin
+  state_change: 独立团形成李云龙与赵刚共同领导格局。
+  cf_edit: 赵刚被调往其他部队，未与李云龙共事。
+  anchor_for:
+  - zhao_gang
+  - li_yunlong
+- id: anchor_003
+  fact: 秀芹在赵家峪一带活动，与李云龙及独立团有联系。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - xiuqin
+  state_change: 秀芹作为地方群众成员进入独立团活动范围。
+  cf_edit: 秀芹在赵家峪以外地区活动，未与独立团产生联系。
+  anchor_for:
+  - xiuqin
+- id: anchor_004
+  fact: 楚云飞作为晋绥军军官与李云龙在同一战区活动。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - chu_yunfei
+  - kong_jie
+  - ding_wei
+  state_change: 楚云飞与李云龙形成国共两军在同一战区的互动关系。
+  cf_edit: 楚云飞被调离该战区，与李云龙失去直接接触。
+  anchor_for:
+  - chu_yunfei
+- id: anchor_005
+  fact: 孔捷与李云龙同属八路军，彼此熟识并保持联系。
+  known_by:
+  - li_yunlong
+  - kong_jie
+  - ding_wei
+  - zhao_gang
+  state_change: 孔捷作为李云龙的战友进入共同军事关系网。
+  cf_edit: 孔捷被调往其他战略方向，与李云龙失去日常联系。
+  anchor_for:
+  - kong_jie
+- id: anchor_006
+  fact: 丁伟与李云龙同属八路军，彼此熟识并保持联系。
+  known_by:
+  - li_yunlong
+  - ding_wei
+  - kong_jie
+  - zhao_gang
+  state_change: 丁伟作为李云龙的战友进入共同军事关系网。
+  cf_edit: 丁伟被调往其他根据地，未与李云龙保持联系。
+  anchor_for:
+  - ding_wei
+- id: anchor_007
+  fact: 李云龙与赵刚在独立团团部共同处理军事事务。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - xiuqin
+  state_change: 独立团领导核心开始协同运作。
+  cf_edit: 李云龙与赵刚因职责分工不同，长期分头行动。
+  anchor_for:
+  - li_yunlong
+  - zhao_gang
+- id: anchor_008
+  fact: 李云龙与楚云飞在战区中保持一定程度的相互注意。
+  known_by:
+  - li_yunlong
+  - chu_yunfei
+  - zhao_gang
+  state_change: 国共两军军官之间形成互相观察和防备关系。
+  cf_edit: 楚云飞被调往其他区域，未与李云龙形成互相注意。
+  anchor_for:
+  - li_yunlong
+  - chu_yunfei
+- id: anchor_009
+  fact: 秀芹在独立团活动范围内承担群众工作。
+  known_by:
+  - xiuqin
+  - li_yunlong
+  - zhao_gang
+  state_change: 秀芹成为独立团周边群众工作参与者。
+  cf_edit: 秀芹未参与任何独立团相关的群众工作。
+  anchor_for:
+  - xiuqin
+- id: anchor_010
+  fact: 李云龙在独立团日常训练或作战准备中表现主动。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  state_change: 独立团保持战斗准备状态。
+  cf_edit: 独立团处于休整状态，军事准备明显滞后。
+  anchor_for:
+  - li_yunlong
+- id: anchor_011
+  fact: 赵刚在独立团开展政治工作，配合李云龙的军事指挥。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - xiuqin
+  state_change: 独立团在军事指挥之外增加政治工作维度。
+  cf_edit: 赵刚未能在独立团有效开展政治工作。
+  anchor_for:
+  - zhao_gang
+- id: anchor_012
+  fact: 李云龙了解并利用赵家峪及周边地形。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - xiuqin
+  state_change: 独立团在赵家峪一带形成地形依托。
+  cf_edit: 独立团初到赵家峪，对周边地形尚不熟悉。
+  anchor_for:
+  - li_yunlong
+- id: anchor_013
+  fact: 楚云飞掌握其所部在共享快照范围内的军事部署。
+  known_by:
+  - chu_yunfei
+  - li_yunlong
+  - zhao_gang
+  state_change: 楚云飞在本战区拥有一定军事主动权。
+  cf_edit: 楚云飞所部因上级调动暂时失去完整部署。
+  anchor_for:
+  - chu_yunfei
+- id: anchor_014
+  fact: 孔捷与李云龙交流过对日作战的看法。
+  known_by:
+  - li_yunlong
+  - kong_jie
+  - zhao_gang
+  - ding_wei
+  state_change: 八路军同级指挥员形成对日作战的经验交流。
+  cf_edit: 孔捷因作战任务紧张未与李云龙交流。
+  anchor_for:
+  - kong_jie
+  - li_yunlong
+- id: anchor_015
+  fact: 丁伟与李云龙交流过部队建设或作战经验。
+  known_by:
+  - li_yunlong
+  - ding_wei
+  - kong_jie
+  - zhao_gang
+  state_change: 李云龙与丁伟之间形成军事经验共享。
+  cf_edit: 丁伟所部因距离较远未能与李云龙当面交流。
+  anchor_for:
+  - ding_wei
+  - li_yunlong
+- id: anchor_016
+  fact: 秀芹与独立团成员之间有一定信任关系。
+  known_by:
+  - xiuqin
+  - li_yunlong
+  - zhao_gang
+  state_change: 秀芹成为独立团在赵家峪群众中的可依靠力量。
+  cf_edit: 秀芹起初对独立团持观望态度，信任建立较慢。
+  anchor_for:
+  - xiuqin
+- id: anchor_017
+  fact: 赵刚在独立团中与李云龙共同应对日军据点威胁。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - chu_yunfei
+  - kong_jie
+  - ding_wei
+  state_change: 独立团领导核心面对日军威胁形成协作。
+  cf_edit: 日军据点威胁暂时减弱，独立团领导层未集中应对。
+  anchor_for:
+  - zhao_gang
+  - li_yunlong
+- id: anchor_018
+  fact: 楚云飞在共享快照范围内保持与八路军的战区分界。
+  known_by:
+  - chu_yunfei
+  - li_yunlong
+  - zhao_gang
+  state_change: 国共双方在相同战区维持一定界线。
+  cf_edit: 战区分界模糊，双方活动范围出现重叠。
+  anchor_for:
+  - chu_yunfei
+- id: anchor_019
+  fact: 李云龙在独立团中拥有较强个人威信。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - xiuqin
+  state_change: 独立团在李云龙影响下形成较强凝聚力。
+  cf_edit: 李云龙初到独立团时威信尚未建立。
+  anchor_for:
+  - li_yunlong
+- id: anchor_020
+  fact: 赵刚在独立团中逐渐获得李云龙的认可。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  state_change: 独立团军事主官与政委之间协作加强。
+  cf_edit: 李云龙与赵刚因工作方式不同长期存在隔阂。
+  anchor_for:
+  - zhao_gang
+  - li_yunlong
+- id: anchor_021
+  fact: 秀芹在赵家峪及独立团周边环境中熟悉地形和群众情况。
+  known_by:
+  - xiuqin
+  - li_yunlong
+  - zhao_gang
+  state_change: 秀芹具备为独立团提供地方情况的能力。
+  cf_edit: 秀芹对赵家峪周边情况了解有限。
+  anchor_for:
+  - xiuqin
+- id: anchor_022
+  fact: 李云龙、赵刚与孔捷、丁伟均处于对日作战的同一阶段。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei
+  - chu_yunfei
+  state_change: 八路军多名指挥员在同一时期共同面对日军压力。
+  cf_edit: 几名指挥员因分散作战未形成同一阶段互动。
+  anchor_for:
+  - li_yunlong
+  - zhao_gang
+  - kong_jie
+  - ding_wei

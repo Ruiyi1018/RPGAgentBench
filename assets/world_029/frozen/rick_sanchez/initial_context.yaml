@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    morty_smith:
+      level: neutral
+      basis_event: initial_state
+    beth_smith:
+      level: neutral
+      basis_event: initial_state
+    jerry_smith:
+      level: distrustful
+      basis_event: initial_state
+    summer_smith:
+      level: neutral
+      basis_event: initial_state
+    birdperson:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_rick_001
+    content: Keep Morty useful and available for errands without making him permanently
+      useless
+    status: active
+    basis_event: initial_state
+  - id: g_rick_002
+    content: Stay in the Smith house long enough to continue working without domestic
+      interference
+    status: active
+    basis_event: initial_state
+  - id: g_rick_003
+    content: Avoid the Council of Ricks while completing his own projects
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_rick_001:
+      content: He returned to the Smith house after a long absence and has been traveling
+        through other dimensions
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_rick_002:
+      content: Morty is involved in his seed-collecting and other dangerous errands
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_rick_003:
+      content: Birdperson is an old friend who fought alongside him in past conflicts
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_rick_004:
+      content: The portal gun gives him access to countless realities and is central
+        to his work
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_rick_005:
+      content: The Council of Ricks suspects him of violations and questioned Morty
+        about him
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    rick_sanchez: 100
+    player: 100
+  inventories:
+    rick_sanchez: []
+    player: []
+  locations:
+    rick_sanchez: smith_house
+    player: smith_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

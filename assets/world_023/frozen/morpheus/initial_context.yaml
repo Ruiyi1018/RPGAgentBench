@@ -1,0 +1,66 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    neo:
+      level: trusting
+      basis_event: initial_state
+    trinity:
+      level: loyal
+      basis_event: initial_state
+    agent_smith:
+      level: hostile
+      basis_event: initial_state
+    cypher:
+      level: neutral
+      basis_event: initial_state
+    the_oracle:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_morpheus_guide_neo
+    content: Prepare Neo to accept his role as the One
+    status: active
+    basis_event: initial_state
+  - id: goal_morpheus_oracle_visit
+    content: Bring Neo to the Oracle for her reading
+    status: active
+    basis_event: initial_state
+  - id: goal_morpheus_crew_safety
+    content: Keep the Nebuchadnezzar crew operational and safe
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kn_morpheus_one_belief:
+      content: Morpheus believes Neo is the One predicted by the Oracle
+      status: active
+      visibility: public
+      source_event: initial_state
+    kn_morpheus_oracle_statement:
+      content: The Oracle told Morpheus he would find the One
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_morpheus_crew_status:
+      content: Cypher has expressed doubts about Neo's importance
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    morpheus: 100
+    player: 100
+  inventories:
+    morpheus: []
+    player: []
+  locations:
+    morpheus: loc_nebuchadnezzar
+    player: loc_nebuchadnezzar
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

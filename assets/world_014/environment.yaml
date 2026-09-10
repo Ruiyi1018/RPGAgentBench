@@ -1,0 +1,40 @@
+world_id: world_014
+name: 九品芝麻官-重查戚家案件阶段
+locations:
+- id: loc_yamen
+  name: 衙门
+  connected_to:
+  - loc_qijia
+  - loc_jail
+- id: loc_qijia
+  name: 戚家
+  connected_to:
+  - loc_yamen
+  - loc_jail
+- id: loc_jail
+  name: 大牢
+  connected_to:
+  - loc_yamen
+  - loc_qijia
+- id: loc_jiawai
+  name: 郊外
+  connected_to:
+  - loc_yamen
+items:
+- id: item_zhuangzhi
+  name: 状纸
+  type: document
+  portable: true
+- id: item_xueyi
+  name: 血衣
+  type: clothing
+  portable: true
+- id: item_tangci
+  name: 堂瓷
+  type: object
+  portable: true
+- id: item_yaoshi
+  name: 牢房钥匙
+  type: object
+  portable: true
+language: zh

@@ -1,0 +1,62 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    wei_xiaobao:
+      level: loyal
+      basis_event: initial_state
+    kangxi:
+      level: neutral
+      basis_event: initial_state
+    chen_jinnan:
+      level: neutral
+      basis_event: initial_state
+    a_ke:
+      level: neutral
+      basis_event: initial_state
+    su_quan:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: shuang_er_goal_1
+    content: 紧跟韦小宝，随时准备应对突发威胁
+    status: active
+    basis_event: initial_state
+  - id: shuang_er_goal_2
+    content: 观察周围清廷、天地会与其他角色的动向，判断是否危及韦小宝
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    shuang_er_knowledge_1:
+      content: 韦小宝眼下同时与清廷和天地会都有关系，行踪需要小心
+      status: active
+      visibility: private
+      source_event: initial_state
+    shuang_er_knowledge_2:
+      content: 当前身在可互动的六人共享场景中，苏荃等神龙教相关人物已经出现
+      status: active
+      visibility: shared
+      source_event: initial_state
+    shuang_er_knowledge_3:
+      content: 韦小宝常在清廷与天地会之间周旋，因此不能随意暴露身份
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    shuang_er: 100
+    player: 100
+  inventories:
+    shuang_er: []
+    player: []
+  locations:
+    shuang_er: loc_beijing
+    player: loc_beijing
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

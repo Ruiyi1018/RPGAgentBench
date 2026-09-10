@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_yanzi:
+      level: distrustful
+      basis_event: initial_state
+    ziwei:
+      level: neutral
+      basis_event: initial_state
+    yongqi:
+      level: neutral
+      basis_event: initial_state
+    er_kang:
+      level: neutral
+      basis_event: initial_state
+    empress_huanzhu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: qianlong_g1
+    content: 弄清小燕子的真实来历，判断其是否真与皇室有关
+    status: active
+    basis_event: initial_state
+  - id: qianlong_g2
+    content: 在身份争议扩大前维持宫中秩序
+    status: active
+    basis_event: initial_state
+  - id: qianlong_g3
+    content: 避免被皇后单方指控推动而作出草率裁决
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    qianlong_k1:
+      content: 小燕子以某种与皇室可能有关的来历进入宫中
+      status: active
+      visibility: private
+      source_event: initial_state
+    qianlong_k2:
+      content: 皇后公开指控小燕子身份可疑并要求严查
+      status: active
+      visibility: private
+      source_event: initial_state
+    qianlong_k3:
+      content: 宫中有人试图为小燕子解释或传递关于其来历的说法
+      status: active
+      visibility: private
+      source_event: initial_state
+    qianlong_k4:
+      content: 紫薇这一名字及其身份主张尚未成为乾隆正式确认的对象
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    qianlong: 100
+    player: 100
+  inventories:
+    qianlong: []
+    player: []
+  locations:
+    qianlong: shu_fang
+    player: shu_fang
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

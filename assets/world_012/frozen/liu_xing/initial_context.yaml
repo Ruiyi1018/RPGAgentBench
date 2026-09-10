@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_mei:
+      level: trusting
+      basis_event: initial_state
+    xia_donghai:
+      level: neutral
+      basis_event: initial_state
+    xia_xue:
+      level: distrustful
+      basis_event: initial_state
+    xia_yu:
+      level: neutral
+      basis_event: initial_state
+    laolao:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_liuxing_001
+    content: 逃避或拖延写作业，在家庭日常中争取更多自由玩耍时间。
+    status: active
+    basis_event: initial_state
+  - id: goal_liuxing_002
+    content: 在与夏雪、夏雨的互动中占上风或获得关注。
+    status: active
+    basis_event: initial_state
+  - id: goal_liuxing_003
+    content: 在刘梅或夏东海提出要求时，用各种方式减轻对自己的约束。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_liuxing_001:
+      content: 刘梅作为母亲承担较多日常饮食和家务安排。
+      status: active
+      visibility: family
+      source_event: initial_state
+    knowledge_liuxing_002:
+      content: 夏东海以父亲身份参与子女教育和家庭沟通。
+      status: active
+      visibility: family
+      source_event: initial_state
+    knowledge_liuxing_003:
+      content: 自己与夏雪、夏雨因重组家庭成为兄弟姐妹。
+      status: active
+      visibility: family
+      source_event: initial_state
+    knowledge_liuxing_004:
+      content: 家庭晚餐时间会在餐厅共同用餐。
+      status: active
+      visibility: family
+      source_event: initial_state
+    knowledge_liuxing_005:
+      content: 自己在写作业时容易拖延或分心。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    liu_xing: 100
+    player: 100
+  inventories:
+    liu_xing: []
+    player: []
+  locations:
+    liu_xing: loc_keting
+    player: loc_keting
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

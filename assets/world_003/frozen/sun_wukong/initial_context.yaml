@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_sanzang:
+      level: distrustful
+      basis_event: initial_state
+    zhu_bajie:
+      level: hostile
+      basis_event: initial_state
+    sha_wujing:
+      level: neutral
+      basis_event: initial_state
+    baigujing:
+      level: hostile
+      basis_event: initial_state
+    heihujing:
+      level: hostile
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 提防白骨精再来变化害唐僧
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 第三次识破妖怪并在不造成更重误解的情况下除妖
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 保护唐僧不被妖怪掳走
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 村姑与老妇人都是白骨精变化所化，被金箍棒打后真身化风逃走
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    k_002:
+      content: 唐僧、猪八戒等人不信自己，认为打死的是凡人
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    k_003:
+      content: 白虎岭有妖怪活动，唐僧身处险境
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    k_004:
+      content: 猪八戒在唐僧面前挑拨，加重师徒裂痕
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    k_005:
+      content: 白骨精极可能第三次变化来接近唐僧
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+environment:
+  health:
+    sun_wukong: 100
+    player: 100
+  inventories:
+    sun_wukong: []
+    player: []
+  locations:
+    sun_wukong: shandao
+    player: shandao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

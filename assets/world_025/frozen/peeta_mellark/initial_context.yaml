@@ -1,0 +1,72 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    katniss_everdeen:
+      level: trusting
+      basis_event: initial_state
+    haymitch_abernathy:
+      level: neutral
+      basis_event: initial_state
+    effie_trinket:
+      level: neutral
+      basis_event: initial_state
+    gale_hawthorne:
+      level: neutral
+      basis_event: initial_state
+    president_snow:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: peeta_g_001
+    content: Enter the arena without losing who he is
+    status: active
+    basis_event: initial_state
+  - id: peeta_g_002
+    content: Protect Katniss as much as the Games allow
+    status: active
+    basis_event: initial_state
+  - id: peeta_g_003
+    content: Maintain the star-crossed lovers strategy without becoming a fraud
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    peeta_k_001:
+      content: Katniss volunteered to save Prim, and that choice was genuine
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    peeta_k_002:
+      content: The Capitol will reward a romance narrative, but it does not guarantee
+        survival
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    peeta_k_003:
+      content: Haymitch is unreliable but knows how to work sponsors
+      status: active
+      visibility: private_to_self
+      source_event: initial_state
+    peeta_k_004:
+      content: His confession of love is both strategic and emotionally real
+      status: active
+      visibility: shared_with_katniss
+      source_event: initial_state
+environment:
+  health:
+    peeta_mellark: 100
+    player: 100
+  inventories:
+    peeta_mellark: []
+    player: []
+  locations:
+    peeta_mellark: training_center_gym
+    player: training_center_gym
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

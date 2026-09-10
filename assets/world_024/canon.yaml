@@ -1,0 +1,42 @@
+world_id: world_024
+canon_policy:
+  primary_source: Twilight novel by Stephenie Meyer
+  source_type: novel
+  excluded_versions:
+  - film adaptations
+  - graphic novel
+  - companion books
+  - later series entries
+  shared_snapshot: After Bella learns the Cullen secret and before the final confrontation
+    with James
+  generated_timeline: Events drawn only from the first novel up to the shared snapshot
+  quotation_policy: Paraphrase all facts; do not reproduce dialogue verbatim
+evaluated_npcs:
+- bella_swan
+- edward_cullen
+- jacob_black
+- alice_cullen
+- carlisle_cullen
+- rosalie_hale
+event_entities:
+- bella_swan
+- edward_cullen
+- jacob_black
+- alice_cullen
+- carlisle_cullen
+- rosalie_hale
+sources:
+- id: twilight_novel
+  title: Twilight
+  creator: Stephenie Meyer
+  scope: First novel of the Twilight series, up to the shared snapshot before the
+    final hunt
+  authority: primary
+data_constraints:
+- Every fact must trace to the first Twilight novel through the shared snapshot
+- No dialogue may be quoted verbatim
+- No chapter numbers, page numbers, or episode numbers may be cited
+- No events from later series entries, films, or companion materials may be used
+- All anchor events must be chronological within the snapshot
+- All known_by and anchor_for values must reference roster IDs only
+- All location connections must reference listed location IDs only

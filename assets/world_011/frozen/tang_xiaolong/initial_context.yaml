@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    an_xin:
+      level: distrustful
+      basis_event: initial_state
+    gao_qiqiang:
+      level: hostile
+      basis_event: initial_state
+    li_xiang:
+      level: distrustful
+      basis_event: initial_state
+    tang_xiaohu:
+      level: neutral
+      basis_event: initial_state
+    meng_yu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_tang_xiaolong_01
+    content: 避免自己和弟弟在除夕冲突调查中成为主要责任人
+    status: active
+    basis_event: initial_state
+  - id: goal_tang_xiaolong_02
+    content: 让唐小虎配合统一说法，减少警方突破口
+    status: active
+    basis_event: initial_state
+  - id: goal_tang_xiaolong_03
+    content: 维持唐家兄弟在旧厂街市场的店铺和利益不受太大影响
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_tang_xiaolong_01:
+      content: 除夕夜旧厂街市场发生冲突，自己和唐小虎、高启强等均卷入其中
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_tang_xiaolong_02:
+      content: 警方已经对旧厂街市场冲突展开调查，并向自己进行过问询
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_tang_xiaolong_03:
+      content: 自己在问询中把主要责任推向高启强
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_tang_xiaolong_04:
+      content: 唐小虎在冲突后留在市场处理过摊位后续
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_tang_xiaolong_05:
+      content: 自己要求唐小虎统一口径应对警方
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    tang_xiaolong: 100
+    player: 100
+  inventories:
+    tang_xiaolong: []
+    player: []
+  locations:
+    tang_xiaolong: loc_tang_shop
+    player: loc_tang_shop
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

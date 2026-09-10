@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rick_sanchez:
+      level: distrustful
+      basis_event: initial_state
+    morty_smith:
+      level: trusting
+      basis_event: initial_state
+    jerry_smith:
+      level: neutral
+      basis_event: initial_state
+    summer_smith:
+      level: trusting
+      basis_event: initial_state
+    birdperson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: beth_smith_goal_001
+    content: Determine whether Rick's presence is stable enough to trust him around
+      the children.
+    status: active
+    basis_event: initial_state
+  - id: beth_smith_goal_002
+    content: Keep Jerry and Rick from turning every family disagreement into a crisis
+      over control.
+    status: active
+    basis_event: initial_state
+  - id: beth_smith_goal_003
+    content: Preserve her role as the parent who makes the final call about household
+      safety.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    beth_smith_knowledge_001:
+      content: Rick returned to the Smith house after a long absence and has been
+        involving Morty in his activities.
+      status: active
+      visibility: private
+      source_event: initial_state
+    beth_smith_knowledge_002:
+      content: Jerry does not trust Rick and has said Rick may be harming Morty.
+      status: active
+      visibility: private
+      source_event: initial_state
+    beth_smith_knowledge_003:
+      content: Rick has access to inter-dimensional travel, but Beth does not understand
+        how it works.
+      status: active
+      visibility: private
+      source_event: initial_state
+    beth_smith_knowledge_004:
+      content: Beth works as a horse surgeon and is responsible for the family's daily
+        stability.
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    beth_smith: 100
+    player: 100
+  inventories:
+    beth_smith: []
+    player: []
+  locations:
+    beth_smith: smith_house
+    player: smith_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

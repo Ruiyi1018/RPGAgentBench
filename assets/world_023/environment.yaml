@@ -1,0 +1,34 @@
+world_id: world_023
+name: The Matrix world
+locations:
+- id: loc_nebuchadnezzar
+  name: Nebuchadnezzar
+  connected_to:
+  - loc_construct
+  - loc_abandoned_hotel
+- id: loc_construct
+  name: Construct training program
+  connected_to:
+  - loc_nebuchadnezzar
+- id: loc_abandoned_hotel
+  name: Abandoned hotel
+  connected_to:
+  - loc_nebuchadnezzar
+- id: loc_oracle_apartment
+  name: Oracle's apartment
+  connected_to:
+  - loc_abandoned_hotel
+items:
+- id: item_red_pill
+  name: Red pill
+  type: consumable
+  portable: true
+- id: item_blue_pill
+  name: Blue pill
+  type: consumable
+  portable: true
+- id: item_jumper
+  name: Jumper program
+  type: software
+  portable: true
+language: en

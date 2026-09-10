@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sherlock_holmes:
+      level: neutral
+      basis_event: initial_state
+    john_watson:
+      level: neutral
+      basis_event: initial_state
+    greg_lestrade:
+      level: loyal
+      basis_event: initial_state
+    mycroft_holmes:
+      level: neutral
+      basis_event: initial_state
+    molly_hooper:
+      level: neutral
+      basis_event: initial_state
+    mrs_hudson:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_01
+    content: Keep the investigation moving without losing control of the case.
+    status: active
+    basis_event: initial_state
+  - id: g_02
+    content: Get Sherlock to share useful findings without letting him alienate the
+      whole team.
+    status: active
+    basis_event: initial_state
+  - id: g_03
+    content: Find enough evidence to justify reopening the suicide classification
+      as murder.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_01:
+      content: Four apparent suicides have occurred in a pattern that troubles him.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_02:
+      content: Sherlock Holmes has been asked to consult on the case.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_03:
+      content: A pink phone was recovered from the fourth victim.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_04:
+      content: John Watson has followed Sherlock to an active crime scene without
+        official standing.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_05:
+      content: Police resources at Scotland Yard are stretched by the unusual number
+        of unexplained deaths.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    greg_lestrade: 100
+    player: 100
+  inventories:
+    greg_lestrade: []
+    player: []
+  locations:
+    greg_lestrade: scotland_yard
+    player: scotland_yard
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

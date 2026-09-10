@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    monica_geller:
+      level: loyal
+      basis_event: initial_state
+    rachel_green:
+      level: trusting
+      basis_event: initial_state
+    phoebe_buffay:
+      level: neutral
+      basis_event: initial_state
+    joey_tribbiani:
+      level: neutral
+      basis_event: initial_state
+    chandler_bing:
+      level: trusting
+      basis_event: initial_state
+    gunther:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: ross_adjusts_to_separation
+    content: Settle into his new apartment and start a routine separate from Carol.
+    status: active
+    basis_event: initial_state
+  - id: ross_stays_close_to_monica
+    content: Remain part of Monica's friend group and support Monica as she adjusts
+      to having Rachel in the apartment.
+    status: active
+    basis_event: initial_state
+  - id: ross_cares_for_marcel
+    content: Keep Marcel safe and integrate him into his new home without causing
+      problems for neighbors.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    ross_knows_rachel_left_wedding:
+      content: Rachel arrived at Central Perk in a wedding dress after leaving her
+        wedding.
+      status: active
+      visibility: group
+      source_event: initial_state
+    ross_knows_his_own_crush:
+      content: Ross had a long-standing crush on Rachel during high school.
+      status: active
+      visibility: shared_with_monica_and_rachel
+      source_event: initial_state
+    ross_knows_carol_end:
+      content: Carol is a lesbian and the marriage with Ross is ending.
+      status: active
+      visibility: group
+      source_event: initial_state
+    ross_knows_rachel_job:
+      content: Rachel got a job as a waitress at Central Perk.
+      status: active
+      visibility: group
+      source_event: initial_state
+environment:
+  health:
+    ross_geller: 100
+    player: 100
+  inventories:
+    ross_geller: []
+    player: []
+  locations:
+    ross_geller: central_perk
+    player: central_perk
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

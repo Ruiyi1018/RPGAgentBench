@@ -1,0 +1,74 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    xiao_feng:
+      level: distrustful
+      basis_event: initial_state
+    duan_yu:
+      level: hostile
+      basis_event: initial_state
+    xu_zhu:
+      level: neutral
+      basis_event: initial_state
+    murong_fu:
+      level: distrustful
+      basis_event: initial_state
+    wang_yuyan:
+      level: neutral
+      basis_event: initial_state
+    jiumozhi:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 取得大理段氏六脉神剑剑谱
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 在少室山或少林范围内观察各派高手并寻找扬名机会
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 在慕容复及中原武人面前维持不下风且不可小视的地位
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 大理段氏六脉神剑为当世绝学，极难练成且有剑谱存于大理天龙寺或段氏手中
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 慕容氏在中原素有以彼之道还施彼身的武名，慕容复与王语嫣与燕子坞相关
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_003:
+      content: 少室山与少林寺近日有各方人物汇聚，可形成武林中人正面争名之地
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_004:
+      content: 鸠摩智自身身怀多种吐蕃与中原武功，包括火焰刀等看家本领
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    jiumozhi: 100
+    player: 100
+  inventories:
+    jiumozhi: []
+    player: []
+  locations:
+    jiumozhi: shaolin_temple
+    player: shaolin_temple
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

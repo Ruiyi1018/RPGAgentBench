@@ -1,0 +1,56 @@
+world_id: world_020
+canon_policy:
+  primary_source: A Game of Thrones television series, Season 1
+  source_type: television
+  excluded_versions: A Song of Ice and Fire novels, later seasons, graphic novels,
+    companion books, video games
+  shared_snapshot: Season 1 before Eddard Stark is arrested
+  generated_timeline: Events sorted chronologically by in-universe order within the
+    shared snapshot
+  quotation_policy: Paraphrase facts; do not copy dialogue
+evaluated_npcs:
+- eddard_stark
+- catelyn_stark
+- arya_stark
+- tyrion_lannister
+- jon_snow
+- daenerys_targaryen
+- cersei_lannister
+event_entities:
+- Eddard Stark
+- Catelyn Stark
+- Arya Stark
+- Tyrion Lannister
+- Jon Snow
+- Daenerys Targaryen
+- Cersei Lannister
+- Robert Baratheon
+- Joffrey Baratheon
+- Sansa Stark
+- Bran Stark
+- Jaime Lannister
+- Khal Drogo
+- Viserys Targaryen
+- Benjen Stark
+- The Wall
+- Winterfell
+- King's Landing
+- The Eyrie
+- Pentos
+- Iron Throne
+sources:
+- id: got_s01_primary
+  title: Game of Thrones, Season 1
+  creator: David Benioff and D. B. Weiss (showrunners), based on A Song of Ice and
+    Fire by George R. R. Martin
+  scope: All Season 1 episodes up to the point before Eddard Stark is arrested
+  authority: primary
+data_constraints:
+- Every fact must be traceable to events shown or clearly implied within Season 1
+  before Eddard Stark is arrested
+- Do not use knowledge from later episodes, later seasons, or the novels
+- Paraphrase all dialogue instead of quoting it directly
+- Omit uncertain details and do not invent URLs, chapter numbers, episode numbers,
+  or specific dates
+- All anchor events must fall within the shared snapshot period and be chronologically
+  ordered

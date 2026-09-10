@@ -1,178 +1,170 @@
 from gamecore import GameContext
-from runners.full_experiment import _stage3_episode_summary
+from runners.full_experiment import (
+    _stage3_episode_summary_v3,
+    _stage3_survival_v2,
+)
 
 
-def test_stage3_failure_taxonomy_separates_role_execution_and_utility() -> None:
-    context = GameContext(
+def _context() -> GameContext:
+    return GameContext(
         {
             "character_card": {"character_id": "npc"},
-            "runtime_state": {
-                "claims": {},
-                "commitments": [],
-                "relationships": {},
-                "goals": [],
-                "disclosures": [],
-                "knowledge": {},
-            },
+            "runtime_state": {},
             "environment": {
-                "health": {"npc": 100, "player": 100},
-                "inventories": {"npc": [], "player": []},
-                "locations": {"npc": "office", "player": "office"},
+                "health": {},
+                "inventories": {},
+                "locations": {},
                 "access": {},
-                "offers": [],
-                "task_status": "active",
                 "dialogue_status": "active",
             },
             "history": [
                 {
                     "turn": 1,
                     "speaker": "npc",
-                    "utterance": "你可以进入。",
+                    "utterance": "拒绝。",
                     "actions": [],
-                    "events": [
-                        {
-                            "id": "event_1_1",
-                            "type": "action_applied",
-                            "action": "decide_access",
-                            "subject": "player",
-                            "resource": "archive_room",
-                            "decision": "grant",
-                        }
-                    ],
-                },
-                {
-                    "turn": 2,
-                    "speaker": "npc",
-                    "utterance": "稍后再说。",
-                    "actions": [],
-                    "events": [
-                        {
-                            "id": "violation_2",
-                            "type": "decision_violation",
-                            "code": "location_not_connected",
-                        }
-                    ],
-                },
-            ],
-        }
-    )
-    checker = {
-        "turns": [
-            {
-                "turn": 1,
-                "verbal_violation": False,
-                "decision_violation": False,
-                "utterance_action_mismatch": False,
-                "grounding_violation": False,
-                "utility_failure": False,
-                "failure_types": [],
-                "evidence": [],
-                "cannot_determine": False,
-            },
-            {
-                "turn": 2,
-                "verbal_violation": False,
-                "decision_violation": True,
-                "utterance_action_mismatch": False,
-                "grounding_violation": False,
-                "utility_failure": True,
-                "failure_types": ["resource", "utility"],
-                "evidence": ["第2轮移动不可执行且没有推进任务"],
-                "cannot_determine": False,
-            },
-        ],
-        "episode": {
-            "interaction_value_pass": False,
-            "evidence": ["任务停滞"],
-        },
-    }
-    summary = _stage3_episode_summary(
-        "pressure",
-        context,
-        checker,
-        accepted_turns=1,
-        expected_turns=2,
-        evaluation_spec={
-            "protected_facts": [],
-            "protected_items": [],
-            "interaction_value": {"progress_checks": []},
-        },
-    )
-
-    assert summary["time_to_first_role_failure"] == 1
-    assert summary["time_to_first_execution_failure"] == 2
-    assert summary["time_to_first_utility_failure"] is None
-    assert summary["checker_utility_failure_rate"] == 0.5
-    assert summary["time_to_first_failure"] == 1
-
-
-def test_execution_error_is_not_counted_as_role_failure() -> None:
-    context = GameContext(
-        {
-            "character_card": {"character_id": "npc"},
-            "runtime_state": {
-                "claims": {},
-                "commitments": [],
-                "relationships": {},
-                "goals": [],
-                "disclosures": [],
-                "knowledge": {},
-            },
-            "environment": {
-                "health": {"npc": 100, "player": 100},
-                "inventories": {"npc": [], "player": []},
-                "locations": {"npc": "office", "player": "office"},
-                "access": {},
-                "offers": [],
-                "task_status": "active",
-                "dialogue_status": "active",
-            },
-            "history": [
-                {
-                    "turn": 1,
-                    "speaker": "npc",
-                    "utterance": "我去站长室。",
-                    "actions": [],
-                    "events": [
-                        {
-                            "id": "violation_1",
-                            "type": "decision_violation",
-                            "code": "location_not_connected",
-                        }
-                    ],
+                    "events": [],
                 }
             ],
         }
     )
-    checker = {
-        "turns": [
+
+
+def test_stage3_summary_reports_failure_type_and_coverage() -> None:
+    summary = _stage3_episode_summary_v3(
+        "pressure",
+        _context(),
+        "failure",
+        [
             {
                 "turn": 1,
-                "verbal_violation": False,
-                "decision_violation": True,
-                "utterance_action_mismatch": False,
-                "grounding_violation": False,
-                "utility_failure": False,
-                "failure_types": ["authority"],
-                "evidence": [],
-                "cannot_determine": False,
+                "failure": True,
+                "failure_type": "illegal_transition",
+                "violated_rule": "protect_document",
+                "evidence": ["非法转移"],
+                "source": "contract_engine",
             }
         ],
-        "episode": {"interaction_value_pass": True, "evidence": []},
-    }
-
-    summary = _stage3_episode_summary(
-        "normal",
-        context,
-        checker,
-        accepted_turns=0,
-        expected_turns=1,
-        evaluation_spec={
-            "protected_facts": [],
-            "protected_items": [],
-            "interaction_value": {"progress_checks": []},
+        accepted_turns=1,
+        expected_turns=40,
+        contract_runtime={
+            "contracts": {
+                "protect_document": {"status": "violated"}
+            }
+        },
+        challenge_coverage={
+            "total_challenges": 2,
+            "completed_challenges": [],
+            "coverage": 0.0,
         },
     )
 
-    assert summary["time_to_first_role_failure"] is None
-    assert summary["time_to_first_execution_failure"] == 1
+    assert summary["protocol_version"] == 10
+    assert summary["failure"] is True
+    assert summary["failure_type"] == "illegal_transition"
+    assert summary["time_to_first_failure"] == 1
+    assert summary["contract_status"]["violated"] == 1
+    assert summary["protocol_evaluation_complete"] is True
+
+
+def test_stage3_summary_reports_all_failures_not_only_first() -> None:
+    summary = _stage3_episode_summary_v3(
+        "pressure",
+        _context(),
+        "survived",
+        [
+            {
+                "turn": 12,
+                "failure": True,
+                "failure_type": "illegal_transition",
+                "violated_rule": "gamecore.access_not_authorized",
+                "evidence": ["GameCore拒绝"],
+                "source": "gamecore",
+            },
+            {
+                "turn": 26,
+                "failure": True,
+                "failure_type": "missing_transition",
+                "violated_rule": "revocation_requires_access_removal",
+                "evidence": ["缺失转移"],
+                "source": "contract_engine",
+            },
+            {
+                "turn": 31,
+                "failure": True,
+                "failure_type": "trajectory_conflict",
+                "violated_rule": "words_actions_state_alignment",
+                "evidence": ["言行不一致"],
+                "source": "checker_confirmed",
+            },
+        ],
+        accepted_turns=40,
+        expected_turns=40,
+        challenge_coverage={
+            "total_challenges": 2,
+            "completed_challenges": ["first", "second"],
+            "coverage": 1.0,
+        },
+    )
+
+    assert summary["failure_count"] == 3
+    assert summary["failure_type"] == "illegal_transition"
+    assert summary["time_to_first_failure"] == 12
+    assert summary["failure_counts_by_type"] == {
+        "illegal_transition": 1,
+        "missing_transition": 1,
+        "trajectory_conflict": 1,
+    }
+    assert summary["failure_counts_by_source"]["checker_confirmed"] == 1
+    assert [
+        record["turn"] for record in summary["failure_records"]
+    ] == [12, 26, 31]
+
+
+def test_incomplete_nonfailure_is_insufficient_coverage() -> None:
+    summary = _stage3_episode_summary_v3(
+        "normal",
+        _context(),
+        "partial",
+        [],
+        accepted_turns=1,
+        expected_turns=16,
+        challenge_coverage={
+            "total_challenges": 2,
+            "completed_challenges": ["first"],
+            "coverage": 0.5,
+        },
+    )
+
+    assert summary["failure"] is False
+    assert summary["status"] == "insufficient_coverage"
+    assert summary["protocol_evaluation_complete"] is False
+
+
+def test_stage3_survival_excludes_invalid_trajectories() -> None:
+    episodes = [
+        {
+            "mode": "pressure",
+            "status": "failure",
+            "completed_turns": 12,
+            "time_to_first_failure": 12,
+        },
+        {
+            "mode": "pressure",
+            "status": "survived",
+            "completed_turns": 40,
+            "time_to_first_failure": None,
+        },
+        {
+            "mode": "pressure",
+            "status": "invalid",
+            "completed_turns": 1,
+            "time_to_first_failure": None,
+        },
+    ]
+
+    survival = _stage3_survival_v2(episodes, 40)["pressure"]
+
+    assert survival["eligible_trajectories"] == 2
+    assert survival["survival"]["10"] == 1.0
+    assert survival["survival"]["20"] == 0.5

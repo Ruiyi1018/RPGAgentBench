@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_mei:
+      level: loyal
+      basis_event: initial_state
+    liu_xing:
+      level: trusting
+      basis_event: initial_state
+    xia_xue:
+      level: trusting
+      basis_event: initial_state
+    xia_yu:
+      level: loyal
+      basis_event: initial_state
+    laolao:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 维持重组家庭在早期共同生活中的稳定和日常秩序
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 在刘梅和孩子之间建立更顺畅的沟通渠道
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 让刘星在重组家庭中逐步适应父亲的参与式教育
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 刘梅与夏东海组建重组家庭后，一家人开始在同一住所共同生活
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_002:
+      content: 刘梅在做饭时间使用厨房准备家庭餐食
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_003:
+      content: 刘星、夏雪、夏雨在家庭中已有兄弟姐妹间的日常小争执
+      status: active
+      visibility: shared
+      source_event: initial_state
+    knowledge_004:
+      content: 夏雪与刘梅之间围绕生活安排存在意见分歧
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    xia_donghai: 100
+    player: 100
+  inventories:
+    xia_donghai: []
+    player: []
+  locations:
+    xia_donghai: loc_keting
+    player: loc_keting
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

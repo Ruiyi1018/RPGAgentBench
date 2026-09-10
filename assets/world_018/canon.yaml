@@ -1,0 +1,36 @@
+world_id: world_018
+canon_policy:
+  primary_source: Friends Season 1 episodes
+  source_type: television season
+  excluded_versions:
+  - later seasons
+  - reunion special
+  - spin-offs
+  - novelizations
+  - fan wikis with later plot details
+  shared_snapshot: Season 1 episode range only
+  generated_timeline: chronological order of Season 1 anchor events
+  quotation_policy: paraphrase only
+evaluated_npcs:
+- rachel_green
+- monica_geller
+- phoebe_buffay
+- joey_tribbiani
+- chandler_bing
+- ross_geller
+- gunther
+event_entities: []
+sources:
+- id: friends_s01
+  title: Friends Season 1
+  creator: David Crane and Marta Kauffman
+  scope: Season 1 episodes
+  authority: primary
+data_constraints:
+- Every fact must be constrained to Friends Season 1 episodes.
+- Never use later season plot knowledge.
+- Paraphrase facts instead of copying dialogue.
+- Omit uncertain details and do not invent URLs, chapter numbers, or episode numbers.
+- Sort anchor-pool events chronologically.
+- Only locations and items occurring within Season 1 may be used.
+- All connected_to references must point to listed location IDs.

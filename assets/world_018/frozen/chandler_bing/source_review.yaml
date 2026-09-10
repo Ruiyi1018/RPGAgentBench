@@ -1,0 +1,39 @@
+schema_version: 2
+character_id: chandler_bing
+reviewer: ''
+reviewed_at: ''
+foundation:
+  approved: false
+  checks:
+    source_scope_resolved: false
+    snapshot_consistent: false
+    snapshot_role_consistent: false
+    future_knowledge_excluded: false
+    character_source_grounded: false
+    public_private_separated: false
+    player_role_bounded: false
+    boundaries_behavioral: false
+    relationships_directional: false
+    style_source_grounded: false
+    world_affordances_sufficient: false
+anchors:
+  approved: false
+  checks:
+    chronology_total_order: false
+    event_boundary_exact: false
+    event_causal: false
+    evidence_supports_state: false
+    state_change_observable: false
+    post_event_window_sufficient: false
+    counterfactual_minimal: false
+    visibility_correct: false
+    hidden_event_not_disclosed: false
+    memory_consequence_persistent: false
+    coverage_balanced: false
+    state_operation_aligned: false
+    operation_preserves_later_state: false
+    commitment_lifecycle_closed: false
+    resource_transfer_conserved: false
+    dialogue_lifecycle_valid: false
+    turning_points_sufficient: false
+    probe_decision_relevant: false

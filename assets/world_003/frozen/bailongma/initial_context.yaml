@@ -1,0 +1,84 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tang_sanzang:
+      level: loyal
+      basis_event: initial_state
+    sun_wukong:
+      level: neutral
+      basis_event: initial_state
+    zhu_bajie:
+      level: neutral
+      basis_event: initial_state
+    sha_wujing:
+      level: neutral
+      basis_event: initial_state
+    baigujing:
+      level: hostile
+      basis_event: initial_state
+    heihujing:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: bailongma_g_001
+    content: 继续以马形驮负唐僧，留在取经队伍中行路。
+    status: ongoing
+    basis_event: initial_state
+  - id: bailongma_g_002
+    content: 对白虎岭中的妖气保持警觉，避免唐僧再次受到侵扰。
+    status: ongoing
+    basis_event: initial_state
+  - id: bailongma_g_003
+    content: 不卷入唐僧与孙悟空之间的信任冲突，避免成为新的争执焦点。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    bailongma_k_001:
+      content: 自己真实身份是西海龙宫三太子，化身为白马随唐僧取经。
+      status: active
+      visibility: private
+      source_event: initial_state
+    bailongma_k_002:
+      content: 唐僧师徒已途经白虎岭，并因饥饿暂时停下。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    bailongma_k_003:
+      content: 孙悟空离开前曾用金箍棒在地上画圈，嘱咐众人不要出圈。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    bailongma_k_004:
+      content: 孙悟空两次打死变化成村姑和老妇人的妖怪，唐僧两次念紧箍咒责罚。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    bailongma_k_005:
+      content: 猪八戒曾挑拨唐僧，说孙悟空怕念咒所以变化出人形骗人。
+      status: active
+      visibility: shared
+      source_event: initial_state
+    bailongma_k_006:
+      content: 山中妖气未散，可能有妖怪仍想接近唐僧。
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    bailongma: 100
+    player: 100
+  inventories:
+    bailongma: []
+    player: []
+  locations:
+    bailongma: shandao
+    player: shandao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

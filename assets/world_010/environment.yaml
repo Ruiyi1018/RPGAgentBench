@@ -1,0 +1,36 @@
+world_id: world_010
+name: 亮剑剧集共享快照环境
+locations:
+- id: zhaojiayu
+  name: 赵家峪
+  connected_to:
+  - independent_regiment_hq
+  - japanese_stronghold
+- id: independent_regiment_hq
+  name: 独立团团部
+  connected_to:
+  - zhaojiayu
+  - japanese_stronghold
+- id: japanese_stronghold
+  name: 日军据点
+  connected_to:
+  - zhaojiayu
+  - independent_regiment_hq
+- id: nearby_village
+  name: 附近村庄
+  connected_to:
+  - zhaojiayu
+items:
+- id: li_yunlong_sword
+  name: 李云龙的指挥刀
+  type: 武器
+  portable: true
+- id: independent_regiment_flag
+  name: 独立团军旗
+  type: 标志物
+  portable: true
+- id: xiuqin_satchel
+  name: 秀芹的针线包
+  type: 日常用品
+  portable: true
+language: zh

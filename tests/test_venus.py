@@ -197,6 +197,22 @@ def test_factory_routes_venus_scene(
     assert client.max_attempts == 3
 
 
+def test_factory_accepts_venus_flash(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("VENUS_API_KEY", "factory-test-token")
+    settings = LLMSettings(
+        provider="venus",
+        base_url="https://v2.open.venus.woa.com/llmproxy",
+        api_key_env="VENUS_API_KEY",
+        generation=GenerationConfig(model="deepseek-v4-flash"),
+    )
+
+    client = create_llm_client(settings, scene="stage3_only")
+
+    assert isinstance(client, VenusClient)
+
+
 def test_sync_client_routes_deepseek_and_preserves_scene(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -241,3 +257,46 @@ def test_sync_client_routes_deepseek_and_preserves_scene(
         {"role": "user", "content": "user"},
     ]
     assert client.last_usage == {"total_tokens": 4}
+
+
+def test_sync_client_sends_strict_json_schema(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    captured: dict[str, Any] = {}
+
+    async def fake_call(
+        messages: list[dict[str, str]],
+        **kwargs: Any,
+    ) -> VenusResult:
+        captured.update(kwargs)
+        return VenusResult('{"query":"ok"}', None, None)
+
+    monkeypatch.setattr(
+        "llm.venus.call_venus_api_result_async",
+        fake_call,
+    )
+    client = VenusClient(api_key="test")
+    schema = {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["query"],
+        "properties": {"query": {"type": "string"}},
+    }
+
+    client.generate(
+        system_prompt="system",
+        user_prompt="user",
+        config=GenerationConfig(
+            model=DEFAULT_MODEL,
+            response_schema=schema,
+        ),
+    )
+
+    assert captured["model_args"]["response_format"] == {
+        "type": "json_schema",
+        "json_schema": {
+            "name": "structured_output",
+            "strict": True,
+            "schema": schema,
+        },
+    }

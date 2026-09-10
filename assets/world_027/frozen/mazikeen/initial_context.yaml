@@ -1,0 +1,77 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lucifer_morningstar:
+      level: loyal
+      basis_event: initial_state
+    amenadiel:
+      level: hostile
+      basis_event: initial_state
+    chloe_decker:
+      level: distrustful
+      basis_event: initial_state
+    dan_espinoza:
+      level: neutral
+      basis_event: initial_state
+    linda_martin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Keep Lucifer safe from Amenadiel's pressure and any physical threats
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Reassert her importance to Lucifer as he spends more time with Chloe
+      and the LAPD
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Maintain her role at Lux and control over the space she shares with Lucifer
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Lucifer is the Devil and she came from Hell with him
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Amenadiel is an angel who has come to Los Angeles to pressure Lucifer
+      status: active
+      visibility: private
+      source_event: initial_state
+    k3:
+      content: Chloe Decker is a homicide detective who now works closely with Lucifer
+      status: active
+      visibility: public
+      source_event: initial_state
+    k4:
+      content: Lucifer has begun working as a consultant with the LAPD
+      status: active
+      visibility: public
+      source_event: initial_state
+    k5:
+      content: Lucifer owns and operates Lux nightclub
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    mazikeen: 100
+    player: 100
+  inventories:
+    mazikeen: []
+    player: []
+  locations:
+    mazikeen: lux
+    player: lux
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

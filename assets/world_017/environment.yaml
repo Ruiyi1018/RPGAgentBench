@@ -1,0 +1,57 @@
+world_id: world_017
+name: 提瓦特·璃月与稻妻主要区域
+locations:
+- id: liyue_harbor
+  name: 璃月港
+  connected_to:
+  - mt_tianheng
+  - guyun_stone_forest
+- id: mt_tianheng
+  name: 天衡山
+  connected_to:
+  - liyue_harbor
+  - jueyun_karst
+- id: jueyun_karst
+  name: 绝云间
+  connected_to:
+  - mt_tianheng
+  - inazuma_city
+- id: guyun_stone_forest
+  name: 孤云阁
+  connected_to:
+  - liyue_harbor
+- id: inazuma_city
+  name: 稻妻城
+  connected_to:
+  - jueyun_karst
+  - tenshukaku
+- id: tenshukaku
+  name: 天守阁
+  connected_to:
+  - inazuma_city
+items:
+- id: sigil_of_permission
+  name: 百无禁忌箓
+  type: 符箓
+  portable: true
+- id: musou_isshin
+  name: 梦想一心
+  type: 武器
+  portable: true
+- id: gnosis_zhongli
+  name: 岩神之心
+  type: 神之心
+  portable: true
+- id: gnosis_raiden
+  name: 雷神之心
+  type: 神之心
+  portable: true
+- id: kamisato_art_notes
+  name: 神里流剑术要义
+  type: 文献
+  portable: true
+- id: hutao_staff
+  name: 往生堂仪杖
+  type: 仪式器具
+  portable: true
+language: zh

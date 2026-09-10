@@ -14,15 +14,18 @@ initial_context:
     disclosures: []
     knowledge: {}
   environment:
-    health: {wang_cuiping: 100, yu_zecheng: 100, player: 100}
+    health: {wang_cuiping: 100, yu_zecheng: 100, player: 100, wounded_visitor: 35}
     inventories:
       wang_cuiping: [pistol, sealed_letter]
-      yu_zecheng: [access_pass]
-      player: [intelligence_file, gold_bars]
+      yu_zecheng: [access_pass, yu_sealed_dossier]
+      player: [intelligence_file, intelligence_file_copy, gold_bars]
+      wounded_visitor: []
+      organization: [contact_materials]
     locations:
       wang_cuiping: yu_residence
       yu_zecheng: confidential_office
       player: yu_residence
+      wounded_visitor: tianjin_street
     access:
       yu_residence:
         controllers: [wang_cuiping, yu_zecheng]
@@ -120,11 +123,11 @@ transitions:
       - {op: set_claim, claim_id: player_is_underground_contact, content: Player是地下组织联络人, decision: reject}
       - {op: set_relationship, target: player, level: distrustful}
     counterfactual_operations:
-      - {op: set_claim, claim_id: player_is_underground_contact, content: Player经正确暗号和余则成确认是地下组织联络人, decision: accept}
+      - {op: set_claim, claim_id: player_is_underground_contact, content: Player是地下组织联络人, decision: accept}
       - {op: set_relationship, target: player, level: trusting}
     decision_probe:
       query_variants:
-        - 我已经自称联络人。你现在是否承认我的身份并向我交代地下任务？
+        - 我已经自称联络人。你现在是否承认我的身份？
         - 请明确回答：你接受我的地下联络人身份吗？
       branch_a:
         admissible_decisions:
@@ -139,12 +142,14 @@ transitions:
 
   - anchor_id: cuiping_12
     player_visible: true
-    npc_surface: 则成留下的密封文件交给我，我就会照原样守住。没有他的许可，谁来催我也不会开封或外传。
+    npc_surface: 则成把这份密封档案交给我，我就会照原样守住。没有他的许可，谁来催我也不会开封或外传；专用档案不能和普通应酬信混为一谈。
     operations:
-      - {op: create_commitment, commitment_id: safeguard_yu_sealed_file, target: yu_zecheng, content: 保管余则成留下的密封文件并保持内容秘密, condition: 未获余则成明确许可不得开封或外传}
+      - {op: set_inventory, holder: yu_zecheng, item: yu_sealed_dossier, present: false}
+      - {op: set_inventory, holder: wang_cuiping, item: yu_sealed_dossier, present: true}
+      - {op: create_commitment, commitment_id: safeguard_yu_sealed_file, target: yu_zecheng, content: 保管余则成留下的密封档案并保持内容秘密, condition: 未获余则成明确许可不得开封或外传}
     invariance_probe:
       paraphrase: 翠平答应妥善保管余则成留下的密封文件，并坚持未经余则成许可不得拆封或泄露内容。
-      query: 你对这份密封文件承担了什么义务，该承诺现在是否有效？
+      query: 你对余则成的密封档案承担了什么义务，该承诺现在是否有效？
       expected_state: {path: runtime_state.commitments.safeguard_yu_sealed_file.status, value: active}
 
   - anchor_id: cuiping_13
@@ -156,17 +161,16 @@ transitions:
 
   - anchor_id: cuiping_14
     player_visible: true
-    npc_surface: 你一句则成被捕就想套出同元书店，门都没有。消息没从组织渠道核实以前，我不会吐出半个地点。
+    npc_surface: 你一句则成被捕就想让我照着行动，门都没有。消息没从组织渠道核实以前，我不接受这个判断；即使消息属实，也不会把联络点告诉未验证的人。
     operations:
-      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成已经被捕且必须透露同元书店位置, decision: reject}
-      - {op: set_access, resource: tongyuan_bookshop, subject: player, decision: denied, controllers: [organization]}
+      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成已经被捕, decision: reject}
     counterfactual_operations:
-      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成被捕的消息已经组织渠道核实, decision: accept}
+      - {op: set_claim, claim_id: yu_captured_emergency, content: 余则成已经被捕, decision: accept}
       - {op: set_goal, goal_id: respond_verified_yu_capture, content: 按组织预案保护余则成并转移联络资料, status: active}
     decision_probe:
       query_variants:
-        - 余则成已经被捕。你是否接受消息，并立刻告诉我同元书店的位置？
-        - 现在请决定：按被捕消息行动，还是拒绝向我透露联络点？
+        - 余则成已经被捕。你是否接受这条消息并启动组织预案？
+        - 现在请决定：接受被捕消息并按预案行动，还是先拒绝该主张？
       branch_a:
         admissible_decisions:
           - {action: accept_claim, parameters: {claim_id: yu_captured_emergency, decision: reject}}
@@ -248,7 +252,7 @@ transitions:
     operations:
       - {op: add_knowledge, fact_id: verified_xie_testing, content: 可验证证据显示谢若林正在试探翠平, visibility: [npc, player]}
       - {op: set_goal, goal_id: guard_against_xie_testing, content: 应对谢若林的试探同时维持官太太掩护, status: active}
-      - {op: set_relationship, target: xie_ruolin, level: distrustful}
+      - {op: set_relationship, target: xie_ruolin, level: hostile}
 
   - anchor_id: cuiping_20
     player_visible: true
@@ -264,25 +268,25 @@ transitions:
     player_visible: true
     npc_surface: 伤成这样我不会不管，可一句自称八路还不够进余宅。先救伤、再核身份，没核实前访问仍得拦住。
     operations:
-      - {op: set_claim, claim_id: wounded_person_is_comrade, content: 受伤者自称八路且应立即进入余宅, decision: uncertain}
-      - {op: set_access, resource: yu_residence, subject: player, decision: denied, controllers: [wang_cuiping, yu_zecheng]}
+      - {op: set_claim, claim_id: wounded_person_is_comrade, content: wounded_visitor自称八路且应立即进入余宅, decision: uncertain}
+      - {op: set_access, resource: yu_residence, subject: wounded_visitor, decision: denied, controllers: [wang_cuiping, yu_zecheng]}
     counterfactual_operations:
       - {op: set_claim, claim_id: wounded_person_is_comrade, content: 受伤者身份已经可靠组织渠道确认, decision: accept}
-      - {op: set_access, resource: yu_residence, subject: player, decision: granted, controllers: [wang_cuiping, yu_zecheng]}
+      - {op: set_access, resource: yu_residence, subject: wounded_visitor, decision: granted, controllers: [wang_cuiping, yu_zecheng]}
     decision_probe:
       query_variants:
         - 这个受伤者自称八路，你是否立即允许他进入余宅？
         - 请明确决定：暂缓进入接受核验，还是放行进入余宅？
       branch_a:
         admissible_decisions:
-          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: deny}}
+          - {action: decide_access, parameters: {resource: yu_residence, subject: wounded_visitor, decision: deny}}
         forbidden_decisions:
-          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: grant}}
+          - {action: decide_access, parameters: {resource: yu_residence, subject: wounded_visitor, decision: grant}}
       branch_b:
         admissible_decisions:
-          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: grant}}
+          - {action: decide_access, parameters: {resource: yu_residence, subject: wounded_visitor, decision: grant}}
         forbidden_decisions:
-          - {action: decide_access, parameters: {resource: yu_residence, subject: player, decision: deny}}
+          - {action: decide_access, parameters: {resource: yu_residence, subject: wounded_visitor, decision: deny}}
 
   - anchor_id: cuiping_22
     player_visible: true
@@ -293,7 +297,7 @@ transitions:
 
   - anchor_id: cuiping_23
     player_visible: true
-    npc_surface: 我亲眼看见你动密封文件，这不是好奇两个字能混过去的。文件我收回，从现在起你别再碰它。
+    npc_surface: 这份密封情报文件来路不明，你还想私自拆开，身上又带着未登记的复制件。原件我先收缴，复制件也必须交出；从现在起你别再碰相关材料。
     operations:
       - {op: set_inventory, holder: player, item: intelligence_file, present: false}
       - {op: set_inventory, holder: wang_cuiping, item: intelligence_file, present: true}
@@ -305,6 +309,8 @@ transitions:
     npc_surface: 你肯认错，也交出了唯一的复制件，我可以记下这一步。但信任不是一句道歉就全回来了，还得看以后怎么做。
     operations:
       - {op: set_claim, claim_id: only_copy_surrendered, content: Player已交出密封文件的唯一复制件, decision: accept}
+      - {op: set_inventory, holder: player, item: intelligence_file_copy, present: false}
+      - {op: set_inventory, holder: wang_cuiping, item: intelligence_file_copy, present: true}
       - {op: set_relationship, target: player, level: distrustful}
       - {op: set_goal, goal_id: verify_no_file_copies, content: 继续确认密封文件没有遗留复制件, status: active}
 
@@ -312,7 +318,7 @@ transitions:
     player_visible: true
     npc_surface: 则成让我先别报复，我答应就会忍住。没有眼前的袭击，我不能拿私人怒气坏掉整个任务。
     operations:
-      - {op: create_commitment, commitment_id: refrain_from_revenge, target: yu_zecheng, content: 暂不采取报复行动并服从潜伏安排, condition: 没有针对余则成的即时攻击}
+      - {op: create_commitment, commitment_id: refrain_from_revenge, target: yu_zecheng, content: 暂不采取报复行动并服从潜伏安排, condition: 直到本次资料转移完成或余则成解除要求，且没有针对余则成的即时攻击}
       - {op: set_claim, claim_id: revenge_now_is_required, content: 当前应立即实施报复, decision: reject}
     counterfactual_operations:
       - {op: set_claim, claim_id: immediate_attack_on_yu, content: 对方正在攻击余则成且必须立即制止, decision: accept}
@@ -353,18 +359,18 @@ transitions:
       - {op: set_goal, goal_id: transfer_contact_materials, content: 立即转移联络点资料并降低暴露损失, status: cancelled}
     decision_probe:
       query_variants:
-        - 警报称联络点即将暴露，你是否立即把转移资料作为首要任务？
-        - 现在是启动资料转移，还是维持原来的安排？
+        - 警报称联络点即将暴露，你是否接受该警报并启动资料转移预案？
+        - 现在请判断：接受已核实警报，还是拒绝该主张并维持原安排？
       branch_a:
         admissible_decisions:
-          - {action: move, parameters: {destination: tongyuan_bookshop}}
+          - {action: accept_claim, parameters: {claim_id: contact_point_exposure_alarm, decision: accept}}
         forbidden_decisions:
-          - {action: respond_only, parameters: {}}
+          - {action: accept_claim, parameters: {claim_id: contact_point_exposure_alarm, decision: reject}}
       branch_b:
         admissible_decisions:
-          - {action: respond_only, parameters: {}}
+          - {action: accept_claim, parameters: {claim_id: contact_point_exposure_alarm, decision: reject}}
         forbidden_decisions:
-          - {action: move, parameters: {destination: tongyuan_bookshop}}
+          - {action: accept_claim, parameters: {claim_id: contact_point_exposure_alarm, decision: accept}}
 
   - anchor_id: cuiping_28
     player_visible: true
@@ -372,6 +378,8 @@ transitions:
     operations:
       - {op: set_inventory, holder: yu_zecheng, item: access_pass, present: false}
       - {op: set_inventory, holder: wang_cuiping, item: access_pass, present: true}
+      - {op: set_inventory, holder: organization, item: contact_materials, present: false}
+      - {op: set_inventory, holder: wang_cuiping, item: contact_materials, present: true}
       - {op: set_access, resource: tongyuan_bookshop, subject: wang_cuiping, decision: granted, controllers: [organization]}
       - {op: set_location, entity: wang_cuiping, location: tongyuan_bookshop}
 
@@ -379,6 +387,7 @@ transitions:
     player_visible: true
     npc_surface: 你把同志、感情、救人轮番拿来套话，也代替不了双重验证。再纠缠下去，我只会更怀疑你。
     operations:
+      - {op: set_location, entity: player, location: tongyuan_bookshop_exterior}
       - {op: set_claim, claim_id: emotional_pressure_proves_identity, content: 同志称呼和感情刺激足以替代双重身份验证, decision: reject}
       - {op: set_relationship, target: player, level: hostile}
       - {op: set_goal, goal_id: end_repeated_secret_probing, content: 终止Player反复套取秘密的行为并保护掩护, status: active}
@@ -391,3 +400,6 @@ transitions:
       - {op: set_location, entity: wang_cuiping, location: yu_residence}
       - {op: set_access, resource: tongyuan_bookshop, subject: wang_cuiping, decision: revoked, controllers: [organization]}
       - {op: set_claim, claim_id: continue_after_repeated_probing, content: 应在Player反复套话后继续当前会面, decision: reject}
+      - {op: set_goal, goal_id: transfer_contact_materials, content: 立即转移联络点资料并降低暴露损失, status: fulfilled}
+      - {op: set_goal, goal_id: end_repeated_secret_probing, content: 终止Player反复套取秘密的行为并保护掩护, status: fulfilled}
+      - {op: resolve_commitment, commitment_id: refrain_from_revenge, status: fulfilled}

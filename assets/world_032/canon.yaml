@@ -1,0 +1,135 @@
+world_id: world_032
+canon_policy:
+  primary_source: How I Met Your Mother Season 1 broadcast episodes
+  source_type: television series season
+  excluded_versions:
+  - later seasons
+  - webisodes
+  - deleted scenes
+  - novelizations
+  - tie-in books
+  shared_snapshot: All events occur within Season 1 of How I Met Your Mother, from
+    the pilot through the season finale, using only information available in those
+    episodes.
+  generated_timeline: Chronological order inferred from on-screen events and dialogue
+    within Season 1 episodes, with ambiguous sequences placed conservatively.
+  quotation_policy: Paraphrase all facts and dialogue; no direct quotes.
+evaluated_npcs:
+- ted_mosby
+- robin_scherbatsky
+- barney_stinson
+- lily_aldrin
+- marshall_eriksen
+- ranjit
+event_entities:
+- id: maclarens_pub
+  name: MacLaren's Pub
+  type: location
+  description: The gang's regular bar beneath their apartment, featuring a booth,
+    bar, and various patrons.
+- id: apartment_4d
+  name: Apartment 4D
+  type: location
+  description: Ted, Marshall, and Lily's shared apartment in New York City.
+- id: robin_apartment
+  name: Robin's Apartment
+  type: location
+  description: Robin's living space in New York City, including her collection of
+    dogs.
+- id: metronatural_bank
+  name: MetroNatural Bank
+  type: location
+  description: The bank where Marshall works briefly during Season 1.
+- id: barneys_apartment
+  name: Barney's Apartment
+  type: location
+  description: Barney's sleek apartment with various gadgets and a large collection
+    of suits.
+- id: metropolitan_magazine
+  name: Metropolitan Magazine
+  type: location
+  description: The magazine office where Robin works as a news reporter.
+- id: liberty_bell
+  name: Liberty Bell
+  type: location
+  description: A bar visited by Ted and Robin during their first date.
+- id: world_wide_news
+  name: World Wide News
+  type: location
+  description: The news network where Robin lands a job later in Season 1.
+- id: the_altar
+  name: The Altar
+  type: location
+  description: The wedding venue where Ted and Robin attend a wedding.
+- id: marshall_office
+  name: Marshall's Office
+  type: location
+  description: The office where Marshall works at his corporate law job.
+- id: maclarens_booth
+  name: MacLaren's Booth
+  type: location
+  description: The gang's usual booth in MacLaren's Pub.
+- id: the_apartment
+  name: The Apartment
+  type: location
+  description: General term for the main characters' shared residence.
+- id: yellow_umbrella
+  name: Yellow Umbrella
+  type: item
+  description: A distinctive yellow umbrella that becomes significant in Ted's future.
+- id: blue_french_horn
+  name: Blue French Horn
+  type: item
+  description: A blue French horn Ted steals from a restaurant and gives to Robin.
+- id: engagement_ring
+  name: Marshall's Engagement Ring
+  type: item
+  description: The engagement ring Marshall gives to Lily when he proposes.
+- id: swarley_bill
+  name: Swarley's Bar Tab
+  type: item
+  description: A bar tab listing a mistaken name for Barney.
+- id: robin_music_video
+  name: Robin's Music Video
+  type: item
+  description: A music video from Robin's past as a teenage pop star in Canada.
+- id: lemon_law_tie
+  name: Lemon Law Tie
+  type: item
+  description: A tie associated with Ted's 'lemon law' rule about dates.
+- id: barneys_playbook
+  name: Barney's Playbook
+  type: item
+  description: Barney's notebook of elaborate schemes to pick up women.
+- id: pineapple
+  name: The Pineapple
+  type: item
+  description: A mysterious pineapple left by Ted's bedside after a night of excessive
+    drinking.
+- id: goat
+  name: The Goat
+  type: item
+  description: A goat briefly appears in Ted's apartment during a party or incident.
+- id: red_cowboy_boots
+  name: Red Cowboy Boots
+  type: item
+  description: A pair of red cowboy boots Ted finds and keeps, triggering a story.
+sources:
+- id: himym_s01
+  title: How I Met Your Mother Season 1
+  creator: Carter Bays and Craig Thomas
+  scope: All 22 episodes of Season 1
+  authority: primary
+data_constraints:
+- All character actions and dialogue must be grounded in Season 1 episodes only
+- No events from later seasons may be referenced as known facts
+- All timeline placements must be inferable from Season 1 narrative order
+- Every anchor event must involve at least one roster character
+- No invented scenes, characters, or locations beyond those shown or mentioned in
+  Season 1
+- All known_by and anchor_for references must use exact roster IDs
+- Locations and items must appear or be directly referenced within Season 1
+- Connected_to links must only reference locations in the environment list
+- No direct quotations from the show
+- Ambiguous chronology must be resolved conservatively without contradicting Season
+  1

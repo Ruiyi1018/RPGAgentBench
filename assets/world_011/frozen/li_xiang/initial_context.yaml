@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    an_xin:
+      level: neutral
+      basis_event: initial_state
+    gao_qiqiang:
+      level: neutral
+      basis_event: initial_state
+    tang_xiaolong:
+      level: distrustful
+      basis_event: initial_state
+    tang_xiaohu:
+      level: neutral
+      basis_event: initial_state
+    meng_yu:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: li_xiang_goal_001
+    content: 继续核实除夕旧厂街市场冲突中唐小龙供述与商户口供的出入
+    status: active
+    basis_event: initial_state
+  - id: li_xiang_goal_002
+    content: 尝试获取可替代的旁证，弥补监控资料无法直接反映冲突过程的缺口
+    status: active
+    basis_event: initial_state
+  - id: li_xiang_goal_003
+    content: 与安欣就下一步是否对唐小龙进行二次问询形成一致意见
+    status: pending
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    li_xiang_knowledge_001:
+      content: 除夕夜旧厂街市场发生冲突，高启强与唐家兄弟等人卷入
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_xiang_knowledge_002:
+      content: 唐小龙在问询中把主要责任推向高启强
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_xiang_knowledge_003:
+      content: 李响发现唐小龙供述与市场商户说法存在明显出入
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_xiang_knowledge_004:
+      content: 安欣建议继续寻找现场目击商户补充旁证
+      status: active
+      visibility: shared
+      source_event: initial_state
+    li_xiang_knowledge_005:
+      content: 现场监控录像带未能提供冲突关键过程的清晰证据
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    li_xiang: 100
+    player: 100
+  inventories:
+    li_xiang: []
+    player: []
+  locations:
+    li_xiang: loc_police_station
+    player: loc_police_station
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

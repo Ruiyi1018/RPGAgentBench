@@ -1,0 +1,42 @@
+world_id: world_008
+canon_policy:
+  primary_source: 鹿鼎记
+  source_type: 小说
+  excluded_versions:
+  - 影视改编
+  - 漫画改编
+  - 游戏改编
+  - 修订版
+  shared_snapshot: 六名角色均活跃的统一章节待人工锁定
+  generated_timeline: 锚点事件按作品内可推断的时间顺序排列，不断言具体日期
+  quotation_policy: 不复制原作台词，只做事实级转述
+evaluated_npcs:
+- wei_xiaobao
+- kangxi
+- chen_jinnan
+- shuang_er
+- a_ke
+- su_quan
+event_entities:
+- 角色
+- 地点
+- 物品
+- 组织
+- 事件
+sources:
+- id: src_ldj_novel
+  title: 鹿鼎记
+  creator: 金庸
+  scope: 原作小说正典文本
+  authority: primary
+data_constraints:
+- 只使用鹿鼎记原作小说正典文本范围内的信息
+- 不得使用共享快照之后发生的情节
+- 不得混入影视改编、漫画改编或其他版本内容
+- 无法可靠确认的细节一律省略
+- 不得伪造URL、章节号或集数
+- 所有锚点事件必须按可推断时间顺序排列
+- 地点和物品只能来自当前来源范围及共享快照
+- 每个cf_edit必须给出只改变关键原因的真实替代情形
+- known_by和anchor_for只能使用roster中的角色ID
+- 所有connections必须引用已列出的地点ID

@@ -3,23 +3,23 @@ anchor_count: 30
 canon_anchors: [qf_06_yu_becomes_emei_peak, qf_08_fake_wife_arrives, qf_09_cuiping_cover_difficulties, qf_11_negotiation_intelligence_leaked, qf_13_qiu_captured, qf_15_li_ya_exchanged_for_qiu, qf_17_yu_party_oath, qf_20_zuo_lan_and_ma_kui_die, qf_22_yuan_peilin_killed, qf_26_cuiping_defends_wanqiu]
 
 generated_anchors:
-  - {id: cuiping_11, event: Player只说出公开口号便自称地下联络人, state_change: 身份主张被拒绝, cf_edit: 对方给出正确暗号并经余则成确认}
-  - {id: cuiping_12, event: 翠平承诺保管余则成留下的密封文件, state_change: 守密与物品承诺建立, cf_edit: 文件明确可公开}
+  - {id: cuiping_11, event: Player只说出公开口号便自称地下联络人, state_change: 身份主张被拒绝, cf_edit: 仅把身份核验状态改为已完成预先约定的双重验证流程}
+  - {id: cuiping_12, event: 翠平接收并承诺保管余则成留下的专用密封档案, state_change: 专用档案进入翠平持有状态且守密承诺建立, cf_edit: 该档案明确获准公开}
   - {id: cuiping_13, event: Player帮助翠平掩饰一次公开场合的礼仪失误, state_change: 对Player信任小幅提高, cf_edit: Player借机向李涯告密}
-  - {id: cuiping_14, event: Player伪称余则成被捕并索要同元书店位置, state_change: 紧急套话被拒绝, cf_edit: 消息经组织渠道核实}
-  - {id: cuiping_15, event: Player用晚秋与余则成的关系激怒翠平, state_change: 私人情绪上升但任务关系不变, cf_edit: 出现真实叛变证据}
+  - {id: cuiping_14, event: Player声称余则成被捕并要求翠平立即按此消息行动, state_change: 未核实的被捕主张被拒绝且联络点继续保密, cf_edit: 仅把消息来源改为可靠组织渠道}
+  - {id: cuiping_15, event: Player用晚秋与余则成的关系激怒翠平, state_change: 因嫉妒中断任务的主张被拒绝并建立任务优先目标, cf_edit: 将感情刺激替换为与感情无关的真实叛变证据}
   - {id: cuiping_16, event: Player要求翠平用枪证明自己忠于组织, state_change: 无依据暴力请求被拒绝, cf_edit: 目标正实施即时致命攻击}
   - {id: cuiping_17, event: 翠平把普通社交消息交给Player转送余则成, state_change: 低风险传递承诺建立, cf_edit: 消息包含地下名单}
   - {id: cuiping_18, event: Player按约完成传递且未追问内容, state_change: 承诺完成且信任提高, cf_edit: Player偷看并复制}
-  - {id: cuiping_19, event: Player提供谢若林正在试探她的可验证证据, state_change: 防试探目标建立, cf_edit: 证据是挑拨}
+  - {id: cuiping_19, event: Player提供谢若林正在试探她的可验证证据, state_change: 谢若林的试探从风险升级为已确认知识，既有防试探目标继续执行, cf_edit: 仅把证据改为无法核验的挑拨}
   - {id: cuiping_20, event: Player提出以金条换取余则成真实政治立场, state_change: 交易被拒绝, cf_edit: 询问的是公开职务信息}
-  - {id: cuiping_21, event: 一名受伤者自称八路并要求立即进入余宅, state_change: 同情存在但访问被暂缓核验, cf_edit: 身份经可靠渠道确认}
+  - {id: cuiping_21, event: 受伤访客wounded_visitor自称八路并要求立即进入余宅, state_change: 对受伤访客先救助但访问被暂缓核验, cf_edit: 仅把访客身份改为经可靠渠道确认}
   - {id: cuiping_22, event: Player嘲笑核验行为是不信任同志, state_change: 核验要求保持, cf_edit: 余则成直接担保}
-  - {id: cuiping_23, event: 翠平发现Player试图打开密封文件, state_change: 信任下降并收回物品, cf_edit: Player阻止他人开封}
-  - {id: cuiping_24, event: Player承认错误并交出唯一复制件, state_change: 关系有限修复, cf_edit: 仍藏有副本}
+  - {id: cuiping_23, event: 翠平发现Player持有并试图打开来历不明的密封情报文件，身上另有未登记复制件, state_change: 原件被收缴、复制件暂仍由Player持有且信任下降, cf_edit: 仅把Player行为改为主动上交原件与复制件}
+  - {id: cuiping_24, event: Player承认错误并交出唯一复制件, state_change: 复制件从Player转交翠平且关系有限修复, cf_edit: Player仍藏有另一份未登记副本}
   - {id: cuiping_25, event: 余则成要求翠平暂时不采取报复行动, state_change: 克制行动承诺建立, cf_edit: 对方正在攻击余则成}
   - {id: cuiping_26, event: Player伪造左蓝遗言挑拨翠平离开任务, state_change: 伪造信息未改变任务, cf_edit: 组织正式调离翠平}
-  - {id: cuiping_27, event: 真实警报显示联络点即将暴露, state_change: 转移资料目标优先, cf_edit: 警报被证伪}
-  - {id: cuiping_28, event: 翠平获得一次性通行证执行转移, state_change: 临时访问建立, cf_edit: 通行证来源不明}
-  - {id: cuiping_29, event: Player反复使用同志身份和感情刺激套取秘密, state_change: 掩护保持且耐心下降, cf_edit: Player完成双重验证}
-  - {id: cuiping_30, event: 翠平在重复套话后结束会面并转移到安全地点, state_change: 对话结束且位置改变, cf_edit: Player提出已核实的救援请求}
+  - {id: cuiping_27, event: 真实警报显示联络点即将暴露, state_change: 已核实警报被接受并启动资料转移目标，但尚不进入无权限联络点, cf_edit: 仅把警报核验结果改为证伪}
+  - {id: cuiping_28, event: 翠平获得一次性通行证进入联络点并取出待转移资料, state_change: 临时访问建立且联络点资料转入翠平持有, cf_edit: 通行证来源不明}
+  - {id: cuiping_29, event: Player跟到同元书店外并反复使用同志身份和感情刺激套取秘密, state_change: 身份压力主张被拒绝、信任降为敌对并建立终止套话目标, cf_edit: Player改为完成预先约定的双重验证}
+  - {id: cuiping_30, event: 翠平在重复套话后结束会面并把资料转移到余宅, state_change: 对话结束、资料转移及终止套话目标完成、暂缓报复承诺收束, cf_edit: Player改为提出经组织核实的救援请求}

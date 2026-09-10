@@ -6,6 +6,7 @@ parameters:
   reason:
     type: string
     required: true
+    meaning: NPC本轮实际结束互动的简短原因。
 updates:
   - environment.dialogue_status
 handler: end_dialogue

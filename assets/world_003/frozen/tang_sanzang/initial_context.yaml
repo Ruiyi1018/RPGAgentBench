@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    sun_wukong:
+      level: distrustful
+      basis_event: initial_state
+    zhu_bajie:
+      level: neutral
+      basis_event: initial_state
+    sha_wujing:
+      level: trusting
+      basis_event: initial_state
+    bailongma:
+      level: neutral
+      basis_event: initial_state
+    baigujing:
+      level: hostile
+      basis_event: initial_state
+    heihujing:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 继续维持取经队伍，不因两次冲突而彻底散伙
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 约束孙悟空，避免他再次对看似凡人者下杀手
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 在第三次来人出现时保持审慎判断
+    status: forming
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 师徒四人已进入白虎岭一带，并因饥饿而暂歇
+      status: active
+      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing
+      source_event: initial_state
+    k_002:
+      content: 孙悟空曾去寻斋，并在临行前画圈嘱托众人不要出圈
+      status: active
+      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
+      source_event: initial_state
+    k_003:
+      content: 一个村姑和一个老妇人先后被打死，孙悟空声称她们是妖怪变化
+      status: active
+      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
+      source_event: initial_state
+    k_004:
+      content: 唐僧已因两次打死凡人之事斥责孙悟空，并两次念紧箍咒
+      status: active
+      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
+      source_event: initial_state
+    k_005:
+      content: 猪八戒曾挑拨称孙悟空怕念咒，所以变化出人形来欺骗师父
+      status: active
+      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
+      source_event: initial_state
+environment:
+  health:
+    tang_sanzang: 100
+    player: 100
+  inventories:
+    tang_sanzang: []
+    player: []
+  locations:
+    tang_sanzang: shandao
+    player: shandao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

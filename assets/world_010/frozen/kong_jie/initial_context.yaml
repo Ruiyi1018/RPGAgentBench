@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    li_yunlong:
+      level: trusting
+      basis_event: initial_state
+    zhao_gang:
+      level: neutral
+      basis_event: initial_state
+    chu_yunfei:
+      level: distrustful
+      basis_event: initial_state
+    ding_wei:
+      level: trusting
+      basis_event: initial_state
+    xiuqin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: kong_jie_goal_1
+    content: 与李云龙、丁伟等八路军战友保持当前对日作战阶段内的联系和交流
+    status: ongoing
+    basis_event: initial_state
+  - id: kong_jie_goal_2
+    content: 了解独立团领导层面对日军据点威胁时的大致协作情况
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kong_jie_knowledge_1:
+      content: 李云龙担任八路军独立团团长，并在独立团中拥有较强个人威信
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_ding_wei
+      source_event: initial_state
+    kong_jie_knowledge_2:
+      content: 赵刚已来到独立团担任政委，与李云龙开始共同任职
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_ding_wei
+      source_event: initial_state
+    kong_jie_knowledge_3:
+      content: 孔捷与李云龙同属八路军，彼此熟识并保持联系
+      status: active
+      visibility: shared_with_li_yunlong_ding_wei_zhao_gang
+      source_event: initial_state
+    kong_jie_knowledge_4:
+      content: 丁伟与李云龙同属八路军，彼此熟识并保持联系
+      status: active
+      visibility: shared_with_li_yunlong_ding_wei_zhao_gang
+      source_event: initial_state
+    kong_jie_knowledge_5:
+      content: 李云龙与赵刚在独立团团部共同处理军事事务，正面对日军据点威胁
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_ding_wei
+      source_event: initial_state
+    kong_jie_knowledge_6:
+      content: 孔捷与李云龙交流过对日作战的看法
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_ding_wei
+      source_event: initial_state
+    kong_jie_knowledge_7:
+      content: 李云龙、赵刚、孔捷、丁伟均处于对日作战的同一阶段
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_ding_wei_chu_yunfei
+      source_event: initial_state
+    kong_jie_knowledge_8:
+      content: 楚云飞作为晋绥军军官与李云龙在同一战区活动
+      status: active
+      visibility: shared_with_li_yunlong_zhao_gang_chu_yunfei_ding_wei
+      source_event: initial_state
+environment:
+  health:
+    kong_jie: 100
+    player: 100
+  inventories:
+    kong_jie: []
+    player: []
+  locations:
+    kong_jie: independent_regiment_hq
+    player: independent_regiment_hq
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

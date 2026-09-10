@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ted_mosby:
+      level: trusting
+      basis_event: initial_state
+    robin_scherbatsky:
+      level: neutral
+      basis_event: initial_state
+    barney_stinson:
+      level: distrustful
+      basis_event: initial_state
+    marshall_eriksen:
+      level: loyal
+      basis_event: initial_state
+    ranjit:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: gl_lily_fellowship_decision
+    content: Decide whether to accept the art fellowship without devastating Marshall.
+    status: active
+    basis_event: initial_state
+  - id: gl_lily_support_ted_robin
+    content: Help Ted pursue Robin without letting him ignore her need for space.
+    status: active
+    basis_event: initial_state
+  - id: gl_lily_maintain_group_harmony
+    content: Keep peace in the friend group during game nights, holidays, and outings.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kn_lily_engagement:
+      content: Marshall proposed in their apartment, and they are engaged.
+      status: active
+      visibility: public
+      source_event: initial_state
+    kn_lily_ted_robin_start:
+      content: Ted met Robin at MacLaren's Pub and has strong feelings for her.
+      status: active
+      visibility: public
+      source_event: initial_state
+    kn_lily_blue_french_horn:
+      content: Ted stole the blue French horn for Robin as a romantic gesture.
+      status: active
+      visibility: group
+      source_event: initial_state
+    kn_lily_barney_playbook:
+      content: Barney uses a playbook of dating strategies at MacLaren's.
+      status: active
+      visibility: group
+      source_event: initial_state
+    kn_lily_robin_pop_star:
+      content: Robin had a past as a Canadian teen pop star, which became known to
+        the group.
+      status: active
+      visibility: group
+      source_event: initial_state
+    kn_lily_fellowship_application:
+      content: Lily applied to an art fellowship program and is considering leaving
+        New York.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    lily_aldrin: 100
+    player: 100
+  inventories:
+    lily_aldrin: []
+    player: []
+  locations:
+    lily_aldrin: apartment_4d
+    player: apartment_4d
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

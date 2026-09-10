@@ -1,0 +1,63 @@
+world_id: world_005
+canon_policy:
+  primary_source: 曹雪芹、高鹗《红楼梦》前八十回（抄检大观园之前）
+  source_type: 长篇章回小说
+  excluded_versions:
+  - 八十回后程高本续书情节
+  - 脂砚斋批语中的后文暗示情节
+  - 各类戏曲影视改编新增情节
+  shared_snapshot: 抄检大观园之前，具体回目待人工锁定；以贾府表面繁盛而内忧渐生的日常秩序为共同时间截面
+  generated_timeline: 以第三回林黛玉进贾府为起点，至第七十四回抄检大观园前截断
+  quotation_policy: 不复制原作文本；仅做事实级情节转述
+evaluated_npcs:
+- jia_baoyu
+- lin_daiyu
+- xue_baochai
+- wang_xifeng
+- jia_mu
+- qingwen
+- xiren
+event_entities:
+- e_jia_baoyu_birth_jade
+- e_lin_daiyu_enters_jia
+- e_jia_baoyu_lin_daiyu_first_meet
+- e_xue_baochai_enters_jia
+- e_jia_baoyu_dream_red_chamber
+- e_jia_baoyu_xiren_instruct
+- e_qingwen_tears_fan
+- e_wang_xifeng_manages_ning
+- e_jia_zheng_beats_baoyu
+- e_jia_baoyu_lin_daiyu_confession
+- e_jia_baoyu_xue_baochai_golden_lock
+- e_jia_mu_visits_qingxu
+- e_jia_baoyu_attends_school
+- e_wang_xifeng_meets_liu
+- e_jia_baoyu_visits_xiangyun
+- e_lin_daiyu_buries_flowers
+- e_jia_baoyu_gets_regulated
+- e_jia_baoyu_loses_jade_rumor
+- e_xiren_advises_wang
+- e_qingwen_sews_jacket
+- e_jia_baoyu_celebrates_birthday
+- e_wang_xifeng_torments_jia_rui
+- e_jia_baoyu_lin_daiyu_quiet
+sources:
+- id: src_hongloumeng_80
+  title: 红楼梦（前八十回）
+  creator: 曹雪芹著，无名氏续，程伟元、高鹗整理（通行本前八十回）
+  scope: 第三回至第七十四回抄检大观园前
+  authority: primary
+- id: src_red_mansions_film_note
+  title: 1962年越剧电影《红楼梦》情节对照
+  creator: 上海海燕电影制片厂，岑范导演
+  scope: 对宝黛情感线的情节核对辅助，不作正典来源
+  authority: secondary
+data_constraints:
+- 所有角色、地点、物品只能取自前八十回且不晚于抄检大观园前的情节
+- 不引用回目号，除非人工锁定具体回目后补充
+- 不用八十回后续书情节作为正典事实
+- 不用脂批或其他版本异文作正典事实
+- 不复制原作原文、诗词、对话
+- 不自行发明不存在的地名与物件
+- 不得为角色生成超出现有来源范围的行为事实
+- 不得使用抄检大观园之后才公开的信息

@@ -1,0 +1,34 @@
+world_id: world_018
+name: Manhattan, New York, early Season 1 era
+locations:
+- id: central_perk
+  name: Central Perk
+  connected_to:
+  - monica_apartment
+- id: monica_apartment
+  name: Monica's Apartment
+  connected_to:
+  - central_perk
+  - chandler_joey_apartment
+- id: chandler_joey_apartment
+  name: Chandler and Joey's Apartment
+  connected_to:
+  - monica_apartment
+- id: monica_roof
+  name: Monica's Roof
+  connected_to:
+  - monica_apartment
+items:
+- id: ross_monkey_marcel
+  name: Marcel the monkey
+  type: animal companion
+  portable: true
+- id: rachel_wedding_dress
+  name: Rachel's wedding dress
+  type: clothing
+  portable: true
+- id: monica_peephole_frame
+  name: peephole frame
+  type: decor
+  portable: true
+language: en

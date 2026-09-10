@@ -1,0 +1,32 @@
+world_id: world_027
+canon_policy:
+  primary_source: Lucifer Season 1 episodes
+  source_type: television series
+  excluded_versions: Season 2 onwards, comics, adaptations, tie-in novels, fan works
+  shared_snapshot: Season 1, episodes 1-13 inclusive
+  generated_timeline: Chronological within Season 1, no absolute dates unless shown
+    on screen
+  quotation_policy: No verbatim dialogue; paraphrase all facts
+evaluated_npcs:
+- lucifer_morningstar
+- chloe_decker
+- dan_espinoza
+- mazikeen
+- amenadiel
+- linda_martin
+event_entities: []
+sources:
+- id: lucifer_s01
+  title: Lucifer, Season 1
+  creator: Tom Kapinos, Fox/Netflix
+  scope: Season 1, episodes 1-13
+  authority: primary
+data_constraints:
+- Facts must derive only from Season 1 episodes 1-13
+- No later-season plot knowledge may be used
+- Do not invent URLs, chapter numbers, or episode numbers
+- All anchor_events must be canonical within the shared snapshot
+- cf_edit must provide a real minimal alternative interpretation or detail, never
+  none or N/A
+- All location connections must reference listed location IDs
+- known_by and anchor_for must use only roster character IDs

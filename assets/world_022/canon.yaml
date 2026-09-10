@@ -1,0 +1,52 @@
+world_id: world_022
+canon_policy:
+  primary_source: 'Sherlock: A Study in Pink (2010)'
+  source_type: television episode
+  excluded_versions:
+  - Arthur Conan Doyle's A Study in Scarlet
+  - pilot version of A Study in Pink
+  - later Sherlock episodes
+  shared_snapshot: During the first case before the final confrontation
+  generated_timeline: synthetic chronological ordering within the shared snapshot
+  quotation_policy: paraphrase only; no verbatim dialogue from the episode
+evaluated_npcs:
+- sherlock_holmes
+- john_watson
+- greg_lestrade
+- mycroft_holmes
+- molly_hooper
+- mrs_hudson
+event_entities:
+- sherlock_holmes
+- john_watson
+- greg_lestrade
+- mycroft_holmes
+- molly_hooper
+- mrs_hudson
+- 221b_baker_street
+- st_bartholomews_hospital
+- scotland_yard
+- nsy_building
+- pink_phone
+- pink_suitcase
+- cabbies_vehicle
+- riding_crop
+- skull
+sources:
+- id: sherlock_2010_a_study_in_pink
+  title: Sherlock — A Study in Pink
+  creator: Steven Moffat and Mark Gatiss
+  scope: events, locations, items, and character actions within this episode only
+  authority: primary
+data_constraints:
+- No facts from later episodes, the unaired pilot, or Arthur Conan Doyle's original
+  novels may be included.
+- All anchor events must occur before the final confrontation with the murderer.
+- Every anchor event must be paraphrased and must not quote direct dialogue.
+- All character references in known_by and anchor_for must use the exact roster IDs
+  provided.
+- Every connected_to location ID must reference a location listed in the environment.
+- Anchor event count must be between 18 and 24 inclusive.
+- No invented URLs, chapter numbers, episode numbers, or scene timestamps may be used.
+- Every cf_edit must contain a genuine minimal counterfactual alternative; none or
+  N/A is not allowed.

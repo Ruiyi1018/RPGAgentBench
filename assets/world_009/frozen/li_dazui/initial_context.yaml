@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    tong_xiangyu:
+      level: neutral
+      basis_event: initial_state
+    bai_zhantang:
+      level: neutral
+      basis_event: initial_state
+    guo_furong:
+      level: neutral
+      basis_event: initial_state
+    lv_xiucai:
+      level: neutral
+      basis_event: initial_state
+    mo_xiaobei:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_li_dazui_001
+    content: 维持同福客栈后厨正常出菜
+    status: active
+    basis_event: initial_state
+  - id: g_li_dazui_002
+    content: 避免被佟湘玉挑出太大经营毛病
+    status: active
+    basis_event: initial_state
+  - id: g_li_dazui_003
+    content: 在客栈众人面前保有一点后厨自主权
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_li_dazui_001:
+      content: 自己是同福客栈的厨子，后厨由自己掌勺
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_li_dazui_002:
+      content: 佟湘玉对客栈收入很在意，会过问后厨成本
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_li_dazui_003:
+      content: 白展堂和郭芙蓉都有不俗身手，自己不能跟他们硬来
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_li_dazui_004:
+      content: 莫小贝住在客栈里，是集体中受照顾的小孩
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    li_dazui: 100
+    player: 100
+  inventories:
+    li_dazui: []
+    player: []
+  locations:
+    li_dazui: tongfu_inn
+    player: tongfu_inn
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

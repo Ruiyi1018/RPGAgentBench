@@ -56,7 +56,13 @@ def context() -> GameContext:
                 },
                 "commitments": [],
                 "relationships": {"player": {"level": "neutral"}},
-                "goals": [],
+                "goals": [
+                    {
+                        "id": "verify_request",
+                        "content": "核验请求",
+                        "status": "active",
+                    }
+                ],
                 "disclosures": [],
                 "knowledge": {"secret_1": {"content": "测试秘密"}},
             },
@@ -112,10 +118,46 @@ def run_action(
     )
 
 
-def test_registry_loads_all_thirteen_actions(registry: ActionRegistry) -> None:
+def test_registry_loads_thirteen_non_overlapping_actions(
+    registry: ActionRegistry,
+) -> None:
     assert len(registry.names) == 13
+    assert "decide_claim" in registry.names
+    assert "create_offer" not in registry.names
+    assert "respond_offer" not in registry.names
     assert "create_commitment" in registry.names
+    assert "create_artifact" in registry.names
+    assert "update_task" in registry.names
     assert "end_dialogue" in registry.names
+
+
+def test_end_dialogue_must_be_final_action(
+    engine: GameCoreEngine,
+    context: GameContext,
+) -> None:
+    result = engine.step(
+        context,
+        {
+            "utterance": "先结束，再补任务。",
+            "actions": [
+                {
+                    "name": "end_dialogue",
+                    "parameters": {"reason": "done"},
+                },
+                {
+                    "name": "update_task",
+                    "parameters": {
+                        "task_id": "verify_request",
+                        "status": "completed",
+                        "reason_event": "seed_event",
+                    },
+                },
+            ],
+        },
+    )
+
+    assert result.accepted is False
+    assert result.violations[0]["code"] == "end_dialogue_not_final"
 
 
 def test_commitment_lifecycle(
@@ -126,25 +168,84 @@ def test_commitment_lifecycle(
         engine,
         context,
         "create_commitment",
-        {"target": "player", "content": "归还信件"},
+        {
+            "target": "player",
+            "content": "前往大厅",
+            "expected_action": "move",
+            "expected_parameters": {"destination": "hall"},
+            "due_turn": 4,
+        },
     )
     assert created.accepted
     commitment = created.context.runtime_state["commitments"][0]
     assert commitment["status"] == "active"
 
-    second_turn = engine.append_player_query(created.context, "事情已经办完。")
-    resolved = run_action(
+    second_turn = engine.append_player_query(created.context, "现在去吧。")
+    performed = run_action(
         engine,
         second_turn,
+        "move",
+        {"destination": "hall"},
+    )
+    third_turn = engine.append_player_query(performed.context, "事情已经办完。")
+    resolved = run_action(
+        engine,
+        third_turn,
         "resolve_commitment",
         {
             "commitment_id": commitment["id"],
             "resolution": "fulfilled",
-            "reason_event": "event_1_1",
+            "reason_event": "event_2_1",
         },
     )
     assert resolved.accepted
     assert resolved.context.runtime_state["commitments"][0]["status"] == "fulfilled"
+
+
+def test_commitment_cannot_be_fulfilled_by_unrelated_action(
+    engine: GameCoreEngine,
+    context: GameContext,
+) -> None:
+    created = run_action(
+        engine,
+        context,
+        "create_commitment",
+        {
+            "target": "player",
+            "content": "前往大厅",
+            "expected_action": "move",
+            "expected_parameters": {"destination": "hall"},
+            "due_turn": 5,
+        },
+    )
+    second_turn = engine.append_player_query(created.context, "先作判断。")
+    decided = run_action(
+        engine,
+        second_turn,
+        "decide_claim",
+        {
+            "claim_id": "claim_1",
+            "decision": "uncertain",
+            "evidence_event": "seed_event",
+        },
+    )
+    third_turn = engine.append_player_query(decided.context, "承诺完成了吗？")
+    rejected = run_action(
+        engine,
+        third_turn,
+        "resolve_commitment",
+        {
+            "commitment_id": "commitment_0001",
+            "resolution": "fulfilled",
+            "reason_event": "event_2_1",
+        },
+    )
+
+    assert not rejected.accepted
+    assert (
+        rejected.violations[0]["code"]
+        == "commitment_effect_mismatch"
+    )
 
 
 def test_role_state_actions(
@@ -166,7 +267,7 @@ def test_role_state_actions(
     claim = run_action(
         engine,
         context,
-        "accept_claim",
+        "decide_claim",
         {
             "claim_id": "claim_1",
             "decision": "uncertain",
@@ -184,6 +285,42 @@ def test_role_state_actions(
     assert disclosure.context.runtime_state["disclosures"][0]["fact_id"] == "secret_1"
 
 
+def test_decide_claim_rejects_same_decision_without_new_evidence(
+    engine: GameCoreEngine,
+    context: GameContext,
+) -> None:
+    first = run_action(
+        engine,
+        context,
+        "decide_claim",
+        {
+            "claim_id": "claim_1",
+            "decision": "uncertain",
+            "evidence_event": "seed_event",
+        },
+    )
+    second_turn = engine.append_player_query(
+        first.context,
+        "没有新证据，请再判断一次。",
+    )
+    repeated = run_action(
+        engine,
+        second_turn,
+        "decide_claim",
+        {
+            "claim_id": "claim_1",
+            "decision": "uncertain",
+        },
+    )
+
+    assert not repeated.accepted
+    assert repeated.violations[0]["code"] == "claim_decision_unchanged"
+    assert (
+        first.context.runtime_state["claims"]["claim_1"]["evidence_event"]
+        == "seed_event"
+    )
+
+
 def test_world_state_actions(
     engine: GameCoreEngine,
     context: GameContext,
@@ -199,6 +336,36 @@ def test_world_state_actions(
     )
     assert "letter" in transferred.context.environment["inventories"]["player"]
 
+    artifact = run_action(
+        engine,
+        context,
+        "create_artifact",
+        {
+            "artifact_id": "public_note",
+            "kind": "note",
+            "content": "公开日期存在差异",
+        },
+    )
+    assert artifact.accepted
+    assert "public_note" in artifact.context.environment["inventories"]["npc"]
+    assert (
+        artifact.context.environment["artifacts"]["public_note"]["content"]
+        == "公开日期存在差异"
+    )
+
+    task = run_action(
+        engine,
+        context,
+        "update_task",
+        {
+            "task_id": "verify_request",
+            "status": "completed",
+            "reason_event": "seed_event",
+        },
+    )
+    assert task.accepted
+    assert task.context.runtime_state["goals"][0]["status"] == "completed"
+
     used = run_action(
         engine,
         context,
@@ -212,7 +379,12 @@ def test_world_state_actions(
         engine,
         context,
         "decide_access",
-        {"subject": "player", "resource": "archive", "decision": "grant"},
+        {
+            "subject": "player",
+            "resource": "archive",
+            "decision": "grant",
+            "reason_event": "seed_event",
+        },
     )
     assert (
         access.context.environment["access"]["archive"]["subjects"]["player"]
@@ -236,50 +408,7 @@ def test_world_state_actions(
     assert ended.context.environment["dialogue_status"] == "ended"
 
 
-def test_offer_actions(
-    engine: GameCoreEngine,
-    context: GameContext,
-) -> None:
-    created = run_action(
-        engine,
-        context,
-        "create_offer",
-        {
-            "recipient": "player",
-            "offered_items": ["letter"],
-            "requested_items": [],
-        },
-    )
-    assert created.accepted
-    assert created.context.environment["offers"][0]["status"] == "pending"
-    assert "letter" in created.context.environment["inventories"]["npc"]
-
-    offered_to_npc = context.clone()
-    offered_to_npc.environment["inventories"]["player"].append("letter")
-    offered_to_npc.environment["inventories"]["npc"].remove("letter")
-    offered_to_npc.environment["offers"].append(
-        {
-            "id": "offer_external",
-            "proposer": "player",
-            "recipient": "npc",
-            "offered_items": ["letter"],
-            "requested_items": [],
-            "status": "pending",
-            "created_turn": 1,
-        }
-    )
-    accepted = run_action(
-        engine,
-        offered_to_npc,
-        "respond_offer",
-        {"offer_id": "offer_external", "decision": "accept"},
-    )
-    assert accepted.accepted
-    assert "letter" in accepted.context.environment["inventories"]["npc"]
-    assert accepted.context.environment["offers"][0]["status"] == "accepted"
-
-
-def test_invalid_action_is_failure_and_transaction_is_atomic(
+def test_failed_action_does_not_roll_back_the_whole_turn(
     engine: GameCoreEngine,
     context: GameContext,
 ) -> None:
@@ -301,7 +430,41 @@ def test_invalid_action_is_failure_and_transaction_is_atomic(
         },
     )
     assert not result.accepted
-    assert result.violations[0]["type"] == "decision_violation"
+    assert [violation["code"] for violation in result.violations] == [
+        "unknown_item"
+    ]
+    assert result.context.environment["locations"]["npc"] == "hall"
+    assert len(result.events) == 1
+    assert result.events[0]["action"] == "move"
+    npc_entry = result.context.history[-2]
+    assert [event["type"] for event in npc_entry["events"]] == [
+        "action_applied",
+        "decision_violation",
+    ]
+    assert result.context.history[-1]["utterance"] == (
+        "部分动作已执行，其余未生效。"
+    )
+    assert result.context.history[-1]["events"][0]["type"] == (
+        "transition_partial"
+    )
+
+
+def test_malformed_action_still_rejects_whole_turn(
+    engine: GameCoreEngine,
+    context: GameContext,
+) -> None:
+    result = engine.step(
+        context,
+        {
+            "utterance": "我先离开，再用一个不存在的Action。",
+            "actions": [
+                {"name": "move", "parameters": {"destination": "hall"}},
+                {"name": "teleport", "parameters": {}},
+            ],
+        },
+    )
+    assert not result.accepted
+    assert result.violations[0]["code"] == "unknown_action"
     assert result.context.environment["locations"]["npc"] == "office"
     assert result.context.history[-1]["utterance"] == "动作未生效。"
 

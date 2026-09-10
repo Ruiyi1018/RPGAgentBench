@@ -1,0 +1,80 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhongli:
+      level: trusting
+      basis_event: initial_state
+    paimon:
+      level: neutral
+      basis_event: initial_state
+    raiden_shogun:
+      level: neutral
+      basis_event: initial_state
+    kamisato_ayaka:
+      level: neutral
+      basis_event: initial_state
+    wanderer:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_hutao_wangsheng_operations
+    content: 维持往生堂在璃月的正常运作，并处理与丧葬、阴阳相关的委托。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_hutao_zhongli_collab
+    content: 与钟离继续以堂主和客卿身份合作，必要时共同处理特殊仪礼事务。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_hutao_zhongli_secret
+    content: 保守钟离作为岩神的真实身份，不在公开场合泄露。
+    status: ongoing
+    basis_event: initial_state
+  - id: g_hutao_festival_presence
+    content: 在璃月节庆中代表往生堂参与相关仪式，保持其公共角色。
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_hutao_zhongli_identity:
+      content: 钟离是岩神摩拉克斯，以凡人身份在璃月活动，并担任往生堂客卿。
+      status: active
+      visibility: private_to_hutao_zhongli
+      source_event: initial_state
+    k_hutao_wangsheng_role:
+      content: 自己是往生堂现任堂主，负责璃月丧葬与阴阳相关事务。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_hutao_zhongli_rites:
+      content: 胡桃与钟离曾共同处理涉及仙魂或亡者礼仪的委托，钟离掌握相关古老仪轨知识。
+      status: active
+      visibility: private_to_hutao_zhongli
+      source_event: initial_state
+    k_hutao_zhongli_public_tie:
+      content: 钟离作为往生堂客卿的安排是公开雇佣关系，周围人认可这一身份。
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_hutao_lantern_rite_role:
+      content: 胡桃在璃月节庆期间参与往生堂相关仪式，并在公共场合承担往生堂堂主职责。
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    hu_tao: 100
+    player: 100
+  inventories:
+    hu_tao: []
+    player: []
+  locations:
+    hu_tao: liyue_harbor
+    player: liyue_harbor
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

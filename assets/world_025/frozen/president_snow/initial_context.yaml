@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    katniss_everdeen:
+      level: distrustful
+      basis_event: initial_state
+    peeta_mellark:
+      level: distrustful
+      basis_event: initial_state
+    gale_hawthorne:
+      level: distrustful
+      basis_event: initial_state
+    haymitch_abernathy:
+      level: neutral
+      basis_event: initial_state
+    effie_trinket:
+      level: neutral
+      basis_event: initial_state
+    president_snow:
+      level: loyal
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: snow_goal_001
+    content: See the first Games open without visible resistance from the districts.
+    status: active
+    basis_event: initial_state
+  - id: snow_goal_002
+    content: Use the tributes' public introduction to reinforce Capitol supremacy.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    snow_knowledge_001:
+      content: The tributes from District 12 are Katniss Everdeen and Peeta Mellark,
+        and Katniss volunteered in place of her sister, making her a notable symbol.
+      status: active
+      visibility: private
+      source_event: initial_state
+    snow_knowledge_002:
+      content: District 12 is one of the weaker districts, so its tributes are expected
+        to serve the Games as symbols of submission rather than likely victors.
+      status: active
+      visibility: private
+      source_event: initial_state
+    snow_knowledge_003:
+      content: Haymitch Abernathy is the District 12 mentor and is publicly known
+        for his drunkenness, which makes him useful as a figure of district inadequacy
+        but unreliable for Capitol polish.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    president_snow: 100
+    player: 100
+  inventories:
+    president_snow: []
+    player: []
+  locations:
+    president_snow: capitol_train_station
+    player: capitol_train_station
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

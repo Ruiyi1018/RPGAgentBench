@@ -1,0 +1,119 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    meredith_grey:
+      level: trusting
+      basis_event: initial_state
+    cristina_yang:
+      level: neutral
+      basis_event: initial_state
+    derek_shepherd:
+      level: neutral
+      basis_event: initial_state
+    izzie_stevens:
+      level: trusting
+      basis_event: initial_state
+    miranda_bailey:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: george_g01
+    content: Shadow Miranda Bailey and learn patient management
+    status: active
+    basis_event: initial_state
+  - id: george_g02
+    content: Become a reliable member of the intern cohort
+    status: active
+    basis_event: initial_state
+  - id: george_g03
+    content: Manage unspoken feelings for Meredith without damaging their friendship
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    george_k01:
+      content: Meredith Grey begins her surgical internship at Seattle Grace Hospital
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k02:
+      content: Miranda Bailey is the interns' resident and supervisor
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k03:
+      content: Interns received pagers to manage their workflow
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k04:
+      content: George was assigned to shadow Miranda Bailey for patient care observation
+      status: active
+      visibility: private
+      source_event: initial_state
+    george_k05:
+      content: Izzie Stevens struggled with the emotional impact of losing a patient
+      status: active
+      visibility: private
+      source_event: initial_state
+    george_k06:
+      content: Derek Shepherd performed a complicated procedure that established his
+        surgical reputation
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k07:
+      content: George O'Malley has unspoken romantic feelings for Meredith Grey
+      status: active
+      visibility: private
+      source_event: initial_state
+    george_k08:
+      content: Meredith Grey found a dog and named him Doc
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k09:
+      content: Miranda Bailey disciplined the interns for mistakes during a single
+        shift
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k10:
+      content: The interns gather at Emerald City Bar after shifts to decompress
+      status: active
+      visibility: public
+      source_event: initial_state
+    george_k11:
+      content: George O'Malley is a roommate at Meredith Grey's house
+      status: active
+      visibility: private
+      source_event: initial_state
+    george_k12:
+      content: Izzie Stevens is a roommate at Meredith Grey's house
+      status: active
+      visibility: private
+      source_event: initial_state
+    george_k13:
+      content: The surgical interns survived their first major professional crisis
+        together
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    george_omalley: 100
+    player: 100
+  inventories:
+    george_omalley: []
+    player: []
+  locations:
+    george_omalley: seattle_grace_hospital
+    player: seattle_grace_hospital
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

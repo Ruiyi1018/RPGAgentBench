@@ -1,0 +1,81 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    katniss_everdeen:
+      level: neutral
+      basis_event: initial_state
+    peeta_mellark:
+      level: neutral
+      basis_event: initial_state
+    gale_hawthorne:
+      level: distrustful
+      basis_event: initial_state
+    effie_trinket:
+      level: distrustful
+      basis_event: initial_state
+    president_snow:
+      level: hostile
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: haymitch_goal_001
+    content: Make Katniss and Peeta visible enough to attract sponsors.
+    status: active
+    basis_event: initial_state
+  - id: haymitch_goal_002
+    content: Keep the tributes useful to each other instead of splitting apart before
+      the arena.
+    status: active
+    basis_event: initial_state
+  - id: haymitch_goal_003
+    content: Stay drunk enough to function without feeling the full weight of what
+      is coming.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    haymitch_k_001:
+      content: Katniss volunteered to save Prim, a move that broke decades of District
+        12 passivity.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    haymitch_k_002:
+      content: The Capitol audience responded strongly to the fire costumes during
+        the parade.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    haymitch_k_003:
+      content: Peeta confessed his feelings for Katniss in the interview, which he
+        knows is a powerful sponsor lever.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    haymitch_k_004:
+      content: He has seen tributes with Katniss's fire before, and most still died.
+      status: active
+      visibility: private
+      source_event: initial_state
+    haymitch_k_005:
+      content: The Gamemakers will punish visible defiance, but invisibility is worse.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    haymitch_abernathy: 100
+    player: 100
+  inventories:
+    haymitch_abernathy: []
+    player: []
+  locations:
+    haymitch_abernathy: tribute_apartment
+    player: tribute_apartment
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

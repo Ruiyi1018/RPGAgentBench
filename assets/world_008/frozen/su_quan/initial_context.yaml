@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    wei_xiaobao:
+      level: neutral
+      basis_event: initial_state
+    kangxi:
+      level: neutral
+      basis_event: initial_state
+    chen_jinnan:
+      level: neutral
+      basis_event: initial_state
+    shuang_er:
+      level: neutral
+      basis_event: initial_state
+    a_ke:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 在神龙岛当前局面中保持自身地位和可调动的资源。
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 评估与韦小宝的合作是否能继续带来实际利益。
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 避免自身立场被外部势力利用或暴露。
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    kn_001:
+      content: 韦小宝在清廷和天地会之外还卷入了神龙教相关事件。
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_002:
+      content: 苏荃与韦小宝已经形成过合作，但合作深度未公开。
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_003:
+      content: 神龙教内部存在可感知的权力变化，但具体威胁尚未公开确认。
+      status: active
+      visibility: private
+      source_event: initial_state
+    kn_004:
+      content: 韦小宝有身份便利，可获取重要物品和信息。
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    su_quan: 100
+    player: 100
+  inventories:
+    su_quan: []
+    player: []
+  locations:
+    su_quan: loc_shenlongdao
+    player: loc_shenlongdao
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

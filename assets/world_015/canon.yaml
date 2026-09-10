@@ -1,0 +1,39 @@
+world_id: world_015
+canon_policy:
+  primary_source: 金庸《笑傲江湖》修订本正文
+  source_type: 长篇小说
+  excluded_versions:
+  - 连载版
+  - 新修版
+  - 电视剧改编
+  - 电影改编
+  shared_snapshot: 修订本统一叙事时间轴内部，六名角色经历可对齐的章节范围；不采纳各版本文本差异及改编内容。
+  generated_timeline: 按修订本内部可确认的事件先后顺序排列，不以章节号等同现实时间。
+  quotation_policy: 不逐字复制原文对白，仅作事实转述；不标注具体页码或回目编号。
+evaluated_npcs:
+- linghu_chong
+- ren_yingying
+- yue_buqun
+- lin_pingzhi
+- dongfang_bubai
+- yilin
+event_entities:
+- 令狐冲
+- 任盈盈
+- 岳不群
+- 林平之
+- 东方不败
+- 仪琳
+sources:
+- id: xiaoao_revised_prose
+  title: 笑傲江湖
+  creator: 金庸
+  scope: 修订本正文全部故事情节
+  authority: primary
+data_constraints:
+- 不使用快照后剧情或版本间差异内容
+- 不引用具体页码、回目数字或外部链接
+- 地点与物品仅限共享快照内出现且可确认者
+- cf_edit必须提供只改变关键原因并保持其余事实不变的真实替代情形
+- known_by与anchor_for仅使用给定roster ID
+- 所有地点连接必须且只能指向已列出的地点ID

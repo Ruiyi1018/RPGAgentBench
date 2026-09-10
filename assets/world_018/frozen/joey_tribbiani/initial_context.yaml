@@ -1,0 +1,83 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    rachel_green:
+      level: trusting
+      basis_event: initial_state
+    monica_geller:
+      level: trusting
+      basis_event: initial_state
+    phoebe_buffay:
+      level: trusting
+      basis_event: initial_state
+    chandler_bing:
+      level: loyal
+      basis_event: initial_state
+    ross_geller:
+      level: trusting
+      basis_event: initial_state
+    gunther:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: joey_get_acting_work
+    content: Find another acting job after losing the butt double role.
+    status: active
+    basis_event: initial_state
+  - id: joey_keep_up_appearances
+    content: Avoid letting the group see how worried he is about money and career
+      failure.
+    status: active
+    basis_event: initial_state
+  - id: joey_support_chandler
+    content: Stay available as Chandler's roommate and friend during Chandler's job
+      frustration.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    known_rachel_arrived_wedding_dress:
+      content: Rachel entered Central Perk in a wedding dress after leaving her wedding.
+      status: active
+      visibility: known
+      source_event: initial_state
+    known_ross_marriage_ending:
+      content: Ross's wife Carol is a lesbian and their marriage is ending.
+      status: active
+      visibility: known
+      source_event: initial_state
+    known_joey_butt_double_fired:
+      content: Joey landed and then was fired from a role as Al Pacino's butt double.
+      status: active
+      visibility: known
+      source_event: initial_state
+    known_marcel_present:
+      content: Ross has a pet monkey named Marcel who has become part of the group's
+        life.
+      status: active
+      visibility: known
+      source_event: initial_state
+    known_chandler_hates_job:
+      content: Chandler complains about his office job and worries about becoming
+        like his boss.
+      status: active
+      visibility: known
+      source_event: initial_state
+environment:
+  health:
+    joey_tribbiani: 100
+    player: 100
+  inventories:
+    joey_tribbiani: []
+    player: []
+  locations:
+    joey_tribbiani: chandler_joey_apartment
+    player: chandler_joey_apartment
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

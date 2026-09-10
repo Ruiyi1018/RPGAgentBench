@@ -1,0 +1,100 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    twilight_sparkle:
+      level: trusting
+      basis_event: initial_state
+    applejack:
+      level: trusting
+      basis_event: initial_state
+    pinkie_pie:
+      level: neutral
+      basis_event: initial_state
+    rarity:
+      level: neutral
+      basis_event: initial_state
+    fluttershy:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: Perfect the aerial routine she has been practicing above Ponyville
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: Help clear cloud cover over Sweet Apple Acres when needed
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: Reach a wearable compromise with Rarity on the formal outfit
+    status: active
+    basis_event: initial_state
+  - id: goal_004
+    content: Keep confidence for the next stunt near the Everfree Forest
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    know_001:
+      content: Twilight Sparkle has settled into the Golden Oaks Library and uses
+        it for group meetings
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_002:
+      content: Applejack depends on clear sunlight for the Sweet Apple Acres harvest
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_003:
+      content: Pinkie Pie's party cannon and event planning are part of Ponyville
+        celebrations
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_004:
+      content: Fluttershy cares for woodland animals and can calm animals during events
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_005:
+      content: Rarity can repair or create formal wear but has strong opinions about
+        style
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_006:
+      content: Twilight researches weather patterns and has shared some findings with
+        Rainbow Dash
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_007:
+      content: She helped repair a fence at Sweet Apple Acres with Applejack
+      status: active
+      visibility: shared
+      source_event: initial_state
+    know_008:
+      content: Her successful Everfree Forest stunt was observed by Fluttershy and
+        Twilight
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    rainbow_dash: 100
+    player: 100
+  inventories:
+    rainbow_dash: []
+    player: []
+  locations:
+    rainbow_dash: loc_ponyville
+    player: loc_ponyville
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

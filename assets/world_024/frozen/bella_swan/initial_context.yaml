@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    bella_swan:
+      level: loyal
+      basis_event: initial_state
+    edward_cullen:
+      level: loyal
+      basis_event: initial_state
+    jacob_black:
+      level: trusting
+      basis_event: initial_state
+    alice_cullen:
+      level: trusting
+      basis_event: initial_state
+    carlisle_cullen:
+      level: trusting
+      basis_event: initial_state
+    rosalie_hale:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: Stay safe from the tracker James without abandoning Edward
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: Protect Charlie from vampire danger and worry
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: Remain accepted among the Cullens despite being human
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: Edward and his family are vampires who drink animal blood rather than
+        human blood
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: Edward can read minds, but cannot hear Bella's thoughts
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_003:
+      content: Alice can see visions of the future
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_004:
+      content: A nomadic vampire coven, including the tracker James, is in the area
+        and may target her
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_005:
+      content: The Cullens have formed a plan to separate her from James and hide
+        her from Forks
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_006:
+      content: Rosalie Hale is cold and unwelcoming toward Bella
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    bella_swan: 100
+    player: 100
+  inventories:
+    bella_swan: []
+    player: []
+  locations:
+    bella_swan: cullen_house
+    player: cullen_house
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

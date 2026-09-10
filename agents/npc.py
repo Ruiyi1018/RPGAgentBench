@@ -8,7 +8,7 @@ from typing import Any, Mapping, Sequence
 from gamecore import ActionValidationError, GameContext
 
 from llm import GenerationConfig, LLMClient, generate_structured
-from .prompt_builder import PromptBuilder, StateAccess
+from .prompt_builder import PromptBuilder, PromptBundle, StateAccess
 
 
 @dataclass
@@ -24,6 +24,7 @@ class NPCAgent:
         scenario: Mapping[str, Any],
         *,
         available_actions: Sequence[str] | None = None,
+        correction: str | None = None,
     ) -> dict[str, Any]:
         selected_actions = list(
             available_actions or scenario.get("available_actions", [])
@@ -36,18 +37,28 @@ class NPCAgent:
             available_actions=selected_actions,
             state_access=self.state_access,
         )
-        valid_arguments = self.prompt_builder.npc_valid_action_arguments(
-            context,
-            selected_actions,
-        )
-
+        if correction:
+            bundle = PromptBundle(
+                system_prompt=bundle.system_prompt,
+                user_prompt=(
+                    f"{bundle.user_prompt}\n\n"
+                    "上一次本轮输出未通过结构或Action校验。只修正本轮输出，"
+                    "不要改变角色决定；仍然只输出原契约要求的JSON对象。\n"
+                    f"校验错误：{correction}"
+                ),
+                response_schema=bundle.response_schema,
+            )
         def validate(output: dict[str, Any]) -> None:
             self._validate_output_shape(output)
-            self._validate_runtime_arguments(
-                output,
-                selected_actions,
-                valid_arguments,
-            )
+            for action in output["actions"]:
+                if action["name"] not in selected_actions:
+                    raise ValueError(
+                        f"Action不在本轮可用列表中: {action['name']}"
+                    )
+                try:
+                    self.prompt_builder.registry.validate_call(action)
+                except ActionValidationError as error:
+                    raise ValueError(str(error)) from error
 
         return generate_structured(
             self.client,
@@ -77,26 +88,3 @@ class NPCAgent:
                 action["parameters"], dict
             ):
                 raise ValueError("Action字段类型无效")
-
-    def _validate_runtime_arguments(
-        self,
-        output: dict[str, Any],
-        available_actions: Sequence[str],
-        valid_arguments: Mapping[str, Sequence[str]],
-    ) -> None:
-        for action in output["actions"]:
-            name = action["name"]
-            if name not in available_actions:
-                raise ValueError(f"本场景未提供Action: {name}")
-            try:
-                self.prompt_builder.registry.validate_call(action)
-            except ActionValidationError as error:
-                raise ValueError(str(error)) from error
-            for parameter, value in action["parameters"].items():
-                key = f"{name}.{parameter}"
-                allowed = valid_arguments.get(key)
-                if allowed is not None and value not in allowed:
-                    raise ValueError(
-                        f"{key}必须复制valid_action_arguments中的值；"
-                        f"收到{value!r}"
-                    )

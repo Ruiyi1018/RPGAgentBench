@@ -1,0 +1,72 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    li_yunlong:
+      level: trusting
+      basis_event: initial_state
+    zhao_gang:
+      level: trusting
+      basis_event: initial_state
+    kong_jie:
+      level: trusting
+      basis_event: initial_state
+    chu_yunfei:
+      level: neutral
+      basis_event: initial_state
+    xiuqin:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_ding_wei_001
+    content: 保持与李云龙、孔捷、赵刚等八路军指挥员的联系和经验交流
+    status: ongoing
+    basis_event: initial_state
+  - id: goal_ding_wei_002
+    content: 在共享快照对日作战阶段中关注部队建设与作战准备
+    status: ongoing
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_ding_wei_001:
+      content: 李云龙担任八路军独立团团长，赵刚担任政委并共同任职
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_ding_wei_002:
+      content: 丁伟与李云龙同属八路军并交流过部队建设或作战经验
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_ding_wei_003:
+      content: 丁伟与孔捷、赵刚有联系，孔捷也与李云龙熟识
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_ding_wei_004:
+      content: 同一战区中存在晋绥军军官楚云飞活动
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_ding_wei_005:
+      content: 独立团在赵家峪一带面对日军据点威胁
+      status: active
+      visibility: known
+      source_event: initial_state
+environment:
+  health:
+    ding_wei: 100
+    player: 100
+  inventories:
+    ding_wei: []
+    player: []
+  locations:
+    ding_wei: nearby_village
+    player: nearby_village
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

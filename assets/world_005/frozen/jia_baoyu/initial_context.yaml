@@ -1,0 +1,69 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    lin_daiyu:
+      level: loyal
+      basis_event: initial_state
+    xue_baochai:
+      level: neutral
+      basis_event: initial_state
+    wang_xifeng:
+      level: neutral
+      basis_event: initial_state
+    jia_mu:
+      level: loyal
+      basis_event: initial_state
+    qingwen:
+      level: trusting
+      basis_event: initial_state
+    xiren:
+      level: trusting
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_baoyu_stay_with_daiyu
+    content: 保住与林黛玉相知相惜的日常，不让旁人议论和金玉之说伤害她
+    status: active
+    basis_event: initial_state
+  - id: g_baoyu_keep_garden_peace
+    content: 维持怡红院与大观园中众女儿自由欢聚的平静日子
+    status: active
+    basis_event: initial_state
+  - id: g_baoyu_avoid_father_anger
+    content: 避免贾政的严厉管束和责打，同时不真正按父命求仕
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_baoyu_daiyu_feeling:
+      content: 贾宝玉知道林黛玉对自己有特殊情意，也知道黛玉容易因宝钗、金玉之说多心
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_baoyu_jade_life_root:
+      content: 贾宝玉知道通灵宝玉被贾母、王夫人及园中众人视为命根子，不可轻易离身或损伤
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_baoyu_family_expects_learning:
+      content: 贾宝玉知道父亲贾政和部分亲眷长期希望他以读书仕进为正途
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    jia_baoyu: 100
+    player: 100
+  inventories:
+    jia_baoyu: []
+    player: []
+  locations:
+    jia_baoyu: loc_yihong_yuan
+    player: loc_yihong_yuan
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

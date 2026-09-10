@@ -1,0 +1,44 @@
+world_id: world_025
+canon_policy:
+  primary_source: The Hunger Games by Suzanne Collins, Part I "The Tributes"
+  source_type: novel
+  excluded_versions:
+  - film adaptations
+  - later chapters beyond Part I "The Tributes"
+  - subsequent novels in the series
+  shared_snapshot: Immediately before the first Games begin
+  generated_timeline: Events occur in chronological order from Katniss hunting before
+    the reaping through the tributes' final moments before entering the arena
+  quotation_policy: Paraphrase all facts; do not copy dialogue
+evaluated_npcs:
+- katniss_everdeen
+- peeta_mellark
+- gale_hawthorne
+- haymitch_abernathy
+- effie_trinket
+- president_snow
+event_entities:
+- katniss_everdeen
+- peeta_mellark
+- gale_hawthorne
+- haymitch_abernathy
+- effie_trinket
+- president_snow
+sources:
+- id: hg_novel_part1
+  title: The Hunger Games, Part I "The Tributes"
+  creator: Suzanne Collins
+  scope: From Katniss waking on reaping morning through the tributes preparing to
+    enter the arena
+  authority: primary
+data_constraints:
+- Events must be drawn only from Part I "The Tributes" of The Hunger Games novel.
+- The snapshot ends immediately before the first Games begin; no arena events are
+  included.
+- Characters must be limited to the six roster IDs provided.
+- Locations and items must occur within Part I and the specified snapshot.
+- All cf_edit values must represent a genuine minimal alternative version of the event.
+- No invented URLs, chapter numbers, or episode numbers may be used.
+- Quotations are prohibited; all facts must be paraphrased.
+- Longitudinal-core characters require ten canonical anchors each; catalog characters
+  do not all need anchor-pool coverage.

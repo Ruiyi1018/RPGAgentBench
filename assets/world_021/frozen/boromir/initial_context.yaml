@@ -1,0 +1,76 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    frodo_baggins:
+      level: trusting
+      basis_event: initial_state
+    samwise_gamgee:
+      level: neutral
+      basis_event: initial_state
+    gandalf:
+      level: neutral
+      basis_event: initial_state
+    aragorn:
+      level: neutral
+      basis_event: initial_state
+    legolas:
+      level: neutral
+      basis_event: initial_state
+    gimli:
+      level: distrustful
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: boromir_goal_001
+    content: Return to Minas Tirith with the Company or by the swiftest safe route.
+    status: active
+    basis_event: initial_state
+  - id: boromir_goal_002
+    content: Keep the Fellowship together through the mountains.
+    status: active
+    basis_event: initial_state
+  - id: boromir_goal_003
+    content: Avoid entering Moria if any alternative remains.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    boromir_knowledge_001:
+      content: The Company attempted the Redhorn Pass and was driven back by a storm.
+      status: active
+      visibility: public
+      source_event: initial_state
+    boromir_knowledge_002:
+      content: Gandalf has proposed entering Moria through the hidden West-gate.
+      status: active
+      visibility: public
+      source_event: initial_state
+    boromir_knowledge_003:
+      content: The Company has arrived at a dark still water before the cliff where
+        the Doors of Durin are hidden.
+      status: active
+      visibility: public
+      source_event: initial_state
+    boromir_knowledge_004:
+      content: Frodo carries the One Ring, and the Ring exerts a pull toward using
+        it as a weapon for Gondor.
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    boromir: 100
+    player: 100
+  inventories:
+    boromir: []
+    player: []
+  locations:
+    boromir: moria_west_gate_approach
+    player: moria_west_gate_approach
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    zhen_huan:
+      level: trusting
+      basis_event: initial_state
+    emperor_yongzheng:
+      level: neutral
+      basis_event: initial_state
+    hua_fei:
+      level: distrustful
+      basis_event: initial_state
+    empress_yixiu:
+      level: neutral
+      basis_event: initial_state
+    shen_meizhuang:
+      level: trusting
+      basis_event: initial_state
+    su_peisheng:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_001
+    content: 在后宫中找到稳定的依靠，不再被人因出身看轻
+    status: active
+    basis_event: initial_state
+  - id: g_002
+    content: 保持与甄嬛、沈眉庄的姐妹关系，避免被排挤在外
+    status: active
+    basis_event: initial_state
+  - id: g_003
+    content: 在高位妃嫔面前维持安全，不主动惹祸
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_001:
+      content: 自己因出身较低，入宫初期常受轻视
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_002:
+      content: 沈眉庄入宫后较受皇帝看重
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_003:
+      content: 甄嬛已获得明显恩宠，后宫因此出现分化
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_004:
+      content: 皇后在明面上对甄嬛等妃嫔表现出一定照顾
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k_005:
+      content: 自己在姐妹关系中常感到身份差异带来的隔阂
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    an_lingrong: 100
+    player: 100
+  inventories:
+    an_lingrong: []
+    player: []
+  locations:
+    an_lingrong: loc_006
+    player: loc_006
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    liu_mei:
+      level: trusting
+      basis_event: initial_state
+    xia_donghai:
+      level: loyal
+      basis_event: initial_state
+    liu_xing:
+      level: neutral
+      basis_event: initial_state
+    xia_xue:
+      level: neutral
+      basis_event: initial_state
+    laolao:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_xiayu_001
+    content: 在家庭中遇到需要帮助的事情时，找到刘梅或夏东海帮忙
+    status: active
+    basis_event: initial_state
+  - id: g_xiayu_002
+    content: 在餐桌上表达自己想吃或不想吃的东西
+    status: active
+    basis_event: initial_state
+  - id: g_xiayu_003
+    content: 在家庭日常生活中获得足够的关注和照顾
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_xiayu_001:
+      content: 刘梅和夏东海是现在家里的父母，自己有需要可以找他们
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiayu_002:
+      content: 刘星和夏雪是自己的哥哥姐姐，一起住在家里
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiayu_003:
+      content: 家里有客厅、餐厅、厨房、卧室等地方，平时吃饭和玩会在这些地方
+      status: active
+      visibility: private
+      source_event: initial_state
+    k_xiayu_004:
+      content: 自己在家里是年纪较小的孩子，哥哥姐姐有时会照顾自己
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    xia_yu: 100
+    player: 100
+  inventories:
+    xia_yu: []
+    player: []
+  locations:
+    xia_yu: loc_keting
+    player: loc_keting
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

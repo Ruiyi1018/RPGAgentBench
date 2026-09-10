@@ -1,4 +1,4 @@
-"""Deterministic handlers for the 13 benchmark actions."""
+"""Deterministic handlers for the benchmark actions."""
 
 from __future__ import annotations
 
@@ -30,15 +30,40 @@ def _event(
 
 
 def _require_event(context: GameContext, event_id: str) -> None:
-    if not context.event_exists(event_id):
+    if _find_event(context, event_id) is None:
         raise ActionValidationError(
             "unknown_reason_event", f"历史中不存在事件: {event_id}"
         )
 
 
+def _find_event(
+    context: GameContext,
+    event_id: str,
+) -> Mapping[str, Any] | None:
+    for entry in context.history:
+        for event in entry.get("events", []):
+            if isinstance(event, Mapping) and event.get("id") == event_id:
+                return event
+    return None
+
+
+def _find_event_turn(context: GameContext, event_id: str) -> int | None:
+    for entry in context.history:
+        if any(
+            isinstance(event, Mapping) and event.get("id") == event_id
+            for event in entry.get("events", [])
+        ):
+            return int(entry["turn"])
+    return None
+
+
 def _inventory(context: GameContext, holder: str) -> list[str]:
     inventories = context.environment["inventories"]
-    inventory = inventories.setdefault(holder, [])
+    if holder not in inventories:
+        raise ActionValidationError(
+            "unknown_inventory_holder", f"未知物品持有者: {holder}"
+        )
+    inventory = inventories[holder]
     if not isinstance(inventory, list):
         raise ActionValidationError(
             "invalid_inventory", f"{holder}的inventory必须是数组"
@@ -60,6 +85,9 @@ def _move_item(
     destination_inventory = _inventory(context, destination)
     source_inventory.remove(item)
     destination_inventory.append(item)
+    artifact = context.environment["artifacts"].get(item)
+    if isinstance(artifact, dict):
+        artifact["holder"] = destination
 
 
 def create_commitment(
@@ -70,22 +98,69 @@ def create_commitment(
     turn: int,
 ) -> dict[str, Any]:
     del world
+    expected_action = parameters["expected_action"]
+    if expected_action not in HANDLERS or expected_action in {
+        "create_commitment",
+        "resolve_commitment",
+    }:
+        raise ActionValidationError(
+            "invalid_expected_action",
+            f"承诺引用了不可履行的Action: {expected_action}",
+        )
+    if int(parameters["due_turn"]) <= turn:
+        raise ActionValidationError(
+            "invalid_commitment_deadline",
+            "承诺due_turn必须晚于当前轮次",
+        )
+    interaction_deadline = context.environment.get("interaction_deadline")
+    if (
+        isinstance(interaction_deadline, int)
+        and int(parameters["due_turn"]) > interaction_deadline
+    ):
+        raise ActionValidationError(
+            "commitment_beyond_interaction",
+            "承诺due_turn不能超过本次互动截止轮次",
+        )
+    expected_parameters = parameters["expected_parameters"]
+    if expected_action == "update_task":
+        task = next(
+            (
+                item
+                for item in context.runtime_state["goals"]
+                if isinstance(item, Mapping)
+                and item.get("id") == expected_parameters.get("task_id")
+            ),
+            None,
+        )
+        if (
+            task is not None
+            and task.get("status", "active")
+            == expected_parameters.get("status")
+        ):
+            raise ActionValidationError(
+                "commitment_has_no_effect",
+                "承诺要求的update_task不会产生状态变化",
+            )
     commitments = context.runtime_state["commitments"]
     for commitment in commitments:
         if (
             commitment.get("target") == parameters["target"]
-            and commitment.get("content") == parameters["content"]
+            and commitment.get("expected_action") == expected_action
+            and commitment.get("expected_parameters")
+            == parameters["expected_parameters"]
             and commitment.get("status", "active") == "active"
         ):
             raise ActionValidationError(
-                "duplicate_commitment", "相同的有效承诺已存在"
+                "duplicate_commitment", "相同的有效行动承诺已存在"
             )
     commitment_id = f"commitment_{len(commitments) + 1:04d}"
     commitment = {
         "id": commitment_id,
         "target": parameters["target"],
         "content": parameters["content"],
-        "condition": parameters.get("condition"),
+        "expected_action": expected_action,
+        "expected_parameters": dict(parameters["expected_parameters"]),
+        "due_turn": int(parameters["due_turn"]),
         "status": "active",
         "created_turn": turn,
         "source_event": event_id,
@@ -108,7 +183,12 @@ def resolve_commitment(
     turn: int,
 ) -> dict[str, Any]:
     del world
-    _require_event(context, parameters["reason_event"])
+    reason_event = _find_event(context, parameters["reason_event"])
+    if reason_event is None:
+        raise ActionValidationError(
+            "unknown_reason_event",
+            f"历史中不存在事件: {parameters['reason_event']}",
+        )
     commitment = next(
         (
             item
@@ -124,6 +204,32 @@ def resolve_commitment(
     if commitment.get("status", "active") != "active":
         raise ActionValidationError(
             "commitment_already_resolved", "该承诺已经结束"
+        )
+    reason_turn = _find_event_turn(context, parameters["reason_event"])
+    if (
+        reason_turn is None
+        or reason_turn < int(commitment.get("created_turn", 0))
+    ):
+        raise ActionValidationError(
+            "commitment_reason_too_old",
+            "收束承诺必须引用建立承诺之后发生的事件",
+        )
+    if (
+        parameters["resolution"] == "fulfilled"
+        and (
+            reason_event.get("action") != commitment.get("expected_action")
+            or any(
+                reason_event.get(key) != value
+                for key, value in commitment.get(
+                    "expected_parameters",
+                    {},
+                ).items()
+            )
+        )
+    ):
+        raise ActionValidationError(
+            "commitment_effect_mismatch",
+            "履行事件的Action与承诺要求不一致",
         )
     commitment.update(
         {
@@ -170,13 +276,19 @@ def update_relationship(
         raise ActionValidationError(
             "invalid_relationship", f"{target}的关系状态无效"
         )
+    reason_turn = _find_event_turn(context, parameters["reason_event"])
+    if int(current.get("updated_turn", 0)) >= int(reason_turn or 0):
+        raise ActionValidationError(
+            "relationship_reason_not_new",
+            "关系变化必须引用上次变化之后的新事件",
+        )
 
     level = current.get("level", "neutral")
     direction = parameters["direction"]
     if isinstance(level, int):
         minimum = int(current.get("min", -2))
         maximum = int(current.get("max", 2))
-        delta = {"increase": 1, "decrease": -1, "maintain": 0}[direction]
+        delta = {"increase": 1, "decrease": -1}[direction]
         new_level: int | str = level + delta
         if not minimum <= new_level <= maximum:
             raise ActionValidationError(
@@ -184,7 +296,7 @@ def update_relationship(
             )
     elif level in _RELATIONSHIP_LEVELS:
         index = _RELATIONSHIP_LEVELS.index(level)
-        delta = {"increase": 1, "decrease": -1, "maintain": 0}[direction]
+        delta = {"increase": 1, "decrease": -1}[direction]
         new_index = index + delta
         if not 0 <= new_index < len(_RELATIONSHIP_LEVELS):
             raise ActionValidationError(
@@ -214,7 +326,7 @@ def update_relationship(
     )
 
 
-def accept_claim(
+def decide_claim(
     context: GameContext,
     world: WorldDefinition,
     parameters: Mapping[str, Any],
@@ -232,19 +344,40 @@ def accept_claim(
     evidence = parameters.get("evidence_event")
     if evidence is not None:
         _require_event(context, evidence)
-    claim.update(
-        {
-            "decision": parameters["decision"],
-            "evidence_event": evidence,
-            "decided_turn": turn,
-        }
-    )
+    previous = claim.get("decision", "unassessed")
+    previous_evidence = claim.get("evidence_event")
+    if (
+        previous == parameters["decision"]
+        and (
+            evidence is None
+            or evidence == previous_evidence
+            or int(_find_event_turn(context, evidence) or 0)
+            <= int(claim.get("decided_turn", 0))
+        )
+    ):
+        raise ActionValidationError(
+            "claim_decision_unchanged",
+            "相同主张判断必须引用不同于上次的新证据事件",
+        )
+    if (
+        previous not in {"unassessed", parameters["decision"]}
+        and evidence is None
+    ):
+        raise ActionValidationError(
+            "claim_change_without_evidence",
+            "改变既有主张判断时必须引用新证据事件",
+        )
+    claim["decision"] = parameters["decision"]
+    if evidence is not None:
+        claim["evidence_event"] = evidence
+    claim["decided_turn"] = turn
     return _event(
         event_id,
-        "accept_claim",
+        "decide_claim",
         turn,
         claim_id=parameters["claim_id"],
         decision=parameters["decision"],
+        evidence_event=evidence,
     )
 
 
@@ -320,7 +453,14 @@ def transfer_item(
     turn: int,
 ) -> dict[str, Any]:
     item = parameters["item"]
-    if item not in world.items:
+    if parameters["source"] != context.character_id:
+        raise ActionValidationError(
+            "item_source_not_actor", "NPC只能转移自己持有的物品"
+        )
+    if (
+        item not in world.items
+        and item not in context.environment["artifacts"]
+    ):
         raise ActionValidationError("unknown_item", f"物品不存在: {item}")
     _move_item(context, item, parameters["source"], parameters["destination"])
     return _event(
@@ -333,54 +473,45 @@ def transfer_item(
     )
 
 
-def create_offer(
+def create_artifact(
     context: GameContext,
     world: WorldDefinition,
     parameters: Mapping[str, Any],
     event_id: str,
     turn: int,
 ) -> dict[str, Any]:
-    actor = context.character_id
-    offered_items = list(parameters["offered_items"])
-    requested_items = list(parameters.get("requested_items", []))
-    if not offered_items and not requested_items:
+    artifact_id = parameters["artifact_id"].strip()
+    content = parameters["content"].strip()
+    if not artifact_id or not content:
         raise ActionValidationError(
-            "empty_offer", "Offer必须包含给予或请求的物品"
+            "invalid_artifact", "artifact_id和content必须是非空字符串"
         )
-    unknown = (set(offered_items) | set(requested_items)) - set(world.items)
-    if unknown:
+    artifacts = context.environment["artifacts"]
+    if artifact_id in world.items or artifact_id in artifacts:
         raise ActionValidationError(
-            "unknown_item", f"Offer包含未知物品: {', '.join(sorted(unknown))}"
+            "duplicate_artifact", f"物品或记录已存在: {artifact_id}"
         )
-    actor_inventory = _inventory(context, actor)
-    missing = set(offered_items) - set(actor_inventory)
-    if missing:
-        raise ActionValidationError(
-            "item_not_held", f"NPC未持有: {', '.join(sorted(missing))}"
-        )
-    offers = context.environment["offers"]
-    offer_id = f"offer_{len(offers) + 1:04d}"
-    offers.append(
-        {
-            "id": offer_id,
-            "proposer": actor,
-            "recipient": parameters["recipient"],
-            "offered_items": offered_items,
-            "requested_items": requested_items,
-            "status": "pending",
-            "created_turn": turn,
-        }
-    )
+    creator = context.character_id
+    artifacts[artifact_id] = {
+        "id": artifact_id,
+        "kind": parameters["kind"],
+        "content": content,
+        "creator": creator,
+        "holder": creator,
+        "created_turn": turn,
+    }
+    _inventory(context, creator).append(artifact_id)
     return _event(
         event_id,
-        "create_offer",
+        "create_artifact",
         turn,
-        offer_id=offer_id,
-        recipient=parameters["recipient"],
+        artifact_id=artifact_id,
+        kind=parameters["kind"],
+        creator=creator,
     )
 
 
-def respond_offer(
+def update_task(
     context: GameContext,
     world: WorldDefinition,
     parameters: Mapping[str, Any],
@@ -388,53 +519,50 @@ def respond_offer(
     turn: int,
 ) -> dict[str, Any]:
     del world
-    actor = context.character_id
-    offer = next(
+    reason_event = parameters["reason_event"]
+    _require_event(context, reason_event)
+    task = next(
         (
             item
-            for item in context.environment["offers"]
-            if item.get("id") == parameters["offer_id"]
+            for item in context.runtime_state["goals"]
+            if isinstance(item, dict)
+            and item.get("id") == parameters["task_id"]
         ),
         None,
     )
-    if offer is None:
-        raise ActionValidationError("unknown_offer", "Offer不存在")
-    if offer.get("status") != "pending":
-        raise ActionValidationError("offer_closed", "Offer已经结束")
-    if offer.get("recipient") != actor:
+    if task is None:
         raise ActionValidationError(
-            "not_offer_recipient", "NPC不是该Offer的接收方"
+            "unknown_task",
+            f"目标或任务不存在: {parameters['task_id']}",
         )
-
-    decision = parameters["decision"]
-    if decision == "accept":
-        proposer = str(offer["proposer"])
-        offered_items = list(offer.get("offered_items", []))
-        requested_items = list(offer.get("requested_items", []))
-        proposer_inventory = _inventory(context, proposer)
-        actor_inventory = _inventory(context, actor)
-        if not set(offered_items) <= set(proposer_inventory):
-            raise ActionValidationError(
-                "offer_items_unavailable", "提议方已不再持有全部物品"
-            )
-        if not set(requested_items) <= set(actor_inventory):
-            raise ActionValidationError(
-                "requested_items_unavailable", "NPC不再持有全部交换物品"
-            )
-        for item in offered_items:
-            _move_item(context, item, proposer, actor)
-        for item in requested_items:
-            _move_item(context, item, actor, proposer)
-        offer["status"] = "accepted"
-    else:
-        offer["status"] = "rejected"
-    offer["resolved_turn"] = turn
+    previous_status = task.get("status", "active")
+    if previous_status == parameters["status"]:
+        raise ActionValidationError(
+            "task_status_unchanged",
+            "update_task必须产生实际状态变化",
+        )
+    if int(task.get("updated_turn", 0)) >= int(
+        _find_event_turn(context, reason_event) or 0
+    ):
+        raise ActionValidationError(
+            "task_evidence_not_new",
+            "任务变化必须引用上次变化之后的新事件",
+        )
+    task.update(
+        {
+            "status": parameters["status"],
+            "reason_event": reason_event,
+            "updated_turn": turn,
+        }
+    )
     return _event(
         event_id,
-        "respond_offer",
+        "update_task",
         turn,
-        offer_id=parameters["offer_id"],
-        decision=decision,
+        task_id=parameters["task_id"],
+        previous_status=previous_status,
+        status=parameters["status"],
+        reason_event=reason_event,
     )
 
 
@@ -492,6 +620,7 @@ def decide_access(
     turn: int,
 ) -> dict[str, Any]:
     del world
+    _require_event(context, parameters["reason_event"])
     actor = context.character_id
     access = context.environment["access"]
     resource = parameters["resource"]
@@ -519,6 +648,7 @@ def decide_access(
         subject=subject,
         resource=resource,
         decision=decision,
+        reason_event=parameters["reason_event"],
     )
 
 
@@ -589,12 +719,12 @@ HANDLERS: dict[str, Handler] = {
     "create_commitment": create_commitment,
     "resolve_commitment": resolve_commitment,
     "update_relationship": update_relationship,
-    "accept_claim": accept_claim,
+    "decide_claim": decide_claim,
     "reveal_fact": reveal_fact,
     "move": move,
     "transfer_item": transfer_item,
-    "create_offer": create_offer,
-    "respond_offer": respond_offer,
+    "create_artifact": create_artifact,
+    "update_task": update_task,
     "use_item": use_item,
     "decide_access": decide_access,
     "attack": attack,

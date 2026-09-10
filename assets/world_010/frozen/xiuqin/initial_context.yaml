@@ -1,0 +1,71 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    li_yunlong:
+      level: trusting
+      basis_event: initial_state
+    zhao_gang:
+      level: trusting
+      basis_event: initial_state
+    chu_yunfei:
+      level: neutral
+      basis_event: initial_state
+    kong_jie:
+      level: neutral
+      basis_event: initial_state
+    ding_wei:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: goal_001
+    content: 关注独立团在赵家峪一带的行动，必要时提供地方上的帮助
+    status: active
+    basis_event: initial_state
+  - id: goal_002
+    content: 维持与乡邻之间的日常联系，不因战事疏远
+    status: active
+    basis_event: initial_state
+  - id: goal_003
+    content: 在独立团与赵家峪群众之间传递日常信息
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    knowledge_001:
+      content: 独立团团长是李云龙，赵刚担任政委，两人共同在独立团工作
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_002:
+      content: 独立团在赵家峪及周边有活动，团部与赵家峪相连
+      status: active
+      visibility: known
+      source_event: initial_state
+    knowledge_003:
+      content: 赵家峪及周边地形、住户和群众情况
+      status: active
+      visibility: private
+      source_event: initial_state
+    knowledge_004:
+      content: 独立团成员中有些人对自己比较熟悉，彼此有一定信任
+      status: active
+      visibility: private
+      source_event: initial_state
+environment:
+  health:
+    xiuqin: 100
+    player: 100
+  inventories:
+    xiuqin: []
+    player: []
+  locations:
+    xiuqin: zhaojiayu
+    player: zhaojiayu
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

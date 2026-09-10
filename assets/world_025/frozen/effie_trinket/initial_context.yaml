@@ -1,0 +1,73 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    katniss_everdeen:
+      level: neutral
+      basis_event: initial_state
+    peeta_mellark:
+      level: neutral
+      basis_event: initial_state
+    gale_hawthorne:
+      level: neutral
+      basis_event: initial_state
+    haymitch_abernathy:
+      level: neutral
+      basis_event: initial_state
+    president_snow:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g_effie_prepare_tributes
+    content: Ensure Katniss and Peeta complete all remaining pre-Games preparations
+      and ceremonies
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k_effie_reaping:
+      content: Prim was selected as the female tribute and Katniss volunteered in
+        her place during the reaping in District 12
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_effie_peeta_tribute:
+      content: Peeta Mellark was named the male tribute for District 12
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_effie_haymitch_mentor:
+      content: Haymitch Abernathy is the District 12 mentor, though he appeared drunk
+        at the reaping
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_effie_parade_reaction:
+      content: The tribute parade featured Katniss and Peeta in outfits lit with synthetic
+        fire, attracting Capitol attention
+      status: active
+      visibility: public
+      source_event: initial_state
+    k_effie_interview_confession:
+      content: Peeta publicly stated he has long-held feelings for Katniss during
+        the tribute interviews, gaining Capitol audience investment
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    effie_trinket: 100
+    player: 100
+  inventories:
+    effie_trinket: []
+    player: []
+  locations:
+    effie_trinket: tribute_apartment
+    player: tribute_apartment
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

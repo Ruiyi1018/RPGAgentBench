@@ -1,0 +1,276 @@
+world_id: world_026
+source: 'My Little Pony: Friendship Is Magic episodes from the early-season range
+  after the main six ponies form their friendship group'
+events:
+- id: anch_001
+  fact: Twilight Sparkle settles into Ponyville and begins organizing her new life
+    at the Golden Oaks Library.
+  known_by:
+  - twilight_sparkle
+  state_change: Twilight transitions from a temporary visitor to a resident of Ponyville.
+  cf_edit: Twilight settles into a different building instead of the Golden Oaks Library.
+  anchor_for:
+  - twilight_sparkle
+- id: anch_002
+  fact: Applejack works long hours at Sweet Apple Acres harvesting apples for the
+    coming season.
+  known_by:
+  - applejack
+  - twilight_sparkle
+  state_change: Sweet Apple Acres becomes a regular gathering place for the group
+    through Applejack's work.
+  cf_edit: Applejack works at a different farm rather than Sweet Apple Acres.
+  anchor_for:
+  - applejack
+- id: anch_003
+  fact: Pinkie Pie throws a welcoming party for a new arrival in Ponyville and uses
+    her party cannon during the celebration.
+  known_by:
+  - pinkie_pie
+  - twilight_sparkle
+  state_change: Pinkie Pie establishes herself as the town's most enthusiastic party
+    planner.
+  cf_edit: Pinkie Pie hosts the party without using her party cannon.
+  anchor_for:
+  - pinkie_pie
+- id: anch_004
+  fact: Rainbow Dash practices a complicated aerial routine above Ponyville in preparation
+    for a performance.
+  known_by:
+  - rainbow_dash
+  - fluttershy
+  state_change: Rainbow Dash's commitment to flight training becomes visible to her
+    friends.
+  cf_edit: Rainbow Dash practices the routine at ground level instead of in the air.
+  anchor_for:
+  - rainbow_dash
+- id: anch_005
+  fact: Rarity creates a new line of dresses at Carousel Boutique and asks Fluttershy
+    to model one of them.
+  known_by:
+  - rarity
+  - fluttershy
+  state_change: Rarity and Fluttershy begin collaborating on fashion projects.
+  cf_edit: Rarity asks Applejack rather than Fluttershy to model the dress.
+  anchor_for:
+  - rarity
+- id: anch_006
+  fact: Fluttershy cares for a group of injured woodland animals that strayed from
+    the Everfree Forest into her cottage.
+  known_by:
+  - fluttershy
+  - rainbow_dash
+  state_change: Fluttershy gains a clearer understanding of the hazards animals face
+    near the Everfree Forest.
+  cf_edit: The injured animals come from a different forest instead of the Everfree
+    Forest.
+  anchor_for:
+  - fluttershy
+- id: anch_007
+  fact: The six friends gather at the Golden Oaks Library and discuss an upcoming
+    celebration in Ponyville.
+  known_by:
+  - twilight_sparkle
+  - applejack
+  - pinkie_pie
+  - rainbow_dash
+  - rarity
+  - fluttershy
+  state_change: The Golden Oaks Library becomes the group's usual meeting place for
+    planning.
+  cf_edit: The group gathers at Sugarcube Corner instead of the Golden Oaks Library.
+  anchor_for:
+  - twilight_sparkle
+- id: anch_008
+  fact: Applejack brings a cart of fresh apples into Ponyville and shares some with
+    the other friends.
+  known_by:
+  - applejack
+  - pinkie_pie
+  - fluttershy
+  state_change: Sweet Apple Acres produce becomes part of the group's regular shared
+    meals.
+  cf_edit: Applejack brings pears instead of apples from the farm.
+  anchor_for:
+  - applejack
+- id: anch_009
+  fact: Pinkie Pie organizes a surprise celebration at Sugarcube Corner and decorates
+    the entire room with streamers.
+  known_by:
+  - pinkie_pie
+  - rarity
+  - twilight_sparkle
+  state_change: Sugarcube Corner becomes a regular venue for Pinkie Pie's celebrations.
+  cf_edit: Pinkie Pie organizes the celebration at the library rather than Sugarcube
+    Corner.
+  anchor_for:
+  - pinkie_pie
+- id: anch_010
+  fact: Rainbow Dash helps clear a cloud formation that had been blocking sunlight
+    over Sweet Apple Acres.
+  known_by:
+  - rainbow_dash
+  - applejack
+  state_change: Rainbow Dash begins assisting with weather control for Applejack's
+    farm.
+  cf_edit: Rainbow Dash clears clouds over Ponyville instead of Sweet Apple Acres.
+  anchor_for:
+  - rainbow_dash
+- id: anch_011
+  fact: Rarity repairs a torn costume for one of Pinkie Pie's events and stays up
+    late to finish it.
+  known_by:
+  - rarity
+  - pinkie_pie
+  state_change: Rarity commits her design skills to supporting her friends' events.
+  cf_edit: Rarity makes an entirely new costume instead of repairing the torn one.
+  anchor_for:
+  - rarity
+- id: anch_012
+  fact: Fluttershy leads a bird chorus in song near the edge of the Everfree Forest,
+    and Rainbow Dash flies overhead to listen.
+  known_by:
+  - fluttershy
+  - rainbow_dash
+  state_change: Fluttershy shares her gentle approach to animals with Rainbow Dash.
+  cf_edit: Fluttershy leads the bird chorus in the center of Ponyville rather than
+    near the Everfree Forest.
+  anchor_for:
+  - fluttershy
+- id: anch_013
+  fact: Twilight Sparkle studies a book on weather patterns and shares what she learns
+    with Rainbow Dash.
+  known_by:
+  - twilight_sparkle
+  - rainbow_dash
+  state_change: Twilight and Rainbow Dash begin combining research and practical weather
+    work.
+  cf_edit: Twilight studies a book on plant growth instead of weather patterns.
+  anchor_for:
+  - twilight_sparkle
+- id: anch_014
+  fact: Applejack teaches Pinkie Pie how to press apple cider at Sweet Apple Acres,
+    and Pinkie Pie adds an unusual flavoring to one batch.
+  known_by:
+  - applejack
+  - pinkie_pie
+  state_change: Applejack and Pinkie Pie start a playful collaboration on farm recipes.
+  cf_edit: Applejack teaches Pinkie Pie how to bake apple fritters instead of pressing
+    cider.
+  anchor_for:
+  - applejack
+- id: anch_015
+  fact: Rainbow Dash and Rarity argue about the design of Raindbow Dash's outfit for
+    a formal event, then compromise on a new style.
+  known_by:
+  - rainbow_dash
+  - rarity
+  state_change: Rainbow Dash and Rarity establish a working agreement on formal wear.
+  cf_edit: Rainbow Dash and Rarity never reach a compromise and abandon the outfit.
+  anchor_for:
+  - rainbow_dash
+- id: anch_016
+  fact: Fluttershy helps Pinkie Pie calm a frightened rabbit before a party and suggests
+    using quieter music.
+  known_by:
+  - fluttershy
+  - pinkie_pie
+  state_change: Fluttershy and Pinkie Pie work together to make celebrations less
+    frightening for animals.
+  cf_edit: Fluttershy leaves the rabbit at her cottage instead of calming it at the
+    party.
+  anchor_for:
+  - fluttershy
+- id: anch_017
+  fact: Twilight Sparkle organizes a shared checklist for an upcoming Ponyville event
+    and asks each friend to complete one task.
+  known_by:
+  - twilight_sparkle
+  - applejack
+  - pinkie_pie
+  - rainbow_dash
+  - rarity
+  - fluttershy
+  state_change: The group adopts Twilight's checklist method for coordinating tasks.
+  cf_edit: Twilight delegates all tasks without creating a written checklist.
+  anchor_for:
+  - twilight_sparkle
+- id: anch_018
+  fact: Applejack discovers a damaged fence at the edge of Sweet Apple Acres and repairs
+    it with help from Rainbow Dash.
+  known_by:
+  - applejack
+  - rainbow_dash
+  state_change: Rainbow Dash develops a stronger understanding of farm maintenance.
+  cf_edit: Applejack repairs the fence alone instead of with Rainbow Dash.
+  anchor_for:
+  - applejack
+- id: anch_019
+  fact: Pinkie Pie tests a new confetti recipe at Sugarcube Corner and accidentally
+    releases a huge cloud of confetti inside the shop.
+  known_by:
+  - pinkie_pie
+  - rarity
+  state_change: Sugarcube Corner temporarily needs cleaning after Pinkie Pie's confetti
+    test.
+  cf_edit: Pinkie Pie tests the confetti recipe outdoors instead of inside Sugarcube
+    Corner.
+  anchor_for:
+  - pinkie_pie
+- id: anch_020
+  fact: Rainbow Dash performs a successful stunt over the Everfree Forest and lands
+    safely near the tree line.
+  known_by:
+  - rainbow_dash
+  - fluttershy
+  - twilight_sparkle
+  state_change: Rainbow Dash gains confidence flying near the Everfree Forest.
+  cf_edit: Rainbow Dash performs the stunt over Ponyville instead of the Everfree
+    Forest.
+  anchor_for:
+  - rainbow_dash
+- id: anch_021
+  fact: Rarity creates a special banner for a Ponyville festival and hangs it near
+    the center of town.
+  known_by:
+  - rarity
+  - twilight_sparkle
+  - pinkie_pie
+  state_change: Rarity's design becomes a visible part of the festival decorations.
+  cf_edit: Rarity creates a tablecloth rather than a banner for the festival.
+  anchor_for:
+  - rarity
+- id: anch_022
+  fact: Fluttershy teaches Twilight Sparkle how to approach a shy bird without frightening
+    it, and Twilight successfully feeds the bird.
+  known_by:
+  - fluttershy
+  - twilight_sparkle
+  state_change: Twilight learns a new method for interacting with timid animals.
+  cf_edit: Fluttershy feeds the bird herself instead of letting Twilight try.
+  anchor_for:
+  - fluttershy
+- id: anch_023
+  fact: The six friends practice a group routine in a clearing near Ponyville and
+    work out a formation that includes all of them.
+  known_by:
+  - twilight_sparkle
+  - applejack
+  - pinkie_pie
+  - rainbow_dash
+  - rarity
+  - fluttershy
+  state_change: The group establishes a coordinated routine for public performances.
+  cf_edit: The group practices the routine inside the library rather than in a clearing.
+  anchor_for:
+  - twilight_sparkle
+- id: anch_024
+  fact: Applejack and Pinkie Pie deliver a wagonload of apples and party supplies
+    to a festival site in Ponyville.
+  known_by:
+  - applejack
+  - pinkie_pie
+  state_change: The festival site receives its first delivery from the group.
+  cf_edit: Applejack and Rarity deliver the wagon instead of Pinkie Pie.
+  anchor_for:
+  - applejack

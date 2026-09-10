@@ -1,0 +1,79 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    howard_wolowitz:
+      level: loyal
+      basis_event: initial_state
+    leonard_hofstadter:
+      level: trusting
+      basis_event: initial_state
+    sheldon_cooper:
+      level: neutral
+      basis_event: initial_state
+    penny:
+      level: neutral
+      basis_event: initial_state
+    amy_farrah_fowler:
+      level: neutral
+      basis_event: initial_state
+    bernadette_rostenkowski:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: g1
+    content: Participate in the group's social evening without causing a disruption.
+    status: active
+    basis_event: initial_state
+  - id: g2
+    content: Stay close to Howard as a social buffer during mixed-gender conversation.
+    status: active
+    basis_event: initial_state
+  - id: g3
+    content: Avoid being put on the spot to speak directly to Penny, Amy, or Bernadette
+      while sober.
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    k1:
+      content: Howard now has serious aerospace-related responsibilities and is occupied
+        with Bernadette in addition to the friend group.
+      status: active
+      visibility: private
+      source_event: initial_state
+    k2:
+      content: Amy and Sheldon share specific scientific interests and remain socially
+        paired even when their relationship is strained.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k3:
+      content: The full seven-character group is now active and regularly gathers
+        in Apartment 4A.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    k4:
+      content: Raj's selective mutism persists around women unless alcohol or another
+        factor reduces his inhibition.
+      status: active
+      visibility: public
+      source_event: initial_state
+environment:
+  health:
+    raj_koothrappali: 100
+    player: 100
+  inventories:
+    raj_koothrappali: []
+    player: []
+  locations:
+    raj_koothrappali: apartment_4a
+    player: apartment_4a
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

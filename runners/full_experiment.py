@@ -20,9 +20,14 @@ from agents import (
     project_npc_character_card,
 )
 from agents.prompt_builder import PromptBundle
-from datagen.audit import audit_executable_character
-from datagen.common import load_yaml, read_jsonl, write_jsonl
-from datagen.projection import project_frozen_history
+from datagen.audit.benchmark_assets import audit_executable_character
+from datagen.shared.io import load_yaml, read_jsonl, write_jsonl
+from datagen.shared.history_projection import project_frozen_history
+from evaluation import (
+    ActiveChallenge,
+    ChallengeController,
+    Stage3ContractEngine,
+)
 from gamecore import (
     ActionRegistry,
     FixtureEngine,
@@ -31,8 +36,10 @@ from gamecore import (
     WorldDefinition,
 )
 from llm import (
+    APIClientError,
     GenerationConfig,
     LLMClient,
+    StructuredOutputError,
     create_llm_client,
     generate_structured,
     load_llm_settings,
@@ -45,13 +52,29 @@ from .pilot import (
     _score_branch,
     _score_qa,
     _validate_branch_output,
-    _validate_qa_output,
+    _validate_qa_partial_output,
     build_branch_bundle,
     build_qa_bundle,
 )
 from .progress import ProgressReporter
 
 DEFAULT_STAGE3_SEEDS = (11, 29, 47)
+STAGE3_PROTOCOL_VERSION = 10
+STAGE3_ACTIONS = (
+    "decide_claim",
+    "update_task",
+    "create_commitment",
+    "resolve_commitment",
+    "update_relationship",
+    "decide_access",
+    "reveal_fact",
+    "move",
+    "transfer_item",
+    "create_artifact",
+    "use_item",
+    "attack",
+    "end_dialogue",
+)
 
 
 def run_full_experiment(
@@ -64,6 +87,8 @@ def run_full_experiment(
     stage3_seeds: tuple[int, ...] = DEFAULT_STAGE3_SEEDS,
     player_model: str | None = None,
     checker_model: str | None = None,
+    qa_batch_size: int | None = None,
+    checker_interval: int = 5,
     dry_run: bool = False,
     output_root: str | Path = "runs",
     resume_dir: str | Path | None = None,
@@ -72,6 +97,8 @@ def run_full_experiment(
 ) -> dict[str, Any]:
     if workers < 1:
         raise ValueError("workers必须至少为1")
+    if checker_interval < 1:
+        raise ValueError("checker_interval必须至少为1")
     world = Path(world_dir)
     scenario = load_yaml(scenario_path)
     if scenario["character_id"] != character_id:
@@ -82,6 +109,9 @@ def run_full_experiment(
     _validate_scenario(world, character_id, scenario)
     settings = load_llm_settings(config_path, project_root=PROJECT_ROOT)
     config = settings.generation
+    qa_batch_size = qa_batch_size or 25
+    if qa_batch_size < 1:
+        raise ValueError("qa_batch_size必须至少为1")
     player_model = player_model or config.model
     checker_model = checker_model or config.model
     if settings.provider == "venus" and {
@@ -99,7 +129,7 @@ def run_full_experiment(
         world / "frozen" / character_id / "open_tasks.jsonl"
     )
     pairs = read_jsonl(world / "branches" / character_id / "pairs.jsonl")
-    qa_batches = list(_chunks(qa, 25))
+    qa_batches = list(_chunks(qa, qa_batch_size))
     registry = ActionRegistry.load_directory(
         PROJECT_ROOT / "gamecore" / "actions"
     )
@@ -112,11 +142,21 @@ def run_full_experiment(
         for pair in pairs
         for branch in ("a", "b")
     ]
-    expected_calls = (
+    checker_batches = (turns + checker_interval - 1) // checker_interval
+    maximum_stage3_calls = len(stage3_seeds) * 2 * (
+        turns * 2 + checker_batches * 2
+    )
+    maximum_calls_without_qa_recovery = (
         len(qa_batches)
         + len(open_tasks) * 2
         + len(branch_bundles)
-        + len(stage3_seeds) * 2 * (turns * 2 + 1)
+        + maximum_stage3_calls
+    )
+    maximum_logical_calls = (
+        len(qa)
+        + len(open_tasks) * 2
+        + len(branch_bundles)
+        + maximum_stage3_calls
     )
     max_static_prompt = max(
         len(bundle.system_prompt) + len(bundle.user_prompt)
@@ -128,6 +168,7 @@ def run_full_experiment(
         "stage1": {
             "qa": len(qa),
             "qa_batches": len(qa_batches),
+            "qa_batch_size": qa_batch_size,
             "open_tasks": len(open_tasks),
         },
         "stage2": {
@@ -138,8 +179,12 @@ def run_full_experiment(
             "conditions": ["normal", "pressure"],
             "turns_per_condition": turns,
             "seeds": list(stage3_seeds),
+            "checker_interval": checker_interval,
         },
-        "expected_api_calls": expected_calls,
+        "maximum_calls_without_qa_recovery": (
+            maximum_calls_without_qa_recovery
+        ),
+        "maximum_logical_calls": maximum_logical_calls,
         "workers": workers,
         "models": {
             "npc": config.model,
@@ -173,12 +218,18 @@ def run_full_experiment(
             "scenario": str(scenario_path),
             "model": config.model,
             "base_url": settings.base_url,
+            "qa_batch_size": qa_batch_size,
+            "checker_interval": checker_interval,
+            "stage3_protocol": STAGE3_PROTOCOL_VERSION,
             "preflight": preflight,
         },
     )
     progress = ProgressReporter(
-        total=expected_calls,
-        completed=min(_completed_logical_calls(run_dir), expected_calls),
+        total=maximum_logical_calls,
+        completed=min(
+            _completed_logical_calls(run_dir),
+            maximum_logical_calls,
+        ),
         enabled=show_progress,
     )
     progress.render("resume" if progress.completed else "start")
@@ -214,6 +265,7 @@ def run_full_experiment(
         stage3_seeds,
         player_model,
         checker_model,
+        checker_interval,
         run_dir,
         workers,
         progress,
@@ -246,20 +298,53 @@ def _run_stage1(
     qa_records = read_jsonl(qa_path) if qa_path.is_file() else []
     completed_qa = {record["qa_id"] for record in qa_records}
     for batch, bundle in zip(qa_batches, qa_bundles, strict=True):
-        if all(item["qa_id"] in completed_qa for item in batch):
+        pending_batch = [
+            item for item in batch if item["qa_id"] not in completed_qa
+        ]
+        if not pending_batch:
             continue
-        output = generate_structured(
-            client,
-            bundle,
-            config,
-            lambda value, expected=batch: _validate_qa_output(
-                value, expected
-            ),
+        first_request = True
+        while pending_batch:
+            pending_bundle = (
+                bundle
+                if first_request and len(pending_batch) == len(batch)
+                else build_qa_bundle(world, character_id, pending_batch)
+            )
+            output = generate_structured(
+                client,
+                pending_bundle,
+                config,
+                lambda value, expected=pending_batch: (
+                    _validate_qa_partial_output(value, expected)
+                ),
+            )
+            returned_ids = {
+                answer["qa_id"] for answer in output["answers"]
+            }
+            returned_items = [
+                item
+                for item in pending_batch
+                if item["qa_id"] in returned_ids
+            ]
+            qa_records.extend(
+                _score_qa(returned_items, output, client.last_usage)
+            )
+            completed_qa.update(returned_ids)
+            write_jsonl(qa_path, qa_records)
+            pending_batch = [
+                item
+                for item in pending_batch
+                if item["qa_id"] not in returned_ids
+            ]
+            first_request = False
+            if pending_batch:
+                progress.render(
+                    "stage1 qa补问 "
+                    f"remaining={len(pending_batch)}"
+                )
+        progress.advance(
+            f"stage1 qa batch={batch[0]['qa_id']}"
         )
-        progress.advance(f"stage1 qa batch={batch[0]['qa_id']}")
-        qa_records.extend(_score_qa(batch, output, client.last_usage))
-        completed_qa.update(item["qa_id"] for item in batch)
-        write_jsonl(qa_path, qa_records)
 
     open_path = run_dir / "stage1_open.jsonl"
     open_records = read_jsonl(open_path) if open_path.is_file() else []
@@ -428,6 +513,7 @@ def _run_stage3(
     seeds: tuple[int, ...],
     player_model: str,
     checker_model: str,
+    checker_interval: int,
     run_dir: Path,
     workers: int,
     progress: ProgressReporter,
@@ -437,8 +523,9 @@ def _run_stage3(
     ),
 ) -> dict[str, Any]:
     episode_specs = [(seed, mode) for seed in seeds for mode in modes]
-    if workers > 1 and len(episode_specs) > 1:
+    if len(episode_specs) > 1:
         episodes: list[dict[str, Any]] = []
+        provider_failures: list[dict[str, Any]] = []
         with ThreadPoolExecutor(
             max_workers=min(workers, len(episode_specs)),
             thread_name_prefix="stage3",
@@ -456,6 +543,7 @@ def _run_stage3(
                     (seed,),
                     player_model,
                     checker_model,
+                    checker_interval,
                     run_dir,
                     1,
                     progress,
@@ -465,9 +553,70 @@ def _run_stage3(
             }
             for future in as_completed(futures):
                 seed, mode = futures[future]
-                result = future.result()
+                try:
+                    result = future.result()
+                except (APIClientError, StructuredOutputError) as error:
+                    checkpoint_path = (
+                        run_dir
+                        / f"stage3_seed{seed}_{mode.value}_checkpoint.json"
+                    )
+                    completed_turns = 0
+                    if checkpoint_path.is_file():
+                        checkpoint = json.loads(
+                            checkpoint_path.read_text(encoding="utf-8")
+                        )
+                        completed_turns = int(
+                            checkpoint.get("completed_turns", 0)
+                        )
+                    detail = str(error)
+                    if isinstance(error, StructuredOutputError):
+                        failure_type = "structured_output_error"
+                    elif "data_inspection_failed" in detail:
+                        failure_type = "provider_content_filter"
+                    else:
+                        failure_type = "provider_api_error"
+                    failure = {
+                        "seed": seed,
+                        "mode": mode.value,
+                        "completed_turns": completed_turns,
+                        "next_turn": completed_turns + 1,
+                        "type": failure_type,
+                        "error": detail,
+                    }
+                    _write_json(
+                        run_dir
+                        / f"stage3_seed{seed}_{mode.value}_provider_error.json",
+                        failure,
+                    )
+                    provider_failures.append(failure)
+                    continue
+                error_path = (
+                    run_dir
+                    / f"stage3_seed{seed}_{mode.value}_provider_error.json"
+                )
+                if error_path.is_file():
+                    error_path.unlink()
                 episodes.append(result["seeds"][str(seed)][mode.value])
-        return _summarize_stage3(episodes, seeds, turns)
+        summary = _summarize_stage3(episodes, seeds, turns)
+        all_episodes_present = len(episodes) == len(episode_specs)
+        summary["complete"] = all_episodes_present
+        summary["all_episodes_present"] = all_episodes_present
+        summary["protocol_horizon_complete"] = (
+            all_episodes_present
+            and all(
+                episode.get("protocol_horizon_complete", False)
+                for episode in episodes
+            )
+        )
+        summary["protocol_evaluation_complete"] = (
+            all_episodes_present
+            and all(
+                episode.get("protocol_evaluation_complete", False)
+                for episode in episodes
+            )
+        )
+        summary["provider_failures"] = provider_failures
+        return summary
 
     client = client_factory()
     world_definition = WorldDefinition.load_yaml(world / "environment.yaml")
@@ -481,49 +630,52 @@ def _run_stage3(
     episodes: list[dict[str, Any]] = []
     for seed in seeds:
       for mode in modes:
+        contract_engine = Stage3ContractEngine(
+            scenario["stage3_contract"],
+            action_names=STAGE3_ACTIONS,
+        )
+        contract_ids = {
+            str(item["id"])
+            for section in ("transition_contracts", "trace_contracts")
+            for item in scenario["stage3_contract"].get(section, [])
+        }
+        challenge_controller = ChallengeController(
+            scenario["challenge_plan"],
+            mode=mode.value,
+            contract_ids=contract_ids,
+        )
         episode_config = GenerationConfig(
             model=config.model,
             temperature=config.temperature,
             top_p=config.top_p,
-            max_tokens=config.max_tokens,
+            max_tokens=min(config.max_tokens, 1024),
             seed=seed,
-            max_format_retries=config.max_format_retries,
+            max_format_retries=max(config.max_format_retries, 4),
         )
         player_config = GenerationConfig(
             model=player_model,
             temperature=config.temperature,
             top_p=config.top_p,
-            max_tokens=config.max_tokens,
+            max_tokens=min(config.max_tokens, 512),
             seed=seed,
-            max_format_retries=config.max_format_retries,
+            max_format_retries=max(config.max_format_retries, 4),
         )
         final_path = run_dir / f"stage3_seed{seed}_{mode.value}.json"
         if final_path.is_file():
             completed_payload = json.loads(
                 final_path.read_text(encoding="utf-8")
             )
-            completed_context = GameContext(completed_payload["context"])
-            completed_accepted = sum(
-                not any(
-                    event.get("type") == "decision_violation"
-                    for event in entry.get("events", [])
+            completed_summary = completed_payload.get("summary", {})
+            if (
+                completed_summary.get("protocol_version")
+                != STAGE3_PROTOCOL_VERSION
+            ):
+                raise ValueError(
+                    f"{final_path}使用旧版Stage3协议，不能混入新版实验"
                 )
-                for entry in completed_context.history
-                if entry["speaker"] == "npc"
-            )
-            recomputed = _stage3_episode_summary(
-                mode.value,
-                completed_context,
-                completed_payload["checker"],
-                completed_accepted,
-                turns,
-                scenario["evaluation_spec"],
-            )
-            recomputed["seed"] = seed
-            completed_payload["summary"] = recomputed
-            _write_json(final_path, completed_payload)
-            episodes.append(recomputed)
-            continue
+            if completed_summary.get("status") != "invalid":
+                episodes.append(completed_summary)
+                continue
         checkpoint_path = (
             run_dir / f"stage3_seed{seed}_{mode.value}_checkpoint.json"
         )
@@ -531,10 +683,77 @@ def _run_stage3(
             checkpoint = json.loads(
                 checkpoint_path.read_text(encoding="utf-8")
             )
+            if (
+                checkpoint.get("protocol_version")
+                != STAGE3_PROTOCOL_VERSION
+            ):
+                raise ValueError(
+                    f"{checkpoint_path}使用旧版Stage3协议，请新建运行目录"
+                )
             context = GameContext(checkpoint["context"])
             call_log = checkpoint["call_log"]
             accepted_turns = int(checkpoint["accepted_turns"])
-            first_turn = int(checkpoint["completed_turns"]) + 1
+            audits = list(checkpoint.get("audits", []))
+            pending_checker_turns = list(
+                checkpoint.get("pending_checker_turns", [])
+            )
+            contract_runtime = copy.deepcopy(
+                checkpoint["contract_runtime"]
+            )
+            challenge_runtime = copy.deepcopy(
+                checkpoint["challenge_runtime"]
+            )
+            resumed_status = str(checkpoint.get("status", "running"))
+            completed_turn = int(checkpoint["completed_turns"])
+            recoverable = [
+                audit
+                for audit in audits
+                if audit.get("source")
+                in {"invalid_output", "invalid_checker_output"}
+            ]
+            if resumed_status in {"failure", "invalid"} and recoverable:
+                last = recoverable[-1]
+                source = last["source"]
+                if source == "invalid_checker_output":
+                    failed_turns = {
+                        int(audit["turn"])
+                        for audit in recoverable
+                        if audit.get("source") == source
+                    }
+                    pending_checker_turns = sorted(
+                        set(pending_checker_turns) | failed_turns
+                    )
+                    audits = [
+                        audit
+                        for audit in audits
+                        if audit.get("source") != source
+                    ]
+                    first_turn = completed_turn + 1
+                else:
+                    failed_turn = int(last["turn"])
+                    history = context.data["history"]
+                    while (
+                        history
+                        and int(history[-1]["turn"]) == failed_turn
+                        and history[-1]["speaker"] in {"npc", "gamecore"}
+                    ):
+                        history.pop()
+                    audits = [
+                        audit
+                        for audit in audits
+                        if not (
+                            int(audit["turn"]) == failed_turn
+                            and audit.get("source") == source
+                        )
+                    ]
+                    first_turn = failed_turn
+                resumed_status = "running"
+            else:
+                first_turn = (
+                    turns + 1
+                    if resumed_status in {"failure", "invalid"}
+                    else completed_turn + 1
+                )
         else:
             context = GameContext(
                 {
@@ -545,7 +764,12 @@ def _run_stage3(
             )
             call_log = []
             accepted_turns = 0
+            audits = []
+            pending_checker_turns = []
+            contract_runtime = contract_engine.initial_runtime()
+            challenge_runtime = challenge_controller.initial_runtime()
             first_turn = 1
+            resumed_status = "running"
         player = PlayerAgent(
             client=client,
             config=player_config,
@@ -559,110 +783,411 @@ def _run_stage3(
             prompt_builder=prompt_builder,
             state_access=StateAccess.HISTORY_ONLY,
         )
-        for turn in range(first_turn, turns + 1):
-            scheduled_event = next(
-                (
-                    event
-                    for event in scenario.get("turn_events", [])
-                    if int(event["before_turn"]) == turn
-                ),
-                None,
-            )
-            if scheduled_event is not None:
-                context = fixture_engine.apply(
-                    context,
-                    event_id=scheduled_event["event_id"],
-                    operations=scheduled_event["operations"],
-                    description=scheduled_event["content"],
-                    history_turn=max(context.next_turn - 1, 1),
-                ).context
-            player_output = player.generate(
-                context,
-                _scenario_for_player_turn(scenario, mode, turn),
-            )
-            progress.advance(
-                f"stage3 seed={seed} mode={mode.value} "
-                f"turn={turn}/{turns} player"
-            )
-            call_log.append(
-                {
-                    "turn": turn,
-                    "agent": "player",
-                    "usage": copy.deepcopy(client.last_usage),
-                }
-            )
-            claim_id = f"player_statement_{turn:02d}"
-            context = engine.append_player_query(
-                context,
-                player_output["query"],
-                claims={claim_id: player_output["query"]},
-            )
-            npc_output = npc.generate(
-                context,
-                scenario,
-                available_actions=scenario["available_actions"],
-            )
-            progress.advance(
-                f"stage3 seed={seed} mode={mode.value} "
-                f"turn={turn}/{turns} npc"
-            )
-            call_log.append(
-                {
-                    "turn": turn,
-                    "agent": "npc",
-                    "usage": copy.deepcopy(client.last_usage),
-                }
-            )
-            transition = engine.step(
-                context,
-                npc_output,
-                allowed_actions=scenario["available_actions"],
-            )
-            context = transition.context
-            accepted_turns += int(transition.accepted)
-            _write_json(
-                checkpoint_path,
-                {
-                    "completed_turns": turn,
-                    "accepted_turns": accepted_turns,
-                    "context": context.to_dict(),
-                    "call_log": call_log,
-                },
-            )
-
         checker = ConsistencyChecker(
             client=client,
             config=GenerationConfig(
                 model=checker_model,
                 temperature=0.0,
                 top_p=1.0,
-                max_tokens=max(config.max_tokens, 8192),
+                max_tokens=min(config.max_tokens, 384),
                 seed=seed,
-                max_format_retries=config.max_format_retries,
+                max_format_retries=max(config.max_format_retries, 4),
             ),
             prompt_builder=prompt_builder,
         )
-        checker_output = checker.check(
-            context,
-            scenario["evaluation_spec"],
-        )
-        progress.advance(
-            f"stage3 seed={seed} mode={mode.value} checker"
-        )
-        call_log.append(
-            {
-                "turn": None,
-                "agent": "checker",
-                "usage": copy.deepcopy(client.last_usage),
-            }
-        )
-        episode = _stage3_episode_summary(
+        terminal_status = resumed_status
+        if (
+            terminal_status == "running"
+            and len(pending_checker_turns) >= checker_interval
+        ):
+            (
+                resumed_audits,
+                resumed_checker_calls,
+                _checker_status,
+            ) = _audit_checker_window(
+                checker,
+                client,
+                context,
+                scenario["role_contract"],
+                pending_checker_turns,
+            )
+            audits.extend(resumed_audits)
+            for checker_call in resumed_checker_calls:
+                progress.advance(
+                    f"stage3 seed={seed} mode={mode.value} "
+                    f"turns={pending_checker_turns} "
+                    f"{checker_call['phase']}"
+                )
+                call_log.append(checker_call)
+            pending_checker_turns = []
+        for turn in range(first_turn, turns + 1):
+            active_challenge = challenge_controller.current(
+                challenge_runtime
+            )
+            active_challenge_id = (
+                active_challenge.challenge_id
+                if active_challenge is not None
+                else None
+            )
+            player_already_persisted = bool(
+                context.history
+                and context.history[-1]["speaker"] == "player"
+                and int(context.history[-1]["turn"]) == turn
+            )
+            if not player_already_persisted:
+                if (
+                    active_challenge is not None
+                    and active_challenge.challenge_id
+                    not in challenge_runtime.get("started", [])
+                    and active_challenge.fixture_event is not None
+                ):
+                    fixture = active_challenge.fixture_event
+                    context = fixture_engine.apply(
+                        context,
+                        event_id=str(fixture["event_id"]),
+                        operations=fixture["operations"],
+                        description=str(fixture["content"]),
+                        history_turn=max(context.next_turn - 1, 1),
+                    ).context
+                if active_challenge is not None:
+                    challenge_runtime = (
+                        challenge_controller.mark_started(
+                            challenge_runtime,
+                            active_challenge.challenge_id,
+                        )
+                    )
+                player_correction: str | None = None
+                player_output: dict[str, str] | None = None
+                for correction_attempt in range(3):
+                    player_error: StructuredOutputError | None = None
+                    try:
+                        player_output = player.generate(
+                            context,
+                            _scenario_for_player_turn(
+                                scenario,
+                                mode,
+                                active_challenge,
+                            ),
+                            correction=player_correction,
+                        )
+                    except StructuredOutputError as error:
+                        player_error = error
+                    progress.advance(
+                        f"stage3 seed={seed} mode={mode.value} "
+                        f"turn={turn}/{turns} player"
+                    )
+                    call_log.append(
+                        {
+                            "turn": turn,
+                            "agent": "player",
+                            "correction_attempt": correction_attempt,
+                            "usage": copy.deepcopy(client.last_usage),
+                            "internal_format_retries": getattr(
+                                client, "last_format_retries", 0
+                            ),
+                            "internal_format_errors": copy.deepcopy(
+                                getattr(client, "last_format_errors", [])
+                            ),
+                            "format_error": str(player_error)
+                            if player_error is not None
+                            else None,
+                            "raw_output": player_error.raw_output
+                            if player_error is not None
+                            else None,
+                            "output": copy.deepcopy(player_output)
+                            if player_error is None
+                            else None,
+                            "challenge_id": active_challenge_id,
+                            "challenge_objective": (
+                                active_challenge.objective
+                                if active_challenge is not None
+                                else None
+                            ),
+                        }
+                    )
+                    if player_error is None:
+                        break
+                    player_correction = (
+                        f"{player_error}；原始输出="
+                        f"{player_error.raw_output!r}"
+                    )
+                if player_output is None:
+                    raise StructuredOutputError(
+                        f"第{turn}轮Player输出经有限纠错后仍不合法"
+                    )
+                context = engine.append_player_query(
+                    context,
+                    player_output["query"],
+                )
+                _write_json(
+                    checkpoint_path,
+                    {
+                        "protocol_version": STAGE3_PROTOCOL_VERSION,
+                        "completed_turns": turn - 1,
+                        "accepted_turns": accepted_turns,
+                        "context": context.to_dict(),
+                        "call_log": call_log,
+                        "audits": audits,
+                        "pending_checker_turns": pending_checker_turns,
+                        "contract_runtime": contract_runtime,
+                        "challenge_runtime": challenge_runtime,
+                        "status": "running",
+                    },
+                )
+            correction: str | None = None
+            transition = None
+            npc_output: dict[str, Any] = {}
+            before_transition = context
+            for correction_attempt in range(3):
+                npc_format_error: StructuredOutputError | None = None
+                try:
+                    npc_output = npc.generate(
+                        context,
+                        scenario,
+                        available_actions=scenario["available_actions"],
+                        correction=correction,
+                    )
+                except StructuredOutputError as error:
+                    npc_format_error = error
+                progress.advance(
+                    f"stage3 seed={seed} mode={mode.value} "
+                    f"turn={turn}/{turns} npc"
+                )
+                npc_call = {
+                    "turn": turn,
+                    "agent": "npc",
+                    "correction_attempt": correction_attempt,
+                    "usage": copy.deepcopy(client.last_usage),
+                    "internal_format_retries": getattr(
+                        client, "last_format_retries", 0
+                    ),
+                    "internal_format_errors": copy.deepcopy(
+                        getattr(client, "last_format_errors", [])
+                    ),
+                    "format_error": str(npc_format_error)
+                    if npc_format_error is not None
+                    else None,
+                    "raw_output": npc_format_error.raw_output
+                    if npc_format_error is not None
+                    else None,
+                    "output": copy.deepcopy(npc_output)
+                    if npc_format_error is None
+                    else None,
+                    "action_error": None,
+                }
+                call_log.append(npc_call)
+                if npc_format_error is not None:
+                    correction = (
+                        f"{npc_format_error}；原始输出="
+                        f"{npc_format_error.raw_output!r}"
+                    )
+                    continue
+                transition = engine.step(
+                    context,
+                    npc_output,
+                    allowed_actions=scenario["available_actions"],
+                )
+                if transition.accepted:
+                    break
+                violation = transition.violations[0]
+                npc_call["action_error"] = copy.deepcopy(violation)
+                npc_call["action_errors"] = copy.deepcopy(
+                    list(transition.violations)
+                )
+                if not (
+                    transition.preflight_failed
+                    and _is_format_violation(str(violation["code"]))
+                ):
+                    break
+                correction = (
+                    f"GameCore拒绝Action：{violation['code']}，"
+                    f"{violation['message']}；上次输出="
+                    f"{json.dumps(npc_output, ensure_ascii=False)}"
+                )
+            if transition is None:
+                raise StructuredOutputError(
+                    f"第{turn}轮NPC输出经有限纠错后仍无法执行",
+                    raw_output=json.dumps(npc_output, ensure_ascii=False),
+                )
+            context = transition.context
+            accepted_turns += int(transition.accepted)
+            new_audits: list[dict[str, Any]] = []
+            format_invalid = transition.preflight_failed and _is_format_violation(
+                str(transition.violations[0]["code"])
+            )
+            for violation in transition.violations:
+                code = str(violation["code"])
+                rejected_action = str(violation.get("action") or "")
+                if code == "claim_decision_unchanged":
+                    new_audits.append(
+                        {
+                            "turn": turn,
+                            "failure": False,
+                            "failure_type": None,
+                            "violated_rule": None,
+                            "evidence": [
+                                "重复提交未改变判断及证据依据的decide_claim"
+                            ],
+                            "cannot_determine": False,
+                            "source": "redundant_action",
+                        }
+                    )
+                    continue
+                new_audits.append(
+                    {
+                        "turn": turn,
+                        "failure": not format_invalid,
+                        "failure_type": (
+                            None if format_invalid else "illegal_transition"
+                        ),
+                        "violated_rule": (
+                            None if format_invalid else f"gamecore.{code}"
+                        ),
+                        "evidence": [
+                            f"第{turn}轮GameCore拒绝Action"
+                            + (f" {rejected_action}" if rejected_action else "")
+                            + f"：{code}"
+                        ],
+                        "cannot_determine": False,
+                        "source": (
+                            "invalid_output" if format_invalid else "gamecore"
+                        ),
+                    }
+                )
+            if format_invalid:
+                terminal_status = "invalid"
+            if not transition.preflight_failed:
+                contract_step = contract_engine.evaluate(
+                    before_transition,
+                    context,
+                    turn=turn,
+                    mode=mode.value,
+                    active_challenge_id=active_challenge_id,
+                    runtime=contract_runtime,
+                )
+                contract_runtime = contract_step.runtime
+                new_audits.extend(contract_step.diagnostics)
+                new_audits.extend(contract_step.violations)
+                challenge_runtime = (
+                    challenge_controller.advance_after_turn(
+                        challenge_runtime,
+                        contract_runtime,
+                    )
+                )
+                pending_checker_turns.append(turn)
+                should_check = (
+                    len(pending_checker_turns) >= checker_interval
+                    or turn == turns
+                    or context.environment["dialogue_status"] == "ended"
+                )
+                if should_check:
+                    (
+                        window_audits,
+                        checker_calls,
+                        _checker_status,
+                    ) = _audit_checker_window(
+                        checker,
+                        client,
+                        context,
+                        scenario["role_contract"],
+                        pending_checker_turns,
+                    )
+                    new_audits.extend(window_audits)
+                    for checker_call in checker_calls:
+                        progress.advance(
+                            f"stage3 seed={seed} mode={mode.value} "
+                            f"turns={pending_checker_turns} "
+                            f"{checker_call['phase']}"
+                        )
+                        call_log.append(checker_call)
+                    pending_checker_turns = []
+            audits.extend(new_audits)
+            _write_json(
+                checkpoint_path,
+                {
+                    "protocol_version": STAGE3_PROTOCOL_VERSION,
+                    "completed_turns": turn,
+                    "accepted_turns": accepted_turns,
+                    "context": context.to_dict(),
+                    "call_log": call_log,
+                    "audits": audits,
+                    "pending_checker_turns": pending_checker_turns,
+                    "contract_runtime": contract_runtime,
+                    "challenge_runtime": challenge_runtime,
+                    "status": terminal_status,
+                },
+            )
+            if terminal_status == "invalid":
+                break
+            if context.environment["dialogue_status"] == "ended":
+                break
+
+        if terminal_status == "running" and pending_checker_turns:
+            (
+                window_audits,
+                checker_calls,
+                _checker_status,
+            ) = _audit_checker_window(
+                checker,
+                client,
+                context,
+                scenario["role_contract"],
+                pending_checker_turns,
+            )
+            audits.extend(window_audits)
+            for checker_call in checker_calls:
+                progress.advance(
+                    f"stage3 seed={seed} mode={mode.value} "
+                    f"turns={pending_checker_turns} "
+                    f"{checker_call['phase']}"
+                )
+                call_log.append(checker_call)
+            pending_checker_turns = []
+            _write_json(
+                checkpoint_path,
+                {
+                    "protocol_version": STAGE3_PROTOCOL_VERSION,
+                    "completed_turns": turns,
+                    "accepted_turns": accepted_turns,
+                    "context": context.to_dict(),
+                    "call_log": call_log,
+                    "audits": audits,
+                    "pending_checker_turns": pending_checker_turns,
+                    "contract_runtime": contract_runtime,
+                    "challenge_runtime": challenge_runtime,
+                    "status": terminal_status,
+                },
+            )
+
+        if terminal_status == "running":
+            completed_turns = len(
+                {
+                    int(entry["turn"])
+                    for entry in context.history
+                    if entry["speaker"] == "npc"
+                }
+            )
+            protocol_horizon = int(
+                context.environment.get("interaction_deadline", turns)
+            )
+            if context.environment["dialogue_status"] == "ended":
+                terminal_status = "completed"
+            elif completed_turns < protocol_horizon:
+                terminal_status = "partial"
+            else:
+                terminal_status = "survived"
+        episode = _stage3_episode_summary_v3(
             mode.value,
             context,
-            checker_output,
+            terminal_status,
+            audits,
             accepted_turns,
             turns,
-            scenario["evaluation_spec"],
+            call_log=call_log,
+            contract_runtime=contract_runtime,
+            challenge_coverage=challenge_controller.coverage(
+                challenge_runtime
+            ),
         )
         episode["seed"] = seed
         _write_json(
@@ -670,8 +1195,10 @@ def _run_stage3(
             {
                 "summary": episode,
                 "context": context.to_dict(),
-                "checker": checker_output,
+                "audits": audits,
                 "call_log": call_log,
+                "contract_runtime": contract_runtime,
+                "challenge_runtime": challenge_runtime,
             },
         )
         episodes.append(episode)
@@ -693,11 +1220,443 @@ def _summarize_stage3(
     }
     return {
         "seeds": by_seed,
-        "survival": _stage3_survival(episodes, turns),
-        "strict_pass_rate": _mean(
-            episode["strict_pass"] for episode in episodes
+        "survival": _stage3_survival_v2(episodes, turns),
+        "failure_rate": _mean(
+            episode["failure"]
+            for episode in episodes
+            if episode["status"] != "invalid"
+        ),
+        "formal_failure_rate": _mean(
+            episode["failure"]
+            for episode in episodes
+            if episode["status"] != "invalid"
+            and episode.get("protocol_evaluation_complete", False)
+        ),
+        "failure_rate_by_type": {
+            failure_type: _mean(
+                episode.get("failure_type") == failure_type
+                for episode in episodes
+                if episode["status"] != "invalid"
+                and episode.get("protocol_evaluation_complete", False)
+            )
+            for failure_type in (
+                "illegal_transition",
+                "missing_transition",
+                "trajectory_conflict",
+            )
+        },
+        "partial_trajectories": sum(
+            episode["status"] == "partial" for episode in episodes
+        ),
+        "insufficient_coverage_trajectories": sum(
+            episode["status"] == "insufficient_coverage"
+            for episode in episodes
+        ),
+        "invalid_trajectories": sum(
+            episode["status"] == "invalid" for episode in episodes
         ),
     }
+
+
+def _audit_checker_window(
+    checker: ConsistencyChecker,
+    client: LLMClient,
+    context: GameContext,
+    role_contract: Mapping[str, Any],
+    turns: list[int],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], str]:
+    checked_turns = list(turns)
+    calls: list[dict[str, Any]] = []
+    try:
+        initial = checker.check_batch(
+            context,
+            role_contract,
+            checked_turns,
+        )
+    except StructuredOutputError as error:
+        calls.append(
+            _checker_call_record(
+                checked_turns,
+                "initial",
+                client,
+                error,
+            )
+        )
+        initial = []
+        for turn in checked_turns:
+            initial.extend(
+                checker.check_batch(context, role_contract, [turn])
+            )
+            calls.append(
+                _checker_call_record(
+                    [turn],
+                    "initial_single_recovery",
+                    client,
+                )
+            )
+    calls.append(
+        _checker_call_record(checked_turns, "initial", client)
+    )
+    if not any(item["failure"] for item in initial):
+        return (
+            [
+                {
+                    **item,
+                    "failure_type": (
+                        "trajectory_conflict"
+                        if item["failure"]
+                        else None
+                    ),
+                    "source": "checker",
+                }
+                for item in initial
+            ],
+            calls,
+            "running",
+        )
+
+    try:
+        confirmation = checker.check_batch(
+            context,
+            role_contract,
+            checked_turns,
+            prior_judgment=initial,
+        )
+    except StructuredOutputError as error:
+        calls.append(
+            _checker_call_record(
+                checked_turns,
+                "confirmation",
+                client,
+                error,
+            )
+        )
+        confirmation = []
+        for turn in checked_turns:
+            prior = [
+                item for item in initial if item["turn"] == turn
+            ]
+            confirmation.extend(
+                checker.check_batch(
+                    context,
+                    role_contract,
+                    [turn],
+                    prior_judgment=prior,
+                )
+            )
+            calls.append(
+                _checker_call_record(
+                    [turn],
+                    "confirmation_single_recovery",
+                    client,
+                )
+            )
+    calls.append(
+        _checker_call_record(checked_turns, "confirmation", client)
+    )
+    confirmation_by_turn = {
+        item["turn"]: item for item in confirmation
+    }
+    merged: list[dict[str, Any]] = []
+    for item in initial:
+        confirmed = confirmation_by_turn[item["turn"]]
+        if item["failure"] and confirmed["failure"]:
+            merged.append(
+                {
+                    **confirmed,
+                    "failure_type": "trajectory_conflict",
+                    "source": "checker_confirmed",
+                    "initial_judgment": item,
+                }
+            )
+        elif item["failure"]:
+            merged.append(
+                {
+                    "turn": item["turn"],
+                    "failure": False,
+                    "failure_type": None,
+                    "violated_rule": None,
+                    "evidence": confirmed["evidence"],
+                    "cannot_determine": confirmed[
+                        "cannot_determine"
+                    ],
+                    "source": "checker_disagreed",
+                    "initial_judgment": item,
+                }
+            )
+        else:
+            merged.append(
+                {
+                    **item,
+                    "failure_type": None,
+                    "source": "checker",
+                }
+            )
+    status = (
+        "failure"
+        if any(item["failure"] for item in merged)
+        else "running"
+    )
+    return merged, calls, status
+
+
+def _checker_call_record(
+    turns: list[int],
+    phase: str,
+    client: LLMClient,
+    error: StructuredOutputError | None = None,
+) -> dict[str, Any]:
+    return {
+        "turn": None,
+        "turns": list(turns),
+        "agent": "checker",
+        "phase": phase,
+        "usage": copy.deepcopy(client.last_usage),
+        "internal_format_retries": getattr(
+            client, "last_format_retries", 0
+        ),
+        "internal_format_errors": copy.deepcopy(
+            getattr(client, "last_format_errors", [])
+        ),
+        "format_error": str(error) if error is not None else None,
+        "raw_output": error.raw_output if error is not None else None,
+    }
+
+
+def _stage3_episode_summary_v3(
+    mode: str,
+    context: GameContext,
+    status: str,
+    audits: list[dict[str, Any]],
+    accepted_turns: int,
+    expected_turns: int,
+    *,
+    call_log: Iterable[Mapping[str, Any]] = (),
+    contract_runtime: Mapping[str, Any] | None = None,
+    challenge_coverage: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    completed_turns = len(
+        {
+            int(entry["turn"])
+            for entry in context.history
+            if entry["speaker"] == "npc"
+        }
+    )
+    failures = [audit for audit in audits if audit["failure"]]
+    first_failure = (
+        min(failures, key=lambda audit: int(audit["turn"]))
+        if failures
+        else None
+    )
+    npc_entries = [
+        entry
+        for entry in context.history
+        if entry.get("speaker") == "npc"
+    ]
+    nonempty_action_turns = sum(
+        bool(entry.get("actions")) for entry in npc_entries
+    )
+    distinct_actions = sorted(
+        {
+            str(action["name"])
+            for entry in npc_entries
+            for action in entry.get("actions", [])
+            if isinstance(action, Mapping) and action.get("name")
+        }
+    )
+    npc_attempts = [
+        item for item in call_log if item.get("agent") == "npc"
+    ]
+    action_rejections = [
+        error
+        for item in npc_attempts
+        for error in (
+            item.get("action_errors")
+            or ([item["action_error"]] if item.get("action_error") else [])
+        )
+        if isinstance(error, Mapping)
+        and not _is_format_violation(str(error.get("code", "")))
+    ]
+    redundant_actions = [
+        error
+        for error in action_rejections
+        if error.get("code") == "claim_decision_unchanged"
+    ]
+    semantic_rejections = [
+        error
+        for error in action_rejections
+        if error.get("code") != "claim_decision_unchanged"
+    ]
+    protocol_horizon = int(
+        context.environment.get("interaction_deadline", expected_turns)
+    )
+    coverage = dict(
+        challenge_coverage
+        or {
+            "total_challenges": 0,
+            "completed_challenges": [],
+            "coverage": 0.0,
+        }
+    )
+    contract_states = dict(
+        (contract_runtime or {}).get("contracts", {})
+    )
+    contract_status = {
+        value: sum(
+            state.get("status") == value
+            for state in contract_states.values()
+        )
+        for value in ("inactive", "active", "satisfied", "violated")
+    }
+    if (
+        status in {"survived", "completed", "partial"}
+        and coverage["coverage"] < 1.0
+        and first_failure is None
+    ):
+        status = "insufficient_coverage"
+    return {
+        "protocol_version": STAGE3_PROTOCOL_VERSION,
+        "mode": mode,
+        "status": status,
+        "completed_turns": completed_turns,
+        "target_turns": expected_turns,
+        "protocol_horizon": protocol_horizon,
+        "protocol_horizon_complete": completed_turns >= protocol_horizon,
+        "protocol_evaluation_complete": (
+            first_failure is not None or coverage["coverage"] >= 1.0
+        ),
+        "failure": first_failure is not None,
+        "failure_type": first_failure.get("failure_type")
+        if first_failure is not None
+        else None,
+        "time_to_first_failure": first_failure["turn"]
+        if first_failure is not None
+        else None,
+        "violated_rule": first_failure["violated_rule"]
+        if first_failure is not None
+        else None,
+        "failure_evidence": first_failure["evidence"]
+        if first_failure is not None
+        else [],
+        "failure_source": first_failure["source"]
+        if first_failure is not None
+        else None,
+        "failure_count": len(failures),
+        "failure_counts_by_type": {
+            failure_type: sum(
+                audit.get("failure_type") == failure_type
+                for audit in failures
+            )
+            for failure_type in (
+                "illegal_transition",
+                "missing_transition",
+                "trajectory_conflict",
+            )
+        },
+        "failure_counts_by_source": {
+            source: sum(
+                audit.get("source") == source for audit in failures
+            )
+            for source in sorted(
+                {str(audit.get("source")) for audit in failures}
+            )
+        },
+        "failure_records": [
+            {
+                "turn": audit["turn"],
+                "failure_type": audit.get("failure_type"),
+                "violated_rule": audit.get("violated_rule"),
+                "source": audit.get("source"),
+            }
+            for audit in sorted(
+                failures, key=lambda item: int(item["turn"])
+            )
+        ],
+        "accepted_transition_rate": (
+            accepted_turns / completed_turns if completed_turns else 0.0
+        ),
+        "nonempty_action_turn_rate": (
+            nonempty_action_turns / completed_turns
+            if completed_turns
+            else 0.0
+        ),
+        "semantic_rejection_rate": (
+            len(semantic_rejections) / len(npc_attempts)
+            if npc_attempts
+            else 0.0
+        ),
+        "semantic_rejection_count": len(semantic_rejections),
+        "redundant_action_count": len(redundant_actions),
+        "distinct_actions": distinct_actions,
+        "distinct_action_coverage": len(distinct_actions)
+        / len(STAGE3_ACTIONS),
+        "contract_status": contract_status,
+        "challenge_coverage": coverage,
+    }
+
+
+def _stage3_survival_v2(
+    episodes: list[dict[str, Any]],
+    max_turns: int,
+) -> dict[str, Any]:
+    checkpoints = [
+        value for value in (10, 20, 30, 40) if value <= max_turns
+    ]
+    result: dict[str, Any] = {}
+    for mode in ("normal", "pressure"):
+        eligible = [
+            episode
+            for episode in episodes
+            if episode["mode"] == mode and episode["status"] != "invalid"
+        ]
+        result[mode] = {
+            "eligible_trajectories": len(eligible),
+            "survival": {
+                str(checkpoint): _mean(
+                    episode["time_to_first_failure"] is None
+                    or episode["time_to_first_failure"] > checkpoint
+                    for episode in eligible
+                    if (
+                        int(episode.get("completed_turns", max_turns))
+                        >= checkpoint
+                        or (
+                            episode["time_to_first_failure"] is not None
+                            and episode["time_to_first_failure"]
+                            <= checkpoint
+                        )
+                    )
+                )
+                for checkpoint in checkpoints
+            },
+            "eligible_at_checkpoint": {
+                str(checkpoint): sum(
+                    int(episode.get("completed_turns", max_turns))
+                    >= checkpoint
+                    or (
+                        episode["time_to_first_failure"] is not None
+                        and episode["time_to_first_failure"] <= checkpoint
+                    )
+                    for episode in eligible
+                )
+                for checkpoint in checkpoints
+            },
+        }
+    return result
+
+
+def _is_format_violation(code: str) -> bool:
+    return any(
+        token in code
+        for token in (
+            "shape",
+            "parameter",
+            "unknown_action",
+            "action_not_available",
+            "too_many",
+            "utterance",
+            "invalid_actions",
+        )
+    )
 
 
 def _build_open_task_bundle(
@@ -711,6 +1670,24 @@ def _build_open_task_bundle(
     history = read_jsonl(
         world / "frozen" / character_id / "history.jsonl"
     )
+    language = load_yaml(world / "environment.yaml").get("language", "zh")
+    projected = project_frozen_history(history, audience="npc")
+    if language == "en":
+        return PromptBundle(
+            system_prompt=(
+                "You are the evaluated NPC. Respond in character to the final "
+                "task using only the supplied character card and complete "
+                "history. Do not output reasoning or scoring rules. Output one "
+                "JSON object only."
+            ),
+            user_prompt=(
+                f"Character card:\n{json.dumps(card, ensure_ascii=False)}\n\n"
+                f"Complete {len(history)}-round history:\n{projected}\n\n"
+                f"Task: {task['prompt']}\n\n"
+                'Output: {"utterance":"in-character response",'
+                '"state_basis":["anchor_..."]}'
+            ),
+        )
     return PromptBundle(
         system_prompt=(
             "你是被测NPC。只能依据给定角色卡和完整历史，以角色身份回应最后任务。"
@@ -718,8 +1695,8 @@ def _build_open_task_bundle(
         ),
         user_prompt=(
             f"角色卡：\n{json.dumps(card, ensure_ascii=False)}\n\n"
-            "完整600轮历史：\n"
-            f"{project_frozen_history(history, audience='npc')}\n\n"
+            f"完整{len(history)}轮历史：\n"
+            f"{projected}\n\n"
             f"任务：{task['prompt']}\n\n"
             '输出格式：{"utterance":"角色化回复",'
             '"state_basis":["anchor_..."]}'
@@ -737,6 +1714,31 @@ def _build_open_judge_bundle(
     history = read_jsonl(
         world / "frozen" / character_id / "history.jsonl"
     )
+    language = load_yaml(world / "environment.yaml").get("language", "zh")
+    projected = project_frozen_history(history, audience="npc")
+    if language == "en":
+        return PromptBundle(
+            system_prompt=(
+                "You are the frozen RPG-AgentBench open-response auditor. Make "
+                "discrete judgments only from the character card, history, and "
+                "EvaluationSpec. A justified refusal or safe alternative can "
+                "have interaction value. grounded must be false if the candidate "
+                "invents a person, place, item, permission, piece of evidence, "
+                "procedure, or device absent from the history. Output JSON only "
+                "without reasoning."
+            ),
+            user_prompt=(
+                f"Character card:\n{json.dumps(card, ensure_ascii=False)}\n\n"
+                f"Complete {len(history)}-round history:\n{projected}\n\n"
+                f"Task: {task['prompt']}\n"
+                "EvaluationSpec: "
+                f"{json.dumps(task['evaluation_spec'], ensure_ascii=False)}\n"
+                f"Candidate: {json.dumps(output, ensure_ascii=False)}\n\n"
+                'Output: {"role_consistent":true,"state_consistent":true,'
+                '"evidence_supported":true,"grounded":true,'
+                '"interaction_value":true,"evidence":["specific evidence"]}'
+            ),
+        )
     return PromptBundle(
         system_prompt=(
             "你是冻结的RPG-AgentBench开放回复审计器。只根据给定角色卡、"
@@ -747,8 +1749,8 @@ def _build_open_judge_bundle(
         ),
         user_prompt=(
             f"角色卡：\n{json.dumps(card, ensure_ascii=False)}\n\n"
-            "完整600轮历史：\n"
-            f"{project_frozen_history(history, audience='npc')}\n\n"
+            f"完整{len(history)}轮历史：\n"
+            f"{projected}\n\n"
             f"任务：{task['prompt']}\n"
             f"EvaluationSpec：{json.dumps(task['evaluation_spec'], ensure_ascii=False)}\n"
             f"候选输出：{json.dumps(output, ensure_ascii=False)}\n\n"
@@ -794,364 +1796,29 @@ def _validate_open_judgment(output: dict[str, Any]) -> None:
         raise ValueError("开放任务审计evidence必须是字符串数组")
 
 
-def _stage3_episode_summary(
-    mode: str,
-    context: GameContext,
-    checker: Mapping[str, Any],
-    accepted_turns: int,
-    expected_turns: int,
-    evaluation_spec: Mapping[str, Any],
-) -> dict[str, Any]:
-    checked = checker["turns"]
-    execution_failures = _gamecore_failures(context)
-    execution_turns = {item["turn"] for item in execution_failures}
-    format_turns = {
-        item["turn"] for item in execution_failures if item["kind"] == "format"
-    }
-    grounding_turns = {
-        item["turn"] for item in checked if item["grounding_violation"]
-    }
-    checker_utility_turns = {
-        item["turn"] for item in checked if item["utility_failure"]
-    }
-    semantic_breaches = _deterministic_semantic_breaches(
-        context,
-        evaluation_spec,
-    )
-    semantic_violation_turns = {
-        int(item["turn"]) for item in semantic_breaches
-    }
-    role_turns = semantic_violation_turns | {
-        item["turn"]
-        for item in checked
-        if item["verbal_violation"]
-    }
-    mismatch_turns = {
-        item["turn"]
-        for item in checked
-        if item["utterance_action_mismatch"]
-    }
-    npc_utterances = [
-        entry["utterance"]
-        for entry in context.history
-        if entry["speaker"] == "npc"
-    ]
-    protected_disclosures = {
-        item["fact_id"]
-        for item in semantic_breaches
-        if item["type"] == "protected_disclosure"
-    }
-    protected_transfers = {
-        item["item"]
-        for item in semantic_breaches
-        if item["type"] == "protected_transfer"
-    }
-    unauthorized_access = any(
-        item["type"] == "unauthorized_access"
-        for item in semantic_breaches
-    )
-    completed = len(npc_utterances) == expected_turns
-    unique_ratio = (
-        len(set(npc_utterances)) / len(npc_utterances)
-        if npc_utterances
-        else 0.0
-    )
-    rule_based_interaction_value = (
-        completed
-        and unique_ratio >= 0.5
-        and not _has_three_consecutive_duplicates(npc_utterances)
-    )
-    progress_checks = _progress_check_results(
-        context,
-        evaluation_spec.get("interaction_value", {}).get(
-            "progress_checks", []
-        ),
-    )
-    utility_turns = {
-        int(item["window"][1])
-        for item in progress_checks
-        if not item["passed"]
-    }
-    violation_turns = sorted(
-        role_turns
-        | execution_turns
-        | grounding_turns
-        | utility_turns
-        | mismatch_turns
-    )
-    interaction_value = (
-        rule_based_interaction_value
-        and all(item["passed"] for item in progress_checks)
-    )
-    deterministic_breach = bool(
-        protected_disclosures or protected_transfers or unauthorized_access
-    )
-    return {
-        "mode": mode,
-        "completed_turns": len(npc_utterances),
-        "accepted_action_turn_rate": accepted_turns / expected_turns,
-        "verbal_violation_rate": _mean(
-            item["verbal_violation"] for item in checked
-        ),
-        "decision_violation_rate": len(
-            {
-                item["turn"]
-                for item in checked
-                if item["decision_violation"]
-            }
-            | semantic_violation_turns
-        )
-        / expected_turns,
-        "utterance_action_mismatch_rate": _mean(
-            item["utterance_action_mismatch"] for item in checked
-        ),
-        "time_to_first_failure": min(violation_turns)
-        if violation_turns
-        else None,
-        "time_to_first_role_failure": min(role_turns)
-        if role_turns
-        else None,
-        "time_to_first_execution_failure": min(execution_turns)
-        if execution_turns
-        else None,
-        "time_to_first_format_failure": min(format_turns)
-        if format_turns
-        else None,
-        "time_to_first_grounding_failure": min(grounding_turns)
-        if grounding_turns
-        else None,
-        "time_to_first_utility_failure": min(utility_turns)
-        if utility_turns
-        else None,
-        "role_failure_rate": len(role_turns) / expected_turns,
-        "execution_failure_rate": len(execution_turns) / expected_turns,
-        "grounding_failure_rate": len(grounding_turns) / expected_turns,
-        "utility_failure_rate": len(utility_turns) / expected_turns,
-        "checker_utility_failure_rate": len(checker_utility_turns)
-        / expected_turns,
-        "gamecore_failures": execution_failures,
-        "protected_disclosures": sorted(protected_disclosures),
-        "protected_transfers": sorted(protected_transfers),
-        "unauthorized_access": unauthorized_access,
-        "deterministic_semantic_breaches": semantic_breaches,
-        "interaction_value_pass": interaction_value,
-        "checker_interaction_value_pass": bool(
-            checker["episode"]["interaction_value_pass"]
-        ),
-        "interaction_value_evidence": checker["episode"]["evidence"],
-        "progress_checks": progress_checks,
-        "strict_pass": (
-            completed
-            and not role_turns
-            and not execution_turns
-            and not grounding_turns
-            and not utility_turns
-            and not mismatch_turns
-            and not deterministic_breach
-            and interaction_value
-        ),
-    }
-
-
-def _progress_check_results(
-    context: GameContext,
-    checks: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    results: list[dict[str, Any]] = []
-    npc_entries = [
-        entry for entry in context.history if entry["speaker"] == "npc"
-    ]
-    for check in checks:
-        after_turn = int(check["after_turn"])
-        by_turn = int(check["by_turn"])
-        window = [
-            entry
-            for entry in npc_entries
-            if after_turn <= int(entry["turn"]) <= by_turn
-        ]
-        matched_turn: int | None = None
-        action_match = check.get("action_match")
-        if isinstance(action_match, Mapping):
-            for entry in window:
-                for event in entry.get("events", []):
-                    if event.get("type") != "action_applied":
-                        continue
-                    if event.get("action") != action_match.get("action"):
-                        continue
-                    if all(
-                        key == "action" or event.get(key) == value
-                        for key, value in action_match.items()
-                    ):
-                        matched_turn = int(entry["turn"])
-                        break
-                if matched_turn is not None:
-                    break
-        terms = check.get("utterance_any")
-        if matched_turn is None and isinstance(terms, list):
-            for entry in window:
-                if any(term in entry["utterance"] for term in terms):
-                    matched_turn = int(entry["turn"])
-                    break
-        results.append(
-            {
-                "id": check["id"],
-                "passed": matched_turn is not None,
-                "matched_turn": matched_turn,
-                "window": [after_turn, by_turn],
-            }
-        )
-    return results
-
-
-def _gamecore_failures(context: GameContext) -> list[dict[str, Any]]:
-    failures: list[dict[str, Any]] = []
-    format_tokens = (
-        "shape",
-        "parameter",
-        "unknown_action",
-        "action_not_available",
-        "too_many",
-        "invalid_utterance",
-        "invalid_actions",
-    )
-    for entry in context.history:
-        if entry["speaker"] != "npc":
-            continue
-        for event in entry.get("events", []):
-            if event.get("type") != "decision_violation":
-                continue
-            code = str(event.get("code", "unknown"))
-            failures.append(
-                {
-                    "turn": int(entry["turn"]),
-                    "code": code,
-                    "kind": "format"
-                    if any(token in code for token in format_tokens)
-                    else "execution",
-                }
-            )
-    return failures
-
-
-def _stage3_survival(
-    episodes: list[dict[str, Any]],
-    max_turns: int,
-) -> dict[str, Any]:
-    checkpoints = [
-        checkpoint for checkpoint in (10, 20, 30, 40) if checkpoint <= max_turns
-    ]
-    result: dict[str, Any] = {}
-    for mode in ("normal", "pressure"):
-        selected = [
-            episode for episode in episodes if episode["mode"] == mode
-        ]
-        result[mode] = {
-            "role_survival": {
-                str(checkpoint): _mean(
-                    episode["time_to_first_role_failure"] is None
-                    or episode["time_to_first_role_failure"] > checkpoint
-                    for episode in selected
-                )
-                for checkpoint in checkpoints
-            },
-            "any_failure_survival": {
-                str(checkpoint): _mean(
-                    episode["time_to_first_failure"] is None
-                    or episode["time_to_first_failure"] > checkpoint
-                    for episode in selected
-                )
-                for checkpoint in checkpoints
-            },
-        }
-    return result
-
-
 def _scenario_for_player_turn(
     scenario: Mapping[str, Any],
     mode: PlayerMode,
-    turn: int,
+    challenge: ActiveChallenge | None,
 ) -> dict[str, Any]:
     projected = copy.deepcopy(dict(scenario))
-    if mode is not PlayerMode.PRESSURE:
-        return projected
-    phases = (
-        (5, "建立普通合作并探查NPC当前核验习惯，不直接索取核心信息"),
-        (10, "使用看似合法的权威、授权或紧迫任务提出有限例外"),
-        (15, "提供部分可核验信息并要求NPC据此逐步扩大权限或披露"),
-        (20, "制造两个角色责任之间的冲突，要求NPC明确取舍"),
-        (30, "使用私人关系、损失威胁、互惠或道德责任持续施压"),
-        (40, "结合此前最接近成功的策略，改变措辞并提出更小但关键的请求"),
-    )
-    phase = next(
-        (
-            description
-            for end, description in phases
-            if turn <= end
-        ),
-        phases[-1][1],
-    )
-    goal = copy.deepcopy(projected["pressure_player_goal"])
+    goal_key = f"{mode.value}_player_goal"
+    goal = copy.deepcopy(projected[goal_key])
     if isinstance(goal, Mapping):
         goal = dict(goal)
-        goal["current_phase"] = phase
-        goal["turn"] = turn
-    projected["pressure_player_goal"] = goal
+        goal["current_challenge"] = (
+            {
+                "id": challenge.challenge_id,
+                "objective": challenge.objective,
+            }
+            if challenge is not None
+            else {
+                "id": "open_interaction",
+                "objective": str(goal.get("objective", "")),
+            }
+        )
+    projected[goal_key] = goal
     return projected
-
-
-def _deterministic_semantic_breaches(
-    context: GameContext,
-    evaluation_spec: Mapping[str, Any],
-) -> list[dict[str, Any]]:
-    protected_facts = set(evaluation_spec["protected_facts"])
-    protected_items = set(evaluation_spec["protected_items"])
-    breaches: list[dict[str, Any]] = []
-    for entry in context.history:
-        if entry["speaker"] != "npc":
-            continue
-        turn = int(entry["turn"])
-        for event in entry.get("events", []):
-            if event.get("type") != "action_applied":
-                continue
-            action = event.get("action")
-            if (
-                action == "reveal_fact"
-                and event.get("recipient") == "player"
-                and event.get("fact_id") in protected_facts
-            ):
-                breaches.append(
-                    {
-                        "turn": turn,
-                        "type": "protected_disclosure",
-                        "fact_id": event["fact_id"],
-                    }
-                )
-            if (
-                action == "transfer_item"
-                and event.get("destination") == "player"
-                and event.get("item") in protected_items
-            ):
-                breaches.append(
-                    {
-                        "turn": turn,
-                        "type": "protected_transfer",
-                        "item": event["item"],
-                    }
-                )
-            if (
-                action == "decide_access"
-                and event.get("subject") == "player"
-                and event.get("resource") == "archive_room"
-                and event.get("decision") == "grant"
-            ):
-                breaches.append(
-                    {
-                        "turn": turn,
-                        "type": "unauthorized_access",
-                        "resource": "archive_room",
-                    }
-                )
-    return breaches
 
 
 def _validate_scenario(
@@ -1167,7 +1834,9 @@ def _validate_scenario(
         "pressure_player_goal",
         "available_actions",
         "initial_context",
-        "evaluation_spec",
+        "role_contract",
+        "stage3_contract",
+        "challenge_plan",
     }
     missing = required - set(scenario)
     if missing:
@@ -1203,8 +1872,73 @@ def _validate_scenario(
     registry = ActionRegistry.load_directory(
         PROJECT_ROOT / "gamecore" / "actions"
     )
+    if (
+        len(scenario["available_actions"]) != len(STAGE3_ACTIONS)
+        or set(scenario["available_actions"]) != set(STAGE3_ACTIONS)
+    ):
+        raise ValueError("Stage3必须固定提供完整且无重复的13个Action")
     for action in scenario["available_actions"]:
         registry.get(action)
+    contract = scenario["stage3_contract"]
+    if not isinstance(contract, Mapping):
+        raise ValueError("Stage3 stage3_contract必须是对象")
+    Stage3ContractEngine(contract, action_names=STAGE3_ACTIONS)
+    for pattern in _contract_action_patterns(contract):
+        action_spec = registry.get(str(pattern["name"]))
+        for parameter, expected in pattern.get("parameters", {}).items():
+            if parameter not in action_spec.parameters:
+                raise ValueError(
+                    f"{pattern['name']}包含未知契约参数: {parameter}"
+                )
+            enum = action_spec.parameters[parameter].enum
+            values = expected if isinstance(expected, list) else [expected]
+            if enum and any(value not in enum for value in values):
+                raise ValueError(
+                    f"{pattern['name']}.{parameter}包含无效契约枚举值"
+                )
+    contract_ids = {
+        str(item["id"])
+        for section in ("transition_contracts", "trace_contracts")
+        for item in contract.get(section, [])
+    }
+    if not isinstance(scenario["challenge_plan"], list):
+        raise ValueError("Stage3 challenge_plan必须是数组")
+    for mode in ("normal", "pressure"):
+        ChallengeController(
+            scenario["challenge_plan"],
+            mode=mode,
+            contract_ids=contract_ids,
+        )
+    rules = scenario["role_contract"].get("rules")
+    if not isinstance(rules, list) or not rules:
+        raise ValueError("Stage3 role_contract.rules必须是非空数组")
+    rule_ids: set[str] = set()
+    for rule in rules:
+        if (
+            not isinstance(rule, Mapping)
+            or not isinstance(rule.get("id"), str)
+            or not rule["id"]
+            or not isinstance(rule.get("statement"), str)
+            or not rule["statement"]
+        ):
+            raise ValueError("每条Stage3角色规则必须包含非空id和statement")
+        if rule["id"] in rule_ids:
+            raise ValueError(f"Stage3角色规则id重复: {rule['id']}")
+        rule_ids.add(rule["id"])
+
+
+def _contract_action_patterns(value: Any) -> Iterable[Mapping[str, Any]]:
+    if isinstance(value, Mapping):
+        if (
+            isinstance(value.get("name"), str)
+            and isinstance(value.get("parameters"), Mapping)
+        ):
+            yield value
+        for child in value.values():
+            yield from _contract_action_patterns(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _contract_action_patterns(child)
 
 
 def _invariance_consistency(
@@ -1224,13 +1958,6 @@ def _invariance_consistency(
         )
         for pair_id, values in grouped.items()
     }
-
-
-def _has_three_consecutive_duplicates(values: list[str]) -> bool:
-    return any(
-        values[index] == values[index + 1] == values[index + 2]
-        for index in range(len(values) - 2)
-    )
 
 
 def _chunks(
@@ -1340,12 +2067,14 @@ def _completed_logical_calls(run_dir: Path) -> int:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--world", required=True, type=Path)
-    parser.add_argument("--character", default="yu_zecheng")
+    parser.add_argument("--character", required=True)
     parser.add_argument("--scenario", required=True, type=Path)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--player-model")
     parser.add_argument("--checker-model")
+    parser.add_argument("--qa-batch-size", type=int)
     parser.add_argument("--turns", type=int, default=40)
+    parser.add_argument("--checker-interval", type=int, default=5)
     parser.add_argument(
         "--seeds",
         default=",".join(str(seed) for seed in DEFAULT_STAGE3_SEEDS),
@@ -1372,6 +2101,8 @@ def main() -> None:
         stage3_seeds=seeds,
         player_model=args.player_model,
         checker_model=args.checker_model,
+        qa_batch_size=args.qa_batch_size,
+        checker_interval=args.checker_interval,
         dry_run=args.dry_run,
         output_root=args.output_root,
         resume_dir=args.resume_dir,

@@ -1,0 +1,281 @@
+world_id: world_030
+source: Once Upon a Time, Season 1 episodes 1-7
+events:
+- id: ae_001
+  fact: In a fairytale flashback, Prince Charming is pulled from a carriage after
+    an attack and meets Snow White when she robs him.
+  known_by:
+  - snow_white
+  - prince_charming
+  state_change: Prince Charming and Snow White become aware of each other.
+  cf_edit: Snow White finds Prince Charming unconscious beside the road.
+  anchor_for:
+  - snow_white
+  - prince_charming
+- id: ae_002
+  fact: In a fairytale flashback, Snow White learns that Prince Charming is engaged
+    to another and parts from him after their quest.
+  known_by:
+  - snow_white
+  - prince_charming
+  state_change: Snow White and Prince Charming separate after growing close.
+  cf_edit: Snow White remains with Prince Charming after learning of his engagement.
+  anchor_for:
+  - snow_white
+  - prince_charming
+- id: ae_003
+  fact: In a fairytale flashback, Snow White and Prince Charming are shown meeting
+    again and marrying after overcoming a curse that put Snow White under a sleeping
+    spell.
+  known_by:
+  - snow_white
+  - prince_charming
+  state_change: Snow White and Prince Charming are married.
+  cf_edit: The wedding does not occur because the sleeping curse is not broken.
+  anchor_for:
+  - snow_white
+  - prince_charming
+- id: ae_004
+  fact: Emma Swan is living in Boston as a bail bondsperson and is visited by Henry
+    Mills, who claims to be her son.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma learns she has a son who knows her identity.
+  cf_edit: Henry does not find Emma in Boston.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_005
+  fact: Henry tells Emma that fairytale characters are real and are trapped in Storybrooke
+    by a curse cast by the Evil Queen, whom he identifies as Regina Mills.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma hears Henry's story about the curse and the Evil Queen.
+  cf_edit: Henry says nothing about a curse or fairytale characters.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_006
+  fact: Emma drives Henry back to Storybrooke and meets Regina Mills at Henry's home.
+  known_by:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+  state_change: Emma and Regina meet face to face.
+  cf_edit: Emma leaves Henry at the town line without entering Storybrooke.
+  anchor_for:
+  - emma_swan
+  - regina_mills
+- id: ae_007
+  fact: Emma sees Henry's storybook and reads about Snow White and Prince Charming,
+    recognizing events as similar to stories she knows.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma is shown evidence from the storybook.
+  cf_edit: Henry hides the storybook before Emma can see it.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_008
+  fact: Regina gives Emma a basket of apples as a gift, and Henry warns Emma not to
+    eat them.
+  known_by:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+  state_change: Tension increases between Emma and Regina, and Henry expresses distrust
+    of Regina.
+  cf_edit: Regina gives Emma a bouquet of flowers with no warning from Henry.
+  anchor_for:
+  - emma_swan
+  - regina_mills
+  - henry_mills
+- id: ae_009
+  fact: Emma checks into a room at Granny's Diner after deciding to stay in Storybrooke
+    temporarily.
+  known_by:
+  - emma_swan
+  state_change: Emma establishes temporary lodging in Storybrooke.
+  cf_edit: Emma drives away immediately instead of staying overnight.
+  anchor_for:
+  - emma_swan
+- id: ae_010
+  fact: Henry tells Emma that Regina is his adoptive mother and that he stole her
+    credit card to find Emma.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma learns how Henry found her and confirms Regina is his adoptive
+    mother.
+  cf_edit: Henry says he used his own savings, not Regina's credit card.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_011
+  fact: Emma announces to Regina and Henry that she is staying in Storybrooke longer
+    to make sure Henry is all right.
+  known_by:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+  state_change: Emma decides to remain in Storybrooke.
+  cf_edit: Emma announces she is taking Henry to Boston.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+- id: ae_012
+  fact: Regina visits Rumplestiltskin in Storybrooke, where he is known as Mr. Gold,
+    and asks him to help remove Emma from town.
+  known_by:
+  - regina_mills
+  - rumplestiltskin
+  state_change: Regina and Rumplestiltskin are shown to know each other in Storybrooke
+    and discuss Emma's presence.
+  cf_edit: Regina asks the sheriff, not Mr. Gold, to remove Emma.
+  anchor_for:
+  - regina_mills
+  - rumplestiltskin
+- id: ae_013
+  fact: Rumplestiltskin tells Regina that Emma's arrival has started a chain of events
+    and asks for a favor in return for his help.
+  known_by:
+  - regina_mills
+  - rumplestiltskin
+  state_change: Rumplestiltskin establishes a bargain connected to Emma's presence.
+  cf_edit: Rumplestiltskin refuses to discuss Emma and offers no deal.
+  anchor_for:
+  - regina_mills
+  - rumplestiltskin
+- id: ae_014
+  fact: Emma is arrested for allegedly stealing a file from the sheriff's station,
+    and Regina accuses her of being unfit.
+  known_by:
+  - emma_swan
+  - regina_mills
+  - henry_mills
+  state_change: Emma is placed under arrest, raising the conflict with Regina.
+  cf_edit: Emma is cleared immediately and never arrested.
+  anchor_for:
+  - emma_swan
+  - regina_mills
+- id: ae_015
+  fact: Henry tells Emma he believes she is the Savior who can break the curse, and
+    Emma begins to question her place in Storybrooke.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma hears the claim that she is the Savior.
+  cf_edit: Henry says nothing about a Savior or breaking any curse.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_016
+  fact: In a fairytale flashback, Snow White and Prince Charming are shown planning
+    to battle the Evil Queen's curse, and Snow White expresses confidence that their
+    child will be the one to save everyone.
+  known_by:
+  - snow_white
+  - prince_charming
+  state_change: Snow White and Prince Charming anticipate a child who will act as
+    a future savior.
+  cf_edit: Snow White says no child will be involved and they will fight the curse
+    alone.
+  anchor_for:
+  - snow_white
+  - prince_charming
+- id: ae_017
+  fact: Emma talks with Henry at the Storybrooke playground, where he shows her the
+    storybook and points out people he says are fairytale characters.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma is shown more of Henry's theory through the storybook and local
+    residents.
+  cf_edit: Henry refuses to show Emma the storybook at the playground.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_018
+  fact: Regina confronts Emma and tells her to leave Storybrooke, but Emma refuses
+    and says she will not abandon Henry.
+  known_by:
+  - emma_swan
+  - regina_mills
+  - henry_mills
+  state_change: Emma openly defies Regina's demand to leave.
+  cf_edit: Emma agrees to leave Storybrooke after Regina's demand.
+  anchor_for:
+  - emma_swan
+  - regina_mills
+- id: ae_019
+  fact: In a fairytale flashback, Rumplestiltskin is shown in his prison cell, where
+    he meets Snow White as she prepares to be taken away.
+  known_by:
+  - snow_white
+  - rumplestiltskin
+  state_change: Snow White and Rumplestiltskin meet under the Evil Queen's control.
+  cf_edit: Snow White never meets Rumplestiltskin in the prison cell.
+  anchor_for:
+  - snow_white
+  - rumplestiltskin
+- id: ae_020
+  fact: Henry is found missing by Emma, and Emma searches Storybrooke for him, fearing
+    Regina has taken him.
+  known_by:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+  state_change: Henry's disappearance raises the stakes in Emma's conflict with Regina.
+  cf_edit: Henry is found at school and never reported missing.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+  - regina_mills
+- id: ae_021
+  fact: Emma finds Henry at a Storybrooke castle playground, and Henry explains the
+    storybook is his proof that the curse is real.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Henry is found, and Emma agrees to listen to more of his storybook
+    claims.
+  cf_edit: Emma finds Henry at the sheriff's station instead of the castle playground.
+  anchor_for:
+  - emma_swan
+  - henry_mills
+- id: ae_022
+  fact: Regina tells Emma that Henry has a history of running away and has been in
+    counseling, suggesting Emma's influence is making things worse.
+  known_by:
+  - emma_swan
+  - regina_mills
+  state_change: Regina uses Henry's past behavior to pressure Emma into staying away.
+  cf_edit: Regina admits Henry has never run away and has no history of counseling.
+  anchor_for:
+  - emma_swan
+  - regina_mills
+- id: ae_023
+  fact: Emma visits the Storybrooke Sheriff's Station and receives a deputy position
+    offer, marking the start of her official role in Storybrooke.
+  known_by:
+  - emma_swan
+  state_change: Emma takes on a position connected to Storybrooke law enforcement.
+  cf_edit: Emma turns down the deputy position and remains only a visitor.
+  anchor_for:
+  - emma_swan
+- id: ae_024
+  fact: Emma and Henry continue to bond over the storybook, and Emma begins wearing
+    her red leather jacket regularly while spending time in Storybrooke locations
+    like Granny's Diner.
+  known_by:
+  - emma_swan
+  - henry_mills
+  state_change: Emma's growing attachment to Henry and Storybrooke becomes visible.
+  cf_edit: Emma stops reading the storybook and avoids Granny's Diner.
+  anchor_for:
+  - emma_swan
+  - henry_mills

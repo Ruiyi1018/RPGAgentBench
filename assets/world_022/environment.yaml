@@ -1,0 +1,45 @@
+world_id: world_022
+name: London during the first case
+locations:
+- id: 221b_baker_street
+  name: 221B Baker Street
+  connected_to:
+  - st_bartholomews_hospital
+  - scotland_yard
+- id: st_bartholomews_hospital
+  name: St Bartholomew's Hospital
+  connected_to:
+  - 221b_baker_street
+  - nsy_building
+- id: scotland_yard
+  name: Scotland Yard
+  connected_to:
+  - 221b_baker_street
+  - nsy_building
+- id: nsy_building
+  name: National Antiquity Museum exhibition hall
+  connected_to:
+  - scotland_yard
+  - st_bartholomews_hospital
+items:
+- id: pink_phone
+  name: Pink phone
+  type: electronic device
+  portable: true
+- id: pink_suitcase
+  name: Pink suitcase
+  type: container
+  portable: true
+- id: cabbies_vehicle
+  name: The murderer's cab
+  type: vehicle
+  portable: false
+- id: riding_crop
+  name: Riding crop
+  type: weapon
+  portable: true
+- id: skull
+  name: Sherlock's skull
+  type: decoration
+  portable: true
+language: en

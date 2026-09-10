@@ -1,0 +1,87 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    ted_mosby:
+      level: loyal
+      basis_event: initial_state
+    robin_scherbatsky:
+      level: trusting
+      basis_event: initial_state
+    barney_stinson:
+      level: neutral
+      basis_event: initial_state
+    lily_aldrin:
+      level: loyal
+      basis_event: initial_state
+    ranjit:
+      level: neutral
+      basis_event: initial_state
+    player:
+      level: neutral
+      basis_event: initial_state
+  goals:
+  - id: marshall_goal_001
+    content: Marry Lily Aldrin before any major career change disrupts their engagement
+    status: active
+    basis_event: initial_state
+  - id: marshall_goal_002
+    content: Leave MetroNatural Bank and return to environmental law without losing
+      financial stability
+    status: active
+    basis_event: initial_state
+  - id: marshall_goal_003
+    content: Help Ted avoid another reckless romantic decision while supporting his
+      pursuit of Robin
+    status: active
+    basis_event: initial_state
+  - id: marshall_goal_004
+    content: Keep the friend group intact despite Barney's schemes and Ted and Robin's
+      uncertain relationship
+    status: active
+    basis_event: initial_state
+  disclosures: []
+  knowledge:
+    marshall_know_001:
+      content: Ted is infatuated with Robin and stole a blue French horn for her in
+        the pilot.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    marshall_know_002:
+      content: Lily has applied to an art fellowship program, which causes tension
+        between her and Marshall.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    marshall_know_003:
+      content: He has accepted a job at MetroNatural Bank despite preferring environmental
+        law.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    marshall_know_004:
+      content: Barney's playbook exists and is used to manipulate women at MacLaren's.
+      status: active
+      visibility: shared
+      source_event: initial_state
+    marshall_know_005:
+      content: A goat appeared in Ted's apartment during a party, but no one in the
+        group can explain how.
+      status: active
+      visibility: shared
+      source_event: initial_state
+environment:
+  health:
+    marshall_eriksen: 100
+    player: 100
+  inventories:
+    marshall_eriksen: []
+    player: []
+  locations:
+    marshall_eriksen: apartment_4d
+    player: apartment_4d
+  access: {}
+  offers: []
+  task_status: active
+  dialogue_status: active

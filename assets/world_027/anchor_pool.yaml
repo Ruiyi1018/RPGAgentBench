@@ -1,0 +1,275 @@
+world_id: world_027
+source: Lucifer Season 1 episodes
+events:
+- id: ae01
+  fact: Lucifer Morningstar is a charming nightclub owner in Los Angeles.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Establishes Lucifer's public identity and base of operations.
+  cf_edit: Lucifer is a charming nightclub owner in Las Vegas.
+  anchor_for:
+  - lucifer_morningstar
+- id: ae02
+  fact: Chloe Decker is a homicide detective with the LAPD.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Establishes Chloe's profession and investigative role.
+  cf_edit: Chloe Decker is a patrol officer with the LAPD.
+  anchor_for:
+  - chloe_decker
+- id: ae03
+  fact: Lucifer openly tells people he is the Devil.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Introduces Lucifer's unconventional honesty and central mystery.
+  cf_edit: Lucifer hides the fact he is the Devil.
+  anchor_for:
+  - lucifer_morningstar
+- id: ae04
+  fact: Lucifer begins helping Chloe Decker with a murder investigation.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  state_change: Initiates the central detective partnership of the season.
+  cf_edit: Lucifer refuses to help Chloe Decker with a murder investigation.
+  anchor_for:
+  - lucifer_morningstar
+  - chloe_decker
+- id: ae05
+  fact: Chloe Decker learns Lucifer claims to be the Devil.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - mazikeen
+  - amenadiel
+  state_change: Chloe becomes aware of Lucifer's central claim while remaining skeptical.
+  cf_edit: Chloe Decker immediately believes Lucifer is the Devil.
+  anchor_for:
+  - chloe_decker
+- id: ae06
+  fact: Dan Espinoza is a detective and Chloe Decker's ex-husband.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Establishes Dan's professional and personal tie to Chloe.
+  cf_edit: Dan Espinoza is Chloe Decker's current husband.
+  anchor_for:
+  - dan_espinoza
+- id: ae07
+  fact: Dan Espinoza and Chloe Decker share a daughter.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  state_change: Defines a key family connection within the season.
+  cf_edit: Dan Espinoza and Chloe Decker have no children.
+  anchor_for:
+  - dan_espinoza
+  - chloe_decker
+- id: ae08
+  fact: Mazikeen is Lucifer's loyal demon ally and bartender.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Establishes Mazikeen's supernatural nature and role at Lux.
+  cf_edit: Mazikeen is a human bartender with no supernatural tie.
+  anchor_for:
+  - mazikeen
+- id: ae09
+  fact: Mazikeen is highly protective of Lucifer.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - mazikeen
+  - amenadiel
+  state_change: Reveals Mazikeen's allegiance and potential for violence.
+  cf_edit: Mazikeen is indifferent to Lucifer's safety.
+  anchor_for:
+  - mazikeen
+- id: ae10
+  fact: Amenadiel is an angel sent to Los Angeles concerning Lucifer.
+  known_by:
+  - lucifer_morningstar
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Introduces heavenly involvement and Amenadiel's mission.
+  cf_edit: Amenadiel is a demon sent to Los Angeles concerning Lucifer.
+  anchor_for:
+  - amenadiel
+- id: ae11
+  fact: Amenadiel pressures Lucifer to return to Hell.
+  known_by:
+  - lucifer_morningstar
+  - mazikeen
+  - amenadiel
+  state_change: Establishes the central conflict between Lucifer and Amenadiel.
+  cf_edit: Amenadiel encourages Lucifer to stay on Earth.
+  anchor_for:
+  - amenadiel
+- id: ae12
+  fact: Linda Martin is a therapist who begins treating Lucifer.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Introduces Linda's professional relationship with Lucifer.
+  cf_edit: Linda Martin is a police consultant who begins working with Lucifer.
+  anchor_for:
+  - linda_martin
+- id: ae13
+  fact: Lucifer becomes a consultant for the LAPD.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Formalizes Lucifer's role alongside Chloe and the LAPD.
+  cf_edit: Lucifer becomes a consultant for the FBI.
+  anchor_for:
+  - lucifer_morningstar
+- id: ae14
+  fact: Chloe Decker remains skeptical of Lucifer's claim to be the Devil.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Maintains a tension between supernatural claims and rational skepticism.
+  cf_edit: Chloe Decker accepts Lucifer is the Devil without doubt.
+  anchor_for:
+  - chloe_decker
+- id: ae15
+  fact: Lucifer displays unusual charisma and persuasiveness.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Highlights Lucifer's supernatural or extraordinary influence.
+  cf_edit: Lucifer has no unusual persuasive ability.
+  anchor_for:
+  - lucifer_morningstar
+- id: ae16
+  fact: Dan Espinoza works cases at the LAPD precinct.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  state_change: Grounds Dan's activity within the season's law-enforcement setting.
+  cf_edit: Dan Espinoza works cases for a private security firm.
+  anchor_for:
+  - dan_espinoza
+- id: ae17
+  fact: Mazikeen can handle weapons and fight effectively.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - mazikeen
+  - amenadiel
+  state_change: Establishes Mazikeen's combat capability and dangerousness.
+  cf_edit: Mazikeen has no combat skill.
+  anchor_for:
+  - mazikeen
+- id: ae18
+  fact: Lucifer owns and plays a piano in his penthouse.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Establishes a signature element of Lucifer's lifestyle.
+  cf_edit: Lucifer owns a guitar in his penthouse.
+  anchor_for:
+  - lucifer_morningstar
+- id: ae19
+  fact: Amenadiel can move between Los Angeles and other realms.
+  known_by:
+  - lucifer_morningstar
+  - mazikeen
+  - amenadiel
+  state_change: Reinforces Amenadiel's celestial nature within the season.
+  cf_edit: Amenadiel is limited to Los Angeles.
+  anchor_for:
+  - amenadiel
+- id: ae20
+  fact: Linda Martin treats Lucifer in a professional therapy setting.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Grounds Linda's therapeutic practice and her dynamic with Lucifer.
+  cf_edit: Linda Martin gives Lucifer spiritual counseling as a priest.
+  anchor_for:
+  - linda_martin
+- id: ae21
+  fact: Lucifer and Chloe Decker investigate a case involving a murdered friend of
+    Lucifer's.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  state_change: Places Lucifer's personal life inside an official investigation.
+  cf_edit: Lucifer and Chloe Decker investigate a missing-person case with no personal
+    tie.
+  anchor_for:
+  - lucifer_morningstar
+  - chloe_decker
+- id: ae22
+  fact: Lucifer's presence causes unusual reactions in people around him.
+  known_by:
+  - lucifer_morningstar
+  - chloe_decker
+  - dan_espinoza
+  - mazikeen
+  - amenadiel
+  - linda_martin
+  state_change: Deepens the mystery of Lucifer's supernatural identity on Earth.
+  cf_edit: Lucifer's presence produces no unusual reactions.
+  anchor_for:
+  - lucifer_morningstar
