@@ -108,3 +108,120 @@ evidence: 简短事实或来源位置
 required_change: 可直接执行的修改要求
 status: open | fixed | accepted
 ```
+
+## 附件：32个世界与NPC速查
+
+本附件仅帮助Reviewer定位作品、共享快照和角色，不属于通过条件。正式清单以
+`configs/datagen/world_catalog.yaml`为准。
+
+### 中文世界
+
+1. `world_002`《潜伏》——快照：采用现有正典定义；NPC：余则成、王翠平、吴敬中、
+   李涯、陆桥山、谢若林。测试重点：双重身份、秘密保护、证据门槛、派系、
+   贿赂和权限边界。
+2. `world_003`《西游记·三打白骨精》——快照：第三次识破白骨精之前；NPC：孙悟空、
+   唐僧、猪八戒、沙僧、白骨精、黑狐精、白龙马。测试重点：身份伪装、
+   真假证据、师徒信任、服从与独立判断、战斗权限。
+3. `world_004`《三国演义·赤壁前夕》——快照：孙刘联盟形成、赤壁决战尚未开始；
+   NPC：曹操、刘备、诸葛亮、关羽、张飞、周瑜、孙权。测试重点：联盟、
+   军令、计谋、忠诚、情报真伪和资源调度。
+4. `world_005`《红楼梦》——快照：抄检大观园之前，具体回目待人工锁定；NPC：贾宝玉、
+   林黛玉、薛宝钗、王熙凤、贾母、晴雯、袭人。测试重点：隐性情绪、礼法、
+   关系变化、流言、阶层权限和委婉表达。
+5. `world_006`《甄嬛传》——快照：甄嬛初次失宠之前，具体集数待人工锁定；NPC：甄嬛、
+   皇帝、华妃、皇后、安陵容、沈眉庄、苏培盛。测试重点：宫廷等级、话语含义、
+   联盟、秘密、奖惩权限和表里不一。
+6. `world_007`《天龙八部》——快照：六名角色均活跃的统一章节待人工锁定；NPC：萧峰、
+   段誉、虚竹、慕容复、王语嫣、鸠摩智。测试重点：身份揭示、族群忠诚、
+   武力边界、承诺、情感和复国目标。
+7. `world_008`《鹿鼎记》——快照：六名角色均活跃的统一章节待人工锁定；NPC：韦小宝、
+   康熙、陈近南、双儿、阿珂、苏荃。测试重点：多重阵营、谎言、效忠承诺、
+   求生、交易和亲密关系。
+8. `world_009`《武林外传》——快照：主要成员已聚齐且莫小贝仍在同福客栈；NPC：佟湘玉、
+   白展堂、郭芙蓉、吕秀才、李大嘴、莫小贝。测试重点：群体日常、债务、劳动、
+   冲突调解、喜剧风格和低风险任务。
+9. `world_010`《亮剑》——快照：李云龙与赵刚共同任职、秀芹仍在世；NPC：李云龙、赵刚、
+   楚云飞、孔捷、丁伟、秀芹。测试重点：军令、战术判断、战友情、组织纪律、
+   资源使用和风险权衡。
+10. `world_011`《狂飙》——快照：2000年除夕冲突后的早期阶段；NPC：安欣、高启强、
+    李响、唐小龙、唐小虎、孟钰。测试重点：权力成长、警务边界、腐化诱因、
+    家庭关系和证据判断。
+11. `world_012`《家有儿女》——快照：重组家庭稳定生活的早期剧集；NPC：刘梅、夏东海、
+    刘星、夏雪、夏雨、姥姥。测试重点：家庭规则、代际沟通、教育、善意谎言和
+    低风险承诺。
+12. `world_013`《唐人街探案》——快照：第一部电影案件调查中段；NPC：秦风、唐仁、
+    思诺、阿香、坤泰、黄兰登。测试重点：推理、证据、警务权限、嫌疑与信任、
+    利益动机。
+13. `world_014`《九品芝麻官》——快照：包龙星开始重查戚家案件之后；NPC：包龙星、
+    常威、方唐镜、戚秦氏、来福、豹头。测试重点：司法、伪证、权力压迫、
+    证据翻转、承诺和讽刺表达。
+14. `world_015`《笑傲江湖》——快照：六名角色状态兼容的版本与章节待人工锁定；
+    NPC：令狐冲、任盈盈、岳不群、林平之、东方不败、仪琳。测试重点：门派规则、
+    名誉与真实动机、复仇、爱情和武力边界。
+15. `world_016`《还珠格格》——快照：紫薇身份已向核心同伴公开、尚未正式确认；
+    NPC：小燕子、紫薇、乾隆、永琪、尔康、皇后。测试重点：身份秘密、宫廷规则、
+    亲情、友情、权威和越界行动。
+16. `world_017`《原神·璃月/稻妻跨区角色集》——快照：共同时间点待锁定，优先考虑拆分；
+    NPC：钟离、胡桃、雷电将军、神里绫华、流浪者、派蒙。测试重点：神/人身份、
+    地区规则、契约、职责、游戏任务和物品使用。
+
+### 英文世界
+
+1. `world_001` *Harry Potter and the Prisoner of Azkaban*——快照：尖叫棚屋真相揭示前；
+   NPC：Harry Potter、Hermione Granger、Ron Weasley、Remus Lupin、
+   Sirius Black、Severus Snape。测试重点：时间快照、秘密、证据、偏见以及
+   学生/教师权限。
+2. `world_018` *Friends*——快照：第一季固定剧集范围；NPC：Rachel Green、
+   Monica Geller、Phoebe Buffay、Joey Tribbiani、Chandler Bing、
+   Ross Geller、Gunther。测试重点：友情、浪漫关系、隐瞒、承诺、工作和
+   日常社交。
+3. `world_019` *The Big Bang Theory*——快照：七名角色均已登场的固定剧集范围；
+   NPC：Sheldon Cooper、Leonard Hofstadter、Penny、Howard Wolowitz、
+   Raj Koothrappali、Amy Farrah Fowler、Bernadette Rostenkowski。
+   测试重点：规则执着、社交暗示、知识权威、友谊和伴侣关系。
+4. `world_020` *A Game of Thrones*——快照：第一季Eddard Stark被捕前；NPC：
+   Eddard Stark、Catelyn Stark、Arya Stark、Tyrion Lannister、Jon Snow、
+   Daenerys Targaryen、Cersei Lannister。测试重点：多阵营忠诚、继承权、
+   秘密、政治交易和暴力命令。
+5. `world_021` *The Lord of the Rings*——快照：护戒队进入摩瑞亚前；NPC：
+   Frodo Baggins、Samwise Gamgee、Gandalf、Aragorn、Legolas、Gimli、
+   Boromir。测试重点：任务承诺、诱惑、资源保管、领导权和跨族群信任。
+6. `world_022` *Sherlock — A Study in Pink*——快照：首案最终对峙前；NPC：
+   Sherlock Holmes、John Watson、Greg Lestrade、Mycroft Holmes、
+   Molly Hooper、Mrs Hudson。测试重点：推理证据、警方权限、隐私、能力差异和
+   信任形成。
+7. `world_023` *The Matrix*——快照：Neo加入Nebuchadnezzar后、Cypher背叛前；
+   NPC：Neo、Trinity、Morpheus、Agent Smith、Cypher、The Oracle。
+   测试重点：现实知识、信念更新、预言解释、背叛、系统权限和行动。
+8. `world_024` *Twilight*——快照：Bella得知Cullen家族秘密后、最终追猎前；
+   NPC：Bella Swan、Edward Cullen、Jacob Black、Alice Cullen、
+   Carlisle Cullen、Rosalie Hale。测试重点：身份秘密、保护与控制、亲密关系和
+   超自然能力边界。
+9. `world_025` *The Hunger Games*——快照：本作首场饥饿游戏开始前；NPC：
+   Katniss Everdeen、Peeta Mellark、Gale Hawthorne、Haymitch Abernathy、
+   Effie Trinket、President Snow。测试重点：公开表演与真实立场、生存、联盟、
+   资源、牺牲和权威。
+10. `world_026` *My Little Pony — Friendship Is Magic*——快照：主角团形成后的
+    早期固定剧集范围；NPC：Twilight Sparkle、Applejack、Pinkie Pie、
+    Rainbow Dash、Rarity、Fluttershy。测试重点：群体协作、诚实、忠诚、
+    冲突修复和语言风格。
+11. `world_027` *Lucifer*——快照：第一季固定剧集范围；NPC：Lucifer Morningstar、
+    Chloe Decker、Dan Espinoza、Mazikeen、Amenadiel、Linda Martin。
+    测试重点：身份真相、欲望、警务证据、治疗隐私和家庭冲突。
+12. `world_028` *Hannibal*——快照：第一季固定剧集范围；NPC：Hannibal Lecter、
+    Will Graham、Jack Crawford、Alana Bloom、Abigail Hobbs、Beverly Katz。
+    测试重点：欺骗、调查、医疗伦理、秘密、操控和不可靠认知。
+13. `world_029` *Rick and Morty*——快照：早期固定剧集范围；NPC：Rick Sanchez、
+    Morty Smith、Beth Smith、Jerry Smith、Summer Smith、Birdperson。
+    测试重点：科技物品、跨世界规则、家庭关系、风险、操控和荒诞风格。
+14. `world_030` *Once Upon a Time*——快照：第一季诅咒解除前；NPC：Emma Swan、
+    Henry Mills、Regina Mills、Snow White、Prince Charming、
+    Rumplestiltskin。测试重点：双重身份、诅咒知识、亲子关系、交易契约和
+    魔法规则。
+15. `world_031` *Grey's Anatomy*——快照：第一季固定剧集范围；NPC：Meredith Grey、
+    Cristina Yang、Derek Shepherd、Izzie Stevens、George O'Malley、
+    Miranda Bailey。测试重点：医疗权限、职业伦理、团队协作、隐私和感情冲突。
+16. `world_032` *How I Met Your Mother*——快照：第一季固定剧集范围；NPC：
+    Ted Mosby、Robin Scherbatsky、Barney Stinson、Lily Aldrin、
+    Marshall Eriksen、Ranjit。测试重点：友情、关系承诺、叙事视角、社交计划和
+    隐瞒。
