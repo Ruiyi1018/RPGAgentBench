@@ -4,11 +4,38 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass, replace
+from dataclasses import dataclass, field, replace
 from typing import TYPE_CHECKING, Any, Callable, Mapping, Protocol
 
 if TYPE_CHECKING:
     from agents.prompt_builder import PromptBundle
+
+@dataclass(frozen=True)
+class ModelCapabilities:
+    """Provider-facing feature switches for one deployed model."""
+
+    token_parameter: str = "max_tokens"
+    supports_temperature: bool = True
+    supports_top_p: bool = True
+    supports_seed: bool = True
+    structured_output: str = "json_schema"
+
+    def __post_init__(self) -> None:
+        if self.token_parameter not in {
+            "max_tokens",
+            "max_completion_tokens",
+        }:
+            raise ValueError(
+                "token_parameter必须是max_tokens或max_completion_tokens"
+            )
+        if self.structured_output not in {
+            "json_schema",
+            "json_object",
+            "prompt_only",
+        }:
+            raise ValueError(
+                "structured_output必须是json_schema、json_object或prompt_only"
+            )
 
 
 @dataclass(frozen=True)
@@ -20,11 +47,15 @@ class GenerationConfig:
     seed: int | None = None
     max_format_retries: int = 1
     response_schema: Mapping[str, Any] | None = None
+    capabilities: ModelCapabilities = field(
+        default_factory=ModelCapabilities
+    )
 
 
 class LLMClient(Protocol):
     last_usage: dict[str, Any] | None
     last_request_id: str | None
+    last_finish_reason: str | None
     last_format_retries: int
     last_format_errors: list[str]
 
@@ -46,6 +77,7 @@ class StaticLLMClient:
         self.requests: list[dict[str, Any]] = []
         self.last_usage: dict[str, Any] | None = None
         self.last_request_id: str | None = None
+        self.last_finish_reason: str | None = None
         self.last_format_retries = 0
         self.last_format_errors: list[str] = []
 

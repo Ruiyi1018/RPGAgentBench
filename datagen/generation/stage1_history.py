@@ -1298,6 +1298,9 @@ def _plan_bundle(
             "player_forbidden_knowledge中的事实无论发生前后都不得出现在"
             "Player可知的背景、player_intent、公开线索或Player台词中；隐藏"
             "Anchor发生后也只能让NPC通过不泄密的处理变化体现。"
+            "setting必须使用locations中某个地点的id或name。local_event、acts"
+            "若把某处作为实际场景、移动目标或会面地点，也只能使用locations"
+            "中已有地点；不得临时发明地图外地点。"
             "所有自然语言字段必须使用world_language指定的语言。"
             "不要使用状态机、标注或评测术语。"
             "只输出JSON对象。"
@@ -1356,6 +1359,7 @@ def _dialogue_chunk_bundle(
         "fixed_player_profile": blueprint["player_profile"],
         "world": environment["name"],
         "world_language": environment.get("language", "zh"),
+        "locations": environment["locations"],
         "session": {
             "local_event": plan["local_event"],
             "setting": plan["setting"],
@@ -1416,6 +1420,8 @@ def _dialogue_chunk_bundle(
             "伪造、涂改或销毁世界中的记录，"
             "也不得做超出fixed_player_profile权限的决定。新消息必须交代可信"
             "来源或承认无法核验，不能只为推动剧情突然抛出。"
+            "当前场景、移动目标和会面地点只能使用locations中的已有地点；"
+            "可以提及地图外背景地，但不得让角色在本段进入或前往该处。"
             "Player和NPC台词必须使用world_language指定的语言。"
             "只输出JSON。"
         ),
@@ -2023,6 +2029,7 @@ def _config_for_session(
         max_tokens=max_tokens or min(config.max_tokens, 2048),
         seed=(config.seed or 0) + session_index,
         max_format_retries=config.max_format_retries,
+        capabilities=config.capabilities,
     )
 
 

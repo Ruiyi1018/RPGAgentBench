@@ -7,7 +7,12 @@ from typing import Any
 
 import yaml
 
-from llm import LLMClient, create_llm_client, load_llm_settings
+from llm import (
+    LLMClient,
+    create_llm_client,
+    load_llm_settings,
+    load_model_registry,
+)
 from runners.pilot import DEFAULT_CONFIG, PROJECT_ROOT
 
 from ..audit.benchmark_assets import (
@@ -33,6 +38,8 @@ def generate_stage1_stage2(
     world_dir: str | Path,
     *,
     config_path: str | Path = DEFAULT_CONFIG,
+    registry_path: str | Path | None = None,
+    model_name: str | None = None,
     rounds: int = 600,
     pair_count: int = 10,
     character_ids: list[str] | None = None,
@@ -48,9 +55,28 @@ def generate_stage1_stage2(
     unknown = set(selected) - set(canon["evaluated_npcs"])
     if unknown:
         raise ValueError(f"未知角色: {sorted(unknown)}")
-    settings = load_llm_settings(config_path, project_root=PROJECT_ROOT)
-    def client_factory() -> LLMClient:
-        return create_llm_client(settings, scene="data_generation")
+    if registry_path is not None:
+        if model_name is None:
+            raise ValueError("使用registry_path时必须提供model_name")
+        model_registry = load_model_registry(
+            registry_path,
+            project_root=PROJECT_ROOT,
+        )
+        generation_config = model_registry.generation_config(model_name)
+
+        def client_factory() -> LLMClient:
+            return model_registry.create_client(
+                model_name,
+                scene="data_generation",
+            )
+    else:
+        if model_name is not None:
+            raise ValueError("model_name只能与registry_path一起使用")
+        settings = load_llm_settings(config_path, project_root=PROJECT_ROOT)
+        generation_config = settings.generation
+
+        def client_factory() -> LLMClient:
+            return create_llm_client(settings, scene="data_generation")
 
     generation_reports: dict[str, Any] = {}
     source_reviews: dict[str, Any] = {}
@@ -81,7 +107,7 @@ def generate_stage1_stage2(
             world,
             character_id,
             client_factory=client_factory,
-            config=settings.generation,
+            config=generation_config,
             rounds=rounds,
             workers=workers,
             work_root=work_dir,

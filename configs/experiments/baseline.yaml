@@ -1,0 +1,23 @@
+registry: configs/llm/registry.yaml
+
+roles:
+  candidate: venus-deepseek-v4-pro
+  player: venus-deepseek-v4-pro
+  evaluator: venus-deepseek-v4-pro
+
+matrix:
+  candidate:
+    - venus-deepseek-v4-pro
+    - venus-deepseek-v4-flash
+    - venus-gpt-5.5
+    - venus-gpt-5.4-mini
+    - venus-gpt6-astra
+    - venus-qwen3.8-flash-next
+    - venus-kimi-k2.6
+    - venus-gemini-3.8-flash
+    - venus-gemini-3.1-pro
+
+stage3:
+  turns: 40
+  seeds: [11, 29, 47]
+  modes: [normal, pressure]

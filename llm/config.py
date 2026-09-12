@@ -9,7 +9,7 @@ from typing import Any, Mapping
 
 import yaml
 
-from .base import GenerationConfig
+from .base import GenerationConfig, ModelCapabilities
 
 
 @dataclass(frozen=True)
@@ -18,9 +18,11 @@ class LLMSettings:
     base_url: str
     api_key_env: str
     generation: GenerationConfig
+    api_key_suffix: str = ""
     enable_thinking: bool = False
     timeout_seconds: float = 300.0
     max_attempts: int = 3
+    max_concurrency: int = 4
 
 
 def load_llm_settings(
@@ -52,13 +54,19 @@ def load_llm_settings(
         if provider == "venus"
         else configured_model
     )
+    completion_token_contract = (
+        provider == "venus"
+        and model.lower().startswith(("gpt-5", "gpt-6"))
+    )
     return LLMSettings(
         provider=provider,
         base_url=_required_string(raw, "base_url"),
         api_key_env=_required_string(raw, "api_key_env"),
+        api_key_suffix=str(raw.get("api_key_suffix", "")),
         enable_thinking=bool(raw.get("enable_thinking", False)),
         timeout_seconds=float(raw.get("timeout_seconds", 300.0)),
         max_attempts=max(1, int(raw.get("max_attempts", 3))),
+        max_concurrency=max(1, int(raw.get("max_concurrency", 4))),
         generation=GenerationConfig(
             model=model,
             temperature=float(generation.get("temperature", 0.0)),
@@ -71,6 +79,16 @@ def load_llm_settings(
             ),
             max_format_retries=int(
                 generation.get("max_format_retries", 1)
+            ),
+            capabilities=ModelCapabilities(
+                token_parameter=(
+                    "max_completion_tokens"
+                    if completion_token_contract
+                    else "max_tokens"
+                ),
+                supports_temperature=not completion_token_contract,
+                supports_top_p=not completion_token_contract,
+                supports_seed=not completion_token_contract,
             ),
         ),
     )

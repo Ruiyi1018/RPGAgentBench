@@ -22,3 +22,4 @@ include = ["gamecore*", "llm*", "agents*", "datagen*", "runners*", "evaluation*"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+pythonpath = ["."]

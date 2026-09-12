@@ -294,6 +294,7 @@ def run_pilot(
         max_tokens=configured.max_tokens,
         seed=configured.seed,
         max_format_retries=configured.max_format_retries,
+        capabilities=configured.capabilities,
     )
     effective_settings = replace(
         settings,

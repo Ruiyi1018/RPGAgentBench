@@ -4,6 +4,8 @@ import threading
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from datagen.generation.anchor_draft import (
     _validate_anchor_outline,
     _validate_anchor_output,
@@ -22,13 +24,68 @@ from datagen.generation.stage1_history import (
 )
 from agents.prompt_builder import PromptBundle
 from datagen.generation.foundation import scaffold_world
-from datagen.audit.source_assets import audit_anchor_plan, audit_foundation
+from datagen.audit.source_assets import (
+    _audit_environment,
+    _review_section_passed,
+    audit_anchor_plan,
+    audit_foundation,
+)
 from gamecore import ActionRegistry
 from llm import GenerationConfig
 
 
 ROOT = Path(__file__).resolve().parents[1]
 WORLD = ROOT / "assets" / "world_002"
+
+
+def test_environment_audit_accepts_normalized_connected_graph() -> None:
+    errors: list[dict[str, str]] = []
+    _audit_environment(
+        {
+            "world_id": "world_test",
+            "name": "test_world",
+            "language": "zh",
+            "locations": [
+                {"id": "a", "name": "甲", "connected_to": ["b"]},
+                {"id": "b", "name": "乙", "connected_to": ["a", "c"]},
+                {"id": "c", "name": "丙", "connected_to": ["b"]},
+            ],
+            "items": [
+                {"id": "key", "name": "钥匙", "type": "key", "portable": True}
+            ],
+        },
+        errors,
+    )
+
+    assert errors == []
+
+
+def test_environment_audit_rejects_invalid_topology_and_item_shape() -> None:
+    errors: list[dict[str, str]] = []
+    _audit_environment(
+        {
+            "world_id": "world_test",
+            "language": "zh",
+            "locations": [
+                {"id": "a", "name": "甲", "connected_to": ["a", "b", "b"]},
+                {"id": "b", "name": "乙", "connected_to": []},
+                {"id": "c", "name": "丙", "connected_to": []},
+            ],
+            "items": [{"id": "key", "name": "钥匙", "portable": "yes"}],
+        },
+        errors,
+    )
+
+    codes = {item["code"] for item in errors}
+    assert {
+        "missing_world_name",
+        "duplicate_location_connection",
+        "self_location_connection",
+        "one_way_location_connection",
+        "disconnected_location_graph",
+        "missing_item_type",
+        "invalid_item_portable",
+    } <= codes
 
 
 def test_hidden_event_overlap_detects_player_leak() -> None:
@@ -161,16 +218,12 @@ def test_rubric_contract_rejects_missing_required_parameter() -> None:
     assert "reason_event" in error
 
 
-def test_review_gates_require_reapproval_when_rules_expand() -> None:
+def test_reviewed_world_passes_machine_audits() -> None:
     foundation = audit_foundation(WORLD, ["yu_zecheng"])
     anchors = audit_anchor_plan(WORLD, "yu_zecheng")
 
     assert foundation["machine_passed"]
-    assert not foundation["human_approved"]
-    assert not foundation["ready_for_anchor_generation"]
     assert anchors["machine_passed"]
-    assert not anchors["human_approved"]
-    assert not anchors["ready_for_history_generation"]
     assert set(anchors["metrics"]["state_dimension_counts"]) == {
         "knowledge",
         "commitment_goal",
@@ -178,6 +231,97 @@ def test_review_gates_require_reapproval_when_rules_expand() -> None:
         "resource",
     }
     assert anchors["metrics"]["turning_points"] >= 8
+
+
+def test_world_review_findings_block_foundation_for_every_open_severity(
+    tmp_path: Path,
+) -> None:
+    world = tmp_path / "world_test"
+    review_dir = world / "frozen" / "npc"
+    review_dir.mkdir(parents=True)
+    (review_dir / "source_review.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "character_id": "npc",
+                "foundation": {
+                    "approved": True,
+                    "checks": {"rule": True},
+                },
+            },
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
+
+    for severity in ("blocker", "major", "minor"):
+        (world / "review_findings.yaml").write_text(
+            yaml.safe_dump(
+                [
+                    {
+                        "item_id": "repository.gate",
+                        "severity": severity,
+                        "rule_id": "repository_gate",
+                        "evidence": "test",
+                        "required_change": "test",
+                        "resolution": "",
+                        "status": "open",
+                    }
+                ],
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+
+        assert not _review_section_passed(
+            world,
+            "npc",
+            "foundation",
+            {"rule": "test"},
+        )
+
+
+def test_closed_world_review_findings_do_not_block_foundation(
+    tmp_path: Path,
+) -> None:
+    world = tmp_path / "world_test"
+    review_dir = world / "frozen" / "npc"
+    review_dir.mkdir(parents=True)
+    (review_dir / "source_review.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "character_id": "npc",
+                "foundation": {
+                    "approved": True,
+                    "checks": {"rule": True},
+                },
+            },
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
+    (world / "review_findings.yaml").write_text(
+        yaml.safe_dump(
+            [
+                {
+                    "severity": "blocker",
+                    "status": "fixed",
+                },
+                {
+                    "severity": "major",
+                    "status": "accepted",
+                },
+            ],
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
+
+    assert _review_section_passed(
+        world,
+        "npc",
+        "foundation",
+        {"rule": "test"},
+    )
 
 
 def test_reviewed_yu_assets_satisfy_generic_anchor_draft_contract() -> None:
@@ -229,6 +373,49 @@ def test_reviewed_yu_assets_satisfy_generic_anchor_draft_contract() -> None:
         eligible,
         30,
         10,
+    )
+
+
+def test_post_snapshot_anchor_outline_uses_controlled_grounded_events() -> None:
+    generated = [
+        {
+            "id": f"npc_controlled_{index:02d}",
+            "event": f"Player presents controlled situation {index}",
+            "state_change": f"state path {index} changes",
+            "cf_edit": f"controlled alternative {index}",
+            "foundation_refs": [
+                "canon:shared_snapshot",
+                "profile:boundary:boundary_001",
+            ],
+        }
+        for index in range(1, 31)
+    ]
+    probe_plan = [
+        {
+            "anchor_id": anchor["id"],
+            "type": (
+                "sensitivity"
+                if index < 7
+                else "invariance"
+                if index < 10
+                else "none"
+            ),
+        }
+        for index, anchor in enumerate(generated)
+    ]
+
+    _validate_anchor_outline(
+        {
+            "generated_anchors": generated,
+            "probe_plan": probe_plan,
+        },
+        [],
+        30,
+        0,
+        allowed_foundation_refs={
+            "canon:shared_snapshot",
+            "profile:boundary:boundary_001",
+        },
     )
 
 

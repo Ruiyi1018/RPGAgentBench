@@ -255,6 +255,11 @@ def _world_prompt(spec: Mapping[str, Any]) -> PromptBundle:
             "array of non-empty rule strings. environment must contain name, "
             "locations and items; every location has id,name,connected_to and all "
             "connections reference listed IDs; every item has id,name,type,portable. "
+            "Every place used by the roster or anchor_events as an active scene, "
+            "movement destination, meeting place, workplace, or residence must have "
+            "a matching environment location. Places mentioned only as remote "
+            "background or past origin do not need map nodes. Direct one-step "
+            "connections are allowed regardless of real-world distance. "
             "Create 18-24 canonical anchor_events. Every event has id,fact,known_by,"
             "state_change,cf_edit,anchor_for. known_by and anchor_for use roster IDs."
         ),
@@ -339,7 +344,11 @@ def _profile_prompt(
             "each has id,position,challenge_space,forbidden_outcomes,allowed_change. "
             "initial_state fields: location_id, relationships (map roster/player IDs "
             "to hostile|distrustful|neutral|trusting|loyal), goals (list of "
-            "{id,content,status}), knowledge (list of {id,content,visibility})."
+            "{id,content,status}), knowledge (list of {id,content,visibility}). "
+            "Any place described in the card as a current scene, movement "
+            "destination, meeting place, workplace, or residence must match one of "
+            "the provided environment locations; unlisted places may only be remote "
+            "background or past history."
         ),
     )
 

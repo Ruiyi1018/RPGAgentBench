@@ -322,15 +322,42 @@ def audit_anchor_plan(
         )
     anchor_ids = [str(anchor["id"]) for anchor in anchors]
     source_counts = Counter(str(anchor.get("source", "")) for anchor in anchors)
-    if len(anchors) != 30 or source_counts != Counter(
-        {"canon": 10, "controlled": 20}
-    ):
+    supported_distributions = {
+        (("controlled", 30),),
+        (("canon", 10), ("controlled", 20)),
+    }
+    distribution = tuple(sorted(source_counts.items()))
+    if len(anchors) != 30 or distribution not in supported_distributions:
         _error(
             errors,
             "invalid_anchor_source_distribution",
             f"frozen/{character_id}/anchors.yaml",
-            "必须恰好包含30个Anchor（10个canon、20个controlled）",
+            "必须包含30个快照后受控Anchor；仅保留10 canon+20 controlled"
+            "作为旧版兼容格式",
         )
+    if distribution == (("controlled", 30),):
+        for index, anchor in enumerate(anchors):
+            references = anchor.get("foundation_refs")
+            path = (
+                f"frozen/{character_id}/anchors.yaml:"
+                f"generated_anchors.{index}.foundation_refs"
+            )
+            if (
+                not isinstance(references, list)
+                or len(references) < 2
+                or "canon:shared_snapshot" not in references
+                or not any(
+                    isinstance(reference, str)
+                    and reference.startswith("profile:")
+                    for reference in references
+                )
+            ):
+                _error(
+                    errors,
+                    "invalid_foundation_refs",
+                    path,
+                    "每个受控Anchor必须引用共享快照和至少一项Profile依据",
+                )
     transition_ids = [
         str(transition.get("anchor_id", ""))
         for transition in transitions
@@ -547,6 +574,13 @@ def _audit_environment(
     environment: Mapping[str, Any],
     errors: list[dict[str, str]],
 ) -> None:
+    if not isinstance(environment.get("name"), str) or not environment["name"].strip():
+        _error(
+            errors,
+            "missing_world_name",
+            "environment.yaml:name",
+            "name必须是非空字符串",
+        )
     if environment.get("language") not in {"zh", "en"}:
         _error(
             errors,
@@ -591,16 +625,113 @@ def _audit_environment(
                 "ID必须非空且唯一",
             )
     valid_locations = set(location_ids)
+    adjacency: dict[str, set[str]] = {}
     for index, location in enumerate(locations):
         if not isinstance(location, Mapping):
+            _error(
+                errors,
+                "invalid_location",
+                f"environment.yaml:locations.{index}",
+                "地点必须是包含id、name、connected_to的对象",
+            )
             continue
-        unknown = set(location.get("connected_to", [])) - valid_locations
+        location_id = str(location.get("id", ""))
+        if not isinstance(location.get("name"), str) or not location["name"].strip():
+            _error(
+                errors,
+                "missing_location_name",
+                f"environment.yaml:locations.{index}.name",
+                "地点name必须是非空字符串",
+            )
+        connections = location.get("connected_to")
+        if not isinstance(connections, list) or not all(
+            isinstance(value, str) and value for value in connections
+        ):
+            _error(
+                errors,
+                "invalid_location_connections",
+                f"environment.yaml:locations.{index}.connected_to",
+                "connected_to必须是地点ID字符串数组",
+            )
+            connections = []
+        if len(connections) != len(set(connections)):
+            _error(
+                errors,
+                "duplicate_location_connection",
+                f"environment.yaml:locations.{index}.connected_to",
+                "connected_to不得包含重复地点",
+            )
+        if location_id in connections:
+            _error(
+                errors,
+                "self_location_connection",
+                f"environment.yaml:locations.{index}.connected_to",
+                "地点不得连接自身",
+            )
+        adjacency[location_id] = set(connections) & valid_locations
+        unknown = set(connections) - valid_locations
         if unknown:
             _error(
                 errors,
                 "unknown_location_connection",
                 f"environment.yaml:locations.{index}.connected_to",
                 f"引用未知地点: {sorted(unknown)}",
+            )
+    for location_id, connections in adjacency.items():
+        for target in connections:
+            if location_id not in adjacency.get(target, set()):
+                _error(
+                    errors,
+                    "one_way_location_connection",
+                    f"environment.yaml:locations.{location_id}.connected_to",
+                    f"{location_id}与{target}的连接必须双向声明",
+                )
+    if valid_locations:
+        start = next(iter(valid_locations))
+        visited: set[str] = set()
+        pending = [start]
+        while pending:
+            current = pending.pop()
+            if current in visited:
+                continue
+            visited.add(current)
+            pending.extend(adjacency.get(current, set()) - visited)
+        if visited != valid_locations:
+            _error(
+                errors,
+                "disconnected_location_graph",
+                "environment.yaml:locations",
+                f"地图存在不可达地点: {sorted(valid_locations - visited)}",
+            )
+    for index, item in enumerate(items):
+        if not isinstance(item, Mapping):
+            _error(
+                errors,
+                "invalid_item",
+                f"environment.yaml:items.{index}",
+                "物品必须是包含id、name、type、portable的对象",
+            )
+            continue
+        if not isinstance(item.get("name"), str) or not item["name"].strip():
+            _error(
+                errors,
+                "missing_item_name",
+                f"environment.yaml:items.{index}.name",
+                "物品name必须是非空字符串",
+            )
+        if not isinstance(item.get("type"), str) or not item["type"].strip():
+            _error(
+                errors,
+                "missing_item_type",
+                f"environment.yaml:items.{index}.type",
+                "物品type必须是非空字符串",
+            )
+        if not isinstance(item.get("portable"), bool):
+            _error(
+                errors,
+                "invalid_item_portable",
+                f"environment.yaml:items.{index}.portable",
+                "物品portable必须是布尔值",
             )
 
 
@@ -753,6 +884,7 @@ def _review_section_passed(
     if any(
         _has_blocking_review_findings(candidate)
         for candidate in (
+            world / "review_findings.yaml",
             path.parent / "review_findings.yaml",
             world / "drafts" / character_id / "review_findings.yaml",
         )
@@ -774,7 +906,7 @@ def _has_blocking_review_findings(path: Path) -> bool:
     if not path.is_file():
         return False
     try:
-        payload = load_yaml(path)
+        payload = yaml.safe_load(path.read_text(encoding="utf-8"))
     except Exception:
         return True
     if isinstance(payload, Mapping):
@@ -786,7 +918,7 @@ def _has_blocking_review_findings(path: Path) -> bool:
     return any(
         isinstance(item, Mapping)
         and item.get("status") == "open"
-        and item.get("severity") in {"blocker", "major"}
+        and item.get("severity") in {"blocker", "major", "minor"}
         for item in findings
     )
 

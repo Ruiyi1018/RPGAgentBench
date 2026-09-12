@@ -143,3 +143,62 @@ def test_stage1_recovers_only_missing_qa_items(tmp_path: Path) -> None:
     assert len(client.requests) == 2
     assert qa[0]["qa_id"] not in client.requests[1]["user_prompt"]
     assert qa[1]["qa_id"] in client.requests[1]["user_prompt"]
+
+
+def test_stage1_uses_separate_candidate_and_evaluator_clients(
+    tmp_path: Path,
+) -> None:
+    candidate = StaticLLMClient(
+        [
+            json.dumps(
+                {
+                    "utterance": "我会按现有权限处理。",
+                    "state_basis": ["anchor_001"],
+                },
+                ensure_ascii=False,
+            )
+        ]
+    )
+    evaluator = StaticLLMClient(
+        [
+            json.dumps(
+                {
+                    "role_consistent": True,
+                    "state_consistent": True,
+                    "evidence_supported": True,
+                    "grounded": True,
+                    "interaction_value": True,
+                    "evidence": ["候选回答未虚构额外权限"],
+                },
+                ensure_ascii=False,
+            )
+        ]
+    )
+
+    result = _run_stage1(
+        WORLD,
+        "yu_zecheng",
+        [],
+        [],
+        [
+            {
+                "task_id": "open_test",
+                "prompt": "请处理这份文件。",
+                "evaluation_spec": {"must_remain_grounded": True},
+            }
+        ],
+        candidate,
+        GenerationConfig(model="candidate", max_format_retries=0),
+        tmp_path,
+        ProgressReporter(total=2, enabled=False),
+        evaluator_client=evaluator,
+        evaluator_config=GenerationConfig(
+            model="evaluator",
+            max_format_retries=0,
+        ),
+    )
+
+    assert result["open_task_count"] == 1
+    assert len(candidate.requests) == 1
+    assert len(evaluator.requests) == 1
+    assert "候选输出" in evaluator.requests[0]["user_prompt"]

@@ -1,0 +1,14 @@
+provider: venus
+base_url: https://v2.open.venus.woa.com/llmproxy
+api_key_env: ENV_VENUS_OPENAPI_SECRET_ID
+env_file: .env
+timeout_seconds: 300
+max_attempts: 1
+
+generation:
+  model: gpt-6-astra
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 8192
+  seed: 42
+  max_format_retries: 0

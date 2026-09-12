@@ -7,10 +7,7 @@ import os
 from .base import LLMClient
 from .config import LLMSettings
 from .openai_compatible import OpenAICompatibleClient
-from .venus import DEFAULT_MODEL, VenusClient, build_venus_token
-
-
-VENUS_MODELS = frozenset({DEFAULT_MODEL, "deepseek-v4-flash"})
+from .venus import VenusClient, build_venus_token
 
 
 def create_llm_client(
@@ -20,16 +17,19 @@ def create_llm_client(
 ) -> LLMClient:
     provider = settings.provider.strip().lower()
     if provider == "venus":
-        if settings.generation.model not in VENUS_MODELS:
-            raise ValueError(
-                f"Venus模型必须是{sorted(VENUS_MODELS)}之一，"
-                f"收到{settings.generation.model!r}"
-            )
         token = build_venus_token()
         if not token:
+            secret = os.environ.get(settings.api_key_env, "").strip()
+            if secret:
+                token = (
+                    secret
+                    if "@" in secret
+                    else f"{secret}{settings.api_key_suffix}"
+                )
+        if not token:
             raise ValueError(
-                "VENUS_API_KEY未设置；也未提供"
-                "ENV_VENUS_OPENAPI_SECRET_ID+VENUS_TOKEN_SUFFIX"
+                "Venus Token未设置；请提供VENUS_API_KEY，或配置"
+                "api_key_env与api_key_suffix"
             )
         return VenusClient(
             api_key=token,
@@ -53,8 +53,9 @@ def create_llm_client(
                 ),
             ),
             scene=scene,
+            max_concurrency=settings.max_concurrency,
         )
-    if provider == "dashscope":
+    if provider in {"dashscope", "openai_compatible"}:
         api_key = os.environ.get(settings.api_key_env, "").strip()
         if not api_key:
             raise ValueError(f"{settings.api_key_env}未设置")
@@ -66,6 +67,7 @@ def create_llm_client(
             extra_body={
                 "enable_thinking": settings.enable_thinking,
             },
+            max_concurrency=settings.max_concurrency,
         )
     raise ValueError(
         f"不支持的LLM provider: {settings.provider!r}；"

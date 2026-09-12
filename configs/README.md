@@ -13,3 +13,8 @@
 `deepseek-v4-pro`；真实Token只写入项目根目录`.env`的
 `VENUS_API_KEY`。`models/qwen_pilot.yaml`仅保留为显式旧后端配置，
 不会被默认入口选择。
+
+`llm/registry.yaml`是跨平台模型注册表，分别声明backend连接信息和model
+能力。`experiments/*.yaml`只引用注册表中的稳定模型名，并通过
+`candidate`、`player`、`evaluator`角色或`matrix`定义主实验与敏感性
+实验。Runner不应包含远端模型ID或供应商特判。

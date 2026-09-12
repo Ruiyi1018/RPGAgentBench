@@ -6,7 +6,12 @@ from typing import Any
 
 import pytest
 
-from llm import GenerationConfig, LLMSettings, create_llm_client
+from llm import (
+    APIClientError,
+    GenerationConfig,
+    LLMSettings,
+    create_llm_client,
+)
 from llm.venus import (
     DEFAULT_MODEL,
     VenusClient,
@@ -108,6 +113,31 @@ def test_request_preserves_deepseek_parameters() -> None:
     assert request["temperature"] == 0
     assert request["top_p"] == 0.9
     assert request["seed"] == 7
+
+
+def test_request_uses_astra_completion_token_contract() -> None:
+    response_format = {
+        "type": "json_schema",
+        "json_schema": {"name": "result", "strict": True, "schema": {}},
+    }
+    request = build_venus_request(
+        [{"role": "user", "content": "Return JSON"}],
+        "gpt-6-astra",
+        {
+            "max_tokens": 8192,
+            "temperature": 0,
+            "top_p": 1,
+            "seed": 42,
+            "response_format": response_format,
+        },
+    )
+
+    assert request["max_completion_tokens"] == 8192
+    assert request["response_format"] == response_format
+    assert "max_tokens" not in request
+    assert "temperature" not in request
+    assert "top_p" not in request
+    assert "seed" not in request
 
 
 def test_missing_token_returns_none(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -213,6 +243,25 @@ def test_factory_accepts_venus_flash(
     assert isinstance(client, VenusClient)
 
 
+def test_factory_accepts_venus_astra(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("VENUS_API_KEY", "factory-test-token")
+    settings = LLMSettings(
+        provider="venus",
+        base_url="https://v2.open.venus.woa.com/llmproxy",
+        api_key_env="ENV_VENUS_OPENAPI_SECRET_ID",
+        generation=GenerationConfig(model="gpt-6-astra", max_tokens=8192),
+        max_attempts=1,
+    )
+
+    client = create_llm_client(settings, scene="anchor_draft")
+
+    assert isinstance(client, VenusClient)
+    assert client.base_url == "https://v2.open.venus.woa.com/llmproxy"
+    assert client.max_attempts == 1
+
+
 def test_sync_client_routes_deepseek_and_preserves_scene(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -300,3 +349,34 @@ def test_sync_client_sends_strict_json_schema(
             "schema": schema,
         },
     }
+
+
+def test_sync_client_rejects_truncated_output(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def fake_call(
+        messages: list[dict[str, str]],
+        **kwargs: Any,
+    ) -> VenusResult:
+        del messages, kwargs
+        return VenusResult(
+            '{"partial":true}',
+            {"total_tokens": 10},
+            "request-truncated",
+            "length",
+        )
+
+    monkeypatch.setattr(
+        "llm.venus.call_venus_api_result_async",
+        fake_call,
+    )
+    client = VenusClient(api_key="test")
+
+    with pytest.raises(APIClientError, match="截断"):
+        client.generate(
+            system_prompt="system",
+            user_prompt="user",
+            config=GenerationConfig(model=DEFAULT_MODEL),
+        )
+
+    assert client.last_finish_reason == "length"

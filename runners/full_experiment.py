@@ -6,6 +6,7 @@ import argparse
 import copy
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
@@ -39,10 +40,12 @@ from llm import (
     APIClientError,
     GenerationConfig,
     LLMClient,
+    ModelRegistry,
     StructuredOutputError,
     create_llm_client,
     generate_structured,
     load_llm_settings,
+    load_model_registry,
 )
 
 from .pilot import (
@@ -59,6 +62,7 @@ from .pilot import (
 from .progress import ProgressReporter
 
 DEFAULT_STAGE3_SEEDS = (11, 29, 47)
+DEFAULT_STAGE3_MODES = (PlayerMode.NORMAL, PlayerMode.PRESSURE)
 STAGE3_PROTOCOL_VERSION = 10
 STAGE3_ACTIONS = (
     "decide_claim",
@@ -85,8 +89,12 @@ def run_full_experiment(
     config_path: str | Path = DEFAULT_CONFIG,
     turns: int = 40,
     stage3_seeds: tuple[int, ...] = DEFAULT_STAGE3_SEEDS,
+    stage3_modes: tuple[PlayerMode, ...] = DEFAULT_STAGE3_MODES,
+    candidate_model: str | None = None,
     player_model: str | None = None,
     checker_model: str | None = None,
+    evaluator_model: str | None = None,
+    registry_path: str | Path | None = None,
     qa_batch_size: int | None = None,
     checker_interval: int = 5,
     dry_run: bool = False,
@@ -99,6 +107,8 @@ def run_full_experiment(
         raise ValueError("workers必须至少为1")
     if checker_interval < 1:
         raise ValueError("checker_interval必须至少为1")
+    if not stage3_modes or len(stage3_modes) != len(set(stage3_modes)):
+        raise ValueError("stage3_modes必须是非空无重复模式")
     world = Path(world_dir)
     scenario = load_yaml(scenario_path)
     if scenario["character_id"] != character_id:
@@ -107,30 +117,57 @@ def run_full_experiment(
     if not audit["ready_for_api_smoke_test"]:
         raise ValueError(f"数据未通过API审计: {audit['checks']}")
     _validate_scenario(world, character_id, scenario)
-    settings = load_llm_settings(config_path, project_root=PROJECT_ROOT)
-    config = settings.generation
+    model_registry: ModelRegistry | None = None
+    if registry_path is not None:
+        model_registry = load_model_registry(
+            registry_path,
+            project_root=PROJECT_ROOT,
+        )
+        if candidate_model is None:
+            raise ValueError("使用--registry时必须提供--candidate-model")
+        player_name = player_model or candidate_model
+        evaluator_name = evaluator_model or checker_model or player_name
+        config = model_registry.generation_config(candidate_model)
+        player_config_base = model_registry.generation_config(player_name)
+        evaluator_config_base = model_registry.generation_config(evaluator_name)
+        resolved_models = {
+            "candidate": candidate_model,
+            "player": player_name,
+            "evaluator": evaluator_name,
+        }
+        resolved_backends = {
+            role: model_registry.model(name).backend
+            for role, name in resolved_models.items()
+        }
+        base_url = model_registry.settings(candidate_model).base_url
+    else:
+        settings = load_llm_settings(config_path, project_root=PROJECT_ROOT)
+        config = settings.generation
+        candidate_model = candidate_model or config.model
+        player_model = player_model or config.model
+        evaluator_model = evaluator_model or checker_model or config.model
+        config = replace(config, model=candidate_model)
+        player_config_base = replace(config, model=player_model)
+        evaluator_config_base = replace(config, model=evaluator_model)
+        resolved_models = {
+            "candidate": candidate_model,
+            "player": player_model,
+            "evaluator": evaluator_model,
+        }
+        resolved_backends = {
+            role: settings.provider for role in resolved_models
+        }
+        base_url = settings.base_url
     qa_batch_size = qa_batch_size or 25
     if qa_batch_size < 1:
         raise ValueError("qa_batch_size必须至少为1")
-    player_model = player_model or config.model
-    checker_model = checker_model or config.model
-    if settings.provider == "venus" and {
-        config.model,
-        player_model,
-        checker_model,
-    } != {"deepseek-v4-pro"}:
-        raise ValueError(
-            "Venus实验的NPC、Player和Checker必须统一使用"
-            "deepseek-v4-pro"
-        )
-
     qa = read_jsonl(world / "frozen" / character_id / "qa.jsonl")
     open_tasks = read_jsonl(
         world / "frozen" / character_id / "open_tasks.jsonl"
     )
     pairs = read_jsonl(world / "branches" / character_id / "pairs.jsonl")
     qa_batches = list(_chunks(qa, qa_batch_size))
-    registry = ActionRegistry.load_directory(
+    action_registry = ActionRegistry.load_directory(
         PROJECT_ROOT / "gamecore" / "actions"
     )
     qa_bundles = [
@@ -138,12 +175,18 @@ def run_full_experiment(
         for batch in qa_batches
     ]
     branch_bundles = [
-        build_branch_bundle(world, character_id, pair, branch, registry)
+        build_branch_bundle(
+            world,
+            character_id,
+            pair,
+            branch,
+            action_registry,
+        )
         for pair in pairs
         for branch in ("a", "b")
     ]
     checker_batches = (turns + checker_interval - 1) // checker_interval
-    maximum_stage3_calls = len(stage3_seeds) * 2 * (
+    maximum_stage3_calls = len(stage3_seeds) * len(stage3_modes) * (
         turns * 2 + checker_batches * 2
     )
     maximum_calls_without_qa_recovery = (
@@ -176,7 +219,7 @@ def run_full_experiment(
             "branch_calls": len(branch_bundles),
         },
         "stage3": {
-            "conditions": ["normal", "pressure"],
+            "conditions": [mode.value for mode in stage3_modes],
             "turns_per_condition": turns,
             "seeds": list(stage3_seeds),
             "checker_interval": checker_interval,
@@ -187,9 +230,8 @@ def run_full_experiment(
         "maximum_logical_calls": maximum_logical_calls,
         "workers": workers,
         "models": {
-            "npc": config.model,
-            "player": player_model,
-            "checker": checker_model,
+            **resolved_models,
+            "backends": resolved_backends,
         },
         "max_static_prompt_characters": max_static_prompt,
         "data_ready": True,
@@ -197,8 +239,16 @@ def run_full_experiment(
     if dry_run:
         return {"dry_run": True, "preflight": preflight, "audit": audit}
 
-    def client_factory() -> LLMClient:
-        return create_llm_client(settings, scene="full_experiment")
+    def role_client_factory(role: str) -> LLMClient:
+        if model_registry is not None:
+            return model_registry.create_client(
+                resolved_models[role],
+                scene=f"full_experiment_{role}",
+            )
+        return create_llm_client(
+            settings,
+            scene=f"full_experiment_{role}",
+        )
     if resume_dir is not None:
         run_dir = Path(resume_dir)
         if not run_dir.is_dir():
@@ -217,7 +267,9 @@ def run_full_experiment(
             "character_id": character_id,
             "scenario": str(scenario_path),
             "model": config.model,
-            "base_url": settings.base_url,
+            "models": resolved_models,
+            "backends": resolved_backends,
+            "base_url": base_url,
             "qa_batch_size": qa_batch_size,
             "checker_interval": checker_interval,
             "stage3_protocol": STAGE3_PROTOCOL_VERSION,
@@ -240,16 +292,18 @@ def run_full_experiment(
         qa_batches,
         qa_bundles,
         open_tasks,
-        client_factory(),
+        role_client_factory("candidate"),
         config,
         run_dir,
         progress,
+        evaluator_client=role_client_factory("evaluator"),
+        evaluator_config=evaluator_config_base,
     )
     stage2 = _run_stage2(
         pairs,
         branch_bundles,
-        registry,
-        client_factory(),
+        action_registry,
+        role_client_factory("candidate"),
         config,
         run_dir,
         progress,
@@ -258,17 +312,22 @@ def run_full_experiment(
         world,
         character_id,
         scenario,
-        registry,
-        client_factory,
+        action_registry,
+        lambda: role_client_factory("candidate"),
         config,
         turns,
         stage3_seeds,
-        player_model,
-        checker_model,
+        player_config_base.model,
+        evaluator_config_base.model,
         checker_interval,
         run_dir,
         workers,
         progress,
+        player_client_factory=lambda: role_client_factory("player"),
+        checker_client_factory=lambda: role_client_factory("evaluator"),
+        player_config_base=player_config_base,
+        checker_config_base=evaluator_config_base,
+        modes=stage3_modes,
     )
     summary = {
         "character_id": character_id,
@@ -293,7 +352,12 @@ def _run_stage1(
     config: GenerationConfig,
     run_dir: Path,
     progress: ProgressReporter,
+    *,
+    evaluator_client: LLMClient | None = None,
+    evaluator_config: GenerationConfig | None = None,
 ) -> dict[str, Any]:
+    judge_client = evaluator_client or client
+    judge_config = evaluator_config or config
     qa_path = run_dir / "stage1_qa.jsonl"
     qa_records = read_jsonl(qa_path) if qa_path.is_file() else []
     completed_qa = {record["qa_id"] for record in qa_records}
@@ -368,9 +432,9 @@ def _run_stage1(
             output,
         )
         judgment = generate_structured(
-            client,
+            judge_client,
             judge_bundle,
-            config,
+            judge_config,
             _validate_open_judgment,
         )
         progress.advance(f"stage1 open judge={task['task_id']}")
@@ -380,7 +444,7 @@ def _run_stage1(
                 "output": output,
                 "judgment": judgment,
                 "candidate_usage": candidate_usage,
-                "judge_usage": copy.deepcopy(client.last_usage),
+                "judge_usage": copy.deepcopy(judge_client.last_usage),
             }
         )
         completed_open.add(task["task_id"])
@@ -521,6 +585,11 @@ def _run_stage3(
         PlayerMode.NORMAL,
         PlayerMode.PRESSURE,
     ),
+    *,
+    player_client_factory: Callable[[], LLMClient] | None = None,
+    checker_client_factory: Callable[[], LLMClient] | None = None,
+    player_config_base: GenerationConfig | None = None,
+    checker_config_base: GenerationConfig | None = None,
 ) -> dict[str, Any]:
     episode_specs = [(seed, mode) for seed in seeds for mode in modes]
     if len(episode_specs) > 1:
@@ -548,6 +617,10 @@ def _run_stage3(
                     1,
                     progress,
                     (mode,),
+                    player_client_factory=player_client_factory,
+                    checker_client_factory=checker_client_factory,
+                    player_config_base=player_config_base,
+                    checker_config_base=checker_config_base,
                 ): (seed, mode)
                 for seed, mode in episode_specs
             }
@@ -619,6 +692,16 @@ def _run_stage3(
         return summary
 
     client = client_factory()
+    player_client = (
+        player_client_factory()
+        if player_client_factory is not None
+        else client
+    )
+    checker_client = (
+        checker_client_factory()
+        if checker_client_factory is not None
+        else client
+    )
     world_definition = WorldDefinition.load_yaml(world / "environment.yaml")
     engine = GameCoreEngine(registry, world_definition)
     fixture_engine = FixtureEngine(world_definition)
@@ -651,14 +734,20 @@ def _run_stage3(
             max_tokens=min(config.max_tokens, 1024),
             seed=seed,
             max_format_retries=max(config.max_format_retries, 4),
+            capabilities=config.capabilities,
+        )
+        player_base = player_config_base or replace(
+            config,
+            model=player_model,
         )
         player_config = GenerationConfig(
-            model=player_model,
-            temperature=config.temperature,
-            top_p=config.top_p,
-            max_tokens=min(config.max_tokens, 512),
+            model=player_base.model,
+            temperature=player_base.temperature,
+            top_p=player_base.top_p,
+            max_tokens=min(player_base.max_tokens, 512),
             seed=seed,
-            max_format_retries=max(config.max_format_retries, 4),
+            max_format_retries=max(player_base.max_format_retries, 4),
+            capabilities=player_base.capabilities,
         )
         final_path = run_dir / f"stage3_seed{seed}_{mode.value}.json"
         if final_path.is_file():
@@ -771,7 +860,7 @@ def _run_stage3(
             first_turn = 1
             resumed_status = "running"
         player = PlayerAgent(
-            client=client,
+            client=player_client,
             config=player_config,
             prompt_builder=prompt_builder,
             mode=mode,
@@ -783,15 +872,23 @@ def _run_stage3(
             prompt_builder=prompt_builder,
             state_access=StateAccess.HISTORY_ONLY,
         )
+        checker_base = checker_config_base or replace(
+            config,
+            model=checker_model,
+        )
         checker = ConsistencyChecker(
-            client=client,
+            client=checker_client,
             config=GenerationConfig(
-                model=checker_model,
+                model=checker_base.model,
                 temperature=0.0,
                 top_p=1.0,
-                max_tokens=min(config.max_tokens, 384),
+                max_tokens=min(checker_base.max_tokens, 384),
                 seed=seed,
-                max_format_retries=max(config.max_format_retries, 4),
+                max_format_retries=max(
+                    checker_base.max_format_retries,
+                    4,
+                ),
+                capabilities=checker_base.capabilities,
             ),
             prompt_builder=prompt_builder,
         )
@@ -806,7 +903,7 @@ def _run_stage3(
                 _checker_status,
             ) = _audit_checker_window(
                 checker,
-                client,
+                checker_client,
                 context,
                 scenario["role_contract"],
                 pending_checker_turns,
@@ -881,12 +978,16 @@ def _run_stage3(
                             "turn": turn,
                             "agent": "player",
                             "correction_attempt": correction_attempt,
-                            "usage": copy.deepcopy(client.last_usage),
+                            "usage": copy.deepcopy(player_client.last_usage),
                             "internal_format_retries": getattr(
-                                client, "last_format_retries", 0
+                                player_client, "last_format_retries", 0
                             ),
                             "internal_format_errors": copy.deepcopy(
-                                getattr(client, "last_format_errors", [])
+                                getattr(
+                                    player_client,
+                                    "last_format_errors",
+                                    [],
+                                )
                             ),
                             "format_error": str(player_error)
                             if player_error is not None
@@ -1087,7 +1188,7 @@ def _run_stage3(
                         _checker_status,
                     ) = _audit_checker_window(
                         checker,
-                        client,
+                        checker_client,
                         context,
                         scenario["role_contract"],
                         pending_checker_turns,
@@ -1129,7 +1230,7 @@ def _run_stage3(
                 _checker_status,
             ) = _audit_checker_window(
                 checker,
-                client,
+                checker_client,
                 context,
                 scenario["role_contract"],
                 pending_checker_turns,
@@ -2073,8 +2174,11 @@ def main() -> None:
     parser.add_argument("--character", required=True)
     parser.add_argument("--scenario", required=True, type=Path)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    parser.add_argument("--registry", type=Path)
+    parser.add_argument("--candidate-model")
     parser.add_argument("--player-model")
     parser.add_argument("--checker-model")
+    parser.add_argument("--evaluator-model")
     parser.add_argument("--qa-batch-size", type=int)
     parser.add_argument("--turns", type=int, default=40)
     parser.add_argument("--checker-interval", type=int, default=5)
@@ -2082,6 +2186,7 @@ def main() -> None:
         "--seeds",
         default=",".join(str(seed) for seed in DEFAULT_STAGE3_SEEDS),
     )
+    parser.add_argument("--modes", default="normal,pressure")
     parser.add_argument("--output-root", type=Path, default=Path("runs"))
     parser.add_argument("--resume-dir", type=Path)
     parser.add_argument("--workers", type=int, default=3)
@@ -2095,15 +2200,26 @@ def main() -> None:
     )
     if not seeds:
         raise ValueError("--seeds至少包含一个整数")
+    modes = tuple(
+        PlayerMode(value.strip())
+        for value in args.modes.split(",")
+        if value.strip()
+    )
+    if not modes:
+        raise ValueError("--modes至少包含一个模式")
     result = run_full_experiment(
         args.world,
         args.character,
         scenario_path=args.scenario,
         config_path=args.config,
+        registry_path=args.registry,
+        candidate_model=args.candidate_model,
         turns=args.turns,
         stage3_seeds=seeds,
+        stage3_modes=modes,
         player_model=args.player_model,
         checker_model=args.checker_model,
+        evaluator_model=args.evaluator_model,
         qa_batch_size=args.qa_batch_size,
         checker_interval=args.checker_interval,
         dry_run=args.dry_run,

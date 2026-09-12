@@ -1,0 +1,22 @@
+registry: configs/llm/registry.yaml
+
+roles:
+  candidate: venus-gpt6-astra
+  player: venus-deepseek-v4-pro
+  evaluator: venus-deepseek-v4-pro
+
+# 删除不需要变化的维度即可做单因素敏感性实验。
+matrix:
+  candidate:
+    - venus-gpt6-astra
+  player:
+    - venus-deepseek-v4-pro
+    - dashscope-qwen37-plus
+  evaluator:
+    - venus-deepseek-v4-pro
+    - venus-deepseek-v4-flash
+
+stage3:
+  turns: 40
+  seeds: [11, 29, 47]
+  modes: [normal, pressure]

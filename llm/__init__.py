@@ -3,6 +3,7 @@
 from .base import (
     GenerationConfig,
     LLMClient,
+    ModelCapabilities,
     StaticLLMClient,
     StructuredOutputError,
     generate_structured,
@@ -11,6 +12,14 @@ from .base import (
 from .config import LLMSettings, load_env_file, load_llm_settings
 from .factory import create_llm_client
 from .openai_compatible import APIClientError, OpenAICompatibleClient
+from .registry import (
+    BackendProfile,
+    ModelProfile,
+    ModelRegistry,
+    RoleModelAssignment,
+    load_model_registry,
+    load_role_assignment,
+)
 from .venus import (
     VenusClient,
     VenusResult,
@@ -24,7 +33,12 @@ __all__ = [
     "GenerationConfig",
     "LLMClient",
     "LLMSettings",
+    "ModelCapabilities",
+    "ModelProfile",
+    "ModelRegistry",
     "OpenAICompatibleClient",
+    "BackendProfile",
+    "RoleModelAssignment",
     "StaticLLMClient",
     "StructuredOutputError",
     "VenusClient",
@@ -36,5 +50,7 @@ __all__ = [
     "generate_structured",
     "load_env_file",
     "load_llm_settings",
+    "load_model_registry",
+    "load_role_assignment",
     "parse_json_object",
 ]

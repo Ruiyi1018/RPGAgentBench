@@ -52,7 +52,8 @@ datagen/
 ```bash
 python3 -m datagen.pipeline generate catalog-foundation \
   --catalog configs/datagen/world_catalog.yaml \
-  --config configs/models/venus_deepseek.yaml \
+  --registry configs/llm/registry.yaml \
+  --model venus-gpt-5.5 \
   --workers 4
 ```
 
@@ -80,7 +81,9 @@ python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
   audit foundation
 
 python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
-  generate anchor-draft --config configs/models/venus_deepseek.yaml
+  generate anchor-draft \
+  --registry configs/llm/registry.yaml \
+  --model venus-gpt6-astra
 
 python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
   audit anchors
@@ -91,11 +94,17 @@ python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
 ```bash
 python3 -m datagen.pipeline --world assets/world_002 --character yu_zecheng \
   generate stage1-2 \
-  --config configs/models/venus_deepseek.yaml \
+  --registry configs/llm/registry.yaml \
+  --model venus-deepseek-v4-pro \
   --rounds 600 \
   --pairs 10 \
   --workers 12
 ```
+
+上述三个LLM生成入口均可用`--model`切换注册模型。旧版
+`--config configs/models/*.yaml`仍兼容，但不能与单独的`--model`混用。
+注册模型的认证、能力、超时、重试和并发限制统一由
+`configs/llm/registry.yaml`控制。
 
 审核已生成的Stage 1/2数据：
 

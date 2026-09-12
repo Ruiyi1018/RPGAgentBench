@@ -41,16 +41,17 @@ def load_reviewed_anchors(
             }
         )
     for source in selected["generated_anchors"]:
-        anchors.append(
-            {
-                "id": source["id"],
-                "source": "controlled",
-                "event": source["event"],
-                "state_change": source["state_change"],
-                "cf_edit": source["cf_edit"],
-                "visibility": {"known_by": [character_id, "player"]},
-            }
-        )
+        anchor = {
+            "id": source["id"],
+            "source": "controlled",
+            "event": source["event"],
+            "state_change": source["state_change"],
+            "cf_edit": source["cf_edit"],
+            "visibility": {"known_by": [character_id, "player"]},
+        }
+        if "foundation_refs" in source:
+            anchor["foundation_refs"] = source["foundation_refs"]
+        anchors.append(anchor)
     if len(anchors) != selected["anchor_count"]:
         raise ValueError(f"{character_id}锚点数量与anchor_count不一致")
     return anchors

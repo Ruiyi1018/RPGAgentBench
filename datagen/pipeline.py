@@ -4,11 +4,17 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 import yaml
 
-from llm import create_llm_client, load_llm_settings
+from llm import (
+    GenerationConfig,
+    LLMClient,
+    create_llm_client,
+    load_llm_settings,
+    load_model_registry,
+)
 from runners.pilot import DEFAULT_CONFIG, PROJECT_ROOT
 
 from datagen.generation.anchor_draft import generate_anchor_draft
@@ -69,6 +75,7 @@ def main() -> None:
         type=Path,
         default=DEFAULT_CONFIG,
     )
+    _add_registry_arguments(catalog_parser)
     catalog_parser.add_argument("--workers", type=int, default=4)
     catalog_parser.add_argument(
         "--catalog-world",
@@ -96,11 +103,17 @@ def main() -> None:
 
     anchor_parser = generators.add_parser(
         "anchor-draft",
-        help="生成Stage 1/2共享前置：Anchor与Transition审核草案",
+        help="生成Stage 1/2共享前置：快照后受控Anchor与Transition审核草案",
     )
     anchor_parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    _add_registry_arguments(anchor_parser)
     anchor_parser.add_argument("--total-anchors", type=int, default=30)
-    anchor_parser.add_argument("--canon-anchors", type=int, default=10)
+    anchor_parser.add_argument(
+        "--canon-anchors",
+        type=int,
+        default=0,
+        help="兼容参数；当前协议固定为0",
+    )
     anchor_parser.add_argument("--output-dir", type=Path)
 
     build_parser = generators.add_parser(
@@ -111,6 +124,7 @@ def main() -> None:
         ),
     )
     build_parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    _add_registry_arguments(build_parser)
     build_parser.add_argument("--rounds", type=int, default=600)
     build_parser.add_argument("--pairs", type=int, default=10)
     build_parser.add_argument("--workers", type=int, default=6)
@@ -144,18 +158,17 @@ def main() -> None:
 
     args = parser.parse_args()
     if args.action == "generate" and args.target == "catalog-foundation":
-        settings = load_llm_settings(
-            args.config,
-            project_root=PROJECT_ROOT,
+        client_factory, generation_config = _generation_runtime(
+            config_path=args.config,
+            registry_path=args.registry,
+            model_name=args.model,
+            scene="foundation_draft",
         )
         result = generate_catalog_foundations(
             args.catalog,
             assets_root=args.assets_root,
-            client_factory=lambda: create_llm_client(
-                settings,
-                scene="foundation_draft",
-            ),
-            config=settings.generation,
+            client_factory=client_factory,
+            config=generation_config,
             workers=args.workers,
             world_ids=args.catalog_worlds,
             replace_existing_drafts=args.replace_existing_drafts,
@@ -218,18 +231,17 @@ def main() -> None:
     elif args.action == "generate" and args.target == "anchor-draft":
         if len(characters) != 1:
             raise ValueError("一次只能为一个NPC生成Anchor草案")
-        settings = load_llm_settings(
-            args.config,
-            project_root=PROJECT_ROOT,
+        client_factory, generation_config = _generation_runtime(
+            config_path=args.config,
+            registry_path=args.registry,
+            model_name=args.model,
+            scene="anchor_draft",
         )
         result = generate_anchor_draft(
             args.world,
             characters[0],
-            client=create_llm_client(
-                settings,
-                scene="anchor_draft",
-            ),
-            config=settings.generation,
+            client=client_factory(),
+            config=generation_config,
             total_anchors=args.total_anchors,
             canon_anchors=args.canon_anchors,
             output_dir=args.output_dir,
@@ -238,6 +250,8 @@ def main() -> None:
         result = generate_stage1_stage2(
             args.world,
             config_path=args.config,
+            registry_path=args.registry,
+            model_name=args.model,
             rounds=args.rounds,
             pair_count=args.pairs,
             character_ids=characters,
@@ -248,6 +262,48 @@ def main() -> None:
     else:
         raise AssertionError(f"未处理的命令: {args.action} {args.target}")
     _print_result(result)
+
+
+def _add_registry_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--registry",
+        type=Path,
+        help="模型注册表；提供后--model使用稳定注册名",
+    )
+    parser.add_argument(
+        "--model",
+        help="注册表中的生成模型名",
+    )
+
+
+def _generation_runtime(
+    *,
+    config_path: Path,
+    registry_path: Path | None,
+    model_name: str | None,
+    scene: str,
+) -> tuple[Callable[[], LLMClient], GenerationConfig]:
+    if registry_path is not None:
+        if model_name is None:
+            raise ValueError("使用--registry时必须同时提供--model")
+        registry = load_model_registry(
+            registry_path,
+            project_root=PROJECT_ROOT,
+        )
+        return (
+            lambda: registry.create_client(model_name, scene=scene),
+            registry.generation_config(model_name),
+        )
+    if model_name is not None:
+        raise ValueError("--model只能与--registry一起使用")
+    settings = load_llm_settings(
+        config_path,
+        project_root=PROJECT_ROOT,
+    )
+    return (
+        lambda: create_llm_client(settings, scene=scene),
+        settings.generation,
+    )
 
 
 def _print_result(result: Any) -> None:

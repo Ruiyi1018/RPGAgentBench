@@ -1,0 +1,210 @@
+version: 1
+
+backends:
+  venus:
+    type: venus
+    base_url: https://v2.open.venus.woa.com/llmproxy
+    api_key_env: ENV_VENUS_OPENAPI_SECRET_ID
+    api_key_suffix: "@5784"
+    env_file: .env
+    timeout_seconds: 300
+    max_attempts: 3
+    max_concurrency: 8
+
+  dashscope:
+    type: openai_compatible
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    api_key_env: DASHSCOPE_API_KEY
+    env_file: .env
+    enable_thinking: false
+    timeout_seconds: 300
+    max_attempts: 5
+    max_concurrency: 4
+
+models:
+  venus-deepseek-v4-pro:
+    backend: venus
+    remote_model: deepseek-v4-pro
+    max_concurrency: 4
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 4096
+      seed: 42
+      max_format_retries: 2
+
+  venus-deepseek-v4-flash:
+    backend: venus
+    remote_model: deepseek-v4-flash
+    max_concurrency: 6
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 4096
+      seed: 42
+      max_format_retries: 1
+
+  venus-gpt6-astra:
+    backend: venus
+    remote_model: gpt-6-astra
+    max_concurrency: 2
+    capabilities:
+      token_parameter: max_completion_tokens
+      temperature: false
+      top_p: false
+      seed: false
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: 42
+      max_format_retries: 0
+
+  venus-gpt-5.5:
+    backend: venus
+    remote_model: gpt-5.5
+    max_concurrency: 2
+    capabilities:
+      token_parameter: max_completion_tokens
+      temperature: false
+      top_p: false
+      seed: false
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: 42
+      max_format_retries: 2
+
+  venus-gpt-5.4-mini:
+    backend: venus
+    remote_model: gpt-5.4-mini
+    max_concurrency: 3
+    capabilities:
+      token_parameter: max_completion_tokens
+      temperature: false
+      top_p: false
+      seed: false
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: 42
+      max_format_retries: 2
+
+  venus-qwen3.8-flash-next:
+    backend: venus
+    remote_model: qwen3.8-flash-next
+    max_concurrency: 4
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: 42
+      max_format_retries: 2
+
+  venus-kimi-k2.6:
+    backend: venus
+    remote_model: kimi-k2.6
+    max_concurrency: 3
+    timeout_seconds: 120
+    max_attempts: 2
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: 42
+      max_format_retries: 2
+
+  venus-gemini-3.8-flash:
+    backend: venus
+    remote_model: gemini-3.8-flash
+    max_concurrency: 4
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: false
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: null
+      max_format_retries: 2
+
+  venus-gemini-3.1-pro:
+    backend: venus
+    remote_model: gemini-3.1-pro
+    max_concurrency: 2
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: false
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 8192
+      seed: null
+      max_format_retries: 2
+
+  dashscope-qwen37-plus:
+    backend: dashscope
+    remote_model: qwen3.7-plus-2026-05-26
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 4096
+      seed: 42
+      max_format_retries: 2
+
+  dashscope-qwen-plus:
+    backend: dashscope
+    remote_model: qwen-plus-2025-12-01
+    capabilities:
+      token_parameter: max_tokens
+      temperature: true
+      top_p: true
+      seed: true
+      structured_output: json_schema
+    defaults:
+      temperature: 0.0
+      top_p: 1.0
+      max_tokens: 4096
+      seed: 42
+      max_format_retries: 2
