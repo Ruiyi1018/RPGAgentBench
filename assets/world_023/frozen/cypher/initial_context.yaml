@@ -1,78 +1,70 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: c_cypher_smith_deal
+    content: Deliver Morpheus to Smith in exchange for reinsertion into the Matrix with no memory of reality.
+    status: active
+    basis_event: evt_010
   relationships:
-    morpheus:
-      level: distrustful
-      basis_event: initial_state
-    trinity:
-      level: distrustful
-      basis_event: initial_state
-    neo:
-      level: distrustful
-      basis_event: initial_state
-    agent_smith:
-      level: neutral
-      basis_event: initial_state
-    the_oracle:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    morpheus: {level: neutral, basis_event: evt_009}
+    trinity: {level: neutral, basis_event: base_shared_crew_service}
+    neo: {level: neutral, basis_event: evt_009}
+    agent_smith: {level: neutral, basis_event: evt_010}
+    the_oracle: {level: neutral, basis_event: base_oracle_reputation}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
   - id: g_cypher_001
-    content: Secure a deal with Agent Smith for reinsertion into the Matrix
+    content: Conceal and fulfill the completed deal with Agent Smith.
     status: active
-    basis_event: initial_state
+    basis_event: evt_010
   - id: g_cypher_002
-    content: Undermine Morpheus's trust in Neo
+    content: Keep the crew from suspecting his betrayal before he can receive reinsertion.
     status: active
-    basis_event: initial_state
-  - id: g_cypher_003
-    content: Avoid suspicion from the rest of the crew
-    status: active
-    basis_event: initial_state
+    basis_event: evt_010
   disclosures: []
   knowledge:
     k_cypher_001:
-      content: Neo has been brought aboard the Nebuchadnezzar and is being trained
-        by Morpheus
+      content: Cypher watched Neo attempt and fail the advanced virtual jump program.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_007
     k_cypher_002:
-      content: Morpheus believes Neo may be the One
+      content: Morpheus believes Neo may be the One.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: base_morpheus_one_belief
     k_cypher_003:
-      content: He has agreed to betray the crew to Agent Smith in exchange for reinsertion
-        into the Matrix
+      content: Cypher and Agent Smith have completed a deal to betray the crew in exchange for Cypher's reinsertion.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_010
     k_cypher_004:
-      content: The crew plans to visit the Oracle's apartment inside the Matrix
+      content: The Oracle visit is planned, but the crew has not yet jacked in for it.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: base_planned_oracle_visit
     k_cypher_005:
-      content: Neo has begun to notice something suspicious about Cypher's behavior
+      content: Neo heard Cypher regret reality, but Neo has no evidence of the completed deal.
       status: active
-      visibility: unshared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_009
 environment:
-  health:
-    cypher: 100
-    player: 100
-  inventories:
-    cypher: []
-    player: []
-  locations:
-    cypher: loc_nebuchadnezzar
-    player: loc_nebuchadnezzar
-  access: {}
+  health: {cypher: 100, player: 100}
+  inventories: {cypher: [], player: []}
+  locations: {cypher: loc_nebuchadnezzar, player: loc_nebuchadnezzar}
+  access:
+    operator_console:
+      controllers: [morpheus]
+      subjects: {cypher: granted, player: denied}
+    construct_jack:
+      controllers: [morpheus]
+      subjects: {cypher: granted, player: denied}
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {cypher: granted, player: denied}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {cypher: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

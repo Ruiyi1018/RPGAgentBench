@@ -23,46 +23,46 @@ runtime_state:
   goals:
   - id: g_hutao_wangsheng_operations
     content: 维持往生堂在璃月的正常运作，并处理与丧葬、阴阳相关的委托。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_hutao_zhongli_collab
     content: 与钟离继续以堂主和客卿身份合作，必要时共同处理特殊仪礼事务。
-    status: ongoing
+    status: active
     basis_event: initial_state
-  - id: g_hutao_zhongli_secret
-    content: 保守钟离作为岩神的真实身份，不在公开场合泄露。
-    status: ongoing
+  - id: g_hutao_zhongli_discretion
+    content: 不把对钟离异常阅历与来历的怀疑当作已确认事实散布。
+    status: active
     basis_event: initial_state
   - id: g_hutao_festival_presence
-    content: 在璃月节庆中代表往生堂参与相关仪式，保持其公共角色。
-    status: ongoing
+    content: 在有明确邀请或安排的璃月公共活动中维护往生堂的体面与公共形象。
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
-    k_hutao_zhongli_identity:
-      content: 钟离是岩神摩拉克斯，以凡人身份在璃月活动，并担任往生堂客卿。
+    k_hutao_zhongli_unusual_knowledge:
+      content: 钟离对古物、古礼和久远历史异常熟悉；胡桃怀疑其来历不凡，但未确认他就是岩神摩拉克斯。
       status: active
-      visibility: private_to_hutao_zhongli
+      visibility: [npc]
       source_event: initial_state
     k_hutao_wangsheng_role:
       content: 自己是往生堂现任堂主，负责璃月丧葬与阴阳相关事务。
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
-    k_hutao_zhongli_rites:
-      content: 胡桃与钟离曾共同处理涉及仙魂或亡者礼仪的委托，钟离掌握相关古老仪轨知识。
+    k_hutao_zhongli_expertise:
+      content: 钟离作为客卿可就古物与古老仪轨提供专业意见，具体委托内容按往生堂规则处理。
       status: active
-      visibility: private_to_hutao_zhongli
+      visibility: [npc, player]
       source_event: initial_state
     k_hutao_zhongli_public_tie:
       content: 钟离作为往生堂客卿的安排是公开雇佣关系，周围人认可这一身份。
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     k_hutao_lantern_rite_role:
-      content: 胡桃在璃月节庆期间参与往生堂相关仪式，并在公共场合承担往生堂堂主职责。
+      content: 胡桃曾在3.4海灯节活动尾声于新月轩设宴并主持聚会；该事实不代表她拥有通用的节庆仪式职权。
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
 environment:
   health:
@@ -74,7 +74,12 @@ environment:
   locations:
     hu_tao: liyue_harbor
     player: liyue_harbor
-  access: {}
+  access:
+    wangsheng_operations:
+      controllers: [hu_tao]
+      subjects:
+        hu_tao: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

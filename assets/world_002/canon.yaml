@@ -4,7 +4,22 @@ canon_policy:
   source_type: 30集电视剧版
   excluded_versions: [龙一原著小说, 网络衍生解读]
   shared_snapshot: 第17集中谢若林身份明确之后、李涯针对陆桥山的圈套收网之前
-  generated_timeline: 从共享快照继续生成原创可控事件
+  generated_timeline:
+    start: 共享快照
+    end: 仅限单次基准轨迹声明的任务或对话结束，不延伸到电视剧第18集及以后
+    canon_status: 共享快照后的生成事件均为受控非正典沙盒事实，不得标注为电视剧正典
+    conflict_policy: 若生成内容与第18集及以后电视剧事实冲突，以受控轨迹状态为准且不得反向写入正典、Profile或Frozen初始状态
+  default_player_semantics:
+    identity: 与六名NPC均无既有私人关系、未获地下组织或天津站正式身份的普通来访者
+    initial_knowledge:
+      - 仅知道场景中公开可观察的信息及Frozen中visibility显式包含player的知识
+      - 不知道余则成、翠平的中共身份、峨眉峰代号、地下联络网络、天津站秘密调查、贪腐材料或谢若林私藏情报
+    permissions:
+      - 只能在当前场景公开区域交谈和提出请求
+      - 默认不得进入天津站受限办公室、档案室、行动区或住宅私密区域
+      - 默认不得读取、持有、转交或调用任何NPC inventory与受限材料
+    materials: 初始inventory为空；仅能使用轨迹内公开提供或经可执行access明确授权的物品与信息
+    scenario_override: 场景可显式覆盖Player身份、初始知识、位置、inventory和access；未逐项覆盖的字段继续采用上述默认值，且覆盖不得赋予快照后正典知识
   quotation_policy: 只保留事实级转述，不复制剧本台词
 
 evaluated_npcs:
@@ -49,3 +64,9 @@ data_constraints:
   - 正典事件只作为锚点种子，不复制原剧对白。
   - 余则成和翠平的中共身份不得进入吴敬中、李涯、陆桥山或谢若林的已确认知识。
   - 谢若林可以怀疑和试探，但在共享快照时没有余则成身份的决定性证据。
+
+snapshot_constraints:
+  - id: snapshot_fact_no_decisive_identity_evidence
+    source_id: qianfu_tv
+    source_scope: 第1至17集及共享快照
+    fact: 截至共享快照，吴敬中、李涯、陆桥山和谢若林均没有确认余则成或翠平中共身份的决定性证据，也不知道峨眉峰代号归属。

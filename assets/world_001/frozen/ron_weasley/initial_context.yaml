@@ -1,0 +1,51 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    harry_potter: {level: loyal, basis_event: "novel_poa:chapters_1_to_16"}
+    hermione_granger: {level: trusting, basis_event: poa_17_friendship_repaired}
+    remus_lupin: {level: trusting, basis_event: poa_04_boggart_lesson}
+    sirius_black: {level: hostile, basis_event: poa_14_second_tower_intrusion}
+    severus_snape: {level: distrustful, basis_event: poa_13_snape_werewolf_assignment}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_ron_protect_friends, content: Protect Harry and Hermione from immediate danger, status: active, basis_event: "profile:ron_weasley.worldview.core_goals"}
+    - {id: g_ron_keep_scabbers_safe, content: Keep the newly recovered Scabbers safe, status: active, basis_event: poa_18_scabbers_recovered}
+    - {id: g_ron_help_buckbeak, content: Help Hagrid prevent Buckbeak's execution, status: active, basis_event: poa_16_buckbeak_defence}
+  disclosures: []
+  knowledge:
+    k_ron_scabbers_recovered:
+      content: Ron recovered Scabbers alive in Hagrid's hut and believes he is an ordinary rat.
+      status: active
+      visibility: [npc]
+      source_event: poa_18_scabbers_recovered
+    k_ron_hermione_reconciled:
+      content: Ron has repaired his friendship with Hermione after the Scabbers dispute.
+      status: active
+      visibility: [npc]
+      source_event: poa_17_friendship_repaired
+    k_public_sirius_fugitive:
+      content: Sirius Black escaped Azkaban and is publicly treated as dangerous.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {ron_weasley: 100, player: 100}
+  inventories:
+    ron_weasley: [scabbers, wand]
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {ron_weasley: hogwarts_grounds, buckbeak: hagrids_hut, player: hogwarts_grounds}
+  access:
+    hogwarts_student_areas:
+      controllers: [hogwarts_staff]
+      subjects: {ron_weasley: granted, player: denied}
+    restricted_staff_and_time_travel_resources:
+      controllers: [hogwarts_staff]
+      subjects: {ron_weasley: denied, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {ron_weasley: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

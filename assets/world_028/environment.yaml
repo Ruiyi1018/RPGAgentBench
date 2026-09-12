@@ -1,5 +1,6 @@
 world_id: world_028
 name: Season 1 Hannibal environment
+language: en
 locations:
 - id: baltimore_maryland
   name: Baltimore, Maryland
@@ -8,31 +9,93 @@ locations:
   - wolf_trap_virginia
   - lecter_office
   - baltimore_state_hospital_for_the_criminally_insane
+  - fbi_academy
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
+  - minnesota_investigation_hotel
+  - fbi_forensics_lab
+  - port_haven_psychiatric_facility
+  - lecter_residence
 - id: quantico_virginia
   name: Quantico, Virginia
   connected_to:
   - baltimore_maryland
   - fbi_academy
   - wolf_trap_virginia
+  - baltimore_state_hospital_for_the_criminally_insane
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
+  - minnesota_investigation_hotel
+  - fbi_forensics_lab
 - id: fbi_academy
   name: FBI Academy
   connected_to:
   - quantico_virginia
   - baltimore_maryland
+  - fbi_forensics_lab
 - id: baltimore_state_hospital_for_the_criminally_insane
   name: Baltimore State Hospital for the Criminally Insane
   connected_to:
   - baltimore_maryland
   - quantico_virginia
+  - lecter_office
 - id: wolf_trap_virginia
   name: Wolf Trap, Virginia
   connected_to:
   - baltimore_maryland
   - quantico_virginia
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
 - id: lecter_office
   name: Hannibal Lecter's Baltimore office
   connected_to:
   - baltimore_maryland
+  - baltimore_state_hospital_for_the_criminally_insane
+  - port_haven_psychiatric_facility
+  - lecter_residence
+- id: lecter_residence
+  name: Hannibal Lecter's Baltimore residence and dining room
+  connected_to:
+  - baltimore_maryland
+  - lecter_office
+  - port_haven_psychiatric_facility
+- id: hobbs_residence_minnesota
+  name: Hobbs family residence in Minnesota
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+  - wolf_trap_virginia
+  - cassie_boyle_field_minnesota
+  - minnesota_investigation_hotel
+- id: cassie_boyle_field_minnesota
+  name: Minnesota field where Cassie Boyle's body is found
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+  - wolf_trap_virginia
+  - hobbs_residence_minnesota
+  - minnesota_investigation_hotel
+  - fbi_forensics_lab
+- id: minnesota_investigation_hotel
+  name: Minnesota hotel used by the FBI investigation team
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
+- id: fbi_forensics_lab
+  name: FBI forensics laboratory
+  connected_to:
+  - baltimore_maryland
+  - quantico_virginia
+  - fbi_academy
+  - cassie_boyle_field_minnesota
+- id: port_haven_psychiatric_facility
+  name: Port Haven psychiatric facility in Baltimore
+  connected_to:
+  - baltimore_maryland
+  - lecter_office
+  - lecter_residence
 items:
 - id: knife
   name: Large hunting knife
@@ -46,4 +109,11 @@ items:
   name: FBI credential badge
   type: identification
   portable: true
-language: en
+- id: fbi_consultant_credential
+  name: Limited FBI consultant credential
+  type: identification
+  portable: true
+- id: forensic_kit
+  name: FBI forensic collection kit
+  type: forensic equipment
+  portable: true

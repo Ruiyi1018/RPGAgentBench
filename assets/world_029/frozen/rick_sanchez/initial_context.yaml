@@ -4,73 +4,73 @@ runtime_state:
   relationships:
     morty_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     beth_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     jerry_smith:
       level: distrustful
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     summer_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     birdperson:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_s01e11_01_birdperson_disclosure
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: g_rick_001
     content: Keep Morty useful and available for errands without making him permanently
       useless
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: g_rick_002
     content: Stay in the Smith house long enough to continue working without domestic
       interference
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: g_rick_003
-    content: Avoid the Council of Ricks while completing his own projects
+    content: Keep control of the portal gun and pursue projects without institutional control
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[2]
   disclosures: []
   knowledge:
     k_rick_001:
       content: He returned to the Smith house after a long absence and has been traveling
         through other dimensions
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[0]
     k_rick_002:
       content: Morty is involved in his seed-collecting and other dangerous errands
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e01_01_first_portal_trip
     k_rick_003:
-      content: Birdperson is an old friend who fought alongside him in past conflicts
+      content: Birdperson is an old friend who attended the S01E11 Smith-house party
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e11_01_birdperson_disclosure
     k_rick_004:
       content: The portal gun gives him access to countless realities and is central
         to his work
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:capability.authority[0]
     k_rick_005:
-      content: The Council of Ricks suspects him of violations and questioned Morty
-        about him
+      content: The Council accused him in S01E10, but he exposed the actual killer
+        and was cleared of that specific case
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e10_01_council_case_cleared
 environment:
   health:
     rick_sanchez: 100
     player: 100
   inventories:
-    rick_sanchez: []
+    rick_sanchez: [portal_gun]
     player: []
   locations:
     rick_sanchez: smith_house

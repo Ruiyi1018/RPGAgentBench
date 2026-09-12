@@ -25,15 +25,15 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: g_cao_001
-    content: 巩固对江陵、襄阳等荆州要地的控制，并保障乌林前线大军补给
+    content: 巩固对江陵、襄阳等荆州要地的控制，并保障南征军后续沿江东进的补给
     status: active
     basis_event: initial_state
   - id: g_cao_002
-    content: 以水陆大军进逼赤壁，压垮孙刘联军的抵抗意志
+    content: 整顿新附荆州水军与南征军，准备从江陵沿江东进
     status: active
     basis_event: initial_state
   - id: g_cao_003
-    content: 继续利用江东内部降战分歧，促使孙权最终选择归降或退让
+    content: 继续以通牒和军事压力逼迫江东，并防止孙权与刘备形成稳固合作
     status: active
     basis_event: initial_state
   disclosures: []
@@ -41,32 +41,22 @@ runtime_state:
     k_cao_001:
       content: 刘琮已在荆州势力主导下投降，襄阳、江陵等地落入曹军之手
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     k_cao_002:
-      content: 刘备在长坂坡被击溃后，与关羽、刘琦等会合，仍驻于夏口、樊口一带
+      content: 刘备在长坂坡被击溃后，与关羽、刘琦等会合，现驻于夏口
       status: active
-      visibility: public
-      source_event: initial_state
-    k_cao_003:
-      content: 孙权尚未正式答复归降通牒，江东内部降、战两派仍在争执
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_cao_004:
-      content: 周瑜已返回柴桑并向孙权陈说抗曹之利，江东主战倾向增强
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_cao_005:
-      content: 孙刘之间已经出现联合抗曹的动议，但具体军事协同尚未完全明确
-      status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     k_cao_006:
       content: 新附荆州军士存在顾虑，北军在江上生活与作战仍需适应
       status: active
-      visibility: internal
+      visibility:
+      - npc
       source_event: initial_state
 environment:
   health:
@@ -76,9 +66,19 @@ environment:
     cao_cao: []
     player: []
   locations:
-    cao_cao: wulin
-    player: wulin
-  access: {}
+    cao_cao: jiangling
+    player: jiangling
+  access:
+    caocao_southern_army:
+      controllers:
+      - cao_cao
+      subjects:
+        cao_cao: granted
+    jingzhou_fleet:
+      controllers:
+      - cao_cao
+      subjects:
+        cao_cao: granted
   offers: []
   task_status: active
   dialogue_status: active

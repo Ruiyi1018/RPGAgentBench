@@ -7,10 +7,34 @@ canon_policy:
   - graphic novel
   - companion books
   - later series entries
-  shared_snapshot: After Bella learns the Cullen secret and before the final confrontation
-    with James
-  generated_timeline: Events drawn only from the first novel up to the shared snapshot
+  shared_snapshot: At the Cullen house after Bella has misled Charlie and returned,
+    once the family has fixed the escort, tracker, and scent-decoy assignments but
+    immediately before any of those teams depart. James has chosen Bella and begun
+    the hunt; no subsequent chase, Phoenix, ballet-studio, hospital, or prom event
+    has occurred.
+  generated_timeline: Events drawn only from the first novel through the final Cullen-house
+    protection assignments at the shared snapshot; team departures and all later
+    execution or outcomes are excluded
   quotation_policy: Paraphrase all facts; do not reproduce dialogue verbatim
+  player_semantics:
+    default_role: An unaffiliated local interlocutor colocated with the NPC for the
+      benchmark scenario
+    capabilities:
+    - May converse, make ordinary requests, and use resources explicitly granted
+      in runtime state
+    initial_knowledge: Only public facts plus knowledge explicitly marked with player
+      in a visibility audience list
+    restrictions:
+    - Has no default supernatural knowledge, Cullen-family membership, tribal authority,
+      medical authority, school authority, or access to NPC-private information
+    visibility_semantics:
+      npc: The evaluated NPC knows the item at trajectory start
+      player: The default Player knows the item at trajectory start
+      rule: Visibility is always an audience list; an omitted audience does not know
+        the item
+    scenario_override: A scenario may replace the default Player identity or knowledge
+      only by explicitly declaring the override; all non-overridden restrictions remain
+      in force
 evaluated_npcs:
 - bella_swan
 - edward_cullen
@@ -29,8 +53,8 @@ sources:
 - id: twilight_novel
   title: Twilight
   creator: Stephenie Meyer
-  scope: First novel of the Twilight series, up to the shared snapshot before the
-    final hunt
+  scope: First novel through the final protection assignments at the Cullen house
+    after Bella returns from misleading Charlie, before the teams depart
   authority: primary
 data_constraints:
 - Every fact must trace to the first Twilight novel through the shared snapshot

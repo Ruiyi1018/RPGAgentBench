@@ -2,118 +2,65 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    meredith_grey:
-      level: trusting
-      basis_event: initial_state
-    cristina_yang:
-      level: neutral
-      basis_event: initial_state
-    derek_shepherd:
-      level: neutral
-      basis_event: initial_state
-    izzie_stevens:
-      level: trusting
-      basis_event: initial_state
-    miranda_bailey:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    meredith_grey: {level: neutral, basis_event: ae07}
+    cristina_yang: {level: neutral, basis_event: ae01}
+    derek_shepherd: {level: neutral, basis_event: ae06}
+    izzie_stevens: {level: neutral, basis_event: ae07}
+    miranda_bailey: {level: neutral, basis_event: ae02}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: george_g01
-    content: Shadow Miranda Bailey and learn patient management
+    content: Rebuild clinical confidence through safe work under supervision.
     status: active
-    basis_event: initial_state
+    basis_event: ae06
   - id: george_g02
-    content: Become a reliable member of the intern cohort
+    content: Maintain a reliable household with Meredith and Izzie.
     status: active
-    basis_event: initial_state
+    basis_event: ae07
   - id: george_g03
-    content: Manage unspoken feelings for Meredith without damaging their friendship
+    content: Manage unspoken feelings for Meredith without pressuring her.
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing_george_feelings
   disclosures: []
   knowledge:
-    george_k01:
-      content: Meredith Grey begins her surgical internship at Seattle Grace Hospital
+    k1:
+      content: Bailey directly supervises the intern cohort's clinical work.
       status: active
-      visibility: public
-      source_event: initial_state
-    george_k02:
-      content: Miranda Bailey is the interns' resident and supervisor
+      visibility: [npc]
+      source_event: ae02
+    k2:
+      content: George froze during his first appendectomy and had to yield the procedure.
       status: active
-      visibility: public
-      source_event: initial_state
-    george_k03:
-      content: Interns received pagers to manage their workflow
+      visibility: [npc]
+      source_event: ae06
+    k3:
+      content: George and Izzie live with Meredith as housemates.
       status: active
-      visibility: public
-      source_event: initial_state
-    george_k04:
-      content: George was assigned to shadow Miranda Bailey for patient care observation
+      visibility: [npc]
+      source_event: ae07
+    k4:
+      content: George directly witnessed Izzie disclose that modeling income paid for medical school.
       status: active
-      visibility: private
-      source_event: initial_state
-    george_k05:
-      content: Izzie Stevens struggled with the emotional impact of losing a patient
+      visibility: [npc]
+      source_event: ae08
+    k5:
+      content: George has unspoken romantic feelings for Meredith.
       status: active
-      visibility: private
-      source_event: initial_state
-    george_k06:
-      content: Derek Shepherd performed a complicated procedure that established his
-        surgical reputation
-      status: active
-      visibility: public
-      source_event: initial_state
-    george_k07:
-      content: George O'Malley has unspoken romantic feelings for Meredith Grey
-      status: active
-      visibility: private
-      source_event: initial_state
-    george_k08:
-      content: Meredith Grey found a dog and named him Doc
-      status: active
-      visibility: public
-      source_event: initial_state
-    george_k09:
-      content: Miranda Bailey disciplined the interns for mistakes during a single
-        shift
-      status: active
-      visibility: public
-      source_event: initial_state
-    george_k10:
-      content: The interns gather at Emerald City Bar after shifts to decompress
-      status: active
-      visibility: public
-      source_event: initial_state
-    george_k11:
-      content: George O'Malley is a roommate at Meredith Grey's house
-      status: active
-      visibility: private
-      source_event: initial_state
-    george_k12:
-      content: Izzie Stevens is a roommate at Meredith Grey's house
-      status: active
-      visibility: private
-      source_event: initial_state
-    george_k13:
-      content: The surgical interns survived their first major professional crisis
-        together
-      status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: pre_existing_george_feelings
 environment:
-  health:
-    george_omalley: 100
-    player: 100
+  health: {george_omalley: 100, player: 100}
   inventories:
-    george_omalley: []
+    george_omalley: [intern_badge, pager]
     player: []
-  locations:
-    george_omalley: seattle_grace_hospital
-    player: seattle_grace_hospital
-  access: {}
+  locations: {george_omalley: seattle_grace_hospital, player: seattle_grace_hospital}
+  access:
+    patient_charts:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {george_omalley: granted, player: denied}
+    supervised_clinical_tasks:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {george_omalley: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

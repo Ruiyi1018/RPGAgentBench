@@ -1,61 +1,57 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - {id: mutual_secrecy_with_hannibal, content: Keep Hannibal's warning call to her father secret while he keeps the concealed Boyle death secret, status: active, basis_event: hannibal_abigail_secret_agreement}
   relationships:
-    hannibal_lecter:
-      level: neutral
-      basis_event: initial_state
-    will_graham:
-      level: neutral
-      basis_event: initial_state
-    jack_crawford:
-      level: distrustful
-      basis_event: initial_state
-    alana_bloom:
-      level: neutral
-      basis_event: initial_state
-    beverly_katz:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    hannibal_lecter: {level: trusting, basis_event: hannibal_abigail_secret_agreement}
+    will_graham: {level: neutral, basis_event: will_shoots_hobbs}
+    jack_crawford: {level: neutral, basis_event: abigail_wakes_at_port_haven}
+    alana_bloom: {level: neutral, basis_event: alana_interviews_abigail}
+    beverly_katz: {level: neutral, basis_event: initial_state_fbi_staff}
+    player: {level: neutral, basis_event: initial_state_opening_visit}
   goals:
-  - id: g1
-    content: Preserve legal and personal safety while the FBI questions her about
-      her father
-    status: active
-    basis_event: initial_state
-  - id: g2
-    content: Recover enough physical and emotional stability to leave institutional
-      care
-    status: active
-    basis_event: initial_state
+  - {id: conceal_boyle_death, content: Keep Nicholas Boyle's death and Hannibal's help hidden, status: active, basis_event: hannibal_abigail_secret_agreement}
+  - {id: control_hobbs_account, content: Control what she discloses about her memories and knowledge of her father's crimes, status: active, basis_event: alana_interviews_abigail}
+  - {id: leave_port_haven, content: Recover enough to obtain release from Port Haven supervision, status: active, basis_event: abigail_wakes_at_port_haven}
   disclosures: []
   knowledge:
-    k1:
-      content: Her father killed her mother and moved toward her before being shot
-        by Will Graham
+    hobbs_attack:
+      content: Her father killed her mother, cut Abigail's throat, and was shot by Will.
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: She is being brought back to Baltimore so the FBI can continue questioning
-        her about the copycat murders
+      visibility: [npc]
+      source_event: will_shoots_hobbs
+    boyle_secret:
+      content: Abigail killed Nicholas Boyle, Hannibal helped conceal the death, and she agreed to hide his warning call in exchange for his silence.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: hannibal_abigail_secret_agreement
+    alana_treatment_role:
+      content: Alana is Abigail's treating psychiatrist at Port Haven and controls clinical conversations subject to facility rules.
+      status: active
+      visibility: [npc]
+      source_event: alana_interviews_abigail
+    opening_scene:
+      content: Immediately after the final private exchange with Hannibal, the Player is admitted to Hannibal's office as a pre-cleared conversation-only observer with no clinical, investigative, or custodial authority.
+      status: active
+      visibility: [npc, player]
+      source_event: initial_state_opening_visit
 environment:
-  health:
-    abigail_hobbs: 100
-    player: 100
-  inventories:
-    abigail_hobbs: []
-    player: []
-  locations:
-    abigail_hobbs: baltimore_state_hospital_for_the_criminally_insane
-    player: baltimore_state_hospital_for_the_criminally_insane
-  access: {}
+  health: {abigail_hobbs: 65, player: 100}
+  inventories: {abigail_hobbs: [], player: []}
+  locations: {abigail_hobbs: lecter_office, player: lecter_office}
+  access:
+    lecter_office:
+      controllers: [hannibal_lecter]
+      subjects: {abigail_hobbs: granted, player: granted}
+    port_haven_psychiatric_facility:
+      controllers: [port_haven_staff]
+      subjects: {abigail_hobbs: granted, player: denied}
+    hobbs_residence_minnesota:
+      controllers: [jack_crawford]
+      subjects: {abigail_hobbs: denied, player: denied}
+    fbi_forensics_lab:
+      controllers: [jack_crawford]
+      subjects: {abigail_hobbs: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

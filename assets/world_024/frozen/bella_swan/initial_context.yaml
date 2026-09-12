@@ -1,25 +1,29 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: bella_depart_with_escort
+    target: alice_cullen
+    content: Leave the Cullen house under Alice and Jasper's escort when their team
+      departs
+    condition: Final protection teams begin departure
+    status: active
+    source_event: ae_021
   relationships:
-    bella_swan:
-      level: loyal
-      basis_event: initial_state
     edward_cullen:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_007
     jacob_black:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_004
     alice_cullen:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_010
     carlisle_cullen:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_013
     rosalie_hale:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_012
     player:
       level: neutral
       basis_event: initial_state
@@ -27,61 +31,71 @@ runtime_state:
   - id: g_001
     content: Stay safe from the tracker James without abandoning Edward
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: g_002
     content: Protect Charlie from vampire danger and worry
     status: active
-    basis_event: initial_state
+    basis_event: ae_025
   - id: g_003
     content: Remain accepted among the Cullens despite being human
     status: active
-    basis_event: initial_state
+    basis_event: ae_009
   disclosures: []
   knowledge:
     k_001:
       content: Edward and his family are vampires who drink animal blood rather than
         human blood
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_007
     k_002:
       content: Edward can read minds, but cannot hear Bella's thoughts
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_005
     k_003:
       content: Alice can see visions of the future
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_010
     k_004:
       content: A nomadic vampire coven, including the tracker James, is in the area
-        and may target her
+        and James has chosen her as his target
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_018
     k_005:
       content: The Cullens have formed a plan to separate her from James and hide
         her from Forks
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
     k_006:
       content: Rosalie Hale is cold and unwelcoming toward Bella
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
+    k_007:
+      content: Charlie currently believes Bella is leaving Forks because she broke
+        with Edward, not because of vampires
+      status: active
+      visibility: [npc]
+      source_event: ae_025
 environment:
   health:
     bella_swan: 100
     player: 100
   inventories:
-    bella_swan: []
+    bella_swan:
+    - truck
     player: []
   locations:
     bella_swan: cullen_house
     player: cullen_house
-  access: {}
+  access:
+    bella_swan:
+    - attend_forks_high
+    - drive_bellas_truck
   offers: []
   task_status: active
   dialogue_status: active

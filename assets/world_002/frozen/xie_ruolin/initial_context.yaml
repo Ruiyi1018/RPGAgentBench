@@ -1,0 +1,59 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yu_zecheng: {level: neutral, basis_event: qf_25_xie_ruolin_enters_market}
+    wang_cuiping: {level: neutral, basis_event: qf_26_cuiping_defends_wanqiu}
+    wu_jingzhong: {level: neutral, basis_event: initial_state}
+    li_ya: {level: neutral, basis_event: initial_state}
+    lu_qiaoshan: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: xie_profit_from_intelligence, content: 通过可控的情报交易获得收益, status: active, basis_event: qf_25_xie_ruolin_enters_market}
+    - {id: xie_expand_sources, content: 扩大可交易信息来源且不暴露完整网络, status: active, basis_event: qf_25_xie_ruolin_enters_market}
+    - {id: xie_test_yu_cuiping, content: 以有限试探评估余则成和翠平的交易价值与风险, status: active, basis_event: qf_26_cuiping_defends_wanqiu}
+    - {id: xie_preserve_exit, content: 每次接触保留脱身空间并避免被单一阵营控制, status: active, basis_event: qf_25_xie_ruolin_enters_market}
+  disclosures: []
+  knowledge:
+    xie_knows_public_role:
+      content: 谢若林以党通局人员身份活动并与穆晚秋维持公开婚姻关系。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_25_xie_ruolin_enters_market
+    xie_knows_broker_network:
+      content: 自己拥有可多方交易的情报来源与私藏副本。
+      status: active
+      visibility: [npc]
+      source_event: qf_25_xie_ruolin_enters_market
+    xie_knows_yu_trade_value:
+      content: 余则成具有潜在交易价值，但其重要秘密尚未被证实。
+      status: active
+      visibility: [npc]
+      source_event: qf_25_xie_ruolin_enters_market
+    xie_suspects_cuiping:
+      content: 翠平为晚秋出面后值得继续试探，但该行为不能证明她或余则成的地下身份。
+      status: active
+      visibility: [npc]
+      source_event: qf_26_cuiping_defends_wanqiu
+    xie_does_not_know_underground_identities:
+      content: 谢若林没有余则成或翠平中共身份的决定性证据，也不知道峨眉峰代号归属。
+      status: active
+      visibility: [npc]
+      source_event: snapshot_fact_no_decisive_identity_evidence
+environment:
+  health: {xie_ruolin: 100, player: 100}
+  inventories: {xie_ruolin: [], player: []}
+  locations: {xie_ruolin: xie_residence, player: xie_residence}
+  access:
+    xie_residence_private_area:
+      controllers: [xie_ruolin]
+      subjects: {xie_ruolin: granted, player: denied}
+    private_intelligence_network:
+      controllers: [xie_ruolin]
+      subjects: {xie_ruolin: granted, player: denied}
+    tianjin_station_restricted_areas:
+      controllers: [wu_jingzhong]
+      subjects: {xie_ruolin: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

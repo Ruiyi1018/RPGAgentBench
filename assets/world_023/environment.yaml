@@ -1,23 +1,95 @@
 world_id: world_023
-name: The Matrix world
+name: The real world and the Matrix simulation
+language: en
+
 locations:
 - id: loc_nebuchadnezzar
-  name: Nebuchadnezzar
+  name: Nebuchadnezzar (real world)
+  layer: reality
   connected_to:
   - loc_construct
-  - loc_abandoned_hotel
+  - loc_matrix_city
+  - loc_power_plant_pod_field
 - id: loc_construct
-  name: Construct training program
+  name: Construct training simulation
+  layer: construct
   connected_to:
   - loc_nebuchadnezzar
 - id: loc_abandoned_hotel
-  name: Abandoned hotel
+  name: Abandoned hotel (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+- id: loc_matrix_city
+  name: Matrix city streets
+  layer: matrix
   connected_to:
   - loc_nebuchadnezzar
-- id: loc_oracle_apartment
-  name: Oracle's apartment
-  connected_to:
   - loc_abandoned_hotel
+  - loc_matrix_nightclub
+  - loc_neo_office
+  - loc_oracle_apartment
+  - loc_matrix_restaurant
+  - loc_matrix_interrogation_room
+- id: loc_matrix_nightclub
+  name: Nightclub where Trinity contacts Neo (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+- id: loc_neo_office
+  name: Neo's office and detention site (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+- id: loc_oracle_apartment
+  name: Oracle's apartment (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+- id: loc_power_plant_pod_field
+  name: Human power plant pod field (real world)
+  layer: reality
+  connected_to:
+  - loc_nebuchadnezzar
+- id: loc_matrix_restaurant
+  name: Cypher and Agent Smith's restaurant (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+- id: loc_matrix_interrogation_room
+  name: Agent interrogation room (Matrix simulation)
+  layer: matrix
+  connected_to:
+  - loc_matrix_city
+
+transitions:
+- id: transition_ship_to_construct
+  from: loc_nebuchadnezzar
+  to: loc_construct
+  mode: jack_in
+  required_access: construct_jack
+  ordinary_travel: false
+  embodiment: The connected human body remains aboard the Nebuchadnezzar; only a training avatar enters the Construct.
+- id: transition_ship_to_matrix
+  from: loc_nebuchadnezzar
+  to: loc_matrix_city
+  mode: jack_in
+  required_access: matrix_jack
+  ordinary_travel: false
+  embodiment: The connected human body remains aboard the Nebuchadnezzar; only the residual self-image enters the Matrix.
+- id: transition_matrix_to_ship
+  from: loc_matrix_city
+  to: loc_nebuchadnezzar
+  mode: hardline_exit
+  required_access: matrix_hardline_exit
+  ordinary_travel: false
+  embodiment: A hardline exit returns consciousness to the body aboard the Nebuchadnezzar.
+
+presence_rules:
+- Human Matrix and Construct locations represent avatars; their real bodies remain at loc_nebuchadnezzar while connected.
+- Agent programs have Matrix-layer presence only and can never occupy a reality-layer location.
+- Same-layer connected_to edges permit ordinary travel. Cross-layer connected_to entries are reachability indexes required by the runtime map and are usable only through the matching permission-gated transition; they never permit ordinary movement.
+
 items:
 - id: item_red_pill
   name: Red pill
@@ -30,5 +102,12 @@ items:
 - id: item_jumper
   name: Jumper program
   type: software
-  portable: true
-language: en
+  portable: false
+- id: item_matrix_hardline
+  name: Matrix hardline exit
+  type: fixed_infrastructure
+  portable: false
+- id: item_ship_operator_console
+  name: Nebuchadnezzar operator console
+  type: fixed_equipment
+  portable: false

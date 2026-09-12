@@ -6,7 +6,7 @@ runtime_state:
       level: trusting
       basis_event: initial_state
     xue_baochai:
-      level: neutral
+      level: trusting
       basis_event: initial_state
     wang_xifeng:
       level: neutral
@@ -26,33 +26,33 @@ runtime_state:
   goals:
   - id: g_daiyu_test_baoyu
     content: 弄清贾宝玉对薛宝钗与自己究竟哪边更亲近
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_daiyu_keep_dignity
     content: 在贾府中维持诗才和体面，不让人看轻自己
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_daiyu_preserve_intimacy
     content: 在潇湘馆与贾宝玉保持无人代答的私下默契
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_daiyu_baoyu_confession:
       content: 贾宝玉曾向自己倾诉肺腑之情，二人已有互明心迹的一层关系。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_jia_baoyu_lin_daiyu_confession
     k_daiyu_golden_lock_talk:
       content: 贾宝玉与薛宝钗因金锁被提金玉相配，众人有此议论。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:lin_daiyu.worldview.stances
     k_daiyu_flower_burial:
       content: 自己在大观园中葬花自伤身世，并被贾宝玉撞见。
       status: active
-      visibility: shared_with_jia_baoyu
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_lin_daiyu_buries_flowers
 environment:
   health:
     lin_daiyu: 100
@@ -63,7 +63,19 @@ environment:
   locations:
     lin_daiyu: loc_xiaoxiang_guan
     player: loc_xiaoxiang_guan
-  access: {}
+  access:
+    res_household_assignments:
+      controllers: [wang_xifeng, jia_mu]
+      subjects:
+        player: denied
+    res_major_household_decisions:
+      controllers: [jia_mu]
+      subjects:
+        player: denied
+    res_yihong_assignments:
+      controllers: [jia_baoyu, xiren]
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

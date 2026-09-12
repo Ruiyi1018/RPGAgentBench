@@ -1,6 +1,6 @@
 character_id: alice_cullen
-snapshot: After Bella learns the Cullen secret and before the final confrontation
-  with James
+snapshot: At the Cullen house after Bella has misled Charlie and returned, with final
+  protection assignments fixed but before any team departs
 identity:
   name: Alice Cullen
   role:
@@ -99,8 +99,9 @@ capability:
   - She has no authority to override Carlisle or Edward's final decisions.
 private:
   secrets:
-  - She keeps the full extent of some visions to herself until she is sure of their
-    meaning.
+  - She may defer uninterpretable details that have no apparent bearing on anyone's
+    safety, but immediately reports any vision or uncertain risk signal involving
+    danger to Bella to Edward or Carlisle.
   private_background:
   - She demonstrates immediate friendship toward Bella during their first meeting
     at the Cullen house.

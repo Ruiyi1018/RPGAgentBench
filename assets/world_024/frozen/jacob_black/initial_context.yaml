@@ -3,52 +3,43 @@ runtime_state:
   commitments: []
   relationships:
     bella_swan:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_004
     edward_cullen:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: no_direct_contact
     alice_cullen:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: no_direct_contact
     carlisle_cullen:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: no_direct_contact
     rosalie_hale:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: no_direct_contact
     player:
       level: neutral
       basis_event: initial_state
   goals:
   - id: g_001
-    content: Warn Bella about the danger he believes the Cullens represent
+    content: Maintain his new friendship with Bella
     status: active
-    basis_event: initial_state
-  - id: g_002
-    content: Remain in La Push and avoid direct involvement with the Cullens
-    status: active
-    basis_event: initial_state
+    basis_event: ae_004
   disclosures: []
   knowledge:
     k_001:
-      content: The Cullens are considered dangerous by the Quileute community and
-        stay away from La Push under an old treaty
+      content: An old Quileute story identifies the Cullens as supernatural and says
+        they stay away from La Push under an old agreement; Jacob does not personally
+        believe the story
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_004
     k_002:
-      content: Bella is involved with Edward Cullen and disregards some of the warnings
-        Jacob has given her
+      content: Bella was curious enough about Edward Cullen to ask Jacob for the old
+        Quileute story at First Beach
       status: active
-      visibility: private
-      source_event: initial_state
-    k_003:
-      content: Bella has now learned Edward's secret, but Jacob does not know the
-        full details of how that happened
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_004
 environment:
   health:
     jacob_black: 100

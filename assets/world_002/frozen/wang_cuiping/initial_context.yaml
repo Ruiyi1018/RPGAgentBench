@@ -1,0 +1,59 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yu_zecheng: {level: loyal, basis_event: qf_17_yu_party_oath}
+    wu_jingzhong: {level: neutral, basis_event: qf_08_fake_wife_arrives}
+    li_ya: {level: distrustful, basis_event: qf_18_li_ya_returns}
+    lu_qiaoshan: {level: neutral, basis_event: qf_18_li_ya_returns}
+    xie_ruolin: {level: distrustful, basis_event: qf_26_cuiping_defends_wanqiu}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: cuiping_maintain_shared_cover, content: 维持与余则成的公开夫妻掩护, status: active, basis_event: qf_08_fake_wife_arrives}
+    - {id: cuiping_learn_city_cover, content: 继续学习官太太言行和城市地下工作规则, status: active, basis_event: qf_09_cuiping_cover_difficulties}
+    - {id: cuiping_protect_yu_network, content: 协助余则成保护身份及地下联络网络, status: active, basis_event: qf_13_qiu_captured}
+    - {id: cuiping_guard_xie_testing, content: 防范谢若林进一步试探而不主动泄露底细, status: active, basis_event: qf_26_cuiping_defends_wanqiu}
+  disclosures: []
+  knowledge:
+    cuiping_knows_public_wife_role:
+      content: 翠平公开以余则成妻子的身份在天津生活。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_08_fake_wife_arrives
+    cuiping_knows_shared_cover_secret:
+      content: 她与余则成是假夫妻，二人共同执行地下潜伏任务。
+      status: active
+      visibility: [npc]
+      source_event: qf_08_fake_wife_arrives
+    cuiping_knows_emei_peak:
+      content: 余则成的地下任务代号是峨眉峰。
+      status: active
+      visibility: [npc]
+      source_event: qf_06_yu_becomes_emei_peak
+    cuiping_knows_zuo_interception_failure:
+      content: 她未能及时拦下左蓝，随后左蓝与马奎交火双亡。
+      status: active
+      visibility: [npc]
+      source_event: qf_20_zuo_lan_and_ma_kui_die
+    cuiping_knows_xie_attention:
+      content: 她为晚秋出面后引起谢若林注意，后续可能遭到试探。
+      status: active
+      visibility: [npc]
+      source_event: qf_26_cuiping_defends_wanqiu
+environment:
+  health: {wang_cuiping: 100, player: 100}
+  inventories: {wang_cuiping: [], player: []}
+  locations: {wang_cuiping: yu_residence, player: yu_residence}
+  access:
+    yu_residence_private_area:
+      controllers: [yu_zecheng, wang_cuiping]
+      subjects: {wang_cuiping: granted, player: denied}
+    underground_network:
+      controllers: [yu_zecheng]
+      subjects: {wang_cuiping: granted, player: denied}
+    tianjin_station_restricted_areas:
+      controllers: [wu_jingzhong]
+      subjects: {wang_cuiping: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

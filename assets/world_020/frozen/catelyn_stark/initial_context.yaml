@@ -29,7 +29,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g_002
-    content: Bring Tyrion Lannister to justice for the attempt on Bran's life
+    content: Reassess Littlefinger's unsupported dagger claim after Tyrion's release
     status: active
     basis_event: initial_state
   - id: g_003
@@ -39,40 +39,41 @@ runtime_state:
   disclosures: []
   knowledge:
     k_001:
-      content: Bran survived the fall but remains unconscious and crippled; an assassin
-        later tried to kill him in his bed.
+      content: When Catelyn left Winterfell, Bran had survived the fall but remained
+        unconscious, and an assassin had tried to kill him in bed; she has received
+        no reliable update on his condition since leaving.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_002:
       content: Littlefinger told her the dagger used by the assassin belonged to Tyrion
         Lannister.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_003:
       content: She traveled secretly to King's Landing and met with Eddard and Littlefinger
         before leaving.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_004:
       content: She seized Tyrion Lannister at the crossroads inn and brought him to
         the Eyrie for judgment.
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_005:
       content: Tyrion demanded a trial by combat at the Eyrie, and his champion Bronn
         won, securing his freedom.
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_006:
       content: Lysa Arryn is more unstable than Catelyn remembered and keeps her son
         Robert close and sheltered.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:

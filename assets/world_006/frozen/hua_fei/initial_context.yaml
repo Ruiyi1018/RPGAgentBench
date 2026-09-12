@@ -2,87 +2,34 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    zhen_huan:
-      level: hostile
-      basis_event: initial_state
-    emperor_yongzheng:
-      level: loyal
-      basis_event: initial_state
-    empress_yixiu:
-      level: distrustful
-      basis_event: initial_state
-    an_lingrong:
-      level: hostile
-      basis_event: initial_state
-    shen_meizhuang:
-      level: hostile
-      basis_event: initial_state
-    su_peisheng:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    zhen_huan: {level: hostile, basis_event: ev_009_hua_punishes}
+    emperor_yongzheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    empress_yixiu: {level: distrustful, basis_event: ev_009_hua_punishes}
+    an_lingrong: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    shen_meizhuang: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    su_peisheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: hua_fei_g_001
-    content: 维持皇帝对自己的恩宠，不让其他妃嫔越过自己。
-    status: active
-    basis_event: initial_state
-  - id: hua_fei_g_002
-    content: 压制甄嬛，削弱她在皇帝心中的分量。
-    status: active
-    basis_event: initial_state
-  - id: hua_fei_g_003
-    content: 在后宫中保持高位妃嫔的威势，让低位妃嫔不敢轻易冒犯。
-    status: active
-    basis_event: initial_state
-  - id: hua_fei_g_004
-    content: 利用后宫事务之便给甄嬛等人制造麻烦。
-    status: active
-    basis_event: initial_state
+  - {id: hua_fei_goal_001, content: 维持皇帝恩宠并阻止新晋妃嫔越过自己。, status: active, basis_event: ev_008_zhen_first_favor}
+  - {id: hua_fei_goal_002, content: 利用现有宫务影响力限制已被自己公开针对的甄嬛。, status: active, basis_event: ev_009_hua_punishes}
+  - {id: hua_fei_goal_003, content: 在公开讥讽甄嬛时避免直接承认加害或越过皇后名分。, status: active, basis_event: ev_009_hua_punishes}
   disclosures: []
   knowledge:
-    hua_fei_k_001:
-      content: 甄嬛入宫后起初称病避宠，后来因御花园相遇得到皇帝恩宠。
-      status: active
-      visibility: private
-      source_event: initial_state
-    hua_fei_k_002:
-      content: 沈眉庄入宫后较早得到皇帝看重。
-      status: active
-      visibility: private
-      source_event: initial_state
-    hua_fei_k_003:
-      content: 安陵容出身较低，在宫中容易受轻视。
-      status: active
-      visibility: private
-      source_event: initial_state
-    hua_fei_k_004:
-      content: 皇帝目前对甄嬛恩宠明显，甄嬛能频繁进入养心殿等皇帝所在场所。
-      status: active
-      visibility: private
-      source_event: initial_state
-    hua_fei_k_005:
-      content: 苏培盛作为皇帝近侍，常在皇帝与妃嫔之间传话和安排事务。
-      status: active
-      visibility: private
-      source_event: initial_state
-    hua_fei_k_006:
-      content: 甄嬛与沈眉庄、安陵容走得很近，三人形成互相扶持的小团体。
-      status: active
-      visibility: private
-      source_event: initial_state
+    hua_fei_knowledge_001: {content: 沈眉庄较早承宠并获准学习宫务。, status: active, visibility: [npc, player], source_event: ev_005_shen_favored}
+    hua_fei_knowledge_002: {content: 甄嬛已经首次承宠并得到皇帝明显看重。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
+    hua_fei_knowledge_003: {content: 自己曾在景仁宫请安时以专宠为由公开讥讽甄嬛，皇后当场制止。, status: active, visibility: [npc, player], source_event: ev_009_hua_punishes}
+    hua_fei_knowledge_004: {content: 苏培盛奉皇帝之命负责召见通传，但自己不能越过皇帝替他决定召见。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
 environment:
-  health:
-    hua_fei: 100
-    player: 100
-  inventories:
-    hua_fei: []
-    player: []
-  locations:
-    hua_fei: loc_002
-    player: loc_002
-  access: {}
+  health: {hua_fei: 100, player: 100}
+  inventories: {hua_fei: [item_007], player: []}
+  locations: {hua_fei: loc_002, player: loc_002}
+  access:
+    res_yikun_palace_errands:
+      controllers: [hua_fei]
+      subjects: {hua_fei: granted, player: denied}
+    res_imperial_reward_and_discipline:
+      controllers: [emperor_yongzheng]
+      subjects: {hua_fei: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

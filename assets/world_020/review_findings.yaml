@@ -1,0 +1,207 @@
+- item_id: world_020.shared_snapshot.current_state
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: 统一截点已锁定，但当前态仍有直接冲突：Jon Profile身份是已宣誓的Mormont steward，authority却仍写“None beyond that of a new recruit”；Catelyn Frozen在S01E07截点把Bran“remains unconscious and crippled”作为当前事实，既未标为她离开Winterfell时的旧认知，也与Bran早已苏醒的世界状态混开。当前职务与知识状态仍不能唯一判答。
+  required_change: 将Jon的authority/limitations改为已宣誓新任steward的当前权限；将Catelyn条目明确编码为她离开时的最后已知信息或更新为截点前有来源的现状，避免把过时认知写成当前世界事实；再回归七名NPC的当前角色、位置、知识、目标、关系和资源。
+  resolution: 已将Jon的authority改为新任Mormont steward可履行其指派的个人服务职责、但对任何Night's Watch部门或成员均无指挥权；Catelyn的Bran条目改为她离开Winterfell时的最后已知状态，并明确离开后未收到可靠近况，从而不再把旧认知写成S01E07世界现状。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_010_ae_015_ae_017_ae_018_ae_020_ae_022_ae_023
+  severity: blocker
+  rule_id: future_knowledge
+  evidence: 候选池包含快照边界外事件：ae_020明确由Eddard被捕触发，ae_022就是被捕本身，ae_023发生在被捕后；ae_015、ae_017、ae_018属于被捕后的Riverlands进展；ae_010又把到达长城、受训、成为总司令侍从和获得Longclaw合并，其中获得Longclaw发生在被捕之后。
+  required_change: 删除或替换所有边界外候选；将ae_010拆分后仅保留统一快照前已发生的离散部分，并同步清理Profile和Frozen中的任何未来结果。
+  resolution: 已删除ae_015、ae_017、ae_018、ae_019、ae_020、ae_022、ae_023；ae_010仅保留截点前的宣誓与侍从任命，并明确Jon尚未持有Longclaw。
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon仅定义来源、快照与引文策略，没有定义默认Player身份、能力、初始可接触信息或scenario覆盖规则；各Frozen却默认Player与NPC同地，无法判断Player应知道哪些“public”事实。
+  required_change: 在canon中定义统一的默认Player语义及scenario显式覆盖规则，并据此逐项确定初始Player可见知识。
+  resolution: 已在canon_policy.player_semantics定义默认Player身份、能力、初始知识与scenario显式覆盖规则；Frozen可见性已按该规则改为主体列表。
+  status: fixed
+
+- item_id: environment.yaml.locations.kingswood
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: Cersei Frozen把Robert正在Kingswood狩猎作为当前决策事实，Profile也以其狩猎归来为行为压力，但environment没有Kingswood节点或到现有节点的明确映射。
+  required_change: 若保留该统一快照和狩猎压力，增加运行时有效且双向连通的Kingswood地点；否则从当前可执行场景与状态中移除该地点依赖。
+  resolution: 已新增kingswood地点，并与kings_landing建立双向连接，以承载当前狩猎事实和相关行为压力。
+  status: fixed
+
+- item_id: jon_snow.testable_boundaries.boundary_001
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile断言Jon在当前时期绝不接受合法化、Stark继承或头衔，甚至禁止其追求合法身份；第一季被捕前材料不足以支持这一绝对边界，且他此时仍受“成为Stark”的愿望与私生子身份困扰。
+  required_change: 改成第一季当前范围内可直接观察和证伪的边界，或把对Stark身份的矛盾愿望写成可受压力的当前状态，禁止倒用后续季节的决定。
+  resolution: 已将绝对拒绝合法化或Stark身份改为截点内可证伪的身份冲突边界：Jon渴望认可但无当前继承权，允许其权衡诱惑，禁止以背叛家人为代价求取头衔。
+  status: fixed
+
+- item_id: catelyn_stark.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile声称Catelyn把direwolf幼崽视为Old Gods恩宠，并称她不因Jon的出身责怪他、未曾对他残酷；第一季画面并不支持这些稳定结论，且她在Bran病床边对Jon的言行与后两项直接冲突。
+  required_change: 按第一季被捕前电视正典重写这些立场和私下背景，区分她对Jon的长期怨恨、母亲职责与实际可观察行为，不补入无来源的Old Gods解释。
+  resolution: 已移除direwolf幼崽代表Old Gods恩宠的无来源解释，并按S01E02病床场景明确Catelyn对Jon的长期怨恨及其实际残酷言行。
+  status: fixed
+
+- item_id: anchor_pool.knowledge_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: ae_005与ae_013已修正，但全池known_by仍不完整：ae_001的state_change明确写Bran与Jon目睹处刑，known_by却漏掉Bran；ae_004漏掉亲自提出任命的Robert；ae_021漏掉直接实施与承受事件的Drogo和Viserys。池中已经允许非评测角色ID（如bran_stark、jaime_lannister），因此不能解释为只记录评测NPC。
+  required_change: 继续逐事件按在场、明确披露或可验证证据重建known_by；至少为ae_016补入亲自进行秘密谈话、因而知道该谈话存在的Varys与Illyrio，并复核ae_010任命场景中其他在场新兵。分别审核事件存在、原因、结果和他人调查进度，不能只记录评测NPC。
+  resolution: 已再次逐事件复核known_by；保留此前为ae_001、ae_021等补齐的直接主体，为ae_016加入秘密谈话的直接参与者Varys与Illyrio，为ae_010加入同场接受分派的Grenn、Pyp与Rast，并将收窄后的ae_004限定为私下提议现场的Robert与Eddard；ae_005、ae_013继续保持隐藏信息边界。
+  status: fixed
+
+- item_id: anchor_pool.chronology_and_traceability
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 23个跨剧情线候选均无chapter_order、episode_order或等价可恢复顺序字段，YAML物理顺序也不是可靠的第一季总时间线；仅有全局Season 1来源，无法稳定追溯每个事件在快照边界内的位置。
+  required_change: 为每个保留候选补充可核验的来源定位和唯一canon_order/chapter_order（可用剧集与剧内顺序），并按统一正典顺序回归检查全部候选。
+  resolution: 每个保留候选现均含可核验source_ref与全局唯一canon_order（S01E01.01至S01E07.02），并依统一电视正典顺序排列。
+  status: fixed
+
+- item_id: anchor_pool.event_granularity
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae_008与ae_021等已拆分，但ae_010仍把两个不同场景和决定合成一项：Jon先获知被分配为Mormont的steward，之后才作出宣誓决定；当前Before/After与cf_edit把任命、是否宣誓和离开长城绑定，无法确定单一生效窗口。
+  required_change: 将ae_010拆为“steward任命”和“Night's Watch宣誓”两个离散候选，分别给出实际剧内顺序、known_by、Before/After与单变量cf_edit；或只保留其中一个事件。
+  resolution: 已将ae_010收窄为先发生的steward任命，并新增紧随其后的ae_027单独承载Night's Watch宣誓；两项分别使用S01E07.01/.02、独立known_by、Before/After与只改变任命去向或是否宣誓的单变量cf_edit，原ae_014顺延为S01E07.03。
+  status: fixed
+
+- item_id: anchor_pool.state_change_objectivity
+  severity: major
+  rule_id: state_change_observable
+  evidence: 多项state_change停留在主题或性格概括，例如ae_002的象征与预示、ae_004“initiates the central plot”、ae_011“begins her transformation”、ae_012象征Targaryen heritage、ae_010“begins to prove leadership potential”，没有唯一可查询的知识、目标、关系、承诺或资源新状态。
+  required_change: 将保留候选的结果改写为有明确前态、触发证据、生效时点和可观察后态的状态变化；无法产生客观状态差异的候选移出池。
+  resolution: 已重写全部保留候选的state_change，逐项给出Before/After可查询状态；移除仅有象征、预示、主题或领导潜力概括的结果。
+  status: fixed
+
+- item_id: anchor_pool.cf_edit_minimality
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多个cf_edit同时改动原因、行为和后果：ae_004把亲赴Winterfell邀请任Hand改为发信索要军队；ae_009把要求审判改为认罪并被处决；ae_010把长城内的多步经历改为被拒绝并返回Winterfell。它们不能隔离一个因果变量。
+  required_change: 对每个拟用于Stage 2的候选只改变一个关键证据、决定或资源条件，保持其余可见上下文不变，并明确该单点变化将如何导致不同状态或决定。
+  resolution: 已将每项cf_edit收敛为单个证据、决定、资源或结果条件变化，并保持人物和场景背景不变，使对应状态差异可隔离。
+  status: fixed
+
+- item_id: world_020.initial_context.visibility_vocabulary
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 七份initial_context全部使用字符串public/private，而规范要求以实际知情主体列表区分[npc]与[npc, player]；在默认Player未定义的情况下，public尤其无法唯一表示“世界公开”还是“Player开局已知”，隐藏信息存在误暴露风险。
+  required_change: 先定义默认Player，再把全部knowledge.visibility统一为运行时受众列表；NPC私密知识使用[npc]，仅有明确开局依据时才使用[npc, player]。
+  resolution: 已将七份initial_context中的public/private字符串全部替换为[npc]主体列表；默认Player不再因事实公开而自动获得知识，scenario覆盖须显式声明。
+  status: fixed
+
+- item_id: world_020.initial_context.active_goals
+  severity: major
+  rule_id: active_goal_consistency
+  evidence: 原列过期目标大多已替换，但Tyrion Frozen新增“Rejoin his father Tywin's army”作为active；在Robert尚未狩猎归来的截点，Tyrion尚无截点内证据知道Tywin已集结该军队，且他此刻只在Vale高路与Bronn同行。Daenerys的“Define her own future”仍是抽象愿景，不是可执行、可唯一判断完成条件的当前目标。
+  required_change: Tyrion目标已修复；Daenerys的g_dany_003仍以未限定领域的“下一项决定”为对象，无法唯一判断哪项决定触发完成或失败。将其绑定到一个当前具体议题、行动或承诺，并给出可观察的完成/失败条件；再回归所有active目标的依据与执行器状态词。
+  resolution: 保留已修复的Tyrion目标；将Daenerys的g_dany_003绑定到龙蛋保管这一当前具体议题，要求她决定谁可接触及存放位置并指示handmaidens执行，完成或违背均可由资源处置与命令直接判定；Profile同步收窄为管理家庭与婚礼赠礼。
+  status: fixed
+
+- item_id: world_020.initial_context.key_inventories
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: Arya的Profile、边界和知识都要求她当前持有Needle，Daenerys的Profile、目标、边界和知识都要求她保管dragon eggs，但两人的inventory均为空；这使Stage 1资源答案和Stage 3交付、隐藏、没收等压力不可执行。
+  required_change: 在对应NPC inventory中加入environment已有的needle与dragon_eggs，或按锁定截点明确其实际持有者和位置。
+  resolution: 已将needle加入Arya inventory，将dragon_eggs加入Daenerys inventory；两项资源均引用environment中的现有物品ID。
+  status: fixed
+
+- item_id: world_020.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 多个强关系等级缺少Profile或正典中的同向依据，或把情感冲突错误编码成信任判断：Arya把Catelyn列为distrustful；Cersei把Arya列为hostile；Tyrion把Eddard列为hostile。相应Profile没有建立这些具体当前等级，无法形成唯一Stage 1答案。
+  required_change: 逐方向对照Profile和快照证据审核关系；无充分依据时降为neutral，若保留强等级则在Profile中补充可追溯的当前关系规则，并区分怨恨、阵营敌对与不信任。
+  resolution: 已将Arya对Catelyn、Cersei对Arya、Tyrion对Eddard三项缺乏同向依据的强关系降为neutral，其余方向保持Profile或截点正典可追溯。
+  status: fixed
+
+- item_id: world_020.quotation_residue
+  severity: minor
+  rule_id: quotation_policy_consistency
+  evidence: canon要求只转述不复制台词，但Cersei Profile、Frozen know_005及ae_014反复保留“in the game of thrones, one either wins or dies”这一标志性原句或近乎逐字表达。
+  required_change: 改为事实级转述其零和权力警告及行为含义，避免把固定原句作为语言习惯或知识内容。
+  resolution: 已将Cersei Profile、Frozen know_005与ae_014中的标志性原句改写为零和权力与生存冲突的事实级转述。
+  status: fixed
+
+- item_id: world_020.characters.future_leakage
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: 多份Profile仍直接倒用截点后或排除版本信息：Eddard把Jon的“true parentage”写成自己已知秘密，而S01E07截点内电视材料未揭示该真相；Cersei声称她已在对质之后安排Robert狩猎事故，在“刚对质、Robert尚未归来”的截点上时间不可能成立；Jon允许“briefly leaving the Wall before being persuaded to return”，这是后续剧情；Tyrion以进入Tywin军营为当前挑战/目标，而该军队集结不在截点内；Daenerys把尚未孵化的dragon eggs写成“her dragons”。
+  required_change: 已修复原列未来剧情，但Tyrion b5仍直接以“the twincest”为其当前已知并可选择公开的家族秘密，而同一Profile的private.secrets只支持他知道双胞胎关系异常、尚未掌握王室子女血缘的完整政治含义。删除该超前知识，或严格改成截点内可证实的模糊怀疑；同时清理任何依赖后续揭示的决定边界。
+  resolution: 保留此前对Eddard、Cersei、Jon、Tyrion军营目标与Daenerys龙蛋称谓的修复，并删除Tyrion b5整项；Profile不再把王室子女血缘秘密或其公开利用方式编码为Tyrion在截点内已知的决策边界，仅保留其private.secrets中有明确限定的家族关系异常认知。
+  status: fixed
+
+- item_id: environment.yaml.locations.vale_high_road
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: Tyrion Profile明确把当前位置写为离开Eyrie后的“high road with Bronn”，Frozen却把他和Player放在the_kingsroad；Vale高路/山路与贯穿Winterfell和King's Landing的Kingsroad并非同一地点，environment也没有对应节点或明确映射。
+  required_change: 新增与the_eyrie双向连通的Vale high road/Mountains of the Moon运行时节点，并让Tyrion Frozen引用它；或在environment中给出无歧义映射并统一Profile/Frozen用词。
+  resolution: 已新增vale_high_road运行时地点，命名为Vale High Road in the Mountains of the Moon，并与the_eyrie和the_kingsroad双向连接；Tyrion及默认Player的Frozen当前位置已统一改为vale_high_road。
+  status: fixed
+
+- item_id: world_020.runtime_authority_resources
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 多个Stage 3关键决定只有Profile宣称、没有Frozen可执行资源：Cersei声称可部署Lannister guards，Eddard声称可用Hand权威与守卫，Tyrion依赖雇佣/支付Bronn；但相应initial_context的access均为空，Bronn和守卫也未作为可调用资源、关系或授权出现，Tyrion inventories/offers同样为空。Player只能处理显式inventory或runtime access，因此这些压力边界无法落到可执行状态。
+  required_change: 以最小运行时字段为各NPC编码截点内真实可用的守卫、授权、盟友服务或支付资源，并明确限制；若执行器不支持这些资源，则收窄Profile的authority、目标和Stage 3边界到当前可执行能力。
+  resolution: 已以执行器支持的access结构编码最小资源：Eddard控制hand_royal_authority与stark_household_guard，Cersei控制lannister_household_retainers及royal_family_private_access（Player初始denied），Tyrion控制bronn_hired_protection与lannister_credit；各资源仅授予对应NPC，并由Profile/Frozen明确当前用途和限制。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_004
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae_004仍把王室一行抵达Winterfell与Robert随后在墓窖私下向Eddard提出Hand任命合成一个候选；两者是不同场景、知情范围不同，而state_change与cf_edit只围绕任命，导致事件边界和known_by无法同时唯一成立。
+  required_change: 将ae_004收窄为Robert私下向Eddard提出Hand任命，按该场景重建known_by；若要保留王室抵达，则另建独立候选并提供其自身的Before/After与单变量cf_edit。
+  resolution: 已将ae_004收窄为Robert在Winterfell墓窖私下向Eddard提出Hand任命；known_by仅保留该场景直接参与者Robert与Eddard，Before/After及单变量cf_edit均只围绕是否提出任命，不再合并王室抵达。
+  status: fixed
+
+- item_id: world_020.characters.unsupported_boundaries
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 多项Profile边界超出截点内可观察依据：Jon private_background称Arya“gave him the courage to go”，画面只支持二人亲近与Jon赠送Needle；Daenerys b_dany_002把任何压力下绝不放弃龙蛋写成绝对禁区；Cersei border_005断言她绝不会对Robert流露真实温情或悲伤，并预判其狩猎归来后的反应。这些都把推断或未来表现写成稳定、可判死的当前合同。
+  required_change: 删除Jon无来源的因果断言；把Daenerys与龙蛋、Cersei与Robert的边界收窄为S01E07截点前画面可直接支持且可证伪的行为，不使用后续剧情结果补强绝对禁区。
+  resolution: 已删除Jon把赴长城勇气归因于Arya的无来源因果断言，改为截点内可见的亲近关系与赠送Needle；Daenerys b_dany_002改为重视并抵制随意放弃龙蛋、但允许在即时安全需要下权衡交出；Cersei border_005改为不因对Robert的婚姻义务牺牲子女安全或泄露秘密，并明确允许履行公开王后职责及表达复杂感受，不再预判狩猎归来后的温情或悲伤。
+  status: fixed
+
+- item_id: frozen.jon_snow.knowledge_006.source_event
+  severity: major
+  rule_id: state_source_traceability
+  evidence: knowledge_006同时声明Jon已获steward任命并已宣誓，却只引用ae_010；ae_010明确仅承载任命且前态注明尚未宣誓，宣誓由ae_027承载。一个来源ID无法支持该合并状态。
+  required_change: 将任命与宣誓拆成两个knowledge条目，分别引用ae_010与ae_027；或采用运行时明确支持的多来源结构，并确保每个当前状态均可唯一追溯。
+  resolution: 已把合并状态拆为knowledge_006与knowledge_007：steward任命单独引用ae_010，宣誓及当前尚无Longclaw单独引用ae_027，使两项当前状态各自唯一可追溯。
+  status: fixed
+
+- item_id: frozen.cersei_lannister.relationships.tyrion_lannister
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Frozen把Cersei对Tyrion编码为distrustful，但Profile只明确她对Tyrion的蔑视、怨恨与家族羞耻感，没有建立当前“不相信其陈述或意图”的信任判断；这再次把负面情感直接折算成强信任等级。
+  required_change: 无截点内直接信任证据时降为neutral；若保留distrustful，则在Profile中补入可追溯、方向明确且与单纯蔑视不同的当前信任规则。
+  resolution: 已将Cersei对Tyrion的Frozen关系由distrustful降为neutral；Profile中的蔑视、怨恨与家族羞耻仍作为负面情感保留，但不再折算成缺乏直接依据的信任等级。
+  status: fixed
+
+- item_id: frozen.daenerys_targaryen.goal_g_dany_003.runtime_support
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: g_dany_003要求Daenerys指示handmaidens执行龙蛋保管决定，Profile也把命令handmaidens列为权限，但initial_context的access仍为空，运行时没有handmaidens主体、服务权限或可调用资源；仅把dragon_eggs放入inventory不能执行该目标声明的委派步骤。
+  required_change: 为Daenerys编码截点内受限且可执行的handmaidens服务权限，或把g_dany_003及对应Profile目标收窄为她仅凭现有inventory和地点即可完成的个人保管决定；随后重新验证Stage 3资源与权限。
+  resolution: 已将g_dany_003及对应Profile目标收窄为Daenerys亲自决定并执行龙蛋保管：保留自持或向当前在场且有运行时inventory的主体转交两种可执行选择，以实际custody是否符合其声明作为完成条件，不再要求不存在于access中的handmaidens执行委派。
+  status: fixed
+
+- item_id: characters.cersei_lannister.private.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile断言Cersei“has long known”Jon Arryn生前调查其子女血缘，并称Tywin曾警告她家族传承取决于她守住王位；锁定的S01E07截点材料只支持Eddard在当前对质中揭示自己的结论，不支持这两项被写成既有私密背景。limitations还绝对断言她对Robert不可能真诚合作，与border_005允许在子女安全时合作直接冲突。
+  required_change: 删除或改写这两项无截点内依据的既有知识/背景，并将对Robert的限制改成与border_005一致、可证伪且非绝对的当前约束；回归Cersei全部私密知识与边界。
+  resolution: 已删除Cersei预先知晓Jon Arryn调查及Tywin曾作特定传承警告的无截点依据条目；将对Robert的限制改为交易式合作可持续到不暴露或危及子女为止，与border_005允许在子女受保护时合作一致。
+  status: fixed
+
+- item_id: tests.full_suite.collection
+  severity: major
+  rule_id: machine_regression_passed
+  evidence: 运行完整pytest时在收集阶段出现3个ImportError：evaluation未导出ActiveChallenge、ChallengeController与Stage3ContractEngine；tests/test_full_experiment_metrics.py、tests/test_pilot_runner.py及tests/test_stage3_contracts.py无法收集，测试以exit code 2结束。
+  required_change: 恢复evaluation包的公共导出或对应实现，使完整pytest可收集并全部通过；修复后重新运行完整测试和world_020 Foundation机器审计。
+  resolution: 已核验当前evaluation公共接口已从challenge_controller导出ActiveChallenge与ChallengeController，并从stage3_contracts导出Stage3ContractEngine；对应实现文件均存在；本轮完整pytest成功收集并全部通过（exit code 0）。该仓库级回归项未写入任何世界资产修复或新增finding。
+  status: fixed

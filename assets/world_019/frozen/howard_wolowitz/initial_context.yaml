@@ -1,6 +1,18 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: howard_bernadette_engagement
+    target: bernadette_rostenkowski
+    content: Marry Bernadette under their accepted engagement.
+    condition: The engagement accepted in S4E20 remains active at the shared snapshot.
+    status: active
+    source_event: ev_015
+  - id: howard_iss_mission
+    target: iss_mission
+    content: Complete final preparation and fly as payload specialist on the reinstated ISS mission.
+    condition: NASA reinstated Howard on the earlier launch in S5E23.
+    status: active
+    source_event: ev_019
   relationships:
     sheldon_cooper:
       level: neutral
@@ -20,15 +32,12 @@ runtime_state:
     bernadette_rostenkowski:
       level: loyal
       basis_event: initial_state
-    howard_wolowitz:
-      level: loyal
-      basis_event: initial_state
     player:
       level: neutral
       basis_event: initial_state
   goals:
   - id: g_001
-    content: Complete mission training and earn recognition for the aerospace work.
+    content: Complete final preparations and fly the reinstated ISS mission.
     status: active
     basis_event: initial_state
   - id: g_002
@@ -36,8 +45,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g_003
-    content: Maintain his standing in the friend group despite teasing about his lack
-      of a doctorate.
+    content: Maintain his standing in the friend group despite teasing about his lack of a doctorate.
     status: active
     basis_event: initial_state
   disclosures: []
@@ -45,68 +53,81 @@ runtime_state:
     k_001:
       content: Penny works as a waitress at The Cheesecake Factory.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s1e05_group_observes_penny_at_work
     k_002:
       content: Bernadette earned her doctorate in microbiology.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_014
     k_003:
-      content: Raj has difficulty speaking directly to women without alcohol or similar
-        aids.
+      content: Raj has difficulty speaking directly to women without alcohol or similar aids.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_006
     k_004:
-      content: Sheldon enforces a fixed weekly schedule for meals, laundry, and television.
+      content: Sheldon invokes Roommate Agreement rules to restrict activity in Apartment 4A.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s4e24_bernadette_hears_roommate_rules
     k_005:
       content: Leonard and Penny have entered a romantic relationship.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s5e19_group_relationship_status
     k_006:
-      content: Amy Farrah Fowler was matched with Sheldon through a dating service
-        set up by Howard and Raj.
+      content: Amy Farrah Fowler was matched with Sheldon through a dating service set up by Howard and
+        Raj.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_012
     k_007:
-      content: Howard has been selected for a space flight related to his engineering
-        work.
+      content: Howard is assigned as payload specialist on an upcoming ISS mission.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_010
     k_008:
       content: Howard and Bernadette met through a connection arranged by Penny.
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_011
     k_009:
-      content: Howard feels privately anxious about space flight despite projecting
-        confidence.
+      content: Howard feels privately anxious about space flight despite projecting confidence.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_019
     k_010:
       content: Howard believes his engineering skill compensates for lacking a doctorate.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_014
 environment:
   health:
     howard_wolowitz: 100
     player: 100
   inventories:
-    howard_wolowitz: []
+    howard_wolowitz:
+    - mission_training_materials
     player: []
   locations:
-    howard_wolowitz: university_campus
-    player: university_campus
-  access: {}
+    howard_wolowitz: apartment_4a
+    player: apartment_4a
+  access:
+    howard_engineering_lab:
+      controllers:
+      - howard_wolowitz
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

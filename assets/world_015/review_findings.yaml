@@ -1,0 +1,167 @@
+- item_id: canon.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: canon仅称“六名角色经历可对齐的章节范围”，未锁定共同截点；与此同时东方不败Profile与Frozen仍将其设为在世并统治黑木崖，任盈盈Profile却把参与围攻东方不败写成既往经历。围攻结果是东方不败死亡，这两种当前态不可能同时成立。
+  required_change: 将shared_snapshot锁定到东方不败在世且六名角色状态同时成立的唯一可理解区间，并删除或改写所有快照后的既往经历、知识、关系、目标与权限；随后逐一对齐六份Profile和Frozen状态。
+  resolution: 已将共同截点锁定为令狐冲接掌恒山、任盈盈从少林脱困后且黑木崖围攻前；明确东方不败在世、岳不群已窃谱练剑、林平之尚未成亲且未得谱未练剑未复仇，并同步六份Profile/Frozen，删除任盈盈把围攻写成既往经历及林岳既成翁婿的未来表述。
+  status: fixed
+
+- item_id: canon.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可见知识、能力或临时授权边界；六份Frozen均让player与NPC同地开始，却无法据此判断Player为何知道标为shared、public或known的事实。
+  required_change: 在canon中定义默认Player语义及场景覆盖规则，明确默认身份、知识、能力与授权边界，保证私密事实不会因同地开局自动泄露。
+  resolution: 已在canon_policy.default_player_semantics中定义默认访客身份、按visibility受众列表取知、普通行动能力、显式access授权边界及场景逐项覆盖规则，并明确同地和世界真相不会自动赋予Player知识。
+  status: fixed
+
+- item_id: environment.active_scene_locations
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: 候选池包含任盈盈受囚少林、五岳剑派合并、林平之复仇等实际事件，但environment只有华山、洛阳、黑木崖、恒山和思过崖；少林、五岳合并会场及复仇发生地均无节点或明确映射。
+  required_change: 为候选事件实际发生、移动、会面或囚禁的地点补充最小可运行节点或明确映射，并保持地点ID连通有效；纯背景来源地无需建模。
+  resolution: 已补少林寺、嵩山封禅台及附近山道、福州向阳巷及福威镖局旧址三个最小节点，覆盖囚禁、五岳比剑、林平之复仇和剑谱线索事件，并以双向连接纳入全图。
+  status: fixed
+
+- item_id: environment.runtime_authority_resources
+  severity: major
+  rule_id: stage3_runtime_affordance
+  evidence: Profiles把号令恒山弟子、华山弟子、日月教属众和任盈盈旧部列为关键权限，但environment未建模相关组织或可执行资源，六份Frozen的access、offers和inventory也均无法表示这些权限的授予、拒绝或变化。
+  required_change: 以最小运行时状态表示后续Stage 3会施压的关键组织权限或资源，并使Profile authority、limitations与Frozen当前权限可查询、可执行、可受控改变。
+  resolution: 已在environment增加恒山、华山、黑木崖属众及任盈盈旧部四项access_resources；在令狐冲、岳不群、东方不败、任盈盈Frozen中记录本人granted、Player denied，使权限可查询并可由set_access受控改变。
+  status: fixed
+
+- item_id: lin_pingzhi.current_effective_state
+  severity: major
+  rule_id: current_state_uniqueness
+  evidence: Profile同时把林平之写为“辟邪剑谱传人”、技能含“辟邪剑法”，却将当前核心目标写为查清并夺回剑谱，limitations又称尚不能正面对抗岳不群；Frozen同样只保留夺回剑谱目标，未说明他是否已取得或练成。当前武学、资源和复仇阶段没有唯一答案。
+  required_change: 依锁定快照明确林平之是否已取得剑谱、是否已开始或完成修炼、当前武力与复仇进度，并同步Profile、Frozen知识/目标/资源及候选事件前后态。
+  resolution: 已将林平之明确为林家剑谱法理传人，删除当前技能中的辟邪剑法，写明未取得、未修炼、武力不足且复仇未成；Frozen新增对应私有知识，inventory保持空，并在候选池分别标明发现线索、取得物证、练剑复仇的前后态。
+  status: fixed
+
+- item_id: yue_buqun.initial_context.knowledge_001
+  severity: major
+  rule_id: knowledge_grounding
+  evidence: Frozen断言岳不群知道令狐冲“在思过崖习得独孤九剑”，但anchor_001的known_by仅有令狐冲，令狐冲Profile也把具体传承列为不宜公开的秘密；当前资产未提供岳不群获知剑名与传承事实的披露或证据。
+  required_change: 将该知识降为正典支持的怀疑/观察，或补充快照前岳不群实际获得该信息的可追溯证据，并同步known_by。
+  resolution: 已把岳不群knowledge_001改为观察令狐冲思过崖后剑法突进并怀疑另获高人传授，明确不知道传承者和剑法名称；该项设为仅NPC可见，anchor_001仍只列令狐冲知情。
+  status: fixed
+
+- item_id: linghu_chong.initial_context.relationships.yue_buqun
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Frozen将令狐冲对岳不群标为hostile，但Profile只支持保持距离、复杂余情和拒绝重新归附，并未建立主动敌对的当前关系。
+  required_change: 改为与Profile一致的中性/不信任等级，或在Profile与正典依据中明确足以支撑hostile的当前方向性关系。
+  resolution: 已将令狐冲对岳不群的Frozen关系由hostile改为distrustful，与Profile中的保持距离、复杂余情及拒绝归附一致。
+  status: fixed
+
+- item_id: yilin.initial_context.relationships.dongfang_bubai
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Frozen将仪琳对东方不败标为hostile，但仪琳Profile称其对黑木崖权力斗争了解有限，且未定义她与东方不败的直接关系或敌对依据。
+  required_change: 默认改为neutral；若保留hostile，须在Profile中补充快照前可追溯的直接认知与方向性敌对依据。
+  resolution: 已将仪琳对东方不败的Frozen关系由hostile改为neutral，未增加无依据的直接敌对经历。
+  status: fixed
+
+- item_id: world_015.initial_context.visibility_vocabulary
+  severity: minor
+  rule_id: visibility_schema_consistency
+  evidence: 六份Frozen使用private、shared、public、known等字符串表示visibility，既不明确实际知情主体，也与运行时新增知识采用的受众列表语义不一致，无法稳定判定NPC与Player开局可见范围。
+  required_change: 将visibility统一为明确受众列表；NPC私有知识使用[npc]，默认Player也知道时使用[npc, player]，并与canon中的Player规则一致。
+  resolution: 已将六份Frozen全部knowledge.visibility统一为受众列表：私密或仅角色推断项使用[npc]，默认访客可知项使用[npc, player]；canon同时规定Player只按该列表取知。
+  status: fixed
+
+- item_id: world_015.initial_context.goal_status_vocabulary
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: 六份Frozen的goal status混用active与ongoing，而FixtureEngine可设置的目标状态闭集为active、fulfilled、cancelled、failed；同一“当前有效”状态因此存在两套词汇。
+  required_change: 将当前有效目标统一为运行时支持的active，并确保后续目标生命周期只使用受支持枚举。
+  resolution: 已将令狐冲、岳不群和仪琳Frozen中的所有ongoing目标改为active；其余三份原已使用active，六份当前目标现统一为运行时支持词汇。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件均无chapter_order或其他稳定顺序字段，且物理顺序按角色分组而非正典时序排列；例如东方不败夺权等早期事件排在岳不群练剑、林平之成亲之后，后续无法恢复唯一前后关系。
+  required_change: 为全部候选事件补充唯一、可比较的chapter_order/canon_order，或按正典严格重排并提供等价稳定顺序字段。
+  resolution: 已按正典事件先后为全部24项分配唯一的两位chapter_order（01至24），并据正典核对校正洛阳相识、五霸冈、逐出、受囚、窃谱、接掌恒山、黑木崖、林平之得谱成亲、并派及复仇的总序；canon说明该字段是世界内稳定总序而非原书回目号。
+  status: fixed
+
+- item_id: anchor_pool.non_discrete_candidates
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: 复核后anchor_007、012、013、019已成为可识别事件，但anchor_020仍只写“被人当面追问”而没有追问者、地点或唯一场合；anchor_023把“拒绝恢复身份”和“限制门人往来”合并为一项且未给唯一实施场合；anchor_024以“夺权后没有废除名号”描述持续性不作为，仍不是发生于单一时点的离散事件。
+  required_change: 为anchor_020和023补足可唯一定位的具体触发、场合及单一事件边界；将anchor_024改为东方不败在某次可定位命令或处置中明确保留/确认圣姑名号的事件，或移出候选池作为Profile当前状态。
+  resolution: 已将anchor_020锁定为衡阳刘府内定逸师太因回雁楼传闻当众追问、仪琳以亲历救助经过澄清的单一场合，并补建衡阳刘府节点；anchor_023改为少林寺正邪会面中岳不群公开斥令狐冲为弃徒小贼的单次表态，删除原先合并的门人往来限制；无法由离散命令支持的anchor_024已移出候选池，其圣姑身份状态仍由Profile及anchor_007承载。
+  status: fixed
+
+- item_id: anchor_pool.private_state_known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: anchor_013把岳不群的设计意图直接列为lin_pingzhi已知，anchor_020把仪琳克制情意列为linghu_chong已知，anchor_023把岳不群内心忌惮列为linghu_chong已知，anchor_024把东方不败内心忌惮列为ren_yingying已知；现有资产最多支持怀疑或外在推断，没有参与、披露或证据访问链。
+  required_change: 从known_by移除无法直接知晓私密心理/意图的角色，或把fact改为角色实际观察到的证据，并分别记录由证据形成的怀疑而非全知结论。
+  resolution: 已把四项改为可观察事实并收窄known_by：anchor_013为林平之亲眼目击载谱袈裟被取出、anchor_020仅仪琳知道自己的公开回应与内心边界、anchor_023为岳不群公开实施隔离、anchor_024为双方可见的圣姑名号保留，不再把他人心理作为角色全知事实。
+  status: fixed
+
+- item_id: anchor_pool.anchor_017
+  severity: major
+  rule_id: source_event_causality
+  evidence: anchor_017称东方不败“依靠葵花宝典成为日月教最高统治者”，cf_edit又断言未练宝典便难以夺权；修订本叙事中他先利用任我行信任发动夺权并任教主，之后才依任我行留下的宝典修炼，当前表述倒置了夺权与修炼的因果。
+  required_change: 按修订本拆分或改写为真实事件顺序，区分夺取教主权与修炼宝典获得武力优势，并重写只作用于目标事件的cf_edit与state_change。
+  resolution: 已将anchor_017改为利用任我行信任发动夺权并囚禁任我行，明确先取得教主位；后续修炼宝典仅作为东方Profile/Frozen中的维持统治武力，并在对应表述中明确先夺权后修炼。
+  status: fixed
+
+- item_id: anchor_pool.linghu_chong_injury_chronology
+  severity: major
+  rule_id: source_event_chronology
+  evidence: anchor_001把令狐冲习得独孤九剑前态写成已受内伤困扰，anchor_021的cf_edit又把长期内伤归因于“在思过崖练剑时受伤”；修订本中其严重内伤主要来自习剑之后桃谷六仙与不戒和尚等异种真气注入，并非思过崖练剑所致。
+  required_change: 恢复习得独孤九剑与后续异种真气内伤的正确顺序；将anchor_021替换为可定位的受伤/灌注事件或删除该重复状态总结，并重写对应反事实。
+  resolution: 已把anchor_001前态改为尚无后来的严重异种真气内伤；紧随其后的anchor_021改为桃谷六仙分别注入不相容真气的离散事件，并把反事实限定为不注入该组真气而保留已学独孤九剑。
+  status: fixed
+
+- item_id: anchor_pool.counterfactual_pairability
+  severity: major
+  rule_id: counterfactual_minimality
+  evidence: 多个cf_edit通过移除整个人物或整段介入同时改变多项事实，例如anchor_002同时删除相识、琴曲疗伤与后续庇护，anchor_004删除任盈盈联手并改写整场战斗力量结构，anchor_018则从东方不败性情孤居跨越推断到围攻者能否接近；这些编辑不能隔离单一可控原因。
+  required_change: 逐项把cf_edit收窄为只改变一个可识别原因/证据、其余前置事实保持不变的真实替代情形，并明确该变量导致的单一状态或决定差异。
+  resolution: 已重写全部24项cf_edit，每项只改变一个决定、动作、证据或一次关键战斗反应，并显式声明保持不变的前置事实；其中anchor_002仅改是否弹奏琴曲、anchor_004仅改一次掩护、anchor_018仅改是否因回护杨莲亭而分神。
+  status: fixed
+
+- item_id: ren_yingying.initial_context.environment.locations
+  severity: blocker
+  rule_id: snapshot_role_consistent
+  evidence: shared_snapshot明确处于令狐冲一行尚未登黑木崖围攻东方不败之前，但任盈盈Frozen把任盈盈与默认Player都放在heimu_ya；她此时正筹划反制东方不败，且后续anchor_008才进入黑木崖战场，当前地点倒灌了未来移动与潜入结果。
+  required_change: 将任盈盈与Player开局地点改为快照时实际可成立且environment中存在的节点，并同步任何依赖同地、进入黑木崖或临时停留授权的状态；不得在围攻前把她预置于黑木崖。
+  resolution: 已将任盈盈与默认Player的开局地点同时改为hengshan，匹配其已从少林脱困、在令狐冲接掌恒山后与其一方会合且尚未登黑木崖的快照；旧部调度权保持本人granted、Player denied，未预置任何黑木崖进入或临时授权。
+  status: fixed
+
+- item_id: yue_buqun.initial_context.environment.inventories
+  severity: major
+  rule_id: current_resource_traceability
+  evidence: canon、Profile、Frozen知识及anchor_010均称岳不群在快照前已取得载有辟邪剑谱的袈裟，而anchor_016显示他到快照后的黑木崖事件之后才抛下该袈裟；岳不群Frozen的inventory却为空，当前关键可执行资源不可查询。
+  required_change: 在岳不群Frozen中记录快照时实际持有的xiexing_jianpu，或提供正典兼容、早于快照且可追溯的失去事件并同步后续anchor_016；确保资源取得、持有与失去守恒。
+  resolution: 已在岳不群Frozen的inventory中加入xiexing_jianpu，并在Profile快照及私密状态中明确其持有载谱袈裟；取得由快照前anchor_010支撑，失去仍由快照后anchor_016支撑，形成取得—当前持有—后续抛弃的资源守恒链。
+  status: fixed
+
+- item_id: yue_buqun.current_effective_mastery
+  severity: major
+  rule_id: current_state_uniqueness
+  evidence: canon与Frozen只明确岳不群“已开始修炼”辟邪剑法，Frozen目标仍是继续提升武功；Profile capability.skills却写成“暗中修成的辟邪剑法”，同时又把“练成辟邪剑法”列为当前目标。当前究竟仅开始、已有可用修为还是已经练成没有唯一答案。
+  required_change: 锁定快照时岳不群辟邪剑法的唯一进度与可用能力，统一Profile技能、目标、limitations、Frozen知识及候选事件前后态，明确哪些招式或武力提升此时已经生效。
+  resolution: 已统一锁定为岳不群完成自宫、掌握可用于实战的快速身法与剑招但仍在精进，尚未达到后来封禅台比剑时的完成度；Profile快照、技能、目标、limitations与私密状态及Frozen目标、知识均采用同一当前态，anchor_010仍表示取得后开始修炼。
+  status: fixed
+
+- item_id: dongfang_bubai.profile.yang_lianting_constraint
+  severity: major
+  rule_id: stage3_relationship_constraint
+  evidence: anchor_018把东方不败回护杨莲亭作为导致其分神、败亡的决定性变量，但东方不败Profile和Frozen完全没有杨莲亭这一当前关系、私密弱点或行为边界；Foundation无法支撑该候选的因果，也无法在Stage 3对这一核心决策边界施压。
+  required_change: 以正典支持且不泄露给默认Player的方式补充东方不败对杨莲亭的当前关系、相应行为约束与可观察的允许/禁止结果，并在Frozen中建立可追溯的私有知识或关系状态；同步anchor_018的因果表述。
+  resolution: 已在东方不败Profile补充杨莲亭私密关系、禁止主动牺牲或对直接致命攻击置之不理的行为边界、允许的威慑及兼顾应对，并写明该关系是可受压的战斗限制；Frozen新增对yang_lianting的trusting关系与仅[npc]可见的回护约束，anchor_018同步为可观察的转身回护动作及其决定性破绽。
+  status: fixed
+
+- item_id: anchor_pool.anchor_003_022_order
+  severity: major
+  rule_id: source_event_chronology
+  evidence: anchor_003以chapter_order 16称令狐冲已正式接受恒山掌门，anchor_022却以更晚的17称任盈盈在群尼推举时支持他“接受掌门职责”，并把该支持写成影响承担新身份决定的状态变化；决定后的支持不能再作为接受决定的前置因果。
+  required_change: 依据修订本明确任盈盈表态与令狐冲正式接受掌门的实际先后；若表态发生在决定前则调整chapter_order，若发生在决定后则改写为不倒置因果的离散支持事件及state_change/cf_edit。
+  resolution: 已保留anchor_003在16表示令狐冲先接受恒山群尼推举；将anchor_022明确锁定为其后17的恒山接任仪式，任盈盈以夺下嵩山令旗支持他抵住外部干涉。state_change与cf_edit均明确该行动只巩固履职处境，不是此前接受掌门身份的原因。
+  status: fixed

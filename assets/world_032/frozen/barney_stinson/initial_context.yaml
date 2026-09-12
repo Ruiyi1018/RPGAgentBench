@@ -1,60 +1,71 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: barney_altrucell_employment
+    target: altru_cell_office
+    content: Continue his unspecified employment at AltruCell.
+    condition: Current Season 1 employment.
+    status: active
+    source_event: profile.identity.affiliations
   relationships:
     ted_mosby:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     robin_scherbatsky:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
     lily_aldrin:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     marshall_eriksen:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     ranjit:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: goal_barney_001
     content: Maintain his status as the group's expert on dating and nightlife
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
   - id: goal_barney_002
-    content: Pursue casual romantic encounters using his playbook
+    content: Pursue casual romantic encounters through improvised schemes.
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
   - id: goal_barney_003
-    content: Prevent Ted from becoming too romantically serious about Robin
+    content: Remain involved in Ted's social life without controlling Ted's new relationship.
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   disclosures: []
   knowledge:
     knowledge_barney_001:
       content: Ted met Robin at MacLaren's Pub and is immediately smitten
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_001
     knowledge_barney_002:
       content: Ted stole a blue French horn for Robin
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     knowledge_barney_003:
       content: Marshall proposed to Lily with an engagement ring
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_003
     knowledge_barney_004:
-      content: The existence and basic nature of his playbook
+      content: Shannon's rejection preceded Barney's reinvention as a suit-wearing womanizer.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
+    knowledge_barney_005:
+      content: Marshall accepted an internship at AltruCell.
+      status: active
+      visibility: [npc]
+      source_event: ae_014
 environment:
   health:
     barney_stinson: 100

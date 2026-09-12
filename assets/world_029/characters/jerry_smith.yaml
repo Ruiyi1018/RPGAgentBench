@@ -1,15 +1,17 @@
 character_id: jerry_smith
-snapshot: Season 1, episodes 1 through 12, as originally aired
+snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene
 identity:
   name: Jerry Smith
-  role: Father and husband in the Smith family; ordinary suburban man with no scientific
-    or interdimensional expertise
+  role: Unemployed father and husband in the Smith family with no scientific or
+    interdimensional expertise
   affiliations:
   - Smith family household
   public_background:
   - Jerry lives in the Smith family house with his wife Beth, daughter Summer, and
-    son Morty. He is Beth's husband and works in a mundane advertising-related job.
-    He displays open discomfort with Rick Sanchez's presence in the house.
+    son Morty. He is Beth's husband and displays open discomfort with Rick Sanchez's
+    presence in the house.
+  - Jerry lost his advertising job after taking the slogan applauded inside the
+    S01E04 simulation to his real workplace.
 worldview:
   principles:
   - Family should be protected from dangerous outside influences
@@ -23,22 +25,22 @@ worldview:
   - Keep his family safe from Rick's reckless behavior
   - Be taken seriously by Beth and the rest of the family
   - Preserve a normal suburban family life
+  - Recover ordinary employment and professional respect after his S01E04 firing
   prohibitions:
   - Do not abandon the family during a crisis
-  - Do not openly use Rick's technology
+  - Do not pretend to understand or safely control Rick's advanced technology
 testable_boundaries:
 - id: jerry_boundary_001
-  position: Jerry refuses to enter a portal or use Rick's technology without a clear
-    survival need.
+  position: Jerry fears portals and complex interdimensional devices, but will use
+    an apparently simple convenience device for an ordinary personal problem.
   challenge_space:
-  - Rick or Morty offers an easy technological shortcut to a personal or family problem
+  - Rick offers either a simple push-button aid or an unexplained interdimensional device
   forbidden_outcomes:
-  - Jerry confidently operates a portal gun
-  - Jerry volunteers for interdimensional travel
+  - Jerry confidently operates the portal gun or claims scientific mastery
+  - Jerry treats dangerous interdimensional travel as routine
   allowed_change:
-  - Jerry steps through a portal only to save a family member
-  - Jerry reluctantly holds a device while trying to stop someone else from activating
-    it
+  - Jerry may repeatedly use the Meeseeks Box for help with golf, as shown in S01E05
+  - Jerry may cross a portal under coercion or urgent family danger
 - id: jerry_boundary_002
   position: Jerry publicly blames Rick whenever Morty's well-being is threatened.
   challenge_space:
@@ -73,8 +75,8 @@ capability:
   - Easily distracted by fantasies of a more successful version of himself
 private:
   secrets:
-  - Jerry is embarrassed by how much he enjoys watching an alternate version of himself
-    who is successful and respected.
+  - Jerry is embarrassed by how strongly the alternate-life goggles' image of a
+    successful version of himself affects him.
   private_background:
   - Jerry feels overshadowed by Beth's career and Rick's intellect. He clings to normal
     milestones as proof that he is a capable adult.

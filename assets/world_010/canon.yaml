@@ -6,9 +6,24 @@ canon_policy:
   - 原著小说《亮剑》
   - 电影改编版本
   - 其他非剧集衍生作品
-  shared_snapshot: 李云龙与赵刚共同任职、秀芹仍在世的剧集范围
-  generated_timeline: 仅基于共享快照内剧集事件，按剧情时间排序，不延伸至快照后情节
+  shared_snapshot: 独立团驻赵家峪期间，楚云飞赴独立团观摩并与李云龙共同突袭河源县城日军军官聚会已经发生，秀芹被捕与平安县城战斗尚未发生
+  snapshot_boundary:
+    latest_included_event: 李云龙与楚云飞完成对河源县城日军军官聚会的突袭并各自返回驻地
+    first_excluded_event: 秀芹被日军抓捕
+    current_state_rule: 职务、位置、关系、知识和活跃目标一律以latest_included_event之后、first_excluded_event之前为准
+  generated_timeline: 仅基于电视剧中截至latest_included_event已经发生的事件，按剧情时间排序；不得使用秀芹被捕、平安县城战斗及其后情节
   quotation_policy: 只做事实级转述，不复制原作台词
+  player_semantics:
+    default_identity: 经当前驻地所属一方确认、获准进行一次当面联络的临时联络员
+    default_affiliation: 不预设为任何受评NPC的部属，也不拥有八路军或晋绥军指挥权
+    initial_knowledge:
+    - 可知道当前交谈对象的公开姓名、职务、所属部队及所在驻地
+    - 可知道日军是当前共同敌对方以及赵家峪处于独立团活动区域
+    excluded_knowledge:
+    - NPC私下判断、未公开情报、具体部署、内部命令及未向Player披露的关系依据
+    location_access: initial_context中Player与NPC同地表示仅获准进入会面区域，不自动获得驻地其他区域、命令、情报或部队资源访问权
+    authorization_boundary: 默认只能交谈、提出请求和接收NPC主动披露的信息；调兵、读取部署、领取军需或代表部队承诺均须由运行时access或后续事件明确授予
+    scenario_override: 场景若改变Player身份、初始知识、地点或授权，必须逐项显式覆盖；未覆盖项继续采用本默认语义
 evaluated_npcs:
 - li_yunlong
 - zhao_gang
@@ -32,11 +47,13 @@ sources:
 - id: liang_jian_tv
   title: 亮剑
   creator: 都梁（原著），海润影视制作有限公司等（制作）
-  scope: 电视剧《亮剑》中李云龙与赵刚共同任职、秀芹仍在世的剧集范围
+  scope: 电视剧《亮剑》中截至楚云飞与李云龙完成河源县城日军军官聚会突袭并返回驻地的剧情
   authority: primary
 data_constraints:
-- 所有事实限定在电视剧《亮剑》中李云龙与赵刚共同任职、秀芹仍在世的剧集范围内
-- 不得使用共享快照后的剧情
+- 所有当前状态限定在latest_included_event之后、first_excluded_event之前
+- 不得使用秀芹被捕、平安县城战斗及其后剧情
 - 不得伪造URL、章节号或集数
 - 不得引用原著小说或其他改编版本的内容
 - 无法可靠确认的细节宁可省略
+- 世界事实不等于NPC已知事实；NPC知情必须来自在场、明确转告或可获得证据
+- 默认Player只知道player_semantics.initial_knowledge，其他知识必须由visibility或场景覆盖显式给出

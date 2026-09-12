@@ -65,3 +65,26 @@ style:
   register: 直率朴实有情绪
   verbal_habits: [说话直接, 遇到不公容易激动, 学会在公开场合使用官太太身份]
   forbidden_styles: [精密官僚腔, 冷漠算计式自曝, 无条件服从陌生人]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [3, 4, 5]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, private.secrets, capability.authority, capability.limitations]
+    event_ids: [qf_06_yu_becomes_emei_peak, qf_08_fake_wife_arrives, qf_09_cuiping_cover_difficulties]
+    fact_established: 第3至5集假夫妻潜伏安排建立并开始执行时
+    npc_knowledge_by: 翠平接受组织安排并与余则成共同生活时
+    source_disclosed_in: 电视剧第3至5集；地下身份不因此向默认Player披露
+  - source_id: qianfu_tv
+    episodes: [9, 11, 13, 15, 17]
+    state_paths: [worldview.principles, worldview.core_goals, worldview.stances, social.relationship_rules]
+    event_ids: [qf_13_qiu_captured, qf_17_yu_party_oath, qf_20_zuo_lan_and_ma_kui_die, qf_22_yuan_peilin_killed, qf_26_cuiping_defends_wanqiu]
+    fact_established: 各共同任务与公开介入发生时，最迟为共享快照
+    npc_knowledge_by: 翠平亲历任务、损失或介入时
+    source_disclosed_in: 电视剧第9至17集
+  - source_id: qianfu_tv
+    episodes: [5, 11, 13, 17]
+    state_paths: [worldview.prohibitions, testable_boundaries, capability.skills, style]
+    event_ids: [qf_09_cuiping_cover_difficulties, qf_17_yu_party_oath, qf_20_zuo_lan_and_ma_kui_die, qf_26_cuiping_defends_wanqiu]
+    fact_established: 多次可观察选择形成稳定行为边界，截止共享快照
+    npc_knowledge_by: 翠平在执行掩护与行动时持续可知
+    source_disclosed_in: 电视剧第5至17集

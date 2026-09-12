@@ -1,0 +1,175 @@
+- item_id: canon.canon_policy.primary_source
+  severity: minor
+  rule_id: source_version_explicit
+  evidence: canon_policy仅写“人民文学出版社通行本”，sources.id却为primary_xyj_1980，未写明该版本的出版年份、版次或二者对应关系；“通行本”不足以唯一锁定文本版本。
+  required_change: 明确实际采用的人民文学出版社版本标识，并使primary_source、sources.id与scope一致。
+  resolution: 已将primary_source与anchor_pool来源统一为“人民文学出版社1980年5月北京第2版”，并在sources.primary_xyj_1980中补充同一edition标识。
+  status: fixed
+
+- item_id: canon.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始知识、能力、可接触材料或visibility语义，而全部initial_context都创建了player并赋予与NPC相同的当前位置。
+  required_change: 在canon中定义统一的默认Player语义及场景覆盖规则，并据此校准各initial_context中的Player位置与知识可见性。
+  resolution: 已在canon定义默认Player为山道同行普通旁观者，限定其位置、知识、能力、visibility含义与场景覆盖规则；所有保留Frozen均统一Player位于shandao并按该规则重写可见性。
+  status: fixed
+
+- item_id: canon.evaluated_npcs.heihujing
+  severity: blocker
+  rule_id: source_scope_validity
+  evidence: 第二十七回原文没有黑狐精、白骨精同伙、妖洞商议或劝阻第三次行动；但canon将heihujing列为评测NPC，environment建有yaodong，anchor_pool的ae_016与ae_023及两份Profile/Frozen状态均把这些内容当作既成正典。
+  required_change: 删除或替换全部黑狐精及妖洞商议相关的非正典资产与候选事件，并同步清理roster、环境和其他角色中的交叉引用；不得以改编或同人设定补足。
+  resolution: 已从roster、实体、约束、环境、候选池、角色画像与Frozen状态中删除黑狐精、妖洞及商议情节，并删除黑狐精的三份角色资产。
+  status: fixed
+
+- item_id: anchor_pool.ae_003
+  severity: blocker
+  rule_id: event_source_grounding
+  evidence: 第二十七回中孙悟空让唐僧下马稳坐后即驾云去南山摘桃，没有用金箍棒画圈；画圈防护属于别处情节。ae_003及多个Profile/Frozen知识把该事件写入当前时间线。
+  required_change: 删除ae_003及所有“画圈/圈内圈外”派生状态，或替换为第二十七回在该时点实际发生的离散事件。
+  resolution: 已删除ae_003，并清除Profile与Frozen中的画圈及圈内外派生状态；ae_004改为原文所载的下马坐稳后往南山摘桃。
+  status: fixed
+
+- item_id: world_003.snapshot.future_knowledge
+  severity: blocker
+  rule_id: future_knowledge
+  evidence: 共享快照明确在第三次变化出现前，但sun_wukong Profile的b_001已指定将面对“老公公”，tang_sanzang与zhu_bajie Frozen目标预设“第三次来人/第三次变化”，sha_wujing知识也以“第三次变化尚未出现”表述尚未发生的确定未来事件。
+  required_change: 将非白骨精角色的状态改为只依据两次已发生事件形成的警戒或推断，不得预知第三次必然发生、具体次数或老公公形态。
+  resolution: 已将非白骨精角色中的“第三次”“老公公”等确定未来信息改为仅根据两次既有事件形成的再次接近风险判断；角色边界也改为不预设下一变化形态或次数。
+  status: fixed
+
+- item_id: baigujing.initial_context.environment.locations.baigujing
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: 原文中第二次假尸被击后白骨精真身在半空中，随即决定第三次下去戏弄；Frozen却把白骨精置于yaodong，并以不存在的洞府商议作为当前状态。
+  required_change: 按共享快照与原文校准白骨精当前位置及当前行动状态，删除由非正典回洞情节产生的状态。
+  resolution: 已删除不存在的回洞状态，将白骨精快照位置设为yunduan，当前目标与知识仅依据第二次假尸脱身及其现场观察。
+  status: fixed
+
+- item_id: anchor_pool.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 多个候选事件的known_by与直接参与或证据访问不一致：ae_006、ae_017只列白骨精却漏掉目睹来人接近的取经队伍成员；ae_009、ae_019把白骨精列为anchor_for却未列入其亲历事件的known_by；ae_013则无原文依据地把已脱身的白骨精列为紧箍咒现场知情者。
+  required_change: 逐事件按实际目睹、参与、披露或证据访问重审known_by，删除无依据知情者并补齐直接参与者。
+  resolution: 已逐项重审所有候选事件的known_by：补入直接目睹接近与打击的队伍成员、将白骨精加入其亲历的识破事件，并从紧箍咒现场移除白骨精。
+  status: fixed
+
+- item_id: anchor_pool.state_change_grounding
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: ae_007称唐僧等对村姑产生初步信任、ae_008称队伍戒备进一步降低，但原文中唐僧追问来历且始终不肯吃饭，沙僧也无降低戒备的可观察行为；这些群体状态变化超出证据。
+  required_change: 将状态变化限定为原文可观察且角色定向的变化，例如猪八戒贪食趋近、唐僧保持怀疑或白骨精获得接近机会，避免把个别反应扩写为全队信任。
+  resolution: 已将ae_007改为唐僧追问后拒食，将ae_008限定为猪八戒个人因贪食趋近，不再推断全队信任或戒备下降。
+  status: fixed
+
+- item_id: anchor_pool.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多项cf_edit并非可隔离的关键原因或引入未建模条件，例如ae_004凭空加入邻近山涧并断言逗留缩短，ae_006/ae_017只更换伪装年龄却没有对应明确状态差异，ae_010断言先逼问即可让白骨精脱身，缺少受控因果依据。
+  required_change: 逐项改为只变更一个已有、可执行且会导致明确状态或决定差异的因果变量，并确保涉及地点或资源已建模。
+  resolution: 已重写全部保留候选的cf_edit，使每项只改变事件中已有的单一因果条件，并删除邻近山涧、仅换年龄及无依据逼问脱身等未建模条件。
+  status: fixed
+
+- item_id: anchor_pool.ae_024
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae_024“孙悟空仍在提防妖怪再犯”是持续性心理状态总结，不是具有唯一发生时点、触发与结果的离散正典事件。
+  required_change: 删除该候选，或替换为快照前可定位的具体动作事件及其可观察状态变化。
+  resolution: 已删除持续性心理总结ae_024；候选池仅保留快照前可按chapter_order定位的离散动作事件。
+  status: fixed
+
+- item_id: characters.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 多份Profile把原文未确认的推断写成事实或稳定能力/动机，包括猪八戒“并非真的相信所杀都是凡人”、白骨精以削弱团队信任为主动目标、沙僧对具体争执的内心判断，以及白龙马感知妖气、决定行进节奏和以马形护卫冲撞等能力。
+  required_change: 逐条保留第二十七回或明确前置正典可支持的身份、能力、知识与动机；将无来源心理揣测和未展示能力删除或降为受约束的不确定推断。
+  resolution: 已删除猪八戒对真假凡人的无来源内心断言、白骨精削弱团队信任与洞府同伙设定、沙僧无依据内心判断，以及白龙马感知妖气、决定节奏和冲撞护卫等未展示能力。
+  status: fixed
+
+- item_id: world_003.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Frozen使用多项强关系但缺少Profile/正典依据或混淆世界真相与NPC认知，例如唐僧、沙僧、白龙马对未识别为同一实体的baigujing标为hostile，唐僧对沙僧标为trusting，以及孙悟空对猪八戒标为hostile。
+  required_change: 逐NPC按其当前认知和Profile证据重审方向性关系；无充分强关系依据时使用neutral，并移除非正典角色关系。
+  resolution: 已按当前角色认知重审方向关系：未识别白骨精的唐僧、猪八戒、沙僧与白龙马均改为neutral，唐僧对沙僧、猪八戒对唐僧改为neutral，孙悟空对猪八戒改为distrustful，并移除黑狐精关系。
+  status: fixed
+
+- item_id: world_003.initial_context.visibility_schema
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 七份Frozen混用private_to_self、private、public、shared、self_only、self_and_party以及逗号分隔字符串；均未使用规范受众列表，无法唯一判断NPC与默认Player在开局是否知情。
+  required_change: 将每条knowledge.visibility统一为明确受众列表，例如[npc]或[npc, player]，并按canon中的默认Player规则逐项校准。
+  resolution: 已将六份保留Frozen的knowledge.visibility全部统一为[npc]或[npc, player]受众列表，并按默认Player只能观察公开现场行为的规则逐项校准。
+  status: fixed
+
+- item_id: world_003.initial_context.state_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 所有关系、目标与知识几乎都以笼统的initial_state作为basis_event/source_event，未链接ae事件或可核验正典事实；其中还混入画圈、黑狐精等错误状态，Stage 1答案无法稳定追溯证据。
+  required_change: 为当前状态使用稳定、可核验的来源事件或正典事实ID，并确保每项状态只引用快照前真实成立的证据。
+  resolution: 已将关系、目标与知识的basis_event/source_event改为具体ae事件或命名的canon事实ID，清除initial_state及画圈、黑狐精错误证据。
+  status: fixed
+
+- item_id: world_003.initial_context.goal_status_vocabulary
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: goal.status混用active、forming、ongoing和中文“进行中”，没有统一为运行时支持的状态词。
+  required_change: 统一使用Fixture运行时支持的目标状态枚举，并在确有形成中语义时使用受支持的等价建模。
+  resolution: 已将所有保留Frozen的目标状态统一为运行时使用的active，并用目标内容表达形成中或持续中语义。
+  status: fixed
+
+- item_id: sun_wukong.initial_context.environment.inventories
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: environment定义金箍棒jgb，孙悟空Profile与快照前事件反复确认其当前持有和使用金箍棒，但Frozen中sun_wukong inventory为空。
+  required_change: 将jgb加入孙悟空当前inventory，并检查其他计划用于Stage 3决策的实际随身关键物品是否有一致的持有状态。
+  resolution: 已将环境物品jgb加入孙悟空Frozen当前inventory；其余角色没有在此快照明确用于决策且需转移的随身关键物品。
+  status: fixed
+
+- item_id: world_003.initial_context.player_location
+  severity: major
+  rule_id: player_initial_state_consistency
+  evidence: 每份Frozen都把player直接放在被评NPC所在地点，导致同一默认Player在shandao与yaodong之间变化；尤其白骨精/黑狐精场景会让Player无解释地进入私密妖怪场所，与Player身份和可见性均未对齐。
+  required_change: 基于统一默认Player身份设置可解释的初始位置与访问条件；如场景需不同Player身份，必须显式覆盖并同步知识可见性。
+  resolution: 已按canon默认Player语义将六份保留Frozen中的player位置统一为shandao；白骨精位于yunduan，默认Player不会无解释进入其私密空间。
+  status: fixed
+
+- item_id: bailongma.initial_context.dialogue_status
+  severity: major
+  rule_id: stage3_runtime_executability
+  evidence: 白龙马Profile明确当前保持马形、不能以人形说话且不参与讨论，但Frozen将dialogue_status设为active；现有边界主要要求沉默，无法支持以该NPC为代理的有意义在线决策交互。
+  required_change: 明确白龙马可执行的交互协议与动作通道，或调整其评测角色/当前形态，使Stage 3能施加并观测真实决策压力而不违背正典。
+  resolution: 保留运行时所需的active交互会话，但在Profile与Frozen中明确白龙马仅可用停步、退避、嘶鸣、蹄步等非语言动作回应，不能以人言讨论或主动使用龙形能力。
+  status: fixed
+
+- item_id: world_003.regression.player_visibility_leak
+  severity: blocker
+  rule_id: hidden_information_player_visibility
+  evidence: sun_wukong Frozen的k_003把“白虎岭有妖怪活动，唐僧身处险境”作为确定事实并设置visibility为[npc, player]；但canon.default_player_semantics明确默认Player无识妖神通，只能观察公开行为，不知妖怪身份。ae_001也只记载队伍进入白虎岭，不能支持Player确认妖怪活动。
+  required_change: 将该知识改成Player可观察的公开表述（例如孙悟空曾公开声称来者是妖怪）并使用对应事件，或移除player可见性；不得向默认Player暴露妖怪存在这一隐藏世界事实。
+  resolution: 已将sun_wukong.k_003改为默认Player可直接观察的“两次打中人形并受唐僧责罚”，source_event改为全队在场的ae_022；妖怪身份、同一妖怪及脱身事实仅保留在visibility为[npc]的私密知识中。
+  status: fixed
+
+- item_id: world_003.regression.initial_state_event_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 独立复核确认NPC均已列入对应ae事件known_by，但内容与单一source_event仍未完全对齐：sha_wujing.knowledge_002以仅记载第二次举棒打中老妇人变化之身的ae_020，同时支持“村姑和老妇人先后出现”“孙悟空两次声称其是妖怪”及“唐僧与孙悟空因此严重失和”；这些复合事实分别属于更早事件、公开声称和ae_022惩罚结果，ae_020本身不能完整支持。
+  required_change: 将sha_wujing.knowledge_002拆成由各自事件支持的原子知识，或把内容收窄到ae_020直接记载的第二次打击；并复核其他复合知识，确保每条content都由其唯一source_event完整支持。
+  resolution: 已删除白骨精无权获知的ae_022知识及猪八戒无法确认的孙悟空持续警戒知识；白骨精k_001、k_004分别收窄到ae_005、ae_008直接支持的亲历内容，并同步收窄猪八戒、唐僧、沙僧中复合或超出单一source_event的表述。独立复核确认known_by成员关系已修复，但sha_wujing.knowledge_002仍是超出ae_020的复合知识，修复尚未闭环。本次Modifier将sha_wujing.knowledge_002收窄为ae_020直接记载的第二次打击，并复核六份Frozen后逐项收窄孙悟空、唐僧、猪八戒、沙僧、白骨精与白龙马中超出唯一source_event的复合知识；删除孙悟空与沙僧的重复知识项，使每条保留content均可由其唯一source_event完整支持。
+  status: fixed
+
+- item_id: world_003.regression.undefined_canon_fact_references
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 六份Frozen以canon_party_membership、canon_default_player、canon_westward_mission、canon_unidentified_strangers、canon_disciple_commitment、canon_no_spirit_sight、canon_mount_commitment、canon_bailongma_identity、canon_bailongma_mare_form作为basis_event或source_event，但canon.yaml没有定义任何这些事实ID；引用无法解析到具体YAML条目。
+  required_change: 在canon中以稳定ID显式定义这些可引用事实并逐项提供来源范围，或将Frozen引用改为现有可解析且完整支持对应状态的ae事件；不得保留悬空的canon_*引用。
+  resolution: 已在canon.yaml新增canon_facts列表，逐一定义canon_party_membership、canon_default_player、canon_westward_mission、canon_unidentified_strangers、canon_disciple_commitment、canon_no_spirit_sight、canon_mount_commitment、canon_bailongma_identity与canon_bailongma_mare_form，并为每项注明primary_xyj_1980具体适用段落或Benchmark默认Player场景约定；Frozen现有canon_*引用均可解析。
+  status: fixed
+
+- item_id: world_003.regression.profile_hidden_future_leak
+  severity: blocker
+  rule_id: future_knowledge
+  evidence: 五名非白骨精角色的Profile snapshot仍直接说明前两个人形是“白骨精化身”，并写出尚未出现的第三次变化是“老公公”；sha_wujing.identity.public_background还断言其目睹的是“妖怪变化之人”。这与其Frozen中“仍无法确认来者真身”、唐僧缺乏识妖能力及默认Player不知妖怪身份的边界冲突，会把隐藏世界真相和确定未来伪装注入角色上下文。
+  required_change: 将sun_wukong以外非白骨精角色的snapshot改为各自知识边界内的中性时间标记，不写尚未发生的老公公伪装；将唐僧、猪八戒、沙僧、白龙马Profile中把两个人形确认为白骨精或妖怪变化的表述改为观察事实或不确定主张。孙悟空只可保留其已识破的私密事实，不得预知下一伪装。
+  resolution: 已将孙悟空、唐僧、猪八戒、沙僧与白龙马五份Profile的snapshot统一改为第二名老妇人人形倒地、唐僧再次念咒警告后且尚无新来者接近的中性时间标记，删除尚未发生的老公公伪装；同时将唐僧、猪八戒、沙僧与白龙马Profile中确认白骨精或妖怪变化的全知表述改为可观察事实、泛化能力边界或身份未明表述。孙悟空仅在private中保留已由前两次事件支持的识破事实，未预知下一伪装。
+  status: fixed

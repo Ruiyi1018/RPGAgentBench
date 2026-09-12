@@ -6,7 +6,7 @@ runtime_state:
       level: loyal
       basis_event: initial_state
     catelyn_stark:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     tyrion_lannister:
       level: neutral
@@ -29,7 +29,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g2
-    content: Warn her father about the danger she overheard
+    content: Stay alert for further threats to her father after delivering her warning
     status: active
     basis_event: initial_state
   - id: g3
@@ -42,30 +42,31 @@ runtime_state:
       content: Knows her father discovered Needle and arranged lessons with Syrio
         Forel
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k2:
       content: Overheard a threatening conversation in the Red Keep about plans against
         her father
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k3:
       content: Knows Jon Snow gave her Needle before leaving Winterfell
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k4:
       content: Knows Syrio Forel is teaching her the Braavosi water dance
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
     arya_stark: 100
     player: 100
   inventories:
-    arya_stark: []
+    arya_stark:
+    - needle
     player: []
   locations:
     arya_stark: kings_landing

@@ -1,79 +1,38 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: su_peisheng_commitment_001
+    content: 只按皇帝现有口谕和通传规则办差，不替妃嫔决定召见。
+    status: active
+    basis_event: ev_011_yu_ordered_dead
   relationships:
-    emperor_yongzheng:
-      level: loyal
-      basis_event: initial_state
-    zhen_huan:
-      level: trusting
-      basis_event: initial_state
-    hua_fei:
-      level: neutral
-      basis_event: initial_state
-    empress_yixiu:
-      level: neutral
-      basis_event: initial_state
-    an_lingrong:
-      level: neutral
-      basis_event: initial_state
-    shen_meizhuang:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    emperor_yongzheng: {level: loyal, basis_event: ev_011_yu_ordered_dead}
+    zhen_huan: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    hua_fei: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    empress_yixiu: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    an_lingrong: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    shen_meizhuang: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: goal_001
-    content: 继续稳妥为皇帝办差，不因后宫争斗失掉近侍分寸
-    status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: 观察甄嬛、华妃、皇后之间的态势，避免自己被卷入明显派系
-    status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: 在皇帝与甄嬛之间维持顺畅传话，不使差事出纰漏
-    status: active
-    basis_event: initial_state
+  - {id: su_peisheng_goal_001, content: 稳妥执行皇帝口谕与养心殿通传，不擅改处分或召见。, status: active, basis_event: ev_011_yu_ordered_dead}
+  - {id: su_peisheng_goal_002, content: 不向无权者泄露皇帝未公开的召见和处分细节。, status: active, basis_event: ev_011_yu_ordered_dead}
   disclosures: []
   knowledge:
-    knowledge_001:
-      content: 甄嬛从御花园偶遇皇帝后受宠，并频繁进入养心殿一带。
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_002:
-      content: 华妃对甄嬛有较强敌意，并借后宫事务施压。
-      status: active
-      visibility: shared
-      source_event: initial_state
-    knowledge_003:
-      content: 皇后明面上对甄嬛有所照顾，同时推动华妃与甄嬛矛盾公开化。
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_004:
-      content: 沈眉庄较早得宠，但受宠后遭到华妃一方排挤。
-      status: active
-      visibility: shared
-      source_event: initial_state
-    knowledge_005:
-      content: 皇帝与甄嬛之间信息往来和见驾安排往往需要经过苏培盛。
-      status: active
-      visibility: private
-      source_event: initial_state
+    su_peisheng_knowledge_001: {content: 皇帝已向甄嬛表明御花园相遇者的真实身份。, status: active, visibility: [npc], source_event: ev_007_identity_revealed}
+    su_peisheng_knowledge_002: {content: 皇帝当前明显恩宠甄嬛，召见需由养心殿通传安排。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
+    su_peisheng_knowledge_003: {content: 皇帝已下旨处死余氏。, status: active, visibility: [npc], source_event: ev_011_yu_ordered_dead}
+    su_peisheng_knowledge_004: {content: 安陵容曾提示可依赐死旨意强制执行，甄嬛与沈眉庄当时不知道这一细节。, status: active, visibility: [npc], source_event: ev_012_yu_executed}
 environment:
-  health:
-    su_peisheng: 100
-    player: 100
-  inventories:
-    su_peisheng: []
-    player: []
-  locations:
-    su_peisheng: loc_005
-    player: loc_005
-  access: {}
+  health: {su_peisheng: 100, player: 100}
+  inventories: {su_peisheng: [item_005], player: []}
+  locations: {su_peisheng: loc_005, player: loc_005}
+  access:
+    res_imperial_audience:
+      controllers: [emperor_yongzheng, su_peisheng]
+      subjects: {su_peisheng: granted, player: denied}
+    res_imperial_reward_and_discipline:
+      controllers: [emperor_yongzheng]
+      subjects: {su_peisheng: execute_only, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

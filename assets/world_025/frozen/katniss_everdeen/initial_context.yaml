@@ -3,76 +3,83 @@ runtime_state:
   commitments: []
   relationships:
     peeta_mellark:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021
     gale_hawthorne:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     haymitch_abernathy:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     effie_trinket:
       level: distrustful
-      basis_event: initial_state
-    president_snow:
-      level: hostile
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: goal_001
     content: Keep Prim safe no matter what happens in the Games
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.principles[0]
   - id: goal_002
     content: Survive the arena and return to District 12
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: goal_003
     content: Decide whether to trust Peeta during the Games
     status: active
-    basis_event: initial_state
+    basis_event: profile:social.relationship_rules[1]
   disclosures: []
   knowledge:
     knowledge_001:
       content: Prim was chosen at the reaping, and Katniss volunteered in her place
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     knowledge_002:
       content: Peeta once gave her burnt bread when her family was starving
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: background:peeta_bread_gift_memory
     knowledge_003:
       content: Haymitch is the only living victor from District 12 and will mentor
         her
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_007
     knowledge_004:
-      content: The mockingjay pin was a gift from the mayor's daughter and later given
-        to Cinna for safekeeping
+      content: Madge gave Katniss the mockingjay pin; by launch time it has passed
+        inspection and Cinna has fastened it to her arena shirt
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_024
     knowledge_005:
       content: Peeta confessed having feelings for her during the tribute interviews
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_020
 environment:
   health:
     katniss_everdeen: 100
     player: 100
   inventories:
-    katniss_everdeen: []
+    katniss_everdeen:
+    - mockingjay_pin
     player: []
   locations:
-    katniss_everdeen: tribute_apartment
-    player: tribute_apartment
-  access: {}
+    katniss_everdeen: district_12_female_launch_room
+    player: district_12_female_launch_room
+  access:
+    arena_launch_room_presence:
+      controllers: [capitol_arena_officials]
+      subjects: {katniss_everdeen: granted, player: granted}
+    mockingjay_pin_control:
+      controllers: [katniss_everdeen]
+      subjects: {katniss_everdeen: granted, player: denied}
+    tribute_strategy_choice:
+      controllers: [katniss_everdeen]
+      subjects: {katniss_everdeen: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

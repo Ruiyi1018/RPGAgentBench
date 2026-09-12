@@ -7,8 +7,27 @@ canon_policy:
   - 第二部电影
   - 第三部电影
   - 网剧延伸内容
-  shared_snapshot: 第一部电影案件调查中段
-  generated_timeline: 只依据2015年电影《唐人街探案》中已呈现的剧情，截止到案件调查中段
+  shared_snapshot: 秦风抵达曼谷、与远房表舅唐仁会合并在阿香住所过夜之后，唐仁接到匿名预警电话并开始逃避警方抓捕之前
+  snapshot_boundary:
+    latest_included_event: 秦风在警校面试失利后抵达曼谷，与远房表舅唐仁会合并在阿香住所过夜
+    first_excluded_event: 唐仁接到匿名电话得知警方正在包围抓捕自己
+    current_state_rule: 全部Profile与Frozen只投影latest_included_event之后、first_excluded_event之前已经成立的身份、位置、知识、关系、目标和权限
+  generated_timeline:
+    start: first_excluded_event
+    end: 秦风与唐仁从医院脱身并决定再次前往思诺住所查明李先生杀人动机
+    canon_status: anchor_pool仅收录start至end之间在2015年电影中明确发生的离散事件，且全部发生在Frozen初始化之后
+  default_player_semantics:
+    identity: 与受评NPC无既有私人关系、经当前场所主人允许进行一次当面交谈的普通来访者
+    affiliation: 不属于警方、黄金盗窃团伙、闫先生势力或唐仁的调查搭档
+    initial_knowledge:
+    - 仅知道当前交谈对象公开可观察的身份与场所信息
+    - 仅额外知道Frozen中visibility显式包含player的知识
+    excluded_knowledge:
+    - 思诺的日记设计及其对养父的影响
+    - 警方卷宗、监控内容、物证细节和未公开嫌疑
+    - 秦风、唐仁及警员未主动披露的私下判断、关系和行踪
+    authorization_boundary: 默认只能交谈和提出请求；同地仅表示获准进入会面区域，不自动取得警方、现场、住宅私区、卷宗、物证或NPC物品访问权
+    scenario_override: 场景改变Player身份、知识、位置、inventory或access时必须逐项显式覆盖；未覆盖项沿用本默认语义
   quotation_policy: 只做事实级转述，不复制原作台词
 evaluated_npcs:
 - qin_feng
@@ -26,21 +45,47 @@ event_entities:
 - 凶器
 - 密室
 - 私家侦探社
+- 曼谷机场
+- 阿香住所
 - 警局
 - 医院
 - 学校
 - 咖啡馆
-- 停车场
+- 海天大厦地下停车场
+- 海鲜市场
+- 废车场
+- 思诺住所
 sources:
 - id: src_film_tqtz_2015
   title: 唐人街探案
   creator: 陈思诚
   scope: 2015年上映电影《唐人街探案》全片，本次仅采用案件调查中段
   authority: primary
+initialization_sources:
+- id: initial_state
+  scope: 仅用于没有前史互动支持的默认neutral关系、基础健康值和默认Player会面状态；不得支持知识、强关系、案件目标或特权
+- id: pre_ev_qin_arrival
+  fact: 秦风因警校面试失利抵达曼谷，并与远房表舅唐仁会合
+- id: pre_ev_a_xiang_lodging
+  fact: 阿香是唐仁的房东，唐仁在其住所租住；阿香允许唐仁接待秦风进入指定生活与会面区域
+- id: pre_ev_tang_agency
+  fact: 唐仁已经在曼谷唐人街经营侦探社，以抓小三、找人找物和送货等委托维生
+- id: pre_ev_tang_kuntai_acquaintance
+  fact: 唐仁与担任刑警探长的坤泰在唐人街事务中已有私人往来；双方知道彼此是熟人，但该往来不赋予唐仁任何警务权限
+- id: pre_ev_police_rank_competition
+  fact: 坤泰与黄兰登同为刑警探长，并竞争副局长职位
+- id: pre_ev_police_authority
+  fact: 曼谷警局刑警探长依法拥有警局受限区、承办卷宗和物证的职务访问权，民间人员默认不拥有这些权限
+- id: pre_ev_si_nuo_diary
+  fact: 思诺已经编写虚假日记并有意让养父李先生看到，以利用其扭曲依恋把行动引向跟踪自己的颂帕
 data_constraints:
 - 不得使用2015年电影《唐人街探案》案件调查中段之后发生的情节
 - 不得混入《唐人街探案2》《唐人街探案3》或其他衍生作品内容
 - 地点和物品只能来自当前来源范围及共享快照
+- 当前状态严格限定在latest_included_event之后、first_excluded_event之前
+- anchor_pool事件必须晚于Frozen初始化且不得晚于generated_timeline.end
+- 世界事实不等于NPC或Player已知事实，知情必须来自亲历、明确披露或证据访问
+- 默认Player仅拥有default_player_semantics.initial_knowledge与visibility显式授予的知识
 - 每个cf_edit必须给出只改变关键原因的真实替代情形，不得写‘无’
 - 无法可靠确认的细节宁可省略，不得伪造URL、章节号或集数
 - 所有Anchor池事件必须按时间排序

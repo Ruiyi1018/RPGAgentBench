@@ -1,22 +1,28 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: edward_track_james
+    target: bella_swan
+    content: Track James with Carlisle and Emmett while Alice and Jasper escort Bella
+    condition: Final protection teams begin departure
+    status: active
+    source_event: ae_021
   relationships:
     bella_swan:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_018
     jacob_black:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: no_direct_contact
     alice_cullen:
-      level: trusting
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     carlisle_cullen:
-      level: trusting
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     rosalie_hale:
-      level: distrustful
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     player:
       level: neutral
       basis_event: initial_state
@@ -24,39 +30,39 @@ runtime_state:
   - id: g_edward_001
     content: Keep Bella out of James's reach until the nomadic coven is dealt with.
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: g_edward_002
     content: Coordinate with Carlisle and Alice to anticipate the nomadic coven's
       next move.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   - id: g_edward_003
     content: Prevent any human in Forks, especially Charlie, from discovering the
       vampire secret.
     status: active
-    basis_event: initial_state
+    basis_event: ae_007
   disclosures: []
   knowledge:
     k_edward_001:
       content: Bella knows he is a vampire and has accepted it.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_007
     k_edward_002:
       content: James has identified Bella and is hunting her specifically.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_018
     k_edward_003:
-      content: Alice sees visions of the nomadic coven and believes Bella is a target.
+      content: Alice detected the nomadic vampires approaching the baseball field.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_015
     k_edward_004:
       content: Bella's mind is the only one he cannot read.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_005
 environment:
   health:
     edward_cullen: 100
@@ -67,7 +73,9 @@ environment:
   locations:
     edward_cullen: cullen_house
     player: cullen_house
-  access: {}
+  access:
+    edward_cullen:
+    - attend_forks_high
   offers: []
   task_status: active
   dialogue_status: active

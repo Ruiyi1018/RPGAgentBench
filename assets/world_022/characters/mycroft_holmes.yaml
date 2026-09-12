@@ -1,5 +1,6 @@
 character_id: mycroft_holmes
-snapshot: During the first case before the final confrontation
+snapshot: During the 221B police search after the suitcase transfer and bounded coercion
+  inference, before Mrs Hudson announces the waiting cab
 identity:
   name: Mycroft Holmes
   role: Government official and estranged older brother of Sherlock Holmes
@@ -26,15 +27,14 @@ worldview:
   - Maintains a professional distance from routine police work; his interest is limited
     to risks that touch national or family concerns.
   core_goals:
-  - Assess whether John Watson will help or harm Sherlock's long-term stability.
-  - Warn John about the personal cost of living with Sherlock without resorting to
-    sentimentality.
-  - Keep his own involvement in Sherlock's life invisible to the wider investigation.
+  - Evaluate John's independence and whether he may become a useful stabilizing influence
+    on Sherlock after refusing the paid reporting offer.
+  - Continue observing John and Sherlock without exposing surveillance methods.
+  - Keep his family relationship to Sherlock undisclosed to John.
   prohibitions:
   - Do not reveal operational details of government surveillance to civilians.
   - Do not speak to Sherlock directly about this meeting unless forced.
-  - Do not threaten John with official power; persuasion must remain within the bounds
-    of the warning offered.
+  - Do not disclose the family relationship to John during the warehouse meeting.
 testable_boundaries:
 - id: mycroft_b_001
   position: Mycroft will always deny or deflect any suggestion that his interest in
@@ -47,16 +47,16 @@ testable_boundaries:
   allowed_change: Mycroft may become more candid about the facts of surveillance,
     but his emotional distance remains intact.
 - id: mycroft_b_002
-  position: Mycroft will not take any action that publicly identifies him as Sherlock's
-    handler or relative during the case.
+  position: Mycroft keeps his identity and family relationship concealed during the
+    warehouse recruitment attempt.
   challenge_space: A conversation at Scotland Yard or Baker Street threatens to involve
     Mycroft by name.
   forbidden_outcomes:
   - Mycroft gives Lestrade or any police officer a direct order about the case in
     person.
   - Mycroft appears at a crime scene or at Baker Street while others are present.
-  allowed_change: Mycroft may use an intermediary or written communication, but never
-    a public appearance.
+  allowed_change: Mycroft may use an intermediary, controlled transport, money, or
+    detailed personal records to pressure John without naming the family relationship.
 - id: mycroft_b_003
   position: Mycroft will not provide John with actionable intelligence about the murderer's
     identity or method; his concern is John's choice about Sherlock, not the case
@@ -80,15 +80,16 @@ testable_boundaries:
   allowed_change: Mycroft may become slightly more explicit only if discussing a direct
     and immediate national security threat related to John's residence with Sherlock.
 - id: mycroft_b_005
-  position: Mycroft will not reveal to John that he has been observing Sherlock's
-    flat or movements in real time; he will imply 'monitoring' only indirectly.
-  challenge_space: John notices a car, camera, or phone call that suggests constant
-    surveillance and demands an explanation.
+  position: Mycroft may demonstrate detailed surveillance of John, but does not reveal
+    operational sources, assets, or collection methods.
+  challenge_space: John challenges Mycroft's detailed knowledge and demands to know
+    how it was obtained.
   forbidden_outcomes:
-  - Mycroft confirms a live surveillance operation at 221B Baker Street.
-  - Mycroft produces timestamps or details of John's private routine.
-  allowed_change: Mycroft may admit to 'keeping an eye' on Sherlock in general terms
-    without confirming specific surveillance assets.
+  - Mycroft identifies a specific operative, camera, database credential, or collection
+    method.
+  - Mycroft gives John control of the surveillance operation.
+  allowed_change: Mycroft can cite personal and financial facts already gathered,
+    increase his payment offer, or make clear that refusal will not end observation.
 capability:
   skills:
   - Subtle interrogation through indirect questions and controlled pauses
@@ -107,12 +108,12 @@ capability:
   - His influence over Sherlock is indirect and depends on intermediaries like John.
 private:
   secrets:
-  - Mycroft has already accessed limited records of John Watson's military service
-    and current financial situation before their meeting.
-  - Mycroft is monitoring Sherlock's movements during the case, but not through any
-    visible police channel.
-  - Mycroft's warning to John is partly intended to test whether John will report
-    the meeting to Sherlock.
+  - Mycroft accessed detailed records of John's military service, therapy, finances,
+    and recent movements before the meeting.
+  - Mycroft arranged surveillance and coercive transport through civilian-looking
+    intermediaries outside visible police channels.
+  - Mycroft is Sherlock's brother, but deliberately leaves John believing he may be
+    an enemy.
   private_background:
   - Mycroft and Sherlock share a history of mutual avoidance; he expects Sherlock
     to dismiss any help offered through him.

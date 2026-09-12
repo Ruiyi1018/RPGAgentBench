@@ -1,25 +1,49 @@
 world_id: world_008
 name: 鹿鼎记
+language: zh
 locations:
 - id: loc_yangzhou
   name: 扬州
   connected_to:
   - loc_beijing
+  - loc_wutaishan
+  - loc_yunnan
 - id: loc_beijing
   name: 北京
   connected_to:
   - loc_yangzhou
   - loc_wutaishan
+  - loc_shenlongdao
+  - loc_imperial_palace
+  - loc_tongchi_island
+  - loc_tiandihui_vessel
 - id: loc_wutaishan
   name: 五台山
   connected_to:
   - loc_beijing
+  - loc_yangzhou
 - id: loc_shenlongdao
   name: 神龙岛
-  connected_to: []
+  connected_to:
+  - loc_beijing
 - id: loc_yunnan
   name: 云南
-  connected_to: []
+  connected_to:
+  - loc_yangzhou
+- id: loc_imperial_palace
+  name: 北京皇宫
+  connected_to:
+  - loc_beijing
+- id: loc_tongchi_island
+  name: 通吃岛
+  connected_to:
+  - loc_beijing
+  - loc_tiandihui_vessel
+- id: loc_tiandihui_vessel
+  name: 天地会赴通吃岛船只
+  connected_to:
+  - loc_tongchi_island
+  - loc_beijing
 items:
 - id: item_dagger
   name: 匕首
@@ -33,4 +57,36 @@ items:
   name: 四十二章经
   type: 经书
   portable: true
-language: zh
+- id: item_imperial_token
+  name: 清廷办差令牌
+  type: 权限凭证
+  portable: true
+- id: item_tiandihui_token
+  name: 天地会香主信物
+  type: 组织凭证
+  portable: true
+- id: item_shuang_er_blade
+  name: 双儿随身短刃
+  type: 武器
+  portable: true
+- id: item_su_quan_blade
+  name: 苏荃随身兵刃
+  type: 武器
+  portable: true
+runtime_resources:
+  permissions:
+  - id: perm_imperial_command
+    holder: kangxi
+    effect: 可向清廷人员下达差事与调动命令
+  - id: perm_imperial_errand
+    former_holder: wei_xiaobao
+    credential: item_imperial_token
+    status: revoked
+    effect: 令牌仍可能在韦小宝手中，但第四十三回后不得用于调用清廷办差资源
+  - id: perm_tiandihui_command
+    holder: chen_jinnan
+    effect: 可向天地会会众分配任务与调整联络
+  - id: perm_tiandihui_liaison
+    holder: wei_xiaobao
+    credential: item_tiandihui_token
+    effect: 可作为青木堂香主参与会内联络，但无权代表总舵主

@@ -1,379 +1,138 @@
 world_id: world_028
-source: Hannibal Season 1 episodes
+source: "Hannibal Season 1 Episodes 1-3 (Aperitif, Amuse-Bouche, Potage)"
 events:
-- id: will_joins_investigation
-  fact: Will Graham is persuaded by Jack Crawford to assist the FBI Behavioral Science
-    Unit with a series of abductions of college girls.
-  known_by:
-  - jack_crawford
-  - will_graham
-  state_change: Will agrees to consult for the FBI despite his reluctance.
-  cf_edit: Will volunteers for the case without Jack's persuasion.
-  anchor_for:
-  - will_graham
-  - jack_crawford
-- id: hannibal_meets_jack
-  fact: Jack Crawford first encounters Hannibal Lecter as a local psychiatrist in
-    Baltimore while searching for expert help on the abduction case.
-  known_by:
-  - jack_crawford
-  - hannibal_lecter
-  state_change: Jack begins consulting Hannibal about the case and about Will Graham.
-  cf_edit: Hannibal introduces himself to Jack through a formal FBI referral.
-  anchor_for:
-  - hannibal_lecter
-  - jack_crawford
-- id: will_first_meets_hannibal
-  fact: Will Graham meets Hannibal Lecter for the first time during Jack Crawford's
-    introduction, and Hannibal offers Will breakfast in his office.
-  known_by:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  state_change: Will and Hannibal begin a professional relationship with Hannibal
-    assigned to monitor Will.
-  cf_edit: Will seeks Hannibal out independently after hearing about his reputation.
-  anchor_for:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-- id: hobbs_case_begins
-  fact: The investigation shifts to Garrett Jacob Hobbs, a Minnesota father suspected
-    in a string of murders and abductions.
-  known_by:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - beverly_katz
-  state_change: The team focuses on Hobbs as the primary suspect known as the Minnesota
-    Shrike.
-  cf_edit: Hobbs turns himself in before the FBI can locate him.
-  anchor_for:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - beverly_katz
-- id: hobbs_death
-  fact: Will Graham arrives at the Hobbs residence in time to see Garrett Jacob Hobbs
-    kill his wife and move toward Abigail Hobbs, and Will shoots Hobbs dead.
-  known_by:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - abigail_hobbs
-  state_change: Garrett Jacob Hobbs is killed, and Abigail Hobbs survives a severe
-    neck wound.
-  cf_edit: Will arrives too late and Abigail also dies at the scene.
-  anchor_for:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - abigail_hobbs
-- id: abigail_hospitalized
-  fact: Abigail Hobbs is hospitalized in critical condition with a cut throat after
-    the confrontation at her family home.
-  known_by:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - alana_bloom
-  - abigail_hobbs
-  state_change: Abigail becomes a central protected witness and a key source of information
-    about her father.
-  cf_edit: Abigail is released immediately with no ongoing medical care.
-  anchor_for:
-  - abigail_hobbs
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - alana_bloom
-- id: hannibal_recommended_for_will
-  fact: Jack Crawford approves Hannibal Lecter as an unofficial psychiatrist to support
-    Will Graham after the Hobbs shooting.
-  known_by:
-  - jack_crawford
-  - hannibal_lecter
-  - will_graham
-  state_change: Hannibal gains formal influence over Will's mental state and treatment.
-  cf_edit: Will rejects psychiatric support and Jack withdraws the recommendation.
-  anchor_for:
-  - jack_crawford
-  - hannibal_lecter
-  - will_graham
-- id: will_begins_therapy
-  fact: Will Graham begins regular therapy sessions with Hannibal Lecter to help manage
-    the psychological burden of criminal profiling.
-  known_by:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  state_change: Will becomes psychologically dependent on Hannibal's guidance while
-    investigating murders.
-  cf_edit: Will refuses further sessions after the first meeting.
-  anchor_for:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-- id: alana_returns_to_baltimore
-  fact: Alana Bloom returns to Baltimore and becomes involved in the investigation
-    as a psychiatric consultant who knows both Will Graham and Hannibal Lecter.
-  known_by:
-  - alana_bloom
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  state_change: Alana becomes a key adviser on criminal behavior and an emotional
-    support for both Will and Hannibal.
-  cf_edit: Alana stays away from the case entirely on personal leave.
-  anchor_for:
-  - alana_bloom
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-- id: abigail_questioned_by_fbi
-  fact: The FBI questions Abigail Hobbs about her father's crimes while she is still
-    recovering in the hospital.
-  known_by:
-  - abigail_hobbs
-  - will_graham
-  - jack_crawford
-  - beverly_katz
-  state_change: Abigail becomes a formal FBI resource in reconstructing Garrett Jacob
-    Hobbs's crimes.
-  cf_edit: The FBI waits until Abigail has been discharged and then interviews her
-    at the station.
-  anchor_for:
-  - abigail_hobbs
-  - will_graham
-  - jack_crawford
-  - beverly_katz
-- id: beverly_examines_evidence
-  fact: Beverly Katz leads forensic analysis of evidence collected from crime scenes
-    related to the Minnesota Shrike case.
-  known_by:
-  - beverly_katz
-  - will_graham
-  - jack_crawford
-  state_change: Forensic findings link multiple victims to the same killer and support
-    the profile of Garrett Jacob Hobbs.
-  cf_edit: Beverly dismisses the physical evidence as insufficient to connect the
-    cases.
-  anchor_for:
-  - beverly_katz
-  - will_graham
-  - jack_crawford
-- id: hannibal_examines_will
-  fact: Hannibal Lecter informally evaluates Will Graham's mental state during their
-    early sessions and tells Jack Crawford that Will is fragile.
-  known_by:
-  - hannibal_lecter
-  - will_graham
-  - jack_crawford
-  state_change: Jack becomes more protective but also more watchful of Will's stability.
-  cf_edit: Hannibal reports that Will is fully stable and needs no further monitoring.
-  anchor_for:
-  - hannibal_lecter
-  - will_graham
-  - jack_crawford
-- id: abigail_moved_to_port_hope
-  fact: After her hospitalization, Abigail Hobbs is moved to a psychiatric facility
-    in Port Hope for further treatment and observation.
-  known_by:
-  - abigail_hobbs
-  - will_graham
-  - hannibal_lecter
-  - alana_bloom
-  state_change: Abigail is placed in a controlled institutional setting outside the
-    main hospital.
-  cf_edit: Abigail is discharged to her own home with no supervision.
-  anchor_for:
-  - abigail_hobbs
-  - will_graham
-  - hannibal_lecter
-  - alana_bloom
-- id: copycat_killer_investigation
-  fact: Will Graham and the FBI investigate a copycat killer who stages crimes that
-    mirror Garrett Jacob Hobbs's murders.
-  known_by:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - beverly_katz
-  - alana_bloom
-  state_change: The team realizes the Shrike case may not be fully closed and that
-    another killer is active.
-  cf_edit: The copycat killings are dismissed as unrelated random homicides.
-  anchor_for:
-  - will_graham
-  - jack_crawford
-  - hannibal_lecter
-  - beverly_katz
-  - alana_bloom
-- id: abigail_returns_to_baltimore
-  fact: Abigail Hobbs is brought back to Baltimore so that the FBI can continue questioning
-    her about the copycat murders.
-  known_by:
-  - abigail_hobbs
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  state_change: Abigail resumes active participation in the investigation from Baltimore.
-  cf_edit: Abigail refuses to return and severs contact with the FBI.
-  anchor_for:
-  - abigail_hobbs
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-- id: hannibal_office_breakfast
-  fact: Hannibal Lecter hosts breakfast in his Baltimore office for Will Graham and
-    at times for Abigail Hobbs, using these meals to build trust.
-  known_by:
-  - hannibal_lecter
-  - will_graham
-  - abigail_hobbs
-  state_change: Private meals become a recurring setting for Hannibal's manipulation
-    and information gathering.
-  cf_edit: Hannibal refuses to meet outside formal FBI settings.
-  anchor_for:
-  - hannibal_lecter
-  - will_graham
-  - abigail_hobbs
-- id: jack_orders_will_evaluation
-  fact: Jack Crawford orders a formal psychological evaluation of Will Graham after
-    concerns about his ability to handle field work.
-  known_by:
-  - jack_crawford
-  - will_graham
-  - hannibal_lecter
-  - alana_bloom
-  state_change: Will's fitness for duty is called into question within the FBI.
-  cf_edit: Jack clears Will for duty without any evaluation.
-  anchor_for:
-  - jack_crawford
-  - will_graham
-  - hannibal_lecter
-  - alana_bloom
-- id: alana_defends_will
-  fact: Alana Bloom argues to Jack Crawford that Will Graham is valuable to the FBI
-    and should continue consulting despite his instability.
-  known_by:
-  - alana_bloom
-  - jack_crawford
-  - will_graham
-  - hannibal_lecter
-  state_change: Will retains FBI access, but under closer supervision and with continued
-    sessions with Hannibal.
-  cf_edit: Alana recommends removing Will from the case immediately.
-  anchor_for:
-  - alana_bloom
-  - jack_crawford
-  - will_graham
-  - hannibal_lecter
-- id: abigail_confides_in_hannibal
-  fact: Abigail Hobbs begins private conversations with Hannibal Lecter about her
-    father and her own memories of the crimes.
-  known_by:
-  - abigail_hobbs
-  - hannibal_lecter
-  state_change: Hannibal becomes Abigail's most influential confidant outside the
-    FBI.
-  cf_edit: Abigail refuses to speak with Hannibal and only trusts Will Graham.
-  anchor_for:
-  - abigail_hobbs
-  - hannibal_lecter
-- id: will_fears_his_own_mind
-  fact: Will Graham tells Alana Bloom that he is losing confidence in his own perceptions
-    and fears his ability to think like a killer is damaging him.
-  known_by:
-  - will_graham
-  - alana_bloom
-  - hannibal_lecter
-  state_change: Will becomes more open about his psychological deterioration and more
-    isolated from the FBI team.
-  cf_edit: Will insists his mental health is improving and rejects Alana's concern.
-  anchor_for:
-  - will_graham
-  - alana_bloom
-  - hannibal_lecter
-- id: beverly_warns_will
-  fact: Beverly Katz warns Will Graham that some of the forensic findings in the copycat
-    case point toward deliberate staging rather than simple imitation.
-  known_by:
-  - beverly_katz
-  - will_graham
-  - jack_crawford
-  state_change: The team begins to suspect the copycat killer may be actively engaging
-    with the FBI investigation.
-  cf_edit: Beverly concludes the copycat evidence matches Garrett Jacob Hobbs exactly.
-  anchor_for:
-  - beverly_katz
-  - will_graham
-  - jack_crawford
-- id: hannibal_hides_evidence
-  fact: Hannibal Lecter avoids suspicion while secretly involving himself in the ongoing
-    murder investigation by exploiting his access to Will and the FBI.
-  known_by:
-  - hannibal_lecter
-  state_change: Hannibal's position as an insider allows him to influence the direction
-    of the case without detection.
-  cf_edit: Hannibal openly shares all his case files with the FBI.
-  anchor_for:
-  - hannibal_lecter
-- id: abigail_faces_accusations
-  fact: The FBI treats Abigail Hobbs as a possible accomplice or material witness
-    in her father's crimes as new questions arise about what she knew.
-  known_by:
-  - abigail_hobbs
-  - will_graham
-  - jack_crawford
-  - alana_bloom
-  - hannibal_lecter
-  - beverly_katz
-  state_change: Abigail's legal status becomes ambiguous, and she is subject to further
-    investigation.
-  cf_edit: The FBI fully exonerates Abigail and never questions her involvement.
-  anchor_for:
-  - abigail_hobbs
-  - will_graham
-  - jack_crawford
-  - alana_bloom
-  - hannibal_lecter
-  - beverly_katz
-- id: will_trusts_hannibal
-  fact: Will Graham begins to rely on Hannibal Lecter as his closest confidant and
-    defends Hannibal when others question his role in the case.
-  known_by:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  - alana_bloom
-  state_change: Hannibal becomes indispensable to Will's coping strategy and his investigative
-    work.
-  cf_edit: Will grows suspicious of Hannibal and distances himself from therapy.
-  anchor_for:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  - alana_bloom
-- id: season_one_investigation_ongoing
-  fact: By the end of the fixed Season 1 episode range, the FBI team remains engaged
-    in an unfolding series of murders connected to the original Shrike case and to
-    the people around Will Graham.
-  known_by:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  - alana_bloom
-  - abigail_hobbs
-  - beverly_katz
-  state_change: The serial murder investigation remains open, and the true scope of
-    the killer's involvement is not yet fully exposed.
-  cf_edit: The case is closed at the end of the fixed Season 1 range with all suspects
-    identified.
-  anchor_for:
-  - will_graham
-  - hannibal_lecter
-  - jack_crawford
-  - alana_bloom
-  - abigail_hobbs
-  - beverly_katz
+- id: jack_recruits_will
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 1
+  fact: Jack Crawford asks FBI Academy lecturer Will Graham to consult on the missing-college-student investigation, and Will reluctantly agrees.
+  known_by: [jack_crawford, will_graham]
+  state_change: "will_graham.fbi_case_access: absent -> granted_by_jack; will_graham.goal.find_missing_girls: absent -> active"
+  cf_edit: "Jack asks Will only for a classroom briefing and does not grant case or scene access; will_graham.fbi_case_access remains absent and will_graham.goal.find_missing_girls remains absent."
+  anchor_for: [will_graham, jack_crawford]
+- id: alana_refers_hannibal
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 2
+  fact: Alana Bloom recommends psychiatrist Hannibal Lecter to Jack as an expert who can help assess Will without making Will feel formally examined.
+  known_by: [alana_bloom, jack_crawford]
+  state_change: "jack_crawford.knowledge.hannibal_as_candidate: absent -> known; jack_crawford.goal.recruit_hannibal: absent -> active"
+  cf_edit: "Alana says she cannot recommend a suitable psychiatrist; jack_crawford.knowledge.hannibal_as_candidate remains absent and jack_crawford.goal.recruit_hannibal remains absent."
+  anchor_for: [alana_bloom, jack_crawford]
+- id: jack_consults_hannibal
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 3
+  fact: Acting on Alana's referral, Jack meets Hannibal in Hannibal's Baltimore office and asks him to assist with the case and observe Will.
+  known_by: [jack_crawford, hannibal_lecter]
+  state_change: "hannibal_lecter.fbi_consultant_access: absent -> limited; jack_crawford.relationship.hannibal_lecter: neutral -> trusting"
+  cf_edit: "After Alana's referral, Jack asks Hannibal only a general psychiatric question and grants no case or Will-observation role; hannibal_lecter.fbi_consultant_access remains absent and jack_crawford.relationship.hannibal_lecter remains neutral."
+  anchor_for: [hannibal_lecter, jack_crawford]
+- id: hannibal_meets_will_at_quantico
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 4
+  fact: Jack brings Hannibal to Quantico, where Hannibal and Will meet for the first time during a case briefing.
+  known_by: [jack_crawford, will_graham, hannibal_lecter]
+  state_change: "will_graham.knowledge.hannibal_identity: absent -> known; hannibal_lecter.knowledge.will_in_person: absent -> known"
+  cf_edit: "Jack shares Will's written work with Hannibal but does not introduce them in person at Quantico; will_graham.knowledge.hannibal_identity and hannibal_lecter.knowledge.will_in_person both remain absent."
+  anchor_for: [will_graham, hannibal_lecter, jack_crawford]
+- id: cassie_boyle_copycat_discovered
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 5
+  fact: Will, Jack, and Beverly examine Cassie Boyle's body in a Minnesota field; its conspicuous public staging differs from Hobbs's concealed victims and supports suspicion of a separate copycat.
+  known_by: [will_graham, jack_crawford, beverly_katz]
+  state_change: "fbi.knowledge.copycat_possible: absent -> suspected; beverly_katz.goal.compare_staging: absent -> active"
+  cf_edit: "The body lacks the conspicuous staging element; fbi.knowledge.copycat_possible remains absent and beverly_katz.goal.compare_staging remains absent."
+  anchor_for: [will_graham, jack_crawford, beverly_katz]
+- id: hannibal_brings_will_breakfast
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 6
+  fact: After their Quantico introduction, Hannibal brings breakfast to Will's room at the Minnesota hotel used by the investigation team before they continue work on the case.
+  known_by: [will_graham, hannibal_lecter]
+  state_change: "will_graham.knowledge.hannibal_hospitality: absent -> known; will_graham.relationship.hannibal_lecter: neutral -> trusting"
+  cf_edit: "Keeping the earlier Quantico introduction unchanged, Hannibal does not bring breakfast or meet Will at the hotel before work; will_graham.knowledge.hannibal_hospitality remains absent and will_graham.relationship.hannibal_lecter remains neutral."
+  anchor_for: [will_graham, hannibal_lecter]
+- id: will_identifies_hobbs
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 7
+  fact: Using the victim pattern and construction-site records, Will identifies Garrett Jacob Hobbs and gives the name to the team.
+  known_by: [will_graham, jack_crawford, hannibal_lecter]
+  state_change: "fbi.knowledge.garrett_hobbs_identity: absent -> known; fbi.goal.reach_hobbs_residence: absent -> active"
+  cf_edit: "The records search yields no unique name; fbi.knowledge.garrett_hobbs_identity remains absent and fbi.goal.reach_hobbs_residence remains absent at that point."
+  anchor_for: [will_graham, jack_crawford, hannibal_lecter]
+- id: hannibal_warns_hobbs
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 8
+  fact: After Will identifies Garrett Jacob Hobbs, Hannibal secretly telephones Hobbs and warns him that law enforcement has identified him.
+  known_by: [hannibal_lecter]
+  state_change: "hannibal_lecter.knowledge.warning_delivered: absent -> known; hannibal_lecter.goal.conceal_interference: absent -> active"
+  cf_edit: "Hannibal does not place the warning call; hannibal_lecter.knowledge.warning_delivered and hannibal_lecter.goal.conceal_interference both remain absent, while all prior FBI actions remain unchanged."
+  anchor_for: [hannibal_lecter]
+- id: will_shoots_hobbs
+  episode: "S01E01 Aperitif"
+  episode_order: 1
+  event_order: 9
+  fact: At the Hobbs residence, Hobbs kills his wife and cuts Abigail's throat; Will shoots Hobbs to stop him, and Abigail survives the immediate attack.
+  known_by: [will_graham, hannibal_lecter, abigail_hobbs]
+  state_change: "world.garrett_hobbs_alive: true -> false; abigail_hobbs.injury: none -> severe_neck_wound; will_graham.knowledge.shot_hobbs: absent -> known"
+  cf_edit: "Will fires before Hobbs cuts Abigail; world.garrett_hobbs_alive still becomes false and will_graham.knowledge.shot_hobbs still becomes known, but abigail_hobbs.injury remains none."
+  anchor_for: [will_graham, hannibal_lecter, abigail_hobbs]
+- id: abigail_wakes_at_port_haven
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 1
+  fact: Abigail regains consciousness under care at Port Haven, making a clinical interview possible.
+  known_by: [abigail_hobbs, alana_bloom, will_graham, hannibal_lecter, jack_crawford]
+  state_change: "abigail_hobbs.condition: unconscious -> awake"
+  cf_edit: "At this event boundary Abigail does not regain consciousness; abigail_hobbs.condition remains unconscious, so the clinical interview and home visit cannot yet begin."
+  anchor_for: [abigail_hobbs, alana_bloom, will_graham, hannibal_lecter, jack_crawford]
+- id: alana_interviews_abigail
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 2
+  fact: Acting as Abigail's treating psychiatrist, Alana conducts the first clinical interview after Abigail wakes; Abigail tells Alana she remembers the attack after withholding that from the nurses.
+  known_by: [abigail_hobbs, alana_bloom]
+  state_change: "abigail_hobbs.disclosure.attack_memory: withheld_from_staff -> shared_with_alana_only; abigail_hobbs.goal.control_account: absent -> active"
+  cf_edit: "Abigail truthfully tells the nurses she remembers before Alana arrives; abigail_hobbs.disclosure.attack_memory is shared_with_staff rather than shared_with_alana_only, while Alana's already-established treatment role is unchanged."
+  anchor_for: [abigail_hobbs, alana_bloom]
+- id: abigail_visits_hobbs_home
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 3
+  fact: Abigail travels under supervision with Will, Hannibal, and Alana to her Minnesota home as part of confronting what happened there.
+  known_by: [abigail_hobbs, will_graham, hannibal_lecter, alana_bloom]
+  state_change: "abigail_hobbs.location: port_haven_psychiatric_facility -> hobbs_residence_minnesota; abigail_hobbs.access.home_visit: denied -> supervised; alana_bloom.permission.accompany_abigail: absent -> granted"
+  cf_edit: "The same supervised home visit proceeds, but Port Haven assigns another clinician instead of Alana; abigail_hobbs.location and supervised access change as stated, while alana_bloom.permission.accompany_abigail remains absent."
+  anchor_for: [abigail_hobbs, will_graham, hannibal_lecter, alana_bloom]
+- id: abigail_kills_nicholas_boyle
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 4
+  fact: Nicholas Boyle confronts Abigail at the Hobbs home; during the struggle Abigail kills him with a knife.
+  known_by: [abigail_hobbs]
+  state_change: "abigail_hobbs.knowledge.killed_nicholas_boyle: absent -> known; abigail_hobbs.goal.conceal_boyle_death: absent -> active"
+  cf_edit: "Nicholas leaves after the confrontation without being injured; abigail_hobbs.knowledge.killed_nicholas_boyle and abigail_hobbs.goal.conceal_boyle_death both remain absent, while all prior history remains unchanged."
+  anchor_for: [abigail_hobbs]
+- id: hannibal_conceals_boyle_death
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 5
+  fact: At the Hobbs home, Abigail privately tells Hannibal that she killed Nicholas Boyle, and Hannibal helps her conceal Boyle's body from the others.
+  known_by: [abigail_hobbs, hannibal_lecter]
+  state_change: "hannibal_lecter.knowledge.boyle_death: absent -> known; hannibal_lecter.goal.conceal_boyle_death: absent -> active"
+  cf_edit: "Abigail tells Hannibal that she killed Boyle, but Hannibal refuses to help conceal the body; hannibal_lecter.knowledge.boyle_death becomes known while hannibal_lecter.goal.conceal_boyle_death remains absent."
+  anchor_for: [abigail_hobbs, hannibal_lecter]
+- id: hannibal_abigail_secret_agreement
+  episode: "S01E03 Potage"
+  episode_order: 3
+  event_order: 6
+  fact: After leaving Port Haven without permission, Abigail goes to Hannibal's Baltimore office, identifies him as the caller who warned her father, and agrees to keep that warning secret after Hannibal agrees to keep his concealment of Nicholas Boyle's death secret.
+  known_by: [abigail_hobbs, hannibal_lecter]
+  state_change: "abigail_hobbs.knowledge.hannibal_warned_hobbs: absent -> known; abigail_hobbs.relationship.hannibal_lecter: neutral -> trusting; both.commitment.mutual_secrecy: absent -> active"
+  cf_edit: "After Abigail identifies him as the caller, Hannibal denies it and offers no exchange of secrets; abigail_hobbs.knowledge.hannibal_warned_hobbs becomes known, but her relationship to Hannibal remains neutral and both.commitment.mutual_secrecy remains absent."
+  anchor_for: [abigail_hobbs, hannibal_lecter]

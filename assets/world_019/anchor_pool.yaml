@@ -1,304 +1,239 @@
 world_id: world_019
-source: The Big Bang Theory television series (seasons covering all seven main characters
-  active, up to a fixed snapshot range)
+source: The Big Bang Theory main-series broadcast episodes S1E01-S5E23
 events:
+- id: ev_008
+  chapter_order: '0.1'
+  source_episode: S3E22 The Staircase Implementation (2003 flashback)
+  fact: Leonard accepts Sheldon's Roommate Agreement before moving into Apartment 4A.
+  known_by:
+  - sheldon_cooper
+  - leonard_hofstadter
+  state_change: 'roommate_agreement: absent -> active for Sheldon and Leonard'
+  cf_edit: Leonard declines the agreement and does not move into Apartment 4A.
+  anchor_for:
+  - sheldon_cooper
+  - leonard_hofstadter
 - id: ev_001
-  fact: Leonard and Sheldon meet Penny after she moves into the apartment across the
-    hall.
+  chapter_order: '1.1'
+  source_episode: S1E01 Pilot
+  fact: Leonard and Sheldon meet Penny when she moves into Apartment 4B.
   known_by:
   - sheldon_cooper
   - leonard_hofstadter
   - penny
-  state_change: Penny becomes the new neighbor in Apartment 4B.
-  cf_edit: Penny moves into a different building on the same street.
+  state_change: 'penny_neighbor_status: unknown -> neighbor_in_apartment_4b'
+  cf_edit: Penny leases an apartment in another building instead of Apartment 4B.
   anchor_for:
   - leonard_hofstadter
   - sheldon_cooper
   - penny
 - id: ev_002
-  fact: Sheldon explains his assigned seat on the couch as a scientifically optimal
-    position.
+  chapter_order: '1.2'
+  source_episode: S1E01 Pilot
+  fact: Sheldon explains to Penny why one couch seat is his designated spot.
   known_by:
   - sheldon_cooper
   - leonard_hofstadter
-  - howard_wolowitz
-  - raj_koothrappali
-  state_change: The group treats Sheldon's seat as a fixed household rule.
-  cf_edit: Sheldon prefers the seat but does not formalize the preference.
+  - penny
+  state_change: 'penny_knows_sheldon_spot_rule: false -> true'
+  cf_edit: Penny gets up before Sheldon explains that the seat is designated.
   anchor_for:
   - sheldon_cooper
+  - penny
 - id: ev_003
-  fact: Leonard agrees to retrieve Penny's television from her former boyfriend.
+  chapter_order: '1.3'
+  source_episode: S1E01 Pilot
+  fact: Leonard and Sheldon attempt to retrieve Penny's television from Kurt and return without it.
   known_by:
   - leonard_hofstadter
   - sheldon_cooper
   - penny
-  state_change: Leonard and Sheldon face a physical errand outside their usual routine.
-  cf_edit: Leonard alone goes to retrieve the television.
+  state_change: 'television_retrieval_commitment: active -> failed_resolved'
+  cf_edit: Kurt voluntarily returns the television when Leonard asks.
   anchor_for:
   - leonard_hofstadter
-  - sheldon_cooper
-  - penny
-- id: ev_004
-  fact: Penny asks Sheldon to drive her to an errand because she has no car.
-  known_by:
-  - sheldon_cooper
-  - penny
-  state_change: Sheldon becomes involved in Penny's practical needs.
-  cf_edit: Penny borrows Leonard's car instead.
-  anchor_for:
   - sheldon_cooper
   - penny
 - id: ev_005
-  fact: Howard attempts to flirt with Penny using prepared lines and magic tricks.
+  chapter_order: '1.4'
+  source_episode: S1E01 Pilot
+  fact: Howard makes an overt flirtatious introduction to Penny and receives no encouragement.
   known_by:
   - howard_wolowitz
   - penny
   - leonard_hofstadter
   - sheldon_cooper
-  state_change: Penny becomes aware of Howard's overconfident romantic persona.
-  cf_edit: Howard speaks to Penny without using rehearsed material.
+  state_change: 'penny_receptive_to_howard_flirting: unknown -> false'
+  cf_edit: Howard introduces himself without making a flirtatious overture.
   anchor_for:
   - howard_wolowitz
   - penny
 - id: ev_006
-  fact: Raj cannot speak directly to Penny because of selective mutism around women.
+  chapter_order: '1.5'
+  source_episode: S1E01 Pilot
+  fact: Raj is unable to speak directly to Penny while sober during their first meeting.
   known_by:
   - raj_koothrappali
   - howard_wolowitz
   - leonard_hofstadter
   - sheldon_cooper
   - penny
-  state_change: Raj's communication limit becomes known within the friend group.
-  cf_edit: Raj speaks to Penny quietly through Howard.
+  state_change: 'raj_direct_speech_to_penny_at_first_meeting: possible -> blocked_while_sober'
+  cf_edit: Raj consumes enough alcohol before the meeting to speak directly to Penny.
   anchor_for:
   - raj_koothrappali
-- id: ev_007
-  fact: The group plays a board game in Apartment 4A and follows Sheldon's elaborate
-    rules.
-  known_by:
-  - sheldon_cooper
-  - leonard_hofstadter
-  - howard_wolowitz
-  - raj_koothrappali
-  state_change: Game nights become a regular activity governed by Sheldon's preferences.
-  cf_edit: The group plays with simplified house rules.
-  anchor_for:
-  - sheldon_cooper
-- id: ev_008
-  fact: Leonard signs the Roommate Agreement with Sheldon, accepting many daily life
-    restrictions.
-  known_by:
-  - sheldon_cooper
-  - leonard_hofstadter
-  state_change: The Roommate Agreement becomes legally and socially binding within
-    the apartment.
-  cf_edit: The agreement is treated as an informal suggestion.
-  anchor_for:
-  - leonard_hofstadter
-  - sheldon_cooper
-- id: ev_009
-  fact: Penny starts working as a waitress at The Cheesecake Factory.
-  known_by:
   - penny
-  - leonard_hofstadter
-  - sheldon_cooper
-  - howard_wolowitz
-  - raj_koothrappali
-  state_change: Penny has a stable job near the group's social spaces.
-  cf_edit: Penny works at a different restaurant farther away.
-  anchor_for:
-  - penny
-- id: ev_010
-  fact: Howard joins a mission training program related to his engineering work.
+- id: ev_004
+  chapter_order: '2.5'
+  source_episode: S2E05 The Euclid Alternative
+  fact: When Leonard works nights, Sheldon asks Penny to drive him to Caltech; she ends the ride after
+    his repeated criticism of her driving.
   known_by:
-  - howard_wolowitz
-  - leonard_hofstadter
   - sheldon_cooper
-  - raj_koothrappali
-  - bernadette_rostenkowski
-  state_change: Howard gains aerospace-related responsibilities.
-  cf_edit: Howard attends an engineering conference instead.
+  - penny
+  state_change: 'penny_willing_to_drive_sheldon_that_day: true -> false'
+  cf_edit: Sheldon accepts Penny's route without criticizing her driving.
   anchor_for:
-  - howard_wolowitz
+  - sheldon_cooper
+  - penny
 - id: ev_011
-  fact: Bernadette meets Howard through a connection arranged by Penny.
+  chapter_order: '3.5'
+  source_episode: S3E05 The Creepy Candy Coating Corollary
+  fact: Penny introduces Howard to Bernadette at a double date.
   known_by:
   - howard_wolowitz
   - bernadette_rostenkowski
   - penny
-  state_change: Howard and Bernadette begin dating.
-  cf_edit: Howard meets Bernadette independently at the university.
+  - leonard_hofstadter
+  state_change: 'howard_bernadette_acquaintance: absent -> established'
+  cf_edit: Bernadette declines Penny's invitation to the double date.
   anchor_for:
   - howard_wolowitz
   - bernadette_rostenkowski
+  - penny
 - id: ev_012
-  fact: Amy Farrah Fowler meets Sheldon after a dating service match arranged by Howard
-    and Raj.
+  chapter_order: '3.23'
+  source_episode: S3E23 The Lunar Excitation
+  fact: Howard and Raj arrange a dating-site match that leads Amy and Sheldon to meet.
   known_by:
   - sheldon_cooper
   - amy_farrah_fowler
   - howard_wolowitz
   - raj_koothrappali
-  state_change: Amy becomes a regular presence in Sheldon's social orbit.
-  cf_edit: Sheldon meets Amy through a university function.
+  state_change: 'amy_sheldon_acquaintance: absent -> established'
+  cf_edit: Howard and Raj do not submit Sheldon's profile to the dating site.
   anchor_for:
   - sheldon_cooper
   - amy_farrah_fowler
-- id: ev_013
-  fact: Amy and Sheldon discover they share very specific scientific interests and
-    personality traits.
-  known_by:
-  - sheldon_cooper
-  - amy_farrah_fowler
-  state_change: Their relationship grows beyond the initial match.
-  cf_edit: They share only general academic interests.
-  anchor_for:
-  - sheldon_cooper
-  - amy_farrah_fowler
-- id: ev_014
-  fact: Bernadette earns her doctorate in microbiology.
-  known_by:
-  - bernadette_rostenkowski
   - howard_wolowitz
-  - penny
-  - amy_farrah_fowler
-  state_change: Bernadette becomes professionally established in science.
-  cf_edit: Bernadette completes a master's degree instead.
-  anchor_for:
-  - bernadette_rostenkowski
+  - raj_koothrappali
 - id: ev_015
-  fact: Howard and Bernadette grow serious and discuss a shared future.
+  chapter_order: '4.20'
+  source_episode: S4E20 The Herb Garden Germination
+  fact: Howard proposes to Bernadette at dinner and she accepts.
   known_by:
   - howard_wolowitz
   - bernadette_rostenkowski
-  state_change: Their relationship shifts toward commitment.
-  cf_edit: They decide to continue dating casually.
-  anchor_for:
-  - howard_wolowitz
-  - bernadette_rostenkowski
-- id: ev_016
-  fact: Amy becomes close friends with Penny despite their differing personalities.
-  known_by:
-  - amy_farrah_fowler
-  - penny
-  state_change: Penny gains a close female friendship within the group.
-  cf_edit: Amy and Penny remain distant acquaintances.
-  anchor_for:
-  - amy_farrah_fowler
-  - penny
-- id: ev_017
-  fact: Sheldon creates a bathroom schedule that all apartment residents must follow.
-  known_by:
   - sheldon_cooper
   - leonard_hofstadter
-  - amy_farrah_fowler
   - penny
-  state_change: The apartment's routines become even more regulated.
-  cf_edit: Sheldon asks informally for bathroom time preferences.
-  anchor_for:
-  - sheldon_cooper
-- id: ev_018
-  fact: Leonard and Penny begin a romantic relationship after years of friendship.
-  known_by:
-  - leonard_hofstadter
-  - penny
-  - sheldon_cooper
-  - howard_wolowitz
   - raj_koothrappali
   - amy_farrah_fowler
-  - bernadette_rostenkowski
-  state_change: The central friendship dynamic changes into a couple relationship.
-  cf_edit: Leonard and Penny decide to remain friends.
-  anchor_for:
-  - leonard_hofstadter
-  - penny
-- id: ev_019
-  fact: Howard prepares for a space flight after being selected for a mission.
-  known_by:
-  - howard_wolowitz
-  - bernadette_rostenkowski
-  - leonard_hofstadter
-  - sheldon_cooper
-  - raj_koothrappali
-  state_change: Howard faces a major career milestone involving long-distance travel.
-  cf_edit: Howard declines the mission for personal reasons.
+  state_change: 'howard_bernadette_relationship: dating -> engaged'
+  cf_edit: Howard decides not to present the ring at the dinner.
   anchor_for:
   - howard_wolowitz
-- id: ev_020
-  fact: Amy and Sheldon navigate a disagreement about the pace of their relationship.
-  known_by:
-  - sheldon_cooper
-  - amy_farrah_fowler
-  - penny
-  - leonard_hofstadter
-  state_change: Their relationship dynamic is tested but remains active.
-  cf_edit: They agree immediately on the pace without conflict.
-  anchor_for:
-  - sheldon_cooper
-  - amy_farrah_fowler
-- id: ev_021
-  fact: Raj continues to struggle with speaking to women unless alcohol or other factors
-    reduce his inhibition.
-  known_by:
-  - raj_koothrappali
-  - howard_wolowitz
-  - leonard_hofstadter
-  - sheldon_cooper
-  - penny
-  - amy_farrah_fowler
   - bernadette_rostenkowski
-  state_change: Raj's selective mutism remains a defining social limitation.
-  cf_edit: Raj gradually speaks to women without special conditions.
-  anchor_for:
-  - raj_koothrappali
-- id: ev_022
-  fact: Bernadette demonstrates a forceful personality that surprises people who underestimate
+- id: ev_014
+  chapter_order: '4.24'
+  source_episode: S4E24 The Roommate Transmogrification
+  fact: Bernadette announces that her dissertation was accepted and a pharmaceutical company recruited
     her.
   known_by:
   - bernadette_rostenkowski
   - howard_wolowitz
   - penny
   - amy_farrah_fowler
-  - leonard_hofstadter
   - sheldon_cooper
+  - leonard_hofstadter
   - raj_koothrappali
-  state_change: The group adjusts their perception of Bernadette's assertiveness.
-  cf_edit: Bernadette remains quiet and non-confrontational.
+  state_change: 'bernadette_pharma_job_offer: absent -> received'
+  cf_edit: The pharmaceutical company does not make Bernadette a job offer.
   anchor_for:
   - bernadette_rostenkowski
-- id: ev_023
-  fact: Sheldon insists on a strict weekly schedule for meals, laundry, and television.
+  - howard_wolowitz
+- id: ev_013
+  chapter_order: '5.10'
+  source_episode: S5E10 The Flaming Spittoon Acquisition
+  locations:
+  - movie_theater
+  - amy_apartment
+  fact: After Amy's movie-theater date with Stuart, Sheldon asks her to be his girlfriend
+    there; after she accepts, he presents the Relationship Agreement at Amy's apartment.
   known_by:
   - sheldon_cooper
-  - leonard_hofstadter
-  - penny
   - amy_farrah_fowler
-  - howard_wolowitz
-  - raj_koothrappali
-  - bernadette_rostenkowski
-  state_change: The group's shared activities revolve around Sheldon's fixed routine.
-  cf_edit: The schedule is flexible and changes weekly.
+  state_change: 'amy_sheldon_relationship: friendship -> boyfriend_girlfriend_with_agreement'
+  cf_edit: Amy declines Stuart's invitation before Sheldon learns about it.
   anchor_for:
   - sheldon_cooper
-- id: ev_024
-  fact: The seven main characters gather in Apartment 4A for a social evening that
-    includes food and conversation.
+  - amy_farrah_fowler
+- id: ev_018
+  chapter_order: '5.13'
+  source_episode: S5E13 The Recombination Hypothesis
+  fact: Leonard asks Penny out and they agree to restart dating as a beta test.
   known_by:
-  - sheldon_cooper
   - leonard_hofstadter
   - penny
-  - howard_wolowitz
-  - raj_koothrappali
-  - amy_farrah_fowler
-  - bernadette_rostenkowski
-  state_change: The full seven-character social group is active in one shared space.
-  cf_edit: One character misses the gathering due to work.
+  state_change: 'leonard_penny_relationship: friends_and_exes -> dating'
+  cf_edit: Penny declines Leonard's invitation to restart dating.
   anchor_for:
-  - sheldon_cooper
   - leonard_hofstadter
   - penny
+- id: ev_010
+  chapter_order: '5.15'
+  source_episode: S5E15 The Friendship Contraction
+  fact: Howard shows the NASA announcement for his upcoming ISS mission and joins a crew video conference.
+  known_by:
+  - howard_wolowitz
+  - leonard_hofstadter
+  - raj_koothrappali
+  - sheldon_cooper
+  - bernadette_rostenkowski
+  state_change: 'howard_first_crew_conference: pending -> completed'
+  cf_edit: NASA postpones Howard's crew conference while leaving his selection unchanged.
+  anchor_for:
   - howard_wolowitz
   - raj_koothrappali
+- id: ev_016
+  chapter_order: '5.17'
+  source_episode: S5E17 The Rothman Disintegration
+  fact: Amy gives Penny a large painting celebrating their friendship, and Penny keeps it after Amy sees
+    her initial rejection.
+  known_by:
   - amy_farrah_fowler
+  - penny
+  state_change: 'penny_possession_of_amy_friendship_painting: absent -> retained'
+  cf_edit: When Amy sees Penny reject the painting, Amy takes it back instead of leaving
+    it with Penny; all other event conditions remain unchanged.
+  anchor_for:
+  - amy_farrah_fowler
+  - penny
+- id: ev_019
+  chapter_order: '5.23'
+  source_episode: S5E23 The Launch Acceleration
+  fact: NASA first cancels Howard's mission, then reinstates him on an earlier launch that conflicts with
+    the planned wedding date; Howard remains committed after speaking with Bernadette and her father.
+  known_by:
+  - howard_wolowitz
+  - bernadette_rostenkowski
+  - leonard_hofstadter
+  - sheldon_cooper
+  - raj_koothrappali
+  - penny
+  - amy_farrah_fowler
+  state_change: 'howard_mission_status: cancelled -> reinstated_on_earlier_launch'
+  cf_edit: NASA does not reinstate Howard after the Soyuz pressurization failure.
+  anchor_for:
+  - howard_wolowitz
   - bernadette_rostenkowski

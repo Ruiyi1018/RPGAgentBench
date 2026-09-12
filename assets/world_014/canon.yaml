@@ -1,14 +1,27 @@
 world_id: world_014
 canon_policy:
-  primary_source: 电影《九品芝麻官》
-  source_type: 1994年香港喜剧电影
+  primary_source: 1994年香港电影《九品芝麻官》
+  source_type: 电影
+  source_version: 1994年香港院线叙事版本；仅采用不同发行剪辑共同包含的主线事实
   excluded_versions:
-  - 电视剧翻拍版本
-  - 舞台剧改编版本
-  - 网络同人创作
-  shared_snapshot: 包龙星开始重查戚家案件之后
-  generated_timeline: 锚点事件按电影叙事顺序排列，仅在共享快照范围内
-  quotation_policy: 禁止直接引用原台词，仅做事实级转述
+  - 电视剧、舞台剧及其他改编
+  - 网络同人、二创及续写
+  - 仅见于单一配音版本且改变剧情因果的增补
+  shared_snapshot: 皇帝已封包龙星为八府巡按并命其为钦差重审戚家灭门案，豹子头已任副官；会审人员已在公堂区域就位、正式开堂在即，终审证人尚未翻供，李连英与黄马褂尚未到堂
+  generated_timeline: 仅包含共享快照之后、常威伏法之前的电影终审事件
+  quotation_policy: 禁止直接引用电影台词，仅作事实级转述
+  player_semantics:
+    default_role: 奉钦差堂署临时准入的普通记录协助者
+    initial_location: loc_court
+    authority:
+    - 可旁听并向当前NPC询问其公开立场
+    - 不得审讯、搜身、用刑、调阅密件、释放在押者或代表官府下令
+    initial_knowledge:
+    - 包龙星奉旨重审戚家灭门案
+    - 原审依据来福等人的不利证词判戚秦氏有罪，包龙星将在重审中复核这些证词，常威否认杀人
+    visibility_semantics:
+      npc: 仅当前NPC开局知晓
+      player: 默认Player开局知晓
 evaluated_npcs:
 - bao_longxing
 - chang_wei
@@ -24,15 +37,32 @@ event_entities:
 - lai_fu
 - bao_tou
 sources:
-- id: src_jiupin_movie
+- id: src_jiupin_movie_1994
   title: 九品芝麻官
   creator: 王晶
-  scope: 1994年上映的香港电影，包含包龙星从贪官到重审戚家冤案的过程
+  scope: 1994年香港电影主线，终审以推翻方唐镜收买证人所作伪证、黄马褂阻止用刑、滴血认亲诱出常威口供及豹子头制服常威为核心
   authority: primary
+pre_snapshot_events:
+- {id: canon_pre_chang_committed_crime, fact: 常威侵害戚秦氏并杀害戚家多人}
+- {id: canon_pre_qi_witnessed_crime, fact: 戚秦氏亲历常威侵害及戚家命案}
+- {id: canon_pre_qi_accusation, fact: 戚秦氏向官府指控常威}
+- {id: canon_pre_witness_bribery, fact: 方唐镜收买来福及其他证人作伪证}
+- {id: canon_pre_false_testimony, fact: 来福在原审作通奸杀人的伪证}
+- {id: canon_pre_lai_fu_self_castration, fact: 来福在到戚家做工前已经自阉}
+- {id: canon_pre_original_case, fact: 戚家灭门案进入原审}
+- {id: canon_pre_original_testimony, fact: 原审采纳来福等人的不利证词}
+- {id: canon_pre_original_trial_fraud, fact: 伪证与屈打成招使戚秦氏由原告变成有罪被告}
+- {id: canon_pre_chang_family_collusion, fact: 常家与方唐镜串通操纵原审}
+- {id: canon_pre_chang_family_engagement, fact: 常家聘请方唐镜为常威抗辩}
+- {id: canon_pre_bao_fang_conflict, fact: 包龙星识破原审有诈并与方唐镜一方冲突}
+- {id: canon_pre_imperial_appointment, fact: 皇帝封包龙星为八府巡按并任命豹子头为其副官}
+- {id: canon_pre_imperial_retrial_order, fact: 皇帝命包龙星以钦差身份主持戚家案重审}
+- {id: canon_pre_retrial_order, fact: 戚家案获旨重审}
+- {id: canon_pre_retrial_roster, fact: 三堂会审相关人员已被传集}
+- {id: canon_pre_player_admission, fact: 普通记录协助者获准在公堂区域旁听}
 data_constraints:
-- 锚点事件仅限包龙星开始重查戚家案件之后的剧情
-- 不得使用快照时间点之前的版本内容
-- 地点和物品只能来自当前来源范围
-- 每个cf_edit必须给出真实替代情形且只改变关键原因
-- 事件按时间顺序排列
-- 不确定的细节不得编造
+- 快照前事实只进入Profile与Frozen初始态，快照后事实只进入候选池
+- 候选事件必须是电影终审中可定位的离散事件
+- known_by只记录亲历、当堂听闻或已有证据接触
+- 每个cf_edit只改变一个关键原因
+- 不确定细节不得编造

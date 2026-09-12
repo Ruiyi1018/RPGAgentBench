@@ -1,80 +1,61 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_friendship_study
+    content: Continue studying friendship in Ponyville for Princess Celestia.
+    status: active
+    basis_event: anch_002
   relationships:
-    applejack:
-      level: trusting
-      basis_event: initial_state
-    pinkie_pie:
-      level: trusting
-      basis_event: initial_state
-    rainbow_dash:
-      level: trusting
-      basis_event: initial_state
-    rarity:
-      level: trusting
-      basis_event: initial_state
-    fluttershy:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    applejack: {level: trusting, basis_event: anch_001}
+    pinkie_pie: {level: trusting, basis_event: anch_001}
+    rainbow_dash: {level: trusting, basis_event: anch_001}
+    rarity: {level: trusting, basis_event: anch_001}
+    fluttershy: {level: trusting, basis_event: anch_001}
+    player: {level: neutral, basis_event: sf_default_player_neutral}
   goals:
   - id: goal_twilight_001
-    content: Keep the shared checklist ready for the next Ponyville event.
+    content: Carry out her ongoing friendship-study assignment in Ponyville.
     status: active
-    basis_event: initial_state
+    basis_event: anch_002
   - id: goal_twilight_002
-    content: Compare weather research notes with Rainbow Dash's observations.
+    content: Be ready to coordinate the next Winter Wrap Up when Mayor Mare requests it.
     status: active
-    basis_event: initial_state
-  - id: goal_twilight_003
-    content: Practice the animal-approach method Fluttershy taught her.
-    status: active
-    basis_event: initial_state
+    basis_event: anch_020
   disclosures: []
   knowledge:
     know_twilight_001:
-      content: Applejack has been harvesting apples at Sweet Apple Acres for the coming
-        season.
+      content: Trixie's claim that she defeated an Ursa Major was false.
       status: active
-      visibility: known_to_target
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anch_009
     know_twilight_002:
-      content: Pinkie Pie threw a welcoming party and used her party cannon during
-        it.
+      content: Poison Joke, not a curse by Zecora, caused the six friends' symptoms.
       status: active
-      visibility: known_to_target
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_016
     know_twilight_003:
-      content: The six friends met at the Golden Oaks Library to discuss an upcoming
-        Ponyville celebration.
+      content: Pinkie's instrument plan successfully led the parasprites out of Ponyville.
       status: active
-      visibility: known_to_all
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anch_018
     know_twilight_004:
-      content: Rainbow Dash performed a successful stunt over the Everfree Forest
-        and landed safely.
+      content: Mayor Mare appointed Twilight to organize future Winter Wrap Ups.
       status: active
-      visibility: known_to_target
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anch_020
     know_twilight_005:
-      content: Rarity created a special banner for a Ponyville festival and hung it
-        near the center of town.
+      content: After the friends apologized and completed Rarity's own unfinished
+        dress, the restored original designs succeeded and Hoity Toity ordered twelve
+        of each by the following Tuesday.
       status: active
-      visibility: known_to_all
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_024
 environment:
-  health:
-    twilight_sparkle: 100
-    player: 100
+  health: {twilight_sparkle: 100, player: 100}
   inventories:
-    twilight_sparkle: []
+    twilight_sparkle: [item_twilight_winter_wrap_up_vest]
     player: []
-  locations:
-    twilight_sparkle: loc_golden_oaks_library
-    player: loc_golden_oaks_library
+  locations: {twilight_sparkle: loc_carousel_boutique, player: loc_carousel_boutique}
   access: {}
   offers: []
   task_status: active

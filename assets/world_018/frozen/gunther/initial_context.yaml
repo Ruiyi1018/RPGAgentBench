@@ -2,58 +2,29 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    rachel_green:
-      level: neutral
-      basis_event: initial_state
-    monica_geller:
-      level: neutral
-      basis_event: initial_state
-    phoebe_buffay:
-      level: neutral
-      basis_event: initial_state
-    joey_tribbiani:
-      level: neutral
-      basis_event: initial_state
-    chandler_bing:
-      level: neutral
-      basis_event: initial_state
-    ross_geller:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    rachel_green: {level: neutral, basis_event: snapshot_fact_coworker_only}
+    monica_geller: {level: neutral, basis_event: snapshot_fact_customer_only}
+    phoebe_buffay: {level: neutral, basis_event: snapshot_fact_customer_only}
+    joey_tribbiani: {level: neutral, basis_event: snapshot_fact_customer_only}
+    chandler_bing: {level: neutral, basis_event: snapshot_fact_customer_only}
+    ross_geller: {level: neutral, basis_event: snapshot_fact_customer_only}
+    player: {level: neutral, basis_event: snapshot_fact_unfamiliar_visitor}
   goals:
-  - id: gunther_shift_duty
-    content: Work the counter at Central Perk without leaving the shift
+  - id: gunther_counter_task
+    content: Perform visible counter service during the current scene
     status: active
-    basis_event: initial_state
-  - id: gunther_observe_rachel
-    content: Notice Rachel as a new waitress while keeping his interest unspoken
-    status: active
-    basis_event: initial_state
+    basis_event: snapshot_fact_counter_employee
   disclosures: []
   knowledge:
-    gunther_works_central_perk:
-      content: Gunther works behind the counter at Central Perk.
+    gunther_knows_own_role:
+      content: Gunther is working behind the Central Perk counter.
       status: active
-      visibility: public
-      source_event: initial_state
-    gunther_attracted_to_rachel:
-      content: Gunther shows early signs of attraction toward Rachel at the coffeehouse.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: snapshot_fact_counter_employee
 environment:
-  health:
-    gunther: 100
-    player: 100
-  inventories:
-    gunther: []
-    player: []
-  locations:
-    gunther: central_perk
-    player: central_perk
+  health: {gunther: 100, player: 100}
+  inventories: {gunther: [], player: []}
+  locations: {gunther: central_perk, player: central_perk}
   access: {}
   offers: []
   task_status: active

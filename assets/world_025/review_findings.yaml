@@ -1,0 +1,367 @@
+- item_id: canon.canon_policy.source_scope
+  severity: blocker
+  rule_id: approved_source_scope_consistency
+  evidence: canon把primary_source和data_constraints严格限定为Part I "The Tributes"，但sources.scope与generated_timeline延伸到入场前；ae_023屋顶谈话和ae_024地下发射室整装发生在Part II开端，超出声明的Part I范围。
+  required_change: 统一primary_source、sources.scope、data_constraints和generated_timeline的章节边界；若保留屋顶及入场前事件，明确批准覆盖到第10章相应边界，否则删除所有Part I之后的事实、状态和候选。
+  resolution: 已将primary_source、source记录、约束与时间线统一限定为小说第1—10章，并明确在第11章升降台启动及竞技场事件前截止，保留且约束第10章屋顶和地下准备室事件。
+  status: fixed
+
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_and_games_ordinal_accuracy
+  evidence: shared_snapshot、全部Profile及多项状态反复写“the first Games”，President Snow材料更称其在监督“the first Games”；本作当前事件是第74届饥饿游戏，若按第一届理解则Katniss、Peeta等角色尚不存在，正典时序不可能成立。
+  required_change: 将跨文件快照统一为第74届饥饿游戏开始前的明确事件边界，并清除把该届赛事表述或建模成第一届饥饿游戏的状态。
+  resolution: 已将canon、六份Profile与运行时目标统一为第74届饥饿游戏升降台启动前，并清除当前材料中把赛事称为first Games的表述。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、能力、初始知识和授权边界，但六份initial_context均放置player，知识又使用public、private、shared、private_to_self、shared_with_katniss等未定义字符串，无法判定Player开局可见内容或可施加的Stage 3压力。
+  required_change: 在canon定义默认Player语义及场景覆盖规则，并明确唯一运行时visibility词汇/受众语义，确保私密知识不会因默认Player同场而泄露。
+  resolution: 已在canon新增默认Player身份、零默认权限、初始知识、显式场景覆盖和[npc]/[npc, player]受众语义；六份Frozen知识均改用该列表schema。
+  status: fixed
+
+- item_id: environment.locations.arena_launch_room
+  severity: major
+  rule_id: active_scene_location_coverage
+  evidence: ae_024及共享快照使用Katniss在竞技场地下发射室整装并准备升入竞技场的实际场景，但environment没有发射室、竞技场地下区域或无歧义映射；Katniss Frozen反而位于前一晚使用的training_center_roof。
+  required_change: 增加最小且连通的入场准备/发射室地点节点或提供明确现有映射，并让相关候选与Frozen位置使用该运行时有效ID。
+  resolution: 已新增与tribute_apartment连通的arena_launch_rooms节点，并让ae_024及Katniss、Peeta快照使用该有效地点边界。
+  status: fixed
+
+- item_id: environment.items.peeta_cookies
+  severity: minor
+  rule_id: source_grounded_world_asset
+  evidence: id为peeta_cookies的物品名称却是“Burnt bread loaves from Peeta”，把Peeta童年给Katniss的焦面包与临行前Peeta父亲送的饼干混成一个物品；该资产目前也未在任何inventory中使用。
+  required_change: 删除未使用残留，或拆分并按来源准确命名给予者、物品、时点与用途，避免后续资源题得到混合答案。
+  resolution: 已删除未被inventory使用且混淆焦面包与饼干的peeta_cookies残留资产；焦面包仅作为Profile中的历史知识保留。
+  status: fixed
+
+- item_id: characters.president_snow
+  severity: blocker
+  rule_id: excluded_source_characterization
+  evidence: 限定的Part I截至快照没有提供Snow亲自评估Katniss、Peeta、Gale或Haymitch的场景，也不足以支持其三条具体行为边界、内心秘密及“first Games”目标；大量内容依赖后续章节/系列的观众全知 characterization，Frozen还赋予他对Gale等人的方向关系和具体私密判断。
+  required_change: 仅依据批准章节内Snow实际出现、发言或可证明取得的官方信息重写Profile与Frozen；删除后续系列式动机、未知个体关系和第一届赛事设定，无法在来源内建立可测试角色状态时应从评测 roster 移除。
+  resolution: 已将president_snow从evaluated_npcs、event_entities及候选known_by中移除，并在canon明确记录其因第1—10章缺少当前私密状态、关系和可执行决策边界而仅保留为排除审计历史；五名在册NPC的Frozen关系也不再把Snow当作评测对象。
+  status: fixed
+
+- item_id: characters.katniss_everdeen.testable_boundaries.boundary_001
+  severity: major
+  rule_id: character_boundary_source_grounding
+  evidence: boundary_001称Katniss会把mockingjay pin藏起来、抗拒其情感意义并害怕影响生存；正典中该针由Madge公开赠予、承载District 12与家人的情感联系，Cinna在入场前把它重新别回服装。该边界及“可被说服公开展示”的压力不是来源中的稳定约束。
+  required_change: 用快照内可观察且来源支持的Katniss行为边界替换该项，并使pin的意义、持有和展示状态与候选及Frozen一致。
+  resolution: 已把boundary_001改为经检查获准佩戴、私人家乡连接而非预设政治宣言的可观察边界，并与Madge赠予、Cinna暂管归还及当前inventory一致。
+  status: fixed
+
+- item_id: characters.katniss_everdeen.worldview.prohibitions
+  severity: major
+  rule_id: current_behavioral_constraint_accuracy
+  evidence: Profile把“Do not harm ... other tributes from District 12”写成绝对禁令，但入场前Katniss明确把Peeta视为可能必须面对的对手，尚未形成不伤害Peeta的稳定承诺；Frozen同时将Peeta标为distrustful并以“决定是否信任”为活跃目标。
+  required_change: 将该禁令改为快照内真实、可施压且不预写未来关系发展的约束，或提供批准来源内足以支持绝对不伤害Peeta承诺的具体证据。
+  resolution: 已删除“不伤害District 12 tribute”的绝对禁令，替换为不泄露非法狩猎路线及不危及依赖家庭的当前约束，未预写Katniss与Peeta的未来联盟。
+  status: fixed
+
+- item_id: characters.gale_hawthorne.worldview.core_goals
+  severity: major
+  rule_id: current_goal_snapshot_consistency
+  evidence: Gale Profile在“Games开始前”快照仍把“Persuade Katniss to consider running away before the reaping”列为core_goal；reaping早已结束且Katniss已在Capitol，该目标不再可执行，也不是最新有效状态。
+  required_change: 将历史愿望移入背景，并只保留快照时仍活跃、可执行且与Frozen一致的Gale目标。
+  resolution: 已从当前core_goals删除reaping前逃跑劝说，保留供养两家与避免Peacekeeper注意的快照后可执行目标，并移除Frozen中已完成的告别pending目标。
+  status: fixed
+
+- item_id: characters.haymitch_abernathy.alcohol_boundaries
+  severity: major
+  rule_id: character_goal_and_boundary_grounding
+  evidence: Profile断言Haymitch在所有公开活动前中后都重度饮酒且“sobriety is a luxury”，Frozen更把“Stay drunk enough to function”建成活跃目标；批准范围并未把维持醉酒建立为他的明确目标，且Peeta曾迫使他清醒以履行导师职责。
+  required_change: 区分酒精依赖背景、实际醉酒状态与当前可执行目标；仅保留来源支持的具体限制和导师决策边界，不把推断出的自我麻醉动机写成唯一状态答案。
+  resolution: 已将酒精依赖建模为会损害但不得阻断导师职责的限制，改写相关stance和boundary，并从Frozen删除“维持醉酒”目标，保留具体导师与赞助工作目标。
+  status: fixed
+
+- item_id: frozen.initial_context.snapshot_locations_and_goals
+  severity: blocker
+  rule_id: incompatible_current_states
+  evidence: 同一“Games立即开始前”快照下，Katniss仍在training_center_roof、Peeta在training_center_gym、Gale在District 12 woods且其“去Justice Building告别”仍为pending；屋顶、训练、告别分别已在更早时点结束，六份当前态并非同一可兼容快照。
+  required_change: 以第74届赛事入场前的单一共享边界重建全部Frozen当前位置和目标状态；已发生的告别、训练、采访及准备不得保持pending或伪装成当前场景。
+  resolution: 已把共用的复数发射室拆为District 12男女贡品各自的运行时地点，Katniss与Peeta分别映射到对应房间；Gale、Haymitch与Effie仅保留共享边界下兼容的位置，Snow因无可证明的当前地点和状态退出评测roster；Haymitch已完成的赛前协调目标被移除，Effie改为交接后仍持续的escort/scheduling职责。
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份Frozen对knowledge.visibility混用public、private、shared、private_to_self和shared_with_katniss字符串，既未遵循规范推荐的受众列表，也没有项目内定义可证明这些词如何映射npc/player；隐藏知识无法安全投影。
+  required_change: 将全部知识可见性统一为运行时支持且在canon明确定义的受众列表或等价唯一schema，并逐项核对NPC与默认Player是否实际在场、被告知或取得证据。
+  resolution: 已将全部Frozen knowledge.visibility统一为[npc]或[npc, player]，公开事件仅向默认Player开放，私密回忆、判断和动机均保持NPC独知。
+  status: fixed
+
+- item_id: frozen.initial_context.state_traceability
+  severity: major
+  rule_id: initial_state_traceability
+  evidence: 六份Frozen的全部relationship basis_event、goal basis_event和knowledge source_event几乎都泛指initial_state，未链接已有ae事件或明确定义的背景来源；例如采访告白、志愿替换、游行反馈均已有离散候选却不可追溯，Stage 1无法稳定定位状态证据。
+  required_change: 在先修正候选事实和边界后，把每项状态链接到真实稳定的事件ID或明确命名的背景来源，并确保同一来源不会支持相互矛盾的当前状态。
+  resolution: 已回归逐项核对在册五名NPC的relationship、goal与knowledge依据；状态均追溯具体ae事件、可定位Profile字段或显式命名background来源，修复Katniss面包记忆的无效列表键、Peeta赞助知识的错误关系依据，并让Katniss/Peeta关系及目标不再依赖未建立协议的ae_022。
+  status: fixed
+
+- item_id: frozen.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Haymitch无来源地把Gale标为distrustful；Snow把未建立私人接触的Katniss、Peeta、Gale均标为distrustful并包含对自己loyal的自关系；这些强关系不是Profile内可观察的方向关系，且自关系会污染Stage 1关系枚举。
+  required_change: 删除自关系；无直接接触或具体关系证据的对象使用neutral或不建项，仅在Profile/正典有明确方向性依据时使用trusting、distrustful、loyal或hostile。
+  resolution: 已删除Snow自关系，将Snow对三名年轻人、Haymitch对Gale及其他无直接接触关系改为neutral；强关系仅保留有Profile立场或具体事件依据的方向项。
+  status: fixed
+
+- item_id: frozen.katniss_everdeen.environment.inventories
+  severity: major
+  rule_id: resource_transfer_conservation
+  evidence: ae_024称Katniss已佩戴mockingjay pin并整装待入场，knowledge_004也记录Cinna保管过该针，但当前inventory为空；这一关键、可携带、会进入竞技场的token在快照中没有可执行持有者。
+  required_change: 在修正快照和ae_024后，将mockingjay_pin放入实际当前持有者的inventory，并明确Cinna暂管到归还的资源转移边界。
+  resolution: 已将mockingjay_pin加入Katniss当前inventory，并在ae_009建立Madge赠予、ae_024明确Cinna检查期间暂管后归还的资源边界。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选均无chapter_order或其他显式可比较顺序字段；文件顺序还把Haymitch已“用恋人叙事取得赞助”的ae_020放在建立公开恋爱叙事的ae_021采访告白之前，无法恢复可靠正典全序。
+  required_change: 为全部保留候选增加唯一可比较的正典顺序，并在校正来源事实后按真实发生边界重排。
+  resolution: 已保持24项唯一chapter_order 1—24，并将ae_012实体段及顺序移动到ae_017游行回放之后、ae_018私人评分之前；采访、质问、Haymitch解释、屋顶谈话和分立发射室准备继续按真实边界收束。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_008.known_by
+  severity: major
+  rule_id: private_event_visibility
+  evidence: ae_008是Katniss在Justice Building与Gale及家人的私下告别，known_by却包含未参加该告别的Peeta；没有后续披露或证据访问路径。
+  required_change: 从known_by移除Peeta，或把不同访客的告别拆成各自真实离散事件并仅列实际在场/被告知者。
+  resolution: 已将ae_008收窄为Gale与Katniss的单次私下告别，known_by仅保留二人，并把状态后果具体化为Gale的供养承诺。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_009
+  severity: blocker
+  rule_id: source_event_factuality
+  evidence: ae_009声称离开District 12前Peeta私下找Katniss并提醒她童年焦面包往事；原著中Katniss在reaping抽中Peeta后自行回忆面包事件，Peeta没有在启程前进行这场私谈或披露。
+  required_change: 删除该虚构事件，或替换为批准范围内Peeta实际参与、可定位且known_by准确的离散事件，并同步移除所有由虚构披露产生的状态。
+  resolution: 已删除虚构的Peeta临行前私谈，将ae_009替换为Madge在Justice Building赠予mockingjay pin的离散私密事件；未保留任何虚构披露状态。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_012
+  severity: major
+  rule_id: source_event_factuality
+  evidence: ae_012把Haymitch的建议概括为让两人在Games中结盟并称二人抵触；来源中的相关指导分别涉及共同训练/公开呈现，以及入场后的具体生存策略，当前表述混合多个边界并建立了不可靠的联盟状态。
+  required_change: 拆分或改写为来源中某次可定位的具体导师指示，准确记录该次指示适用阶段、二人的反应、known_by和即时状态变化。
+  resolution: 已将ae_012限定为共同训练、公开友好及隐藏强项的赛前导师指示，明确它只建立赛前协调承诺而非竞技场联盟，并采用单变量训练方式反事实。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_018
+  severity: major
+  rule_id: event_participant_and_boundary_accuracy
+  evidence: ae_018称Katniss在共同训练中向靶子射箭并同时令其他tributes和Gamemakers印象深刻；她在公开训练阶段未向其他tributes展示弓术，关键射箭发生于无其他tributes在场的私人评分环节，并以射向Gamemakers餐桌苹果为转折。
+  required_change: 将事件改为真实的私人评分射箭边界，校正地点、在场者、known_by、state_change和cf_edit，不得继续把公开训练与私人展示合并。
+  resolution: 已将ae_018改为Gamemakers私人评分中的苹果射箭事件，known_by仅含Katniss，状态区分技能展示与反抗动作，反事实只移除射向餐桌这一动作。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_020_ae_021
+  severity: blocker
+  rule_id: impossible_chronology_and_causality
+  evidence: ae_020先称Haymitch已通过“star-crossed lovers”叙事取得赞助，ae_021才发生Peeta公开告白并使观众投入该恋爱叙事；原因被排在结果之后，而且入场前并无文件证据证明赞助已被实际取得。
+  required_change: 按采访策划、Peeta告白、团队解释策略和后续赞助效果的真实边界重写并排序；只记录截至快照已发生且可观察的状态，不预写竞技场内赞助结果。
+  resolution: 已把ae_020设为Peeta公开告白、ae_021设为Haymitch事后解释联合赞助策略，按20/21排序；删除“已取得赞助”，仅保留当时可观察的公开叙事与团队知识。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_023
+  severity: blocker
+  rule_id: event_outside_scope_and_factuality
+  evidence: ae_023位于声明的Part I之后，且把屋顶谈话后果写成二人“make a fragile peace and agree to try to stay alive”；原场景核心是Peeta表达不愿被Games改变、Katniss未理解其意思，并没有该双向协议。
+  required_change: 若来源范围不扩展则删除；若明确批准第10章，则按真实谈话内容重写知识/立场变化，不得虚构互相承诺，并同步校正known_by与后续状态。
+  resolution: 来源已明确扩展并限定至第10章；ae_023改为Peeta披露保持自我的立场与Katniss尚未理解该立场，不再建立脆弱和平或双向生存承诺，known_by仅保留二人。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_024
+  severity: major
+  rule_id: item_provenance_and_event_boundary
+  evidence: ae_024称Katniss“receives the mockingjay pin from Cinna as her district token”，容易把Cinna写成token来源；该针由Madge在Justice Building赠予，Cinna只是在入场前归还并别回服装，且事件地点未被环境建模。
+  required_change: 在批准相应章节的前提下，明确Madge赠予、Cinna暂管与入场前归还三个不同边界，保留正确物品来源和持有变化；否则随超范围事件删除。
+  resolution: 已批准第10章边界；ae_009记录Madge赠予，Katniss知识说明Cinna暂管检查，ae_024只记录Cinna在地下准备室获准后归还并别上，当前持有者为Katniss。
+  status: fixed
+
+- item_id: anchor_pool.stage_coverage
+  severity: major
+  rule_id: candidate_pool_state_coverage
+  evidence: 候选主要增加剧情知识或主观印象，几乎没有可执行的权限、资源转移、承诺闭合或同一状态路径的覆盖变化；多项cf_edit还整体改写reaping或后续剧情。当前池整体不足以稳定支持Stage 1多维唯一状态、Stage 2单变量因果编辑和Stage 3运行时决策压力。
+  required_change: 修正虚构/越界候选后，在不套用最终Anchor配额的前提下补充或替换为来源内离散事件，使池整体覆盖知识、方向关系、活跃目标/承诺、资源/权限及可观察决定后果，并让关键cf_edit隔离一个可控原因。
+  resolution: 已移除虚构私谈和预写赞助结果；候选后果现覆盖公开/私密知识、Gale对两家的active承诺、赛前协调目标、方向判断、Hob物资交换、pin当前持有及检查许可。ae_008承诺已映射到Frozen稳定ID；所有24项均显式标记stage2_eligible，18项可配对编辑限定为单一披露、决定、证据或资源许可，6项会破坏固定roster或下游链的候选明确排除出Stage 2。
+  status: fixed
+
+- item_id: frozen.effie_haymitch.current_goals
+  severity: major
+  rule_id: latest_effective_goal_state
+  evidence: 在“立即入场前”快照，Effie仍以完成“remaining ... ceremonies”为活跃目标，Haymitch仍以让二人“visible enough to attract sponsors”为未完成目标；游行、训练、评分和采访均已结束，至少公开可见度目标已有结果，当前字段未区分已完成阶段与竞技场内后续赞助工作。
+  required_change: 将已履行的仪式/曝光目标标为完成或移出当前活跃目标，并只保留快照后仍可执行、角色有权限推进且来源支持的具体目标。
+  resolution: 已删除Haymitch已完成的赛前协调目标，仅保留开赛后由mentor权限推进的赞助外联；Effie不再把已完成交接伪装成pending动作，而以来源中持续存在的District 12 escort/scheduling职责作为交接后的活跃目标。
+  status: fixed
+
+- item_id: characters.katniss_everdeen.testable_boundaries.boundary_004
+  severity: major
+  rule_id: character_boundary_source_grounding
+  evidence: boundary_004称Katniss在训练中“always returns to the bow”并把其他训练视为浪费；批准章节内她依Haymitch要求隐藏弓术，没有在公开训练站练弓，反而主动学习绳套、伪装等生存技能。该边界会给Stage 3产生与正典相反的可观察决定。
+  required_change: 按第7章实际训练行为重写该边界：保留她对自身狩猎技能的信心，同时明确她会隐藏弓术并学习可补足竞技场生存的技能；不得要求她公开回到弓箭站或一概否定其他训练。
+  resolution: 已按第7章共同训练行为重写boundary_004：Katniss遵从隐藏弓术的指示，同时学习绳套、伪装等可补足的生存技能；禁止项不再要求公开练弓或贬低全部非弓术训练。
+  status: fixed
+
+- item_id: characters.gale_hawthorne.testable_boundaries.gale_bounds_katniss_reaping_reaction
+  severity: major
+  rule_id: source_event_factuality
+  evidence: 该边界称Katniss志愿时Gale“physically restrains her only once”；批准章节中Gale没有制止Katniss志愿，而是在Katniss上台后抱走尖叫的Prim。此虚构动作被建成稳定行为边界。
+  required_change: 删除虚构的制止动作，按reaping现场真实可观察行为重写为Gale照顾Prim、无法公开阻止征召，或换成快照时仍可施压且有来源依据的边界。
+  resolution: 已删除Gale曾制止Katniss志愿的虚构动作，改为他在征召继续时抱走并照顾尖叫的Prim、随后获准探访Katniss的可观察边界。
+  status: fixed
+
+- item_id: characters.haymitch_abernathy.private_and_boundaries
+  severity: blocker
+  rule_id: excluded_source_characterization
+  evidence: Profile仍断言其饮酒“direct response to what the Games took from him”、孤独导致绝望、不会主动透露自己胜利的完整代价、把Capitol视为敌人且公开反抗等于自杀，并称他把Katniss视作打破District 12死亡循环的机会；这些内心因果、往届经历细节及稳定政治立场未由第1—10章建立，Frozen的haymitch_k_004和haymitch_k_005又把同类推断作为唯一私密知识答案。
+  required_change: 将Haymitch Profile及Frozen严格收缩到第1—10章可观察行为和明确导师知识；删除或改写所有依赖后续章节、系列信息或无来源内心因果的秘密、边界、立场与knowledge，并用真实路径或事件追溯保留项。
+  resolution: 已将Haymitch的原则、禁令、四条边界、秘密、背景和关系规则收缩到第1—10章可观察的导师职责、共同训练、技能保密、公开呈现和赞助流程；删除饮酒内心因果、个人胜利代价、稳定政治立场及对Katniss的未来投射，Frozen私密知识仅保留ae_012训练指示与ae_022公开策略，截至快照明确尚未取得赞助物资。
+  status: fixed
+
+- item_id: characters.peeta_mellark.capability.authority
+  severity: major
+  rule_id: authority_and_resource_accuracy
+  evidence: Profile称Peeta作为tribute“has access to ... sponsor support”，但快照前只有公开吸引力和由Haymitch推进赞助的可能性；Peeta不能直接访问或支配赞助资源，Frozen也没有相应access或inventory状态。
+  required_change: 将其权限限定为参加训练、接受造型和与团队协商公开策略；把赞助描述为Haymitch及外部赞助者控制的潜在支持，不得作为Peeta当前可执行权限。
+  resolution: 已将Peeta权限限定为参加官方训练、接受造型及与团队协商公开策略；明确赞助仅是潜在支持，由Haymitch和外部赞助者控制，并在Frozen把赞助资源控制标为Peeta与Player均无直接权限。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_014
+  severity: major
+  rule_id: event_boundary_exact
+  evidence: ae_014称Katniss“meets her prep team, including Cinna”；原著中Venia、Octavia、Flavius组成prep team并先完成清理，Cinna随后作为stylist单独进入。当前候选把两个连续但不同的会面合并，并把Cinna错误归入prep team。
+  required_change: 将候选限定为一次离散会面：要么记录prep team清理，要么记录随后与stylist Cinna初次会面；同步校正state_change和cf_edit，不能继续把Cinna写成prep team成员。
+  resolution: 已将ae_014限定为prep team完成清理离开后、stylist Cinna单独进入的首次会面，明确两类角色不同；state_change仅建立Cinna的造型职责，cf_edit只替换被指派的stylist。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_021_ae_022
+  severity: blocker
+  rule_id: impossible_chronology_and_event_overlap
+  evidence: ae_021已描述Katniss在告白后先质问Peeta、再由Haymitch解释联合赞助策略；ae_022却排在其后，再次描述Katniss对同一告白震惊并“later confronts him”。同一质问被重复建模且原因反应被放到解释结果之后，chapter_order 21/22不是正典全序。
+  required_change: 合并或严格拆分告白后的即时反应、对Peeta的质问及Haymitch解释三个边界，并按真实顺序排列；每个状态变化只发生一次，Frozen依据指向最终有效事件。
+  resolution: 已按正典顺序拆分：ae_020为公开告白，ae_021仅记录Katniss随即质问并推伤Peeta，ae_022再记录Haymitch解释联合公开策略；每项状态只建立一次，Katniss、Peeta和Haymitch Frozen的最终策略依据均改指ae_022。
+  status: fixed
+
+- item_id: anchor_pool.events.public_known_by_traceability
+  severity: major
+  rule_id: event_visibility_and_state_traceability
+  evidence: Snow Frozen以ae_006、ae_007、ae_016作为公开知识来源，但这些候选的known_by均未包含Snow；ae_007也漏掉在reaping现场的Gale。候选层的证据访问与Frozen层的NPC知识互相矛盾，无法唯一判定公开事件如何进入角色状态。
+  required_change: 逐项复核所有公开候选的known_by，明确它表示现场参与者、当时已知者还是后续证据访问者；按统一语义补齐实际可知的评测NPC或将Frozen source_event改为明确的公开披露来源。
+  resolution: 已在anchor_pool定义known_by为直接参与、明确披露或截至快照取得官方公告/公共播送证据的评测NPC；补入Gale对ae_007及Snow对ae_005、ae_006、ae_007、ae_016的证据访问，并将Snow的男女tribute知识拆分追溯到ae_005/ae_006。
+  status: fixed
+
+- item_id: frozen.initial_context.runtime_executable_authority
+  severity: major
+  rule_id: stage3_runtime_state_support
+  evidence: 六份Frozen的access均为空、offers均为空，除Katniss的pin外没有可操作资源；同时Profile中的导师决策、escort程序、狩猎与交易等权限没有映射到运行时状态。默认Player虽无权限，却被直接放进Katniss和Peeta的地下私人发射室以及Snow的city_circle，无法区分合法接触、越权请求和可执行拒绝。
+  required_change: 为每名角色建立与快照和Profile一致的最小可执行权限/资源或明确场景授权边界，并把Player放置及接触条件建模为可解释状态；确保Stage 3能客观判断允许、拒绝和资源变化，而非只测试口吻。
+  resolution: 已为六名NPC建立最小可执行access：Katniss/Peeta的发射室场景授权与个人策略/物品控制、Gale的狩猎路线和家庭供养决策、Haymitch的导师及赞助外联、Effie的赛程协议、Snow的典礼职责；逐项声明Player场景接触许可及对私人资源、策略和官方权限的denied边界。
+  status: fixed
+
+- item_id: environment.items.tribute_token_district12
+  severity: minor
+  rule_id: source_grounded_world_asset
+  evidence: environment同时定义具体的mockingjay_pin和泛化的tribute_token_district12，后者未被任何inventory或候选使用，且会与本世界已确定的District 12 token形成两个可能答案。
+  required_change: 删除未使用的泛化token，或明确其与mockingjay_pin不同的正典实体、持有者和用途，避免后续资源题出现非唯一答案。
+  resolution: 已删除未使用且与mockingjay_pin形成重复答案的泛化tribute_token_district12；唯一具体District 12 token保留为mockingjay_pin并由Katniss当前持有。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_003
+  severity: major
+  rule_id: source_event_factuality
+  evidence: ae_003称Katniss在Hob交易草莓和greens并购买面包与mint leaves；第1章中她和Gale在Hob以鱼换面包和盐、以部分greens换paraffin，随后在Mayor家出售一半草莓，且该段没有购买mint leaves。候选混合地点、交易对象、投入和所得。
+  required_change: 将ae_003收窄为一个真实离散交易边界并同步修正known_by、state_change与cf_edit；若记录多个连续交易，必须拆分且不得加入来源不存在的mint leaves。
+  resolution: 已将ae_003收窄为Katniss与Gale在Hob用当日上午捕获的鱼交换面包和盐这一处离散交易，known_by限定二人，删除草莓、greens、mint leaves和购买混写；cf_edit仅改变同一次交易中是否取得盐。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_019
+  severity: blocker
+  rule_id: source_event_factuality
+  evidence: ae_019声称Peeta询问Katniss是否真为Prim志愿并由她确认动机；第9章实际是Caesar在Katniss公开采访中询问Prim与告别承诺，Peeta的采访则披露暗恋。批准章节中没有当前所写的这场Katniss—Peeta私下问答，Peeta Frozen因而取得了虚构私密证据。
+  required_change: 删除或替换ae_019为第1—10章内真实、可定位的离散事件，并同步删除或重建peeta_k_001的source_event、visibility与content；不得把Caesar公开采访改写成Peeta私下获知。
+  resolution: 已用第9章Caesar公开采访Katniss谈Prim及告别承诺的真实事件替换虚构私谈，known_by按公开播送证据覆盖六名评测NPC；Peeta的peeta_k_001改为公开志愿事实并追溯ae_005、visibility改为[npc, player]，不再声称获得Katniss的私密确认。
+  status: fixed
+
+- item_id: characters.peeta_mellark.future_characterization
+  severity: blocker
+  rule_id: future_knowledge_and_characterization_excluded
+  evidence: Profile把Peeta写成会以自己生命为代价保护Katniss、绝不伤害或抛下她、不会向Career tributes泄露她的弱点，并称他知道童年焦面包对她的生存意义；第1—10章只建立其暗恋、面包行为、公开告白与保持自我的愿望，没有建立这些竞技场内绝对承诺或他对Katniss内心赋义的知识。Frozen的protect目标与trusting关系继续把该未来式推断固化为当前唯一状态。
+  required_change: 将Peeta的原则、目标、禁令、边界、关系规则、private与Frozen严格收缩到第1—10章已表达或可观察的状态；删除预写竞技场选择的绝对保护/不伤害/不背叛承诺，并区分他记得面包行为与他并不知道Katniss如何解释该行为。
+  resolution: 已将Peeta Profile与Frozen进一步收缩到第1—10章：保留保持自我、真实告白、共同训练和技能保密，删除对致命冲突的推断性限制及任何联合恋爱策略承诺；Katniss关系保持neutral并用“真实感情但无双向联盟”的命名背景追溯，目标明确不预决联盟、牺牲或竞技场选择。
+  status: fixed
+
+- item_id: characters.katniss_everdeen.current_boundaries
+  severity: major
+  rule_id: character_boundary_snapshot_accuracy
+  evidence: boundary_002称Katniss不会在Capitol观众前详细表达对Prim的情感，但第9章采访中她公开谈到Prim的年龄、爱与求胜承诺并打动观众；boundary_003又把她概括为赛前拒绝公开结盟，尽管她已按命令共同训练、游行牵手并维持联合公开呈现。Profile还把“maintain identity rather than a Capitol pawn”写成Katniss当前核心目标，而ae_023明确说她尚未理解Peeta表达的这一立场。
+  required_change: 按截至快照已经发生的采访和公开协作重写Katniss当前目标与边界；可保留她不愿虚构爱情或承诺竞技场联盟的限制，但不得否认已发生的公开情感表达与赛前协调，也不得把Peeta刚披露而她尚未理解的目标移植给她。
+  resolution: 已按第9章采访重写boundary_002，允许Katniss公开真诚谈Prim及求胜承诺但拒绝编造；boundary_003承认已发生的共同训练、游行牵手和联合公开策略，同时不预写爱情或竞技场联盟；core_goals删除移植自Peeta的“保持自我”目标，改为在保留公开策略时继续判断Peeta动机。
+  status: fixed
+
+- item_id: anchor_pool.events.mockingjay_pin_transfer_gap
+  severity: major
+  rule_id: resource_transfer_conservation
+  evidence: ae_009记录Madge把pin交给Katniss，ae_024却直接从Cinna的temporary safekeeping转回Katniss；候选池没有任何Katniss把pin或留有pin的train shirt交给Cinna的离散边界。Frozen knowledge补写“Cinna temporarily held it”不能替代资源来源移除与中间持有证据。
+  required_change: 增加或改写来源内可定位的中间保管边界，使Katniss→Cinna→Katniss的持有链守恒，或将状态表述改成不虚构未建模转移的精确事实；同步核对ae_024与Frozen inventory/knowledge。
+  resolution: 已删除Cinna曾取得所有权或临时保管pin的断言。ae_024现准确记录pin已通过检查并固定在Katniss的arena shirt上，状态变化是携带许可而非Cinna→Katniss转移；Katniss Frozen知识同步为Madge来源、检查通过和当前佩戴，inventory继续由Katniss持有，持有链不再出现无来源缺口。
+  status: fixed
+
+- item_id: anchor_pool.events.cf_edit_minimality
+  severity: major
+  rule_id: counterfactual_minimal_and_snapshot_compatible
+  evidence: 多个cf_edit仍整体改写后续正典与评测roster，例如ae_002让二人立即逃跑并放弃reaping、ae_004换掉Prim、ae_005让Prim被带走、ae_006换掉Peeta、ae_010额外延迟一夜；这些分支无法在其余候选与共享快照保持不变时形成仅改一个原因的可控Stage 2比较，和“关键cf_edit均已收窄”的resolution不符。
+  required_change: 逐项重审全部cf_edit；用于后续Pair的替代必须只改变目标证据或决定并保持必要后态可比较，无法与共享后续时间线兼容的项应改为局部可观察干预、标明不用于Stage 2或移出候选。
+  resolution: 已逐项复核24个cf_edit并扩展stage2_eligible语义为必须保留后续事件前提；ae_001因破坏ae_002/003链显式排除，ae_007只切换是否跌倒，ae_013只切换列车观景证据，ae_020只切换告白时长披露，其余可配对项均限定单一事实、披露、决定或资源许可；所有不可局部保持的项均为false并具排除原因。
+  status: fixed
+
+- item_id: frozen.gale_hawthorne.commitments
+  severity: major
+  rule_id: commitment_state_mapping
+  evidence: ae_008明确建立Gale供养Everdeen与Hawthorne两家的active commitment，Frozen却保持commitments为空，仅用一个goal近似表达。Stage 1因此无法唯一查询承诺主体、受益人、状态和依据，也无法在后续履行、失败或解除时闭环。
+  required_change: 将ae_008承诺映射为稳定ID、active状态、明确受益人与basis_event的runtime commitment；保留相关goal时需区分目标与对Katniss作出的承诺，并为后续生命周期操作留下唯一状态路径。
+  resolution: 已在Gale Frozen新增稳定commitment ID gale_supply_everdeen_hawthorne_families，target为Katniss、beneficiaries明确Everdeen与Hawthorne两家、status为active、basis_event为ae_008；保留供养goal作为持续行动目标，与对Katniss作出的承诺分开建模并预留后续resolution状态路径。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_012.chapter_order
+  severity: major
+  rule_id: chronology_total_order
+  evidence: ae_012把Haymitch要求共同训练、公开友好并隐藏强项的指示排在chapter_order 12，早于抵达Capitol、造型、游行及游行回放；该具体训练指示发生在游行之后、共同训练开始前，因此当前1—24顺序仍不是正典全序。
+  required_change: 将ae_012移动到ae_017游行回放之后、ae_018私人评分之前，并重新编号以保持全部chapter_order唯一且严格递增；同步核对依赖ae_012的Profile与Frozen只把它作为训练阶段已发生事件。
+  resolution: 已将ae_012的实体段移动至ae_017之后、ae_018之前，并把ae_013—ae_017顺序重编号为12—16、ae_012设为17，保持全池1—24唯一严格递增；依赖该事件的Profile/Frozen仍仅把它作为已发生的训练阶段指示。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_001.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal_and_snapshot_compatible
+  evidence: ae_001仍标记stage2_eligible:true，但其反事实让Katniss错过与Gale的晨猎；这会同时使紧随其后的ae_002共同讨论和ae_003用当晨渔获交易失去前提，不能在其余可见历史不变时作为单变量Pair。
+  required_change: 将反事实收窄为不破坏ae_002/ae_003的局部可观察差异，或把ae_001标记stage2_eligible:false并写明它会破坏后续晨猎事件链。
+  resolution: 已将ae_001标记stage2_eligible:false并明确排除原因：错过晨猎会同时移除ae_002共享讨论及ae_003晨间渔获交易的前提，不能作为局部单变量Pair。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_022.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: ae_022把Haymitch对告白宣传价值的解释进一步写成Katniss“agrees to preserve the public framing”，Profile与Frozen也据此建立她已接受联合策略的当前状态；第10章该场景支持Haymitch解释star-crossed-lovers叙事的赞助价值，但没有建立Katniss作出这一明确协议或承诺。
+  required_change: 将ae_022及其Profile/Frozen映射限定为Katniss已听到并理解Haymitch的策略解释、公开叙事已经存在，同时保留她对Peeta动机和是否配合的未决状态；除非有第1—10章具体证据，不得建模为她已同意的承诺。
+  resolution: 已把ae_022限定为Haymitch解释告白令Katniss更受观众关注并可能改善赞助前景；状态仅记录Katniss听到并理解解释，明确她没有承诺恋爱策略或竞技场联盟。Katniss、Peeta与Haymitch的Profile/Frozen同步删除“已同意联合策略”的映射。
+  status: fixed
+
+- item_id: characters.katniss_everdeen.capitol_trust
+  severity: major
+  rule_id: current_behavioral_constraint_accuracy
+  evidence: Katniss Profile仍把“Refuse to trust the Capitol or its representatives”写成绝对禁令，并把Haymitch与Effie合称Capitol conduits；截至快照她已明确把Cinna视为可依赖的造型师，而Haymitch是District 12导师，绝对拒信所有Capitol代表会产生与当前来源相反的Stage 3决定。
+  required_change: 把该禁令收窄为不信任Capitol制度、官方承诺与无证据权限主张，同时保留她可基于具体行为有限信任Cinna及依赖Haymitch导师能力的当前状态；不要把Haymitch错误归类为Capitol代表。
+  resolution: 已将绝对拒信改为不依赖Capitol制度的无证据承诺、凭证或权限主张；Profile明确区分Cinna经行为证明的造型帮助、Haymitch的District 12 mentor能力与Effie的Capitol escort身份，并允许基于具体行为授予有限任务信任而不扩张为制度信任。
+  status: fixed
+
+- item_id: frozen.gale_hawthorne.knowledge_visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: gale_know_katniss_volunteered记录公开reaping事实却标为visibility:[npc]，而同一公开事实在Katniss、Peeta、Effie和Snow的Frozen中向默认Player可见；这与修复说明“公开事件向默认Player开放”及统一Player语义不一致。
+  required_change: 将该公开事实对默认Player的可见性统一为[npc, player]，或在canon明确定义为何同一默认Player会仅在Gale场景不知道该公开事件；并回归核对六份Frozen中相同公开事实的Player投影一致。
+  resolution: 已将gale_know_katniss_volunteered统一为visibility:[npc, player]；并回归核对在册五份Frozen，同一公开reaping事实均按canon默认Player语义开放，私密讨论、回忆与判断仍保持[npc]。
+  status: fixed

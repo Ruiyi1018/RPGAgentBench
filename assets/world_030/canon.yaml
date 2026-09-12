@@ -8,11 +8,24 @@ canon_policy:
   - Once Upon a Time in Wonderland
   - comic tie-ins
   - novelizations
-  shared_snapshot: Storybrooke, Maine before the curse breaks; fairytale realm backstories
-    restricted to flashbacks shown within the episode range
-  generated_timeline: Anchor events ordered by narrative chronology within the fixed
-    episode range
+  shared_snapshot: Storybrooke current state is fixed immediately after Season 1
+    Episode 7. Fairytale identities use each character's latest state shown in flashbacks
+    within Episodes 1-7; for Snow White, Prince Charming, and Rumplestiltskin this is
+    the curse-planning period shown in the Pilot. Storybrooke and fairytale flashbacks
+    are separate runtime contexts and are never treated as simultaneous scenes.
+  generated_timeline: Candidate events carry a timeline_id and chapter_order. Order
+    events within each timeline only; do not infer a total order between Storybrooke
+    present and fairytale flashbacks.
   quotation_policy: Do not reproduce dialogue; paraphrase all facts
+  default_player_semantics: The default Player is a neutral interlocutor physically
+    present at the location listed for player in the Frozen context, normally the
+    NPC's listed location. A context may stage both at a source-grounded public or
+    workplace location after the bounded canon snapshot when the NPC's latest shown
+    location is part of a private event; this runtime staging is not a new canon event
+    and grants no knowledge of the private scene. The Player knows ordinary public
+    identities and only facts marked with visibility [npc, player]; facts marked
+    [npc] remain private. Scenario-specific Player identities must explicitly override
+    this default.
 evaluated_npcs:
 - emma_swan
 - henry_mills

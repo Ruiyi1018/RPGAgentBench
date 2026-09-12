@@ -5,9 +5,22 @@ canon_policy:
   excluded_versions:
   - 毛宗岗评本
   - 电视剧改编本
-  shared_snapshot: 孙刘联盟形成、赤壁决战尚未开始
-  generated_timeline: 从曹操南征荆州前至赤壁决战前夕，按嘉靖本叙事顺序排列
+  shared_snapshot: 嘉靖本第八十八回孙权任命周瑜、程普统领江东迎敌兵马并授予剑印之后，周瑜离开柴桑出兵之前
+  generated_timeline: 从曹操南征荆州前至第九十七回诸葛亮祭风、赤壁正式交战之前，按嘉靖本叙事顺序排列
   quotation_policy: 禁止直接复制原文对话，只做事实级转述
+  default_player_semantics:
+    identity: 无预设阵营的临时来访者，不默认是任何军队、府署或核心议事成员
+    capabilities:
+    - 只能依据对话中明确告知、现场可观察事实和initial_context中visibility包含player的知识行动
+    - 不因与NPC同处一地而自动获得军情、密议、私信、军令或NPC内心判断
+    initial_knowledge: 仅知道NPC公开身份、当前会面地点，以及各initial_context中visibility明确包含player的知识
+    visibility_semantics:
+      npc_only:
+      - npc
+      npc_and_player:
+      - npc
+      - player
+    scenario_override: 场景特定Player必须明确声明身份、已知信息与授权；该声明仅覆盖明确列出的默认项，不得追溯暴露其他私密知识
 evaluated_npcs:
 - cao_cao
 - liu_bei

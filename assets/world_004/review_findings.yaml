@@ -1,0 +1,191 @@
+- item_id: canon.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon只定义来源、版本、快照和引文政策，未定义默认Player身份、可接触材料、初始知识或visibility解释；七份initial_context却都让Player与NPC同地开始。
+  required_change: 在canon中明确默认Player身份、能力与初始可见知识，并规定场景特定Player如何覆盖默认语义，确保私密知识不会因同地开局而自动暴露。
+  resolution: canon.canon_policy新增default_player_semantics，明确默认Player为无预设阵营来访者、知识来源、同地不自动知密、visibility列表语义及场景覆盖规则；七份initial_context已按该语义改用受众列表。
+  status: fixed
+
+- item_id: world_004.shared_snapshot.current_state
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: 同一共享快照下，cao_cao initial_context仍写孙权未正式答复、江东降战两派仍在争执；sun_quan initial_context已写砍案定战；zhou_yu initial_context又已知黄盖献火攻和苦肉计。三者分别对应嘉靖本第八十八回决策前、决策完成时和第九十二回之后，无法同时作为当前有效状态。
+  required_change: 锁定一个所有NPC兼容的明确初始时点，并同步修正全部Profile、initial_context的位置、目标、知识、关系及私密计划；历史事件可保留为背景，但当前字段只能表示该时点的最新有效状态。
+  resolution: 共享快照锁定为嘉靖本第八十八回孙权授周瑜剑印之后、周瑜出兵之前；七份Profile与Frozen当前态已同步到该时点，移除乌林对峙、樊口部署、黄盖火攻等后续事实，并校正位置、目标和知识。
+  status: fixed
+
+- item_id: characters.cao_cao.identity.affiliations
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: 曹操当前affiliations含“曹魏嫡系文武集团”；赤壁前夕尚未建立魏公国或曹魏政权，该称谓把后来的政治身份倒灌进当前Profile。
+  required_change: 改为快照时已成立的曹操军政集团或汉丞相府体系称谓，不得使用赤壁之后才成立的曹魏政治身份。
+  resolution: 将“曹魏嫡系文武集团”改为快照时已成立的“曹操麾下军政集团”，保留汉丞相府与南征军体系称谓。
+  status: fixed
+
+- item_id: environment.runtime_military_resources
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 本世界的核心压力是军令、兵马、水军、船只、营寨和调度权限，但environment仅有地点与五件物品，全部initial_context的access均为空，也没有任何可执行的部队、船只或统军权限状态；Profile中的军权目前只能作为 prose，无法形成受控资源或权限变化。
+  required_change: 以最小必要粒度补充后续Stage 2/3确会操作的军队、船只、军令或权限资源，并在对应initial_context中初始化持有者或访问权；无需复刻完整军事组织。
+  resolution: environment以最小粒度新增曹操南征军、荆州水军、刘备兵马/水军、江东兵马/水军及江东迎敌剑印；七份initial_context通过inventory或access初始化对应统军者、持有者与授权边界。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 22个候选现已有唯一chapter_order且多数物理顺序已校正，但e013仍被标为086.02并排在e019、e012之前。嘉靖本第八十八回原文顺序是周瑜返柴桑陈说曹军不利（e012）后，孙权才拔剑砍案（e013），并随即授剑任命周瑜、程普（e021）；当前顺序把砍案提前到周瑜返回及陈说之前。
+  required_change: 将第八十八回三项校正为e012在先、e013居中、e021在后，赋予严格递增的chapter_order并同步YAML物理顺序；其余候选继续保持现有唯一总序。
+  resolution: 已将第八十八回三项按原文先后及YAML物理顺序排列为e012（088.01，周瑜陈说）、e013（088.02，孙权砍案）、e021（088.03，授剑任将），并将其后的e020顺延为088.04；22项chapter_order仍全部唯一且与物理顺序一致。
+  status: fixed
+
+- item_id: anchor_pool.e022
+  severity: blocker
+  rule_id: source_scope_validity
+  evidence: e022称刘备与周瑜在樊口约定“周瑜正面当敌、刘备承担策应”；嘉靖本第八十九回对应情节是周瑜诱请刘备并预伏刀斧手，因关羽护卫而未下手，席间还拒绝让刘备见诸葛亮，没有形成该候选所述协同约定。liu_bei与zhou_yu Profile中的樊口联合部署也受此错误事实影响。
+  required_change: 将e022替换为嘉靖本中实际发生的离散事件并重写known_by、state_change与cf_edit，同时清理所有Profile和Frozen状态中依赖该虚构约定的当前结论。
+  resolution: e022改写为嘉靖本第八十九回周瑜设伏邀刘备、因关羽护卫未发号的离散事件，重写known_by、互信后果与单变量反事实；Profile和Frozen中虚构的樊口协同部署结论已清理。
+  status: fixed
+
+- item_id: anchor_pool.e021.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: e021的事实只支持孙权任命周瑜、程普统领江东迎敌兵马并与刘备并力，state_change却扩张为“孙刘联军确立统一指挥体系”；各Profile同时明确周瑜不能单方面号令刘备军，二者自相矛盾。
+  required_change: 将状态变化限定为江东军指挥体系确立及孙刘协同进入执行阶段，不得宣称两军形成统一指挥；同步保持双方权限边界一致。
+  resolution: e021的state_change已限定为江东迎敌兵马指挥体系确立及孙刘双方等待具体协调，并明确周瑜无权单方面号令刘备军。
+  status: fixed
+
+- item_id: anchor_pool.event_granularity_and_duplication
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: e001是“刘备驻新野+曹操统一北方并准备南征”的复合背景，e019以“多次议事”概括一段过程；e006与e018又重复描述关羽水军接应刘备并成为江汉水上力量，不能形成唯一事件边界和唯一状态答案。
+  required_change: 将复合或长期概括项改为可定位的单一事件，合并或区分e006/e018的触发时点与不同直接后果，并为每项保留唯一可观察状态变化。
+  resolution: e001改为曹操下达进攻新野军令的单一事件；e019改为第八十七回周瑜试探、诸葛亮激其明确主战的单次会谈；e006限定汉津船队接应，e018限定随后与刘琦会聚并屯夏口，分别保留不同直接后果。
+  status: fixed
+
+- item_id: anchor_pool.e009_e010.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: e009把远在鄱阳、尚未返回柴桑的周瑜列为鲁肃当阳会见刘备的知情者；e010又把周瑜列为诸葛亮初见孙权陈说利害的知情者，当前候选未给出其在场、被转告或取得证据的依据。
+  required_change: known_by只保留直接参与者或有明确披露/证据链的NPC；若周瑜后来获知，另以可定位的披露事件或来源说明建立知识。
+  resolution: e009与e010的known_by均删除当时不在场且无披露证据链的zhou_yu，仅保留直接参与或有明确信息链的NPC。
+  status: fixed
+
+- item_id: world_004.initial_context.goal_status_vocabulary
+  severity: major
+  rule_id: runtime_schema_consistency
+  evidence: 刘备目标使用“进行中”，诸葛亮使用“已完成/进行中”，孙权使用“in_progress”，其余使用active；FixtureEngine支持的目标状态为active、fulfilled、cancelled、failed，非规范值会使运行时对活跃或已完成目标的判断失真。
+  required_change: 将七份initial_context的目标状态统一映射到FixtureEngine支持的闭集，并确保已完成目标使用fulfilled、当前目标使用active。
+  resolution: 七份initial_context的目标状态已统一为FixtureEngine闭集active/fulfilled；已完成的说服、定调、任命类目标用fulfilled，当前行动目标用active。
+  status: fixed
+
+- item_id: frozen.liu_bei.initial_context.relationships
+  severity: major
+  rule_id: relationships_directional
+  evidence: 刘备视角把诸葛亮、关羽、张飞均标为loyal；在该有向关系模型中loyal表示主体对目标效忠，而刘备Profile表达的是对三名部属/兄弟高度信任，并非刘备向他们效忠。
+  required_change: 按刘备视角把三项关系改为trusting或其他有Profile依据的有向等级；忠诚方向应由诸葛亮、关羽、张飞各自指向刘备。
+  resolution: 刘备视角对诸葛亮、关羽、张飞三项均由loyal改为trusting；三人的Frozen仍保留各自指向刘备的loyal方向。
+  status: fixed
+
+- item_id: frozen.zhuge_liang.initial_context.relationships.sun_quan
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 诸葛亮对孙权被标为trusting，但Profile只支持客使身份下的合作、争取援助并防江东单独妥协，没有建立个人强信任依据。
+  required_change: 默认改为neutral；若保留trusting，必须在Profile和正典事件中补充当前时点已形成强信任的可追溯依据。
+  resolution: 诸葛亮对孙权的关系由trusting改为neutral，合作意向继续由目标、知识与Profile规则表达。
+  status: fixed
+
+- item_id: frozen.sun_quan.initial_context.relationships.sun_quan
+  severity: major
+  rule_id: relationship_state_validity
+  evidence: "孙权的relationships包含指向自身的sun_quan: loyal。自我效忠不是可解释的NPC间有向关系，会污染Stage 1关系题和后续关系操作目标集合。"
+  required_change: 删除自我关系，仅保留孙权对其他NPC及Player的有向关系。
+  resolution: 已删除孙权relationships中指向自身的sun_quan条目，仅保留对其他NPC与Player的有向关系。
+  status: fixed
+
+- item_id: frozen.guan_yu_zhang_fei.initial_context.inventories
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: environment专门定义了青龙偃月刀和丈八蛇矛为可携带武器，但关羽、张飞的initial_context inventory均为空；若这些物品用于后续压力或转移测试，初始持有状态与正典及世界资产不一致。
+  required_change: 将qinglong_sword初始化给关羽、zhangba_spear初始化给张飞；若不计划作为可执行关键物品使用，则从运行资产中移除或明确其非当前资源语义。
+  resolution: 关羽inventory已初始化qinglong_sword，张飞inventory已初始化zhangba_spear，二者均引用environment中的现有可携带武器ID。
+  status: fixed
+
+- item_id: frozen.zhou_yu.initial_context.goals.zhou_yu_goal_01
+  severity: major
+  rule_id: current_goal_state
+  evidence: 同一initial_context已记录孙权任命周瑜为大都督且周瑜知晓黄盖火攻计划，但“巩固孙权抗曹决心，使江东形成统一主战部署”仍标为active；到该状态时该目标已完成，当前有效目标应转向执行备战。
+  required_change: 将该目标标为fulfilled或替换为当前仍可执行的备战目标，并与最终锁定的共享快照同步。
+  resolution: zhou_yu_goal_01在锁定快照下改为fulfilled；当前执行目标明确为整备江东水陆军并从柴桑出兵迎敌。
+  status: fixed
+
+- item_id: world_004.initial_context.visibility_vocabulary
+  severity: minor
+  rule_id: visibility_schema_consistency
+  evidence: 七份initial_context混用public、internal、private、shared_with_xxx、private_to_xxx等自由文本，而规范推荐以[npc]和[npc, player]等受众列表表示开局实际知情者；当前标签不能稳定判定Player可见性。
+  required_change: 统一为执行器和审计规范可解释的受众列表，并结合默认Player语义逐项区分NPC私有与Player开局可见知识。
+  resolution: 七份initial_context所有knowledge.visibility均规范化为[npc]或[npc, player]列表；结合canon默认Player语义区分NPC私密信息与开局可见公开事实。
+  status: fixed
+
+- item_id: characters.zhuge_liang.testable_boundaries.allowed_change
+  severity: minor
+  rule_id: boundary_schema_consistency
+  evidence: 诸葛亮三条边界的allowed_change均为单个字符串，而其他Profile及规范结构均为字符串列表，后续按列表枚举允许适应行为时会产生类型不一致。
+  required_change: 将三处allowed_change规范化为列表，每项表达一个可观察的允许变化。
+  resolution: 诸葛亮三条testable_boundaries的allowed_change均已由字符串规范化为单元素字符串列表。
+  status: fixed
+
+- item_id: environment.items.yuchang_sword
+  severity: minor
+  rule_id: stable_asset_identity
+  evidence: 物品ID为yuchang_sword（鱼肠剑），name却是“玉玺”，ID与实体类型完全不符，后续状态题或资源操作会出现同一ID两种解释。
+  required_change: 按实际要保留的实体统一ID与name；若为玉玺，应使用对应玉玺ID，若为鱼肠剑则修正名称并确认其属于当前世界范围。
+  resolution: 将与“玉玺”名称不符的yuchang_sword ID更正为imperial_seal，名称、类型和ID语义现已一致。
+  status: fixed
+
+- item_id: world_004.shared_snapshot.knowledge_propagation
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: 共享快照被锁定在孙权刚授周瑜剑印之后、周瑜尚未离开柴桑的狭窄时点，但曹操在江陵的k_cao_003/k_cao_004、刘备在夏口的k003/k004、关羽的guan_yu_knowledge_003和张飞的knowledge_003均已知道孙权任命周瑜统兵；anchor_pool.e021还直接把不在柴桑的liu_bei列入known_by，材料没有任何传令、使者回报或证据链支持这些异地角色已在该时点获知刚发生的任命。
+  required_change: 按共享快照逐角色删除尚未传播到达的任命知识，或把快照后移到存在可定位披露/传令事件之后并同步全部当前态；若保留刘备等人的知情状态，必须补充发生在快照前且可定位的信息传播事件和来源链。曹操不得在无侦报事件的情况下即时获知柴桑刚作出的决定。
+  resolution: 保持共享快照不变并按角色信息链清理即时传播回归：曹操Profile不再断言孙权主战或周瑜受命，Frozen删除k_cao_003至k_cao_005；刘备、关羽、张飞Profile与Frozen均改为只知道诸葛亮正在江东交涉且尚未回报，删除其已知任命、出兵和江东保留态度的结论；e021.known_by删除不在柴桑且尚未收到传令的liu_bei。
+  status: fixed
+
+- item_id: frozen.zhuge_liang.initial_context.environment.access.liubei_diplomatic_mandate
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 诸葛亮initial_context把liubei_diplomatic_mandate作为可执行access资源并授予zhuge_liang，但environment.yaml的items或其他世界资产中没有该ID；当前机器审计未校验access资源引用，因此machine_passed不能证明该权限可执行。
+  required_change: 在environment中以最小粒度定义liubei_diplomatic_mandate及其语义并保持控制者/主体一致，或删除该无效access并用已有、可执行且有正典依据的权限资源表达诸葛亮的使者授权；随后用FixtureEngine实际加载七份initial_context验证所有资源引用。
+  resolution: environment.items新增稳定ID liubei_diplomatic_mandate，名称为“刘备授予诸葛亮的江东交涉权”、类型为外交权限且不可携带；诸葛亮initial_context继续以刘备为controller、诸葛亮为granted subject，和Profile中代表刘备商议联合抗曹的权限一致。独立Auditor已用GameContext加载七份initial_context，并交叉校验全部location、inventory、access资源及controller/subject引用，均无错误。
+  status: fixed
+
+- item_id: frozen.sun_quan.initial_context.goals.g003
+  severity: major
+  rule_id: current_goal_state
+  evidence: g003写“任命周瑜等将领，完成抗曹军事部署”并标为fulfilled，但同一共享快照明确处于周瑜尚未出兵、尚在整备且孙刘具体任务未商定的阶段；任命已经完成，不等于整个抗曹军事部署已经完成，当前文本把已完成动作与仍在进行的部署合成了非唯一状态。
+  required_change: 将已完成的“任命周瑜、程普”与仍在进行的“整备江东兵马、协调孙刘任务”拆成可唯一判定的目标，分别使用fulfilled与active，并与孙权Profile及周瑜当前目标一致。
+  resolution: 将g003收窄为已完成的“任命周瑜为大都督、程普为副，确立江东迎敌兵马的统帅”并保持fulfilled；新增active的g004，单独承载整备江东迎敌兵马及推动孙刘双方商定具体任务，与周瑜当前整备目标及快照一致。
+  status: fixed
+
+- item_id: anchor_pool.e012.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: e012的fact仅描述周瑜返柴桑后分析曹军不利并力主抗曹，state_change却同时写孙权最终决战和任命周瑜统军；任命另由紧随其后的e021明确承载，导致同一状态在两个候选中重复成立，也使e012的直接证据与状态后果边界不一致。
+  required_change: 保留已修正的e012.state_change；继续修正e012、e013、e021的顺序为周瑜陈说、孙权砍案、授剑任命，并把现场直接目睹砍案的zhou_yu恢复到e013.known_by。三项应各自只有一个直接且不重复的状态变化。
+  resolution: 保留e012仅承载“主战军事依据进一步明确”的直接后果，并将e012、e013、e021依次设为088.01、088.02、088.03；e013.known_by已恢复现场目睹砍案的zhou_yu。三项分别承载军事陈说、公开定战、授剑任将，状态变化不再重复。
+  status: fixed
+
+- item_id: anchor_pool.e017.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: e017.fact只写诸葛亮预测大雾并准备借箭船只，事件尚处于行动准备阶段；state_change却断言联军已经储备箭矢。嘉靖本对应情节中，箭矢要到船队借雾驶近曹营、受箭返回并搬入中军帐后才实际取得。
+  required_change: 将e017改写为一次边界完整的草船借箭行动，明确大雾、曹军放箭、船队返航及箭矢交付所形成的直接资源后果，并据参与或后续明确报告重审known_by；或把state_change收窄为准备完成且不得声称箭矢已取得。
+  resolution: e017.fact已覆盖草船借雾近曹营、曹军放箭、船队返航及箭矢交入周瑜军中的完整行动；known_by限定为执行者zhuge_liang与收验结果的zhou_yu，state_change明确筹箭要求由待完成转为实际交付，cf_edit也锁定为大雾这一单一触发变量。
+  status: fixed
+
+- item_id: anchor_pool.e016.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: e016.fact仅写庞统向曹操“建议”将战船连锁，state_change却直接断言曹军战船已经被连接；建议提出、曹操采纳与船只实际连锁是不同状态边界，当前事实不足以支持已完成的资源/部署状态。
+  required_change: 若保留“曹军战船被连接”的状态变化，fact必须明确曹操采纳连环计并下令或完成连锁；否则将state_change收窄为曹操收到并考虑该建议，同时同步校正cf_edit的触发变量。
+  resolution: e016.fact已补全曹操采纳、下令以铁环连接及战船实际按令连锁的状态链，因此“曹军战船被连接”的state_change有直接事实支撑；cf_edit同步改为曹操不采纳且不下令连锁这一单一触发变量。
+  status: fixed

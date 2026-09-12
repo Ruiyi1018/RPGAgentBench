@@ -29,7 +29,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: guan_yu_goal_002
-    content: 在孙刘联合抗曹中确保刘备集团不被东吴吞并或架空。
+    content: 为诸葛亮正在争取的孙刘联合做准备，同时确保刘备集团不被东吴吞并或架空。
     status: active
     basis_event: initial_state
   - id: guan_yu_goal_003
@@ -41,34 +41,45 @@ runtime_state:
     guan_yu_knowledge_001:
       content: 刘备已从新野、樊城方向南撤，当阳之败后与关羽水军及刘琦会合。
       status: active
-      visibility: private_to_guan_yu_clique
+      visibility:
+      - npc
       source_event: initial_state
     guan_yu_knowledge_002:
-      content: 曹操已占领江陵并获取荆州水军和军资，大军正在向乌林一带逼近。
+      content: 曹操已占领江陵并获取荆州水军和军资，正在整顿沿江东进的兵力。
       status: active
-      visibility: shared_with_liu_bei_zhuge_liang
+      visibility:
+      - npc
       source_event: initial_state
     guan_yu_knowledge_003:
-      content: 诸葛亮已赴江东推动联合孙权抗曹，孙刘双方正在形成军事协同。
+      content: 诸葛亮已赴江东推动联合孙权抗曹，但尚未返回夏口报告江东的最终决定。
       status: active
-      visibility: shared_with_liu_bei
+      visibility:
+      - npc
       source_event: initial_state
     guan_yu_knowledge_004:
       content: 关羽所统水军是刘备集团在夏口、江夏一带的重要水上力量，但兵力不足以独自抵挡曹操水陆大军。
       status: active
-      visibility: private_to_guan_yu_clique
+      visibility:
+      - npc
       source_event: initial_state
 environment:
   health:
     guan_yu: 100
     player: 100
   inventories:
-    guan_yu: []
+    guan_yu:
+    - qinglong_sword
     player: []
   locations:
     guan_yu: xiakou
     player: xiakou
-  access: {}
+  access:
+    liubei_fleet:
+      controllers:
+      - liu_bei
+      - guan_yu
+      subjects:
+        guan_yu: granted
   offers: []
   task_status: active
   dialogue_status: active

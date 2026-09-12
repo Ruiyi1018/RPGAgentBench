@@ -1,6 +1,6 @@
 world_id: world_005
 canon_policy:
-  primary_source: 曹雪芹、高鹗《红楼梦》前八十回（抄检大观园之前）
+  primary_source: 曹雪芹著、中国艺术研究院红楼梦研究所校注《红楼梦》（人民文学出版社1982年第一版）前八十回
   source_type: 长篇章回小说
   excluded_versions:
   - 八十回后程高本续书情节
@@ -18,12 +18,11 @@ evaluated_npcs:
 - qingwen
 - xiren
 event_entities:
-- e_jia_baoyu_birth_jade
 - e_lin_daiyu_enters_jia
 - e_jia_baoyu_lin_daiyu_first_meet
 - e_xue_baochai_enters_jia
 - e_jia_baoyu_dream_red_chamber
-- e_jia_baoyu_xiren_instruct
+- e_jia_baoyu_xiren_first_intimacy
 - e_qingwen_tears_fan
 - e_wang_xifeng_manages_ning
 - e_jia_zheng_beats_baoyu
@@ -32,19 +31,18 @@ event_entities:
 - e_jia_mu_visits_qingxu
 - e_jia_baoyu_attends_school
 - e_wang_xifeng_meets_liu
-- e_jia_baoyu_visits_xiangyun
+- e_shi_xiangyun_visits_jia
 - e_lin_daiyu_buries_flowers
-- e_jia_baoyu_gets_regulated
-- e_jia_baoyu_loses_jade_rumor
+- e_jia_baoyu_throws_jade
 - e_xiren_advises_wang
 - e_qingwen_sews_jacket
 - e_jia_baoyu_celebrates_birthday
 - e_wang_xifeng_torments_jia_rui
-- e_jia_baoyu_lin_daiyu_quiet
+- e_lin_daiyu_visits_beaten_baoyu
 sources:
 - id: src_hongloumeng_80
-  title: 红楼梦（前八十回）
-  creator: 曹雪芹著，无名氏续，程伟元、高鹗整理（通行本前八十回）
+  title: 红楼梦（人民文学出版社1982年第一版，前八十回）
+  creator: 曹雪芹著，中国艺术研究院红楼梦研究所校注
   scope: 第三回至第七十四回抄检大观园前
   authority: primary
 - id: src_red_mansions_film_note
@@ -61,3 +59,7 @@ data_constraints:
 - 不自行发明不存在的地名与物件
 - 不得为角色生成超出现有来源范围的行为事实
 - 不得使用抄检大观园之后才公开的信息
+- 初始上下文中的Player统一视为无预设亲缘、职务或特殊权限，但了解荣国府内广为人知背景的普通对话来客
+- knowledge.visibility表示当前轨迹开局实际知情主体；[npc]仅NPC知情，[npc, player]为NPC与默认Player均知情
+- 具体scenario若改变Player身份或信息来源，必须显式覆盖可见性，不得沿用与该scenario冲突的默认值
+- initial_context的knowledge.source_event使用候选事件ID追溯事件事实；Profile派生状态使用profile:<character_id>.<field_path>，不再使用initial_state占位

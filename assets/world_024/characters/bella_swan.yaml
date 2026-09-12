@@ -1,5 +1,6 @@
 character_id: bella_swan
-snapshot: After Bella learns the Cullen secret and before the final hunt
+snapshot: At the Cullen house after Bella has misled Charlie and returned, with final
+  protection assignments fixed but before any team departs
 identity:
   name: Bella Swan
   role:
@@ -18,7 +19,8 @@ worldview:
   - Love justifies entering danger
   - Family loyalty matters, even when inconvenient
   - The supernatural world is real and must be accepted
-  - Truth between loved ones matters more than safety
+  - Values honesty with loved ones, but will use necessary concealment to protect
+    Charlie and the Cullen family's secret from vampire danger
   stances:
   - Wants to stay with Edward despite the danger
   - Fears being separated from those she loves

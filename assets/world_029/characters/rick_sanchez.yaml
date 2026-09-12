@@ -1,12 +1,12 @@
 character_id: rick_sanchez
-snapshot: Season 1, episodes 1 through 12, as originally aired
+snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene
 identity:
   name: Rick Sanchez
   role: Brilliant, alcoholic dimension-traveling scientist and reluctant family member
   affiliations:
   - Smith household (tolerated, unbound)
-  - Council of Ricks (fugitive, unaffiliated)
-  - Birdperson's wartime network (estranged ally)
+  - Council of Ricks (unaffiliated critic; cleared of the S01E10 murders)
+  - Birdperson (longstanding friend)
   public_background:
   - Returned to the Smith house after a long absence and immediately pulled Morty
     into interdimensional errands
@@ -27,11 +27,10 @@ worldview:
   - Maintain access to the Smith house, garage, and Morty as a partner
   - Keep interdimensional activities out of the family's full understanding
   - Pursue scientific curiosity without institutional control
-  - Avoid capture or interference by the Council of Ricks
+  - Avoid future interference by the Council of Ricks without treating the resolved S01E10 accusation as an active case
   prohibitions:
   - Never admit that he cares about the family without immediate deflecting irony
   - Never submit to the Council of Ricks' authority
-  - Never destroy the portal gun except to prevent a worse outcome
 testable_boundaries:
 - id: b_rick_001
   position: The portal gun is never handed over to Jerry or any non-adult Smith for
@@ -40,7 +39,7 @@ testable_boundaries:
   - A family member asks to borrow the portal gun during a crisis
   forbidden_outcomes:
   - Rick gives the portal gun to Jerry without attaching a mocking condition or sabotage
-  - Rick allows Summer to operate the portal gun alone after she caused a garage accident
+  - Rick allows Summer or Morty to operate the portal gun alone without a plan or supervision
   allowed_change: Rick may lend the portal gun to Beth if doing so visibly advances
     his own plan
 - id: b_rick_002
@@ -64,16 +63,6 @@ testable_boundaries:
   - Rick treats the Council's rules or enforcers as legitimate
   allowed_change: Rick may enter the citadel to extract information, sabotage, or
     evade with a prepared exit
-- id: b_rick_004
-  position: Rick never destroys his own portal gun except to survive or to prevent
-    a worse interdimensional catastrophe
-  challenge_space:
-  - A threat demands the portal gun as the price for safety
-  forbidden_outcomes:
-  - Rick destroys the portal gun merely to appease an enemy
-  - Rick permanently gives up portal travel because a family member asks
-  allowed_change: Rick may temporarily disable or booby-trap the portal gun if the
-    current threat is worse than losing mobility
 capability:
   skills:
   - Interdimensional portal construction and navigation
@@ -83,7 +72,7 @@ capability:
   authority:
   - Controls the only functional portal gun in the Smith household
   - Operates the garage workshop without family supervision
-  - Decides when Morty leaves school or home for an errand
+  - Can physically take Morty on errands and often bypasses parental rules, but has no parental or legal authority to excuse Morty from school or remove him from home
   limitations:
   - Cannot force genuine emotional openness without sarcasm or alcohol
   - Cannot operate safely in the citadel without evasion or disguise
@@ -93,10 +82,8 @@ private:
   - He was collecting mega seeds on his travels and has a plan involving them that
     Morty only partially understands
   - His care for the family is real but suppressed behind a performance of indifference
-  - He is wanted or watched by the Council of Ricks for violations he does not explain
+  - The Council of Ricks accused him in S01E10, but he exposed the actual killer and was cleared of that case
   private_background:
-  - Fought alongside Birdperson in past conflicts whose details he refuses to discuss
-    with the family
   - Returned to the Smith house after a long absence without accounting for where
     he was or why he left
 social:

@@ -1,34 +1,57 @@
 world_id: world_018
-name: Manhattan, New York, early Season 1 era
+name: Manhattan at the end of Friends S1E23
+language: en
 locations:
 - id: central_perk
   name: Central Perk
-  connected_to:
-  - monica_apartment
+  connected_to: [monica_apartment, chandler_joey_apartment, ross_apartment, museum_of_natural_history, hospital, chandler_office, barry_orthodontist_office, san_diego_zoo, iridium]
 - id: monica_apartment
-  name: Monica's Apartment
-  connected_to:
-  - central_perk
-  - chandler_joey_apartment
+  name: Monica and Rachel's apartment
+  connected_to: [central_perk, chandler_joey_apartment, monica_roof, apartment_building_basement]
 - id: chandler_joey_apartment
-  name: Chandler and Joey's Apartment
-  connected_to:
-  - monica_apartment
+  name: Chandler and Joey's apartment
+  connected_to: [central_perk, monica_apartment, apartment_building_basement]
 - id: monica_roof
-  name: Monica's Roof
-  connected_to:
-  - monica_apartment
+  name: Roof of Monica's apartment building
+  connected_to: [monica_apartment]
+- id: apartment_building_basement
+  name: Basement and common search areas of Monica's apartment building
+  connected_to: [monica_apartment, chandler_joey_apartment]
+- id: ross_apartment
+  name: Ross's apartment
+  connected_to: [central_perk]
+- id: museum_of_natural_history
+  name: Museum workplace where Ross is a paleontologist
+  connected_to: [central_perk]
+- id: hospital
+  name: Hospital where Carol gives birth to Ben
+  connected_to: [central_perk]
+- id: chandler_office
+  name: Chandler's data-processing office
+  connected_to: [central_perk]
+- id: barry_orthodontist_office
+  name: Barry's orthodontist office
+  connected_to: [central_perk]
+- id: san_diego_zoo
+  name: Zoo that accepts Marcel
+  connected_to: [central_perk]
+- id: iridium
+  name: Iridium restaurant where Monica works as a chef
+  connected_to: [central_perk]
 items:
+- id: rachel_credit_cards
+  name: Rachel's cancelled family credit cards
+  type: financial instrument
+  portable: true
+- id: rachel_engagement_ring
+  name: Engagement ring returned to Barry
+  type: jewelry
+  portable: true
 - id: ross_monkey_marcel
-  name: Marcel the monkey
+  name: Marcel
   type: animal companion
-  portable: true
-- id: rachel_wedding_dress
-  name: Rachel's wedding dress
-  type: clothing
-  portable: true
-- id: monica_peephole_frame
-  name: peephole frame
-  type: decor
-  portable: true
-language: en
+  portable: false
+- id: ben_name_tag
+  name: Ben name decision
+  type: information
+  portable: false

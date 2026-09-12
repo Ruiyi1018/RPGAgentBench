@@ -25,7 +25,7 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: goal_001
-    content: Become a sworn brother of the Night's Watch
+    content: Prove useful as Lord Commander Mormont's newly assigned steward
     status: active
     basis_event: initial_state
   - id: goal_002
@@ -42,32 +42,42 @@ runtime_state:
       content: Eddard Stark executed a deserter from the Night's Watch at Winterfell
         and explained that the man died bravely but deserted his post.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: The Stark children were each given a direwolf pup; Jon took a small
         white runt for himself.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_003:
       content: King Robert Baratheon and the royal court visited Winterfell, and Jon
         was seated below the salt because he is a bastard.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_004:
       content: He chose to join the Night's Watch and traveled to the Wall with Benjen
         Stark.
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     knowledge_005:
       content: At the Wall he has befriended Samwell Tarly and begun training with
         the other recruits.
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
+    knowledge_006:
+      content: He has been assigned as Lord Commander Mormont's steward
+      status: active
+      visibility: [npc]
+      source_event: ae_010
+    knowledge_007:
+      content: He has taken the Night's Watch vows and does not possess Longclaw
+      status: active
+      visibility: [npc]
+      source_event: ae_027
 environment:
   health:
     jon_snow: 100

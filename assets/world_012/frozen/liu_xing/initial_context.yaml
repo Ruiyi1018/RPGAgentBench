@@ -3,13 +3,13 @@ runtime_state:
   commitments: []
   relationships:
     liu_mei:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     xia_donghai:
       level: neutral
       basis_event: initial_state
     xia_xue:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     xia_yu:
       level: neutral
@@ -38,27 +38,27 @@ runtime_state:
     knowledge_liuxing_001:
       content: 刘梅作为母亲承担较多日常饮食和家务安排。
       status: active
-      visibility: family
+      visibility: [npc]
       source_event: initial_state
     knowledge_liuxing_002:
       content: 夏东海以父亲身份参与子女教育和家庭沟通。
       status: active
-      visibility: family
+      visibility: [npc]
       source_event: initial_state
     knowledge_liuxing_003:
       content: 自己与夏雪、夏雨因重组家庭成为兄弟姐妹。
       status: active
-      visibility: family
+      visibility: [npc]
       source_event: initial_state
     knowledge_liuxing_004:
       content: 家庭晚餐时间会在餐厅共同用餐。
       status: active
-      visibility: family
+      visibility: [npc]
       source_event: initial_state
     knowledge_liuxing_005:
       content: 自己在写作业时容易拖延或分心。
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -66,6 +66,9 @@ environment:
     player: 100
   inventories:
     liu_xing: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     liu_xing: loc_keting

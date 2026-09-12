@@ -3,54 +3,60 @@ runtime_state:
   commitments: []
   relationships:
     rick_sanchez:
-      level: hostile
-      basis_event: initial_state
+      level: distrustful
+      basis_event: profile:social.relationship_rules[1]
     morty_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     beth_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     summer_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     birdperson:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon:canon_policy.shared_snapshot
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: jerry_goal_001
     content: Convince Beth that Rick is a bad influence on the family
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: jerry_goal_002
     content: Protect Morty from Rick's adventures
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: jerry_goal_003
     content: Prove he can handle a family crisis on his own
-    status: latent
-    basis_event: initial_state
+    status: active
+    basis_event: profile:worldview.core_goals[1]
   disclosures: []
   knowledge:
     jerry_know_001:
       content: Rick has returned to the Smith house and is using the garage as a workshop
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[0]
     jerry_know_002:
       content: Beth is conflicted about whether to accept Rick back into the family
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e01_02_seed_demonstration
     jerry_know_003:
-      content: An alternate version of Jerry appears successful and respected on interdimensional
-        cable
+      content: Through alternate-life goggles, Jerry saw possible versions of his
+        life in which he was professionally successful and still wanted Beth
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e08_01_alternate_lives_reconciliation
+    jerry_know_004:
+      content: Jerry is unemployed after his real employer rejected the slogan he
+        brought from the S01E04 simulation and fired him
+      status: active
+      visibility: [npc]
+      source_event: profile:identity.public_background[1]
 environment:
   health:
     jerry_smith: 100

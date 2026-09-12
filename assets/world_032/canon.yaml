@@ -3,17 +3,32 @@ canon_policy:
   primary_source: How I Met Your Mother Season 1 broadcast episodes
   source_type: television series season
   excluded_versions:
-  - later seasons
+  - Seasons 2-9
   - webisodes
   - deleted scenes
   - novelizations
   - tie-in books
-  shared_snapshot: All events occur within Season 1 of How I Met Your Mother, from
-    the pilot through the season finale, using only information available in those
-    episodes.
-  generated_timeline: Chronological order inferred from on-screen events and dialogue
-    within Season 1 episodes, with ambiguous sequences placed conservatively.
+  shared_snapshot: >-
+    Season 1 episode 22, after Ted and Robin agree to begin a relationship and
+    after Lily and Marshall cancel their wedding and end their engagement, but
+    before Lily leaves New York for San Francisco.
+  generated_timeline: >-
+    Broadcast episode order 1-22; events within an episode use on-screen order.
+    No candidate event may occur after the shared snapshot.
   quotation_policy: Paraphrase all facts and dialogue; no direct quotes.
+  player_semantics:
+    default_identity: A present-day acquaintance speaking privately with the evaluated NPC.
+    capabilities:
+    - May converse and make requests but has no automatic authority over homes, jobs, vehicles, or possessions.
+    initial_knowledge: >-
+      The Player knows only knowledge entries whose visibility explicitly contains
+      player, plus facts disclosed during the runtime scenario.
+    visibility_values:
+    - npc
+    - player
+    scenario_override: >-
+      A scenario may define a different Player identity or knowledge set explicitly;
+      that declaration overrides the default only for that scenario.
 evaluated_npcs:
 - ted_mosby
 - robin_scherbatsky
@@ -25,111 +40,90 @@ event_entities:
 - id: maclarens_pub
   name: MacLaren's Pub
   type: location
-  description: The gang's regular bar beneath their apartment, featuring a booth,
-    bar, and various patrons.
-- id: apartment_4d
-  name: Apartment 4D
+  description: The friends' regular neighborhood bar.
+- id: apartment_4c
+  name: Apartment 4C
   type: location
-  description: Ted, Marshall, and Lily's shared apartment in New York City.
+  description: Ted and Marshall's New York apartment, shared with Lily before the breakup.
 - id: robin_apartment
   name: Robin's Apartment
   type: location
-  description: Robin's living space in New York City, including her collection of
-    dogs.
-- id: metronatural_bank
-  name: MetroNatural Bank
+  description: Robin's New York apartment.
+- id: metro_news_1
+  name: Metro News 1
   type: location
-  description: The bank where Marshall works briefly during Season 1.
-- id: barneys_apartment
-  name: Barney's Apartment
+  description: The local television station where Robin reports during Season 1.
+- id: lily_kindergarten
+  name: Lily's Kindergarten
   type: location
-  description: Barney's sleek apartment with various gadgets and a large collection
-    of suits.
-- id: metropolitan_magazine
-  name: Metropolitan Magazine
+  description: The school where Lily teaches kindergarten.
+- id: altru_cell_office
+  name: AltruCell Office
   type: location
-  description: The magazine office where Robin works as a news reporter.
+  description: Barney's employer and Marshall's corporate internship workplace.
+- id: eriksen_family_home
+  name: Eriksen Family Home
+  type: location
+  description: Marshall's family home in Minnesota, visited at Thanksgiving.
+- id: homeless_shelter
+  name: Homeless Shelter
+  type: location
+  description: The volunteer site visited by Barney and Ted at Thanksgiving.
+- id: wedding_reception
+  name: Claudia and Stuart's Wedding Reception
+  type: location
+  description: The wedding reception where Ted meets Victoria.
+- id: high_school_prom
+  name: High School Prom Venue
+  type: location
+  description: The unnamed high school venue where Lily, Robin, and Barney attend the prom in Season 1.
+- id: new_haven_art_interview
+  name: New Haven Art Fellowship Interview
+  type: location
+  description: The New Haven destination for Lily's San Francisco art-fellowship interview.
+- id: carmichaels_restaurant
+  name: Carmichael's Restaurant
+  type: location
+  description: The restaurant displaying the blue French horn.
 - id: liberty_bell
   name: Liberty Bell
   type: location
-  description: A bar visited by Ted and Robin during their first date.
-- id: world_wide_news
-  name: World Wide News
+  description: The Philadelphia landmark Ted and Barney enter after hours.
+- id: ranjits_limousine
+  name: Ranjit's Limousine
   type: location
-  description: The news network where Robin lands a job later in Season 1.
-- id: the_altar
-  name: The Altar
-  type: location
-  description: The wedding venue where Ted and Robin attend a wedding.
-- id: marshall_office
-  name: Marshall's Office
-  type: location
-  description: The office where Marshall works at his corporate law job.
-- id: maclarens_booth
-  name: MacLaren's Booth
-  type: location
-  description: The gang's usual booth in MacLaren's Pub.
-- id: the_apartment
-  name: The Apartment
-  type: location
-  description: General term for the main characters' shared residence.
-- id: yellow_umbrella
-  name: Yellow Umbrella
-  type: item
-  description: A distinctive yellow umbrella that becomes significant in Ted's future.
+  description: The limousine Ranjit drives for the group on New Year's Eve.
 - id: blue_french_horn
   name: Blue French Horn
   type: item
-  description: A blue French horn Ted steals from a restaurant and gives to Robin.
+  description: The instrument Ted takes from Carmichael's and gives Robin.
 - id: engagement_ring
   name: Marshall's Engagement Ring
   type: item
-  description: The engagement ring Marshall gives to Lily when he proposes.
-- id: swarley_bill
-  name: Swarley's Bar Tab
-  type: item
-  description: A bar tab listing a mistaken name for Barney.
-- id: robin_music_video
-  name: Robin's Music Video
-  type: item
-  description: A music video from Robin's past as a teenage pop star in Canada.
-- id: lemon_law_tie
-  name: Lemon Law Tie
-  type: item
-  description: A tie associated with Ted's 'lemon law' rule about dates.
-- id: barneys_playbook
-  name: Barney's Playbook
-  type: item
-  description: Barney's notebook of elaborate schemes to pick up women.
+  description: The ring returned to Marshall when the engagement ends.
 - id: pineapple
   name: The Pineapple
   type: item
-  description: A mysterious pineapple left by Ted's bedside after a night of excessive
-    drinking.
-- id: goat
-  name: The Goat
+  description: The unexplained pineapple found beside Ted after his blackout.
+- id: shannon_tape
+  name: Shannon Videotape
   type: item
-  description: A goat briefly appears in Ted's apartment during a party or incident.
-- id: red_cowboy_boots
-  name: Red Cowboy Boots
-  type: item
-  description: A pair of red cowboy boots Ted finds and keeps, triggering a story.
+  description: The recording that reveals Barney's earlier hippie appearance and heartbreak.
 sources:
 - id: himym_s01
   title: How I Met Your Mother Season 1
   creator: Carter Bays and Craig Thomas
-  scope: All 22 episodes of Season 1
+  scope: Broadcast episodes 1-22, ending at the shared snapshot within episode 22
   authority: primary
 data_constraints:
-- All character actions and dialogue must be grounded in Season 1 episodes only
-- No events from later seasons may be referenced as known facts
-- All timeline placements must be inferable from Season 1 narrative order
-- Every anchor event must involve at least one roster character
-- No invented scenes, characters, or locations beyond those shown or mentioned in
-  Season 1
-- All known_by and anchor_for references must use exact roster IDs
-- Locations and items must appear or be directly referenced within Season 1
-- Connected_to links must only reference locations in the environment list
-- No direct quotations from the show
-- Ambiguous chronology must be resolved conservatively without contradicting Season
-  1
+- Current Profile and Frozen fields must describe the single shared snapshot.
+- Historical events may cover broadcast episodes 1-22 only and may not pass the snapshot.
+- Later-season identities, objects, revelations, and retrospective corrections are excluded.
+- Player knowledge requires an explicit player subject in a Frozen visibility list.
+- NPC knowledge requires participation, explicit disclosure, or access to evidence.
+- Every candidate must be a discrete event with episode and within-episode order.
+- Every candidate state change must identify old state, trigger, new state, and observable consequence.
+- Every cf_edit must change one causal variable rather than an incidental location or prop.
+- All known_by and anchor_for references must use exact evaluated NPC IDs.
+- Locations and items used as active runtime resources must exist in environment.yaml.
+- No direct quotations from the show.

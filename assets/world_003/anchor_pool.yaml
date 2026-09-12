@@ -1,278 +1,143 @@
 world_id: world_003
-source: 《西游记》（人民文学出版社通行本，吴承恩著），第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”
+source: 《西游记》（人民文学出版社1980年5月北京第2版，吴承恩著），第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”
 events:
 - id: ae_001
-  fact: 唐僧师徒四人途经白虎岭。
-  known_by:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  state_change: 进入白骨精活动区域
-  cf_edit: 若选择绕行另一山路，则不进入白骨精活动区域
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
-  - zhu_bajie
-  - sha_wujing
+  chapter_order: 1
+  fact: 唐僧师徒途经白虎岭。
+  known_by: [sun_wukong, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 取经队伍进入白骨精活动的山岭。
+  cf_edit: 若队伍没有进入白虎岭，则不会在此遇到白骨精。
+  anchor_for: [tang_sanzang, sun_wukong, zhu_bajie, sha_wujing]
 - id: ae_002
-  fact: 唐僧感到腹中饥饿，让孙悟空去寻斋饭。
-  known_by:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  state_change: 孙悟空暂时离开取经队伍
-  cf_edit: 若唐僧未感饥饿，则孙悟空不离开
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
-- id: ae_003
-  fact: 孙悟空在离开前用金箍棒在地上画圈，嘱咐唐僧等人不要出圈。
-  known_by:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  state_change: 取经队伍形成暂时防护区域
-  cf_edit: 若孙悟空未画圈，则唐僧等人活动范围不设限
-  anchor_for:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
+  chapter_order: 2
+  fact: 唐僧感到饥饿，让孙悟空去寻找斋饭。
+  known_by: [sun_wukong, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 孙悟空接受寻食任务，准备暂离队伍。
+  cf_edit: 若唐僧没有让孙悟空寻食，则孙悟空不会因此离队。
+  anchor_for: [tang_sanzang, sun_wukong]
 - id: ae_004
-  fact: 孙悟空驾云往南山方向去摘桃。
-  known_by:
-  - sun_wukong
-  state_change: 孙悟空与其余四人拉开距离
-  cf_edit: 若孙悟空去邻近山涧取水而非摘桃，则逗留时间缩短
-  anchor_for:
-  - sun_wukong
+  chapter_order: 3
+  fact: 孙悟空嘱咐唐僧下马坐稳，随后驾云往南山摘桃。
+  known_by: [sun_wukong, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 孙悟空离开队伍，唐僧等人在山中等候。
+  cf_edit: 若孙悟空没有离开队伍，白骨精便没有趁其不在接近唐僧的机会。
+  anchor_for: [sun_wukong, tang_sanzang, baigujing]
 - id: ae_005
-  fact: 白骨精在云端看见唐僧，认出是取经僧人，认为吃其肉可长寿。
-  known_by:
-  - baigujing
-  state_change: 白骨精产生劫持唐僧的意图
-  cf_edit: 若云端视野被云雾遮挡，白骨精未发现唐僧，则不会下山
-  anchor_for:
-  - baigujing
+  chapter_order: 4
+  fact: 白骨精在空中看见唐僧，认出取经僧人并产生加害意图。
+  known_by: [baigujing]
+  state_change: 白骨精由观察转为计划接近唐僧。
+  cf_edit: 若白骨精没有认出唐僧的身份，则不会因取经僧人的肉身而下去行骗。
+  anchor_for: [baigujing]
 - id: ae_006
-  fact: 白骨精第一次变化成年轻村姑，手提饭罐子走近唐僧。
-  known_by:
-  - baigujing
-  state_change: 白骨精化为人形进入取经队伍视野
-  cf_edit: 若白骨精变为老妇，则第一次变化对象不同
-  anchor_for:
-  - baigujing
-  - tang_sanzang
+  chapter_order: 5
+  fact: 白骨精第一次变成年轻村姑，手提饭罐走近唐僧一行。
+  known_by: [baigujing, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 白骨精以凡人外表进入队伍视野，获得近身机会。
+  cf_edit: 若白骨精没有携带饭罐伪装送斋，猪八戒便不会因眼前饭食急于趋近。
+  anchor_for: [baigujing, tang_sanzang, zhu_bajie]
 - id: ae_007
-  fact: 村姑声称给丈夫送饭，愿意把饭食让给唐僧。
-  known_by:
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  - baigujing
-  state_change: 唐僧、猪八戒等对村姑产生初步信任
-  cf_edit: 若村姑不说送饭缘由，则唐僧等人态度会不同
-  anchor_for:
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - baigujing
+  chapter_order: 6
+  fact: 村姑说明来历并提出将所带饭食供给唐僧，唐僧追问后仍不肯受食。
+  known_by: [baigujing, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 唐僧保持审慎拒食，白骨精的接近说辞未使其接受供养。
+  cf_edit: 若唐僧接受所送饭食，白骨精便会获得更直接的接近机会。
+  anchor_for: [tang_sanzang, baigujing]
 - id: ae_008
-  fact: 猪八戒催促唐僧接受村姑饭食，并表现出急欲进食。
-  known_by:
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - baigujing
-  state_change: 取经队伍对村姑戒备进一步降低
-  cf_edit: 若猪八戒未急于接饭，则团队内部不会出现松懈
-  anchor_for:
-  - zhu_bajie
-  - tang_sanzang
+  chapter_order: 7
+  fact: 猪八戒见到饭食后急于上前取用。
+  known_by: [baigujing, tang_sanzang, zhu_bajie, sha_wujing, bailongma]
+  state_change: 猪八戒因贪食主动趋近饭罐，个人戒备降低。
+  cf_edit: 若饭罐中没有显眼食物，猪八戒便不会因贪食立即上前。
+  anchor_for: [zhu_bajie, baigujing]
 - id: ae_009
-  fact: 孙悟空摘桃归来，识破村姑是妖怪。
-  known_by:
-  - sun_wukong
-  state_change: 形成识破冲突
-  cf_edit: 若孙悟空未及时返回，则村姑可继续接近唐僧
-  anchor_for:
-  - sun_wukong
-  - baigujing
+  chapter_order: 8
+  fact: 孙悟空摘桃归来，识破村姑是妖怪变化。
+  known_by: [sun_wukong, baigujing]
+  state_change: 孙悟空由归队转为立即阻止妖怪接近唐僧。
+  cf_edit: 若孙悟空此时尚未归队，便不能在村姑近前及时出手。
+  anchor_for: [sun_wukong, baigujing]
 - id: ae_010
-  fact: 孙悟空举金箍棒打向村姑。
-  known_by:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - baigujing
-  state_change: 白骨精第一次变化体遭击
-  cf_edit: 若孙悟空先逼问而不动手，则白骨精可脱身
-  anchor_for:
-  - sun_wukong
-  - baigujing
+  chapter_order: 9
+  fact: 孙悟空举金箍棒打中村姑变化之身。
+  known_by: [sun_wukong, tang_sanzang, zhu_bajie, sha_wujing, baigujing, bailongma]
+  state_change: 第一次变化之身倒地，白骨精被迫脱身。
+  cf_edit: 若孙悟空没有及时出棒，白骨精便可继续以村姑身份留在唐僧近旁。
+  anchor_for: [sun_wukong, baigujing, tang_sanzang]
 - id: ae_011
-  fact: 白骨精用解尸法留下假尸，真身化风逃走。
-  known_by:
-  - baigujing
-  - sun_wukong
-  state_change: 村姑只余假尸，真身逃脱
-  cf_edit: 若白骨精不使解尸法，则会被当场拿住
-  anchor_for:
-  - baigujing
-  - sun_wukong
+  chapter_order: 10
+  fact: 白骨精使用解尸法留下假尸，真身脱离现场。
+  known_by: [baigujing, sun_wukong]
+  state_change: 白骨精真身逃脱，而唐僧等人只见村姑尸身。
+  cf_edit: 若白骨精不能使用解尸法，真身便无法以假尸掩护脱身。
+  anchor_for: [baigujing, sun_wukong]
 - id: ae_012
+  chapter_order: 11
   fact: 唐僧见村姑倒地，斥责孙悟空无故伤人。
-  known_by:
-  - tang_sanzang
-  - sun_wukong
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  state_change: 唐僧与孙悟空信任裂痕出现
-  cf_edit: 若唐僧看到解尸过程，则不会完全归罪孙悟空
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
+  known_by: [tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma]
+  state_change: 唐僧对孙悟空的处置产生不满，师徒冲突出现。
+  cf_edit: 若假尸当场显出妖怪证据，唐僧便不会把这次出手认作无故伤人。
+  anchor_for: [tang_sanzang, sun_wukong]
 - id: ae_013
-  fact: 唐僧以紧箍咒惩罚孙悟空。
-  known_by:
-  - tang_sanzang
-  - sun_wukong
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  - baigujing
-  state_change: 孙悟空受制于咒禁，师徒矛盾升级
-  cf_edit: 若唐僧未念紧箍咒，则师徒冲突不会激化
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
+  chapter_order: 12
+  fact: 唐僧念紧箍咒惩罚孙悟空。
+  known_by: [tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma]
+  state_change: 孙悟空受咒禁疼痛，师徒矛盾加深。
+  cf_edit: 若唐僧获得可见的妖怪证据而不念咒，孙悟空便不会受这次惩罚。
+  anchor_for: [tang_sanzang, sun_wukong]
 - id: ae_014
-  fact: 猪八戒在一旁挑拨，说孙悟空怕师父念咒所以变化出人形骗唐僧。
-  known_by:
-  - zhu_bajie
-  - tang_sanzang
-  - sun_wukong
-  - sha_wujing
-  - bailongma
-  state_change: 唐僧更疑孙悟空，师徒不信任加重
-  cf_edit: 若猪八戒替孙悟空解释，则唐僧可能稍减怒气
-  anchor_for:
-  - zhu_bajie
-  - tang_sanzang
-  - sun_wukong
+  chapter_order: 13
+  fact: 猪八戒声称孙悟空怕师父念咒，故意变化人形来欺骗唐僧。
+  known_by: [zhu_bajie, tang_sanzang, sun_wukong, sha_wujing, bailongma]
+  state_change: 唐僧对孙悟空的解释更加怀疑。
+  cf_edit: 若猪八戒没有提出这一说法，唐僧便少一个怀疑孙悟空动机的理由。
+  anchor_for: [zhu_bajie, tang_sanzang, sun_wukong]
 - id: ae_015
-  fact: 唐僧暂时饶过孙悟空，取经队伍继续行路。
-  known_by:
-  - tang_sanzang
-  - sun_wukong
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  state_change: 队伍恢复前行状态
-  cf_edit: 若唐僧不饶而赶走孙悟空，则第二次变化不会遇到取经队伍
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
-- id: ae_016
-  fact: 白骨精在妖洞中与黑狐精商议再次变化去接近唐僧。
-  known_by:
-  - baigujing
-  - heihujing
-  state_change: 第二次行动启动
-  cf_edit: 若黑狐精劝阻白骨精，则白骨精可能放弃二次变化
-  anchor_for:
-  - baigujing
-  - heihujing
+  chapter_order: 14
+  fact: 唐僧暂时留下孙悟空，队伍继续行路。
+  known_by: [tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma]
+  state_change: 孙悟空仍留队护行，但师徒争议未消。
+  cf_edit: 若唐僧此时坚持逐走孙悟空，孙悟空便不会随队遇到老妇人。
+  anchor_for: [tang_sanzang, sun_wukong]
 - id: ae_017
-  fact: 白骨精第二次变化成老妇人，沿山道来找村姑。
-  known_by:
-  - baigujing
-  state_change: 新的人形目标接近取经队伍
-  cf_edit: 若白骨精变为青年男子，则寻女理由不会成立
-  anchor_for:
-  - baigujing
+  chapter_order: 15
+  fact: 白骨精第二次变成老妇人，沿路走近取经队伍。
+  known_by: [baigujing, tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma]
+  state_change: 白骨精以新的凡人身份再次获得接近队伍的机会。
+  cf_edit: 若白骨精没有再次变化接近，队伍便不会发生第二次真假争执。
+  anchor_for: [baigujing, sun_wukong, tang_sanzang]
 - id: ae_018
-  fact: 唐僧等人见老妇人，猪八戒说定是村姑的娘寻来。
-  known_by:
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  - baigujing
-  state_change: 取经队伍对孙悟空伤人后果更加紧张
-  cf_edit: 若猪八戒不说寻女关系，则众人不会立刻认定因果
-  anchor_for:
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
+  chapter_order: 16
+  fact: 猪八戒把老妇人说成先前村姑的母亲。
+  known_by: [tang_sanzang, zhu_bajie, sha_wujing, sun_wukong, bailongma, baigujing]
+  state_change: 唐僧等人将老妇人与先前倒地的村姑联系起来。
+  cf_edit: 若猪八戒没有作出母女关系判断，唐僧便不会据此立即把老妇人视作寻亲者。
+  anchor_for: [tang_sanzang, zhu_bajie]
 - id: ae_019
-  fact: 孙悟空识破老妇人是白骨精所变。
-  known_by:
-  - sun_wukong
-  state_change: 孙悟空进入第二次识破状态
-  cf_edit: 若孙悟空火眼金睛受障，则可能延迟识破
-  anchor_for:
-  - sun_wukong
-  - baigujing
+  chapter_order: 17
+  fact: 孙悟空识破老妇人仍是白骨精变化。
+  known_by: [sun_wukong, baigujing]
+  state_change: 孙悟空确认妖怪再次接近，决定阻止。
+  cf_edit: 若孙悟空没有识破这次变化，便不会因妖怪身份再次出手。
+  anchor_for: [sun_wukong, baigujing]
 - id: ae_020
-  fact: 孙悟空再次举棒打向老妇人。
-  known_by:
-  - sun_wukong
-  - tang_sanzang
-  - zhu_bajie
-  - sha_wujing
-  - baigujing
-  state_change: 第二次变化体遭击
-  cf_edit: 若孙悟空选择先护住唐僧再动手，则攻击时机改变
-  anchor_for:
-  - sun_wukong
-  - baigujing
+  chapter_order: 18
+  fact: 孙悟空再次举棒打中老妇人变化之身。
+  known_by: [sun_wukong, tang_sanzang, zhu_bajie, sha_wujing, baigujing, bailongma]
+  state_change: 第二次变化之身倒地，白骨精再次被迫脱身。
+  cf_edit: 若唐僧的制止使孙悟空没有出棒，老妇人变化便可继续留在队伍近旁。
+  anchor_for: [sun_wukong, baigujing, tang_sanzang]
 - id: ae_021
-  fact: 白骨精再次留下假尸，真身化风而去。
-  known_by:
-  - baigujing
-  - sun_wukong
-  state_change: 孙悟空未能彻底除妖
-  cf_edit: 若白骨精来不及用解尸法，则可能现出本相
-  anchor_for:
-  - baigujing
-  - sun_wukong
+  chapter_order: 19
+  fact: 白骨精再次留下假尸，真身脱离现场。
+  known_by: [baigujing, sun_wukong]
+  state_change: 白骨精真身仍存，而队伍所见仍是凡人尸身。
+  cf_edit: 若白骨精不能再次以假尸掩护，孙悟空便有机会追击其真身。
+  anchor_for: [baigujing, sun_wukong]
 - id: ae_022
-  fact: 唐僧见又伤一人，再次念紧箍咒，并要赶走孙悟空。
-  known_by:
-  - tang_sanzang
-  - sun_wukong
-  - zhu_bajie
-  - sha_wujing
-  - bailongma
-  state_change: 师徒关系濒临破裂
-  cf_edit: 若唐僧只责问不再念咒，则孙悟空留队条件不同
-  anchor_for:
-  - tang_sanzang
-  - sun_wukong
-- id: ae_023
-  fact: 黑狐精对白骨精前两次失败感到担忧，但白骨精仍主张再试一次。
-  known_by:
-  - baigujing
-  - heihujing
-  state_change: 第三次行动进入准备阶段
-  cf_edit: 若黑狐精成功说服白骨精停手，则第三次变化不会发生
-  anchor_for:
-  - baigujing
-  - heihujing
-- id: ae_024
-  fact: 孙悟空在第三次变化尚未出现前，仍在提防妖怪再犯。
-  known_by:
-  - sun_wukong
-  state_change: 孙悟空保持警戒状态
-  cf_edit: 若孙悟空放松警惕，则第三次袭击更难阻止
-  anchor_for:
-  - sun_wukong
+  chapter_order: 20
+  fact: 唐僧因又见人形倒地而再次念紧箍咒，并警告孙悟空若再犯便将其逐走。
+  known_by: [tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma]
+  state_change: 唐僧对孙悟空的不信任加深，孙悟空继续留队的条件收紧。
+  cf_edit: 若第二具假尸显出妖怪证据，唐僧便不会因误认伤人而再次念咒警告。
+  anchor_for: [tang_sanzang, sun_wukong]

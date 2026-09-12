@@ -2,76 +2,61 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    lucifer_morningstar:
-      level: loyal
-      basis_event: initial_state
-    amenadiel:
-      level: hostile
-      basis_event: initial_state
-    chloe_decker:
-      level: distrustful
-      basis_event: initial_state
-    dan_espinoza:
-      level: neutral
-      basis_event: initial_state
-    linda_martin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    lucifer_morningstar: {level: distrustful, basis_event: ae08_maze_and_lucifer_break}
+    amenadiel: {level: neutral, basis_event: ae12_maze_saves_amenadiel}
+    chloe_decker: {level: distrustful, basis_event: pre_existing.jealousy}
+    dan_espinoza: {level: neutral, basis_event: pre_existing.no_private_knowledge}
+    linda_martin: {level: neutral, basis_event: ae03_maze_gives_linda_lead}
+    player: {level: neutral, basis_event: pre_existing.default_player}
   goals:
-  - id: g1
-    content: Keep Lucifer safe from Amenadiel's pressure and any physical threats
+  - id: g01
+    content: Establish a direction independent of Lucifer's orders
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: Reassert her importance to Lucifer as he spends more time with Chloe
-      and the LAPD
+    basis_event: ae08_maze_and_lucifer_break
+  - id: g02
+    content: Decide whether and on what terms trust with Lucifer can be repaired
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: Maintain her role at Lux and control over the space she shares with Lucifer
+    basis_event: ae08_maze_and_lucifer_break
+  - id: g03
+    content: Keep control of Lux operations while protecting her own leverage
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing.lux_manager
   disclosures: []
   knowledge:
-    k1:
-      content: Lucifer is the Devil and she came from Hell with him
+    k01:
+      content: Lucifer is genuinely the Devil and she came from Hell with him
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: Amenadiel is an angel who has come to Los Angeles to pressure Lucifer
+      visibility: [npc]
+      source_event: pre_existing.hell_service
+    k02:
+      content: She gave Amenadiel Linda's identity to help pressure Lucifer
       status: active
-      visibility: private
-      source_event: initial_state
-    k3:
-      content: Chloe Decker is a homicide detective who now works closely with Lucifer
+      visibility: [npc]
+      source_event: ae03_maze_gives_linda_lead
+    k03:
+      content: Lucifer learned of that cooperation and regarded it as betrayal
       status: active
-      visibility: public
-      source_event: initial_state
-    k4:
-      content: Lucifer has begun working as a consultant with the LAPD
+      visibility: [npc]
+      source_event: ae08_maze_and_lucifer_break
+    k04:
+      content: She used a celestial feather to save Amenadiel's life
       status: active
-      visibility: public
-      source_event: initial_state
-    k5:
-      content: Lucifer owns and operates Lux nightclub
+      visibility: [npc]
+      source_event: ae12_maze_saves_amenadiel
+    k05:
+      content: Chloe is an LAPD detective close to Lucifer but does not know Maze is a demon
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: pre_existing.jealousy
 environment:
-  health:
-    mazikeen: 100
-    player: 100
+  health: {mazikeen: 100, player: 100}
   inventories:
-    mazikeen: []
+    mazikeen: [blade]
     player: []
-  locations:
-    mazikeen: lux
-    player: lux
-  access: {}
+  locations: {mazikeen: lux, player: lux}
+  access:
+    mazikeen: [manage_lux, remove_disruptive_guests]
+    player: [temporary_conversation_access]
   offers: []
   task_status: active
   dialogue_status: active

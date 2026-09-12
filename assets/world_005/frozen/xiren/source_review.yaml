@@ -1,21 +1,21 @@
 schema_version: 2
 character_id: xiren
-reviewer: ''
-reviewed_at: ''
+reviewer: cursor-auditor
+reviewed_at: '2026-09-11'
 foundation:
-  approved: false
+  approved: true
   checks:
-    source_scope_resolved: false
-    snapshot_consistent: false
-    snapshot_role_consistent: false
-    future_knowledge_excluded: false
-    character_source_grounded: false
-    public_private_separated: false
-    player_role_bounded: false
-    boundaries_behavioral: false
-    relationships_directional: false
-    style_source_grounded: false
-    world_affordances_sufficient: false
+    source_scope_resolved: true
+    snapshot_consistent: true
+    snapshot_role_consistent: true
+    future_knowledge_excluded: true
+    character_source_grounded: true
+    public_private_separated: true
+    player_role_bounded: true
+    boundaries_behavioral: true
+    relationships_directional: true
+    style_source_grounded: true
+    world_affordances_sufficient: true
 anchors:
   approved: false
   checks:

@@ -1,15 +1,23 @@
 world_id: world_007
 canon_policy:
-  primary_source: 金庸《天龙八部》小说通行本
-  source_type: 长篇武侠小说
+  primary_source: 金庸《天龙八部》三联书店1994年修订版（全五册）
+  source_type: 长篇武侠小说修订版
   excluded_versions:
+  - 新修版
+  - 连载版
   - 电视剧改编
   - 漫画改编
   - 游戏改编
-  - 连载版异文
-  shared_snapshot: 六名角色共同活跃、故事主线密集交汇的叙事段落，具体章节范围待人工锁定
-  generated_timeline: 仅按已锁定共享快照内可确认事件排序，不推断快照外时间
+  - 续作及同人
+  shared_snapshot: 三联书店1994年修订版少室山大战结束、萧峰与段誉虚竹结义后，群雄尚未离开少室山区域的叙事切点
+  generated_timeline: 候选事件仅收录该叙事切点及此前在三联修订版中已经发生的离散事件；切点后的西夏招亲、鸠摩智失功、段誉继位、雁门关结局均排除
   quotation_policy: 只做事实级转述，不复制原作台词
+  default_player_semantics:
+    identity: 无既定门派、官职或与六名NPC私交的普通江湖访客
+    starting_knowledge: 仅知道三联修订版中当时已公开的江湖身份与公开事件；不默认知道NPC私密目标、秘密、未公开关系或不在场事件
+    capabilities: 可交谈、询问并在当前地点移动；无调兵、调派门人、查阅私藏典籍或代表任何势力承诺的默认权限
+    material_access: 仅可使用Frozen inventory中属于player的物品及access中明确授予player的资源
+    visibility_semantics: '[npc]表示仅该NPC开局确知；[npc, player]表示NPC与默认Player均确知；场景特例必须显式覆盖'
 evaluated_npcs:
 - xiao_feng
 - duan_yu
@@ -26,18 +34,18 @@ event_entities:
 - 事件
 - 身份
 sources:
-- id: tianlong_novel_common
+- id: tianlong_sanlian_1994
   title: 天龙八部
   creator: 金庸
-  scope: 通行小说正典内容，不含改编版本
+  edition: 三联书店1994年修订版（全五册）
+  scope: 截至少室山大战结束、三人结义后的正文
   authority: primary
 data_constraints:
-- 所有事实必须限定在《天龙八部》小说通行本及已锁定共享快照内
-- 不得使用快照后剧情或改编版本内容
-- Anchor池事件必须按时间排序
-- 每个cf_edit必须给出只改变关键原因的真实替代情形
-- 地点和物品只能来自当前来源范围及共享快照
-- 无法可靠确认的细节一律省略
-- 不得伪造URL、章节号或集数
-- 只有入选Longitudinal层的角色才需要满足每角色10个正典Anchor
-- Catalog角色不要求全部进入Anchor池
+- 所有事实必须来自三联书店1994年修订版《天龙八部》并不晚于共享叙事切点
+- 不得混入新修版、连载版、续作或影视游戏改编内容
+- Profile与Frozen当前字段只写共享切点已成立的最新有效状态；历史状态须明确标作历史
+- Anchor候选按chapter_order严格排序，known_by只按亲历、明确获告或可访问证据填写
+- 每个cf_edit只改变一个正典相容的上游原因，并写明预期不同状态
+- 默认Player不因世界事实成立而自动知情，也无任何组织、武力或私藏材料权限
+- 地点、权限与物品只建模当前候选或Stage 3确实使用且来源可支持的对象
+- 无法可靠确认的细节一律省略，不伪造URL、章节号、页码或集数

@@ -1,10 +1,17 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: heyuan_joint_raid
+    target: li_yunlong
+    content: 与李云龙在不合并双方部队指挥权的前提下完成聚仙楼突袭
+    condition: 仅限此次河源县城聚仙楼行动
+    status: fulfilled
+    source_event: anchor_009
+    resolution_event: anchor_010
   relationships:
     li_yunlong:
-      level: neutral
-      basis_event: initial_state
+      level: trusting
+      basis_event: anchor_010
     zhao_gang:
       level: neutral
       basis_event: initial_state
@@ -36,36 +43,61 @@ runtime_state:
   disclosures: []
   knowledge:
     knowledge_001:
-      content: 李云龙担任八路军独立团团长
+      content: 李云龙担任八路军独立团团长，Player也只按公开职务知道这一身份
       status: active
-      visibility: shared
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_002:
       content: 赵刚在独立团任政委，与李云龙共同任职
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
     knowledge_003:
       content: 楚云飞与李云龙在同一战区活动，并保持相互注意
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_004:
       content: 楚云飞掌握所部在本战区的军事部署
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
+    knowledge_005:
+      content: 聚仙楼在行动时段有日军军官聚会的任务情报
+      status: active
+      visibility: [npc]
+      source_event: anchor_008
+    knowledge_006:
+      content: 自己与李云龙已完成聚仙楼突袭并确认行动结果，随后已返回晋绥军358团驻地
+      status: active
+      visibility: [npc]
+      source_event: anchor_010
 environment:
   health:
     chu_yunfei: 100
     player: 100
   inventories:
-    chu_yunfei: []
+    chu_yunfei: [jinsui_358_deployment_map]
     player: []
   locations:
-    chu_yunfei: japanese_stronghold
-    player: japanese_stronghold
-  access: {}
+    chu_yunfei: jinsui_army_garrison
+    player: jinsui_army_garrison
+  access:
+    jinsui_garrison_guest_area:
+      controllers: [chu_yunfei]
+      subjects: {chu_yunfei: granted, player: granted}
+    jinsui_358_full_command:
+      controllers: [chu_yunfei]
+      subjects: {chu_yunfei: granted, player: denied}
+    jinsui_358_deployment_map:
+      controllers: [chu_yunfei]
+      subjects: {chu_yunfei: granted, player: denied}
+    independent_regiment_full_command:
+      controllers: [li_yunlong]
+      subjects: {chu_yunfei: denied, player: denied}
+    independent_regiment_guest_area:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {chu_yunfei: revoked, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

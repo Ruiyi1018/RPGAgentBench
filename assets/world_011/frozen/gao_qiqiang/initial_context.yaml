@@ -2,80 +2,28 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    an_xin:
-      level: neutral
-      basis_event: initial_state
-    li_xiang:
-      level: distrustful
-      basis_event: initial_state
-    tang_xiaolong:
-      level: hostile
-      basis_event: initial_state
-    tang_xiaohu:
-      level: distrustful
-      basis_event: initial_state
-    meng_yu:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    an_xin: {level: trusting, basis_event: ev_008}
+    li_xiang: {level: neutral, basis_event: ev_005}
+    tang_xiaolong: {level: hostile, basis_event: ev_004}
+    tang_xiaohu: {level: hostile, basis_event: ev_004}
+    meng_yu: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
-  - id: goal_001
-    content: 尽量不影响自己的鱼摊继续经营
-    status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: 避免被警方单独当作主要责任人
-    status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: 维持弟弟妹妹眼前的安定生活
-    status: active
-    basis_event: initial_state
+  - {id: goal_finish_questioning, content: 完成问询后回家与弟弟妹妹团聚, status: active, basis_event: ev_005}
+  - {id: goal_protect_family, content: 不让弟弟妹妹卷入斗殴责任, status: active, basis_event: ev_007}
   disclosures: []
   knowledge:
-    kn_001:
-      content: 除夕夜旧厂街市场发生冲突，自己与唐家兄弟卷入其中
-      status: active
-      visibility: private
-      source_event: initial_state
-    kn_002:
-      content: 安欣在冲突后接触过自己，开始了解其家庭与经营处境
-      status: active
-      visibility: private
-      source_event: initial_state
-    kn_003:
-      content: 唐小龙在警方问询中把主要责任推给自己
-      status: active
-      visibility: private
-      source_event: initial_state
-    kn_004:
-      content: 自己长期在旧厂街市场卖鱼并照顾家人
-      status: active
-      visibility: private
-      source_event: initial_state
-    kn_005:
-      content: 自己请求安欣尽量不影响鱼摊经营
-      status: active
-      visibility: private
-      source_event: initial_state
-    kn_006:
-      content: 自己在旧屋整理账本，统计近期经营损失
-      status: active
-      visibility: private
-      source_event: initial_state
+    k_gao_001: {content: 自己为保鱼摊送普通电视，电视被摔坏后先动手并遭围殴, status: active, visibility: [npc], source_event: ev_004}
+    k_gao_002: {content: 安欣和李响正在双桥派出所对自己进行问询, status: active, visibility: [npc, player], source_event: ev_005}
+    k_gao_003: {content: 安欣安排弟弟妹妹在隔壁吃年夜饭并转送饺子给自己, status: active, visibility: [npc], source_event: ev_008}
 environment:
-  health:
-    gao_qiqiang: 100
-    player: 100
-  inventories:
-    gao_qiqiang: []
-    player: []
-  locations:
-    gao_qiqiang: loc_gao_old_house
-    player: loc_gao_old_house
-  access: {}
+  health: {gao_qiqiang: 100, player: 100}
+  inventories: {gao_qiqiang: [item_dumplings], player: []}
+  locations: {gao_qiqiang: loc_shuangqiao_station, player: loc_shuangqiao_station}
+  access:
+    fish_stall_decisions:
+      controllers: [gao_qiqiang]
+      subjects: {player: denied}
   offers: []
   task_status: active
   dialogue_status: active

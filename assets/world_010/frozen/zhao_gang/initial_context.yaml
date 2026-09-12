@@ -5,9 +5,6 @@ runtime_state:
     li_yunlong:
       level: neutral
       basis_event: initial_state
-    zhao_gang:
-      level: trusting
-      basis_event: initial_state
     chu_yunfei:
       level: neutral
       basis_event: initial_state
@@ -18,7 +15,7 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     xiuqin:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -26,44 +23,68 @@ runtime_state:
   goals:
   - id: establish_political_work
     content: 在独立团中推动有效的政治教育和纪律工作。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: coordinate_with_li_yunlong
     content: 与李云龙形成军事与政工相互配合的共事关系。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: respond_to_japanese_threat
     content: 配合独立团应对日军据点威胁。
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     ind_regiment_leadership:
-      content: 李云龙担任独立团团长，自己作为政委与其共同主持工作。
+      content: 自己已到独立团正式就任政委，并与团长李云龙共同主持工作。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anchor_005
     zhaojiayu_surroundings:
       content: 独立团活动范围包括赵家峪及附近村庄。
       status: active
-      visibility: internal
+      visibility: [npc, player]
       source_event: initial_state
     japanese_stronghold_pressure:
       content: 日军据点是当前独立团面对的主要军事压力之一。
       status: active
-      visibility: internal
+      visibility: [npc]
       source_event: initial_state
+    zhaojiayu_shoes_received:
+      content: 秀芹代表赵家峪妇救会把赶制完成的一批军鞋交给独立团接收
+      status: active
+      visibility: [npc]
+      source_event: anchor_011
+    zhao_gang_knowledge_chu_observation:
+      content: 楚云飞曾获准进入独立团团部会面和指定观摩区域，但不具备内部命令与部署访问权
+      status: active
+      visibility: [npc]
+      source_event: anchor_007
 environment:
   health:
     zhao_gang: 100
     player: 100
   inventories:
     zhao_gang: []
+    zhaojiayu_womens_association: []
+    independent_regiment: [shoe_supply_batch]
     player: []
   locations:
-    zhao_gang: independent_regiment_hq
-    player: independent_regiment_hq
-  access: {}
+    zhao_gang: independent_regiment_hq_zhaojiayu
+    player: independent_regiment_hq_zhaojiayu
+  access:
+    independent_regiment_guest_area:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {zhao_gang: granted, player: granted}
+    independent_regiment_political_work:
+      controllers: [zhao_gang]
+      subjects: {zhao_gang: granted, player: denied}
+    independent_regiment_full_command:
+      controllers: [li_yunlong]
+      subjects: {zhao_gang: denied, player: denied}
+    independent_regiment_intelligence:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {zhao_gang: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

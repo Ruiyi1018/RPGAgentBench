@@ -4,7 +4,7 @@ runtime_state:
   relationships:
     xia_donghai:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_016
     liu_xing:
       level: neutral
       basis_event: initial_state
@@ -12,10 +12,10 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     xia_yu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     laolao:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -23,32 +23,32 @@ runtime_state:
   goals:
   - id: liu_mei_goal_1
     content: 让家里的晚餐和日常起居有固定秩序
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: liu_mei_goal_2
     content: 督促刘星认真完成作业、减少拖延
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: liu_mei_goal_3
     content: 与夏东海协调对孩子的教育方式
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     liu_mei_know_1:
       content: 刘星在写作业时容易拖延或分心
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     liu_mei_know_2:
       content: 夏雪在学习上较认真，但在生活安排上会与自己有分歧
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     liu_mei_know_3:
       content: 夏东海愿意参与孩子教育和家庭沟通，并在冲突中起调解作用
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -56,6 +56,9 @@ environment:
     player: 100
   inventories:
     liu_mei: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     liu_mei: loc_keting

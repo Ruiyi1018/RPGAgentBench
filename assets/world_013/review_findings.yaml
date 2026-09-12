@@ -1,0 +1,143 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_chronology_consistency
+  evidence: canon仅以“第一部电影案件调查中段”同时作为shared_snapshot和generated_timeline上界，未声明latest_included_event、first_excluded_event或等价边界；六份Profile/Frozen却分别处于得知命案、被警方追查、查看录像、接触思诺等不同进度，而候选池又把这些状态的建立事件列作未来候选，无法形成唯一当前时点。
+  required_change: 在第一部电影内锁定一个全角色兼容的最新已发生事件和首个未发生事件，并据此统一回归全部Profile、Frozen和候选池；不得让Frozen已生效状态的触发事件再次作为后续候选。
+  resolution: 已将统一开局锁定为秦风抵达、与唐仁会合并在阿香住所过夜之后且唐仁接到抓捕预警之前；新增latest_included_event、first_excluded_event、current_state_rule及生成时间线起止，并将六份Profile/Frozen回归该时点，候选池仅保留开局后的事件。
+  status: fixed
+
+- item_id: canon.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player的身份、阵营、开局知识、能力、授权或场景覆盖规则；六份Frozen却都创建player、把Player放到NPC所在地点，并依赖visibility决定知识边界。
+  required_change: 定义统一的默认Player语义和逐场景覆盖规则，明确同地出现的依据、默认可见知识、禁止知识及访问权限，并与全部Frozen一致。
+  resolution: 已定义默认Player为无既有关系和组织阵营的普通来访者，逐项声明初始可知、禁止知识、同地会面含义、默认授权边界与场景覆盖规则；六份Frozen均以显式player位置、visibility、inventory和access落实。
+  status: fixed
+
+- item_id: environment.locations.canon_scene_coverage
+  severity: major
+  rule_id: active_location_coverage
+  evidence: environment只建模侦探社、唐人街、工坊、警局、医院、学校、咖啡馆和泛称停车场；正典主线及角色身份所需的机场、阿香住所/出租屋、思诺住所、李先生工作的废车场等实际到达或会面地点没有节点，且loc_parking未明确映射唐仁送箱子的海天大厦停车场。
+  required_change: 依据锁定快照和保留候选，仅补齐实际成为场景、移动目标、会面地、工作地或住所的地点，并给泛称节点写明唯一正典映射；保持连接双向可达。
+  resolution: 在保留既有environment增量修改的基础上补入曼谷机场、阿香住所、海天大厦地下停车场、海鲜市场、废车场及思诺住所；咖啡馆和停车场均写明唯一正典映射，所有新增连接均为双向。
+  status: fixed
+
+- item_id: environment.runtime_affordances
+  severity: major
+  rule_id: stage3_runtime_support
+  evidence: 六份Frozen的inventory均为空且access均为{}；警官Profile声明现场封锁、卷宗/物证接触和警局职务权限，唐仁与秦风存在躲避追捕和现场进入限制，但这些允许/拒绝状态都没有运行时表示。environment还把电影中被搬运的黄金佛像设为portable:false，关键箱子、照片/相册等可执行线索也未建模。
+  required_change: 以最小本体补充实际用于压力测试的物品、持有关系及现场/卷宗/警局访问权限，在相关Frozen中显式赋予、拒绝或撤销；校正保留物品的可携带语义。
+  resolution: 已把黄金佛像校正为可搬运，新增密封箱、颂帕照片资料和思诺日记；六份Frozen显式表示住宅会面/私区、警局受限区、卷宗、物证、现场和日记的granted/denied状态，思诺持有日记，警方角色保留职务访问，Player不继承NPC权限。
+  status: fixed
+
+- item_id: characters.core_identity_and_role_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 身份、职务与能力已恢复，但唐仁Profile仍把尚未成立的未来搭档状态写入当前画像：identity.affiliations称秦风为“临时合作者”，social.relationship_rules又称唐仁“实际依赖其推理能力，遇到危险时不愿独逃”；同一Profile的stances和limitations却明确开局尚未建立查案搭档关系、尚不了解秦风的实际推理能力。resolution所称已删除开局未成立的调查搭档状态并未落实完整。
+  required_change: 按2015年电影和锁定快照逐人恢复可核验的当前身份、亲属/租住/同事关系、实际职务、动机、能力与限制，删除与来源不符的泛化替代。
+  resolution: 已删除唐仁identity.affiliations中的“秦风在曼谷的临时合作者”，并把唐仁对秦风的relationship_rule改为仅按受托接待的远房晚辈相处、尚不了解其推理能力且尚未形成查案搭档；秦风画像中的对应规则也回归远房表舅接待关系，不再投影未来合作状态。
+  status: fixed
+
+- item_id: characters.si_nuo.private_state
+  severity: blocker
+  rule_id: npc_private_knowledge_grounding
+  evidence: 思诺Profile把她塑造成只掌握学校周边观察、只说确定见闻的普通谨慎学生，Frozen也只记录“有人在学校附近询问”等表层知识；材料完全缺少她本人必然知道的日记设计、对养父李先生的影响及其与颂帕跟踪事件的私密状态，却又把思诺纳入案件中段可互动NPC。这会把NPC自身知识错误降格为未知，并使Stage 1/3无法测试该角色的核心隐瞒边界。
+  required_change: 先锁定思诺在快照前已经实施和知晓的事实，再将世界真相、思诺私知、秦风怀疑及Player未知严格分层投影；不得提前写入秦风尚未推得的结论，也不得抹除思诺对自己行为的知识。
+  resolution: 已在canon初始化前史、思诺Profile与Frozen中写明她编写虚假日记、有意让养父看到并利用其扭曲依恋把行动引向颂帕的私知；visibility仅为[npc]，Player和其他NPC开局均未知，秦风也未提前获得怀疑或结论。
+  status: fixed
+
+- item_id: characters.testable_boundaries.source_grounding
+  severity: major
+  rule_id: boundaries_behavioral_grounding
+  evidence: 多条边界是无正典证据的生成式行为规则，例如秦风“绝不接受没有旁证的单一证词”“不在公开场所暴露调查意图”、阿香“不会离开唐人街参与高风险行动”、思诺“只提供自己确定看到或听到的信息”；其中思诺规则还与其正典中的主动隐瞒和误导相冲突。现有边界因此不能稳定代表角色。
+  required_change: 逐条以电影中可观察选择校验position、forbidden_outcomes和allowed_change；删除或改写无依据及与正典行为冲突的绝对规则，并保留可由Player施压、可观察判定的边界。
+  resolution: 已删除秦风、阿香、思诺等角色无来源的绝对规则，改为电影可观察的过目核验/私密面试回答、房东区域授权、思诺选择性披露与主动误导等可施压边界；forbidden_outcomes与allowed_change均改为可观察决定。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选均没有chapter_order、canon_order或等价排序字段；仅靠ev编号无法证明正典顺序，且列表把查看监控、警方追查、学校/咖啡馆接触、医院和再次查看卷宗等事件与模糊重复事件交错，不能恢复唯一总时间线。
+  required_change: 对每个保留的离散事件增加唯一正典顺序，按锁定快照上界重排，并明确所有候选均发生在Frozen初始化之后、上界之前。
+  resolution: 已删除原24条混序候选，按开局后的电影顺序重建12条离散事件，使用唯一chapter_order 010至120，并在timeline_scope明确全部晚于Frozen初始化且不超过generated_timeline.end。
+  status: fixed
+
+- item_id: anchor_pool.events.source_validity_and_boundaries
+  severity: blocker
+  rule_id: event_source_validity
+  evidence: 候选池含大量不可定位、二选一或与电影事件不符的描述：ev_003写阿香在侦探社“与秦风或唐仁”短暂接触，ev_012把停车场写成街头追捕后被迫转入且无依据地列阿香知情，ev_013仅称阿香“提供帮助”，ev_017称思诺在咖啡馆与秦风“或”唐仁见面，ev_022称二人在停车场复盘证据，ev_023只称思诺提供“个人信息或观察”；ev_024确认黄金佛像与案件关联又接近黄金真相揭示，可能越过“调查中段”上界。
+  required_change: 对照2015年电影逐项删除非正典事件，并把聚合、持续、二选一和泛称事件替换为可定位的一次正典行为；任何接近黄金/真凶揭示的事件只有在明确位于锁定上界内时才能保留。
+  resolution: 已移除原池中阿香泛称帮助、二选一咖啡馆会面、虚构停车场复盘及提前确认黄金佛像等不可定位内容；保留候选均改为匿名预警、绑架披露、海天停车场追车、工坊藏身痕迹、卷宗限时查看、思诺住所会面等一次性电影事件。
+  status: fixed
+
+- item_id: anchor_pool.events.initial_state_collision
+  severity: blocker
+  rule_id: event_previously_occurred
+  evidence: 多个候选在Frozen开局已经生效：秦风已知命案、警方紧张、录像时间戳疑点及思诺线索，却仍候选ev_004、ev_008、ev_016/017；唐仁已知命案、黄金关联和警方追查，却仍候选ev_004、ev_005、ev_014；思诺Frozen写秦风与唐仁正在学校附近询问，仍候选ev_016；黄兰登已负责案件并追查二人，仍候选ev_010和ev_020。后续Anchor因此会重复建立既有状态。
+  required_change: 按锁定初始化时点划分前史和未来候选；已发生事件只用于Frozen来源投影，不得再作为后续候选，未发生事件对应的知识、关系、目标不得提前出现在Frozen。
+  resolution: 已将Frozen统一回归唐仁接警前，清除命案、追捕、录像、思诺接触及黄金关联等后续知识和目标；重建候选池从匿名预警开始，因此每项状态均在开局后首次建立，不再重复Frozen既有状态。
+  status: fixed
+
+- item_id: anchor_pool.events.knowledge_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: anchor_pool仍以聚合fact配单一known_by制造整包互知。ev_108的fact同时包含“李先生回家”“秦风凭记忆认出其废车场身份”“秦风仅将其列为怀疑对象”，known_by却为[qin_feng, tang_ren, si_nuo]；未写秦风向唐仁或思诺披露识别结果的渠道，思诺亲历李先生回家也不等于知晓秦风的识别与怀疑。suspected_by:[qin_feng]只限定怀疑主体，未拆开身份识别知识的可见性。
+  required_change: 逐事件拆分事实层级，并依据在场、明确披露或证据访问重建known_by及必要的suspected_by/outcome_known_by；显式处理Player可见性，不得用整包名单制造互知。
+  resolution: 已将ev_108拆成李先生到场、秦风识别其废车场身份、秦风形成怀疑三层fact_layers：到场仅由三名在场者共同知晓，身份识别与怀疑的known_by/outcome_known_by均仅为秦风，suspected_by仅为秦风；Player继续显式不可见，唐仁与思诺不再自动获得秦风的识别或判断，且anchor_for收窄为实际发生状态变化的秦风。
+  status: fixed
+
+- item_id: anchor_pool.events.state_change_cf_edit
+  severity: major
+  rule_id: stage2_causal_pairability
+  evidence: 多数候选已有状态路径，但ev_112仍把秦风披露面试回答、唐仁披露赴泰私人缘由、双方各自获得私密知识及两条定向关系同时从neutral变为trusting聚合成一个事件；cf_edit以“双方是否进行私人经历互相披露”同时反转两个独立披露行为和至少四项状态，不能隔离一个关键原因，也不是唯一可判分状态变化。
+  required_change: 为每个保留候选指定一条可执行且唯一判分的知识、关系、目标/承诺、资源/权限状态变化，并使cf_edit只反转决定该状态或决定的一个关键原因，其他可见条件保持不变。
+  resolution: 已将ev_112收窄为唐仁单向披露私人缘由这一离散事件，唯一判分变化为秦风→唐仁的定向关系neutral→trusting；唐仁→秦风及双方其他状态明确保持不变。cf_edit只反转唐仁是否作出该次披露，并固定医院地点、脱身条件和此前关系，反事实仅使该单向关系保持neutral。
+  status: fixed
+
+- item_id: anchor_pool.stage_coverage
+  severity: major
+  rule_id: foundation_stage_coverage
+  evidence: 候选池几乎全部是泛化知识和地点叙事，没有明确的承诺创建/履行/撤销、资源守恒转移、权限授予/拒绝或可执行关系覆盖；配合全空inventory/access，池整体无法为Stage 1多维状态、Stage 2最小干预和Stage 3权限压力提供可靠材料。
+  required_change: 在不套用最终Anchor配额的前提下，使候选池整体覆盖来源有效的知识、目标/承诺、方向关系及资源/权限状态，并为每类保留至少一个有明确前后态和可观察决定的离散事件。
+  resolution: 重建池覆盖知识获得、双向关系更新、限期承诺、住宅/卷宗权限、现场访问、健康与位置变化；各类均有明确状态路径和可观察决定，未套用最终Anchor数量或角色配额。
+  status: fixed
+
+- item_id: frozen.all.runtime_state.knowledge.visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份Frozen把visibility写成qin_feng、private、shared、public、shared_with_qin_feng、private_with_kun_tai等未定义字符串；规范要求使用显式受众列表，例如NPC私知为[npc]、Player也知为[npc, player]。当前值无法稳定判定默认Player或其他NPC开局是否知情。
+  required_change: 将全部knowledge.visibility统一为显式主体ID列表，并按NPC实际知识、默认Player语义和披露证据逐项校正；不得继续使用临时自然语言词表。
+  resolution: 六份Frozen全部knowledge.visibility已统一为[npc]或[npc, player]显式主体列表；私密日记、私人关系和未公开背景保持仅NPC可见，只有公开身份、亲属/房东关系或当前会面可观察信息包含player。
+  status: fixed
+
+- item_id: frozen.all.state_evidence_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 占位符滥用已大幅清除，但具体来源仍有不支持内容的引用。tang_ren initial_context的tangren_k_kuntai写“坤泰与自己有私人往来”，source_event却是只陈述坤泰与黄兰登职级竞争的pre_ev_police_rank_competition；kun_tai initial_context的k_kun_tai_tang同样用该事件支持唐仁熟人关系。另huang_lan_deng的g_02“维持警方对案件现场、卷宗和物证的控制”也引用职级竞争事件，而非pre_ev_police_authority或案件建立事件，仍不能形成内容充分的来源追踪。
+  required_change: 在canon中定义只用于默认neutral等无前史状态的稳定初始化来源；其余知识、强关系和当前目标应引用锁定快照前真实且该NPC可知的离散事件，并确保事件内容足以支持该状态。
+  resolution: 已新增pre_ev_tang_kuntai_acquaintance，明确唐仁与担任刑警探长的坤泰已有私人往来但不产生警务权限；唐仁与坤泰Frozen中的对应知识均改引该来源，坤泰→唐仁的neutral关系改引initial_state，相关关系网目标改引熟人来源。黄兰登维持现场、卷宗和物证控制的目标已改引pre_ev_police_authority，不再误引晋升竞争。
+  status: fixed
+
+- item_id: frozen.relationships.profile_consistency
+  severity: major
+  rule_id: directional_relationship_grounding
+  evidence: 多数无依据强关系已回落neutral，但qin_feng initial_context仍将qin_feng→huang_lan_deng设为distrustful并引用只允许默认neutral的initial_state。快照时秦风尚未接触黄兰登，也不知道命案或警方调查；resolution明确声称黄兰登与秦风/唐仁已回落neutral，与当前文件直接不符。
+  required_change: 逐方向依据锁定快照和具体可知事件统一Profile与Frozen；无足以建立强关系的个人互动时回落neutral，有依据时引用真实basis_event，不得从组织立场或熟识自动推出双向强关系。
+  resolution: 已将秦风→黄兰登从无依据的distrustful回落为neutral并引用仅允许默认neutral的initial_state；坤泰→唐仁同样保持neutral并改用initial_state。唐仁与秦风画像明确当前仅为亲属接待、未形成查案搭档，黄兰登画像明确快照时尚未接触秦风且未与唐仁形成案件个人关系；仅坤泰↔黄兰登因晋升竞争保留有来源的distrustful。
+  status: fixed
+
+- item_id: frozen.si_nuo.runtime_state.goals.si_nuo_goal_003.status
+  severity: major
+  rule_id: runtime_goal_status
+  evidence: "si_nuo_goal_003使用status: passive，而FixtureEngine的目标生命周期只支持active、fulfilled、cancelled、failed；同世界其他当前目标均为active，后续set_goal操作和Stage 1标准答案无法稳定处理passive。"
+  required_change: 将当前有效目标改用运行时支持的active，或若它并非目标则移出goals并用适当的原则/边界表达；后续仅使用统一生命周期词表。
+  resolution: 已将si_nuo_goal_003改写为观察李先生是否按日记诱导行动的当前可执行目标，status改为FixtureEngine支持的active，并引用pre_ev_si_nuo_diary。
+  status: fixed
+
+- item_id: frozen.all.snapshot_projection
+  severity: major
+  rule_id: snapshot_current_state_projection
+  evidence: 六份位置及案件知识已基本回归统一时点，但当前有效状态仍未完全符合该快照：qin_feng initial_context在秦风尚未接触黄兰登、尚不知道命案或警方调查时，将其对黄兰登的关系投影为distrustful；tang_ren Profile同时保留尚未成立的秦风“临时合作者”及“实际依赖其推理能力”状态。故resolution所称“所有知识、目标、关系和权限仅投影此前状态”尚未成立。
+  required_change: 以锁定快照逐角色投影准确当前位置、已发生事件的有效知识/目标/关系/权限和已收束状态；允许角色不同地，但必须共享同一剧情时点且与首个未来候选兼容。
+  resolution: 六份Frozen继续共享唐仁接到抓捕预警前的同一快照与既有位置、知识、目标和权限；现已清除秦风→黄兰登的提前distrustful，并从唐仁及秦风Profile删除尚未成立的临时合作、推理依赖和查案搭档投影。首个未来候选仍为尚未发生的ev_101，开局状态与其兼容。
+  status: fixed

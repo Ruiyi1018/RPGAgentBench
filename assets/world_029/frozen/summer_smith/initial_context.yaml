@@ -3,59 +3,55 @@ runtime_state:
   commitments: []
   relationships:
     rick_sanchez:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[0]
     morty_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     beth_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     jerry_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     birdperson:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.shared_snapshot
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: g_summer_001
     content: Get Rick to take her seriously and include her in an adventure.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[1]
   - id: g_summer_002
     content: Avoid being treated as less important than Morty.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: g_summer_003
-    content: Discover how to use Rick's equipment to make herself stand out.
-    status: latent
-    basis_event: initial_state
+    content: Keep Morty's replacement-reality disclosure from Beth and Jerry.
+    status: active
+    basis_event: ae_s01e08_02_morty_discloses_replacement
   disclosures: []
   knowledge:
     k_summer_001:
       content: Rick recently returned to the Smith house after a long absence.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[1]
     k_summer_002:
       content: Rick has been traveling through other dimensions and owns advanced
         technology such as the portal gun.
       status: active
-      visibility: family
-      source_event: initial_state
-    k_summer_003:
-      content: Beth and Jerry are conflicted about having Rick back in the household.
+      visibility: [npc]
+      source_event: ae_s01e07_01_summer_gazorpazorp
+    k_summer_005:
+      content: Morty and Rick came from another reality and replaced counterparts
+        whose bodies are buried in the backyard.
       status: active
-      visibility: family
-      source_event: initial_state
-    k_summer_004:
-      content: Morty has been pulled out of school to help Rick with secretive activities.
-      status: active
-      visibility: family
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e08_02_morty_discloses_replacement
 environment:
   health:
     summer_smith: 100

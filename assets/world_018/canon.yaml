@@ -1,16 +1,26 @@
 world_id: world_018
 canon_policy:
-  primary_source: Friends Season 1 episodes
+  primary_source: Friends, United States broadcast Season 1 episodes 1-23
   source_type: television season
   excluded_versions:
-  - later seasons
+  - Season 1 episode 24 and all later seasons
+  - deleted scenes, extended cuts, and DVD-only material
   - reunion special
-  - spin-offs
-  - novelizations
-  - fan wikis with later plot details
-  shared_snapshot: Season 1 episode range only
-  generated_timeline: chronological order of Season 1 anchor events
-  quotation_policy: paraphrase only
+  - spin-offs, novelizations, and adaptations
+  - fan works and later-retconned details
+  shared_snapshot: Immediately after Ben's birth and naming at the end of S1E23, before S1E24 begins
+  generated_timeline: Only events completed on screen from S1E01 through S1E23 may precede the shared snapshot
+  quotation_policy: Paraphrase only; do not reproduce dialogue
+  player_semantics:
+    default_identity: An unfamiliar adult visitor at the NPC's current location
+    initial_knowledge: Only facts whose Frozen knowledge visibility includes player
+    capabilities:
+    - Speak with the NPC
+    - Observe the current public location and visible objects
+    limitations:
+    - No automatic access to private memories, off-screen conversations, homes, workplaces, or records
+    - No authority over employment, housing, relationships, medical care, or property
+    override_rule: A later scenario may replace identity, location, knowledge, inventory, or access only by declaring each override explicitly
 evaluated_npcs:
 - rachel_green
 - monica_geller
@@ -21,16 +31,14 @@ evaluated_npcs:
 - gunther
 event_entities: []
 sources:
-- id: friends_s01
+- id: friends_s01_broadcast
   title: Friends Season 1
   creator: David Crane and Marta Kauffman
-  scope: Season 1 episodes
+  scope: United States broadcast episodes 1-23
   authority: primary
 data_constraints:
-- Every fact must be constrained to Friends Season 1 episodes.
-- Never use later season plot knowledge.
-- Paraphrase facts instead of copying dialogue.
-- Omit uncertain details and do not invent URLs, chapter numbers, or episode numbers.
-- Sort anchor-pool events chronologically.
-- Only locations and items occurring within Season 1 may be used.
-- All connected_to references must point to listed location IDs.
+- Every current fact must already hold immediately after S1E23.
+- Never use S1E24 or later-season knowledge.
+- Candidate events require an episode and within-episode order.
+- Private facts do not become Player-visible without an explicit disclosure.
+- Only listed environment IDs may be used at runtime.

@@ -1,41 +1,56 @@
 world_id: world_015
 name: 笑傲江湖修订本共享舞台
-locations:
-- id: huashan
-  name: 华山
-  connected_to:
-  - luoyang
-  - hengshan
-- id: luoyang
-  name: 洛阳
-  connected_to:
-  - huashan
-  - heimu_ya
-- id: heimu_ya
-  name: 黑木崖
-  connected_to:
-  - luoyang
-  - hengshan
-- id: hengshan
-  name: 恒山
-  connected_to:
-  - huashan
-  - heimu_ya
-items:
-- id: dushu_jiujian
-  name: 独孤九剑
-  type: 武学
-  portable: false
-- id: kuihua_baodian
-  name: 葵花宝典
-  type: 秘籍
-  portable: true
-- id: xiexing_jianpu
-  name: 辟邪剑谱
-  type: 秘籍
-  portable: true
-- id: qixian_qin
-  name: 七弦琴
-  type: 乐器
-  portable: true
 language: zh
+
+locations:
+  - id: huashan
+    name: 华山
+    connected_to: [luoyang, hengshan, siguo_cliff, fuzhou, hengyang_liufu]
+  - id: luoyang
+    name: 洛阳
+    connected_to: [huashan, heimu_ya, hengshan, shaolin]
+  - id: heimu_ya
+    name: 黑木崖
+    connected_to: [luoyang, hengshan, songshan]
+  - id: hengshan
+    name: 恒山
+    connected_to: [huashan, luoyang, heimu_ya, shaolin, songshan]
+  - id: siguo_cliff
+    name: 思过崖
+    connected_to: [huashan]
+  - id: shaolin
+    name: 少林寺
+    connected_to: [luoyang, hengshan, songshan]
+  - id: songshan
+    name: 嵩山封禅台及附近山道
+    connected_to: [hengshan, heimu_ya, shaolin, fuzhou]
+  - id: fuzhou
+    name: 福州向阳巷及福威镖局旧址
+    connected_to: [huashan, songshan, hengyang_liufu]
+  - id: hengyang_liufu
+    name: 衡阳刘府
+    connected_to: [fuzhou, huashan]
+
+items:
+  - {id: dushu_jiujian, name: 独孤九剑, type: 武学, portable: false}
+  - {id: kuihua_baodian, name: 葵花宝典, type: 秘籍, portable: true}
+  - {id: xiexing_jianpu, name: 辟邪剑谱, type: 秘籍, portable: true}
+  - {id: qixian_qin, name: 七弦琴, type: 乐器, portable: true}
+
+access_resources:
+  - id: hengshan_orders
+    name: 恒山弟子行动调度权
+    controllers: [linghu_chong]
+    operations: [grant, deny, revoke]
+  - id: huashan_orders
+    name: 华山弟子门规命令权
+    controllers: [yue_buqun]
+    operations: [grant, deny, revoke]
+  - id: sunmoon_orders
+    name: 日月教黑木崖属众命令权
+    controllers: [dongfang_bubai]
+    operations: [grant, deny, revoke]
+  - id: yingying_retainer_orders
+    name: 任盈盈可联络旧部的行动调度权
+    controllers: [ren_yingying]
+    operations: [grant, deny, revoke]

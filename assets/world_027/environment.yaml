@@ -1,11 +1,16 @@
 world_id: world_027
 name: Los Angeles, Season 1
+language: en
 locations:
 - id: lux
   name: Lux nightclub
   connected_to:
   - chloe_lapd
   - penthouse
+  - chloe_house
+  - linda_office
+  - active_crime_scene
+  - coffee_shop
 - id: penthouse
   name: Lucifer's penthouse
   connected_to:
@@ -15,6 +20,11 @@ locations:
   connected_to:
   - lux
   - chloe_house
+  - linda_office
+  - active_crime_scene
+  - hospital
+  - final_warehouse
+  - final_hangar
 - id: chloe_house
   name: Chloe Decker's house
   connected_to:
@@ -24,6 +34,34 @@ locations:
   name: Dr. Linda Martin's therapy office
   connected_to:
   - lux
+  - chloe_lapd
+  - coffee_shop
+- id: active_crime_scene
+  name: Active Los Angeles homicide crime scene
+  connected_to:
+  - lux
+  - chloe_lapd
+  - final_warehouse
+  - final_hangar
+- id: hospital
+  name: Los Angeles hospital where Amenadiel resurrects Malcolm
+  connected_to:
+  - chloe_lapd
+- id: final_warehouse
+  name: Old warehouse used for the first episode 13 confrontation with Malcolm
+  connected_to:
+  - chloe_lapd
+  - active_crime_scene
+- id: final_hangar
+  name: Aircraft hangar where Malcolm holds Trixie and is finally defeated
+  connected_to:
+  - chloe_lapd
+  - active_crime_scene
+- id: coffee_shop
+  name: Coffee shop where Mazikeen gives Amenadiel the lead to Linda
+  connected_to:
+  - lux
+  - linda_office
 items:
 - id: piano
   name: Lucifer's piano
@@ -37,6 +75,10 @@ items:
   name: Chloe Decker's LAPD badge
   type: identification
   portable: true
+- id: chloe_service_sidearm
+  name: Chloe Decker's LAPD service sidearm
+  type: weapon
+  portable: true
 - id: blade
   name: Mazikeen's curved blade
   type: weapon
@@ -45,4 +87,3 @@ items:
   name: Linda Martin's notepad
   type: stationery
   portable: true
-language: en

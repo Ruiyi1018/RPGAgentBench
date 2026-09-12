@@ -1,66 +1,69 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: c_morpheus_free_neo
+    content: Free Neo from the Matrix and prepare him to understand his potential.
+    status: active
+    basis_event: evt_003
   relationships:
-    neo:
-      level: trusting
-      basis_event: initial_state
-    trinity:
-      level: loyal
-      basis_event: initial_state
-    agent_smith:
-      level: hostile
-      basis_event: initial_state
-    cypher:
-      level: neutral
-      basis_event: initial_state
-    the_oracle:
-      level: loyal
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    neo: {level: trusting, basis_event: evt_006}
+    trinity: {level: loyal, basis_event: base_trinity_service}
+    agent_smith: {level: hostile, basis_event: base_agent_conflict}
+    cypher: {level: neutral, basis_event: base_shared_crew_service}
+    the_oracle: {level: trusting, basis_event: evt_000}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
   - id: goal_morpheus_guide_neo
-    content: Prepare Neo to accept his role as the One
+    content: Continue preparing Neo to understand and test his potential as the One.
     status: active
-    basis_event: initial_state
+    basis_event: evt_006
   - id: goal_morpheus_oracle_visit
-    content: Bring Neo to the Oracle for her reading
+    content: Take Neo to the Oracle for a reading.
     status: active
-    basis_event: initial_state
+    basis_event: evt_000
   - id: goal_morpheus_crew_safety
-    content: Keep the Nebuchadnezzar crew operational and safe
+    content: Keep the Nebuchadnezzar crew operational and safe.
     status: active
-    basis_event: initial_state
+    basis_event: base_morpheus_captaincy
   disclosures: []
   knowledge:
     kn_morpheus_one_belief:
-      content: Morpheus believes Neo is the One predicted by the Oracle
+      content: Morpheus believes Neo is the One described by the prophecy.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: base_morpheus_one_belief
     kn_morpheus_oracle_statement:
-      content: The Oracle told Morpheus he would find the One
+      content: The Oracle previously told Morpheus that he would find the One.
       status: active
-      visibility: private
-      source_event: initial_state
-    kn_morpheus_crew_status:
-      content: Cypher has expressed doubts about Neo's importance
+      visibility: [npc]
+      source_event: evt_000
+    kn_morpheus_visit_status:
+      content: The Oracle visit is planned, but Neo has not met her and the crew has not jacked in for it.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: base_planned_oracle_visit
+    kn_morpheus_cypher:
+      content: Morpheus has no evidence that Cypher made a secret deal with an Agent.
+      status: active
+      visibility: [npc]
+      source_event: base_no_cypher_betrayal_evidence
 environment:
-  health:
-    morpheus: 100
-    player: 100
-  inventories:
-    morpheus: []
-    player: []
-  locations:
-    morpheus: loc_nebuchadnezzar
-    player: loc_nebuchadnezzar
-  access: {}
+  health: {morpheus: 100, player: 100}
+  inventories: {morpheus: [], player: []}
+  locations: {morpheus: loc_nebuchadnezzar, player: loc_nebuchadnezzar}
+  access:
+    construct_jack:
+      controllers: [morpheus]
+      subjects: {morpheus: granted, player: denied}
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {morpheus: granted, player: denied}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {morpheus: granted, player: denied}
+    ship_field_command:
+      controllers: [morpheus]
+      subjects: {morpheus: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,59 +1,53 @@
 world_id: world_013
 name: 曼谷唐人街及周边
-locations:
-- id: loc_tangren_agency
-  name: 唐仁侦探社
-  connected_to:
-  - loc_chinatown_street
-  - loc_parking
-- id: loc_chinatown_street
-  name: 曼谷唐人街
-  connected_to:
-  - loc_tangren_agency
-  - loc_songpa_workshop
-  - loc_police_station
-  - loc_cafe
-- id: loc_songpa_workshop
-  name: 颂帕工坊
-  connected_to:
-  - loc_chinatown_street
-- id: loc_police_station
-  name: 曼谷警局
-  connected_to:
-  - loc_chinatown_street
-  - loc_hospital
-- id: loc_hospital
-  name: 医院
-  connected_to:
-  - loc_police_station
-- id: loc_school
-  name: 学校
-  connected_to:
-  - loc_cafe
-- id: loc_cafe
-  name: 咖啡馆
-  connected_to:
-  - loc_chinatown_street
-  - loc_school
-- id: loc_parking
-  name: 停车场
-  connected_to:
-  - loc_tangren_agency
-items:
-- id: item_gold_buddha
-  name: 黄金佛像
-  type: 雕塑
-  portable: false
-- id: item_monitor_recording
-  name: 监控录像
-  type: 电子数据
-  portable: true
-- id: item_murder_weapon
-  name: 凶器
-  type: 工具
-  portable: true
-- id: item_case_file
-  name: 案件卷宗
-  type: 文书
-  portable: true
 language: zh
+
+locations:
+  - id: loc_tangren_agency
+    name: 唐仁侦探社
+    connected_to: [loc_chinatown_street, loc_a_xiang_residence]
+  - id: loc_chinatown_street
+    name: 曼谷唐人街
+    connected_to: [loc_tangren_agency, loc_a_xiang_residence, loc_songpa_workshop, loc_police_station, loc_cafe, loc_haitian_parking, loc_seafood_market, loc_airport]
+  - id: loc_songpa_workshop
+    name: 颂帕工坊
+    connected_to: [loc_chinatown_street, loc_police_station]
+  - id: loc_police_station
+    name: 曼谷警局
+    connected_to: [loc_chinatown_street, loc_songpa_workshop, loc_hospital]
+  - id: loc_hospital
+    name: 医院
+    connected_to: [loc_police_station, loc_a_xiang_residence, loc_si_nuo_residence]
+  - id: loc_school
+    name: 学校
+    connected_to: [loc_cafe, loc_si_nuo_residence]
+  - id: loc_cafe
+    name: 颂帕常去、位于思诺住所对面的咖啡馆
+    connected_to: [loc_chinatown_street, loc_school, loc_si_nuo_residence]
+  - id: loc_airport
+    name: 曼谷机场
+    connected_to: [loc_chinatown_street]
+  - id: loc_a_xiang_residence
+    name: 阿香住所（唐仁租住处）
+    connected_to: [loc_tangren_agency, loc_chinatown_street, loc_hospital]
+  - id: loc_haitian_parking
+    name: 海天大厦地下停车场
+    connected_to: [loc_chinatown_street, loc_seafood_market]
+  - id: loc_seafood_market
+    name: 海鲜市场
+    connected_to: [loc_chinatown_street, loc_haitian_parking, loc_scrapyard]
+  - id: loc_scrapyard
+    name: 李先生工作的废车场
+    connected_to: [loc_seafood_market, loc_si_nuo_residence]
+  - id: loc_si_nuo_residence
+    name: 思诺与养父李先生的住所
+    connected_to: [loc_school, loc_cafe, loc_scrapyard, loc_hospital]
+
+items:
+  - {id: item_gold_buddha, name: 铸入失窃黄金的佛像, type: 雕塑, portable: true}
+  - {id: item_delivery_crate, name: 唐仁从工坊运出的密封箱, type: 容器, portable: true}
+  - {id: item_monitor_recording, name: 监控录像, type: 电子数据, portable: true}
+  - {id: item_murder_weapon, name: 凶器, type: 工具, portable: true}
+  - {id: item_case_file, name: 案件卷宗, type: 文书, portable: true}
+  - {id: item_songpa_photos, name: 颂帕拍摄的照片与相机资料, type: 照片, portable: true}
+  - {id: item_si_nuo_diary, name: 思诺编写并留给养父看到的日记, type: 文书, portable: true}

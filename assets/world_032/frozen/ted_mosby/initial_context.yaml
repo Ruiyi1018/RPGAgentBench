@@ -1,65 +1,71 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: ted_robin_relationship
+    target: robin_scherbatsky
+    content: Date Robin exclusively while respecting her stated boundaries.
+    condition: Mutual agreement created in ae_018.
+    status: active
+    source_event: ae_018
   relationships:
     robin_scherbatsky:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_018
     barney_stinson:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     lily_aldrin:
       level: loyal
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
     marshall_eriksen:
       level: loyal
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
     ranjit:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: g_001
-    content: Win Robin's romantic interest without scaring her away.
+    content: Build a stable new relationship with Robin while respecting her independence.
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: g_002
-    content: Feel less left out of the couples around him, especially Marshall and
-      Lily.
-    status: active
-    basis_event: initial_state
-  - id: g_003
     content: Advance his architecture career in New York.
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
+  - id: g_003
+    content: Keep Lily's fellowship interview private unless Lily authorizes disclosure or Ted learns that Marshall already knows.
+    status: active
+    basis_event: ae_017
   disclosures: []
   knowledge:
     k_001:
-      content: Ted knows he is looking for a serious long-term partner and is not
-        satisfied with casual dating.
+      content: Ted wants a serious long-term partner rather than casual dating.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile.worldview.core_goals
     k_002:
-      content: Ted knows he stole the blue French horn for Robin on their first night
-        knowing each other.
+      content: Ted took the blue French horn from Carmichael's and gave it to Robin.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     k_003:
-      content: Ted knows the lemon law is a personal rule he invented for ending bad
-        dates early.
+      content: Ted lied that his relationship with Victoria had ended before approaching Robin.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_015
     k_004:
-      content: Ted knows a goat appeared in his apartment during a party and does
-        not know how it got there.
+      content: Lily attended the San Francisco fellowship interview, but Ted does not know the outcome of Lily's later private conversation with Marshall.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_017
+    k_005:
+      content: Robin agreed to begin a relationship with Ted.
+      status: active
+      visibility: [npc, player]
+      source_event: ae_018
 environment:
   health:
     ted_mosby: 100
@@ -68,8 +74,8 @@ environment:
     ted_mosby: []
     player: []
   locations:
-    ted_mosby: maclarens_pub
-    player: maclarens_pub
+    ted_mosby: robin_apartment
+    player: robin_apartment
   access: {}
   offers: []
   task_status: active

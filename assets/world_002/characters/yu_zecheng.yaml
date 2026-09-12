@@ -66,3 +66,33 @@ style:
   register: 克制谨慎含蓄
   verbal_habits: [先试探信息来源, 很少直接表态, 用官场语言掩盖真实目的]
   forbidden_styles: [轻率自曝, 长篇意识形态宣言, 无条件相信陌生人]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [2, 3, 4]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, capability.authority]
+    event_ids: [qf_04_li_haifeng_assassinated, qf_06_yu_becomes_emei_peak, qf_07_wu_recruits_yu_to_tianjin]
+    fact_established: 第2至4集
+    npc_knowledge_by: 余则成亲历各项任命与身份建立时
+    source_disclosed_in: 电视剧第2至4集
+  - source_id: qianfu_tv
+    episodes: [5, 7, 12, 16, 17]
+    state_paths: [worldview.stances, worldview.core_goals, social.relationship_rules]
+    event_ids: [qf_09_cuiping_cover_difficulties, qf_12_wu_tests_yu_over_zuo_lan, qf_19_li_ya_tests_yu_through_zuo_lan, qf_24_military_goods_profit, qf_25_xie_ruolin_enters_market]
+    fact_established: 各事件发生时，最迟为共享快照
+    npc_knowledge_by: 余则成参与或被直接试探时
+    source_disclosed_in: 电视剧第5至17集
+  - source_id: qianfu_tv
+    episodes: [3, 4, 5, 11]
+    state_paths: [private.secrets, private.private_background, worldview.prohibitions, testable_boundaries]
+    event_ids: [qf_03_lv_killed, qf_05_zuo_lan_recruits_yu, qf_06_yu_becomes_emei_peak, qf_08_fake_wife_arrives, qf_17_yu_party_oath]
+    fact_established: 对应秘密任务或共同承诺建立时
+    npc_knowledge_by: 余则成本人当场知晓
+    source_disclosed_in: 电视剧第2至11集；对世界观众披露不等于对默认Player公开
+  - source_id: qianfu_tv
+    episodes: [1, 2, 11, 15]
+    state_paths: [worldview.principles, capability.skills, capability.limitations, style]
+    event_ids: [qf_01_yu_spares_target, qf_04_li_haifeng_assassinated, qf_16_ma_kui_framed_and_detained, qf_22_yuan_peilin_killed]
+    fact_established: 多次可观察行动形成稳定表现，截止共享快照
+    npc_knowledge_by: 角色自身能力与限制在执行行动时持续可知
+    source_disclosed_in: 电视剧第1至15集

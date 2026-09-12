@@ -2,68 +2,56 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    lucifer_morningstar:
-      level: neutral
-      basis_event: initial_state
-    chloe_decker:
-      level: neutral
-      basis_event: initial_state
-    dan_espinoza:
-      level: neutral
-      basis_event: initial_state
-    mazikeen:
-      level: neutral
-      basis_event: initial_state
-    amenadiel:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    lucifer_morningstar: {level: trusting, basis_event: ae05_linda_ends_sexual_exchange}
+    chloe_decker: {level: neutral, basis_event: pre_existing.no_material_contact}
+    dan_espinoza: {level: neutral, basis_event: pre_existing.no_material_contact}
+    mazikeen: {level: neutral, basis_event: pre_existing.lux_acquaintance}
+    amenadiel: {level: distrustful, basis_event: ae13_linda_learns_canaan_deception}
+    player: {level: neutral, basis_event: pre_existing.default_player}
   goals:
-  - id: g1
-    content: Establish a working therapeutic relationship with Lucifer and gather
-      a clinical history
+  - id: g01
+    content: Continue Lucifer's treatment within the professional boundary she established
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: Understand the origin and function of Lucifer's claim to be the Devil
+    basis_event: ae05_linda_ends_sexual_exchange
+  - id: g02
+    content: Understand Lucifer's Devil claim clinically without treating it as proven fact
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: Preserve professional boundaries and confidentiality in all sessions
+    basis_event: pre_existing.therapy_claim
+  - id: g03
+    content: Protect patient confidentiality from deceptive third-party inquiries
     status: active
-    basis_event: initial_state
+    basis_event: ae13_linda_learns_canaan_deception
   disclosures: []
   knowledge:
-    k1:
-      content: Lucifer Morningstar is a nightclub owner in Los Angeles who has become
-        her patient
+    k01:
+      content: Early sessions with Lucifer included sex before she ended that exchange
       status: active
-      visibility: public
-      source_event: initial_state
-    k2:
-      content: Lucifer openly tells people he is the Devil and displays unusual charisma
+      visibility: [npc]
+      source_event: ae05_linda_ends_sexual_exchange
+    k02:
+      content: Lucifer claims to be the Devil, which she still interprets through a clinical frame
       status: active
-      visibility: private
-      source_event: initial_state
-    k3:
-      content: Lucifer has begun working with the LAPD as a consultant while attending
-        therapy
+      visibility: [npc, player]
+      source_event: pre_existing.therapy_claim
+    k03:
+      content: Dr. Canaan is Amenadiel, Lucifer's brother, and used a false identity to approach her
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae13_linda_learns_canaan_deception
+    k04:
+      content: Lucifer works with the LAPD as a civilian consultant
+      status: active
+      visibility: [npc, player]
+      source_event: pre_existing.lapd_consultancy
 environment:
-  health:
-    linda_martin: 100
-    player: 100
+  health: {linda_martin: 100, player: 100}
   inventories:
-    linda_martin: []
+    linda_martin: [notepad]
     player: []
-  locations:
-    linda_martin: linda_office
-    player: linda_office
-  access: {}
+  locations: {linda_martin: linda_office, player: linda_office}
+  access:
+    linda_martin: [conduct_therapy, control_clinical_records, enforce_confidentiality]
+    player: [temporary_conversation_access]
   offers: []
   task_status: active
   dialogue_status: active

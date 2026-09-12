@@ -2,75 +2,48 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    monica_geller:
-      level: loyal
-      basis_event: initial_state
-    rachel_green:
-      level: trusting
-      basis_event: initial_state
-    phoebe_buffay:
-      level: neutral
-      basis_event: initial_state
-    joey_tribbiani:
-      level: neutral
-      basis_event: initial_state
-    chandler_bing:
-      level: trusting
-      basis_event: initial_state
-    gunther:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    monica_geller: {level: loyal, basis_event: snapshot_fact_siblings}
+    rachel_green: {level: neutral, basis_event: ross_reveals_high_school_crush}
+    phoebe_buffay: {level: neutral, basis_event: snapshot_fact_friend_group}
+    joey_tribbiani: {level: neutral, basis_event: snapshot_fact_friend_group}
+    chandler_bing: {level: neutral, basis_event: snapshot_fact_friend_group}
+    gunther: {level: neutral, basis_event: snapshot_fact_counter_employee}
+    player: {level: neutral, basis_event: snapshot_fact_unfamiliar_visitor}
   goals:
-  - id: ross_adjusts_to_separation
-    content: Settle into his new apartment and start a routine separate from Carol.
+  - id: ross_begin_fatherhood
+    content: Participate responsibly in Ben's life
     status: active
-    basis_event: initial_state
-  - id: ross_stays_close_to_monica
-    content: Remain part of Monica's friend group and support Monica as she adjusts
-      to having Rachel in the apartment.
+    basis_event: ross_son_ben_born_and_named
+  - id: ross_maintain_work_and_home
+    content: Maintain his museum work and separate apartment
     status: active
-    basis_event: initial_state
-  - id: ross_cares_for_marcel
-    content: Keep Marcel safe and integrate him into his new home without causing
-      problems for neighbors.
-    status: active
-    basis_event: initial_state
+    basis_event: snapshot_fact_ross_job_and_home
   disclosures: []
   knowledge:
-    ross_knows_rachel_left_wedding:
-      content: Rachel arrived at Central Perk in a wedding dress after leaving her
-        wedding.
+    ross_knows_rachel_arrival:
+      content: Rachel left her wedding and reconnected with the group.
       status: active
-      visibility: group
-      source_event: initial_state
-    ross_knows_his_own_crush:
-      content: Ross had a long-standing crush on Rachel during high school.
+      visibility: [npc]
+      source_event: rachel_arrives_central_perk
+    ross_knows_his_crush_disclosure:
+      content: Rachel knows Ross had a major high-school crush on her.
       status: active
-      visibility: shared_with_monica_and_rachel
-      source_event: initial_state
-    ross_knows_carol_end:
-      content: Carol is a lesbian and the marriage with Ross is ending.
+      visibility: [npc]
+      source_event: ross_reveals_high_school_crush
+    ross_knows_marcel_transferred:
+      content: Ross relinquished custody after Marcel was accepted by the zoo.
       status: active
-      visibility: group
-      source_event: initial_state
-    ross_knows_rachel_job:
-      content: Rachel got a job as a waitress at Central Perk.
+      visibility: [npc]
+      source_event: ross_transfers_marcel_to_zoo
+    ross_knows_ben:
+      content: Ben has been born and Ross is his father.
       status: active
-      visibility: group
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ross_son_ben_born_and_named
 environment:
-  health:
-    ross_geller: 100
-    player: 100
-  inventories:
-    ross_geller: []
-    player: []
-  locations:
-    ross_geller: central_perk
-    player: central_perk
+  health: {ross_geller: 100, player: 100}
+  inventories: {ross_geller: [], player: []}
+  locations: {ross_geller: hospital, player: hospital}
   access: {}
   offers: []
   task_status: active

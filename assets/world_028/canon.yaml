@@ -7,9 +7,14 @@ canon_policy:
   - Hannibal novels by Thomas Harris
   - Film adaptations such as Manhunter, The Silence of the Lambs, Hannibal, Red Dragon,
     and Hannibal Rising
-  shared_snapshot: A fixed Season 1 episode range
-  generated_timeline: Yes, sorted chronologically within Season 1
+  shared_snapshot: "Immediately after the final scene of Season 1 Episode 3, Potage: Abigail Hobbs and Hannibal Lecter are in Lecter's Baltimore office after agreeing to keep secret, respectively, Hannibal's warning call to Garrett Jacob Hobbs and Hannibal's concealment of Nicholas Boyle's death; no return to Port Haven is asserted, and no event from Episode 4 or later has occurred."
+  generated_timeline: "Season 1 Episodes 1-3 only, totally ordered by episode_order and event_order; the snapshot follows the private Lecter-office agreement, the final listed Episode 3 event."
   quotation_policy: Paraphrase all facts; do not reproduce dialogue verbatim
+  player_semantics:
+    default_role: "A pre-cleared observer attached to the relevant FBI or clinical meeting, with no law-enforcement, clinical, evidentiary, or custodial authority."
+    opening_knowledge: "The Player knows only knowledge entries whose visibility includes player and the stated opening-scene facts; co-location never reveals npc-only information."
+    temporary_authorization: "The Player may converse in the opening location but may not inspect evidence, records, patients, private offices, or crime scenes unless a scenario explicitly grants access."
+    scenario_override: "A scenario may replace the Player identity, location, knowledge, inventory, and access only by declaring those overrides explicitly."
 evaluated_npcs:
 - hannibal_lecter
 - will_graham
@@ -25,6 +30,7 @@ event_entities:
   - alana_bloom
   - abigail_hobbs
   - beverly_katz
+  - port_haven_staff
   locations:
   - baltimore_maryland
   - quantico_virginia
@@ -32,10 +38,18 @@ event_entities:
   - baltimore_state_hospital_for_the_criminally_insane
   - wolf_trap_virginia
   - lecter_office
+  - lecter_residence
+  - port_haven_psychiatric_facility
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
+  - minnesota_investigation_hotel
+  - fbi_forensics_lab
   items:
   - knife
   - evidence_bags
   - fbi_badge
+  - fbi_consultant_credential
+  - forensic_kit
   catalog:
   - hannibal_lecter
   - will_graham
@@ -43,15 +57,24 @@ event_entities:
   - alana_bloom
   - abigail_hobbs
   - beverly_katz
+  - port_haven_staff
   - baltimore_maryland
   - quantico_virginia
   - fbi_academy
   - baltimore_state_hospital_for_the_criminally_insane
   - wolf_trap_virginia
   - lecter_office
+  - lecter_residence
+  - port_haven_psychiatric_facility
+  - hobbs_residence_minnesota
+  - cassie_boyle_field_minnesota
+  - minnesota_investigation_hotel
+  - fbi_forensics_lab
   - knife
   - evidence_bags
   - fbi_badge
+  - fbi_consultant_credential
+  - forensic_kit
 sources:
 - id: nbc_hannibal_s01
   title: 'Hannibal: Season One'
@@ -61,7 +84,9 @@ sources:
 data_constraints:
 - All facts must be supported by Season 1 episode content from NBC Hannibal
 - Do not use knowledge from episodes outside the fixed Season 1 episode range
+- Treat the final Lecter-office scene of Episode 3 Potage as the inclusive cutoff; do not infer an unshown return to Port Haven, and exclude all Episode 4+ facts, later diagnoses, accusations, detentions, deaths, and relationship changes
 - Do not use material from the Hannibal novels or film adaptations
 - Paraphrase instead of quoting dialogue directly
 - All anchor events must occur within the shared Season 1 snapshot
 - Location connections must reference only locations defined in the environment
+- visibility [npc] means only the evaluated NPC knows the item at opening; [npc, player] additionally gives it to the default Player

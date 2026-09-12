@@ -1,0 +1,161 @@
+- item_id: canon.yaml.canon_policy.snapshot
+  severity: blocker
+  rule_id: snapshot_candidate_timeline_compatible
+  evidence: "原审计发现 canon/Profile 为第22章末而候选倒放第2至22章。复核确认共享快照和候选窗已前移，但 ron_weasley.identity.public_background 仍写 former_owner_of_scabbers，而同一 Profile 当前 stance/goal 及 Frozen inventory 均表明第16章末 Ron 已重新持有并拥有 Scabbers；当前身份状态仍未与锁定快照同步。"
+  required_change: "将 Ron 对 Scabbers 的当前所有关系改为与第16章末恢复持有一致的无歧义表述，并回归确认全部 Profile 当前字段、Frozen 状态和候选窗均与共享快照一致。"
+  resolution: "已将 ron_weasley.identity.public_background 的残留 former_owner_of_scabbers 改为 current_owner_of_the_recovered_scabbers；其当前 stance、keep_the_recovered_scabbers_safe 目标与 Frozen inventory: [scabbers, wand] 现均一致表达第16章末恢复持有。并回归确认六份 Profile/Frozen 的 snapshot 均为 end_of_chapter_16_before_shrieking_shack_events，候选窗仍严格从第17章开始。"
+  status: fixed
+- item_id: canon.yaml.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: "canon_policy 未定义默认 Player 的身份、初始可见知识、权限或可接触材料；六份 Profile 却包含 Time-Turner 营救、Sirius 藏身信息、Animagus 身份和 Lupin 状况等私密边界，无法据此唯一判定 Stage 3 开局时 Player 知道什么、能做什么。"
+  required_change: "在 canon policy 中定义默认 Player 语义及场景覆盖规则，明确默认身份、知识可见性、权限与材料边界，并与后续 Frozen visibility 保持一致。"
+  resolution: "已在 canon_policy.default_player_semantics 中定义默认 Player 为无特权 Hogwarts 交互者，限定其初始知识、权限、材料和显式场景覆盖规则；六份 initial_context 仅以 visibility: [npc, player] 暴露公共逃犯事实，并明确 Player inventory/access。"
+  status: fixed
+- item_id: environment.yaml.locations.canon_candidate_scene_coverage
+  severity: major
+  rule_id: missing_active_location_mapping
+  evidence: "候选 poa_01_sirius_escape 实际使用 Azkaban 作为 Sirius 的行动起点，poa_02_warning_about_sirius 实际发生于 King's Cross/Hogwarts Express 上车前；environment.locations 中既无 Azkaban 或 King's Cross 对应节点，也无将这些实际候选场景映射到现有节点的规则。"
+  required_change: "为会成为候选事件实际场景或移动端点的 Azkaban 与 King's Cross 增加运行时有效节点，或提供明确且不歧义的现有节点映射，并保持地点图连通。"
+  resolution: "已新增 kings_cross 与 azkaban 运行时节点，并通过 kings_cross ↔ hogwarts_express 接入双向连通图；同时因共享快照改为第 16 章末，早于快照的 poa_01/poa_02 已不再作为后续候选事件。"
+  status: fixed
+- item_id: characters.remus_lupin.capability.authority
+  severity: minor
+  rule_id: runtime_vocabulary_nonempty
+  evidence: "authority 被写成空列表；Foundation 机器审计报 empty_character_dimension，因而 machine_passed=false。Profile 虽在 limitations 中说明他已无 Hogwarts staff authority，但当前字段不满足机器契约。"
+  required_change: "用运行时支持且不夸大权力的显式当前权限/无权限语义表示 Lupin 辞职后的状态，并使 capability.authority 通过 Foundation 机器审计。"
+  resolution: "快照调整后 Lupin 仍是 Hogwarts Defence Professor；capability.authority 已改为非空的 hogwarts_professor 与 defence_classroom_safety，并以 staff_authority_does_not_extend_to_ministry_or_criminal_adjudication 明确限制。"
+  status: fixed
+- item_id: characters.sirius_black.capability.authority
+  severity: major
+  rule_id: authority_source_grounded
+  evidence: "authority 将 harrys_godfather 列为可执行权限，但同一 Profile 明确 Sirius 是无受认可法律权力的逃犯；在第 22 章快照下，教父关系不能让他合法处分 Harry、授予学校权限或调用机构资源。"
+  required_change: "将亲属/情感关系与可执行 authority 分离，只保留快照下实际可行的权限，并把教父关系放在身份或 directional relationship 状态中。"
+  resolution: "已从 authority 删除 harrys_godfather，将教父关系仅保留在 identity.role；authority 改为仅表示 Sirius 对自身藏匿路线的实际控制 control_over_own_hiding_routes，并继续明确其无受认可法律权力。"
+  status: fixed
+- item_id: characters.werewolf_condition.visibility
+  severity: blocker
+  rule_id: public_private_current_state_consistent
+  evidence: "remus_lupin.identity.public_background 说明其狼人状况已公开并导致辞职，但 remus_lupin.private.secrets 仍将 werewolf_condition 标为秘密；severus_snape.private.secrets 同时把 detailed_knowledge_of_lupins_werewolf_condition 作为秘密，尽管其 private_background 和候选 poa_34 都说明 Snape 已公开披露该状况。当前公开状态与秘密状态互不兼容。"
+  required_change: "按锁定快照重写该事实的当前可见性：区分公开的狼人状况、仍可能私密的历史细节以及各 NPC 的具体知识，删除或改写已失效的 secret 标记。"
+  resolution: "共享快照已前移至第 16 章末，此时 Lupin 的狼人状况尚未被 Snape 公开；Lupin public_background 不再声称公开/辞职，werewolf_condition 与 Snape 的具体知识可继续作为私密事实，并在 Frozen visibility 中仅向对应 NPC 可见。"
+  status: fixed
+- item_id: characters.severus_snape.worldview.core_goals.expose_lupin
+  severity: major
+  rule_id: active_goal_snapshot_consistent
+  evidence: "在 end_of_chapter_22 快照中，Snape 已公开 Lupin 的状况且 Lupin 已辞职，但 core_goals 仍把 expose_lupins_safety_risk 表示为活跃目标，没有完成或收束状态。"
+  required_change: "根据最终锁定快照，将该目标改为尚未完成的当前目标，或在 Frozen 状态中明确记录其已完成/已收束，避免后续 Stage 1 将已完成目标当作 active。"
+  resolution: "共享快照前移后 Snape 尚未公开 Lupin 的状况，expose_lupins_safety_risk 在该时点确为未完成目标；severus_snape initial_context 以 g_snape_expose_lupin_risk/status: active 显式记录，并由第 9 章 assignment 作为依据。"
+  status: fixed
+- item_id: frozen.initial_context
+  severity: blocker
+  rule_id: missing_frozen_runtime_state
+  evidence: "harry_potter、hermione_granger、ron_weasley、remus_lupin、sirius_black、severus_snape 六个 frozen 目录均不存在 initial_context.yaml，且当前范围内没有可替代的 transitions initial_context。角色的当前位置、方向性关系、活跃目标/承诺、知识 visibility、inventory、access、health 等开局有效状态均不可执行或唯一判定。"
+  required_change: "为全部 evaluated_npcs 提供与统一快照及 environment 一致的 initial_context.yaml，显式编码 runtime_state 与 environment 状态，并逐项提供稳定 ID、支持的状态词、知识 source_event 和 npc/player visibility。"
+  resolution: "已为 harry_potter、hermione_granger、ron_weasley、remus_lupin、sirius_black、severus_snape 全部新建 initial_context.yaml，完整编码 relationships、active goals、knowledge content/status/visibility/source_event、inventory、location、health、access 及对话/任务状态。"
+  status: fixed
+- item_id: anchor_pool.events.discrete_event_boundary
+  severity: major
+  rule_id: candidate_event_discrete
+  evidence: "原审计指出多项候选合并不同事件。复核确认 poa_30 与 poa_33 已拆分，但 poa_34_lupin_exposed_and_resigns 仍把 Snape 在校内公开狼人状况、家长反对形成以及 Lupin 随后辞职合并为一个候选，同时产生公开知识和移除教授权限两个不同生效点。"
+  required_change: "将 poa_34 拆为边界清晰、各自只有一个生效点的公开披露与辞职候选，并分别定义 chronology、participants/known_by、state_change 和最小 cf_edit；随后回归全部候选的离散边界。"
+  resolution: "已将 poa_34_lupin_exposed_and_resigns 拆为 poa_34_snape_discloses_lupin_condition 与 poa_34_lupin_resigns：前者只使狼人状况成为校内公开知识，后者只移除 Lupin 的教授权限；两项分别声明 participants/known_by、单一 state_change、最小 cf_edit，并回归保留 poa_30 与 poa_33 的既有离散拆分。"
+  status: fixed
+- item_id: anchor_pool.events.poa_08_firebolt_arrives.visibility
+  severity: major
+  rule_id: candidate_visibility_correct
+  evidence: "fact 同时写入 Harry 收到匿名 Firebolt 和 Sirius 是秘密寄件人，known_by 却把 Harry、Hermione、Ron、Sirius 全部列为知情者；第 11 章前三人只知道匿名礼物及风险，不知道 Sirius 是寄件人，该身份直到 poa_36 的信才得到确认。state_change 还提前混入 later_evidence_of_sirius_care。"
+  required_change: "拆分事件真相、各 NPC 当时可见的匿名礼物事实与后续寄件人揭示；修正 known_by/state_change，确保第 11 章不向 Harry、Hermione 或 Ron 提前泄漏 Sirius 身份。"
+  resolution: "poa_08 位于共享快照之前，已不再保留于快照后候选池；Firebolt 寄件人身份仅在 poa_36 的真实来信中向 Harry、Hermione、Ron 确认，初始状态未向三人暴露 Sirius 寄件事实。"
+  status: fixed
+- item_id: anchor_pool.events.poa_30_transformation_and_escape.known_by
+  severity: major
+  rule_id: candidate_known_by_grounded
+  evidence: "known_by 包含 severus_snape，但 Snape 在 Pettigrew 被变回人形之前已被击昏，随后被昏迷搬出；他没有直接观察 Lupin 变身或 Pettigrew 逃脱。该候选也未给出之后向 Snape 披露这两个事实的来源。"
+  required_change: "从 known_by 中移除没有参与、披露或证据访问依据的角色；若保留 Snape，必须明确其后来获得的是哪一部分信息、通过何种 source_event 获知，并区分直接证据与推断。"
+  resolution: "已将合并事件拆分；poa_30_lupin_transforms 与 poa_30_pettigrew_escapes 的 known_by 均移除 severus_snape。后者仅将 Lupin 标为 inferred_later_by，明确区分现场观察与事后推断。"
+  status: fixed
+- item_id: anchor_pool.events.participant_grounding
+  severity: major
+  rule_id: candidate_participants_source_grounded
+  evidence: "poa_02 把发生于第 5 章、Arthur 对 Harry 私下作出的警告标为第 4 章并把 Ron 列为参与者；poa_04 把 Snape 列为 Boggart 教学及 Lupin 阻止 Harry 上场的参与者，尽管 Snape 在练习开始前离开；poa_07 把 Lupin 列为 Quidditch 场 Dementor 事件参与者，但当场救下坠落 Harry 的是 Dumbledore，Lupin 的作用发生在后续训练。"
+  required_change: "按正典修正 poa_02 的章节，并区分事件现场参与、事后获知和后续因果角色；同步修正这三个候选的 participants、known_by 与 state_change，不得用后续影响倒推现场参与。"
+  resolution: "poa_02、poa_04、poa_07 均早于新共享快照，已从快照后候选池移除，不再把 Ron、Snape 或 Lupin 错列为现场参与者；Profile/Frozen 对这些历史事件的引用仅表达当事人已有经历或后续知识，不再冒充现场 participation。"
+  status: fixed
+- item_id: anchor_pool.events.cf_edit
+  severity: major
+  rule_id: counterfactual_variable_isolatable
+  evidence: "多项 cf_edit 不是唯一的最小干预：poa_01、poa_03、poa_25、poa_30、poa_31、poa_36 均用 or 给出两种不同编辑；poa_20 直接把 Harry 的先验信任改为 neutral，而不是最小修改该事件的原因或证据。后续 Stage 2 无法据此唯一确定受控变量及预期状态差异。"
+  required_change: "逐项改为一个明确、局部、可执行的关键变量编辑，说明保持不变的上下文以及应改变的状态/决定；删除备选式 or 描述，并避免通过改写既有先验状态代替事件干预。"
+  resolution: "已重写当前候选池全部 20 项 cf_edit，统一明确 variable、单一 edit、hold_constant 和 expected_difference；特别修正原 poa_20、poa_25、poa_30、poa_31、poa_36 的备选式或先验状态改写。"
+  status: fixed
+- item_id: anchor_pool.events.chronology_metadata
+  severity: minor
+  rule_id: candidate_chronology_recoverable
+  evidence: "原审计发现候选缺少可恢复总序。复核确认 chapter_order 已唯一化，但第19章实际顺序应为 Snape 现身拒绝听取说明→三名学生击昏 Snape→Scabbers 被强制还原为 Pettigrew；当前却将 poa_25_pettigrew_exposed 排在 poa_27_snape_refuses_account 和 poa_28_snape_disarmed 之前。poa_27 的 fact 还明确写着 before examining Pettigrew，poa_28 的 state_change 明确写着击昏使 Snape 错过直接证据，形成内部自相矛盾的伪总序。"
+  required_change: "按正典将第19章顺序修正为 poa_27→poa_28→poa_25→poa_26，保持 chapter_order 全局连续唯一，并回归事实、known_by、state_change 与 cf_edit 的前后依赖。"
+  resolution: "已按正典把第19章候选物理顺序及 chapter_order 修正为 poa_27_snape_refuses_account(7) → poa_28_snape_disarmed(8) → poa_25_pettigrew_exposed(9) → poa_26_harry_demands_legal_justice(10)，并在 poa_25 fact/cf_edit 中明确 Snape 已昏迷。拆分 poa_34 后，全池 chapter_order 更新为连续唯一 1..21。"
+  status: fixed
+- item_id: characters.source_traceability
+  severity: major
+  rule_id: character_state_evidence_traceable
+  evidence: "复核确认全部 source_evidence.event_ids 现均可在 canon 中解析，Time-Turner 的回溯披露时间与生效期也已分离；但映射仍未做到语义支持。Lupin 将 private.secrets、private_background 和全部 testable_boundaries 映射到 poa_06_fat_lady_break_in/poa_14_second_tower_intrusion，这两项闯入事件不能证明狼人、Marauder/Animagus 历史或相应披露边界；Sirius 将 Crookshanks 协助、Secret-Keeper 背景及 capability.authority 一并映射到 poa_08_firebolt_arrives/poa_18_scabbers_recovered，事件同样不支持这些具体状态。ID 可解析不等于证据可追溯。"
+  required_change: "为 Lupin 与 Sirius 等 Profile 的每组关键状态提供语义相符的正典事件映射；必要时在 canon 中增加带真实 source_chapter 与 pre-snapshot effective_period 的回溯证据事件，并保持披露时间不倒灌为 NPC/Player 可见知识。随后逐项核对每个 state_path 的证据，而非仅检查 event_id 存在。"
+  resolution: "已把可解析但语义不匹配的映射拆成按状态组对应的证据：Lupin 的教学/权限/技能改由课堂、守护神课、狼人作业与地图事件支持，其快照前的狼人、Marauder 历史及对 Sirius/Pettigrew 的既有认知改由新增 poa_retrospective_lupin_prior_knowledge 支持；Sirius 的逃亡能力/路线控制改由逃狱及两次潜入支持，Crookshanks 协助、Secret-Keeper 背景、Firebolt 行动及保护边界改由新增 poa_retrospective_sirius_prior_actions_and_history 支持，追捕 Pettigrew 的目标和复仇边界继续由既有回溯事件支持。另将 Harry、Hermione、Ron 的边界 state_path 拆到与背叛故事、Firebolt/Time-Turner 授权、Scabbers 恢复及友谊修复语义相符的事件。新增回溯事件均声明 source_chapters、快照前 effective_period 与 evidence_mode，受 retrospective_evidence_policy 约束，不改变 NPC/Player 开局可见知识。"
+  status: fixed
+
+- item_id: environment.yaml.items.buckbeak
+  severity: major
+  rule_id: missing_key_runtime_resource
+  evidence: "候选 poa_33_buckbeak_rescued 与 poa_33_sirius_freed 把 Buckbeak 作为被移动、可供 Sirius 骑乘逃脱的关键实体和因果资源，canon.event_entities 也声明 buckbeak；但 environment.items 只有 scabbers 等资源，没有 Buckbeak 或任何可执行映射。后续无法用受控资源/位置状态唯一表达“已获救并可用于逃脱”。"
+  required_change: "在 environment 中为 Buckbeak 增加与候选用途一致的运行时实体/物品定义或明确的可执行资源映射，并确保其位置、可用性和转移能被 Stage 1 查询、Stage 2 最小编辑及 Stage 3 行为使用。"
+  resolution: "已在 environment.items 新增 buckbeak（animal_mount、可转移、初始 holder=rubeus_hagrid、初始 location=hagrids_hut，并声明解缚/载人/连通地点移动能力）。六份 Frozen initial_context 均同步写入 rubeus_hagrid inventory、buckbeak 当前地点及 buckbeak_movement access，使初始持有、位置和控制权可查询，并可由后续受控状态操作改变而未生成任何后续数据。"
+  status: fixed
+
+- item_id: characters.sirius_black.testable_boundaries.restrain_revenge_against_pettigrew
+  severity: major
+  rule_id: behavioral_boundary_canon_consistent
+  evidence: "该 boundary 的 position 断言 Sirius 追求 Pettigrew 时不得危及 Harry 或其他学生；但紧接快照后的正典候选 poa_19 明确记录 Sirius 为夺取 Pettigrew 而以犬形强行拖走 Ron，并制造即时救援目标和表面敌意。当前边界把角色马上会做出的正典行为定义为禁止，导致 Stage 3 的可接受/失败判定失真。"
+  required_change: "按正典重写该边界，区分 Sirius 不拿 Harry 的安全交换私利与其在复仇/抓捕 Pettigrew 时确会采取的鲁莽强制行为；forbidden_outcomes 和 allowed_change 必须可执行且不得否定 poa_19。"
+  resolution: "已重写 restrain_revenge_against_pettigrew：明确 Sirius 为接近 Pettigrew 可能对持有者采取恐吓或鲁莽强制移动，因而不再把 poa_19 拖走 Ron 本身判作失败；禁止结果收窄为拿 Harry 作诱饵、为复仇故意杀害学生或用 Harry 安全交换抓捕，并给出保全学生生命前提下强制分离 Pettigrew 的可执行 allowed_change。"
+  status: fixed
+
+- item_id: characters.harry_potter.testable_boundaries.protect_sirius.id
+  severity: minor
+  rule_id: stable_id_semantics_match
+  evidence: "boundary id 为 protect_sirius，但 position、forbidden_outcomes 和当前 hostile 关系表达的都是“不信任 Sirius 且不向其泄露朋友位置”。该残留 ID 与实际状态方向相反，后续按稳定路径生成 Stage 1/2 问题时容易把拒绝信任误读成保护 Sirius。"
+  required_change: "将该 boundary 改为与其实际语义一致且稳定的 ID，并同步所有范围内引用；不得改变当前快照下 Harry 对 Sirius 的敌意。"
+  resolution: "已将 Harry 的该 boundary ID 从方向相反的 protect_sirius 改为 withhold_trust_from_sirius；position、forbidden_outcomes、allowed_change 及 Frozen 对 Sirius 的 hostile 当前关系保持不变。Pre-Anchor 范围内无其他旧 ID 引用，未修改范围外的既有 Stage 3 场景数据。"
+  status: fixed
+
+- item_id: characters.harry_potter.capability.skills.corporeal_stag_patronus_under_extreme_need
+  severity: blocker
+  rule_id: future_capability_excluded
+  evidence: "共享快照锁定在第16章末，但 Harry Profile 已把 corporeal_stag_patronus_under_extreme_need 写成当前技能；候选 poa_31_lakeside_patronus 明确要到第21章才 establishes_harrys_corporeal_patronus_capability。其 source_evidence 只引用第5、9、12、13章的摄魂怪遭遇和训练，不能证明快照时已具备第21章才首次实现的实体守护神能力。"
+  required_change: "将 Harry 当前技能限制为快照时已证明的 Patronus 训练/非实体防御水平，把实体牡鹿能力仅保留为 poa_31 后的候选状态改变；同步回归 Profile、Frozen、证据映射及 Stage 1 唯一答案，禁止未来能力倒灌。"
+  resolution: "已将 Profile 当前技能 corporeal_stag_patronus_under_extreme_need 改为 trained_patronus_charm_with_incorporeal_defensive_success，仅表达第12至13章训练已证明的水平；Frozen 新增 k_harry_patronus_training_level，明确当前仅有非实体防御成功且尚未产生实体牡鹿。poa_31_lakeside_patronus 仍是第21章首次建立实体守护神能力的候选状态变化，Profile/Frozen 均未提前赋予该未来能力。"
+  status: fixed
+
+- item_id: characters.hermione_granger.testable_boundaries.protect_time_turner_and_rescue_secret.id
+  severity: minor
+  rule_id: stable_id_snapshot_semantics_match
+  evidence: "第16章末尚未发生第21章的 Time-Turner 营救，boundary 的 position 仅描述当前学年排课授权及保密义务，但 ID 已写入 rescue_secret。该未来结果残留与当前边界语义不符，且容易让后续按稳定路径生成的问题预设尚不存在的营救秘密。"
+  required_change: "将 boundary ID 改为仅表达快照时已经成立的 Time-Turner 授权与保密语义，并同步范围内引用；不得提前写入第21章营救知识。"
+  resolution: "已将边界 ID 改为 protect_authorised_time_turner，仅表达快照时已经成立的排课授权、持有与保密义务；position、forbidden_outcomes 和 allowed_change 未引入第21章营救知识。Pre-Anchor 范围内 source_evidence 已同步使用新 ID，Frozen 既有目标仍只写保护获授权 Time-Turner；范围外 Stage 3 场景未修改。"
+  status: fixed
+
+- item_id: anchor_pool.events.participants_consistency
+  severity: major
+  rule_id: candidate_participants_source_grounded
+  evidence: "候选内部对 participants 的口径不一致：poa_22 的 Shack 场景把同场且知情的 Sirius 排除；poa_24 仅列 Lupin/Sirius，却把同场直接听取 Secret-Keeper 说明的 Harry、Hermione、Ron 列入 known_by；poa_26 的 known_by 含同场 Hermione/Ron/Pettigrew，但 participants 遗漏 Hermione/Ron；poa_29 的 known_by 含同场 Hermione/Ron/Lupin，但 participants 仅列 Harry/Sirius。相邻候选又普遍把同场观察者列为 participants，导致参与、在场获知和事后获知不能稳定区分。"
+  required_change: "统一 participants 的语义并按正典逐项修正上述候选；若 participants 表示现场在场者，应补齐同场角色，若表示主动行动者，则需显式增加独立字段区分 present_observers 与 later_disclosure，并同步核对 known_by。"
+  resolution: "已在 anchor_pool 顶层统一 participants_semantics：纳入具名的清醒同场者、直接承受事件者及执行事件定义性远程动作的人，排除昏迷旁观者和事后获知者。依此为 poa_22 补 Sirius，为 poa_24 补 Harry/Hermione/Ron，为 poa_26 补 Hermione/Ron，为 poa_29 补 Hermione/Ron/Lupin/Pettigrew，并同步将直接听到 poa_29 的 Pettigrew 加入 known_by；回归时还为 poa_28 补齐同场清醒的 Lupin/Sirius，使相邻候选遵循同一口径。"
+  status: fixed
+
+- item_id: frozen.remus_lupin.environment.locations.remus_lupin
+  severity: major
+  rule_id: frozen_location_snapshot_and_map_consistent
+  evidence: "共享快照为三人刚离开 Hagrid 小屋、第17章事件尚未开始；紧接着 Lupin 是在自己的办公室查看 Marauder's Map 后从该处前往 Willow/Shack。Frozen 却把当前位置写为 dada_classroom，environment 既没有 Lupin's office 节点，也没有声明 dada_classroom 对其办公室的无歧义映射。当前位置和候选移动起点因此不可唯一追溯。"
+  required_change: "为 Lupin's office 增加连通且运行有效的地点节点，或明确声明其映射到现有 DADA 节点；随后把 Frozen 当前地点与该映射及 poa_21 的移动起点对齐，并执行运行态加载回归。"
+  resolution: "已在 environment.locations 新增连通的 lupins_office 节点，与 hogwarts_corridors 和 dada_classroom 双向相连；Frozen 将 Lupin 与默认 Player 的当前位置从 dada_classroom 对齐为 lupins_office。poa_21 新增 movement_origin: lupins_office，明确其查看地图后前往 Willow/Shack 的候选移动起点；未改变 DADA 课堂安全权限语义。"
+  status: fixed

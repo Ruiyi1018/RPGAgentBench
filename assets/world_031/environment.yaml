@@ -1,5 +1,6 @@
 world_id: world_031
 name: Seattle Grace Hospital and surrounding Seattle locations
+language: en
 locations:
 - id: seattle_grace_hospital
   name: Seattle Grace Hospital
@@ -8,15 +9,19 @@ locations:
   - intern_locker_room
   - or_scrub_room
   - hospital_tunnel
+  - merediths_house
+  - derek_shepherds_trailer
 - id: emerald_city_bar
   name: Emerald City Bar
   connected_to:
   - seattle_grace_hospital
+  - merediths_house
 - id: intern_locker_room
   name: Intern Locker Room
   connected_to:
   - seattle_grace_hospital
   - or_scrub_room
+  - hospital_tunnel
 - id: or_scrub_room
   name: OR Scrub Room
   connected_to:
@@ -26,10 +31,23 @@ locations:
   name: Hospital Tunnel
   connected_to:
   - seattle_grace_hospital
+  - intern_locker_room
 - id: merediths_house
   name: Meredith's House
-  connected_to: []
+  connected_to:
+  - seattle_grace_hospital
+  - emerald_city_bar
+  - derek_shepherds_trailer
+- id: derek_shepherds_trailer
+  name: Derek Shepherd's Trailer
+  connected_to:
+  - seattle_grace_hospital
+  - merediths_house
 items:
+- id: pager
+  name: Hospital Pager
+  type: communication device
+  portable: true
 - id: post_it_note
   name: Post-it Note
   type: stationery
@@ -42,10 +60,6 @@ items:
   name: Surgical Scalpel
   type: medical tool
   portable: true
-- id: derek_shepherds_trailer
-  name: Derek Shepherd's Trailer
-  type: vehicle
-  portable: false
 - id: coffee_cup
   name: Coffee Cup
   type: container
@@ -54,4 +68,3 @@ items:
   name: Patient Chart
   type: document
   portable: true
-language: en

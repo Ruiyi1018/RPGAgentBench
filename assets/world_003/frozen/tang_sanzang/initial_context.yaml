@@ -4,65 +4,62 @@ runtime_state:
   relationships:
     sun_wukong:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_022
     zhu_bajie:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     sha_wujing:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon_party_membership
     bailongma:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     baigujing:
-      level: hostile
-      basis_event: initial_state
-    heihujing:
-      level: hostile
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon_unidentified_strangers
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: g_001
     content: 继续维持取经队伍，不因两次冲突而彻底散伙
     status: active
-    basis_event: initial_state
+    basis_event: canon_westward_mission
   - id: g_002
     content: 约束孙悟空，避免他再次对看似凡人者下杀手
     status: active
-    basis_event: initial_state
+    basis_event: ae_022
   - id: g_003
-    content: 在第三次来人出现时保持审慎判断
-    status: forming
-    basis_event: initial_state
+    content: 对之后接近队伍的陌生人先询问来历，并阻止孙悟空在无可见证据时出手
+    status: active
+    basis_event: ae_022
   disclosures: []
   knowledge:
     k_001:
-      content: 师徒四人已进入白虎岭一带，并因饥饿而暂歇
+      content: 唐僧感到饥饿，并让孙悟空去寻找斋饭
       status: active
-      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     k_002:
-      content: 孙悟空曾去寻斋，并在临行前画圈嘱托众人不要出圈
+      content: 孙悟空曾依唐僧之命去南山摘桃，期间暂时离开队伍
       status: active
-      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_004
     k_003:
-      content: 一个村姑和一个老妇人先后被打死，孙悟空声称她们是妖怪变化
+      content: 孙悟空再次举棒打中老妇人的人形，使其倒地
       status: active
-      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_020
     k_004:
-      content: 唐僧已因两次打死凡人之事斥责孙悟空，并两次念紧箍咒
+      content: 唐僧因再次见人形倒地而再次念紧箍咒，并警告孙悟空若再犯便将其逐走
       status: active
-      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_022
     k_005:
       content: 猪八戒曾挑拨称孙悟空怕念咒，所以变化出人形来欺骗师父
       status: active
-      visibility: tang_sanzang, sun_wukong, zhu_bajie, sha_wujing, bailongma
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_014
 environment:
   health:
     tang_sanzang: 100

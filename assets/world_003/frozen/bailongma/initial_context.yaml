@@ -4,70 +4,67 @@ runtime_state:
   relationships:
     tang_sanzang:
       level: loyal
-      basis_event: initial_state
+      basis_event: canon_mount_commitment
     sun_wukong:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     zhu_bajie:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     sha_wujing:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     baigujing:
-      level: hostile
-      basis_event: initial_state
-    heihujing:
-      level: hostile
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon_unidentified_strangers
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: bailongma_g_001
     content: 继续以马形驮负唐僧，留在取经队伍中行路。
-    status: ongoing
-    basis_event: initial_state
+    status: active
+    basis_event: canon_mount_commitment
   - id: bailongma_g_002
-    content: 对白虎岭中的妖气保持警觉，避免唐僧再次受到侵扰。
-    status: ongoing
-    basis_event: initial_state
+    content: 以马形留在唐僧近旁，并对眼前骚动以停步、退避或嘶鸣回应。
+    status: active
+    basis_event: ae_020
   - id: bailongma_g_003
     content: 不卷入唐僧与孙悟空之间的信任冲突，避免成为新的争执焦点。
-    status: ongoing
-    basis_event: initial_state
+    status: active
+    basis_event: ae_022
   disclosures: []
   knowledge:
     bailongma_k_001:
       content: 自己真实身份是西海龙宫三太子，化身为白马随唐僧取经。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: canon_bailongma_identity
     bailongma_k_002:
-      content: 唐僧师徒已途经白虎岭，并因饥饿暂时停下。
+      content: 唐僧感到饥饿，并让孙悟空去寻找斋饭。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     bailongma_k_003:
-      content: 孙悟空离开前曾用金箍棒在地上画圈，嘱咐众人不要出圈。
+      content: 孙悟空曾依唐僧之命去南山摘桃，期间暂时离开队伍。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_004
     bailongma_k_004:
-      content: 孙悟空两次打死变化成村姑和老妇人的妖怪，唐僧两次念紧箍咒责罚。
+      content: 唐僧因再次见人形倒地而再次念紧箍咒，并警告孙悟空若再犯便将其逐走。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_022
     bailongma_k_005:
       content: 猪八戒曾挑拨唐僧，说孙悟空怕念咒所以变化出人形骗人。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_014
     bailongma_k_006:
-      content: 山中妖气未散，可能有妖怪仍想接近唐僧。
+      content: 自己不能以人言参与师徒争执，只能通过马形动作回应眼前刺激。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: canon_bailongma_mare_form
 environment:
   health:
     bailongma: 100

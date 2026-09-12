@@ -1,86 +1,89 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: marshall_lily_wedding
+    target: lily_aldrin
+    content: Marry Lily under the engagement created in ae_003.
+    condition: Wedding commitment before the fellowship decision.
+    status: cancelled
+    source_event: ae_003
+    resolution_event: ae_019
+  - id: marshall_altrucell_internship
+    target: altru_cell_office
+    content: Continue the paid AltruCell corporate-law internship.
+    condition: Current Season 1 employment.
+    status: active
+    source_event: ae_014
   relationships:
     ted_mosby:
       level: loyal
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
     robin_scherbatsky:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     barney_stinson:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_014
     lily_aldrin:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_019
     ranjit:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: marshall_goal_001
-    content: Marry Lily Aldrin before any major career change disrupts their engagement
+    content: Cope with the breakup and tell Ted what occurred.
     status: active
-    basis_event: initial_state
+    basis_event: ae_019
   - id: marshall_goal_002
-    content: Leave MetroNatural Bank and return to environmental law without losing
-      financial stability
+    content: Complete legal training while preserving a path toward environmental law.
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
   - id: marshall_goal_003
-    content: Help Ted avoid another reckless romantic decision while supporting his
-      pursuit of Robin
+    content: Manage the immediate household and property consequences of Lily moving out.
     status: active
-    basis_event: initial_state
-  - id: marshall_goal_004
-    content: Keep the friend group intact despite Barney's schemes and Ted and Robin's
-      uncertain relationship
-    status: active
-    basis_event: initial_state
+    basis_event: ae_019
   disclosures: []
   knowledge:
     marshall_know_001:
-      content: Ted is infatuated with Robin and stole a blue French horn for her in
-        the pilot.
+      content: Ted became interested in Robin and gave her the blue French horn.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     marshall_know_002:
-      content: Lily has applied to an art fellowship program, which causes tension
-        between her and Marshall.
+      content: Lily chose the San Francisco fellowship; they cancelled the wedding and ended the engagement.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_019
     marshall_know_003:
-      content: He has accepted a job at MetroNatural Bank despite preferring environmental
-        law.
+      content: Marshall accepted a paid corporate-law internship at AltruCell despite preferring environmental law.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_014
     marshall_know_004:
-      content: Barney's playbook exists and is used to manipulate women at MacLaren's.
+      content: Shannon's rejection preceded Barney's reinvention as a suit-wearing womanizer.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     marshall_know_005:
-      content: A goat appeared in Ted's apartment during a party, but no one in the
-        group can explain how.
+      content: The origin of the pineapple found after Ted's blackout remains unknown to the group.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_008
 environment:
   health:
     marshall_eriksen: 100
     player: 100
   inventories:
-    marshall_eriksen: []
+    marshall_eriksen:
+    - engagement_ring
     player: []
   locations:
-    marshall_eriksen: apartment_4d
-    player: apartment_4d
+    marshall_eriksen: apartment_4c
+    player: apartment_4c
   access: {}
   offers: []
   task_status: active

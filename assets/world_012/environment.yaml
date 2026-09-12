@@ -1,73 +1,52 @@
 world_id: world_012
 name: 夏家重组家庭住所及周边
-locations:
-- id: loc_keting
-  name: 客厅
-  connected_to:
-  - loc_canting
-  - loc_woshi_fuqi
-  - loc_woshi_haizi
-- id: loc_canting
-  name: 餐厅
-  connected_to:
-  - loc_keting
-  - loc_chufang
-- id: loc_chufang
-  name: 厨房
-  connected_to:
-  - loc_canting
-- id: loc_woshi_fuqi
-  name: 夫妻卧室
-  connected_to:
-  - loc_keting
-- id: loc_woshi_haizi
-  name: 孩子卧室
-  connected_to:
-  - loc_keting
-  - loc_shufang
-- id: loc_shufang
-  name: 书房
-  connected_to:
-  - loc_woshi_haizi
-- id: loc_xiaoqu
-  name: 小区院子
-  connected_to:
-  - loc_keting
-items:
-- id: item_shubao_liuxing
-  name: 刘星书包
-  type: 学习用品
-  portable: true
-- id: item_shubao_xiaxue
-  name: 夏雪书包
-  type: 学习用品
-  portable: true
-- id: item_shubao_xiayu
-  name: 夏雨书包
-  type: 学习用品
-  portable: true
-- id: item_canzhuo
-  name: 餐桌
-  type: 家具
-  portable: false
-- id: item_shafa
-  name: 沙发
-  type: 家具
-  portable: false
-- id: item_dianshiji
-  name: 电视机
-  type: 家电
-  portable: false
-- id: item_guo
-  name: 炒菜锅
-  type: 厨具
-  portable: true
-- id: item_zuoye_liuxing
-  name: 刘星作业本
-  type: 学习用品
-  portable: true
-- id: item_zuoye_xiaxue
-  name: 夏雪作业本
-  type: 学习用品
-  portable: true
 language: zh
+
+locations:
+  - id: loc_keting
+    name: 客厅
+    connected_to: [loc_canting, loc_chufang, loc_woshi_fuqi, loc_woshi_haizi, loc_shufang, loc_xiaoqu]
+  - id: loc_canting
+    name: 餐厅
+    connected_to: [loc_keting, loc_chufang]
+  - id: loc_chufang
+    name: 厨房
+    connected_to: [loc_keting, loc_canting]
+  - id: loc_woshi_fuqi
+    name: 夫妻卧室
+    connected_to: [loc_keting]
+  - id: loc_woshi_haizi
+    name: 孩子卧室
+    connected_to: [loc_keting, loc_shufang]
+  - id: loc_shufang
+    name: 书房
+    connected_to: [loc_keting, loc_woshi_haizi]
+  - id: loc_xiaoqu
+    name: 小区院子
+    connected_to: [loc_keting, loc_xuexiao, loc_yiyuan, loc_ertong_juyuan]
+  - id: loc_xuexiao
+    name: 三个孩子就读学校
+    connected_to: [loc_xiaoqu]
+  - id: loc_yiyuan
+    name: 刘梅任职医院
+    connected_to: [loc_xiaoqu]
+  - id: loc_ertong_juyuan
+    name: 夏东海任职儿童剧院
+    connected_to: [loc_xiaoqu]
+
+items:
+  - {id: item_shubao_liuxing, name: 刘星书包, type: 学习用品, portable: true}
+  - {id: item_shubao_xiaxue, name: 夏雪书包, type: 学习用品, portable: true}
+  - {id: item_shubao_xiayu, name: 夏雨书包, type: 学习用品, portable: true}
+  - {id: item_canzhuo, name: 餐桌, type: 家具, portable: false}
+  - {id: item_shafa, name: 沙发, type: 家具, portable: false}
+  - {id: item_dianshiji, name: 电视机, type: 家电, portable: false}
+  - {id: item_guo, name: 炒菜锅, type: 厨具, portable: true}
+  - {id: item_zuoye_liuxing, name: 刘星作业本, type: 学习用品, portable: true}
+  - {id: item_zuoye_xiaxue, name: 夏雪作业本, type: 学习用品, portable: true}
+  - {id: item_zuoye_xiayu, name: 夏雨作业本, type: 学习用品, portable: true}
+  - {id: item_zhaopian_chenlie, name: 家庭照片陈列, type: 家庭陈设, portable: false}
+  - {id: item_juben_jiaoma, name: 角马故事剧本, type: 工作文稿, portable: true}
+  - {id: item_xiaobai_shu, name: 夏雪的小白鼠, type: 宠物, portable: false}
+  - {id: item_mao, name: 刘梅收到的猫, type: 宠物, portable: false}
+  - {id: item_shadai, name: 沙袋, type: 训练器材, portable: false}

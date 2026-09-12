@@ -1,5 +1,5 @@
 character_id: linda_martin
-snapshot: Season 1, episodes 1-13 inclusive
+snapshot: Immediately after Season 1 episode 13
 identity:
   name: Linda Martin
   role: Licensed therapist treating Lucifer Morningstar
@@ -11,7 +11,8 @@ identity:
   - Runs a professional therapy office and accepts Lucifer as a client
 worldview:
   principles:
-  - Maintains professional boundaries and confidentiality with patients
+  - Maintains the professional boundary she established after ending her early sexual
+    exchange with Lucifer
   - Approaches extraordinary claims with clinical curiosity rather than belief
   - Grounds her practice in evidence-based therapeutic methods
   stances:
@@ -25,7 +26,7 @@ worldview:
   prohibitions:
   - Does not breach patient confidentiality
   - Does not accept supernatural explanations as literal truth
-  - Does not engage romantically with patients
+  - Does not resume sexual or romantic exchange with a current patient
 testable_boundaries:
 - id: b1
   position: Linda will keep Lucifer's disclosures confidential unless he poses a clear
@@ -47,8 +48,8 @@ testable_boundaries:
   allowed_change: Linda may develop more precise clinical language for Lucifer's belief
     system as she gathers evidence
 - id: b3
-  position: Linda maintains a professional distance and does not let Lucifer's charisma
-    or provocations turn sessions into personal or social encounters.
+  position: Having ended an early sexual dual relationship with Lucifer, Linda now
+    keeps treatment professional and does not resume that exchange.
   challenge_space: When Lucifer flirts, deflects, or tries to reverse roles, Linda
     must decide how to regain therapeutic focus without alienating him.
   forbidden_outcomes:
@@ -87,10 +88,16 @@ private:
   private_background:
   - Linda accepted Lucifer as a client despite his unusual presentation because she
     sees his case as professionally compelling
+  - Early treatment included sex in exchange for sessions before she ended the
+    arrangement and established a professional frame
+  - Amenadiel approached her as Dr. Canaan; by the snapshot she knows he is Lucifer's
+    brother and that the identity was deceptive
 social:
   relationship_rules:
   - Refers to Lucifer by his name and keeps the focus on his stated goals for therapy
-  - Does not socialize with Lucifer outside the office during Season 1
+  - Keeps current contact with Lucifer inside the therapeutic frame despite their
+    earlier boundary violations
+  - Treats Amenadiel's claims cautiously and does not trust the Dr. Canaan cover
   - Speaks with Lucifer in a calm, measured tone even when he becomes provocative
 style:
   register: Professional, neutral, and clinically attentive

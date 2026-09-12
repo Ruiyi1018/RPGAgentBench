@@ -1,0 +1,146 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: source_snapshot_boundary
+  evidence: canon仅写“all seven characters are active”的未编号episode range，没有起止季集或唯一截止事件；anchor_pool同时跨越Penny初搬入、Bernadette取得博士、Leonard与Penny复合、Howard受训及准备升空等多年事件，无法判定哪一状态是共享快照的当前有效态，也无法可靠排除后续季信息。
+  required_change: 将主剧版本及共享快照绑定到明确、可核查的季集范围或唯一截止事件，并同步约束generated_timeline、所有Profile与Frozen当前态，明确截止点之后的信息均不得进入基础资产。
+  resolution: 已将共享边界固定为S1E01至S5E23，快照为S5E23后、S5E24前，并同步全部Profile snapshot及当前关系状态；明确S5E24起均属未来信息。
+  status: fixed
+- item_id: anchor_pool.ev_004
+  severity: blocker
+  rule_id: primary_source_factual_validity
+  evidence: ev_004称“Penny因为没有车而请Sheldon开车办事”，但正典S2E5 The Euclid Alternative中是不会开车的Sheldon请拥有汽车的Penny送他上班；Penny的汽车直到第7季才彻底报废。该错误又被Penny
+    Profile的“No car within the shared snapshot”和Sheldon Profile/Frozen的驾车经历表述继承。
+  required_change: 用共享范围内真实、离散的正典事件替换ev_004，并同步删除或修正Penny capability.limitations、Sheldon capability.limitations及k_drive_penny中的错误派生状态。
+  resolution: 已按S2E05修正为Sheldon请求有车的Penny驾车、因批评驾驶被中止搭载；同步移除Penny无车说法，并把Sheldon限制改为取得learner's permit后放弃模拟训练。
+  status: fixed
+- item_id: characters.howard_wolowitz.current_relationship_snapshot
+  severity: blocker
+  rule_id: incompatible_current_states
+  evidence: anchor_pool已纳入Howard被选中、参加任务训练并准备太空飞行（ev_010、ev_019），Leonard与Penny也已复合（ev_018），指向第5季后段；正典中Howard与Bernadette在S4E20已订婚，并在S5E24发射前结婚，但两份Profile仍分别写boyfriend、girlfriend，ev_015还把关系仅写成“讨论共同未来”，不能代表该范围的最新有效状态。
+  required_change: 先固定共享截止点，再将Howard/Bernadette的身份、关系规则、目标、Frozen关系及候选事件统一到该截止点真实的订婚或婚姻状态；不得混用更早的约会状态。
+  resolution: 已将Howard与Bernadette在快照统一为已订婚未结婚，更新双方身份、affiliation、目标、边界及Frozen双向关系，并以S4E20订婚事件追踪。
+  status: fixed
+- item_id: characters.amy_farrah_fowler.identity.affiliations
+  severity: major
+  rule_id: character_source_grounding
+  evidence: Profile把Amy写成“Caltech-affiliated neurobiology researcher”，但第5季只能支持她拥有自己的神经生物学实验室；她到第7季S7E5才受邀在Caltech短期工作。当前未定义的快照使该隶属关系可能构成未来信息倒灌。
+  required_change: 按固定快照写明Amy当时可由正典支持的雇主/机构；若截止点早于S7E5，删除Caltech隶属，且environment使用与来源一致或明确未知的实验室节点。
+  resolution: 已删除Amy的Caltech隶属，改为S5E23前正典仅支持的未具名机构自有神经生物学实验室，并新增相同语义的环境节点。
+  status: fixed
+- item_id: characters.source_grounding
+  severity: major
+  rule_id: unsupported_profile_state
+  evidence: 多个Profile把推测或生成性人格扩写成客观私密事实和绝对行为规则，例如Sheldon“记录Leonard违规、维护每个人可靠性协议和内部偏好排名”、Penny“附近没有任何家人或旧友”、Amy“Never
+    take sides against Penny”、Raj“不虚构浪漫经历”。文件没有逐项来源，部分表述也不是稳定正典事实，却会直接决定Stage 1答案和Stage 3禁区。
+  required_change: 逐项核对主剧截止点内证据；删除无法由具体剧情支持的秘密、背景和绝对规则，或改写为有来源、可观察且不过度绝对的当前倾向。
+  resolution: 已删除或收窄所指出的生成性绝对事实：Sheldon的违规记录/可靠性协议/内部排名、Penny附近无人、Amy绝对站队、Raj不虚构恋爱史；其余相关表述改为可观察倾向或有剧情支持的当前状态。
+  status: fixed
+- item_id: environment.professional_locations
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: Amy、Bernadette和Raj的Profile均把实验室研究或专业科学场景列为技能、权威或challenge_space，但environment只有Sheldon办公室、Leonard实验室和Howard工程实验室，没有Amy神经生物学实验室、Bernadette工作实验室/制药公司工作点或Raj工作空间的节点或无歧义映射。
+  required_change: 为后续会实际测试的专业场景补充最小、正典一致且连通的地点映射；若某专业场景不进入运行测试，则从可执行challenge_space中明确移除。
+  resolution: 已新增Raj的Caltech天体物理工作区、Amy未具名机构神经生物学实验室、Bernadette制药公司实验室，均以最小连通节点接入现有地图。
+  status: fixed
+- item_id: environment.executable_resources
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: environment定义Roommate Agreement、两台笔记本等关键可执行物品，Profiles又以协议条款和设备/实验权限作为行为边界，但所有Frozen inventory均为空、access均为{}，没有主体持有、可取用或授权状态，Stage
+    3无法执行交付、出示、拒绝访问或权限压力。
+  required_change: 只为确实参与测试的关键物品和权限建立当前持有/访问状态，并确保Profile权威、environment资产和Frozen inventory/access一致。
+  resolution: 已为确实可测试的Roommate Agreement、两台笔记本、任务资料、Amy实验记录和Bernadette门禁证建立持有状态，并为各专业空间或协议建立controllers/subjects访问记录。
+  status: fixed
+- item_id: anchor_pool.events.chronology_and_sources
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件均无episode标识、逐事件来源或chapter_order/canon_order；物理顺序也混有长期习惯与跨季关系状态，无法从文件恢复唯一正典顺序或验证事件是否位于截止点内。
+  required_change: 为每个保留候选补充可核查的季集来源和唯一顺序字段，并按固定共享范围验证、排序；范围外事件必须移除。
+  resolution: 已重写候选池；所有保留事件均有source_episode与唯一chapter_order，并按剧内顺序覆盖S1E01至S5E23，未保留范围外事件。
+  status: fixed
+- item_id: anchor_pool.events.event_granularity
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ev_007、ev_013、ev_015、ev_016、ev_020、ev_021、ev_022、ev_023和ev_024分别是常态活动、关系发展、持续困难、人格概括或泛化聚会，不对应一个边界清楚且可定位的单次正典事件。
+  required_change: 将这些条目替换或收窄为共享范围内具有明确触发、参与者、发生时点和可观察后果的单次事件；稳定人格或长期习惯仅保留在Profile/初始状态。
+  resolution: 已删除原泛化/持续性条目并以可定位单集事件替换；每项均具有明确触发、参与者、时点及离散后果。
+  status: fixed
+- item_id: anchor_pool.events.state_change
+  severity: major
+  rule_id: observable_state_change
+  evidence: 多个state_change只是剧情复述或模糊印象，例如ev_003“面对一次体力差事”、ev_004“卷入实际需求”、ev_007“游戏夜成为常规活动”、ev_013“关系发展”、ev_020“受到考验但仍有效”、ev_022“群体调整看法”和ev_024“七人群体活跃”，不能唯一映射到知识、目标、承诺、关系或资源状态。
+  required_change: 对每个保留事件声明可追踪、离散且后续可观察的状态维度及前后值；没有实质状态后果的候选应删除。
+  resolution: 已把每个候选state_change改为明确状态维度及before -> after值；无离散后果的原候选未保留。
+  status: fixed
+- item_id: anchor_pool.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimality
+  evidence: 多个cf_edit没有隔离决定状态后果的单一因果变量，例如ev_003只删除Sheldon同行、ev_009改成更远餐厅、ev_011/ev_012只改相遇地点、ev_014把博士改硕士、ev_019直接让Howard拒绝任务、ev_024让任意一人缺席；这些编辑或与声明的state_change无因果差异，或同时重写资格/决策及后续状态。
+  required_change: 为重要候选重写只改变一个前置原因且能合理改变目标状态或决定的最小反事实；无法形成受控因果对的事件不应用作Stage 2材料。
+  resolution: 已逐项重写cf_edit，使其只改变一个前置原因或条件，并让该变化能合理影响声明的目标状态；不再以任意缺席、地点替换或直接重写结果充当反事实。
+  status: fixed
+- item_id: anchor_pool.ev_014.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: ev_014描述Bernadette取得博士，却未将其当时的伴侣Howard列入known_by；该正典事件中Howard直接获知并因自己没有博士而成为讨论焦点。该遗漏会让后续Howard知识态与Profile/Frozen中的博士事实矛盾。
+  required_change: 依据该具体episode的参与、披露和证据访问重新核定known_by，至少加入直接知情的Howard，并同步校验所有候选的知情者集合。
+  resolution: 已将S4E24事件的known_by按场景与后续直接知情情况核定，包含Howard以及当集直接获知的群体成员。
+  status: fixed
+- item_id: canon.player_and_visibility_semantics
+  severity: major
+  rule_id: player_initial_knowledge_consistency
+  evidence: canon没有定义默认Player身份、先验知识、权限或visibility语义；七份initial_context又混用shared、private、public、known四种字符串，而执行器知识可见性使用主体列表。尤其known没有说明是否包含Player，导致同一事实无法判断开局对Player可见与否。
+  required_change: 在canon定义统一默认Player边界及scenario覆盖规则；将全部knowledge.visibility统一为执行器受众列表语义（如[npc]与[npc,
+    player]），逐项保留私密信息并避免Player泄漏。
+  resolution: 已在canon定义默认Player为无隶属访客、无默认权限，scenario必须显式覆盖；全部Frozen visibility已统一为受众列表，私密及群体知识默认仅[npc]。
+  status: fixed
+- item_id: frozen.initial_context.knowledge.source_event
+  severity: major
+  rule_id: state_traceability
+  evidence: 七份Frozen中所有knowledge均以笼统initial_state作为source_event，即使内容明显对应ev_002、ev_006、ev_010、ev_012、ev_014、ev_018等候选事实；当前没有其他证据字段，Stage
+    1无法从状态答案追溯到具体正典来源。
+  required_change: 为仍引用source_tbbt_001的NPC知识补充可定位到具体季集、披露或观察过程的稳定证据引用；不能仅以覆盖S1E01-S5E23的世界级来源集合代替NPC实际获知过程，并同步核定对应known_by。
+  resolution: 已为全部原source_tbbt_001知识项改用带具体集数、实际听见/观察过程及known_by的稳定knowledge_evidence：覆盖S1E05 Penny工作、S3E05 Bernadette观察Howard求偶表现、S4E20 Raj饮酒后开口、S4E24 Sheldon援引协议、S5E10敲门仪式及S5E19伴侣状态/聚会/协议通知。相关content均收窄到证据直接支持的范围；无法定位Amy实际获知过程的k_amy_003已删除。Frozen现已无笼统source_tbbt_001知识来源。
+  status: fixed
+- item_id: frozen.relationships.grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: '多个强关系等级缺少Profile/正典依据或与当前Profile相冲突：Sheldon把共同居住并持续合作的Leonard标为distrustful；Penny把Raj标为trusting但Profile只说明更容易交谈；Amy把Sheldon标为loyal而Profile仅支持有边界的活跃关系；Howard还在自己的relationships中出现howard_wolowitz:
+    loyal自关系。'
+  required_change: 删除Howard自关系；逐方向以固定快照和Profile证据校准所有loyal/trusting/distrustful，证据不足时改为neutral，并确保双方视角不被自动镜像。
+  resolution: 已删除Howard自关系；将Sheldon→Leonard、Penny→Raj等缺少强等级依据者降为neutral，将Amy→Sheldon校准为trusting，并按已订婚事实统一Howard/Bernadette双向loyal。
+  status: fixed
+- item_id: frozen.initial_context.scene_consistency
+  severity: minor
+  rule_id: initial_scene_semantics
+  evidence: 多数Frozen目标明确指向同一场Apartment 4A七人聚会，且ev_024也以此作为群体状态，但Howard的Frozen位置及Player位置为university_campus，目标却仍包含维持朋友群体地位；文件未说明Howard场景是否独立于聚会，导致开局情境语义不一致。
+  required_change: 明确每个Frozen是否采用同一开局场景；若为同一聚会则统一实际位置和对应目标，若为独立场景则在上下文中写明场景前提并删除不适用的聚会目标暗示。
+  resolution: 已将Howard及Player位置统一到Apartment 4A，使七份Frozen明确采用同一场七人社交开局；Howard目标与该场景现可同时成立。
+  status: fixed
+- item_id: frozen.initial_context.current_commitments
+  severity: major
+  rule_id: current_state_runtime_mapping
+  evidence: 七份Frozen的runtime_state.commitments仍全部为空；快照中Howard/Bernadette已订婚、Leonard/Penny正在交往、Sheldon/Amy受Relationship Agreement约束、Howard承担已恢复的ISS任务，这些当前有效承诺只存在于Profile或knowledge文字中，无法从运行态唯一查询、更新或施加Stage 3压力。
+  required_change: 为各相关NPC以稳定ID和可机读状态映射当前有效的订婚、恋爱/Relationship Agreement及ISS任务承诺，并使用对应候选事件作为依据；保证方向、状态和Profile一致。
+  resolution: 已在六名相关NPC的runtime_state.commitments中建立稳定、定向且status=active的承诺：Howard/Bernadette双向订婚承诺引用ev_015，Leonard/Penny双向恋爱承诺引用ev_018，Sheldon/Amy双向Relationship Agreement承诺引用ev_013；另为Howard加入引用ev_019的ISS任务承诺。各项均含target、content、condition和source_event，并与快照/Profile一致。
+  status: fixed
+- item_id: environment.anchor_scene_locations
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: environment已增加movie_theater，能映射Amy与Stuart约会及Sheldon提出交往的场景；但ev_013同一fact还声明Sheldon“creates a Relationship Agreement”，该协议在S5E10后续Amy公寓场景出现，而environment没有Amy公寓节点，单一location字段也把跨场景事实错误压成电影院一处。
+  required_change: 增加最小且连通的Amy公寓节点，并把ev_013的电影院求交往与Amy公寓出示协议拆成可定位的离散事件或明确多场景映射；也可收窄ev_013，只保留电影院中实际发生的求交往状态变化。
+  resolution: 已新增与street双向连通的amy_apartment最小节点；ev_013由错误的单一location改为locations多场景映射，并在fact中分别明确电影院发生交往请求及Amy公寓出示Relationship Agreement。
+  status: fixed
+- item_id: anchor_pool.ev_016.resource_state
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: ev_016声明penny_possession_of_amy_friendship_painting从absent变为retained，但environment.items没有该画作，Penny的Frozen inventory也为空；该候选的资源变化不能由运行态表示或守恒。
+  required_change: 为该画作建立稳定物品ID并在Penny快照库存中记录当前持有，或删除这个无法映射为可执行资源状态的候选。
+  resolution: 已在environment.items新增可移动物品amy_friendship_painting，并将同一稳定ID加入Penny快照inventory，使ev_016的absent -> retained资源变化在运行态可表示且持有者唯一。
+  status: fixed
+- item_id: anchor_pool.ev_016.cf_edit
+  severity: major
+  rule_id: counterfactual_minimality
+  evidence: ev_016声明的目标状态是penny_possession_of_amy_friendship_painting从absent变为retained；反事实仅令Amy不在Penny试图移除画作时返回，此时画作仍留在Penny处，因此不会改变声明的持有结果，无法形成Sensitivity所需的状态差异。
+  required_change: 将cf_edit改为只改变一个会使Penny最终不再持有画作的前置原因，并保持其余事件条件不变；若不能得到不同持有状态，则不要把该候选用于此资源状态的Stage 2材料。
+  resolution: 已将唯一干预改为Amy看到Penny拒绝画作后的处置决定：反事实中Amy取回画作而非留给Penny，并明确其余事件条件不变；因此主事实最终Penny持有，反事实最终Penny不持有。
+  status: fixed

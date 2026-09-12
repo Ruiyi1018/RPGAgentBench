@@ -1,0 +1,151 @@
+- item_id: canon.event_entities.future_season_entities
+  severity: blocker
+  rule_id: future_knowledge
+  evidence: canon将来源严格限定为第一季第1至9集并排除Later seasons，但event_entities仍列出prom_night、denny_duquette和doc_the_dog；这些实体对应后续季剧情，不能作为本world的候选事件实体。
+  required_change: 删除第一季范围外的事件实体，并回归检查所有Profile、候选事件和Frozen状态不再引用这些实体或相关后续季事实。
+  resolution: 已从canon删除prom_night、denny_duquette、doc_the_dog，并清除候选池、Profile与Frozen中的Doc及第二季急症引用；新增第一季结尾实际出现的Addison实体。
+  status: fixed
+
+- item_id: anchor_pool.ae14
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: ae14写Meredith收养并命名Doc，Cristina和George的initial_context也将其列为既有知识；Doc的收养发生在第二季，不在canon限定的第一季第1至9集内。
+  required_change: 删除ae14及全部Frozen/Profile中的Doc既有状态，或用第一季内可定位的离散事件替换，并同步所有知识引用。
+  resolution: 已删除Doc事件及全部派生知识，并将ae14替换为第一季结尾Addison到院自称Derek妻子的离散事件。
+  status: fixed
+
+- item_id: anchor_pool.ae19_ae20
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: ae19的Cristina工作中倒下及ae20的Meredith协助其医疗危机发生在第二季异位妊娠急症；该未来状态还进入Meredith的core_goals、边界和initial_context，以及Cristina、Bailey的initial_context。
+  required_change: 删除ae19、ae20及所有Profile/Frozen中的该第二季急症状态，改用第一季范围内事件，并检查由其派生的目标、边界、知识和关系。
+  resolution: 已删除ae19、ae20及六份Frozen与角色画像中的倒下、急症、救助目标和派生边界，相关状态改为第一季内患者安全、Ellis隐私与当前职务目标。
+  status: fixed
+
+- item_id: anchor_pool.ae23
+  severity: blocker
+  rule_id: evidence_supports_state
+  evidence: ae23声称Derek向Meredith揭示影响她的个人纠葛，Meredith Profile和Frozen也写成Derek已披露；第一季结尾实际由Addison到院并自称Derek之妻而揭示，Derek仅道歉，事件主体、披露来源和因果均错误。
+  required_change: 将事件及派生状态改为Addison到院向Meredith揭示婚姻事实，准确区分Derek此前隐瞒、Meredith获知来源及各NPC可见性。
+  resolution: 已将结尾事件改为Addison向Meredith自称Derek妻子；Meredith与Derek画像及Frozen均明确获知来源为Addison、Derek此前隐瞒，且该事实仅对对应NPC可见。
+  status: fixed
+
+- item_id: world_031.shared_snapshot
+  severity: major
+  rule_id: snapshot_state_consistency
+  evidence: 资产以“Fixed Season 1 episode range”代替可判定的当前快照，并同时保留首班轮转状态（George当前目标仍是shadow Bailey）、第一季结尾状态（Meredith已知Derek的纠葛）和第二季状态（Cristina已倒下、Doc已收养）；这些状态无法在同一当前时点同时成立。
+  required_change: 定义一个所有角色共享且可判定的第一季当前快照，并逐项将Profile与Frozen的当前目标、知识、关系、健康和位置校准到该时点；较早事件仅作历史保留。
+  resolution: canon与全部角色画像已统一锁定为Addison自称Derek妻子之后的第一季结尾瞬间；Frozen按该时点重建，George不再以首班shadow为当前目标，未来状态已清除。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件均无chapter_order或等价顺序字段，物理顺序也不是第一季正典顺序，例如George和Izzie搬入Meredith家被排在大量后续关系事件之后，后续生成无法恢复唯一总时间线。
+  required_change: 为保留的第一季离散事件增加唯一、可排序的正典顺序并按该顺序校验，确保与共享快照及Frozen当前状态兼容。
+  resolution: 已按实际发生顺序重排14项候选并赋予唯一chapter_order 001至014：首班规则与pager、Derek职级揭示、George阑尾手术失败、Katie诊断、入住、建模披露、Liz DNR、Bailey目击、Cristina与Burke关系、未授权尸检、Ellis诊断披露、Addison到院依次成立；末项即共享快照。
+  status: fixed
+
+- item_id: anchor_pool.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 候选池的cf_edit普遍只是fact的同义改写，例如ae01把“begins her surgical internship”改写为“starts working as a surgical intern”，ae10把“hiding it at work”改写为“keep their romance private”；没有改变可隔离的因果变量，也不会产生不同状态或决定。
+  required_change: 为每个保留候选提供只改变一个关键前因、且会导致可验证状态或决策差异的反事实编辑；无法形成因果测试的候选应替换或移除。
+  resolution: 已逐项复核14个候选的反事实因果变量与可观察结果，并进一步收紧ae01、ae03、ae04、ae05、ae09：分别只改变所属住院医队列、Derek医院任职、pager发放、决定性线索首位呈交者、Cristina收到DNR通知后的接受决定；其余候选各自只改变授权、披露、观察、同意或私下邀约等单一前因，均产生明确不同的权限、知识、资源、关系或临床行为。
+  status: fixed
+
+- item_id: anchor_pool.event_granularity
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae06是性格概括，ae09未指明具体手术，ae10是持续关系摘要，ae11描述渐进的个人暗示，ae16未指明哪次错误，ae17是重复社交习惯，ae24是无法定位的“collective ordeal”；均不是唯一可定位的离散事件。
+  required_change: 将概括性候选替换为第一季内有明确触发、参与者、时点和可观察状态变化的单一事件，或从候选池移除。
+  resolution: 候选池已整体重建；概括项被删除，现有事件均具备明确触发与参与者，例如Katie诊断、George首台阑尾手术、Izzie处理DNR、Bailey目击车内关系及Addison到院。
+  status: fixed
+
+- item_id: anchor_pool.knowledge_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 多个事件的known_by缺少可追溯披露链或与“揭示”表述冲突；例如ae15称Izzie“reveals”经济经历却仅列Izzie本人，ae24又把未定义的集体危机直接赋予五名角色。当前粒度下无法判断参与、获知原因和获知结果的边界。
+  required_change: 在事件离散化后，按直接参与、明确披露或证据接触逐项重建known_by；私下事实不得仅因世界中为真而扩散。
+  resolution: 已按直接在场、明确披露或直接观察重建全部known_by：建模收入披露在评测角色中仅Izzie与现场的George，Liz DNR仅Cristina，车内关系仅目击者Bailey，私情仅Cristina，未授权尸检仅Izzie、Cristina与Bailey，Ellis诊断和Addison披露各仅Meredith与Derek；未再把世界真相扩散给未在场角色。
+  status: fixed
+
+- item_id: world_031.initial_context.knowledge_traceability
+  severity: major
+  rule_id: state_source_traceability
+  evidence: 六份initial_context的所有knowledge.source_event均统一写为initial_state，尽管多数内容直接复述ae01至ae24；这使Stage 1无法从当前知识追溯到具体正典事件，也掩盖了未来事件和错误披露来源。
+  required_change: 将每项当前知识追溯到有效的第一季候选事件ID或明确的pre-existing canon fact ID，并保证ID稳定、内容与获知主体唯一可判定。
+  resolution: 六份Frozen知识已逐项重建，source_event均指向与获知主体相符的ae02至ae14事件或canon.pre_existing_facts中显式登记的稳定ID；删除Cristina获知Ellis诊断、George/Izzie获知Ellis住院及Derek知晓Bailey目击等无来源状态。
+  status: fixed
+
+- item_id: world_031.initial_context.visibility_vocabulary
+  severity: major
+  rule_id: player_initial_knowledge_consistency
+  evidence: initial_context混用private、public、shared字符串，而生成器规范使用受众列表；canon又未定义默认Player身份和这些标签是否包含Player，导致同一公共事实能否被Player在开局使用无法判定。
+  required_change: 在canon中定义默认Player语义，并将全部knowledge.visibility统一为运行时受众列表（如[npc]或[npc, player]），逐项依据披露事实校准Player开局知识。
+  resolution: canon已定义普通医院访客Player及显式场景覆盖规则；六份Frozen全部knowledge.visibility统一为受众列表。由于默认Player未参与任何历史候选事件，现有条目均为[npc]，婚姻、诊断、恋情、DNR、尸检、建模披露及职级内信息均未先验暴露给Player。
+  status: fixed
+
+- item_id: world_031.runtime_medical_affordances
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 测试重点包含医疗权限，ae05又声明实习生已获配pager，但environment没有pager物品，六份Frozen的inventory均为空且access均为{}；intern_badge、patient_chart以及Profile中的实习生/住院医/主治医权限没有可执行状态映射。
+  required_change: 以最小运行时资产表达当前持有的pager或badge及关键医疗访问权限，并按角色职级初始化inventory/access，使Stage 3可实际施压、授予、拒绝或撤销权限。
+  resolution: environment新增pager；实习生持有intern_badge与pager，Bailey持有pager与patient_chart，Derek持有patient_chart；各Frozen按职级设置patient_charts、supervised_clinical_tasks、intern_task_assignment或attending_treatment_decisions，并显式拒绝默认Player。
+  status: fixed
+
+- item_id: characters.testable_boundaries.source_grounding
+  severity: major
+  rule_id: behavioral_boundary_grounding
+  evidence: 多个边界把未经第一季证据支持的绝对行为写成禁止结果，例如Meredith绝不因保密责怪Derek、Cristina绝不主动寻求任何早期医疗帮助、Bailey绝不向实习生表达温暖且绝不谈个人生活；这些规定比正典稳定行为更强，会把合理角色反应误判为失败。
+  required_change: 逐项用第一季可观察行为校准边界，移除无法证实的绝对禁令，并保留在权限、患者安全、隐私和职业伦理压力下可执行且允许适应的决策边界。
+  resolution: 已复核六份Profile并移除无第一季行为依据的绝对禁令；本轮进一步将Cristina的病例竞争边界限定为可观察的直接竞争、正式分配权与患者安全，不再禁止其向上报告，并将Derek的神经外科边界改为主治责任、临床证据与实习生权限，不再声称他绝不向任何人让步。其余边界均保留合规适应路径。
+  status: fixed
+
+- item_id: characters.testable_boundaries.allowed_change_schema
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: Izzie的allowed_change使用字符串列表，而Meredith、Cristina、Derek、George和Bailey使用单个字符串；同一字段形态不一致，后续边界读取与自动检查可能产生歧义。
+  required_change: 将所有testable_boundaries.allowed_change统一为项目约定的字符串列表结构。
+  resolution: 六份角色画像的全部allowed_change已统一为非空字符串列表。
+  status: fixed
+
+- item_id: anchor_pool.ae09
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: ae09把“遵守清醒患者DNR、心搏停止后不复苏”归给Izzie并写成男性患者；第一季《No Man's Land》中DNR患者是Elizabeth “Liz” Fallon，实际由Cristina在其心搏停止后尝试CPR，Burke依据DNR将Cristina拉开。当前事件主体、患者身份、行为方向、known_by、anchor_for及Izzie派生边界均与来源相反。
+  required_change: 依据第一季来源将ae09重建为Cristina对Liz Fallon DNR事件的真实状态变化，或移除该候选；同步修正canon实体、known_by、anchor_for、cf_edit及Izzie/Cristina/Bailey的Profile与Frozen派生状态。
+  resolution: 已将canon实体改为Elizabeth “Liz” Fallon，并将ae09重建为Cristina在护士指出DNR后仍继续CPR、直至Burke将其拉开的事件；known_by与anchor_for仅含Cristina，cf_edit仅改变她是否在心搏停止前查明并接受DNR。已从Izzie画像和Frozen移除错误派生状态，在Cristina画像/Frozen加入事件后的DNR约束，并确认Bailey材料未保留其知晓或参与该事件的主张。
+  status: fixed
+
+- item_id: anchor_pool.ae05.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: Katie Bryce的诊断由Meredith与Cristina共同推导；ae05却把“Meredith未识别病因”直接推成Derek不会据此选她手术，未控制Cristina是否仍提供同一诊断，因此反事实未隔离唯一因果前因。
+  required_change: 明确只改变会决定Derek选择的单一前因，并保留Cristina共同诊断贡献；确保反事实分支产生唯一可判定且与主分支不同的手术机会状态。
+  resolution: ae05保留Meredith与Cristina共同形成诊断及Derek选择规则不变，并显式写明仅把决定性线索的首位呈交者从Meredith改为Cristina；主分支机会属于Meredith，反事实分支唯一转为Cristina，未否定或改写任何共同诊断贡献。
+  status: fixed
+
+- item_id: anchor_pool.ae08.state_change
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: ae08的known_by包含Cristina，但state_change将所有获知者统称为Izzie的housemates；Cristina不是Meredith家的住客，事件状态主体与known_by不一致，无法唯一确定谁获得了“建模收入支付医学院费用”的知识。
+  required_change: 按更衣室现场的实际在场者精确校准known_by，并将state_change改为与该集合一致的角色范围，不得把非住客写成housemate。
+  resolution: 已依据更衣室现场将评测角色known_by收窄为Izzie与直接在场的George；state_change明确George获得建模收入支付医学院费用的知识、Izzie公开确认该选择，不再把Cristina或全部housemates统称为获知者。Cristina与Izzie的Frozen关系来源也已从ae08改回共同入职事件。
+  status: fixed
+
+- item_id: world_031.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_evidence_grounding
+  evidence: Meredith、George与Izzie之间的双向trusting均只以ae07“同意入住”为basis_event，Derek对Meredith的trusting只以ae03“发现职场身份”为basis_event；这些事件只能证明同住或相识，不能证明强信任，且Derek在快照前隐瞒婚姻使该单一依据尤其不充分。
+  required_change: 对每个trusting方向提供第一季内可追溯且足以证明信任的稳定事实ID，或按规范降为neutral；同步校准Profile中的trusted、intimate等当前关系措辞，确保方向分别有据。
+  resolution: 已将Meredith、George、Izzie三人仅由ae07同住事件支撑的全部双向trusting降为neutral，并将对应Profile中的trusted措辞改为established roommate或friend、Izzie的当前目标改为维持合作家庭；Derek对Meredith仅由ae03相识与职级揭示支撑的trusting亦降为neutral，并将intimate改为personally involved。仅Meredith与Cristina保留由pre_existing_meredith_cristina_trust明确支撑的双向trusting。
+  status: fixed
+
+- item_id: world_031.cristina.initial_context.meredith_derek_knowledge
+  severity: major
+  rule_id: profile_frozen_knowledge_consistency
+  evidence: 第一季首班中Meredith明确向Cristina披露自己与Derek发生关系，Cristina Profile的b2也以“Meredith confiding about Derek”为可执行边界；但Cristina Frozen没有该知识或稳定source_event，导致Profile知道而运行时状态缺失，并使Stage 1/3对私密关系的回答不唯一。
+  required_change: 在canon.pre_existing_facts登记Cristina从Meredith直接获知该关系的第一季事实，并在Cristina Frozen加入visibility [npc]的对应知识；同时检查George、Izzie在快照前实际获知范围，只有存在明确披露或证据时才加入。
+  resolution: canon.pre_existing_facts已新增稳定ID pre_existing_cristina_knows_meredith_derek，明确Meredith在首班私下告知Cristina其与Derek发生关系且当时不知其主治身份；Cristina Frozen新增对应active知识，visibility为[npc]并引用该ID。未向缺少直接披露或证据链的George、Izzie扩散此知识。
+  status: fixed

@@ -1,6 +1,6 @@
 character_id: edward_cullen
-snapshot: After Bella learns the Cullen secret and before the final confrontation
-  with James
+snapshot: At the Cullen house after Bella has misled Charlie and returned, with final
+  protection assignments fixed but before any team departs
 identity:
   name: Edward Cullen
   role: Vampire member of the Cullen family and Bella Swan's protector
@@ -108,8 +108,8 @@ social:
     his world poses to her.
   - Defers to Carlisle's leadership in family decisions while pressing his own protective
     concerns.
-  - Regards Jacob Black as an outsider whose warnings reflect Quileute distrust of
-    the Cullens.
+  - Has no direct relationship with Jacob Black at this snapshot and does not know
+    what Jacob told Bella at First Beach.
   - Remains patient with Alice's visions while staying fixed on Bella's immediate
     safety.
 style:

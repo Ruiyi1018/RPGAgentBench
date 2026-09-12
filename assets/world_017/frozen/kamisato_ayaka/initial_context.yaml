@@ -9,7 +9,7 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     raiden_shogun:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     wanderer:
       level: neutral
@@ -23,32 +23,32 @@ runtime_state:
   goals:
   - id: g_ayaka_maintain_family
     content: 维持神里家在稻妻社奉行中的地位与体面
-    status: ongoing
+    status: active
     basis_event: initial_state
-  - id: g_ayaka_change_policy
-    content: 在不公开挑战雷电将军权威的情况下推动眼狩令相关政策的改变
-    status: ongoing
+  - id: g_ayaka_post_decree_recovery
+    content: 通过社奉行协助处理眼狩令与锁国令废止后的民生、文化活动和对外交流事务
+    status: active
     basis_event: initial_state
   - id: g_ayaka_keep_allies
-    content: 与旅行者和派蒙保持信任，继续寻找改变稻妻现状的方法
-    status: ongoing
+    content: 与旅行者和派蒙保持信任，在新的稻妻事务中继续交换可靠信息
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_ayaka_raiden_policy:
-      content: 雷电将军以追求永恒为治理核心，长期维持锁国令与眼狩令
+      content: 雷电将军仍以永恒为治理理念，但眼狩令与锁国令在当前快照已经废止，稻妻正在处理旧政策遗留问题
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     k_ayaka_traveler_paimon_presence:
       content: 旅行者和派蒙已经进入稻妻，并愿意协助处理稻妻事务
       status: active
-      visibility: shared_with_paimon
+      visibility: [npc]
       source_event: initial_state
     k_ayaka_family_duty:
       content: 神里家与社奉行在稻妻社会中的职责和影响力
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
 environment:
   health:
@@ -60,7 +60,17 @@ environment:
   locations:
     kamisato_ayaka: inazuma_city
     player: inazuma_city
-  access: {}
+  access:
+    kamisato_house_resources:
+      controllers: [kamisato_ayaka]
+      subjects:
+        kamisato_ayaka: granted
+        player: denied
+    tenshukaku_governance:
+      controllers: [raiden_shogun]
+      subjects:
+        kamisato_ayaka: denied
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

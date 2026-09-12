@@ -1,6 +1,6 @@
 world_id: world_003
 canon_policy:
-  primary_source: 《西游记》（人民文学出版社通行本，吴承恩著），第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”
+  primary_source: 《西游记》（人民文学出版社1980年5月北京第2版，吴承恩著），第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”
   source_type: 章回体小说
   excluded_versions:
   - 电视剧《西游记》（1986版）中与小说情节顺序不一致的改编内容
@@ -10,13 +10,21 @@ canon_policy:
   shared_snapshot: 第三次识破白骨精之前，即孙悟空已两次打死白骨精化身后的村姑与老妇人，尚未面对白骨精第三次变化的老公公。
   generated_timeline: 依据通行本第二十七回叙事顺序重建，覆盖从师徒入山至第三次识破前的正典事件，不涉及快照后情节。
   quotation_policy: 禁止直接转述或复制原文对白和叙述段落，仅作事实级转述；不引用原文句子，不注明具体页码或段落编号。
+  default_player_semantics:
+    identity: 随取经队伍在白虎岭山道同行的普通旁观者，不替代任何正典角色。
+    initial_location: shandao
+    knowledge: 仅知快照前在队伍现场公开发生且可由普通人观察到的行为；不知妖怪身份、解尸法、角色内心或未公开计划。
+    capabilities: 无识妖神通、无紧箍咒控制权、无角色私密材料或临时授权。
+    visibility:
+      npc: 仅评测NPC知晓，默认Player不知。
+      player: 默认Player知晓；仅与npc同时出现时表示双方开局均知。
+    scenario_override: 后续具体场景如改变Player身份、位置、能力或知识，必须显式声明覆盖项并重新校准visibility。
 evaluated_npcs:
 - sun_wukong
 - tang_sanzang
 - zhu_bajie
 - sha_wujing
 - baigujing
-- heihujing
 - bailongma
 event_entities:
 - 孙悟空
@@ -24,7 +32,6 @@ event_entities:
 - 猪八戒
 - 沙僧
 - 白骨精
-- 黑狐精
 - 白龙马
 - 紧箍咒
 - 金箍棒
@@ -33,7 +40,6 @@ event_entities:
 - 虎皮裙
 - 白虎岭
 - 取经路
-- 妖精洞府
 - 云端
 - 桃树
 - 饭罐子
@@ -42,14 +48,43 @@ sources:
 - id: primary_xyj_1980
   title: 西游记
   creator: 吴承恩
+  edition: 人民文学出版社1980年5月北京第2版
   scope: 第二十七回“尸魔三戏唐三藏 圣僧恨逐美猴王”，限于三打白骨精前后情节
   authority: primary
+canon_facts:
+- id: canon_party_membership
+  fact: 孙悟空、唐僧、猪八戒、沙僧与白龙马在共享快照下同属西行取经队伍。
+  source_scope: primary_xyj_1980；第二十七回开篇及本回持续成立的队伍构成
+- id: canon_default_player
+  fact: 默认Player是位于shandao、随取经队伍同行且不替代正典角色的普通旁观者。
+  source_scope: canon_policy.default_player_semantics；本Benchmark的共享场景约定
+- id: canon_westward_mission
+  fact: 唐僧师徒在共享快照下仍承担继续西行取经的使命。
+  source_scope: primary_xyj_1980；第二十七回开篇及本回持续成立的取经任务
+- id: canon_unidentified_strangers
+  fact: 除孙悟空外的取经队伍成员未能确认村姑与老妇人的妖怪真身，故其对白骨精仅有未识别陌生来者层面的认知。
+  source_scope: primary_xyj_1980；第二十七回第一次与第二次人形倒地后的现场认知
+- id: canon_disciple_commitment
+  fact: 沙僧在共享快照下仍以唐僧弟子身份随队护持西行。
+  source_scope: primary_xyj_1980；第二十七回开篇及本回持续成立的师徒关系
+- id: canon_no_spirit_sight
+  fact: 沙僧在本回未展示识破白骨精人形变化的能力，不能独立确认两名来者的真身。
+  source_scope: primary_xyj_1980；第二十七回前两次人形接近与倒地场面
+- id: canon_mount_commitment
+  fact: 白龙马在共享快照下仍以唐僧坐骑身份随队西行。
+  source_scope: primary_xyj_1980；第二十七回开篇及本回持续成立的坐骑职责
+- id: canon_bailongma_identity
+  fact: 白龙马知道自己是西海龙王三太子所化，并以白马身份随唐僧取经。
+  source_scope: primary_xyj_1980；全书在第二十七回之前已经成立并延续至共享快照的身份设定
+- id: canon_bailongma_mare_form
+  fact: 白龙马在本回共享快照下保持马形，不能以人言参与师徒争执，只能作马形动作回应。
+  source_scope: primary_xyj_1980；第二十七回前两次人形事件中的在场形态与行为范围
 data_constraints:
 - 所有anchor事件必须发生在共享快照（第三次识破白骨精之前）之前。
 - 所有事件事实只可依据通行本第二十七回内容，不得混入其他章节或改编版本细节。
 - 不得引用原文语句，只允许事实级转述。
 - 地点和物品必须限于白虎岭相关场景及师徒随身之物。
-- 孙悟空、唐僧、猪八戒、沙僧、白骨精、黑狐精、白龙马为可使用角色ID，不得新增角色。
+- 孙悟空、唐僧、猪八戒、沙僧、白骨精、白龙马为可使用角色ID，不得新增角色。
 - 每个cf_edit必须提供真实替代情形，且只改变关键原因。
 - Anchor池事件必须按时间排序。
 - 不得生成共享快照之后的剧情事件。

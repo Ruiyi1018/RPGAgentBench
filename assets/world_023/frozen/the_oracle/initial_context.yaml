@@ -2,63 +2,45 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    neo:
-      level: neutral
-      basis_event: initial_state
-    trinity:
-      level: neutral
-      basis_event: initial_state
-    morpheus:
-      level: trusting
-      basis_event: initial_state
-    agent_smith:
-      level: hostile
-      basis_event: initial_state
-    cypher:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    neo: {level: neutral, basis_event: base_no_meeting_yet}
+    trinity: {level: neutral, basis_event: base_prior_familiarity}
+    morpheus: {level: trusting, basis_event: evt_000}
+    agent_smith: {level: neutral, basis_event: base_no_direct_contact}
+    cypher: {level: neutral, basis_event: base_prior_familiarity}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
-  - id: g1
-    content: Speak with Neo and encourage him to examine his own belief about being
-      the One.
+  - id: g_oracle_001
+    content: Remain available to offer prophetic advice when Morpheus seeks consultation.
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: Maintain the trust of Morpheus without revealing more than the moment
-      requires.
-    status: active
-    basis_event: initial_state
+    basis_event: evt_000
   disclosures: []
   knowledge:
-    k1:
-      content: Morpheus believes Neo is the One and has brought him to see the Oracle.
+    k_oracle_001:
+      content: The Oracle previously disclosed to Morpheus that he would find the One.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k2:
-      content: Neo doubts whether he is truly the One.
+      visibility: [npc]
+      source_event: evt_000
+    k_oracle_003:
+      content: The Player avatar has been admitted for this scenario, but receives no access to the Oracle's undisclosed knowledge.
       status: active
-      visibility: private
-      source_event: initial_state
-    k3:
-      content: Agents are searching for resistance members inside the Matrix.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: base_player_scene_override
 environment:
-  health:
-    the_oracle: 100
-    player: 100
-  inventories:
-    the_oracle: []
-    player: []
+  health: {the_oracle: 100, player: 100}
+  inventories: {the_oracle: [], player: []}
   locations:
     the_oracle: loc_oracle_apartment
     player: loc_oracle_apartment
-  access: {}
+  access:
+    oracle_apartment_entry:
+      controllers: [the_oracle]
+      subjects: {the_oracle: granted, player: granted}
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {player: granted}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {player: granted}
   offers: []
   task_status: active
   dialogue_status: active

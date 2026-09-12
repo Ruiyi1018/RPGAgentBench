@@ -1,0 +1,143 @@
+- item_id: canon.yaml.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon_policy未定义默认Player的身份、能力、可接触材料或开局知识；但全部initial_context都把Player放在Moria西门入口，并使用依赖Player可见性的知识字段。
+  required_change: 在canon中定义统一的默认Player语义及scenario覆盖规则，明确Player为何在场、默认知道什么以及不能获知或执行什么。
+  resolution: 已在canon_policy新增default_player_semantics，限定Player为不产生正典事实的运行时观察者，说明在场位置、可执行能力、初始知识、物品/权限限制及逐项scenario覆盖规则。
+  status: fixed
+
+- item_id: world_021.current_route_state
+  severity: major
+  rule_id: snapshot_state_consistency
+  evidence: 全部initial_context已位于moria_west_gate_approach，且知识声明Company已到静水边；但Frodo Profile仍称Company须权衡路线，Aragorn初始目标仍为评估是否进入Moria，Gimli仍要说服Company进入Moria，Boromir仍以寻找替代路线为当前目标。
+  required_change: 统一快照为抵达西门后的当前有效状态；把已结束的路线选择保留为历史知识，并将目标、立场和边界改成此刻仍可行动的状态。
+  resolution: 已将canon及七份Profile的共享快照统一为Company已选择Moria并抵达西门静水边；更新Frodo、Aragorn、Gandalf、Legolas、Gimli、Boromir等当前立场、目标或边界，Frozen目标与知识保持抵达后状态，使路线表决仅作为历史，当前动作聚焦寻门、警戒和安全进入。
+  status: fixed
+
+- item_id: world_021.caradhras_storm_causation
+  severity: blocker
+  rule_id: world_truth_vs_belief
+  evidence: 小说Book II Chapter 3只确定暴风雪、落石及Company对成因的不同推测，并未确定是Caradhras主动发动；ae_021_014却把“mountain sends”写成世界事实，Frodo与Gandalf初始知识也把该推测写成确定事实。
+  required_change: 将世界事实限定为可观察到的暴风雪、落石和被迫撤退；若保留Caradhras恶意，只能按具体角色的怀疑或解释建模，不能作为全员共享的确定知识。
+  resolution: 已将ae_021_014及Frodo、Gandalf、Sam的Frozen知识改为暴雪、风与落石这一可观察事实，并移除Sam与Gimli处残留的确定敌意措辞；Gandalf的恶意成因仅保留为私下且未确认的怀疑。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_021_009
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 候选称Aragorn侦察后带回Redhorn Gate可能受监视的迹象；Book II Chapter 3中是Gandalf根据“signs that we have seen lately”向Company发出该警告，未发生此处所写的Aragorn单独侦察归来事件。
+  required_change: 替换为正典中可定位的离散事件并准确记录发言者、证据来源与known_by，或删除该候选。
+  resolution: 已把ae_021_009替换为Gandalf根据近期迹象向全队警告Redhorn Gate可能受监视及天气转坏的离散事件，并将Aragorn/Frodo相关知识改为未确认的转述。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_021_011
+  severity: blocker
+  rule_id: event_source_validity
+  evidence: 候选称Sam在Caradhras攀登中背负Frodo；小说中Aragorn和Boromir开路后分别搬运四名hobbit，撤退最后一趟是Boromir携Sam、Aragorn携Frodo，Sam没有背负Frodo。
+  required_change: 删除该虚构事件，或替换为Book II Chapter 3中Sam实际参与且可定位的事件，并同步所有Profile、Frozen知识和边界中的相关说法。
+  resolution: 已将ae_021_011改为撤退时Boromir携Sam、Aragorn携Frodo穿过二人开出的雪道；同步修正Sam Profile边界、技能及Sam/Frodo Frozen知识。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_021_015
+  severity: blocker
+  rule_id: excluded_adaptation_leakage
+  evidence: Gandalf施咒压制Caradhras风暴是电影情节；小说中他在山上以命令词生火，却没有对风暴施放反制咒语。该能力还被写入Gandalf Profile的skills。
+  required_change: 删除电影版反制风暴事件及对应能力；仅保留小说范围内可追溯的生火行为或其他Book II事件。
+  resolution: 已从候选池删除电影版ae_021_015，并从Gandalf skills移除“对抗天气施法”；仅保留小说支持的生火与驱逐warg能力背景。
+  status: fixed
+
+- item_id: aragorn.current_sword_state
+  severity: blocker
+  rule_id: incompatible_current_resource_state
+  evidence: Aragorn Profile称当前仍携带Shards of Narsil，environment也同时保留narsil_shards和anduril；小说Book II Chapter 3明确Narsil在Company离开Rivendell前已重铸并命名为Andúril。
+  required_change: 将快照当前武器统一为Andúril，移除Shards作为当前可持有资源的状态，并修正Profile私密信息及Frozen inventory。
+  resolution: 已从environment删除当前Shards资源，保留Andúril；Profile明确Council已讨论其身份且Narsil出发前重铸，Aragorn Frozen inventory现持有anduril，ae_021_004记录该资源转换。
+  status: fixed
+
+- item_id: frodo_baggins.private.secrets.ring_cold_on_caradhras
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile断言Frodo在Caradhras感觉Ring产生了超出普通疲惫的寒冷与压迫；小说只写Frodo因暴风雪而困倦、寒冷、饥饿和眩晕，没有把这些感受归因于Ring。
+  required_change: 删除Ring造成特殊寒冷或压迫的因果断言，或改写为小说直接支持且不越过证据的身体经历。
+  resolution: 已删除Ring导致特殊寒冷与压迫的因果断言，改为小说直接支持的寒冷、饥饿、疲惫和眩晕经历，并明确Frodo不把身体反应归因于Ring。
+  status: fixed
+
+- item_id: world_021.environment.executable_resources
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 当前场景与Profile反复依赖One Ring、Gandalf的staff、Legolas的bow、Gimli的axe、Boromir的sword/shield/horn、Sam的sword及Bill the pony，但environment没有这些资源ID；现有One Ring以外的关键条目也未进入持有状态。
+  required_change: 只补充快照中实际存在且会影响Stage 3决定的关键物品或实体，并为其定义最小可执行语义；避免加入无测试用途的装饰资源。
+  resolution: 已补充One Ring、Gandalf staff、Legolas bow、Gimli axe、Boromir sword/shield/horn、Sam sword和Bill等快照关键资源，使用最小type/portable运行时语义。
+  status: fixed
+
+- item_id: world_021.initial_context.inventories
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: 七份initial_context的NPC inventory全部为空；至少Frodo当前持有One Ring、Sting和秘藏mithril coat，Aragorn持有Andúril，Gandalf持有staff与Glamdring，Legolas与Gimli也持有Profile明确用于行动的武器。
+  required_change: 在environment资源补齐后，将快照中实际持有且可执行的关键资源写入各NPC inventory，并保持隐藏物品的Player可见性与持有事实分离。
+  resolution: 已为七名NPC写入当前实际持有的关键资源：Frodo持Ring/Sting/mithril coat，Aragorn持Andúril，Gandalf持staff/Glamdring，Legolas、Gimli、Boromir和Sam持各自武器装备；Player inventory仍为空且canon声明持有不自动可见或可用。
+  status: fixed
+
+- item_id: world_021.initial_context.visibility_vocabulary
+  severity: minor
+  rule_id: visibility_schema_consistency
+  evidence: 所有Frozen知识使用private、shared、public等未定义的标量标签；生成器和FixtureEngine采用受众列表语义，如[npc]或[npc, player]，当前标签无法唯一判断Player开局是否知情。
+  required_change: 按统一语义将visibility改为受众列表，并结合默认Player身份逐项核实，不得仅因事实公开或真实就自动授予Player知识。
+  resolution: 已将七份Frozen全部knowledge.visibility改为[npc]或[npc, player]受众列表；仅当前静水、寻门等默认Player直接可见场景授予player，历史、Ring、动机与推断均不自动授予。
+  status: fixed
+
+- item_id: world_021.initial_context.knowledge.source_event
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 七份Frozen状态中每条知识的source_event均为泛化的initial_state，无法追溯到anchor_pool事件、Council背景事实或其他明确正典证据，也无法支持Stage 1前后状态判定。
+  required_change: 为每条知识使用稳定且可定位的来源事件或背景事实ID；对同一事实保持一致来源，并区分亲历、被告知和推断。
+  resolution: 已把全部knowledge.source_event从initial_state替换为可定位的ae_021事件或canon内bg_021_council_company、snapshot_021_west_gate背景ID，并按亲历、共同决策与推断区分内容。
+  status: fixed
+
+- item_id: gimli.initial_context.relationships.gimli
+  severity: major
+  rule_id: invalid_relationship_target
+  evidence: Gimli的initial_context把gimli自身写为loyal关系目标；关系状态应描述NPC指向其他主体的方向性关系，自关系没有可判定意义。
+  required_change: 删除gimli自关系，并回归检查所有Frozen关系目标均为不同主体或Player。
+  resolution: 已删除Gimli Frozen中的gimli自关系，并检查其余七份关系目标均不是对应NPC自身。
+  status: fixed
+
+- item_id: world_021.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 多个强关系没有Profile或正典依据：Aragorn将Sam标为loyal，Gimli将Sam标为trusting、Gandalf标为loyal、Boromir标为distrustful，Boromir将Gimli标为distrustful；路线分歧或一般尊重不足以自动成立忠诚、信任或不信任。
+  required_change: 无明确方向性依据的关系改为neutral；若保留强等级，须在对应Profile中补充可追溯的当前关系依据，且不得强制对称。
+  resolution: 已将点名的Aragorn→Sam、Gimli→Sam/Gandalf/Boromir、Boromir→Gimli及其他仅有一般熟悉依据的强关系降为neutral；保留的强关系均对应Profile中的护戒职责、明确服从或长期陪伴依据。
+  status: fixed
+
+- item_id: aragorn.private.secrets.lineage_visibility
+  severity: major
+  rule_id: public_private_separated
+  evidence: Aragorn Profile称其Isildur后裔身份并非所有Company成员知晓，但该身份与Sword-that-was-Broken已在Council of Elrond当着Legolas、Gimli、Boromir、Frodo等人公开讨论，不能对本评测名单统一建模为秘密。
+  required_change: 按各NPC在Council的在场与后续披露分别建模知识；不要把对外界并非普通知识等同于对Company成员私密。
+  resolution: 已把Aragorn的Isildur血统与断剑身份移入Company公开背景，删除“并非所有Company成员知晓”的秘密断言；Frozen Ring知识仍保持对默认Player隐藏。
+  status: fixed
+
+- item_id: legolas.social.relationship_rules.boromir
+  severity: major
+  rule_id: internal_profile_consistency
+  evidence: Legolas的stances明确其不愿进入并不信任Moria路线，relationship_rules却称他不认同Boromir对Moria的担忧；小说中Legolas明确说自己不愿去Moria，因此这两个当前立场互相冲突。
+  required_change: 区分Legolas与Boromir共享的路线顾虑和二人不同的理由，确保同一Profile对Moria的当前立场唯一一致。
+  resolution: 已改为Legolas与Boromir都对Moria不安但理由不同：Legolas源于对深处的Elvish疑虑，Boromir侧重军事风险；与stances保持一致。
+  status: fixed
+
+- item_id: world_021.characters.testable_boundaries.current_executability
+  severity: major
+  rule_id: stage3_boundary_runtime_support
+  evidence: 多条边界只能在已结束的Caradhras攀登、暴风雪撤退、warg夜袭或Moria路线初次表决中触发，例如Aragorn b1-b4、Legolas b2-b3及Boromir boundary_001；Frozen开局已到西门，Player无法在不倒退时间的情况下施压这些边界。
+  required_change: 保留历史行为作为依据，但为每名NPC提供足够的西门当前场景压力、明确禁行结果、允许适应及可执行动作或资源，使Stage 3测试决策而非复演过去。
+  resolution: 已把Aragorn b1-b4、Legolas b1-b3、Boromir boundary_001/002/004以及Gimli、Gandalf、Frodo相关路线边界改写为西门当前压力，明确静水警戒、寻门、进入次序、保护Frodo/Bill、资源使用的禁行结果和允许适应；Caradhras等历史行为仅作依据。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_change_testability
+  severity: major
+  rule_id: candidate_state_change_observable
+  evidence: 多个state_change只是剧情复述或一次性动作，如ae_021_010“strength is tested”、ae_021_015“acts ... with power”、ae_021_020“a battle occurs”、ae_021_021“fire is used”；ae_021_022和ae_021_024的cf_edit又只写去往别处或未找到水，未给出唯一替代状态或可观察决定。候选池因此主要覆盖事实记忆，缺少可持续、可覆盖的目标、关系、承诺和资源状态。
+  required_change: 逐项明确真正生效的状态路径、旧值、新值、证据和后续可观察决定；删除无持久状态价值的候选，并把反事实收敛为单一、可执行且结果唯一的因果变量。
+  resolution: 已重整候选池为19个有持续状态价值的离散事件，删除ae_021_010/012/013/015/021等一次性或失实候选；每项补充chapter_order，并以明确状态路径、旧值、新值、触发证据、后续可观察决定和单变量cf_edit表述，覆盖知识、目标、成员/职责、路线、位置与资源；ae_021_001同时明确Ring是从Rivendell持有延续到旅途，而非出发时凭空获得。
+  status: fixed

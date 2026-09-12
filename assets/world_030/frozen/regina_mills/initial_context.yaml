@@ -1,77 +1,83 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_henry_guardianship
+    target: henry_mills
+    content: Exercise her legal guardianship and retain custody of Henry
+    status: active
+    basis_event: ouat_s1_e1
   relationships:
-    emma_swan:
-      level: hostile
-      basis_event: initial_state
-    henry_mills:
-      level: distrustful
-      basis_event: initial_state
-    rumplestiltskin:
-      level: distrustful
-      basis_event: initial_state
-    snow_white:
-      level: neutral
-      basis_event: initial_state
-    prince_charming:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    emma_swan: {level: hostile, basis_event: ae_018}
+    henry_mills: {level: distrustful, basis_event: ouat_s1_e2}
+    rumplestiltskin: {level: distrustful, basis_event: ae_012}
+    snow_white: {level: neutral, basis_event: initial_state}
+    prince_charming: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g_001
-    content: Remove Emma Swan from Storybrooke
+    content: Remove Emma Swan from Storybrooke without exposing magical history
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: g_002
-    content: Keep Henry from believing in the curse
+    content: Keep Henry from acting on his belief in the curse
     status: active
-    basis_event: initial_state
+    basis_event: ouat_s1_e2
   - id: g_003
     content: Maintain control over Storybrooke as mayor
     status: active
-    basis_event: initial_state
+    basis_event: ouat_s1_e1
   disclosures: []
   knowledge:
     k_001:
-      content: Emma Swan is Henry's birth mother
+      content: Emma Swan is Henry's biological mother
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_006
     k_002:
-      content: Mr. Gold is Rumplestiltskin
+      content: Mr. Gold arranged Henry's adoption and refuses to explain Emma's
+        significance or Henry's origin
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     k_003:
       content: She is the Evil Queen who cast the curse
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ouat_s1_e1
     k_004:
-      content: Henry has a history of running away and counseling
+      content: Henry has previously run away from Regina's care
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ouat_s1_e1
     k_005:
-      content: Rumplestiltskin says Emma's arrival started a chain of events and wants
-        a favor
+      content: Mr. Gold's use of the word please demonstrates unexplained pre-curse
+        leverage, but he has not told her that Emma is the Savior
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
+    k_006:
+      content: Henry receives counseling
+      status: active
+      visibility: [npc]
+      source_event: ae_022
 environment:
-  health:
-    regina_mills: 100
-    player: 100
+  health: {regina_mills: 100, player: 100}
   inventories:
     regina_mills: []
     player: []
   locations:
-    regina_mills: mills_house
-    player: mills_house
-  access: {}
+    regina_mills: mayors_office
+    player: mayors_office
+  access:
+    mayors_office:
+      controllers: [regina_mills]
+      subjects:
+        regina_mills: granted
+    mills_house:
+      controllers: [regina_mills]
+      subjects:
+        regina_mills: granted
+        henry_mills: granted
   offers: []
   task_status: active
   dialogue_status: active

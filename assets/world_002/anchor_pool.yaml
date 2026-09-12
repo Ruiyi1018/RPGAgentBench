@@ -4,237 +4,330 @@ source: qianfu_tv_episodes_1_to_17
 events:
   - id: qf_01_yu_spares_target
     episode: 1
+    episode_order: "01.01"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 余则成因发现左蓝与抓捕目标有关而迟疑，导致目标脱身。
     known_by: [yu_zecheng]
     state_change: 左蓝关系开始影响余则成的军统任务判断
-    cf_edit: 余则成未发现左蓝并按计划发出信号
+    cf_edit: "variable=yu_recognises_zuo_lan_connection; edit=余则成未发现目标与左蓝有关并按计划发出信号; hold_constant=抓捕任务、目标和余则成权限不变; expected_difference=左蓝关系不触发本次任务迟疑"
     anchor_for: [yu_zecheng]
 
   - id: qf_02_lv_identifies_hesitation
     episode: 1
+    episode_order: "01.02"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 吕宗方识别出余则成在行动中的异常和内心动摇。
     known_by: [yu_zecheng]
     state_change: 余则成开始面对身份与立场选择
-    cf_edit: 吕宗方未察觉异常
+    cf_edit: "variable=lv_observes_hesitation; edit=吕宗方未察觉余则成的异常迟疑; hold_constant=行动结果和二人既有关系不变; expected_difference=余则成此时不被引向身份与立场选择"
     anchor_for: [yu_zecheng]
 
   - id: qf_03_lv_killed
     episode: 2
+    episode_order: "02.01"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 吕宗方被军统方面灭口，余则成得知其地下党员身份。
     known_by: [yu_zecheng]
     state_change: 余则成对军统忠诚显著下降
-    cf_edit: 吕宗方安全撤离
+    cf_edit: "variable=lv_is_killed; edit=吕宗方在灭口行动前安全撤离; hold_constant=余则成已观察到军统内部处置风险; expected_difference=余则成不会因吕宗方之死产生同等程度的忠诚下降"
     anchor_for: [yu_zecheng]
 
   - id: qf_04_li_haifeng_assassinated
     episode: 2
+    episode_order: "02.02"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 余则成独立完成刺杀叛徒李海丰并因此获军统嘉奖。
     known_by: [yu_zecheng, wu_jingzhong]
     state_change: 余则成获得进入军统核心体系的公开功绩
-    cf_edit: 刺杀失败且身份暴露
+    cf_edit: "variable=assassination_succeeds; edit=刺杀未命中但余则成仍安全撤离; hold_constant=任务对象、余则成身份和行动计划不变; expected_difference=余则成不获得该次公开功绩与嘉奖"
     anchor_for: [yu_zecheng, wu_jingzhong]
 
   - id: qf_05_zuo_lan_recruits_yu
     episode: 2
+    episode_order: "02.03"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 左蓝向余则成说明吕宗方安排并引导其加入中共。
     known_by: [yu_zecheng]
     state_change: 余则成确立新的政治立场
-    cf_edit: 余则成拒绝加入
+    cf_edit: "variable=yu_accepts_recruitment; edit=余则成听取说明后拒绝加入中共; hold_constant=吕宗方安排与左蓝提供的信息不变; expected_difference=余则成不建立中共党员身份与潜伏承诺"
     anchor_for: [yu_zecheng]
 
   - id: qf_06_yu_becomes_emei_peak
     episode: 3
+    episode_order: "03.01"
+    timeline_position: before_snapshot
+    scene_location: pre_tianjin_operations
     fact: 余则成接受潜伏任务并以峨眉峰为秘密代号。
     known_by: [yu_zecheng, wang_cuiping]
     state_change: 中共身份和代号成为最高保密信息
-    cf_edit: 余则成被安排撤离而非潜伏
+    cf_edit: "variable=organisation_assigns_infiltration; edit=组织改为安排余则成撤离而非继续潜伏; hold_constant=余则成已加入中共且身份尚安全; expected_difference=不建立峨眉峰代号与天津潜伏任务"
     anchor_for: [yu_zecheng, wang_cuiping]
 
   - id: qf_07_wu_recruits_yu_to_tianjin
     episodes: [3, 4]
+    episode_order: "04.01"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
     fact: 吴敬中将有功且能干的余则成调入天津站，并把其视为可用亲信。
     known_by: [yu_zecheng, wu_jingzhong, lu_qiaoshan]
     state_change: 余则成获得天津站公开身份和吴敬中初始信任
-    cf_edit: 吴敬中将余则成列为重点审查对象
+    cf_edit: "variable=wu_treats_yu_as_trusted_recruit; edit=吴敬中仍调余则成入站但先列为普通受审查人员; hold_constant=余则成公开功绩、天津站职位空缺和调令不变; expected_difference=余则成获得公开职务但不获得站长初始信任"
     anchor_for: [yu_zecheng, wu_jingzhong, lu_qiaoshan]
 
   - id: qf_08_fake_wife_arrives
     episodes: [4, 5]
+    episode_order: "05.01"
+    timeline_position: before_snapshot
+    scene_location: yu_residence
     fact: 组织安排翠平以余则成妻子身份共同潜伏。
     known_by: [yu_zecheng, wang_cuiping]
     state_change: 建立假夫妻掩护和共同守密责任
-    cf_edit: 组织安排经验成熟的原定人选
+    cf_edit: "variable=cover_partner_is_cuiping; edit=组织安排原定且有城市经验的女联络员抵达; hold_constant=夫妻掩护任务、余宅和余则成身份不变; expected_difference=共同守密关系建立于不同对象且不产生翠平的适应目标"
     anchor_for: [yu_zecheng, wang_cuiping]
 
   - id: qf_09_cuiping_cover_difficulties
-    episodes: [5, 6, 7]
-    fact: 翠平因言行直率和城市经验不足多次让余则成担心身份暴露。
-    known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
-    state_change: 翠平认识到城市掩护能力不足并建立学习目标；余则成对其业务能力信任偏低但保护责任保持
-    cf_edit: 翠平从一开始就熟练维持官太太身份
-    anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
+    episode: 5
+    episode_order: "05.02"
+    timeline_position: before_snapshot
+    scene_location: yu_residence
+    fact: 翠平在一次公开交往暴露出城市掩护经验不足后，余则成当面要求她学习官太太言行规则。
+    known_by: [yu_zecheng, wang_cuiping]
+    observable_facet_known_by: []
+    state_change: 翠平建立学习城市掩护规则的活跃目标；余则成继续承担保护与指导责任
+    cf_edit: "variable=cuiping_accepts_cover_training; edit=翠平听到提醒后拒绝学习城市掩护规则; hold_constant=本次失误、夫妻掩护和余则成保护责任不变; expected_difference=翠平不建立主动学习掩护规则的目标"
+    anchor_for: [yu_zecheng, wang_cuiping]
 
   - id: qf_10_wu_uses_yu_for_private_profit
-    episodes: [3, 4, 8]
-    fact: 吴敬中让余则成处理与穆连成相关的私利事务。
+    episode: 8
+    episode_order: "08.01"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
+    fact: 吴敬中把一项与穆连成财物相关的具体私事交给余则成处理，余则成接受了该项委托。
     known_by: [yu_zecheng, wu_jingzhong]
     state_change: 形成基于能力和共同利益的工具性信任
-    cf_edit: 余则成拒绝处理私事
+    cf_edit: "variable=yu_accepts_private_errand; edit=余则成以职责不符为由拒绝这一项具体私事; hold_constant=吴敬中的委托内容、双方职位和此前信任不变; expected_difference=本次委托不增强双方基于共同利益的工具性信任"
     anchor_for: [yu_zecheng, wu_jingzhong]
 
   - id: qf_11_negotiation_intelligence_leaked
     episodes: [6, 7]
+    episode_order: "07.01"
+    timeline_position: before_snapshot
+    scene_location: confidential_office
     fact: 余则成将军调秘密情报传递给中共方面，天津站开始追查泄密者。
     known_by: [yu_zecheng, wang_cuiping]
     suspected_by: [wu_jingzhong, lu_qiaoshan]
     state_change: 潜伏任务取得成果并引发内部调查压力
-    cf_edit: 情报未被传出
+    cf_edit: "variable=intelligence_is_transmitted; edit=余则成取得情报但未将其传出天津站; hold_constant=情报内容、天津站人员与审查制度不变; expected_difference=地下网络不获得该情报且本次传递不触发泄密调查"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
 
   - id: qf_12_wu_tests_yu_over_zuo_lan
     episode: 7
+    episode_order: "07.02"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
     fact: 吴敬中利用余则成与左蓝的旧关系进行话语试探。
     known_by: [yu_zecheng, wu_jingzhong]
     state_change: 余则成提高对站长试探的警惕
-    cf_edit: 吴敬中明确表示完全不怀疑余则成
+    cf_edit: "variable=wu_uses_zuo_lan_as_test; edit=吴敬中谈及左蓝但不设置任何立场试探; hold_constant=二人知道余则成与左蓝有旧关系; expected_difference=余则成不因该次谈话提高对站长试探的警惕"
     anchor_for: [yu_zecheng, wu_jingzhong]
 
   - id: qf_13_qiu_captured
     episodes: [8, 9]
+    episode_order: "09.01"
+    timeline_position: before_snapshot
+    scene_location: interrogation_room
     fact: 马奎抓获秋掌柜，余则成的联络网络受到直接威胁。
     known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
     state_change: 保护联络人与隐藏身份成为紧急目标
-    cf_edit: 秋掌柜安全撤离
+    cf_edit: "variable=qiu_is_captured; edit=秋掌柜在马奎行动前安全撤离; hold_constant=联络网络结构和马奎调查意图不变; expected_difference=保护秋掌柜与隐藏关联不成为当下紧急目标"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
 
   - id: qf_14_fo_kan_identified
     episodes: [9, 10]
+    episode_order: "10.01"
+    timeline_position: before_snapshot
+    scene_location: yanan_field_site
     fact: 余则成提供线索帮助左蓝在延安识别佛龛李涯。
     known_by: [yu_zecheng]
     later_known_by: [li_ya]
     state_change: 李涯的潜伏身份暴露并形成其对内部泄密的长期警惕
-    cf_edit: 李涯身份未被识别
+    cf_edit: "variable=yu_clue_identifies_fokan; edit=余则成提供的该条线索无法与佛龛身份匹配; hold_constant=李涯仍在延安潜伏且左蓝执行同一核查; expected_difference=李涯身份不因该线索暴露"
     anchor_for: [yu_zecheng, li_ya]
 
   - id: qf_15_li_ya_exchanged_for_qiu
     episodes: [10, 11]
+    episode_order: "11.01"
+    timeline_position: before_snapshot
+    scene_location: yanan_field_site
     fact: 左蓝以被捕的李涯交换秋掌柜，双方完成换俘。
     known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan, li_ya]
     state_change: 秋掌柜获救且李涯的延安任务终止
-    cf_edit: 交换失败
+    cf_edit: "variable=exchange_is_completed; edit=双方在交接前未能达成换俘确认; hold_constant=李涯和秋掌柜均已被扣押且交换提议存在; expected_difference=秋掌柜未获释且李涯不返回军统控制"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan, li_ya]
 
   - id: qf_16_ma_kui_framed_and_detained
     episode: 11
+    episode_order: "11.02"
+    timeline_position: before_snapshot
+    scene_location: interrogation_room
     fact: 余则成与左蓝利用证据和天津站内斗使马奎被当成峨眉峰并遭扣押。
     known_by: [yu_zecheng, wang_cuiping]
     believed_by: [wu_jingzhong, lu_qiaoshan]
     state_change: 余则成暂时解除重大身份威胁
-    cf_edit: 关键证据指向余则成
+    cf_edit: "variable=planted_evidence_points_to_ma; edit=关键证据无法与马奎关联; hold_constant=天津站仍在调查峨眉峰且余则成保持相同行为; expected_difference=马奎不因该证据被当成峨眉峰并扣押"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, lu_qiaoshan]
 
   - id: qf_17_yu_party_oath
     episode: 11
+    episode_order: "11.03"
+    timeline_position: before_snapshot
+    scene_location: yu_residence
     fact: 翠平为余则成举行简朴的入党宣誓。
     known_by: [yu_zecheng, wang_cuiping]
     state_change: 二人的政治信任和共同承诺增强
-    cf_edit: 仪式因安全风险取消
+    cf_edit: "variable=oath_ceremony_occurs; edit=二人因即时安全风险推迟本次宣誓仪式; hold_constant=余则成党员身份和夫妻掩护不变; expected_difference=该时点不新增由共同仪式强化的政治信任记忆"
     anchor_for: [yu_zecheng, wang_cuiping]
 
   - id: qf_18_li_ya_returns
     episode: 12
+    episode_order: "12.01"
+    timeline_position: before_snapshot
+    scene_location: action_office
     fact: 李涯返回天津站接替马奎负责行动工作。
     known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
     state_change: 天津站新增具有潜伏经验和坚定立场的调查者
-    cf_edit: 李涯被调往其他地区
+    cf_edit: "variable=li_assigned_to_tianjin; edit=换俘后李涯被调往其他地区; hold_constant=李涯已回到军统且马奎职位空缺; expected_difference=天津站不新增由李涯负责的行动调查压力"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
 
   - id: qf_19_li_ya_tests_yu_through_zuo_lan
     episode: 12
+    episode_order: "12.02"
+    timeline_position: before_snapshot
+    scene_location: action_office
     fact: 李涯要求余则成参与策反左蓝，以检验余则成的立场并推进任务。
     known_by: [yu_zecheng, li_ya, wu_jingzhong]
     state_change: 余则成面临感情、同志安全与掩护身份冲突
-    cf_edit: 李涯安排其他人接触左蓝
+    cf_edit: "variable=yu_is_assigned_to_contact_zuo; edit=李涯安排另一名人员接触左蓝; hold_constant=策反目标、李涯调查意图和左蓝处境不变; expected_difference=余则成不直接面临该次感情、同志安全与公开任务冲突"
     anchor_for: [yu_zecheng, li_ya, wu_jingzhong]
 
   - id: qf_20_zuo_lan_and_ma_kui_die
     episode: 13
-    fact: 翠平未能及时拦下左蓝，左蓝与逃脱的马奎交火后双双死亡。
+    episode_order: "13.01"
+    timeline_position: before_snapshot
+    scene_location: tianjin_street
+    fact: 左蓝与逃脱的马奎交火后双双死亡。
     known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
-    state_change: 余则成失去重要同志与旧爱，翠平认识到地下斗争代价
-    cf_edit: 翠平及时拦住左蓝
+    private_fact: 翠平未能及时拦下左蓝。
+    private_known_by: [yu_zecheng, wang_cuiping]
+    state_change: 余则成确认失去重要同志与旧爱；翠平因自己知晓的拦阻失败认识到地下斗争代价
+    cf_edit: "variable=cuiping_reaches_zuo_before_departure; edit=翠平及时拦住左蓝离开; hold_constant=马奎已经逃脱且其他人物的位置与意图不变; expected_difference=左蓝不参与该次交火，公开结果不再是左蓝与马奎双亡"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
 
   - id: qf_21_yuan_peilin_targeted
     episode: 14
+    episode_order: "14.01"
+    timeline_position: before_snapshot
+    scene_location: yu_residence
     fact: 余则成和翠平接到除掉叛徒袁佩林的任务，并判断其受李涯保护。
     known_by: [yu_zecheng, wang_cuiping]
     state_change: 形成相互冲突的保护与清除目标
-    cf_edit: 袁佩林提供的是虚假名单且不再构成威胁
+    cf_edit: "variable=yuan_list_is_actionable; edit=核验显示袁佩林提供的名单为假; hold_constant=袁佩林受李涯保护且余则成、翠平收到同一任务通报; expected_difference=袁佩林不再被二人视为必须清除的现实网络威胁"
     anchor_for: [yu_zecheng, wang_cuiping]
 
   - id: qf_21_li_ya_detects_yuan_threat
     episode: 14
+    episode_order: "14.02"
+    timeline_position: before_snapshot
+    scene_location: action_office
     fact: 李涯从袁佩林周边的异常监控迹象判断其正面临清除威胁，但尚未掌握任务来源和实施者。
     known_by: [li_ya]
     state_change: 李涯加强对袁佩林的保护并调查威胁来源
-    cf_edit: 异常迹象经核验与袁佩林无关
+    cf_edit: "variable=surveillance_indicates_yuan_threat; edit=该组异常监控迹象经核验与袁佩林无关; hold_constant=李涯负责保护袁佩林且其余线索不变; expected_difference=李涯不因这组迹象升级保护和来源调查"
     anchor_for: [li_ya]
 
   - id: qf_22_yuan_peilin_killed
     episode: 15
+    episode_order: "15.01"
+    timeline_position: before_snapshot
+    scene_location: tianjin_street
     fact: 余则成和翠平利用线索与掩护成功除掉袁佩林。
     known_by: [yu_zecheng, wang_cuiping]
     outcome_known_by: [wu_jingzhong, li_ya, lu_qiaoshan]
     state_change: 地下网络威胁下降且李涯威望受损
-    cf_edit: 李涯成功保护袁佩林
+    cf_edit: "variable=yu_cuiping_decoy_succeeds; edit=用于绕开保护的关键掩护未被李涯接受; hold_constant=袁佩林位置、李涯保护资源和清除任务不变; expected_difference=余则成与翠平无法在该时点接近并除掉袁佩林"
     anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
 
   - id: qf_23_li_lu_conflict_intensifies
-    episodes: [15, 16]
-    fact: 陆桥山利用李涯行动失利挑拨站长，双方在权限和情报上继续争斗。
+    episode: 16
+    episode_order: "16.01"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
+    fact: 陆桥山就李涯在袁佩林案中的行动失利向吴敬中进言，吴敬中据此限制李涯本次主张的额外资源。
     known_by: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
-    state_change: 李涯与陆桥山互信下降并给余则成留下周旋空间
-    cf_edit: 陆桥山主动交出可核验的渠道记录并接受联合复核
+    state_change: 李涯确认陆桥山借本次失利阻碍其行动权限，二人的方向性关系降为敌对竞争
+    cf_edit: "variable=lu_uses_failure_against_li; edit=陆桥山不就袁佩林案向吴敬中进言; hold_constant=李涯行动失利、双方既有竞争与吴敬中权限不变; expected_difference=李涯不会因这一离散进言事件确认陆桥山正在阻碍本次资源申请"
     anchor_for: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
 
   - id: qf_24_military_goods_profit
     episode: 16
-    fact: 九十四军军需倒卖事件被用于内部争斗和利益交易，吴敬中借机获利。
-    known_by: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
+    episode_order: "16.02"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
+    fact: 九十四军军需倒卖线索进入天津站内部处置并被用于派系争斗。
+    known_by: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
+    private_transaction_fact: 吴敬中通过余则成安排的利益交易从处置中获利。
+    private_transaction_known_by: [yu_zecheng, wu_jingzhong]
+    inferred_outcome_by: [li_ya, lu_qiaoshan]
     state_change: 吴敬中对余则成的利益信任增强且李涯再次受挫
-    cf_edit: 吴敬中拒绝利益并要求彻查
-    anchor_for: [yu_zecheng, wang_cuiping, wu_jingzhong, li_ya, lu_qiaoshan]
+    cf_edit: "variable=wu_accepts_private_benefit; edit=吴敬中拒绝余则成安排的该项私人利益; hold_constant=军需倒卖线索、派系争斗和吴敬中调查权限不变; expected_difference=吴敬中不因本次利益安排提高对余则成的工具性信任"
+    anchor_for: [wu_jingzhong]
 
   - id: qf_25_xie_ruolin_enters_market
     episode: 17
+    episode_order: "17.01"
+    timeline_position: before_snapshot
+    scene_location: xie_residence
     fact: 谢若林以党通局人员和情报贩子身份接近余则成，并表现出逐利立场。
     known_by: [yu_zecheng, wang_cuiping, xie_ruolin]
     state_change: 新增不受固定阵营约束的情报交易者
-    cf_edit: 谢若林坚持党通局任务且拒绝私人交易
+    cf_edit: "variable=xie_offers_private_trade; edit=谢若林只执行党通局接触任务并拒绝私人交易; hold_constant=其党通局身份、与晚秋婚姻和接近余则成的机会不变; expected_difference=余则成不会把他识别为可逐利交易的独立情报贩子"
     anchor_for: [yu_zecheng, wang_cuiping, xie_ruolin]
 
   - id: qf_26_cuiping_defends_wanqiu
     episode: 17
+    episode_order: "17.02"
+    timeline_position: before_snapshot
+    scene_location: xie_residence
     fact: 翠平因见谢若林欺负晚秋而出面干预，引起谢若林对她的注意。
     known_by: [wang_cuiping, xie_ruolin, yu_zecheng]
     state_change: 谢若林开始把翠平视为值得试探的对象
-    cf_edit: 翠平保持官太太身份并不介入
+    cf_edit: "variable=cuiping_intervenes; edit=翠平目睹冲突但不出面干预; hold_constant=谢若林对晚秋的行为和在场人物不变; expected_difference=谢若林不会因本次介入把翠平列为试探对象"
     anchor_for: [wang_cuiping, xie_ruolin, yu_zecheng]
 
   - id: qf_27_li_ya_investigates_lu
     episode: 17
+    episode_order: "17.04"
+    timeline_position: at_snapshot_ongoing
+    scene_location: action_office
     fact: 李涯发现陆桥山与稽查渠道暗中往来并开始设计反制。
     known_by: [li_ya]
     suspected_by: [lu_qiaoshan]
     state_change: 李涯形成针对陆桥山的秘密行动目标
-    cf_edit: 调查显示陆桥山没有私下联系
-    anchor_for: [li_ya, lu_qiaoshan]
+    cf_edit: "variable=records_show_lu_private_contact; edit=李涯查到的记录不显示陆桥山与稽查渠道私下往来; hold_constant=李涯调查权限、二人既有竞争和其他记录不变; expected_difference=李涯不建立针对陆桥山的本次秘密反制目标"
+    anchor_for: [li_ya]
 
   - id: qf_28_yu_gains_wu_favor
     episode: 17
+    episode_order: "17.03"
+    timeline_position: before_snapshot
+    scene_location: station_chief_office
     fact: 余则成办事和利益安排令吴敬中满意并获得进一步提携。
     known_by: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]
     state_change: 吴敬中对余则成信任提高并加剧站内竞争
-    cf_edit: 余则成办事失败使吴敬中受损
+    cf_edit: "variable=yu_arrangement_satisfies_wu; edit=余则成的本次安排未达到吴敬中的要求但未造成额外损失; hold_constant=二人既有关系、职位和任务内容不变; expected_difference=吴敬中不因本次办事结果进一步提高信任或提携"
     anchor_for: [yu_zecheng, wu_jingzhong, li_ya, lu_qiaoshan]

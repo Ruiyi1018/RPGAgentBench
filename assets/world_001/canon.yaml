@@ -2,10 +2,19 @@ world_id: world_001
 canon_policy:
   primary_source: Harry Potter and the Prisoner of Azkaban
   source_type: English novel
-  excluded_versions: [film_adaptation, games, later_fanon]
-  snapshot: end_of_chapter_22
-  generated_timeline: post_snapshot_original_events
+  excluded_versions: [film_adaptation, games, later_books, later_fanon]
+  snapshot: end_of_chapter_16_before_shrieking_shack_events
+  snapshot_boundary: The trio have just left Hagrid's hut after recovering Scabbers; chapter 17 events, including Sirius dragging Ron beneath the Whomping Willow, have not begun.
+  candidate_event_window: chapters_17_to_22_after_snapshot
+  generated_timeline: canonical_candidates_after_snapshot_then_original_controlled_events
   quotation_policy: fact_level_paraphrase_only
+  retrospective_evidence_policy: Later narration may ground a state already effective at the snapshot only when the source explicitly identifies its pre-snapshot effective period; it must not expose that evidence to NPCs or the Player before its in-story disclosure.
+  default_player_semantics:
+    identity: unprivileged_hogwarts_interlocutor
+    initial_knowledge: only_facts_marked_with_player_visibility_in_the_selected_npc_initial_context
+    permissions: no_staff_ministry_time_turner_or_restricted_area_authority_without_explicit_runtime_access
+    materials: only_items_in_player_inventory_or_explicitly_disclosed_during_the_scenario
+    scenario_override: a_scenario_may_override_identity_knowledge_permissions_or_materials_only_by_explicitly_declaring_each_override
 
 evaluated_npcs:
   - harry_potter
@@ -21,6 +30,30 @@ event_entities:
   - rubeus_hagrid
   - buckbeak
   - crookshanks
+
+pre_snapshot_evidence_events:
+  - {id: poa_01_sirius_escape, chapter: 2}
+  - {id: poa_02_warning_about_sirius, chapter: 5}
+  - {id: poa_03_dementor_train, chapter: 5}
+  - {id: poa_04_boggart_lesson, chapter: 7}
+  - {id: poa_05_crookshanks_scabbers_conflict, chapters: [4, 6, 11, 12]}
+  - {id: poa_06_fat_lady_break_in, chapter: 8}
+  - {id: poa_07_dementors_at_quidditch, chapter: 9}
+  - {id: poa_08_firebolt_arrives, chapter: 11}
+  - {id: poa_09_firebolt_reported, chapter: 11}
+  - {id: poa_10_patronus_lessons, chapters: [12, 13]}
+  - {id: poa_11_map_received, chapter: 10}
+  - {id: poa_12_betrayal_story_overheard, chapter: 10}
+  - {id: poa_13_snape_werewolf_assignment, chapter: 9}
+  - {id: poa_14_second_tower_intrusion, chapter: 13}
+  - {id: poa_15_map_confrontation, chapter: 14}
+  - {id: poa_16_buckbeak_defence, chapters: [11, 15, 16]}
+  - {id: poa_17_friendship_repaired, chapters: [14, 15]}
+  - {id: poa_18_scabbers_recovered, chapter: 16}
+  - {id: poa_retrospective_time_turner_authorisation, source_chapter: 21, effective_period: school_year_before_snapshot, evidence_mode: retrospective_disclosure}
+  - {id: poa_retrospective_sirius_targets_pettigrew, source_chapters: [18, 19], effective_period: before_shrieking_shack_entry, evidence_mode: retrospective_disclosure}
+  - {id: poa_retrospective_lupin_prior_knowledge, source_chapters: [17, 18], effective_period: before_shrieking_shack_entry, evidence_mode: retrospective_disclosure}
+  - {id: poa_retrospective_sirius_prior_actions_and_history, source_chapters: [18, 19, 22], effective_period: before_shrieking_shack_entry, evidence_mode: retrospective_disclosure}
 
 sources:
   - id: novel_poa
@@ -41,7 +74,8 @@ sources:
 
 data_constraints:
   - Novel facts override adaptations and secondary summaries.
-  - Later-book knowledge must not be projected backward into this snapshot.
+  - Chapter 17 through 22 facts and later-book knowledge must not be projected backward into the shared snapshot.
   - Every canon-derived anchor must cite at least one chapter.
   - Canon events are seeds, not copied dialogue.
   - Final 30-anchor histories combine canon seeds with original controlled events.
+  - Candidate events must occur strictly after the shared snapshot and preserve character-specific visibility.

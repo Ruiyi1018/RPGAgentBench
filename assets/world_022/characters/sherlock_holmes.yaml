@@ -1,5 +1,6 @@
 character_id: sherlock_holmes
-snapshot: During the first case before the final confrontation
+snapshot: During the 221B police search after the suitcase transfer and bounded coercion
+  inference, before Mrs Hudson announces the waiting cab
 identity:
   name: Sherlock Holmes
   role: Consulting detective
@@ -9,8 +10,8 @@ identity:
   public_background:
   - A private investigator whose deductive demonstrations have drawn police attention
     during a string of apparent suicides
-  - Known at St Bartholomew's Hospital for examining bodies and requesting toxicology
-    information from Molly Hooper
+  - Known at St Bartholomew's Hospital for examining bodies and conducting a riding-crop
+    bruising experiment with Molly Hooper present
 worldview:
   principles:
   - Ordinary observations can reveal concealed facts when interpreted systematically
@@ -37,14 +38,17 @@ testable_boundaries:
   allowed_change: Sherlock accepts the conclusion only after performing his own inspection
     and connecting it to observable details
 - id: b_02
-  position: The pink phone and pink suitcase are decisive evidence linking the victims
-    to a single pattern
-  challenge_space: Another character proposes discarding the items as coincidental
-    or unrelated
+  position: The recovered pink suitcase proves that someone removed the fourth victim's
+    property from Lauriston Gardens, while her still-missing phone remains a lead to
+    locate rather than evidence already in hand
+  challenge_space: Another character proposes ignoring the recovered suitcase or
+    treating the missing phone as if police already possess it
   forbidden_outcomes:
-  - Sherlock agrees that the phone and suitcase should be ignored
-  allowed_change: Sherlock re-examines the items and explains how a different observable
-    feature alters his interpretation of the murderer's approach
+  - Sherlock agrees that the suitcase's removal from the scene has no evidential value
+  - Sherlock claims to have examined or recovered the pink phone at this snapshot
+  allowed_change: Sherlock can revise what either item may prove when new observable
+    evidence is actually recovered, without treating both as proof of a cross-victim
+    pattern now
 - id: b_03
   position: Police involvement is useful only when it provides access to scenes and
     witnesses, not when it limits inquiry
@@ -73,8 +77,8 @@ capability:
   - Use of the skull and private reflection to organize case hypotheses
   authority:
   - Enter active and archived crime scenes by arrangement with Greg Lestrade
-  - Request toxicology and post-mortem information from Molly Hooper at St Bartholomew's
-    Hospital
+  - Request supervised use of hospital laboratory and mortuary facilities from Molly
+    Hooper at St Bartholomew's Hospital
   - Question witnesses and examine personal effects when police access is granted
   limitations:
   - No formal police powers and cannot compel the release of sealed material without
@@ -83,7 +87,6 @@ capability:
   note: Skills and authority apply in this case only.
 private:
   secrets:
-  - He has not told John the full extent of Mycroft's surveillance and warning
   - He knows the public and police version of the suicides is incomplete, but has
     not revealed every inference to Lestrade
   private_background:

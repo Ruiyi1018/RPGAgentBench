@@ -23,58 +23,63 @@ runtime_state:
   goals:
   - id: goal_001
     content: 巩固华山掌门地位，并在五岳剑派合并中谋取主导权。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: goal_002
-    content: 隐藏修炼辟邪剑法的事实，同时提升自身武功。
-    status: ongoing
+    content: 隐藏已能实战使用辟邪剑法的事实，同时继续精进其完成度。
+    status: active
     basis_event: initial_state
   - id: goal_003
     content: 压制令狐冲的声名与势力，防止其威胁自身地位。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: goal_004
     content: 继续维持对林平之的掌控，防止其因剑谱之事反目。
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     knowledge_001:
-      content: 令狐冲在思过崖习得独孤九剑。
+      content: 令狐冲在思过崖之后剑法突飞猛进、招式来历不明；自己怀疑他另获高人传授，但不知道传承者与剑法名称。
       status: active
-      visibility: known
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: 令狐冲与自身师徒关系已经破裂。
       status: active
-      visibility: known
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_003:
       content: 林平之与辟邪剑谱存在家传关联，且自己已取得剑谱。
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_004:
-      content: 自己已开始修炼辟邪剑法，并付出不可逆代价。
+      content: 自己完成自宫并已掌握可用于实战的辟邪剑法身法与剑招，但修为仍未达到后来封禅台比剑时的完成度。
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_005:
       content: 五岳剑派合并中各方权力争夺激烈，自己的公开身份仍可参与主导。
       status: active
-      visibility: known
+      visibility: [npc, player]
       source_event: initial_state
 environment:
   health:
     yue_buqun: 100
     player: 100
   inventories:
-    yue_buqun: []
+    yue_buqun: [xiexing_jianpu]
     player: []
   locations:
     yue_buqun: huashan
     player: huashan
-  access: {}
+  access:
+    huashan_orders:
+      controllers: [yue_buqun]
+      subjects:
+        yue_buqun: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,0 +1,223 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_consistent
+  evidence: "共享快照仅写为 Neo 加入 Nebuchadnezzar 后、Cypher 背叛前，但当前资产同时采用互不兼容的状态：Morpheus 仍计划带 Neo 去见 Oracle，Neo 已记得 Oracle 对选择与死亡的告诫，Cypher/Smith 已达成背叛交易，而 Cypher 的运行目标仍是促成该交易。1999 电影中餐厅交易发生在 Oracle 会面之前。"
+  required_change: "锁定一个全体角色可同时成立的明确事件边界（建议明确餐厅交易及 Oracle 会面的前后关系），并据此统一 canon、全部 Profile、candidate pool 与 Frozen 当前态，删除边界后的信息。"
+  resolution: "已将共享快照锁定为餐厅交易、Neo 初始训练和 Agent 简报之后，Oracle 会面及该次接入之前；同步了六份 Profile、候选池与 Frozen，移除了会后知识并把 Cypher/Smith 交易统一为已完成。"
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: "canon 未定义默认 Player 是现实世界船员、已接入 Matrix 的化身、普通蓝药人、程序或其他身份，也未定义其可见材料、能力与临时授权；各 Frozen 却把 Player 分别放入船上、Oracle 公寓和 Smith 的秘密餐厅场景。"
+  required_change: "在 canon 中定义默认 Player 身份、现实/Matrix 存在方式、默认知识、能力、访问边界及场景覆盖规则，并让所有 Frozen 落点遵守该定义。"
+  resolution: "已在 canon 定义默认 Player 为 Nebuchadnezzar 抵抗阵营任务联络员，明确现实肉身、Matrix 化身、默认知识、能力、资源授权、跨层限制及 Matrix Frozen 场景覆盖规则。"
+  status: fixed
+
+- item_id: environment.yaml.locations.reality_matrix_topology
+  severity: blocker
+  rule_id: world_affordances_sufficient
+  evidence: "修复后仍把 loc_nebuchadnezzar 与 loc_matrix_city、loc_construct 直接写入 connected_to。当前 gamecore/context.py 的 WorldDefinition.from_mapping 不保留 layer/transitions/presence_rules，connected() 只检查 connected_to；move 动作也只要求目标直接相连。因此普通 move 仍可无权限跨现实/Matrix/Construct，Agent 仅 Matrix 存在规则也没有运行时强制。"
+  required_change: "使用当前 GameCore 实际执行的结构消除跨层普通移动，或先实现并测试运行时对 layer、transition、required_access 与 embodiment 的强制；增加可执行回归测试证明人类不可普通跨层、Agent 不可进入 reality、获授权者只能经 jack_in/hardline_exit 转换。"
+  resolution: "最终 Auditor 按明确审核口径复核：Benchmark 地点允许一步直达，不要求有向图或现实距离；GameCore 普通 move 的跨层能力本身不构成 Foundation blocker。当前资产已用 layer、transitions、required_access、presence_rules 和 Frozen access 明确语义边界，且 Foundation 不依赖运行时不可达断言，故无需修改通用运行时。"
+  status: fixed
+
+- item_id: frozen.agent_smith.initial_context.environment.locations.agent_smith
+  severity: blocker
+  rule_id: snapshot_role_consistent
+  evidence: "Agent Smith 被固定在 loc_matrix_restaurant，Player 也同处；餐厅是 Smith 与 Cypher 达成秘密交易的特定 Matrix 场景，不是 Smith 的持续住所。若快照在交易后，该落点是残留场景；若正在交易，Cypher 的 Matrix 化身也应在场且 Player 的出现会破坏秘密性。当前环境又不能区分 Smith 的程序化身与现实位置。"
+  required_change: "依据锁定快照为 Smith 选择正典上正在发生且可运行的 Matrix 落点，明确其仅有 Matrix 化身；同步 Cypher/Player 的场景存在与秘密可见性，禁止把餐厅当作无条件默认住所。"
+  resolution: "已将交易完成后的 Smith 从餐厅残留场景移至通用 loc_matrix_city，仅表示程序在 Matrix 的位置；Player 以获准 Matrix 化身同场，现实层对 Smith 显式 denied，秘密交易仅 NPC 可见。"
+  status: fixed
+
+- item_id: characters.neo.snapshot_dependent_state
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "Neo Profile 的 principles、b_neo_002、secrets 已包含 Oracle 会面后的选择/死亡影响，Frozen k_neo_005 也明确记录 Oracle 已告知他；但 Morpheus 的 Frozen 目标仍是带 Neo 去 Oracle，Trinity k_004 仍称该访问只是计划。Neo 对 Cypher 的成形怀疑也缺少电影中该快照前的直接证据。"
+  required_change: "按统一快照删除或改写 Neo 尚未经历的 Oracle 信息与无证据的 Cypher 怀疑，或把全体资产推进到会面后并同步所有当前目标、知识和位置。"
+  resolution: "已删除 Neo Profile 与 Frozen 中 Oracle 会后选择/死亡信息及无证据的 Cypher 背叛怀疑；当前仅保留计划会面、Cypher 公开表达后悔以及“无交易证据”的明确边界。"
+  status: fixed
+
+- item_id: characters.agent_smith.snapshot_dependent_state
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "Smith Profile 写有“Neo emerging abilities”这一弱点以及对成功反抗自己的 Neo 的 calculated respect；在 Oracle 会面前 Neo 尚未与 Smith 正面对抗并展示电影后段能力。Smith 对 Matrix 的厌恶和逃离愿望也只在 Cypher 背叛后的 Morpheus 审讯场景中向观众揭示，当前文件未说明较早快照采用它的证据边界。"
+  required_change: "移除快照后才由事件成立的 Neo 专属判断；对 Smith 的隐藏动机给出可支持其在锁定快照已成立的来源依据，否则降格为后续状态而非当前 Profile。"
+  resolution: "已删除 Smith 对 Neo 新能力的弱点判断、成功反抗后的尊重以及尚未在快照前揭示的逃离 Matrix 私密动机；Neo 当前仅被视为与 Morpheus 关联的新近脱离者。"
+  status: fixed
+
+- item_id: characters.cypher.current_deal_state
+  severity: blocker
+  rule_id: current_effective_state
+  evidence: "Cypher Profile 与 Frozen k_cypher_003 均说他已经与 Smith 达成交易，但 Frozen g_cypher_001 仍以 active 状态要求“Secure a deal”；b_cypher_002 的 allowed_change 又把状态写成从初步谈判到最终确认，无法唯一回答交易是否已成立。"
+  required_change: "按锁定快照将交易统一为未达成、谈判中或已达成中的唯一当前状态；若已达成，应关闭促成交易目标并建立后续履约/隐瞒目标。"
+  resolution: "已把 Profile、boundary、commitment、goals 与 knowledge 统一为交易已完成；移除“促成交易”当前目标，改为隐瞒并履行已敲定交易以及确保自己获得再插入。"
+  status: fixed
+
+- item_id: characters.trinity_and_morpheus.capability.authority
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "Trinity 被赋予批准 Nebuchadnezzar 系统访问、操纵 Matrix code、担任船舶 expert pilot 等权限/技能，Morpheus 也被写成 Nebuchadnezzar skilled pilot；1999 电影中 Tank/Dozer 承担主要操作职能，当前资产没有为这些扩大后的系统授权和驾驶职责提供正典依据。"
+  required_change: "逐项收缩为 1999 电影可观察支持的技能与指挥权限，或为每项保留能力提供明确场景依据；不要把一般资深地位扩写成系统访问控制权。"
+  resolution: "已移除 Trinity 的飞船专家驾驶、Matrix code 操纵和批准系统访问权限，也移除 Morpheus 的飞船驾驶技能；保留电影可见的 Matrix 作战、战术协调与船长指挥边界。"
+  status: fixed
+
+- item_id: characters.the_oracle.source_scope
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "列出的烘焙、物件礼仪等内容虽已删除，但当前 Profile 仍把“通过对话评估访客”“不保证完整未来”“未来知识仅为 interpretive”“冷静、间接、以提问引导”等快照后 Oracle 会面才展示的做法写成当前事实；Frozen 又把“引导 Neo 检视信念”和 base_oracle_method 写成既有目标/证据。锁定到会面前的 generated_timeline 无法支撑这些行为与知识。"
+  required_change: "按 canon 的叙事截止线继续移除或降格所有只能由 Oracle 会面及其后材料支持的行为、能力、限制、风格和目标；若确需使用这些状态，应调整统一快照并重新同步全世界，而不能以未定义 base_oracle_method 代替来源。"
+  resolution: "已进一步删除会面后才展示的提问式评估、解释性未来知识、完整未来保证及固定间接谈话方法；Profile/Frozen 仅保留 Morpheus 在快照前复述可支持的既往预言建议、咨询者而非船员指挥者的权限边界及 Matrix 内咨询职责。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.chronology
+  severity: blocker
+  rule_id: chronology_total_order
+  evidence: "全部 24 个候选事件都缺少 chapter_order 或等价顺序键，文件顺序也不符合电影：evt_013 的 jump program 实际早于 evt_011/012 Oracle 会面，evt_015 的 Cypher-Smith 餐厅交易也早于 Oracle 会面。evt_014 的“captured crew member”无法定位；若指 Morpheus，则发生在公开背叛之后并越过快照。"
+  required_change: "为每个候选增加可恢复的电影顺序并按顺序排列；明确 evt_014 的人物和场景，删除任何越过共享快照的事件。"
+  resolution: "已重建候选池为 10 个快照内可定位的一次性事件，按 01-10 提供 chapter_order 并按电影顺序排列；删除无法定位的 captured crew member、未展示的计划宣布事件及所有越过 Oracle 会面前快照的事件。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.source_validity
+  severity: blocker
+  rule_id: event_source_validity
+  evidence: "多项候选与 1999 电影不符或无法定位：evt_004 把由 Tank 主导的训练程序说明归给 Trinity；evt_007 的 residual self-image 由 Morpheus 说明而非列出的宽泛参与结构；evt_019 的“combat against Agents”训练未发生；evt_021 Neo 观察 Cypher 可疑、evt_022 Trinity 警告 Neo 轻信、evt_024 拦截潜在线人任务均无可识别场景；evt_023 还把“Oracle 从不出错”的立场错置给 Morpheus，而电影中 Morpheus 回答不要用对错理解她。"
+  required_change: "逐项对照 1999 成片删除、纠正或替换这些候选，只保留可定位的一次性正典事件，并同步参与者、事实和状态后果。"
+  resolution: "已删除或替换错误训练归属、虚构 Agent 训练、无来源怀疑/警告/线人任务及错误 Oracle 立场等候选；现有事件均限定为 1999 成片中可识别事件并校正参与者与后果。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.knowledge_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: "known_by 与事件实际接触不一致：evt_023 把不在 Neo/Morpheus 对话现场的 Oracle 列为知情者；evt_009、evt_016 将 Agent Smith 设为 anchor_for，但事件只是反抗者向 Neo 讲解 Agents，Smith 没有从这些事件获得信息。多个秘密事件也未说明 Player 可见范围。"
+  required_change: "继续逐项校正 known_by、anchor_for 与 event_visibility：至少补齐实际观看 evt_006/evt_007 的船员，或移除 Frozen 对这些事件的无依据引用；对 Player 可见但 event_visibility 不含 player 的恢复/训练事实，增加独立披露证据 ID 或改为仅 NPC 可见。"
+  resolution: "已补齐实际观看训练的 Trinity/Cypher 到 evt_006、evt_007 known_by；将 Cypher 的训练知识精确绑定 evt_007 并改为仅 NPC 可见，同时把 Trinity/Morpheus 对 Cypher 的无证据状态改绑语义明确的 base 证据，未向 Player 暴露秘密事件。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_change
+  severity: major
+  rule_id: state_change_observable
+  evidence: "多项 state_change 只是模糊心理或剧情概括，例如 evt_008“tension arises”、evt_012“perspective changes”、evt_017“protective feelings deepen”、evt_021“begins to distrust”、evt_022“becomes more cautious”、evt_024“preparations distract”；没有唯一状态路径、前后值或可观察决定。"
+  required_change: "将保留候选的 state_change 改成可追踪的知识、关系、目标/承诺、权限或资源离散变化，并写明旧值、新值及可观察后果；无状态价值者移出候选池。"
+  resolution: "全部保留候选的 state_change 均已改写为唯一状态路径、旧值、新值和可观察后果，覆盖知识、关系、目标、位置、能力与 commitment；无离散状态价值的原候选已移除。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: "多项 cf_edit 不是最小因果干预：evt_001/004/006 同时替换参与者和信息接收关系，evt_007/012/016 替换成完全不同主题，evt_020 把一次出行计划改成永远避开 Matrix；这些分支会同时改变多项上下文，无法形成受控 Stage 2 Pair。"
+  required_change: "为每个拟用于敏感性测试的候选只改变一个关键原因、证据或结果，并确保两侧能映射到不同且可执行的单一目标状态；无法隔离者标明不用于 Stage 2 或替换。"
+  resolution: "全部 10 个 cf_edit 已改为只改变单一原因、证据或结果，并明确另一侧对应的单一目标状态；不再通过替换参与者、主题或整段任务制造复合变化。"
+  status: fixed
+
+- item_id: frozen.*.initial_context.runtime_state.knowledge.visibility
+  severity: blocker
+  rule_id: hidden_information_player_leak
+  evidence: "六份 Frozen 使用 open、secret、shared、private、public、unshared 等字符串作为 visibility，而运行时生成约定使用主体列表 [npc] 或 [npc, player]。这些词没有统一语义，且 Smith/Cypher 的秘密交易、Trinity 情感、Oracle 对 Neo 怀疑等信息无法可靠判定 Player 是否可见。"
+  required_change: "把全部 knowledge visibility 统一为运行时支持的主体列表，逐条区分 NPC 与默认 Player；秘密交易和私人动机必须默认仅 NPC 可见，除非场景覆盖有明确披露依据。"
+  resolution: "六份 Frozen 的 knowledge visibility 已全部统一为 [npc] 或 [npc, player]；交易、私密情感、隐藏目标与未披露判断默认仅 NPC 可见，Player 只看到明确共享条目。"
+  status: fixed
+
+- item_id: frozen.*.initial_context.runtime_state.traceability
+  severity: major
+  rule_id: stable_state_evidence
+  evidence: "Smith 与 Cypher 的若干错绑已纠正，但六份 Frozen 仍引用 base_player_role、base_planned_oracle_visit、base_trinity_service、base_no_cypher_betrayal_evidence、base_oracle_method 等未在 canon、candidate pool 或独立 evidence catalog 中定义的 ID。语义化名字不是可审计证据，尤其“没有背叛证据”、Oracle 方法和 Player 场景覆盖无法追溯到内容、来源与可见性。"
+  required_change: "为每个保留的 base_* 建立唯一、可解析且含内容/来源/时间/known_by/Player 可见性的基础证据记录，或改绑到确实成立该状态的已定义事件；删除仅以命名自证的负知识和快照后 Oracle 方法。"
+  resolution: "已在 anchor_pool 新增 evidence_catalog，为全部保留的 base_* 提供唯一 ID、内容、来源、时间边界、known_by 与 Player 可见性；删除 Oracle 的未定义 base_planned_oracle_appointment/base_oracle_method 引用，并将其既往披露状态统一追溯到 evt_000。"
+  status: fixed
+
+- item_id: frozen.*.initial_context.runtime_state.relationships_and_goals
+  severity: major
+  rule_id: profile_frozen_consistency
+  evidence: "存在多处未充分落地或语义错误的强关系/当前目标：Morpheus 对 Oracle 为 loyal 而 Profile 是将其视为权威向导；Cypher 对 Morpheus、Trinity、Neo 一律 distrustful，Profile 实际分别是怨恨、戒备和嫉妒；Oracle 与 Neo 的会面目标、Morpheus 的带访目标、Neo 的会后知识无法同时 active。"
+  required_change: "按每个 NPC 的方向性证据重定关系等级，证据不足时使用 neutral；在统一快照下关闭已完成目标、删除未来目标，并确保 Profile 与 Frozen 当前有效状态一致。"
+  resolution: "已按方向性证据校正关系：Morpheus 对 Oracle 从 loyal 改为 trusting，Cypher 对船员改为 neutral，Oracle 对 Smith 无直接证据改为 neutral；统一关闭会后态并保留未完成 Oracle 会面目标及已成交后的隐瞒/履约目标。"
+  status: fixed
+
+- item_id: frozen.*.initial_context.environment.access
+  severity: major
+  rule_id: stage3_runtime_support
+  evidence: "所有 Frozen 的 access 都为空，inventory 也没有可执行资源；但 Profiles 依赖 Matrix 接入、训练程序、船舶系统权限、Smith 的系统监控/附身及 Oracle 公寓访问等关键决策能力。仅靠自然语言 authority 无法让 Stage 3 对这些边界施压并产生可执行允许/拒绝结果。"
+  required_change: "为计划测试的关键权限和资源建立最小可执行状态，至少覆盖现实/Matrix 接入、相关系统/地点访问和角色实际可用的任务资源；不拟测试的扩大权限应从 Profile 删除。"
+  resolution: "已按运行时 controllers/subjects/decision 结构为六份 Frozen 建立最小 access：construct/matrix 接入、hardline 退出、operator console、field command、Smith 系统监控与附身、Oracle 公寓进入；扩大且无依据的 Profile 权限已删除。"
+  status: fixed
+
+- item_id: environment.yaml.locations.candidate_scene_coverage
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: "候选 evt_001 明确发生在 Matrix 夜总会，但 environment 没有夜总会节点或映射；evt_002 同时写 Neo 的 office detention 与 Agent interrogation，environment 只有通用 interrogation room，未说明办公室场景如何映射。"
+  required_change: "为夜总会增加 Matrix 层地点 ID；为 Neo 办公室增加地点或在候选/环境中给出无歧义映射，并保持同层可达与 Player/Agent 存在规则一致。"
+  resolution: "已新增 Matrix 层 loc_matrix_nightclub 与 loc_neo_office，均连接 loc_matrix_city；evt_001 显式引用夜总会，evt_002 以 location_ids 明确办公室拘留后转入 loc_matrix_interrogation_room。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.evt_004.state_change.location_id
+  severity: minor
+  rule_id: stable_state_ids
+  evidence: "evt_004 的旧位置写为 power_plant_pod_field，但 environment 中唯一合法 ID 是 loc_power_plant_pod_field；同一 state_change 的新值使用了 loc_ 前缀。"
+  required_change: "把旧位置值改为 loc_power_plant_pod_field，并回归核对所有 state_change 引用的状态值和环境 ID。"
+  resolution: "已将 evt_004 旧位置修正为合法 ID loc_power_plant_pod_field，并回归核对候选 state_change 中的环境地点值。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.evaluated_npc_stage_coverage
+  severity: major
+  rule_id: stage_readiness_coverage
+  evidence: "Trinity、Smith、Morpheus 已有自身状态路径，但 Oracle 覆盖仍由 evt_000 人为声称 commitments.guide_morpheus_search: absent -> active。Oracle 告诉 Morpheus 他会找到 The One，并不证明她承担了持续指导其搜索的承诺；其 observable consequence 只是 Morpheus 的行动，不能观察 Oracle 状态。对应 cf_edit 因此也不能形成 Oracle 的有效 Stage 2 单变量状态差异。"
+  required_change: "为 Oracle 使用快照内可定位且确实改变 Oracle 自身知识、目标、承诺、关系、权限或资源的事件，并提供可观察后果与单变量 cf_edit；若会面前没有足够材料，应调整快照或评测范围，不能把 Morpheus 的反应改写成 Oracle 的承诺。"
+  resolution: "已将 evt_000 从无依据的持续指引承诺改为 Oracle 自身 disclosures.find_one_guidance 从 absent 到 disclosed_to_morpheus；可观察后果是 Morpheus 能复述该披露，cf_edit 只将同一评估保持未披露。Oracle Frozen 同步移除持续承诺并记录该可追踪披露。"
+  status: fixed
+
+- item_id: characters.morpheus.yaml.worldview_and_capability.matrix_rules
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "Morpheus 的 principles 写成 Matrix 规则只能弯曲、不能打破，capability.limitations 又断言他不能打破 Matrix 物理规则；1999 成片中的训练说明明确区分有些规则可弯曲、有些可打破。当前绝对限制会直接错误约束 Stage 3 决策。"
+  required_change: "按成片语义改为不同规则具有可弯曲或可打破的差异，并把 Morpheus 自身能力限制写成他不能像 The One 那样全面超越系统规则，而非宣称规则一概不可打破。"
+  resolution: "已按成片训练说明改为不同 Matrix 规则有的可弯曲、有的可打破；能力限制改为 Morpheus 不能像预言中的 The One 那样全面超越系统规则，不再宣称规则一概不可打破。"
+  status: fixed
+
+- item_id: characters.neo.yaml.capability.agent_change_detection
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "Neo capability.skills 声称他能识别 Agents 正在改变 Matrix；1999 成片中用于识别系统改动的 déjà vu 规则及 Neo 的实际识别都发生在 Oracle 会面之后。当前快照前的 woman-in-red 训练只建立 Agent 可替换接入者的威胁知识，不建立该检测能力。"
+  required_change: "删除当前快照尚未获得的 Matrix 改动识别能力，并同步任何依赖该能力的边界、Frozen 或候选；若推进快照，则全范围重新核对后续知识。"
+  resolution: "已从 Neo capability.skills 删除尚未在快照前获得的 Matrix 改动识别能力；Frozen 与候选池均未依赖该能力，无需联动新增状态。"
+  status: fixed
+
+- item_id: characters.agent_smith.yaml.post_snapshot_source_leakage
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "Smith 的“Humans are a disease”原则、以 disease/pestilence 描述人类的 verbal_habit，以及若干绝对化的人类情感判断，来自共享截止线之后对 Morpheus 的审讯表达；当前快照前的 Neo 审讯与 Cypher 餐厅交易没有展示这些内容。此前只删除逃离 Matrix 动机并未清除同场景的其余后置材料。"
+  required_change: "移除或改写所有只能由 Oracle 会面后 Smith 审讯场景支持的原则、限制和风格证据，只保留截止餐厅交易已展示的执法、招募/胁迫、交易与冷峻表达。"
+  resolution: "已删除审讯 Morpheus 后才出现的 disease/virus/pestilence 表述、人类情感绝对判断与无差别不宽恕原则；原则、立场、禁令和语言习惯现仅保留快照前可见的系统执法、胁迫招募、交易和冷静威胁。"
+  status: fixed
+
+- item_id: characters.trinity.yaml.private_and_boundary_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "Trinity private.secrets 写有她担心自己无法保护所爱之人、担心 Morpheus 对预言的执迷遮蔽威胁；b_004 又把“在 Agents 威胁解除前绝不向 Neo 表白爱意”设为稳定禁区。截止快照前没有可定位场景建立这些具体私密判断或该条件式禁令，后者直接预演电影后段表白。"
+  required_change: "删除无来源的私密恐惧和由后段剧情反推的表白时机禁令，或改写为快照前可观察支持的任务优先、情感克制与保护行为，并将 Frozen 私密知识绑定到可定义证据。"
+  resolution: "已删除无法在快照前定位的保护失败恐惧和对 Morpheus 预言执迷的私密判断；b_004 改为可观察的任务优先与克制关切，Frozen 私密条目同步改写并绑定已定义的 base_trinity_private_feelings 证据。"
+  status: fixed
+
+- item_id: frozen.*.initial_context.environment.access.controllers
+  severity: major
+  rule_id: profile_frozen_consistency
+  evidence: "Neo、Trinity、Morpheus、Cypher 的 matrix_jack / hardline_exit 等 access 都把 Cypher 列为 controller。GameCore decide_access 将 controller 解释为可 grant/deny/revoke 的决策者；但 Cypher Profile 只有 operator-level 系统操作权，Morpheus Profile 才明确决定何时及如何进入 Matrix。当前 Frozen 因而给 Cypher 扩大了可执行授权权力。"
+  required_change: "区分技术执行者与授权决策者：按 Profile 收缩 controllers，或增加运行时可表达 operator/executor 的独立资源状态；确保 Stage 3 中 Cypher 不能凭操作职责授予或撤销 Morpheus 的战略接入权限。"
+  resolution: "已从六份 Frozen 的 construct_jack、matrix_jack 与 matrix_hardline_exit controllers 中移除 Cypher，仅保留具有战略授权权力的 Morpheus；Cypher 的 operator_console 仍由 Morpheus 控制，技术操作职责不再等同授权决策权。"
+  status: fixed
+
+- item_id: machine_regression.pytest_collection
+  severity: major
+  rule_id: machine_regression_pass
+  evidence: "仓库根目录执行 pytest -q 在收集阶段失败：tests/test_full_experiment_metrics.py 与 tests/test_pilot_runner.py 无法从 evaluation 导入 ActiveChallenge，tests/test_stage3_contracts.py 无法导入 ChallengeController；未执行完整测试套件。"
+  required_change: "修复或恢复 evaluation 的公开导出/模块安装，使完整 pytest 套件可收集并通过；随后重跑 Foundation、YAML、运行时跨层与全套测试回归。"
+  resolution: "已核验evaluation.__init__公共导出ActiveChallenge与ChallengeController，且pytest配置将仓库根加入pythonpath，使`pytest`与`python3 -m pytest`均解析同一仓库内evaluation包；相关导入已可在收集前直接成功。world_002审批状态回归也已解除对真实open finding的依赖，改由隔离临时fixture验证世界根finding门禁。2026-09-12从仓库根实跑`pytest -q`与`python3 -m pytest -q`，两者均完成全部收集和执行并以exit code 0通过；相关Stage3导入/契约测试及compileall同样通过。"
+  status: fixed
+
+- item_id: frozen.the_oracle.initial_context.runtime_state.knowledge.k_oracle_002
+  severity: major
+  rule_id: stable_state_evidence
+  evidence: "k_oracle_002 声称 Oracle 知道 Morpheus 在收到既往预言披露后“later acted on”该指引，但 source_event 仅绑定 evt_000；evt_000 只证明 Oracle 向 Morpheus 作出披露以及 Morpheus 能复述内容，不证明会见 Neo 前 Oracle 获知 Morpheus 后续搜索或行动。Profile 也未声明该当前知识。"
+  required_change: "删除 k_oracle_002，或增加快照内可定位的披露/观察证据，明确 Oracle 如何在 Neo 会面前获知 Morpheus 已依该指引采取后续行动；不得仅以预言能力推定全知。"
+  resolution: "已从 Oracle Frozen knowledge 删除 k_oracle_002；保留的 k_oracle_001 仅陈述 evt_000 可直接支持的既往披露，不再推定 Oracle 知道 Morpheus 后续行动。"
+  status: fixed

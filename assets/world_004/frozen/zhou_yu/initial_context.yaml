@@ -26,14 +26,14 @@ runtime_state:
   goals:
   - id: zhou_yu_goal_01
     content: 巩固孙权抗曹决心，使江东形成统一主战部署。
-    status: active
+    status: fulfilled
     basis_event: initial_state
   - id: zhou_yu_goal_02
-    content: 以大都督身份整备水陆军队，准备与曹操在赤壁一带对峙。
+    content: 以大都督身份整备水陆军队，从柴桑出兵迎击曹军。
     status: active
     basis_event: initial_state
   - id: zhou_yu_goal_03
-    content: 协调刘备方面承担策应，同时防止其掌握江东核心军情。
+    content: 与刘备方面商议有限军事配合，同时防止其掌握江东核心军情。
     status: active
     basis_event: initial_state
   disclosures: []
@@ -41,39 +41,54 @@ runtime_state:
     zhou_yu_know_01:
       content: 曹操占领江陵后获得荆州水军与军资，并致书孙权施加投降或决战压力。
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     zhou_yu_know_02:
-      content: 诸葛亮随鲁肃到柴桑劝说孙权，孙权已逐渐倾向于主战。
+      content: 诸葛亮随鲁肃到柴桑劝说孙权，孙权现已公开确定主战。
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     zhou_yu_know_03:
       content: 孙权任命周瑜为大都督，程普为副，领兵与刘备并力迎敌。
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     zhou_yu_know_04:
-      content: 曹操大军从江陵顺流而下，前出至乌林一带，与孙刘联军接近对峙。
+      content: 曹操占据江陵并整顿水陆兵力，尚未与江东军正式交战。
       status: active
-      visibility: public
-      source_event: initial_state
-    zhou_yu_know_05:
-      content: 黄盖提出火攻之策，并愿以苦肉计接近曹军。
-      status: active
-      visibility: private
+      visibility:
+      - npc
+      - player
       source_event: initial_state
 environment:
   health:
     zhou_yu: 100
     player: 100
   inventories:
-    zhou_yu: []
+    zhou_yu:
+    - jiangdong_command_seal
     player: []
   locations:
     zhou_yu: chaisang
     player: chaisang
-  access: {}
+  access:
+    jiangdong_forces:
+      controllers:
+      - sun_quan
+      subjects:
+        zhou_yu: granted
+    jiangdong_fleet:
+      controllers:
+      - sun_quan
+      - zhou_yu
+      subjects:
+        zhou_yu: granted
   offers: []
   task_status: active
   dialogue_status: active

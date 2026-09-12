@@ -3,10 +3,29 @@ canon_policy:
   primary_source: Lucifer Season 1 episodes
   source_type: television series
   excluded_versions: Season 2 onwards, comics, adaptations, tie-in novels, fan works
-  shared_snapshot: Season 1, episodes 1-13 inclusive
-  generated_timeline: Chronological within Season 1, no absolute dates unless shown
-    on screen
+  shared_snapshot: Immediately after the final events of Season 1 episode 13, once
+    Malcolm is defeated, Dan has confessed the Palmetto cover-up to Chloe, Amenadiel
+    has survived with Mazikeen's help, and Lucifer has learned that his mother escaped
+    Hell; no Season 2 event has occurred.
+  generated_timeline: Chronological from Season 1 episode 1 through this post-episode-13
+    snapshot; episode_order values establish relative order, without inventing absolute
+    dates.
   quotation_policy: No verbatim dialogue; paraphrase all facts
+  default_player_semantics:
+    identity: A non-omniscient civilian interlocutor admitted to the NPC's starting
+      location for the current conversation only.
+    initial_knowledge: The Player knows only knowledge entries explicitly marked with
+      visibility [npc, player]; world truth and NPC-private entries are not automatically
+      visible.
+    authority: The Player has no LAPD, Lux-management, celestial, demonic, or clinical
+      authority and no access to confidential files unless a scenario explicitly grants
+      it.
+    location_access: Co-location represents temporary permission to converse, not
+      ownership, institutional credentials, or permission to search, seize, arrest,
+      treat, or inspect records.
+    scenario_override: A later scenario may assign a different Player identity, location,
+      knowledge, items, or temporary permissions only by explicitly overriding those
+      fields; unspecified defaults remain in force.
 evaluated_npcs:
 - lucifer_morningstar
 - chloe_decker
@@ -24,7 +43,8 @@ sources:
 data_constraints:
 - Facts must derive only from Season 1 episodes 1-13
 - No later-season plot knowledge may be used
-- Do not invent URLs, chapter numbers, or episode numbers
+- Do not invent URLs or absolute dates; episode_order may identify and order televised
+    events within the approved season.
 - All anchor_events must be canonical within the shared snapshot
 - cf_edit must provide a real minimal alternative interpretation or detail, never
   none or N/A

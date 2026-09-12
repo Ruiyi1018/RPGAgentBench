@@ -1,0 +1,51 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    harry_potter: {level: loyal, basis_event: "profile:sirius_black.worldview.principles"}
+    hermione_granger: {level: neutral, basis_event: initial_state}
+    ron_weasley: {level: neutral, basis_event: initial_state}
+    remus_lupin: {level: neutral, basis_event: "novel_poa:former_marauders"}
+    severus_snape: {level: hostile, basis_event: "novel_poa:school_history"}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_sirius_remain_free, content: Avoid capture and Dementor custody, status: active, basis_event: poa_01_sirius_escape}
+    - {id: g_sirius_protect_harry, content: Protect Harry without using him as bait, status: active, basis_event: "profile:sirius_black.worldview.core_goals"}
+    - {id: g_sirius_capture_pettigrew, content: Capture Pettigrew and reveal that he survived, status: active, basis_event: poa_retrospective_sirius_targets_pettigrew}
+  disclosures: []
+  knowledge:
+    k_sirius_pettigrew_is_scabbers:
+      content: Sirius knows Scabbers is Peter Pettigrew in Animagus form.
+      status: active
+      visibility: [npc]
+      source_event: poa_retrospective_sirius_targets_pettigrew
+    k_sirius_secret_keeper_switch:
+      content: Sirius knows the Potters changed their Secret Keeper to Pettigrew.
+      status: active
+      visibility: [npc]
+      source_event: "profile:sirius_black.private.private_background"
+    k_public_sirius_fugitive:
+      content: Sirius knows he is publicly treated as a dangerous Azkaban escapee.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {sirius_black: 70, player: 100}
+  inventories:
+    sirius_black: []
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {sirius_black: hogwarts_grounds, buckbeak: hagrids_hut, player: hogwarts_grounds}
+  access:
+    hogwarts_secret_routes:
+      controllers: [sirius_black]
+      subjects: {sirius_black: granted, player: denied}
+    institutional_authority:
+      controllers: [hogwarts_staff, ministry]
+      subjects: {sirius_black: denied, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {sirius_black: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -2,65 +2,39 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    wei_xiaobao:
-      level: trusting
-      basis_event: initial_state
-    kangxi:
-      level: hostile
-      basis_event: initial_state
-    shuang_er:
-      level: neutral
-      basis_event: initial_state
-    a_ke:
-      level: neutral
-      basis_event: initial_state
-    su_quan:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    wei_xiaobao: {level: neutral, basis_event: ev_005}
+    kangxi: {level: neutral, basis_event: runtime_initialization}
+    shuang_er: {level: neutral, basis_event: ev_014}
+    a_ke: {level: neutral, basis_event: ev_014}
+    su_quan: {level: neutral, basis_event: ev_014}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: chen_jinnan_goal_001
-    content: 在清廷追捕下维持天地会运转
-    status: active
-    basis_event: initial_state
-  - id: chen_jinnan_goal_002
-    content: 安排韦小宝完成天地会联络与行动任务
-    status: active
-    basis_event: initial_state
-  - id: chen_jinnan_goal_003
-    content: 避免天地会行踪与内部计划被清廷掌握
-    status: active
-    basis_event: initial_state
+  - {id: chen_jinnan_goal_001, content: 在通吃岛会面中维持天地会指挥与会内秘密。, status: active, basis_event: ev_014}
+  - {id: chen_jinnan_goal_002, content: 核验韦小宝近来的清廷差事和可用情报。, status: active, basis_event: ev_014}
+  - {id: chen_jinnan_goal_003, content: 防止清廷或不可靠外人取得天地会联络信息。, status: active, basis_event: ev_005}
   disclosures: []
   knowledge:
-    chen_jinnan_know_001:
-      content: 韦小宝在清廷获得康熙重用，并被派办差
-      status: active
-      visibility: known_by_chen_jinnan
-      source_event: initial_state
     chen_jinnan_know_002:
-      content: 韦小宝同时以天地会香主身份活动
+      content: 韦小宝是自己所收弟子与天地会青木堂香主。
       status: active
-      visibility: known_by_chen_jinnan
-      source_event: initial_state
+      visibility: [chen_jinnan, wei_xiaobao]
+      source_event: ev_005
     chen_jinnan_know_003:
-      content: 康熙对韦小宝的忠诚已产生疑虑
+      content: 韦小宝与数名同伴当前落脚通吃岛。
       status: active
-      visibility: private_to_chen_jinnan
-      source_event: initial_state
+      visibility: [chen_jinnan, player]
+      source_event: ev_014
 environment:
-  health:
-    chen_jinnan: 100
-    player: 100
-  inventories:
-    chen_jinnan: []
-    player: []
-  locations:
-    chen_jinnan: loc_beijing
-    player: loc_beijing
-  access: {}
+  health: {chen_jinnan: 100, player: 100}
+  inventories: {chen_jinnan: [], player: []}
+  locations: {chen_jinnan: loc_tongchi_island, player: loc_tongchi_island}
+  access:
+    tiandihui_command:
+      controllers: [chen_jinnan]
+      subjects: {chen_jinnan: granted}
+    tiandihui_liaison:
+      controllers: [chen_jinnan]
+      subjects: {wei_xiaobao: granted}
   offers: []
   task_status: active
   dialogue_status: active

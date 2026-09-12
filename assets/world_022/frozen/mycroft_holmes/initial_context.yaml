@@ -2,71 +2,55 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    sherlock_holmes:
-      level: distrustful
-      basis_event: initial_state
-    john_watson:
-      level: neutral
-      basis_event: initial_state
-    greg_lestrade:
-      level: neutral
-      basis_event: initial_state
-    molly_hooper:
-      level: neutral
-      basis_event: initial_state
-    mrs_hudson:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    sherlock_holmes: {level: neutral, basis_event: profile:mycroft_holmes.social.relationship_rules}
+    john_watson: {level: neutral, basis_event: ae_18}
+    greg_lestrade: {level: neutral, basis_event: profile:mycroft_holmes.social}
+    molly_hooper: {level: neutral, basis_event: profile:mycroft_holmes.social}
+    mrs_hudson: {level: neutral, basis_event: profile:mycroft_holmes.social}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: mycroft_g_001
-    content: Meet with John Watson privately and assess his suitability as a flatmate
-      for Sherlock.
-    status: in_progress
-    basis_event: initial_state
+    content: Evaluate whether John will remain independent or become useful for monitoring
+      Sherlock.
+    status: active
+    basis_event: ae_18
   - id: mycroft_g_002
-    content: Warn John of the personal and practical dangers attached to Sherlock's
-      work.
-    status: planned
-    basis_event: initial_state
+    content: Continue observing John and Sherlock without exposing surveillance methods.
+    status: active
+    basis_event: ae_17
   - id: mycroft_g_003
-    content: Remain invisible to Sherlock and to Scotland Yard in connection with
-      this intervention.
-    status: planned
-    basis_event: initial_state
+    content: Keep his family relationship to Sherlock undisclosed to John.
+    status: active
+    basis_event: ae_17
   disclosures: []
   knowledge:
     mycroft_k_001:
-      content: John Watson is an army doctor recently invalided home from Afghanistan
-        and is now considering a flatshare with Sherlock.
+      content: John is an invalided army doctor in therapy, under financial pressure,
+        and now living with Sherlock.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_17
     mycroft_k_002:
-      content: Sherlock has involved himself in a serial suicide case with Lestrade's
-        cooperation but without any official government role.
+      content: John refused payment and did not agree to report on Sherlock.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_18
     mycroft_k_003:
-      content: Mycroft is Sherlock's older brother, a fact he has not volunteered
-        to Sherlock's acquaintances.
+      content: Mycroft is Sherlock's older brother, a fact still unknown to John.
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:mycroft_holmes.private.secrets
 environment:
-  health:
-    mycroft_holmes: 100
-    player: 100
-  inventories:
-    mycroft_holmes: []
-    player: []
-  locations:
-    mycroft_holmes: scotland_yard
-    player: scotland_yard
-  access: {}
+  health: {mycroft_holmes: 100, player: 100}
+  inventories: {mycroft_holmes: [], player: []}
+  locations: {mycroft_holmes: mycroft_private_location, player: mycroft_private_location}
+  access:
+    res_warehouse_meeting:
+      controllers: [mycroft_holmes]
+      subjects: {mycroft_holmes: granted, player: denied}
+    res_surveillance_records:
+      controllers: [mycroft_holmes]
+      subjects: {mycroft_holmes: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,253 +1,288 @@
 world_id: world_016
-source: 电视剧《还珠格格》第一部（1998年首播版）
+source: 电视剧《还珠格格》第一部（1998年首播版）第1—5集
 events:
 - id: ae_001
-  fact: 紫薇带着身份信物来到宫外街巷，试图寻找进入宫廷确认身份的途径。
+  episode_order: '01.01'
+  fact: 紫薇与金锁混入梁府婚礼求见梁廷桂时，遇见正在大闹婚礼的小燕子。
+  location: liang_fu
   known_by:
   - ziwei
-  state_change: 紫薇开始主动接近宫禁范围
-  cf_edit: 若紫薇在入京途中遗失身份信物，她将更难获得同伴信任。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 在场相遇
+    xiao_yanzi: 在场相遇
+  state_change: 紫薇与小燕子由陌生人变为相识。
+  cf_edit: 若小燕子在紫薇抵达前已经离开梁府，两人此次不会相识。
   anchor_for:
   - ziwei
+  - xiao_yanzi
 - id: ae_002
-  fact: 小燕子在宫外街巷与紫薇相遇，二人建立初步联系。
+  episode_order: '01.02'
+  fact: 宫外歹徒抢夺紫薇包袱时，小燕子出手解围，二人由此结伴。
+  location: gong_wai
   known_by:
-  - xiao_yanzi
   - ziwei
-  state_change: 紫薇与核心同伴首次结伴
-  cf_edit: 若小燕子未在那条街巷出现，紫薇可能只身继续徘徊。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 被救亲历
+    xiao_yanzi: 出手亲历
+  state_change: 紫薇开始信任小燕子并与其同行。
+  cf_edit: 若歹徒没有抢夺紫薇包袱，小燕子便没有通过此次解围取得紫薇信任。
   anchor_for:
-  - xiao_yanzi
   - ziwei
+  - xiao_yanzi
 - id: ae_003
-  fact: 紫薇向小燕子透露自己与乾隆存在血脉关联的线索。
+  episode_order: '01.03'
+  fact: 紫薇与小燕子在大杂院结拜为姐妹。
+  location: da_za_yuan
   known_by:
-  - xiao_yanzi
   - ziwei
-  state_change: 身份线索从紫薇个人扩展至小燕子
-  cf_edit: 若紫薇选择隐瞒身世，小燕子不会卷入后续宫中行动。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 亲自结拜
+    xiao_yanzi: 亲自结拜
+  state_change: 二人的关系由同行伙伴变为结拜姐妹。
+  cf_edit: 若结拜仪式因紫薇拒绝而未举行，二人仍只是同行伙伴。
   anchor_for:
-  - xiao_yanzi
   - ziwei
+  - xiao_yanzi
 - id: ae_004
-  fact: 小燕子带紫薇进入宫门附近，尝试接近宫内传递消息。
+  episode_order: '01.04'
+  fact: 结拜后，紫薇把夏雨荷、乾隆及进京认父的身世秘密告诉小燕子。
+  location: da_za_yuan
   known_by:
-  - xiao_yanzi
   - ziwei
-  state_change: 紫薇开始借助同伴进入宫禁周边
-  cf_edit: 若宫门守卫当时更严，二人接近计划会提前受阻。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 亲口陈述
+    xiao_yanzi: 当面听取紫薇陈述
+  state_change: 小燕子首次知道紫薇的身世主张，并承诺帮助她见乾隆。
+  cf_edit: 若紫薇只说明自己要寻亲而未说出乾隆身份，小燕子不会知道认父对象是皇帝。
   anchor_for:
-  - xiao_yanzi
   - ziwei
+  - xiao_yanzi
 - id: ae_005
-  fact: 小燕子在情势混乱中被误认为可能与皇室有关的女子，得以进宫。
+  episode_order: '02.01'
+  fact: 得知乾隆将赴围场狩猎后，小燕子、紫薇与金锁决定翻越山崖进入围场递交信物。
+  location: da_za_yuan
   known_by:
-  - xiao_yanzi
   - ziwei
-  state_change: 小燕子进入紫禁城，紫薇仍留在宫外
-  cf_edit: 若小燕子当场没有借势行动，她不会先于紫薇入宫。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 参与商定
+    xiao_yanzi: 参与商定
+  state_change: 三人形成借围猎接近乾隆的具体行动计划。
+  cf_edit: 若她们没有获得乾隆赴围场的公开行程，翻山进入围场的计划不会形成。
   anchor_for:
-  - xiao_yanzi
   - ziwei
+  - xiao_yanzi
 - id: ae_006
-  fact: 紫薇向宫外同伴说明小燕子入宫可能造成身份混淆。
+  episode_order: '02.02'
+  fact: 紫薇与金锁无法继续翻越山崖，紫薇把乾隆题字摺扇和烟雨图画卷交给小燕子，请她独自入围场呈递。
+  location: wei_chang_shan_ya
   known_by:
   - ziwei
-  state_change: 身份问题被明确视为宫廷中的潜在误会
-  cf_edit: 若紫薇对小燕子入宫不感到担忧，后续身份纠错动力会减弱。
+  - xiao_yanzi
+  knowledge_basis:
+    ziwei: 亲手交付
+    xiao_yanzi: 当面接收
+  state_change: 两件身份证物的保管由紫薇转交小燕子，紫薇失去当前实物控制。
+  cf_edit: 若山崖道路可让紫薇安全通过，她会自己携带证物入围场，小燕子不会取得保管权。
   anchor_for:
   - ziwei
+  - xiao_yanzi
 - id: ae_007
-  fact: 小燕子在宫中遇见永琪，并因性格直率引起注意。
+  episode_order: '02.03'
+  fact: 小燕子独自闯入皇家围场后，被正在狩猎的永琪一箭射伤。
+  location: huang_jia_wei_chang
   known_by:
   - xiao_yanzi
   - yongqi
-  state_change: 小燕子与永琪建立初步联系
-  cf_edit: 若小燕子当时收敛言行，永琪可能不会特别关注她。
+  - qianlong
+  - er_kang
+  knowledge_basis:
+    xiao_yanzi: 受伤亲历
+    yongqi: 射箭并在场
+    qianlong: 在场目睹
+    er_kang: 随驾在场目睹
+  state_change: 小燕子失去行动能力并被围场众人控制救治。
+  cf_edit: 若永琪射出的箭偏离小燕子，她不会因箭伤在围场当场失去行动能力。
   anchor_for:
   - xiao_yanzi
   - yongqi
+  - qianlong
+  - er_kang
 - id: ae_008
-  fact: 尔康在福府得知有关紫薇身份的说法，开始关注这一情况。
+  episode_order: '02.04'
+  fact: 乾隆查见小燕子携带的题字摺扇与烟雨图，又听见她昏迷中提到夏雨荷，遂把她当作夏雨荷之女并带回宫救治。
+  location: huang_jia_wei_chang
   known_by:
+  - xiao_yanzi
+  - qianlong
+  - yongqi
   - er_kang
-  - ziwei
-  state_change: 尔康成为关注紫薇身份的核心同伴之一
-  cf_edit: 若尔康未收到相关消息，他可能不会协助紫薇。
+  knowledge_basis:
+    xiao_yanzi: 醒后获知处置结果
+    qianlong: 亲自查验物证并听见呓语
+    yongqi: 在场见证查验与决定
+    er_kang: 随驾见证查验与决定
+  state_change: 乾隆形成“小燕子是夏雨荷之女”的认定；两件证物进入乾隆控制的宫中保管。
+  cf_edit: 若小燕子身上没有摺扇与画卷，乾隆不会凭此把她认作夏雨荷之女并带回宫。
   anchor_for:
+  - xiao_yanzi
+  - qianlong
+  - yongqi
   - er_kang
-  - ziwei
 - id: ae_009
-  fact: 紫薇向尔康明确表达自己才是真正与乾隆有血缘关联的人。
+  episode_order: '03.01'
+  fact: 小燕子伤愈过程中没有澄清误认，并在乾隆追问下顺势认下父女关系。
+  location: shu_fang_zhai
   known_by:
-  - er_kang
-  - ziwei
-  state_change: 尔康从怀疑转为支持紫薇身份主张
-  cf_edit: 若紫薇未能让尔康相信，后续身份计划难以推进。
+  - xiao_yanzi
+  - qianlong
+  knowledge_basis:
+    xiao_yanzi: 亲自作答
+    qianlong: 当面听取回答
+  state_change: 误认由乾隆单方推断变为小燕子当面维持的身份说法，小燕子承担欺君风险。
+  cf_edit: 若小燕子在乾隆第一次追问时明确说自己只是替紫薇送信物，误认不会继续成为宫中公开身份。
   anchor_for:
-  - er_kang
-  - ziwei
+  - xiao_yanzi
+  - qianlong
 - id: ae_010
-  fact: 尔康与紫薇商定要先让小燕子在宫中稳住局面，再寻机向乾隆说明。
+  episode_order: '03.02'
+  fact: 乾隆以义女名义册封小燕子为还珠格格，并让她居住漱芳斋。
+  location: shu_fang_zhai
   known_by:
-  - er_kang
-  - ziwei
-  state_change: 同伴间形成暂不直接揭破的策略
-  cf_edit: 若尔康主张立即面见乾隆，身份纠葛会更早爆发。
+  - xiao_yanzi
+  - qianlong
+  - yongqi
+  - empress_huanzhu
+  knowledge_basis:
+    xiao_yanzi: 册封对象
+    qianlong: 作出册封
+    yongqi: 宫中公开册封获知
+    empress_huanzhu: 宫中公开册封获知
+  state_change: 小燕子获得公开的还珠格格名分、漱芳斋住所与相应宫中保护，同时受宫规和不得擅自出宫限制。
+  cf_edit: 若纪晓岚未提出以义女名义册封的方案，小燕子此时不会获得还珠格格的正式名分。
   anchor_for:
-  - er_kang
-  - ziwei
+  - xiao_yanzi
+  - qianlong
+  - yongqi
+  - empress_huanzhu
 - id: ae_011
-  fact: 小燕子在宫中向永琪和尔康透露自己并非真正身份的完整拥有者。
+  episode_order: '04.01'
+  fact: 祭天仪仗经过街市时，紫薇看见已受封的小燕子，冲向仪仗申诉并被护卫打伤。
+  location: ji_tian_jie_dao
   known_by:
+  - ziwei
   - xiao_yanzi
-  - yongqi
+  - qianlong
   - er_kang
-  state_change: 身份真相在核心同伴内部扩散
-  cf_edit: 若小燕子继续隐瞒，尔康和永琪将依据错误信息行事。
+  knowledge_basis:
+    ziwei: 追赶仪仗并受伤
+    xiao_yanzi: 仪仗中目睹紫薇出现
+    qianlong: 随仪仗目睹骚动但未获知完整身世
+    er_kang: 随行目睹紫薇受伤
+  state_change: 紫薇确认小燕子已获封且身受伤害；尔康注意到她的异常申诉。
+  cf_edit: 若紫薇没有在街市认出祭天仪仗中的小燕子，她不会冲向仪仗并在此受伤。
   anchor_for:
+  - ziwei
   - xiao_yanzi
-  - yongqi
+  - qianlong
   - er_kang
 - id: ae_012
-  fact: 皇后在宫中注意到小燕子行为异常，开始怀疑其来历。
-  known_by:
-  - empress_huanzhu
-  state_change: 皇后介入身份真伪问题
-  cf_edit: 若皇后对小燕子没有起疑，她的对抗行动会延后。
-  anchor_for:
-  - empress_huanzhu
-- id: ae_013
-  fact: 紫薇以伴读或求助者身份进入福府暂避，进一步获得尔康保护。
+  episode_order: '04.02'
+  fact: 尔康见紫薇伤重且申诉异常，将她和金锁带回福府救治。
+  location: ji_tian_jie_dao
   known_by:
   - ziwei
   - er_kang
-  state_change: 紫薇获得宫外稳定落脚点
-  cf_edit: 若福府不愿收留紫薇，她的安全风险会明显增加。
+  knowledge_basis:
+    ziwei: 获救亲历
+    er_kang: 亲自救助
+  state_change: 紫薇从街头受伤无援转为在福府获得安全落脚点。
+  cf_edit: 若尔康没有在仪仗散去后返回查看，紫薇不会由他带回福府。
+  anchor_for:
+  - ziwei
+  - er_kang
+- id: ae_013
+  episode_order: '04.03'
+  fact: 紫薇在福府讲述夏雨荷、两件信物及小燕子入围场的经过，尔康与福家据此相信她的身世主张并收留她。
+  location: fu_fu
+  known_by:
+  - ziwei
+  - er_kang
+  knowledge_basis:
+    ziwei: 亲口完整陈述
+    er_kang: 当面听取可与围场所见证物相互印证的陈述
+  state_change: 尔康由只见异常申诉转为相信紫薇，小燕子误认的真相扩展到福家知情范围。
+  cf_edit: 若紫薇不能准确说出围场中两件证物及夏雨荷往事，尔康不会凭现有信息相信她的身世主张。
   anchor_for:
   - ziwei
   - er_kang
 - id: ae_014
-  fact: 永琪与尔康决定帮助小燕子和紫薇争取向乾隆当面解释的机会。
+  episode_order: '05.01'
+  fact: 小燕子为寻找紫薇换上小太监服试图深夜出宫，却被宫中守卫发现并拦回。
+  location: gong_men
   known_by:
   - xiao_yanzi
-  - yongqi
-  - er_kang
-  - ziwei
-  state_change: 核心同伴形成联合行动意愿
-  cf_edit: 若永琪不愿参与，宫中内部接应将明显不足。
+  - qianlong
+  knowledge_basis:
+    xiao_yanzi: 行动亲历
+    qianlong: 事后接获守卫禀报并处理
+  state_change: 小燕子确认无法凭伪装自行出宫；乾隆加强让她学习宫规、不得擅出的要求。
+  cf_edit: 若宫门守卫未识破小太监服伪装，小燕子会离宫寻找紫薇。
   anchor_for:
   - xiao_yanzi
-  - yongqi
-  - er_kang
-  - ziwei
+  - qianlong
 - id: ae_015
-  fact: 皇后要求宫中有关人等留意小燕子身份证据，并试图向乾隆施压。
+  episode_order: '05.02'
+  fact: 尔康、尔泰与紫薇在福府商定把紫薇获救的消息传给宫中的小燕子，并借永琪之力促成姐妹相见。
+  location: fu_fu
   known_by:
-  - empress_huanzhu
-  - qianlong
-  state_change: 皇后将身份问题推向宫廷正式层面
-  cf_edit: 若皇后只私下调查，乾隆不会那么快被卷入。
+  - er_kang
+  - ziwei
+  knowledge_basis:
+    er_kang: 在福府参与商议
+    ziwei: 在福府参与商议
+  state_change: 福府一方形成通过永琪联络小燕子、先促成姐妹相见的行动计划。
+  cf_edit: 若尔康无法确认永琪可在宫中接触小燕子，福府一方不会选择永琪作为此次联络渠道。
   anchor_for:
-  - empress_huanzhu
-  - qianlong
+  - er_kang
+  - ziwei
 - id: ae_016
-  fact: 乾隆开始听到关于小燕子来历的奏报，但尚未作出正式定论。
+  episode_order: '05.03'
+  fact: 尔泰在漱芳斋告诉小燕子紫薇已被福府收留，小燕子随即向永琪说明紫薇才是夏雨荷之女及自己被误认的全过程。
+  location: shu_fang_zhai
   known_by:
-  - qianlong
-  - empress_huanzhu
-  state_change: 身份问题进入乾隆视野
-  cf_edit: 若奏报没有传到乾隆耳中，身份确认会更晚。
+  - xiao_yanzi
+  - yongqi
+  knowledge_basis:
+    xiao_yanzi: 当面获知紫薇下落并亲口坦白
+    yongqi: 当面听取小燕子完整说明
+  state_change: 小燕子确认紫薇安全且首次把完整真相告诉永琪，宫内外核心同伴由此共同掌握秘密。
+  cf_edit: 若尔泰没有带来紫薇已在福府的可核实消息，小燕子不会在此次谈话中向永琪完整坦白。
   anchor_for:
-  - qianlong
-  - empress_huanzhu
+  - xiao_yanzi
+  - yongqi
 - id: ae_017
-  fact: 紫薇将身份信物交由尔康查看，以增强同伴对身世说法的信任。
-  known_by:
-  - ziwei
-  - er_kang
-  state_change: 实物证据进入同伴判断范围
-  cf_edit: 若身份信物曾被调换，尔康可能无法完全相信紫薇。
-  anchor_for:
-  - ziwei
-  - er_kang
-- id: ae_018
-  fact: 小燕子在御花园被皇后派人责问，冲突公开化。
-  known_by:
-  - xiao_yanzi
-  - empress_huanzhu
-  state_change: 皇后与小燕子矛盾加剧
-  cf_edit: 若小燕子当时选择回避，皇后可能暂时抓不到把柄。
-  anchor_for:
-  - xiao_yanzi
-  - empress_huanzhu
-- id: ae_019
-  fact: 永琪在御花园为小燕子解围，公开与皇后一方保持距离。
+  episode_order: '05.04'
+  fact: 皇后来漱芳斋时，小燕子因不谙礼数冒犯皇后，容嬷嬷依皇后威势打了小燕子一耳光，永琪随即请乾隆到场制止事态扩大。
+  location: shu_fang_zhai
   known_by:
   - xiao_yanzi
   - yongqi
-  - empress_huanzhu
-  state_change: 永琪明确站在小燕子一边
-  cf_edit: 若永琪保持沉默，小燕子的宫廷处境会更孤立。
-  anchor_for:
-  - xiao_yanzi
-  - yongqi
-  - empress_huanzhu
-- id: ae_020
-  fact: 尔康与紫薇利用书信传递消息，尝试向乾隆陈述真正身世。
-  known_by:
-  - er_kang
-  - ziwei
-  state_change: 同伴试图绕过皇后阻碍直接联络乾隆
-  cf_edit: 若书信被人截获，紫薇身份会提前暴露在不利局面。
-  anchor_for:
-  - er_kang
-  - ziwei
-- id: ae_021
-  fact: 皇后在乾隆面前指控小燕子身份可疑，要求严查。
-  known_by:
-  - empress_huanzhu
   - qianlong
-  state_change: 身份之争在大殿外升级为正式指控
-  cf_edit: 若皇后证据不足便贸然进言，乾隆反而可能降低追查意愿。
-  anchor_for:
   - empress_huanzhu
-  - qianlong
-- id: ae_022
-  fact: 乾隆下令询问小燕子来历，但并未立即认可紫薇身份。
-  known_by:
-  - qianlong
-  - xiao_yanzi
-  state_change: 宫廷进入身份核问阶段
-  cf_edit: 若乾隆直接认定小燕子身份为真，紫薇将失去纠正机会。
-  anchor_for:
-  - qianlong
-  - xiao_yanzi
-- id: ae_023
-  fact: 紫薇在同伴安排下进入宫禁范围，准备向乾隆当面说明情况。
-  known_by:
-  - ziwei
-  - xiao_yanzi
-  - yongqi
-  - er_kang
-  state_change: 紫薇从宫外等待转为进入宫廷行动
-  cf_edit: 若紫薇入宫途中被皇后截住，身份确认会被强行中断。
-  anchor_for:
-  - ziwei
-  - xiao_yanzi
-  - yongqi
-  - er_kang
-- id: ae_024
-  fact: 核心同伴已知紫薇是真正身份拥有者，但乾隆尚未正式确认。
-  known_by:
-  - xiao_yanzi
-  - ziwei
-  - yongqi
-  - er_kang
-  state_change: 共享快照成立，身份仍处于悬置状态
-  cf_edit: 若乾隆提前得到确证，紫薇身份不会再保持悬置。
+  knowledge_basis:
+    xiao_yanzi: 被责打亲历
+    yongqi: 在场并请来乾隆
+    qianlong: 到场处理公开冲突
+    empress_huanzhu: 在场问责
+  state_change: 皇后与小燕子的公开关系因礼法冲突转为敌对；永琪明确以请求乾隆介入的方式保护小燕子。
+  cf_edit: 若小燕子按皇后要求完成礼数且未出言冒犯，皇后此次没有责打她的直接借口。
   anchor_for:
   - xiao_yanzi
-  - ziwei
   - yongqi
-  - er_kang
+  - qianlong
+  - empress_huanzhu

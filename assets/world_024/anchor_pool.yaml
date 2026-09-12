@@ -2,16 +2,18 @@ world_id: world_024
 source: Twilight novel by Stephenie Meyer
 events:
 - id: ae_001
+  chapter_order: "001"
   fact: Bella Swan moves from Phoenix to Forks to live with her father Charlie.
   known_by:
   - bella_swan
   - edward_cullen
-  state_change: Bella relocates to Forks and enrolls at the local high school.
-  cf_edit: Bella moves from Phoenix to Forks to live with her mother instead of her
-    father.
+  state_change: Bella lives at the Swan house, possesses her red truck, and is enrolled
+    at Forks High School; she can use the house, truck, and school as current resources.
+  cf_edit: Bella visits Forks briefly but remains resident and enrolled in Phoenix.
   anchor_for:
   - bella_swan
 - id: ae_002
+  chapter_order: "002"
   fact: Edward Cullen initially reacts to Bella with visible tension and avoids her
     in biology class.
   known_by:
@@ -24,6 +26,7 @@ events:
   - edward_cullen
   - bella_swan
 - id: ae_003
+  chapter_order: "003"
   fact: Edward stops an out-of-control van from crushing Bella in the school parking
     lot by putting himself between her and the vehicle.
   known_by:
@@ -35,20 +38,62 @@ events:
   anchor_for:
   - edward_cullen
   - bella_swan
+- id: ae_011
+  chapter_order: "004"
+  fact: At Forks Hospital after the van accident, Carlisle examines Bella in his role
+    as a physician and finds no serious injury.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - carlisle_cullen
+  state_change: Bella directly knows Carlisle is a Forks Hospital physician with
+    authority to examine and discharge patients; Carlisle has exercised that workplace
+    permission in Bella's care.
+  cf_edit: A different hospital physician examines Bella, and Carlisle does not participate
+    in her care.
+  anchor_for:
+  - bella_swan
+  - carlisle_cullen
 - id: ae_004
+  chapter_order: "005"
   fact: Jacob Black, a family friend from La Push, tells Bella that the Cullens are
-    considered dangerous and are believed to stay away from the Quileute reservation
-    by old treaty.
+    named in an old Quileute story and are said to stay away from the reservation
+    under an old agreement; Jacob says he does not personally believe the story.
   known_by:
   - bella_swan
   - jacob_black
-  state_change: Bella receives her first cultural warning about the Cullen family
-    from Jacob.
-  cf_edit: Jacob tells Bella the Cullens are a respected local family with no unusual
-    history.
+  state_change: Bella knows the traditional claim and its reservation boundary, while
+    Jacob's own belief remains that it is only a story.
+  cf_edit: Jacob declines to tell Bella any Quileute story about the Cullens.
   anchor_for:
   - jacob_black
+- id: ae_006
+  chapter_order: "006"
+  fact: Bella researches Quileute legends and vampire accounts and forms the hypothesis
+    that Edward is a vampire.
+  known_by:
+  - bella_swan
+  state_change: Bella privately adopts the vampire explanation for Edward's abilities,
+    but has not yet received his confirmation.
+  cf_edit: Bella's research leads her to reject a supernatural explanation for Edward.
+  anchor_for:
+  - bella_swan
+- id: ae_024
+  chapter_order: "007"
+  fact: Edward rescues Bella from men threatening her in Port Angeles, removes her
+    from the immediate danger, and takes her to a restaurant before the return trip.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  state_change: Bella changes from curiosity mixed with suspicion to relying on Edward
+    for immediate protection, and Edward takes responsibility for getting her safely
+    away from the threat.
+  cf_edit: Edward is not present, and Bella receives help from local police instead.
+  anchor_for:
+  - bella_swan
+  - edward_cullen
 - id: ae_005
+  chapter_order: "008"
   fact: Edward reveals to Bella that he can read minds, but hers is the only mind
     he cannot hear.
   known_by:
@@ -60,29 +105,23 @@ events:
   anchor_for:
   - edward_cullen
   - bella_swan
-- id: ae_006
-  fact: Bella researches local legends and online sources about vampires, eventually
-    concluding that Edward is a vampire.
-  known_by:
-  - bella_swan
-  state_change: Bella accepts the supernatural explanation for Edward's abilities.
-  cf_edit: Bella concludes Edward is a gifted human with rare physical abilities.
-  anchor_for:
-  - bella_swan
 - id: ae_007
-  fact: In the meadow, Edward confirms to Bella that he is a vampire and explains
-    that his family drinks animal blood rather than human blood.
+  chapter_order: "009"
+  fact: During the drive home from Port Angeles, Bella tells Edward she has concluded
+    that he is a vampire; Edward confirms her conclusion and explains that his family
+    hunts animals rather than humans.
   known_by:
   - bella_swan
   - edward_cullen
-  state_change: The Cullen secret is fully revealed to Bella, marking her entry into
-    their world.
+  state_change: Bella's private vampire hypothesis becomes confirmed knowledge, and
+    she learns that Edward's family follows an animal-blood diet.
   cf_edit: Edward denies being a vampire and claims his abilities come from a medical
     condition.
   anchor_for:
   - edward_cullen
   - bella_swan
 - id: ae_008
+  chapter_order: "010"
   fact: Edward shows Bella how his skin sparkles in direct sunlight in the meadow.
   known_by:
   - bella_swan
@@ -93,110 +132,101 @@ events:
   - edward_cullen
   - bella_swan
 - id: ae_009
-  fact: Edward takes Bella to the Cullen house and introduces her to his family.
+  chapter_order: "011"
+  fact: Edward takes Bella to the Cullen house, where she meets Carlisle and Alice
+    along with Esme and Jasper; Rosalie and Emmett are absent.
   known_by:
   - bella_swan
   - edward_cullen
   - alice_cullen
   - carlisle_cullen
-  - rosalie_hale
-  state_change: Bella formally meets the Cullen family members, including Alice, Carlisle,
-    and Rosalie.
+  state_change: Bella formally meets Alice and Carlisle as a human guest already
+    informed of the family secret; Carlisle and Alice know Edward has brought her
+    into that confidence, while no Bella-Rosalie relationship state is created at
+    this visit.
   cf_edit: Edward refuses to introduce Bella to his family and keeps their home secret.
   anchor_for:
   - alice_cullen
   - carlisle_cullen
-  - rosalie_hale
 - id: ae_010
-  fact: Alice Cullen demonstrates her ability to see visions of future events and
-    takes an immediate liking to Bella.
+  chapter_order: "012"
+  fact: At the Cullen house, Alice welcomes Bella and Edward identifies Alice's ability
+    to see possible future outcomes shaped by decisions.
   known_by:
   - bella_swan
   - edward_cullen
   - alice_cullen
-  state_change: Bella learns about Alice's future vision and forms a friendship with
-    her.
-  cf_edit: Alice shows no special ability and remains distant from Bella.
+  state_change: Bella knows Alice has decision-sensitive precognition and accepts
+    Alice's offered friendship.
+  cf_edit: Edward still discloses Alice's decision-sensitive precognition, but Alice
+    remains socially distant instead of welcoming Bella, so no offered friendship
+    is established.
   anchor_for:
   - alice_cullen
-- id: ae_011
-  fact: Carlisle Cullen explains the history of how he became a vampire and why he
-    chose to practice medicine and abstain from human blood.
+- id: ae_013
+  chapter_order: "013"
+  fact: During the Cullen-house visit, Edward tells Bella Carlisle's history and explains
+    that Carlisle established the family's refusal to drink human blood.
   known_by:
   - bella_swan
   - edward_cullen
-  - carlisle_cullen
-  state_change: Bella learns the origin and values of the Cullen family.
-  cf_edit: Carlisle refuses to discuss his past with Bella.
+  state_change: Bella knows from Edward that Carlisle founded and maintains the family's
+    animal-blood rule; she can use that rule when deciding whether to trust Carlisle.
+  cf_edit: Edward withholds Carlisle's history and gives Bella no account of the family's
+    abstention rule.
   anchor_for:
-  - carlisle_cullen
+  - bella_swan
+  - edward_cullen
 - id: ae_012
-  fact: Rosalie Hale remains cold and unwelcoming toward Bella during the visit to
-    the Cullen house.
+  chapter_order: "014"
+  fact: At the baseball field before the family game, Bella meets Rosalie in the
+    outing that Rosalie and Emmett have joined; Rosalie directs a hostile glare at
+    Bella and does not welcome her.
   known_by:
   - bella_swan
   - edward_cullen
   - rosalie_hale
-  state_change: Bella perceives Rosalie's hostility and understands she is not fully
-    accepted by every Cullen.
+  state_change: Bella gains direct evidence of Rosalie's hostility and becomes guarded
+    toward her; by seeing Bella included in the supernatural family activity, Rosalie
+    knows Bella has been admitted to the Cullen secret, and her opposition is directly
+    observable.
   cf_edit: Rosalie greets Bella warmly and embraces her as part of the family.
   anchor_for:
   - rosalie_hale
-- id: ae_013
-  fact: Edward plays piano for Bella at the Cullen house, revealing a personal and
-    artistic side.
-  known_by:
-  - bella_swan
-  - edward_cullen
-  state_change: Bella sees a deeper, vulnerable side of Edward beyond his supernatural
-    identity.
-  cf_edit: Edward refuses to play piano and leaves the room.
-  anchor_for:
-  - edward_cullen
-- id: ae_014
-  fact: Jacob Black warns Bella to be careful around Edward and implies the Cullens
-    are not human.
-  known_by:
-  - bella_swan
-  - jacob_black
-  state_change: Jacob openly shares Quileute suspicions with Bella after she has already
-    learned the truth.
-  cf_edit: Jacob gives Bella his blessing and encourages her relationship with Edward.
-  anchor_for:
-  - jacob_black
 - id: ae_015
-  fact: A nomadic vampire coven arrives in the area, attracted by the Cullens' presence.
-  known_by:
-  - edward_cullen
-  - alice_cullen
-  - carlisle_cullen
-  state_change: A new external threat enters the region, raising the Cullens' concern.
-  cf_edit: No outside vampires appear in the region during this period.
-  anchor_for:
-  - alice_cullen
-  - carlisle_cullen
-- id: ae_016
-  fact: Alice has visions of the nomadic vampires hunting in the area and possibly
-    targeting Bella.
-  known_by:
-  - alice_cullen
-  - edward_cullen
-  - carlisle_cullen
-  state_change: The Cullen family becomes aware of a direct threat to Bella's safety.
-  cf_edit: Alice's visions show no danger to anyone in Forks.
-  anchor_for:
-  - alice_cullen
-- id: ae_017
-  fact: The nomadic vampires use a baseball game as a cover, and the Cullens encounter
-    them while playing in a remote field during a thunderstorm.
+  chapter_order: "015"
+  fact: While the Cullens are playing baseball during a thunderstorm, Alice notices
+    that other vampires heard the game, changed direction, and will reach the field
+    within minutes; Carlisle has the family continue playing to avoid provoking suspicion,
+    while Edward leaves the game to guard Bella.
   known_by:
   - bella_swan
   - edward_cullen
   - alice_cullen
   - carlisle_cullen
   - rosalie_hale
-  state_change: The Cullen family directly meets the hostile nomadic coven, including
-    the tracker James.
+  state_change: Alice's warning gives the family advance knowledge of imminent visitors;
+    Edward changes from player to Bella's guard, and Carlisle chooses a non-hostile
+    reception posture.
+  cf_edit: Alice sees the other vampires continuing away from the field, so Edward
+    remains in the game and no reception posture is needed.
+  anchor_for:
+  - alice_cullen
+  - carlisle_cullen
+- id: ae_017
+  chapter_order: "016"
+  fact: Laurent, Victoria, and James unexpectedly reach the baseball field while the
+    Cullens are playing; Carlisle receives them civilly before they notice Bella is
+    human.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: The family and Bella now know the identities and presence of the three
+    nomadic vampires, while Carlisle's permission for a friendly visit is immediately
+    constrained by Bella's exposure.
   cf_edit: The Cullens play baseball without encountering any other vampires.
   anchor_for:
   - edward_cullen
@@ -204,72 +234,104 @@ events:
   - carlisle_cullen
   - rosalie_hale
 - id: ae_018
+  chapter_order: "017"
   fact: The tracker vampire James fixes his attention on Bella, recognizing her human
-    scent and seeing her as prey.
+    scent after a gust exposes it; Edward reacts defensively and James accepts the
+    resulting contest.
   known_by:
   - bella_swan
   - edward_cullen
   - alice_cullen
   - carlisle_cullen
   - rosalie_hale
-  state_change: Bella becomes the specific target of a dangerous hunting vampire.
+  state_change: James begins hunting Bella specifically; every listed witness knows
+    she is the target, and the Cullens' goal changes from concealment to active protection.
   cf_edit: James ignores Bella completely during the encounter.
   anchor_for:
   - edward_cullen
 - id: ae_019
-  fact: The Cullens form a plan to protect Bella by separating her from James and
-    hiding her away from Forks.
+  chapter_order: "018"
+  fact: In the Jeep after leaving the baseball field, Bella, Edward, and Alice agree
+    on a provisional escape plan in which Alice and Jasper will escort Bella toward
+    Phoenix while Edward stays visible in Forks long enough to misdirect James.
   known_by:
   - bella_swan
   - edward_cullen
   - alice_cullen
-  - carlisle_cullen
-  - rosalie_hale
-  state_change: Bella is placed under the collective protection of the Cullen family.
-  cf_edit: The Cullens decide Bella should stay at home alone and unguarded.
+  state_change: Bella accepts temporary separation from Edward because Alice and
+    Jasper will escort her, while Edward accepts the provisional decoy role in Forks.
+  cf_edit: Alice declines to escort Bella, so Edward does not accept temporary separation
+    under this provisional plan.
   anchor_for:
-  - carlisle_cullen
   - alice_cullen
 - id: ae_020
-  fact: Bella struggles with the idea of leaving Charlie behind without a proper explanation
-    and worries about his safety.
+  chapter_order: "019"
+  fact: In the Jeep after the baseball-field encounter, Bella decides she must return
+    home briefly and use a believable breakup-and-Phoenix story so Charlie will not
+    follow her into danger.
   known_by:
   - bella_swan
   - edward_cullen
-  state_change: Bella's departure plan creates emotional conflict and concern for
-    her father.
-  cf_edit: Bella feels no concern about leaving Charlie and departs immediately.
+  - alice_cullen
+  state_change: Bella takes an active commitment to mislead Charlie without revealing
+    vampires, then leave Forks under Cullen escort; the plan cannot proceed until
+    that household step is complete.
+  cf_edit: Bella agrees to leave immediately without returning to Charlie or providing
+    any explanation.
   anchor_for:
   - bella_swan
-- id: ae_021
-  fact: Edward insists on staying close to Bella during the escape plan and is determined
-    to face James himself if necessary.
+- id: ae_025
+  chapter_order: "020"
+  fact: >-
+    Bella carries out the planned Swan-house diversion: she tells Charlie she has
+    broken with Edward and is leaving for Phoenix, packs, and drives her truck away;
+    Edward, who waited outside and heard the exchange, then moves Bella to the passenger
+    seat, drives the truck, and returns with her to the Cullen house.
   known_by:
   - bella_swan
   - edward_cullen
-  state_change: Edward commits himself to Bella's protection at personal risk.
-  cf_edit: Edward leaves Bella with Alice and goes away on his own.
+  state_change: Bella fulfills the Charlie-diversion commitment without disclosing
+    vampires; she and her truck are now at the Cullen house, and Charlie believes
+    she is leaving because of the claimed breakup.
+  cf_edit: Bella tells Charlie the vampire threat is the reason for leaving, exposing
+    the Cullen secret instead of using the breakup story.
   anchor_for:
-  - edward_cullen
-- id: ae_022
-  fact: Jacob Black remains in La Push and is not directly involved in the Cullen
-    family's protective plan.
-  known_by:
-  - jacob_black
   - bella_swan
-  state_change: Jacob is unaware of the immediate vampire threat and Bella's departure.
-  cf_edit: Jacob joins the Cullens to help protect Bella.
-  anchor_for:
-  - jacob_black
 - id: ae_023
-  fact: Rosalie reluctantly participates in the family defense, but remains emotionally
-    distant from the idea of risking themselves for a human.
+  chapter_order: "021"
+  fact: When Edward asks Rosalie to wear Bella's clothes as part of a scent diversion,
+    Rosalie explicitly objects to risking the family for Bella; Esme takes Bella's
+    clothes instead.
   known_by:
   - rosalie_hale
   - edward_cullen
   - bella_swan
-  state_change: Rosalie's resentment toward the situation becomes more apparent to
-    Bella.
-  cf_edit: Rosalie volunteers eagerly and warmly supports Bella's protection.
+  - alice_cullen
+  - carlisle_cullen
+  state_change: Rosalie refuses the clothes-exchange request, and Esme takes Bella's
+    clothes in her place; Bella knows only the objection Rosalie stated, not any unspoken
+    motive or later-life history. No scent-decoy travel assignment is established
+    by this event.
+  cf_edit: Rosalie accepts Bella's clothes immediately, so Esme does not perform the
+    scent exchange.
   anchor_for:
   - rosalie_hale
+- id: ae_021
+  chapter_order: "022"
+  fact: >-
+    At the Cullen house, the family fixes the final division of labor before departure:
+    Alice and Jasper will escort Bella; Edward, Carlisle, and Emmett will track James;
+    and Esme and Rosalie will carry Bella's scent in her truck to divert Victoria.
+  known_by:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - carlisle_cullen
+  - rosalie_hale
+  state_change: Alice holds the active escort commitment, Edward and Carlisle hold
+    active tracker commitments, Rosalie holds a scent-decoy task, and Bella's truck
+    is allocated to Esme and Rosalie for that task.
+  cf_edit: Alice reports she cannot safely escort Bella, so the family does not assign
+    Bella to Alice and Jasper.
+  anchor_for:
+  - edward_cullen

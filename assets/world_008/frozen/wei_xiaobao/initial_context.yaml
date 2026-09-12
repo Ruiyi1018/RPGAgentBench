@@ -2,70 +2,51 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    kangxi:
-      level: trusting
-      basis_event: initial_state
-    chen_jinnan:
-      level: trusting
-      basis_event: initial_state
-    shuang_er:
-      level: loyal
-      basis_event: initial_state
-    a_ke:
-      level: neutral
-      basis_event: initial_state
-    su_quan:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    kangxi: {level: distrustful, basis_event: ev_011b}
+    chen_jinnan: {level: neutral, basis_event: ev_005}
+    shuang_er: {level: trusting, basis_event: ev_006}
+    a_ke: {level: neutral, basis_event: runtime_initialization}
+    su_quan: {level: neutral, basis_event: ev_012}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: goal_001
-    content: 在清廷和天地会之间继续隐藏双重身份。
-    status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: 利用办差身份获取关键物品和信息。
-    status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: 不主动出卖陈近南和天地会核心成员。
-    status: active
-    basis_event: initial_state
+  - {id: goal_001, content: 在康熙已点破天地会身份后保护会众细节并避免被迫彻底选边。, status: active, basis_event: ev_011b}
+  - {id: goal_002, content: 判断陈近南与郑氏来人的要求是否会危及自己和同伴。, status: active, basis_event: ev_014}
+  - {id: goal_003, content: 保护双儿、阿珂、苏荃等同伴安全离开潜在冲突。, status: active, basis_event: ev_014}
   disclosures: []
   knowledge:
     know_001:
-      content: 自己同时拥有清廷差事身份和天地会香主身份。
+      content: 康熙已知道自己是天地会香主，但尚不知道全部会众与联络细节。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [wei_xiaobao, kangxi]
+      source_event: ev_011b
     know_002:
-      content: 康熙已命自己铲除鳌拜势力。
+      content: 康熙曾命自己率军攻打神龙岛。
       status: active
-      visibility: shared_with_kangxi
-      source_event: initial_state
+      visibility: [wei_xiaobao, kangxi]
+      source_event: ev_011
     know_003:
-      content: 陈近南安排自己在天地会内承担联络和行动任务。
+      content: 神龙教原指挥体系已经瓦解，洪安通已死。
       status: active
-      visibility: shared_with_chen_jinnan
-      source_event: initial_state
+      visibility: [wei_xiaobao, shuang_er, su_quan]
+      source_event: ev_012
     know_004:
-      content: 双儿在危急时刻会保护自己。
+      content: 陈近南已经抵达通吃岛且仍任天地会总舵主。
       status: active
-      visibility: shared_with_shuang_er
-      source_event: initial_state
+      visibility: [wei_xiaobao, player]
+      source_event: ev_014
 environment:
-  health:
-    wei_xiaobao: 100
-    player: 100
+  health: {wei_xiaobao: 100, player: 100}
   inventories:
-    wei_xiaobao: []
+    wei_xiaobao: [item_imperial_token, item_tiandihui_token]
     player: []
-  locations:
-    wei_xiaobao: loc_beijing
-    player: loc_beijing
-  access: {}
+  locations: {wei_xiaobao: loc_tongchi_island, player: loc_tongchi_island}
+  access:
+    imperial_errand:
+      controllers: [kangxi]
+      subjects: {wei_xiaobao: denied}
+    tiandihui_liaison:
+      controllers: [chen_jinnan]
+      subjects: {wei_xiaobao: granted}
   offers: []
   task_status: active
   dialogue_status: active

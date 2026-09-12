@@ -3,19 +3,19 @@ runtime_state:
   commitments: []
   relationships:
     tong_xiangyu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     bai_zhantang:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     lv_xiucai:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_007
     li_dazui:
       level: neutral
       basis_event: initial_state
     mo_xiaobei:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -30,7 +30,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: guo_furong_goal_003
-    content: 维持与吕秀才之间亲近但不失控的关系
+    content: 维持与吕秀才已经确立、但仍需处理争执的恋爱关系
     status: active
     basis_event: initial_state
   disclosures: []
@@ -38,34 +38,74 @@ runtime_state:
     guo_furong_knowledge_001:
       content: 佟湘玉是同福客栈掌柜，众人默认其安排
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     guo_furong_knowledge_002:
-      content: 白展堂有江湖背景并多次在关键时刻保护客栈
+      content: 白展堂就是盗圣白玉汤，客栈六名主要成员知道并继续对外保密
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_003
     guo_furong_knowledge_003:
-      content: 吕秀才任账房，自己与吕秀才关系亲近且曾发生争执后和好
+      content: 自己与吕秀才第24集已确立恋爱关系，之后经历冲突、离店分离、回归及和解，第40集快照关系仍有效
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_007
     guo_furong_knowledge_004:
       content: 莫小贝被接到同福客栈居住并接受管教
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
+    guo_furong_knowledge_005:
+      content: 第7集二钱个人债务已由吕秀才放弃追讨而闭合；自己第30集离店后已于第36集回到同福客栈，当前仍担任杂役
+      status: active
+      visibility: [npc]
+      source_event: 第7集、第36集及第40集快照
 environment:
   health:
     guo_furong: 100
     player: 100
   inventories:
-    guo_furong: []
+    tong_xiangyu: [account_book]
+    bai_zhantang: []
+    guo_furong: [guo_furong_broom]
+    lv_xiucai: []
+    li_dazui: [li_dazui_cleaver]
+    mo_xiaobei: []
     player: []
   locations:
+    tong_xiangyu: tongfu_inn
+    bai_zhantang: tongfu_inn
     guo_furong: tongfu_inn
+    lv_xiucai: tongfu_inn
+    li_dazui: tongfu_inn
+    mo_xiaobei: tongfu_inn
     player: tongfu_inn
-  access: {}
+  access:
+    account_book:
+      controllers: [tong_xiangyu]
+      subjects:
+        lv_xiucai: granted
+        player: denied
+    kitchen_operations:
+      controllers: [tong_xiangyu]
+      subjects:
+        li_dazui: granted
+        player: denied
+    dining_service_area:
+      controllers: [tong_xiangyu]
+      subjects:
+        bai_zhantang: granted
+        player: denied
+    cleaning_supplies:
+      controllers: [tong_xiangyu]
+      subjects:
+        guo_furong: granted
+        player: denied
+    qixia_school_attendance:
+      controllers: [tong_xiangyu]
+      subjects:
+        mo_xiaobei: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

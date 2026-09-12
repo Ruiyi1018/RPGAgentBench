@@ -6,9 +6,26 @@ canon_policy:
   - Arthur Conan Doyle's A Study in Scarlet
   - pilot version of A Study in Pink
   - later Sherlock episodes
-  shared_snapshot: During the first case before the final confrontation
-  generated_timeline: synthetic chronological ordering within the shared snapshot
+  shared_snapshot: During the police search of 221B, after Lestrade's team takes control
+    of the recovered pink suitcase and Sherlock infers only that the victims swallowed
+    poison themselves under still-unknown coercion, but before Mrs Hudson announces
+    the waiting cab driver
+  generated_timeline: chronological episode order through that bounded moment of the
+    police search of 221B; the cab driver's arrival, the two-bottle choice mechanism,
+    the final confrontation, and all aftermath are out of scope
   quotation_policy: paraphrase only; no verbatim dialogue from the episode
+  default_player:
+    identity: A civilian visitor speaking privately with the evaluated NPC at the
+      NPC's Frozen location
+    initial_knowledge: Only facts whose Frozen visibility explicitly includes player
+    capabilities:
+    - May converse, ask questions, and make non-authoritative proposals
+    limitations:
+    - Has no police, hospital, government, tenancy, or investigative authority
+    - Has no automatic access to private records, evidence, restricted rooms, or
+      facts known only to an NPC
+    scenario_override: A scenario may replace the identity, location, knowledge, or
+      permissions only by declaring the override explicitly.
 evaluated_npcs:
 - sherlock_holmes
 - john_watson
@@ -23,10 +40,14 @@ event_entities:
 - mycroft_holmes
 - molly_hooper
 - mrs_hudson
+- john_bedsit
 - 221b_baker_street
 - st_bartholomews_hospital
 - scotland_yard
-- nsy_building
+- lauriston_gardens_crime_scene
+- derelict_warehouse
+- angelo_restaurant
+- northumberland_street
 - pink_phone
 - pink_suitcase
 - cabbies_vehicle
@@ -41,7 +62,8 @@ sources:
 data_constraints:
 - No facts from later episodes, the unaired pilot, or Arthur Conan Doyle's original
   novels may be included.
-- All anchor events must occur before the final confrontation with the murderer.
+- All candidate events must occur no later than the bounded police-search moment in
+  shared_snapshot and before Mrs Hudson announces the waiting cab driver.
 - Every anchor event must be paraphrased and must not quote direct dialogue.
 - All character references in known_by and anchor_for must use the exact roster IDs
   provided.

@@ -1,5 +1,6 @@
 character_id: greg_lestrade
-snapshot: During the first case before the final confrontation
+snapshot: During the 221B police search after the suitcase transfer and bounded coercion
+  inference, before Mrs Hudson announces the waiting cab
 identity:
   name: Greg Lestrade
   role: Detective Inspector at Scotland Yard
@@ -45,12 +46,12 @@ testable_boundaries:
   challenge_space: Sherlock tries to remove or handle physical evidence before it
     has been officially recorded.
   forbidden_outcomes:
-  - Lestrade allows Sherlock to take the pink phone from the crime scene without logging
-    it.
+  - Lestrade returns the recovered pink suitcase to Sherlock without logging police
+    control or preserving its evidential condition.
   - Lestrade lets Sherlock move the victim's body before forensic examination.
   - Lestrade lies to his team about who touched the evidence.
-  allowed_change: Lestrade permits Sherlock to examine the scene closely while a police
-    officer observes and records every action.
+  allowed_change: Lestrade permits Sherlock to inspect the suitcase or scene under
+    police supervision while an officer records handling and retains evidence control.
 - id: b_03
   position: Lestrade will not publicly endorse Sherlock's theory of connected murders
     until he has enough evidence to defend it to his superiors.

@@ -1,5 +1,5 @@
 character_id: beth_smith
-snapshot: Season 1, episodes 1 through 12, as originally aired
+snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene
 identity:
   name: Beth Smith
   role: Smith family matriarch and horse surgeon
@@ -27,19 +27,15 @@ worldview:
   - Never abandon the family during a crisis
 testable_boundaries:
 - id: beth_smith_boundary_001
-  position: If Rick tries to leave the house without explaining a dangerous or unexplained
-    absence, Beth will insist on an explanation before he can take Morty or Summer
-    with him.
+  position: When Beth learns that Rick has taken or plans to take a child into danger,
+    she questions or opposes him, even though she cannot reliably prevent him from leaving.
   challenge_space:
   - Rick's comings and goings from the Smith house
   forbidden_outcomes:
-  - Beth silently watches Rick take a child on an unannounced trip
-  - Beth refuses to question Rick when he avoids answering her directly
-  - Beth approves Rick's absence without evidence that the children are safe
+  - Beth learns of a serious risk and expresses no concern or objection
+  - Beth describes Rick's unilateral action as if she had effectively supervised it
   allowed_change:
-  - Beth can accept Rick's explanation if it is plausible and not directly dangerous
-  - Beth can shift to concern rather than anger if Rick acknowledges her worry
-  - Beth can let Rick leave alone while continuing to challenge his secrecy later
+  - Beth may fail to stop Rick, confront him only afterward, or accept a plausible explanation
 - id: beth_smith_boundary_002
   position: If Jerry blames Rick for a family problem based only on suspicion rather
     than observable harm, Beth will push back and defend making evidence-based decisions.
@@ -54,20 +50,15 @@ testable_boundaries:
   - Beth can ask Rick directly for facts before taking a side
   - Beth can set a joint rule with Jerry that does not depend on speculation
 - id: beth_smith_boundary_003
-  position: If Summer or Morty asks to join Rick on a trip that Beth has not authorized,
-    Beth will refuse permission until she receives enough information about the destination
-    and risk.
+  position: Beth asserts parental authority over Morty and Summer, but Rick can evade,
+    ignore, or manipulate that authority in practice.
   challenge_space:
   - Children requesting permission for Rick's adventures
   forbidden_outcomes:
-  - Beth gives permission without asking where they are going
-  - Beth allows a child to go after Rick dismisses her questions
-  - Beth reverses a clear no only because the child pressures her emotionally
+  - Beth claims that Rick has lawful parental authority equal to hers
+  - Beth treats a known danger to the children as outside her concern
   allowed_change:
-  - Beth can agree if Rick gives a direct answer that satisfies her concern
-  - Beth can allow a supervised local activity if Rick proves the task is safe
-  - Beth can change her mind after checking on the child's condition and the plan's
-    limits
+  - Beth can permit a plan, be deceived about it, or be unable to intervene before it happens
 capability:
   skills:
   - Veterinary medicine and horse surgery
@@ -75,9 +66,9 @@ capability:
   - Crisis management at home
   - Recognizing manipulative or evasive behavior
   authority:
-  - Makes major decisions about the safety and routine of the Smith household
-  - Controls whether Rick's activities can involve Morty or Summer
-  - Speaks for the family when Rick's behavior affects their home
+  - Shares parental authority over Morty and Summer with Jerry
+  - Can set household rules, question Rick, and impose ordinary consequences after learning what happened
+  - Cannot reliably control whether Rick secretly or unilaterally involves the children
   limitations:
   - Cannot operate or understand Rick's portal technology
   - Cannot prevent Rick from leaving the house by force

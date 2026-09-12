@@ -8,10 +8,9 @@ canon_policy:
   - Novelizations
   - Unofficial wikis
   - Fan fiction
-  shared_snapshot: Fixed Season 1 episode range
-  generated_timeline: Chronological ordering of Season 1 anchor events
-  quotation_policy: Paraphrase only; do not reproduce verbatim dialogue; no episode
-    numbers
+  shared_snapshot: Immediately after Addison introduces herself to Meredith as Derek's wife at Seattle Grace; all earlier Season 1 events are historical and no later event has occurred
+  generated_timeline: Season 1 events from the interns' first shift through Addison's arrival, ending at the shared snapshot
+  quotation_policy: Paraphrase only; do not reproduce verbatim dialogue or cite episode numbers
 evaluated_npcs:
 - meredith_grey
 - cristina_yang
@@ -24,12 +23,8 @@ event_entities:
   name: Surgical Intern Program
 - id: seattle_grace_hospital
   name: Seattle Grace Hospital
-- id: prom_night
-  name: Prom Night
-- id: denny_duquette
-  name: Denny Duquette
-- id: unidentified_dnr_patient
-  name: Unidentified DNR Patient
+- id: elizabeth_liz_fallon
+  name: Elizabeth "Liz" Fallon
 - id: katie_bryce
   name: Katie Bryce
 - id: ellis_grey
@@ -38,8 +33,8 @@ event_entities:
   name: Richard Webber
 - id: preston_burke
   name: Preston Burke
-- id: doc_the_dog
-  name: Doc the Dog
+- id: addison_forbes_montgomery_shepherd
+  name: Addison Forbes Montgomery Shepherd
 - id: joe
   name: Joe
 - id: emerald_city_bar
@@ -52,6 +47,28 @@ event_entities:
   name: Hospital Tunnel
 - id: chief_resident_morning_rounds
   name: Chief Resident Morning Rounds
+pre_existing_facts:
+- id: pre_existing_ellis_diagnosis
+  fact: Meredith knows that Ellis Grey has Alzheimer's disease and lives in a nursing home.
+  known_by: [meredith_grey]
+- id: pre_existing_meredith_cristina_trust
+  fact: By the shared snapshot, Meredith and Cristina have formed a private, mutually trusting friendship through their first-season work together.
+  known_by: [meredith_grey, cristina_yang]
+- id: pre_existing_cristina_knows_meredith_derek
+  fact: During their first shift, Meredith privately told Cristina that she had slept with Derek before learning he was a Seattle Grace attending.
+  known_by: [meredith_grey, cristina_yang]
+- id: pre_existing_george_feelings
+  fact: George privately has unspoken romantic feelings for Meredith.
+  known_by: [george_omalley]
+- id: pre_existing_hospital_staff
+  fact: Derek and Bailey know each other's Seattle Grace staff roles.
+  known_by: [derek_shepherd, miranda_bailey]
+- id: pre_existing_attending_role
+  fact: Derek holds attending-level responsibility for neurosurgical treatment decisions.
+  known_by: [derek_shepherd, miranda_bailey]
+- id: pre_existing_izzie_patient_advocacy
+  fact: Izzie has advocated through Bailey for a patient's stated treatment preference.
+  known_by: [izzie_stevens, miranda_bailey]
 sources:
 - id: s1_episodes
   title: Grey's Anatomy Season 1
@@ -67,5 +84,8 @@ data_constraints:
 - Connected locations must reference existing location IDs only.
 - All known_by and anchor_for entries must use roster IDs only.
 - No invented URLs, chapter numbers, or external references.
-- Every cf_edit must be a meaningful alternative expression, never empty or N/A.
+- Every cf_edit must alter one causal antecedent and imply a different observable state or decision, never merely paraphrase the fact.
 - Events must not include invented character reactions beyond the source.
+- The default Player is an ordinary hospital visitor with no employment, kinship, clinical authority, chart access, or private relationship knowledge.
+- "knowledge.visibility is the actual audience at trajectory start: [npc] is NPC-only and [npc, player] is known to both that NPC and the default Player."
+- A scenario that gives the Player a different identity, evidence, or temporary authorization must explicitly override the default Player visibility and access.

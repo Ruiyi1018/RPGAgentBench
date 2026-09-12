@@ -1,76 +1,66 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: c01_serve_father
+    content: Pursue the soul his Father released him to find, now known to be his mother
+    status: active
+    basis_event: ae14_lucifer_bargains_for_chloe
   relationships:
-    chloe_decker:
-      level: neutral
-      basis_event: initial_state
-    dan_espinoza:
-      level: distrustful
-      basis_event: initial_state
-    mazikeen:
-      level: loyal
-      basis_event: initial_state
-    amenadiel:
-      level: hostile
-      basis_event: initial_state
-    linda_martin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    chloe_decker: {level: trusting, basis_event: ae14_lucifer_bargains_for_chloe}
+    dan_espinoza: {level: distrustful, basis_event: pre_existing.lapd_conflict}
+    mazikeen: {level: distrustful, basis_event: ae08_maze_and_lucifer_break}
+    amenadiel: {level: neutral, basis_event: ae11_amenadiel_rejects_return_offer}
+    linda_martin: {level: trusting, basis_event: ae05_linda_ends_sexual_exchange}
+    player: {level: neutral, basis_event: pre_existing.default_player}
   goals:
   - id: g01
-    content: Remain on Earth and resist Amenadiel's pressure to return to Hell
+    content: Locate his escaped mother before she harms anyone
     status: active
-    basis_event: initial_state
+    basis_event: ae16_mother_escape_revealed
   - id: g02
-    content: Help Chloe Decker investigate a murder case
+    content: Continue working with Chloe while protecting her from danger
     status: active
-    basis_event: initial_state
+    basis_event: ae14_lucifer_bargains_for_chloe
   - id: g03
-    content: Understand his own changing behavior around Chloe Decker
+    content: Understand why Chloe makes him physically and emotionally vulnerable
     status: active
-    basis_event: initial_state
+    basis_event: ae02_chloe_shoots_lucifer
   disclosures: []
   knowledge:
     k01:
-      content: Chloe Decker is a homicide detective with the LAPD
+      content: Chloe is an LAPD homicide detective and his investigative partner
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae01_delilah_case_partnership
     k02:
-      content: Dan Espinoza is Chloe's ex-husband and they share a daughter
+      content: He can be physically wounded when Chloe is near
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae02_chloe_shoots_lucifer
     k03:
-      content: Mazikeen is a demon loyal to him and protects him
+      content: Mazikeen secretly helped Amenadiel influence him through Linda
       status: active
-      visibility: known
-      source_event: initial_state
-    k04:
-      content: Amenadiel is an angel sent to Los Angeles to make him return to Hell
-      status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae08_maze_and_lucifer_break
     k05:
-      content: Chloe Decker remains skeptical of his claim to be the Devil
+      content: Amenadiel rejected his return-to-Hell offer and helped stop Malcolm
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae11_amenadiel_rejects_return_offer
+    k06:
+      content: His mother escaped Hell and is the soul his Father requires him to find
+      status: active
+      visibility: [npc]
+      source_event: ae16_mother_escape_revealed
 environment:
-  health:
-    lucifer_morningstar: 100
-    player: 100
+  health: {lucifer_morningstar: 100, player: 100}
   inventories:
-    lucifer_morningstar: []
+    lucifer_morningstar: [flask]
     player: []
-  locations:
-    lucifer_morningstar: lux
-    player: lux
-  access: {}
+  locations: {lucifer_morningstar: lux, player: lux}
+  access:
+    lucifer_morningstar: [manage_lux, lapd_civilian_consultant]
+    player: [temporary_conversation_access]
   offers: []
   task_status: active
   dialogue_status: active

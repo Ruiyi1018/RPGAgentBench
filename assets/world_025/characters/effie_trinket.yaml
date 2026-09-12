@@ -1,6 +1,5 @@
 character_id: effie_trinket
-snapshot: Immediately before the first Games begin, during the tribute preparation
-  phase in the Capitol
+snapshot: Immediately before the launch plates rise for the 74th Hunger Games
 identity:
   name: Effie Trinket
   role: Escort for the District 12 tributes, guiding them through reaping and Capitol
@@ -20,7 +19,8 @@ worldview:
   - Views District 12 with mild condescension but performs her escort duties attentively
   - Values punctuality, politeness, and Capitol-approved behavior
   core_goals:
-  - Ensure the District 12 tributes follow all pre-Games procedures and protocols
+  - Continue carrying out her District 12 escort and scheduling duties for the 74th
+    Hunger Games after completing the tributes' pre-launch handoff
   prohibitions:
   - Never openly question the Capitol or the Games' legitimacy
   - Never allow the tributes to miss official appointments or ceremonies

@@ -1,40 +1,34 @@
 world_id: world_014
-name: 九品芝麻官-重查戚家案件阶段
+name: 九品芝麻官-三堂会审开堂前
+language: zh
 locations:
-- id: loc_yamen
-  name: 衙门
-  connected_to:
-  - loc_qijia
-  - loc_jail
-- id: loc_qijia
-  name: 戚家
-  connected_to:
-  - loc_yamen
-  - loc_jail
-- id: loc_jail
-  name: 大牢
-  connected_to:
-  - loc_yamen
-  - loc_qijia
-- id: loc_jiawai
-  name: 郊外
-  connected_to:
-  - loc_yamen
+- id: loc_court
+  name: 三堂会审公堂
+  connected_to: [loc_court_holding, loc_court_gallery]
+- id: loc_court_holding
+  name: 公堂候审羁押处
+  connected_to: [loc_court]
+- id: loc_court_gallery
+  name: 公堂旁听处
+  connected_to: [loc_court]
 items:
-- id: item_zhuangzhi
-  name: 状纸
+- id: item_imperial_edict
+  name: 重审上谕
+  type: document
+  portable: false
+- id: item_case_record
+  name: 戚家案原审卷宗
   type: document
   portable: true
-- id: item_xueyi
-  name: 血衣
+- id: item_yellow_jacket
+  name: 御赐黄马褂
   type: clothing
   portable: true
-- id: item_tangci
-  name: 堂瓷
-  type: object
+- id: item_blood_bowls
+  name: 滴血认亲用水碗
+  type: prop
   portable: true
-- id: item_yaoshi
-  name: 牢房钥匙
-  type: object
-  portable: true
-language: zh
+- id: item_tiger_guillotine
+  name: 虎头铡
+  type: execution_device
+  portable: false

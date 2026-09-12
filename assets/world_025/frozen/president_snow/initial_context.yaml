@@ -3,56 +3,58 @@ runtime_state:
   commitments: []
   relationships:
     katniss_everdeen:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:capability.limitations[0]
     peeta_mellark:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:capability.limitations[0]
     gale_hawthorne:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:capability.limitations[0]
     haymitch_abernathy:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:capability.limitations[0]
     effie_trinket:
       level: neutral
-      basis_event: initial_state
-    president_snow:
-      level: loyal
-      basis_event: initial_state
+      basis_event: profile:capability.limitations[0]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: snow_goal_001
-    content: See the first Games open without visible resistance from the districts.
+    content: Complete the presidential ceremonial role for the opening of the 74th
+      Hunger Games.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: snow_goal_002
-    content: Use the tributes' public introduction to reinforce Capitol supremacy.
+    content: Maintain a formal public presentation of uninterrupted Capitol authority.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[1]
   disclosures: []
   knowledge:
     snow_knowledge_001:
-      content: The tributes from District 12 are Katniss Everdeen and Peeta Mellark,
-        and Katniss volunteered in place of her sister, making her a notable symbol.
+      content: Katniss Everdeen became District 12's female tribute after volunteering
+        in place of her sister.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     snow_knowledge_002:
-      content: District 12 is one of the weaker districts, so its tributes are expected
-        to serve the Games as symbols of submission rather than likely victors.
+      content: Katniss and Peeta appeared in the public tribute parade as the District
+        12 pair.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_016
     snow_knowledge_003:
-      content: Haymitch Abernathy is the District 12 mentor and is publicly known
-        for his drunkenness, which makes him useful as a figure of district inadequacy
-        but unreliable for Capitol polish.
+      content: Haymitch Abernathy appeared publicly as the District 12 mentor at the
+        reaping.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_007
+    snow_knowledge_004:
+      content: Peeta Mellark was publicly announced as District 12's male tribute.
+      status: active
+      visibility: [npc, player]
+      source_event: ae_006
 environment:
   health:
     president_snow: 100
@@ -61,9 +63,18 @@ environment:
     president_snow: []
     player: []
   locations:
-    president_snow: capitol_train_station
-    player: capitol_train_station
-  access: {}
+    president_snow: city_circle
+    player: city_circle
+  access:
+    runtime_scenario_contact:
+      controllers: [president_snow]
+      subjects: {president_snow: granted, player: granted}
+    presidential_ceremonial_role:
+      controllers: [president_snow]
+      subjects: {president_snow: granted, player: denied}
+    tribute_launch_decisions:
+      controllers: [capitol_games_officials]
+      subjects: {president_snow: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,22 +1,29 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: heyuan_joint_raid
+    target: chu_yunfei
+    content: 与楚云飞在不合并双方部队指挥权的前提下完成聚仙楼突袭
+    condition: 仅限此次河源县城聚仙楼行动
+    status: fulfilled
+    source_event: anchor_009
+    resolution_event: anchor_010
   relationships:
     zhao_gang:
       level: neutral
       basis_event: initial_state
     chu_yunfei:
-      level: distrustful
-      basis_event: initial_state
+      level: trusting
+      basis_event: anchor_010
     kong_jie:
-      level: trusting
-      basis_event: initial_state
-    ding_wei:
-      level: trusting
-      basis_event: initial_state
-    xiuqin:
       level: neutral
       basis_event: initial_state
+    ding_wei:
+      level: neutral
+      basis_event: initial_state
+    xiuqin:
+      level: trusting
+      basis_event: anchor_013
     player:
       level: neutral
       basis_event: initial_state
@@ -38,34 +45,74 @@ runtime_state:
     li_yunlong_knowledge_hq_terrain:
       content: 独立团团部周边地形和赵家峪主要道路情况
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     li_yunlong_knowledge_zhao_role:
       content: 赵刚是上级派来的政委，负责独立团政治工作
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anchor_005
+    li_yunlong_knowledge_ding_appointment:
+      content: 丁伟已由上级任命为八路军新一团团长
+      status: active
+      visibility: [npc]
+      source_event: anchor_003
+    li_yunlong_knowledge_kong_appointment:
+      content: 孔捷已在李家坡战斗后由上级调任为八路军新二团团长
+      status: active
+      visibility: [npc]
+      source_event: anchor_012
     li_yunlong_knowledge_chu_zone:
       content: 楚云飞所部与独立团处于同一战区，彼此有分界
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
     li_yunlong_knowledge_xiuqin_local:
       content: 秀芹在赵家峪一带活动，熟悉地方群众情况
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
+    li_yunlong_knowledge_heyuan_intelligence:
+      content: 聚仙楼在行动时段有日军军官聚会的任务情报
+      status: active
+      visibility: [npc]
+      source_event: anchor_008
+    li_yunlong_knowledge_heyuan_result:
+      content: 自己与楚云飞已完成聚仙楼突袭并确认行动结果，双方随后各自返回驻地
+      status: active
+      visibility: [npc]
+      source_event: anchor_010
+    li_yunlong_knowledge_xiuqin_pistol:
+      content: 秀芹完成装枪射击并命中，自己已依约把勃朗宁手枪交给她
+      status: active
+      visibility: [npc]
+      source_event: anchor_013
 environment:
   health:
     li_yunlong: 100
     player: 100
   inventories:
-    li_yunlong: []
+    li_yunlong: [li_yunlong_sword, independent_regiment_order_book]
+    zhaojiayu_womens_association: []
+    independent_regiment: [shoe_supply_batch]
+    xiuqin: [chu_gift_browning_pistol]
     player: []
   locations:
-    li_yunlong: independent_regiment_hq
-    player: independent_regiment_hq
-  access: {}
+    li_yunlong: independent_regiment_hq_zhaojiayu
+    player: independent_regiment_hq_zhaojiayu
+  access:
+    independent_regiment_guest_area:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {li_yunlong: granted, chu_yunfei: revoked, player: granted}
+    independent_regiment_full_command:
+      controllers: [li_yunlong]
+      subjects: {li_yunlong: granted, player: denied}
+    independent_regiment_order_book:
+      controllers: [li_yunlong]
+      subjects: {li_yunlong: granted, player: denied}
+    independent_regiment_intelligence:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {li_yunlong: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

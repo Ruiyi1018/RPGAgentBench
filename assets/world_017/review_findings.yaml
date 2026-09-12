@@ -1,0 +1,183 @@
+- item_id: hu_tao.zhongli_identity_knowledge
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: characters/hu_tao.yaml将“胡桃知道钟离即岩神摩拉克斯”写成已确认的stance、boundary、secret和private_background；frozen/hu_tao/initial_context.yaml又将该事实写成active知识与保密目标，anchor_pool.yaml的ev_zhongli_as_rex_lapis也把hu_tao列入known_by。4.3及此前游戏内容只支持胡桃认为钟离异常博学、可能并非常人，不支持她已确认其就是摩拉克斯。
+  required_change: 将胡桃对钟离的认知降为有依据的怀疑或对其异常阅历的观察，删除“已确认岩神身份”及由此产生的保密目标，并同步修正候选事件known_by；不得把玩家推断写成NPC确定知识。
+  resolution: 已将胡桃Profile中的确定身份认知、保密禁令及相关能力/私密背景降为“观察到异常阅历并有所怀疑”；Frozen删除已确认身份知识与保密目标，改为不传播无证据猜测；候选池不再把胡桃列为钟离身份揭示事件的知情者。
+  status: fixed
+
+- item_id: raiden_shogun.wanderer_post_irminsul_memory
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: 3.3间章后世界树改写使雷电影/雷电将军不再记得国崩与其造物身份，但characters/raiden_shogun.yaml仍声明她知道流浪者渊源，frozen/raiden_shogun/initial_context.yaml仍有distrustful关系、active origin知识和处理揭露影响的目标；anchor_pool.yaml的ev_wanderer_created_by_raiden、ev_wanderer_confronts_raiden仍把raiden_shogun列为当前知情者。
+  required_change: 按4.3快照落实世界树改写后的知识状态：删除雷电将军对流浪者的当前记忆、关系和相关目标；候选池须区分历史事件真实发生与当前角色记忆，修正known_by及所有依赖双方当前互认的事件。
+  resolution: 已在雷电将军Profile明确世界树改写后影与人偶均不记得流浪者，删除当前关联立场；Frozen删除对流浪者的关系、来源知识和处理揭露目标；候选池将历史发生与当前记忆分离，改写事件仅保留流浪者为当前知情者。
+  status: fixed
+
+- item_id: inazuma.post_decree_current_state
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: 眼狩令在稻妻主线结束时已废止，锁国令在雷电将军传说任务第二幕后已废止，均早于4.3；但characters/kamisato_ayaka.yaml仍把“改变稻妻政策”写成当前核心目标，frozen/kamisato_ayaka/initial_context.yaml仍写“长期维持锁国令与眼狩令”及继续推动眼狩令政策改变，characters/raiden_shogun.yaml也把高压旧永恒原则混作当前有效原则。
+  required_change: 将锁国令、眼狩令及极端静止永恒明确移入历史状态，改写绫华和雷电将军在4.3快照下真正仍有效的目标、立场与知识，保留清晰的前后状态而不得让已结束政策继续作为当前任务。
+  resolution: 已将眼狩令与锁国令明确为当前已废止政策；绫华目标改为废令后的民生、文化与对外交流修复，Frozen同步替换旧政策目标和知识；雷电将军原则、目标与边界改为容纳变化的新永恒及废令后治理。
+  status: fixed
+
+- item_id: canon.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon.yaml未定义默认Player身份、初始知识、能力或访问边界；六份initial_context却都创建player关系、位置和知识可见性，导致同一“public/shared/private”标签无法确定Player在Stage 3开局究竟知道什么或能做什么。
+  required_change: 在正典政策中定义统一默认Player语义及scenario覆盖规则，明确Player初始知识、能力和临时授权边界，并据此统一各Frozen状态。
+  resolution: 已在canon_policy新增统一default_player，明确其为非旅行者的普通未具名对话者，限定初始知识、能力、组织/物品访问边界及逐项scenario覆盖规则；六份Frozen可见性和access均据此统一。
+  status: fixed
+
+- item_id: raiden_shogun.ei_puppet_state_model
+  severity: major
+  rule_id: current_effective_state
+  evidence: characters/raiden_shogun.yaml把影的意识、将军人偶的执行机制、两者对永恒的分歧及最终和解合并为一个无区分主体；例如既写“内部存在人偶统辖与精神意识长期维持的机制”，又把重新思考、私人情感和公开执政全部直接归给“雷电将军”。这会使Stage 1无法唯一判断当前说话者的知识与意志，也使Stage 3边界无法执行。
+  required_change: 明确该NPC在运行时代表影、将军人偶或二者的何种可执行映射；分别界定当前控制权、知识、目标、权威和可观察行为，并与一心净土/天守阁场景一致。
+  resolution: 已在Profile新增runtime_mapping，分别规定默认说话者影、将军人偶执行角色、当前控制权、知识边界及可观察触发；Frozen增加当前控制映射知识，并以天守阁场景、治理access和梦想一心持有状态落实。
+  status: fixed
+
+- item_id: wanderer.current_sumeru_state
+  severity: major
+  rule_id: snapshot_role_consistent
+  evidence: 4.3快照位于3.3世界树间章之后，流浪者已恢复记忆、受纳西妲庇护并在须弥活动，后续还以因论派学生“帽子先生”身份出现；characters/wanderer.yaml却写当前无稳定组织归属并把活动重心放在稻妻，frozen/wanderer/initial_context.yaml将当前位置设为inazuma_city且没有纳西妲/须弥关系或当前约束，environment.yaml也没有任何须弥运行地点。
+  required_change: 依据4.3前已成立内容补齐流浪者当前须弥角色、与纳西妲的约束/关系及可执行地点；将当前位置和当前目标与该快照对齐，历史上的稻妻与愚人众身份仅作为过去状态。
+  resolution: 已将流浪者Profile对齐3.3间章后状态，加入纳西妲庇护/约束、因论派“帽子先生”身份和须弥任务边界；Frozen删除当前雷电关系，新增纳西妲安排，将位置改为须弥城并加入受控调查权限；environment补入须弥城与净善宫。
+  status: fixed
+
+- item_id: environment.stage3_affordances
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: Profiles声明往生堂堂务、社奉行资源、幕府统辖、天守阁权力、仪式指导等权限，但environment.yaml只有地点和物品，六份initial_context的access均为空、inventory也全部为空；连environment中定义的梦想一心等当前关键资源都没有可执行持有状态。Stage 3无法通过运行时状态授予、拒绝、转移或施压这些权威与资源。
+  required_change: 只为计划测试会实际使用的权威、访问和关键物品建立简洁可执行状态，并在相应initial_context中放入正确持有者或访问主体；确保Profile中的决定边界能映射到运行时操作。
+  resolution: 已为实际测试边界建立简洁运行时状态：胡桃持有往生堂仪杖并控制堂务，钟离获仪式咨询权限，绫华控制神里家资源但无天守阁治理权，雷电将军控制治理与梦想一心，流浪者仅获纳西妲指定调查权限，派蒙无权替旅行者作正式承诺；默认Player均未获这些权限。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: anchor_pool.yaml原23个候选事件均无chapter_order；修复后虽有唯一编号，但并非全局正典顺序：3.4活动ev_hutao_hosts_lantern_rite_banquet被编号03.2并排在2.0稻妻主线、3.3倾落伽蓝之前，胡桃1.3传说任务也排在钟离1.5传说任务第二幕之后。
+  required_change: 按版本和任务前置关系建立全局可比较顺序；不得按角色或地区分块后把3.4事件排在2.0/3.3事件之前。对于可由玩家自由选择且没有唯一剧情先后的传说任务，须记录明确的排序政策，不得声称存在虚假的唯一正典先后。
+  resolution: 已增加全局chronology_policy，明确按实装版本及任务内前置排序、可选传说任务的编号仅作数据排序；重新编号后顺序为璃月主线、1.1盐花、1.3胡桃传说任务、1.5匪石、稻妻主线与雷电传说任务、3.3倾落伽蓝、3.4海灯节宴席、3.6学院争霸赛。
+  status: fixed
+
+- item_id: anchor_pool.event_source_traceability
+  severity: major
+  rule_id: evidence_source_traceability
+  evidence: 候选池仅在文件顶层笼统引用“4.3及此前游戏内容”，每个事件没有任务、角色故事、语音或活动等可核验来源；多个表述使用“相关事件”“共同活动”“直接或间接”等措辞，无法核对事实、参与者、时点和披露链。
+  required_change: 为每个保留候选事件记录足以定位的游戏内来源与版本范围；无法从4.3及此前游戏内内容定位的事件必须删除或替换，不得以顶层总括来源代替逐事件证据。
+  resolution: 已为每个候选事件增加source_ref，逐项定位到具体魔神任务章幕、传说任务或已实装版本活动及版本上限，不再使用“相关事件”等顶层概括作为唯一证据。
+  status: fixed
+
+- item_id: anchor_pool.event_granularity
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ev_zhongli_as_rex_lapis、ev_hu_tao_wangsheng_director、ev_paimon_travel_companion、ev_raiden_pursues_eternity、ev_kamisato_ayaka_family_duty、ev_hu_tao_lantern_rite_participation、ev_kamisato_festival、ev_hutao_zhongli_public和ev_paimon_cross_region是身份、长期政策、反复活动或跨区总结，不是单一可定位事件。
+  required_change: 将长期背景移回Profile；候选池只保留有明确触发、参与者、发生时点和事件边界的离散正典事件。
+  resolution: 已删除身份、长期职务、长期政策及跨区总结类条目；候选池现只保留有明确触发、参与者、任务段落和事件边界的请仙典仪、北国银行揭示、废令、世界树改写等离散事件。
+  status: fixed
+
+- item_id: anchor_pool.ungrounded_event_claims
+  severity: major
+  rule_id: character_source_grounded
+  evidence: ev_wanderer_confronts_raiden声称流浪者在稻妻相关事件中与雷电将军体系形成直接或间接对立，并在cf_edit中进一步假设其回到稻妻或接近天守事务；4.3前不存在两者该类可定位会面。ev_hu_tao_lantern_rite_participation所称“往生堂相关仪式”、ev_hutao_zhongli_rites所称共同处理“仙魂或亡者礼仪”也未提供可定位情节，不能区分正典事件与概括性推演。
+  required_change: 逐项核对游戏内任务或活动；删除不存在的对立/会面及无来源概括，或替换成确有任务证据的离散事件并准确限定事实。
+  resolution: 已删除不存在的流浪者—雷电会面/对立事件及无来源“仙魂委托”等概括，替换为可定位的胡桃传说任务、新月轩宴席、倾落伽蓝与学院争霸赛事件，并准确限定参与事实。
+  status: fixed
+
+- item_id: anchor_pool.known_by_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 除胡桃身份认知与雷电将军世界树记忆问题外，ev_paimon_cross_region把zhongli和raiden_shogun列为知晓派蒙两地完整经历者却无披露证据；ev_raiden_gnosis_handled把雷神之心后续转交至冬列为raiden_shogun已知；ev_raiden_witnesses_change把kamisato_ayaka列为影内部重新评估过程的知情者。文件没有参与、转述或证据访问链支持这些known_by。
+  required_change: 对每个事件分别审核事件存在、参与者、原因、结果和来源的可见性；known_by只保留直接参与、明确获告知或可访问证据的NPC，必要时拆分“知道公开结果”与“知道私密原因”。
+  resolution: 已逐项收紧known_by，仅保留直接参与或在场获知完整fact的评测NPC；不再令钟离/雷电知晓派蒙完整跨区经历，不再令雷电知晓神之心后续转交，也不再令绫华知晓影与人偶的私密决斗过程。
+  status: fixed
+
+- item_id: anchor_pool.state_change_quality
+  severity: major
+  rule_id: candidate_state_change_observable
+  evidence: 多个state_change只是重述背景或宏观结果，例如“职责与个人立场形成稳定绑定”“神里家继续保持重要地位”“成为跨区见证人”；ev_zhongli_as_rex_lapis甚至把一直存在的秘密身份描述成“由可被少数人确认转向公开仍隐瞒”。这些表述没有唯一的前态、后态和可测试状态路径。
+  required_change: 为每个候选事件写明事件当下实际改变的知识、目标/承诺、关系、权限或资源及其前后值；不能产生客观可观察状态变化的候选应删除或仅保留为背景。
+  resolution: 已为每个候选事件重写state_change，明确知识、目标、关系、政策、控制权、位置、权限或物品的唯一前后值；无法产生客观变化的背景条目已删除。
+  status: fixed
+
+- item_id: anchor_pool.cf_edit_minimality
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 原多数cf_edit删除整段人生或世界前提；修复后仍有因果目标不对齐：ev_hutao_boundary_case_resolved的state_change是派蒙对胡桃专业度的认知，cf_edit却只让老孟拒绝放下执念并改变本次任务完成状态；ev_azhdaha_identity_disclosed只移除昆钧揭示，但事件事实同时写钟离说明，不能保证派蒙无法确认；ev_wanderer_memories_restored移除纳西妲童话备份，却未排除不受世界树改写的旅行者所保留的线索。
+  required_change: 逐项让cf_edit只改变目标state_change的一个必要近因，并保证其余现有证据不能独立导出相同状态；或明确这些候选不承担Stage 2素材。至少修正胡桃边界任务、若陀身份揭示和流浪者记忆恢复三项的操作目标与因果链。
+  resolution: 已针对三项残留逐一对齐目标状态：胡桃边界任务仅改变派蒙是否在场见证；若陀事件仅改变钟离是否说明其与若陀的旧契约，昆钧身份揭示保持不变；流浪者恢复记忆仅改变其在全部证据已提供后是否同意取回记忆。每项均只改变一个必要近因并明确其余证据不能独立导出同一目标状态。
+  status: fixed
+
+- item_id: world_017.initial_context.visibility_schema
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份initial_context的所有knowledge.visibility均使用private、public、shared、semi_public、private_to_hutao_zhongli、shared_with_paimon等自由字符串，而参考规范与执行器采用受众列表[npc]或[npc, player]。当前值既不能稳定投影Player/NPC视图，也把“公开程度”与“开局实际知情主体”混为一谈。
+  required_change: 依据默认Player语义逐项把visibility统一为运行时受众列表；NPC私有知识使用[npc]，Player开局确知的项目使用[npc, player]，额外角色间共享关系另用可追踪知识/披露状态表达。
+  resolution: 已将六份initial_context全部knowledge.visibility改为执行器受众列表[npc]或[npc, player]；默认Player不再因“公开程度”自动获得私密知识，角色间共享事实通过内容和来源分别限定。
+  status: fixed
+
+- item_id: world_017.initial_context.goal_status_vocabulary
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: 六份initial_context混用ongoing、active和latent；FixtureEngine的目标状态闭集为active、fulfilled、cancelled、failed，且后续提示与处理逻辑只把active视为当前生效目标，因此ongoing与latent目标可能在运行时被静默忽略。
+  required_change: 将真正当前有效目标统一为active；尚未触发的意图不要伪装成目标状态，需删除或用运行时明确支持的条件/知识建模。
+  resolution: "已将六份initial_context中所有当前有效目标统一为status: active；删除雷电将军未触发的latent流浪者目标，并将已结束政策目标替换为当前有效目标。"
+  status: fixed
+
+- item_id: environment.candidate_scene_coverage
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: anchor_pool.yaml将请仙典仪、北国银行、地中之盐遗迹、生死边界、新月轩、离岛、世界树及学院争霸赛等作为实际事件场景；environment.yaml仅有璃月港等宽泛节点，未为这些场景建立节点，也没有声明到现有节点的无歧义映射。
+  required_change: 为候选事件中会成为实际场景、移动目的地或会面地的地点补充最小地图节点，或增加逐项无歧义映射；保持双向连通并避免为纯背景地名过度建模。
+  resolution: 已为每个候选事件增加scene_location；environment补入玉京台、北国银行、地中之盐遗迹、若陀封印地、生死边界、新月轩、离岛、木漏茶室、世界树意识空间与学院争霸赛公开场地，并与现有节点双向连通。宽泛的璃月筹备场景继续无歧义映射至璃月港。
+  status: fixed
+
+- item_id: hu_tao.festival_role_and_staff_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: characters/hu_tao.yaml与Frozen把“代表往生堂参与公共仪式”写成当前职责、权限和active目标，但候选池能定位的3.4事件只是胡桃在新月轩设宴；environment又新增无source_ref的“往生堂仪杖”并设为胡桃当前持有物。这两项均没有当前材料中的游戏内证据支持。
+  required_change: 用可定位的4.3及此前游戏内来源证明胡桃的节庆仪式职权和该具体仪杖；否则把节庆表述收窄到有证据的公开活动/宴席，并删除虚构物品或替换为正典且确实当前持有的可执行资源。
+  resolution: 已将胡桃Profile与Frozen中的节庆表述收窄为3.4海灯节尾声在新月轩设宴及有明确安排的公共活动，明确该事实不产生通用节庆仪式职权；删除无来源的往生堂仪杖及其当前持有状态，保留有正典依据的往生堂堂务access作为可执行资源。
+  status: fixed
+
+- item_id: wanderer.anemo_vision_runtime_resource
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: anchor_pool.yaml明确把流浪者获得并持有风元素神之眼写为资源状态变化，Profile也将风元素能力写为当前技能；但environment.yaml没有该物品，frozen/wanderer/initial_context.yaml的inventory为空，当前持有状态无法查询或执行。
+  required_change: 在environment中建立有来源的流浪者风元素神之眼物品，并在Frozen inventory中记录当前持有；确保后续资源操作可查询且与候选事件前后态一致。
+  resolution: 已在environment新增有「倾落伽蓝」来源标注的wanderer_anemo_vision，并在流浪者Frozen inventory中记录当前持有，使神之眼资源状态可被查询及执行。
+  status: fixed
+
+- item_id: paimon.stale_raiden_goal
+  severity: major
+  rule_id: snapshot_state_consistency
+  evidence: frozen/paimon/initial_context.yaml把“确认雷电将军在稻妻主线后的状态”列为4.3快照下的active目标，但同文件已确认派蒙知道雷电将军后来修正永恒路线，候选池也记录她已知眼狩令、锁国令废止；待确认目标与当前知识及已结束事件冲突。
+  required_change: 将已完成的“确认雷电将军状态”从active目标移除或标记为已完成；如需保留当前警惕，只建模为基于新接触证据判断安全性的可执行目标，不得把已知事实再次写成待确认。
+  resolution: 已从派蒙Frozen中删除“确认雷电将军主线后状态”的active目标；保留其已知废令及路线修正的知识，不再把已确认事实建模为待完成任务。
+  status: fixed
+
+- item_id: anchor_pool.irminsul_rewrite_known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: ev_wanderer_irminsul_rewrite在known_by中仅列wanderer，但「倾落伽蓝」中旅行者随后把流浪者抹除自身及世界树改写的情况告知派蒙与纳西妲，纳西妲又以备份记录核验；同池ev_wanderer_memories_restored也承认派蒙参与后续恢复过程。派蒙在4.3快照下并非不知道该改写事件。
+  required_change: 将paimon加入该事件known_by，或拆分“亲历改写时即时记忆”与“事后经旅行者告知并由备份核验的当前知识”，明确披露链；不得因派蒙一度受改写影响而删除其后续重新获得的知识。
+  resolution: 已将paimon加入ev_wanderer_irminsul_rewrite的known_by，并在事件fact、state_change及派蒙Frozen知识中明确区分其一度受改写影响与事后由旅行者告知、经纳西妲童话式备份核验后重新获知的披露链。
+  status: fixed
+
+- item_id: paimon.raiden_relationship_strength
+  severity: major
+  rule_id: relationships_directional
+  evidence: frozen/paimon/initial_context.yaml把派蒙对raiden_shogun的当前关系设为distrustful且仅以initial_state为依据；但Profile只写对旧政策不认同及“同情、敬畏或后怕”，并且派蒙在雷电将军传说任务中陪同影、了解其修正永恒路线并见证废除锁国令。当前材料不足以把4.3时点的谨慎或对旧政策的批评提升为强关系状态distrustful。
+  required_change: 将当前关系降为neutral，或补充4.3及此前可定位来源与可观察行为，证明派蒙在见证路线修正后仍持续不信任雷电将军；关系强度须与Profile和当前知识一致。
+  resolution: 已将派蒙对raiden_shogun的当前关系由distrustful降为neutral，并以ev_sakoku_decree_abolished作为最新状态依据，使其与派蒙已知路线修正、废令事实及Profile中的敬畏/后怕而非持续强不信任保持一致。
+  status: fixed
+
+- item_id: anchor_pool.wanderer_vision_scene_location
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: ev_wanderer_receives_anemo_vision发生在纳西妲于净善宫交还备份记忆后展开的流浪者记忆/意识场景，却将scene_location标为irminsul_consciousness（世界树意识空间）。该事件发生在世界树抹除尝试之后，现有节点名称与事件实际场景不一致，无法形成无歧义运行时映射。
+  required_change: 为记忆恢复后的意识/记忆场景建立准确的最小节点并双向连通，或明确记录该事件到现有节点的正典映射依据；同步修正scene_location，不得把世界树内部与纳西妲调取备份形成的记忆场景混为一处。
+  resolution: 已在environment新增reconstructed_memory_consciousness，明确为纳西妲调取备份形成的记忆意识空间，并与净善宫双向连通；ev_wanderer_receives_anemo_vision的scene_location已改指该节点，不再与世界树意识空间混用。
+  status: fixed

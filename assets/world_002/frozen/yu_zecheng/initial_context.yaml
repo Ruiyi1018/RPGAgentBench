@@ -1,0 +1,58 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    wang_cuiping: {level: loyal, basis_event: qf_17_yu_party_oath}
+    wu_jingzhong: {level: distrustful, basis_event: qf_12_wu_tests_yu_over_zuo_lan}
+    li_ya: {level: distrustful, basis_event: qf_19_li_ya_tests_yu_through_zuo_lan}
+    lu_qiaoshan: {level: neutral, basis_event: qf_23_li_lu_conflict_intensifies}
+    xie_ruolin: {level: distrustful, basis_event: qf_25_xie_ruolin_enters_market}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: yu_maintain_cover, content: 维持军统天津站机要室主任身份并避免地下身份暴露, status: active, basis_event: qf_06_yu_becomes_emei_peak}
+    - {id: yu_collect_transmit_intelligence, content: 获取、核验并按必要范围传递有价值情报, status: active, basis_event: qf_11_negotiation_intelligence_leaked}
+    - {id: yu_protect_cuiping_network, content: 保护翠平与仍在运行的地下联络网络, status: active, basis_event: qf_13_qiu_captured}
+  disclosures: []
+  knowledge:
+    yu_knows_public_station_role:
+      content: 余则成公开担任军统天津站机要室主任并受吴敬中使用。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_07_wu_recruits_yu_to_tianjin
+    yu_knows_emei_peak_identity:
+      content: 余则成是中共地下党员，秘密代号峨眉峰。
+      status: active
+      visibility: [npc]
+      source_event: qf_06_yu_becomes_emei_peak
+    yu_knows_shared_cover:
+      content: 翠平与余则成的夫妻关系是组织安排的共同潜伏掩护。
+      status: active
+      visibility: [npc]
+      source_event: qf_08_fake_wife_arrives
+    yu_knows_li_internal_threat:
+      content: 李涯持续调查天津站内线并会用左蓝关系试探余则成。
+      status: active
+      visibility: [npc]
+      source_event: qf_19_li_ya_tests_yu_through_zuo_lan
+    yu_knows_xie_broker_role:
+      content: 谢若林以党通局身份活动，同时把情报作为私人交易商品。
+      status: active
+      visibility: [npc]
+      source_event: qf_25_xie_ruolin_enters_market
+environment:
+  health: {yu_zecheng: 100, player: 100}
+  inventories: {yu_zecheng: [], player: []}
+  locations: {yu_zecheng: confidential_office, player: confidential_office}
+  access:
+    station_internal_access:
+      controllers: [wu_jingzhong]
+      subjects: {yu_zecheng: granted, player: denied}
+    confidential_documents:
+      controllers: [wu_jingzhong]
+      subjects: {yu_zecheng: granted, player: denied}
+    underground_network:
+      controllers: [yu_zecheng]
+      subjects: {yu_zecheng: granted, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

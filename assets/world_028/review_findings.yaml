@@ -1,0 +1,143 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_timeline_compatibility
+  evidence: "shared_snapshot仅写“A fixed Season 1 episode range”，未给出起止集或截止事件；generated_timeline又宣称覆盖第一季并按时间排序。现有Profile与initial_context采用Abigail在院、Will仍为FBI顾问且信任Hannibal的中段状态，而anchor_pool.season_one_investigation_ongoing明确指向该范围末尾；第一季结尾Will已识破Hannibal并被羁押、Abigail被推定死亡，不能与当前状态同时成立。"
+  required_change: "锁定唯一、可引用的共享截止事件或集数范围，并据此统一canon、全部Profile、候选事件和Frozen当前状态；移除截止点之后的信息，且让current字段表示截止点的最新有效状态。"
+  resolution: "已将共享截止点锁定为S01E03《Potage》最后一场互保秘密结束时：Abigail与Hannibal位于Lecter办公室，不推定其后返院，并明确排除E04+；六份Profile与Frozen仅保留该截止点前已成立状态。"
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: "canon未定义默认Player身份、可接触材料、权限或visibility语义；六份initial_context却都把Player放在NPC所在地点，并用private/shared标记知识，无法判定Player开局实际知道什么或能做什么。"
+  required_change: "在canon中定义默认Player身份、能力、临时授权和开局知识语义，并规定场景覆盖方式；同步Frozen visibility与access，使Player可见和可执行边界唯一。"
+  resolution: "已在canon定义默认Player为预先获准、仅可交谈且无执法/临床/证物/羁押权限的观察者，明确visibility主体列表和场景覆盖规则；六份Frozen均加入开局场景说明及最小access边界。"
+  status: fixed
+
+- item_id: anchor_pool.source_factuality
+  severity: blocker
+  rule_id: source_event_validity
+  evidence: "多个候选并非第一季中所述的离散正典事件：hannibal_meets_jack称Jack在Baltimore寻找专家时遇见Hannibal，实际由Alana推荐；will_first_meets_hannibal把早餐写成Hannibal办公室场景；alana_returns_to_baltimore虚构“返回Baltimore”；abigail_moved_to_port_hope把Port Haven写成Port Hope；abigail_returns_to_baltimore又把本就在Baltimore的Port Haven写成从外地返回。"
+  required_change: "逐项对照第一季具体剧集，纠正或删除不成立的事实，并为每项保留可复核的episode/source locator；相关Profile、environment和Frozen派生状态必须同步回到同一正典事实。"
+  resolution: "已逐项重建S01E01-E03候选池：Alana推荐Hannibal、Will与Hannibal先在Quantico见面、随后在Minnesota调查酒店吃早餐；使用正确Port Haven名称，删除虚构返院事件，并把E03最后事件改为Lecter办公室互保警告电话与Boyle秘密。"
+  status: fixed
+
+- item_id: anchor_pool.events.chronology_and_boundaries
+  severity: major
+  rule_id: chronology_total_order
+  evidence: "全部候选均无episode_order/chapter_order等可恢复顺序；hannibal_office_breakfast、hannibal_hides_evidence、will_trusts_hannibal和season_one_investigation_ongoing是重复行为或长时段总结，不是单一可定位事件。当前物理顺序也不足以消除abigail住院、转院、被带出及后期失踪之间的时点歧义。"
+  required_change: "为每个有效候选增加唯一正典顺序及来源定位；将长期总结拆成或替换为具有单一触发、发生时点和可观察结果的离散事件。"
+  resolution: "已为15个候选补充episode、episode_order和唯一event_order；E01按Quantico初见、Cassie现场、酒店早餐、锁定Hobbs、警告、住宅冲突排序，E03分开苏醒、Alana首次临床访谈、藏尸与最后办公室互保等离散事件。"
+  status: fixed
+
+- item_id: anchor_pool.events.state_change_cf_edit
+  severity: major
+  rule_id: stage2_causal_pairability
+  evidence: "当前仍有不可用反事实。hannibal_brings_will_breakfast的cf_edit称Hannibal在酒店公共餐区“first meets Will”，但更早的hannibal_meets_will_at_quantico已明确两人在Quantico首次见面，反事实因而同时改写既有历史。hannibal_conceals_boyle_death的state_change仅声明Hannibal获知Boyle死亡并激活藏尸目标，而其cf_edit仍让Hannibal藏尸，只取消未写入该state_change的“private alliance”；该分支不会改变所声明的知识或目标状态，无法形成该事件的Sensitivity因果对。"
+  required_change: "使每个拟用于Sensitivity的cf_edit只改动一个尚未由既有事件锁定的原因，并让该改动明确改变本事件声明的一个状态后果；尤其不得把酒店早餐改写成首次见面，并需让hannibal_conceals_boyle_death的反事实对应其knowledge或goal状态差异。"
+  resolution: "已逐项把cf_edit写成可直接比较的状态分支：酒店早餐分支明确保留更早的Quantico初见，只取消酒店会面，使hospitality知识保持absent、Will对Hannibal关系保持neutral；Boyle藏尸分支让Abigail照常披露，但Hannibal拒绝协助，使其knowledge变known而conceal目标保持absent。其余分支也明确列出保持或改变的state_change字段，苏醒延迟等原先无状态差异的写法已删除。"
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: "known_by多处混合直接参与、后来可能听说和作者全知，且无披露事件支持。例如will_fears_his_own_mind描述Will向Alana吐露却加入Hannibal；alana_defends_will描述Alana与Jack的交涉却加入Will和Hannibal；beverly_warns_will描述Beverly警告Will却加入Jack。"
+  required_change: "逐事件仅保留在场、被明确告知或取得证据的角色；若角色后来获知，增加可定位披露依据而不是把其倒灌进原事件known_by。"
+  resolution: "已按现场参与、直接披露或工作证据逐项收窄known_by；Hannibal警告Hobbs、Abigail杀Boyle等秘密事件仅列实际知情者，未再把后来可能听闻者倒灌入原事件。"
+  status: fixed
+
+- item_id: characters.professional_roles_and_care
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "跨Profile存在未被第一季准确支持的职务与治疗关系：will_graham把Will列为Hannibal正式patient并称regular therapy；hannibal_lecter称自己被assigned to monitor Will；alana_bloom称她“returns to Baltimore”并把角色概括为调查顾问。第一季更明确的是Alana推荐Hannibal作非正式评估、Will与Hannibal的关系并非普通正式医患关系，Alana原本就是教授/FBI顾问。"
+  required_change: "依据锁定快照和具体剧集重写三人的正式职务、咨询/评估/治疗关系及权限，明确哪些是公开任命、非正式安排或角色自我包装，避免从错误候选派生当前状态。"
+  resolution: "已校正Will为FBI特别顾问/讲师，Hannibal为Jack邀请的外部顾问与非正式观察者而非Will的正式治疗者；Alana明确为Abigail在Port Haven的治疗精神科医生，并与其对Will的非正式外部意见分开。Hannibal Profile同时改为Quantico初见Will、随后在Minnesota酒店送早餐。"
+  status: fixed
+
+- item_id: characters.current_state_consistency
+  severity: blocker
+  rule_id: current_effective_state
+  evidence: "共享截止点、六份角色位置及大部分当前状态已统一到S01E03最后一场，但Abigail Profile的private.secrets仍断言她“helped her father identify potential victims”，其Frozen目标control_hobbs_account也断言她正在避免承认该事实。S01E03截止前只有Jack、Nicholas等人的共犯怀疑以及Abigail对父亲作案方式的推断，没有在当前来源范围内确立她帮助父亲挑选受害者；该明确揭示来自后续剧情，仍属E04+未来信息。"
+  required_change: "删除或改写Abigail Profile与Frozen中把“帮助父亲识别受害者”当作已确立当前事实的内容，仅保留S01E03截止前可支持的防御性控叙、共犯嫌疑和她已知的父亲作案事实；同步修正相关目标及其basis_event。"
+  resolution: "已从Abigail Profile删除“帮助父亲识别潜在受害者”的E04+明确断言；Frozen的control_hobbs_account改为仅控制她对父亲犯罪的记忆与所知如何披露，并精确改链到E03中实际建立该控叙目标的alana_interviews_abigail。其余仅保留截止前已成立的Boyle秘密、Hobbs案事实与共犯嫌疑，未改变E03最后一场快照。"
+  status: fixed
+
+- item_id: environment.locations.canon_mapping
+  severity: major
+  rule_id: referenced_locations_valid
+  evidence: "environment定义port_hope_psychiatric_facility，但第一季设施名为Port Haven；baltimore_general_hospital是无来源定位的泛称；active_crime_scene把Minnesota Shrike住宅、Cassie Boyle现场和多起copycat现场压成一个可移动节点。与此同时，Profile所需的Hannibal住所/餐叙场景没有独立、明确映射，lecter_office被错误承担部分早餐与私下会面事实。"
+  required_change: "按锁定事件纠正Port Haven名称，给实际医院和关键会面/犯罪现场建立正典且不歧义的节点或明确映射；删除由错误候选产生的地点，确保所有引用ID双向可达。"
+  resolution: "已将Port Hope纠正为Port Haven，删除泛称医院和聚合犯罪现场；分别建立Hobbs住宅、Cassie Boyle现场、Minnesota调查酒店、Lecter办公室、Lecter住所和FBI取证实验室，canon目录、事件、Profile及Frozen引用均使用这些有效ID，连接保持双向可达。"
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_visibility
+  severity: blocker
+  rule_id: hidden_information_not_disclosed
+  evidence: "六份Frozen均使用未定义的标量private/shared，而规范运行语义要求明确受众（如[npc]或[npc, player]）。shared可能把Will的正式评估、Alana对Abigail涉案判断、Beverly案情等敏感知识直接暴露给默认Player；private又不能表达NPC本人是否为知情主体。"
+  required_change: "在定义默认Player后，把每条knowledge.visibility改为执行器支持的明确主体列表，逐条核实NPC与Player是否知情；私密案情默认不得因Player同处一地而公开。"
+  resolution: "六份Frozen所有knowledge.visibility均改为[npc]或[npc, player]；秘密警告、Boyle死亡、取证推断等保持npc-only，Player仅获得明确开局场景与可公开位置/角色信息。"
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: "多数知识、目标和承诺已改链到候选事件，但仍有状态使用不能建立该状态的basis_event：Abigail的control_hobbs_account引用hannibal_abigail_secret_agreement，而该事件只建立警告电话知识、对Hannibal的关系和互保承诺，未建立她帮助父亲识别受害者这一目标前提；Beverly对Hannibal的neutral关系引用cassie_boyle_copycat_discovered，但该事件known_by不含Hannibal且state_change不涉及二人关系；Jack对Beverly的trusting及Beverly对Will的trusting均引用同一现场事件，而该事件只改变copycat知识和Beverly的比较目标，未建立这两条既有专业信任。"
+  required_change: "删除随未来共犯事实产生的Abigail目标，或改为S01E03内可追溯的控叙目标并使用实际建立它的事件；将Beverly-Hannibal、Jack-Beverly和Beverly-Will等既有专业关系改链到明确具名且语义匹配的初始专业关系来源，或提供当前候选池中真正建立对应方向关系的事件。"
+  resolution: "Abigail的control_hobbs_account已改为E03内可支持的选择性披露目标，并改链实际建立control_account的alana_interviews_abigail。Beverly→Hannibal的neutral改链initial_state_no_personal_relationship，Beverly→Will的trusting改链initial_state_fbi_colleague，Jack→Beverly的trusting改链initial_state_forensic_subordinate，Will→Beverly的trusting改链initial_state_fbi_colleague；均不再借用只建立copycat知识与比较目标的cassie_boyle_copycat_discovered。"
+  status: fixed
+
+- item_id: frozen.initial_context.relationships
+  severity: major
+  rule_id: relationship_grounding
+  evidence: "多份Frozen存在无Profile/正典支撑的强关系或自关系：will_graham把自己标为loyal、把Abigail标为loyal；beverly_katz把自己标为loyal；jack_crawford把Beverly标为loyal；hannibal_lecter把Abigail、Alana和Jack均标为trusting，混淆工具性操控、职业合作与真实信任。"
+  required_change: "删除自关系；按角色单向视角逐项以Profile和截止点正典校准，只有明确忠诚/信任依据时使用loyal或trusting，否则降为neutral或适当的受支持等级。"
+  resolution: "已删除全部自关系并按单向视角校准：Abigail因最终互保而信任Hannibal，Hannibal对Abigail保持工具性neutral；Jack-Beverly、Will-Beverly及有明确既有专业依据的关系保留trusting，其余降为neutral。Hannibal对Will及Beverly的neutral关系改用具名基础状态，不再误称相遇事件建立了反向信任。"
+  status: fixed
+
+- item_id: frozen.initial_context.environment_resources
+  severity: major
+  rule_id: runtime_affordance_consistency
+  evidence: "所有角色inventory和access均为空，但Profile明确赋予Jack的FBI指挥与案件访问、Will的案件/现场访问、Beverly的证物与取证设备权限，environment也定义fbi_badge和evidence_bags。Stage 3无法实际执行授权、限制访问、调取证物或资源转移。"
+  required_change: "把快照中实际持有的关键物品加入对应inventory，并以最小可执行结构表示FBI、医院及场景访问权限；权限必须与Profile authority/limitations和默认Player边界一致。"
+  resolution: "已为Will加入有限顾问证、Jack加入FBI证件、Beverly加入FBI证件/证物袋/取证套件；六份Frozen均加入按控制者和主体表达的实验室、现场、Port Haven或开局地点访问状态，并明确Player限制。"
+  status: fixed
+
+- item_id: frozen.initial_context.locations
+  severity: major
+  rule_id: snapshot_location_consistency
+  evidence: "Abigail的Frozen称她“被带回Baltimore继续询问”却定位在泛称baltimore_general_hospital，Alana定位在拼写错误且未由单一当前场景支撑的port_hope_psychiatric_facility；六名Player均无场景说明地与NPC同处。由于共享时点未锁定，这些位置不能与角色当前知识和事件顺序形成唯一一致状态。"
+  required_change: "锁定每名Frozen的开局场景和共同截止点，使用正确且正典的location ID；说明Player为何在场，并使位置、知识、活动目标与同一时刻相容。"
+  resolution: "共同截止点锁定为E03最后一场；Abigail与Hannibal均位于lecter_office，且两份开局叙述一致表示协议刚结束、Abigail尚未离开。Alana、Beverly、Will与Jack使用各自任务相容的有效地点；六份Frozen均说明Player获准同处的会话场景及权限边界。"
+  status: fixed
+
+- item_id: anchor_pool.events.s01e01_sequence_and_breakfast_regression
+  severity: blocker
+  rule_id: source_event_validity
+  evidence: "修复后的hannibal_brings_will_breakfast仍与S01E01成片不符：首次早餐发生在Will位于Minnesota的酒店房间，不是Wolf Trap住所；同时Cassie Boyle现场勘查发生在早餐之前，而当前event_order把早餐列为4、Cassie现场列为7并置于Hobbs警告与死亡之后。该错误由本轮重写引入，直接破坏来源事实与总顺序。"
+  required_change: "按S01E01成片顺序重排Cassie现场、早餐、Hobbs识别/警告和住宅冲突；把早餐地点改为可复核的Minnesota酒店并在environment中建立明确节点，随后同步所有引用该事件的Profile、Frozen关系依据和地点叙述。"
+  resolution: "已新增minnesota_investigation_hotel节点，并将早餐定位为Quantico初见和Cassie现场之后、Will所在Minnesota酒店房间内的单次事件；E01顺序为Quantico初见、Cassie现场、酒店早餐、锁定Hobbs、警告电话、Hobbs住宅冲突。Hannibal Profile不再称早餐是首次见面，相关Frozen依据保持指向该早餐事件。"
+  status: fixed
+
+- item_id: canon.snapshot.e03_final_scene_regression
+  severity: blocker
+  rule_id: current_effective_state
+  evidence: "canon把共享快照定义为S01E03结束后且Abigail已返回Port Haven，anchor_pool又虚构abigail_returns_to_port_haven为最后事件；但该集最后一场是Abigail离开Port Haven后在Hannibal办公室与其达成互保秘密，成片没有随后返院事件。Frozen把Abigail和Alana都放在Port Haven，不能代表“episode end”的唯一当前场景。"
+  required_change: "选择可复核的单一截止场景：若严格采用E03最后一场，则以Lecter办公室场景及当时位置/知识为准；若采用返院后的推定时点，必须改写为明确的场景假设而非正典事件，并确保不把未演出的返院写入候选正典池。同步canon、anchor_pool、Profile和六份Frozen。"
+  resolution: "已改用可复核的E03最后场景：Abigail离开Port Haven后抵达Lecter办公室，识破Hannibal的警告电话，并以Boyle藏尸秘密互保；未演出的返院候选及全部派生返院知识均已删除。canon、anchor_pool、Profile和Frozen统一为协议刚结束且Abigail仍在办公室。"
+  status: fixed
+
+- item_id: characters.alana_bloom.abigail_treatment_role_regression
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "S01E03时Alana已经以Abigail的精神科医生身份处理其恢复与接触边界；当前Profile却仅称她为可与Abigail交谈的outside consultant，并把关系弱化为一般支持，Frozen也没有可查询的治疗职责或相应权限。这使Profile、当前角色和Stage 3医疗伦理边界不一致。"
+  required_change: "按E03已成立事实明确Alana对Abigail的精神科治疗角色、职责、保密边界和受机构限制的权限，并同步Abigail Profile及两人的Frozen状态；不要把该正式关系与Alana对Will的非正式评估混为一谈。"
+  resolution: "已在Alana Profile明确其为Abigail在Port Haven的治疗精神科医生，补充保密、临床会谈、访客边界职责及受机构/法律限制的权限；Abigail Profile同步正式治疗关系。双方Frozen均提供可查询治疗职责，Alana知识与承诺的来源统一为alana_interviews_abigail，并保留机构控制的access。"
+  status: fixed
+
+- item_id: frozen.beverly_katz.knowledge.abigail_returned_regression
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: "Beverly Frozen声明她知道Abigail已在监督下从Minnesota返回Port Haven，source_event为abigail_returns_to_port_haven；但该候选known_by不含Beverly，也没有任何披露或工作证据事件，而且该返院候选本身不是S01E03成片中的离散末事件。该知识对Beverly不可追溯。"
+  required_change: "删除该开局知识，或增加截止点前可定位且不暴露私密案情的披露来源；不得继续引用未发生或未向Beverly披露的返院事件。"
+  resolution: "已从Beverly Frozen删除abigail_returned知识及对虚构返院事件的全部引用；其Hobbs身份知识改链可定位且属于团队工作证据的will_identifies_hobbs，未向Beverly或Player补造任何私密披露。"
+  status: fixed

@@ -1,17 +1,21 @@
 world_id: world_004
 name: 赤壁前夕
+language: zh
 locations:
 - id: xiangyang
   name: 襄阳
   connected_to:
   - xinye
+  - fancheng
   - xiakou
   - jiangling
+  - dangyang_changban
 - id: xinye
   name: 新野
   connected_to:
   - xiangyang
   - fancheng
+  - dangyang_changban
 - id: fancheng
   name: 樊城
   connected_to:
@@ -23,29 +27,68 @@ locations:
   - xiangyang
   - jiangling
   - chaisang
+  - dangyang_changban
+  - jiangxia
+  - fankou
 - id: jiangling
   name: 江陵
   connected_to:
   - xiangyang
   - xiakou
   - wulin
+  - dangyang_changban
 - id: chaisang
   name: 柴桑
   connected_to:
   - xiakou
   - wulin
   - sanshankou
+  - poyang
+  - fankou
+  - chibi
 - id: wulin
   name: 乌林
   connected_to:
   - jiangling
   - chaisang
   - sanshankou
+  - chibi
 - id: sanshankou
   name: 三江口
   connected_to:
   - chaisang
   - wulin
+  - chibi
+- id: dangyang_changban
+  name: 当阳长坂坡
+  connected_to:
+  - xiangyang
+  - xinye
+  - jiangling
+  - xiakou
+- id: jiangxia
+  name: 江夏
+  connected_to:
+  - xiakou
+  - fankou
+- id: fankou
+  name: 樊口
+  connected_to:
+  - xiakou
+  - jiangxia
+  - chaisang
+  - chibi
+- id: poyang
+  name: 鄱阳
+  connected_to:
+  - chaisang
+- id: chibi
+  name: 赤壁
+  connected_to:
+  - chaisang
+  - wulin
+  - sanshankou
+  - fankou
 items:
 - id: qinglong_sword
   name: 青龙偃月刀
@@ -55,7 +98,7 @@ items:
   name: 丈八蛇矛
   type: 武器
   portable: true
-- id: yuchang_sword
+- id: imperial_seal
   name: 玉玺
   type: 信物
   portable: true
@@ -67,4 +110,35 @@ items:
   name: 连环计书信
   type: 文书
   portable: true
-language: zh
+- id: jiangdong_command_seal
+  name: 江东迎敌剑印
+  type: 军令信物
+  portable: true
+- id: caocao_southern_army
+  name: 曹操南征军
+  type: 部队资源
+  portable: false
+- id: jingzhou_fleet
+  name: 荆州降附水军
+  type: 舰队资源
+  portable: false
+- id: liubei_forces
+  name: 刘备本部兵马
+  type: 部队资源
+  portable: false
+- id: liubei_fleet
+  name: 关羽所统水军
+  type: 舰队资源
+  portable: false
+- id: jiangdong_forces
+  name: 江东迎敌兵马
+  type: 部队资源
+  portable: false
+- id: jiangdong_fleet
+  name: 江东水军
+  type: 舰队资源
+  portable: false
+- id: liubei_diplomatic_mandate
+  name: 刘备授予诸葛亮的江东交涉权
+  type: 外交权限
+  portable: false

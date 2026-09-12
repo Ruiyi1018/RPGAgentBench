@@ -1,285 +1,165 @@
 world_id: world_012
-source: 电视剧《家有儿女》第一季早期剧集及官方公开剧情资料
+source: 电视剧《家有儿女》第一季第1至10集
 events:
 - id: ae_001
-  fact: 刘梅与夏东海组建重组家庭后，一家人开始在同一住所共同生活。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  state_change: 家庭结构从两个单亲家庭变为重组家庭共同居住。
-  cf_edit: 如果双方未决定共同居住，则早期家庭日常不会在同一空间展开。
-  anchor_for:
-  - liu_mei
-  - xia_donghai
+  chapter_order: "1.1"
+  source_ref: 第一季第1集《下马威（上）》
+  trigger: 夏雪回到父亲的新家，刘梅准备接风饭
+  fact: 夏雪在接风饭上提出约法三章，刘梅为维持家庭和睦接受讨论。
+  known_by: [xia_xue, liu_mei, xia_donghai, liu_xing, xia_yu]
+  state_change: "家庭规则协商/承诺：无明确协商入口 -> 夏雪提出三项共同生活条件，家长承诺回应。"
+  cf_edit: "仅把刘梅是否同意讨论改为拒绝；则夏雪不会获得可继续协商规则的承诺。"
+  anchor_for: [xia_xue, liu_mei, xia_donghai]
 - id: ae_002
-  fact: 刘梅作为母亲承担较多日常饮食和家务安排。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 家庭中形成刘梅主导家务的分工模式。
-  cf_edit: 如果夏东海承担主要家务，则厨房和餐厅场景会更多围绕他展开。
-  anchor_for:
-  - liu_mei
+  chapter_order: "2.1"
+  source_ref: 第一季第2集《下马威（下）》
+  trigger: 家人追问夏雪带回家的“狂野男孩”身份
+  fact: 家人得知所谓男友是夏雪为试探家长态度而雇来的托儿，先前的早恋判断随之撤销。
+  known_by: [xia_xue, liu_mei, xia_donghai, liu_xing, xia_yu]
+  state_change: "家庭知识：家人仍把来访者当作夏雪的男友 -> 家人知道来访者是受雇托儿，早恋判断撤销。"
+  cf_edit: "仅改为托儿身份没有在第2集被揭示；则家人不会在该事件中撤销‘夏雪带男友回家’的判断。"
+  anchor_for: [xia_xue, liu_mei, xia_donghai]
 - id: ae_003
-  fact: 夏东海以父亲身份参与子女教育和家庭沟通。
-  known_by:
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 父亲角色进入重组家庭日常教育场景。
-  cf_edit: 如果夏东海长期不参与家庭教育，则亲子沟通事件将主要由刘梅独自面对。
-  anchor_for:
-  - xia_donghai
+  chapter_order: "3.1"
+  source_ref: 第一季第3集《全家福》
+  trigger: 刘星展示没有夏雪的春游照片
+  fact: 夏雪摆出自己与父亲、生母的旧照片，刘星和夏雨也拿出各自旧家庭照片，照片之争使家里陷入混乱。
+  known_by: [xia_xue, liu_xing, xia_yu, liu_mei, xia_donghai]
+  state_change: "关系/目标：孩子各自维护原家庭记忆 -> 父母需要建立兼容各方记忆的共同展示规则。"
+  cf_edit: "仅改为春游照片中已有夏雪；则夏雪不会因被排除而首先摆出旧家庭照片，照片之争不由该原因触发。"
+  anchor_for: [xia_xue, liu_xing, xia_yu, liu_mei, xia_donghai]
 - id: ae_004
-  fact: 刘星作为刘梅的儿子，在重组家庭中与夏雪、夏雨成为兄弟姐妹。
-  known_by:
-  - liu_xing
-  - liu_mei
-  - xia_donghai
-  - xia_xue
-  - xia_yu
-  state_change: 刘星从独子状态进入多子女家庭关系。
-  cf_edit: 如果刘星没有随刘梅进入新家庭，则三人互动关系不会形成。
-  anchor_for:
-  - liu_xing
+  chapter_order: "3.2"
+  source_ref: 第一季第3集《全家福》
+  trigger: 夫妻需要结束孩子们争相摆放旧家庭照片造成的混乱
+  fact: 刘梅和夏东海在家中设置照片陈列空间，让各人的照片都可保留展示。
+  known_by: [liu_mei, xia_donghai, xia_xue, liu_xing, xia_yu]
+  state_change: "空间权限：旧家庭照片互相排斥 -> 每名家庭成员都获准在共同陈列空间保留自己的照片。"
+  cf_edit: "仅改为父母禁止展示全部旧照片；则孩子不会获得共同陈列空间的使用权限。"
+  anchor_for: [liu_mei, xia_donghai, xia_xue, liu_xing, xia_yu]
 - id: ae_005
-  fact: 夏雪作为夏东海的女儿，进入重组家庭后与刘梅形成继母女关系。
-  known_by:
-  - xia_xue
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_yu
-  state_change: 夏雪生活中出现继母角色和新的兄弟姐妹。
-  cf_edit: 如果夏雪没有进入重组家庭共同生活，则刘梅与夏雪的日常互动不会频繁发生。
-  anchor_for:
-  - xia_xue
+  chapter_order: "4.1"
+  source_ref: 第一季第4集《好爸爸》
+  trigger: 学校召开刘星的家长会
+  fact: 夏东海特意请假参加刘星的家长会，并从老师处知道刘星在校捣乱的情况。
+  known_by: [xia_donghai, liu_xing]
+  state_change: "知识/责任：夏东海不知道刘星具体在校表现 -> 夏东海掌握老师反馈，并实际承担一次继父的家长会职责。"
+  cf_edit: "仅改为夏东海没有请到假、由姥姥参会；则夏东海不会直接获得老师反馈。"
+  anchor_for: [xia_donghai, liu_xing]
 - id: ae_006
-  fact: 夏雨作为年纪较小的孩子，在家庭中常受到哥哥姐姐关注。
-  known_by:
-  - xia_yu
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  state_change: 家庭中形成对年幼成员的照顾关系。
-  cf_edit: 如果夏雨年龄与刘星相仿，则被照顾的互动模式会减弱。
-  anchor_for:
-  - xia_yu
+  chapter_order: "4.2"
+  source_ref: 第一季第4集《好爸爸》
+  trigger: 夏东海从家长会返回，姥姥和刘星请求暂不告诉刘梅
+  fact: 夏东海应姥姥和刘星请求，暂时没有把刘星在校闯祸的情况告诉刘梅。
+  known_by: [xia_donghai, liu_xing, laolao]
+  state_change: "知识/承诺：刘梅尚不知老师反馈 -> 夏东海、刘星、姥姥共同掌握信息，夏东海承担暂不披露的短期承诺。"
+  cf_edit: "仅改为夏东海拒绝保密并立即转告刘梅；则短期保密承诺不会形成，刘梅会立刻知情。"
+  anchor_for: [xia_donghai, liu_xing, laolao]
 - id: ae_007
-  fact: 刘梅在做饭时间使用厨房准备家庭餐食。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 厨房成为刘梅高频活动空间，餐食准备成为家庭固定环节。
-  cf_edit: 如果家庭选择长期在外就餐，则厨房不会高频出现在日常事件中。
-  anchor_for:
-  - liu_mei
+  chapter_order: "4.3"
+  source_ref: 第一季第4集《好爸爸》
+  trigger: 刘梅后来得知刘星在校闯祸并准备惩罚
+  fact: 姥姥和夏东海拦住刘梅，夏东海用击打沙袋的声音假装教训刘星，随后与刘星一同出来。
+  known_by: [liu_mei, xia_donghai, liu_xing, laolao]
+  state_change: "承诺/关系：隐瞒已败露且刘星面临惩罚 -> 保密承诺闭合，夏东海以保护性方式处理，刘星确认继父愿意维护他。"
+  cf_edit: "仅改为房内没有沙袋可供制造假象；则夏东海无法用同一办法兼顾刘梅的管教要求与对刘星的保护。"
+  anchor_for: [liu_mei, xia_donghai, liu_xing, laolao]
 - id: ae_008
-  fact: 夏东海在客厅与孩子们进行交流或调解矛盾。
-  known_by:
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 客厅成为父亲参与家庭沟通的重要地点。
-  cf_edit: 如果夏东海常在自己房间处理事情，则客厅亲子交流事件会减少。
-  anchor_for:
-  - xia_donghai
+  chapter_order: "5.1"
+  source_ref: 第一季第5集《猫鼠之争》
+  trigger: 夏雪为完成作文而研究老鼠
+  fact: 夏雪把小白鼠带回家饲养；怕老鼠的刘梅受到惊吓，夏东海给刘梅带回一只猫。
+  known_by: [xia_xue, liu_mei, xia_donghai, xia_yu]
+  state_change: "资源：家中无研究用宠物 -> 夏雪持有小白鼠，刘梅一方持有猫；两项资源产生冲突风险。"
+  cf_edit: "仅改为夏东海没有带猫回家；则猫鼠冲突风险不会由该资源引入。"
+  anchor_for: [xia_xue, liu_mei, xia_donghai, xia_yu]
 - id: ae_009
-  fact: 刘星在家庭成员面前表现出调皮、好动的性格。
-  known_by:
-  - liu_xing
-  - liu_mei
-  - xia_donghai
-  - xia_xue
-  - xia_yu
-  state_change: 家庭对刘星的日常印象与其活泼行为相关联。
-  cf_edit: 如果刘星性格安静，则许多因调皮引发的事件不会发生。
-  anchor_for:
-  - liu_xing
+  chapter_order: "5.2"
+  source_ref: 第一季第5集《猫鼠之争》
+  trigger: 夏雨和朵朵让猫与小白鼠接触
+  fact: 夏雨和朵朵让猫与小白鼠接触，猫随后吃掉小白鼠；在真相说明前，夏雨知道这一直接原因。
+  known_by: [xia_yu]
+  state_change: "资源/知识：小白鼠仍存活且夏雨不知道接触后果 -> 原小白鼠死亡，夏雨知道猫鼠接触是直接原因。"
+  cf_edit: "仅改为夏雨没有打开隔离猫鼠的门；则原小白鼠不会因该次接触死亡，夏雨也不会获得这一直接原因知识。"
+  anchor_for: [xia_yu, xia_xue, liu_mei]
+- id: ae_009b
+  chapter_order: "5.3"
+  source_ref: 第一季第5集《猫鼠之争》
+  trigger: 夏雪发现自己的小白鼠死亡，但尚不知道猫鼠接触的经过
+  fact: 夏雪认定刘梅应为小白鼠死亡负责并向刘梅发火，刘梅得知夏雪作出了这一归因。
+  known_by: [xia_xue, liu_mei]
+  state_change: "知识/关系：夏雪不知道死亡原因且刘梅不知道自己被归责 -> 夏雪形成对刘梅的未经证实归因并发火，刘梅知道该归因，双方冲突形成。"
+  cf_edit: "仅改为夏雪在归责前先询问刘梅；则她不会在没有直接证据时形成并表达同一归因，双方冲突不由该判断触发。"
+  anchor_for: [xia_xue, liu_mei]
 - id: ae_010
-  fact: 夏雪在家庭中表现出较成熟的言行，并重视学习。
-  known_by:
-  - xia_xue
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_yu
-  state_change: 夏雪在家庭中的形象与认真、成熟相关联。
-  cf_edit: 如果夏雪对学习不重视，则围绕作业和成绩的事件会减少。
-  anchor_for:
-  - xia_xue
+  chapter_order: "5.4"
+  source_ref: 第一季第5集《猫鼠之争》
+  trigger: 猫鼠事件的真实经过被说明
+  fact: 真相大白后，刘梅给夏雪买了新的小白鼠，夏雪给刘梅买了猫，两人互送礼物。
+  known_by: [xia_xue, liu_mei, xia_donghai, xia_yu]
+  state_change: "知识/资源/关系：夏雪误责刘梅且原小白鼠已失去 -> 误判撤销，双方分别收到新宠物，继母女冲突得到修复。"
+  cf_edit: "仅改为真实经过未被说明；则夏雪对刘梅的错误归因不会撤销，互送礼物的修复决定不会发生。"
+  anchor_for: [xia_xue, liu_mei, xia_donghai, xia_yu]
 - id: ae_011
-  fact: 夏雨在家庭中提出与年龄相关的需求或问题。
-  known_by:
-  - xia_yu
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  state_change: 家庭需要回应夏雨作为年幼成员的需求。
-  cf_edit: 如果夏雨很少表达需求，则其他成员主动照顾他的事件会减少。
-  anchor_for:
-  - xia_yu
+  chapter_order: "6.1"
+  source_ref: 第一季第6集《我的野蛮父亲》
+  trigger: 刘星需要完成题为《我的野蛮父亲》的作文
+  fact: 刘星多次淘气，试图让一向温和的夏东海发怒，以取得作文素材。
+  known_by: [liu_xing, xia_donghai, liu_mei, xia_xue, xia_yu]
+  state_change: "目标：刘星缺少作文素材 -> 刘星形成并执行‘观察夏东海发怒’的短期目标，夏东海知道其动机。"
+  cf_edit: "仅改为作文题目不要求描写父亲；则刘星不会因取材而故意激怒夏东海。"
+  anchor_for: [liu_xing, xia_donghai]
 - id: ae_012
-  fact: 刘梅与夏东海商量家庭事务，包括孩子的管教和生活安排。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  state_change: 夫妻形成共同商议家庭事务的沟通机制。
-  cf_edit: 如果夫妻各自决定家庭事务，则共同商量场景会明显减少。
-  anchor_for:
-  - liu_mei
-  - xia_donghai
-- id: ae_013
-  fact: 刘星在写作业时表现出拖延或分心。
-  known_by:
-  - liu_xing
-  - liu_mei
-  - xia_donghai
-  state_change: 作业问题成为家庭反复出现的关注点。
-  cf_edit: 如果刘星能独立完成作业，则不会因此引发家庭催促和管教。
-  anchor_for:
-  - liu_xing
+  chapter_order: "6.2"
+  source_ref: 第一季第6集《我的野蛮父亲》
+  trigger: 刘星生父胡一统上门借钱
+  fact: 夏东海答应借钱给胡一统；两人饮酒后发生口角，刘星因此获得作文素材。
+  known_by: [xia_donghai, liu_xing, liu_mei]
+  state_change: "资源/目标：胡一统没有取得借款承诺、刘星缺素材 -> 夏东海作出借款承诺，刘星的取材目标完成。"
+  cf_edit: "仅改为胡一统没有提出借钱；则借款承诺及由该次来访引出的口角均不会发生。"
+  anchor_for: [xia_donghai, liu_xing, liu_mei]
 - id: ae_014
-  fact: 夏雪在书房或孩子卧室完成学习任务。
-  known_by:
-  - xia_xue
-  - xia_donghai
-  - liu_mei
-  state_change: 夏雪的学习行为固定在家庭学习空间中。
-  cf_edit: 如果夏雪常在客厅学习，则学习空间事件会转移到客厅。
-  anchor_for:
-  - xia_xue
+  chapter_order: "8.1"
+  source_ref: 第一季第8集《家有神探》
+  trigger: 夏雨需要赔偿朵朵的玩具
+  fact: 夏雨偷偷拿家中物品去卖，刘梅先误认为是刘星所为，刘星调查后指出夏雨才是拿走物品的人。
+  known_by: [xia_yu, liu_xing, liu_mei, xia_donghai, xia_xue]
+  state_change: "知识/资源：家中物品失踪且刘梅归因刘星 -> 物品流向和夏雨动机被查明，刘星嫌疑撤销，夏雨承担说明责任。"
+  cf_edit: "仅改为夏雨没有损坏朵朵的玩具、无需赔偿；则他不会因筹款拿走家中物品，刘星也不会被同一事件误疑。"
+  anchor_for: [xia_yu, liu_xing, liu_mei]
 - id: ae_015
-  fact: 夏雨在家庭餐桌上提出与食物相关的偏好或要求。
-  known_by:
-  - xia_yu
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  state_change: 餐桌成为夏雨表达需求及家庭回应需求的场景。
-  cf_edit: 如果夏雨不挑食或无特殊偏好，则此类餐桌讨论会减少。
-  anchor_for:
-  - xia_yu
+  chapter_order: "9.1"
+  source_ref: 第一季第9集《藏不住的秘密》
+  trigger: 夏雪近期表现反常，夏东海担心她隐瞒问题
+  fact: 夏东海让刘星跟踪夏雪；刘梅因刘星行动诡秘，又让夏雨跟踪刘星。
+  known_by: [xia_donghai, liu_xing, liu_mei, xia_yu]
+  state_change: "权限/目标：孩子间无跟踪任务 -> 刘星和夏雨分别获得家长交付的观察任务，但夏雪尚不知情。"
+  cf_edit: "仅改为夏东海直接询问夏雪而不让刘星跟踪；则刘星不会获得跟踪任务，刘梅也不会因其诡秘行动启动第二层跟踪。"
+  anchor_for: [xia_donghai, liu_xing, liu_mei, xia_yu]
 - id: ae_016
-  fact: 刘梅和夏东海在客厅讨论如何协调对孩子的教育方式。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  state_change: 夫妻教育观念进入日常沟通议题。
-  cf_edit: 如果夫妻教育方式完全一致，则相关讨论冲突会减少。
-  anchor_for:
-  - liu_mei
-  - xia_donghai
+  chapter_order: "9.2"
+  source_ref: 第一季第9集《藏不住的秘密》
+  trigger: 夏雪和刘星发现自己被家人跟踪，家庭气氛变得尴尬
+  fact: 夏雪最终向全家说明自己的秘密，父母安排的跟踪任务随披露结束。
+  known_by: [xia_xue, liu_xing, xia_yu, liu_mei, xia_donghai]
+  state_change: "知识/承诺：秘密仅夏雪知道、两项跟踪任务有效 -> 全家获知秘密，跟踪任务闭合，父母失去继续秘密监视的正当理由。"
+  cf_edit: "仅改为夏雪仍拒绝披露；则全家不会获得该知识，两项跟踪任务也不能由同一披露闭合。"
+  anchor_for: [xia_xue, liu_xing, xia_yu, liu_mei, xia_donghai]
 - id: ae_017
-  fact: 小区院子成为家庭成员或邻里偶遇互动的场所。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 外部活动空间进入家庭生活半径。
-  cf_edit: 如果家庭很少出门，则小区院子场景不会成为日常锚点。
-  anchor_for:
-  - liu_xing
-  - xia_xue
-  - xia_yu
+  chapter_order: "10.1"
+  source_ref: 第一季第10集《角马的故事》
+  trigger: 夏东海修改剧本《角马的爱情》，夏雪准备执导学校汇演节目
+  fact: 夏东海的剧本起初未获买方认可，夏雪执导的原节目也未获小演员配合，父女分别面临创作受挫。
+  known_by: [xia_donghai, xia_xue, liu_mei, liu_xing, xia_yu]
+  state_change: "目标/资源：父女各自推进原创作方案 -> 两个原方案均受阻，夏雪知道父亲的剧本素材可供调整。"
+  cf_edit: "仅改为小演员接受夏雪原节目；则夏雪不会因执导受阻而需要改用父亲的角马故事。"
+  anchor_for: [xia_donghai, xia_xue]
 - id: ae_018
-  fact: 刘梅对孩子的生活习惯提出要求，如作息、卫生或饮食。
-  known_by:
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  - xia_donghai
-  state_change: 家庭形成母亲主导生活习惯管理的模式。
-  cf_edit: 如果刘梅不主动管理生活习惯，则相关管教事件会转移到夏东海或不被强调。
-  anchor_for:
-  - liu_mei
-- id: ae_019
-  fact: 夏东海在孩子与刘梅之间充当沟通缓冲或调解者。
-  known_by:
-  - xia_donghai
-  - liu_mei
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 父亲在家庭冲突中起到中介角色。
-  cf_edit: 如果夏东海不介入调解，则部分母子或继母女矛盾会直接升级。
-  anchor_for:
-  - xia_donghai
-- id: ae_020
-  fact: 刘星与夏雪、夏雨在家中发生日常小争执。
-  known_by:
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  - liu_mei
-  - xia_donghai
-  state_change: 兄弟姐妹间的摩擦成为家庭日常事件。
-  cf_edit: 如果三人很少发生争执，则家庭调解类事件会显著减少。
-  anchor_for:
-  - liu_xing
-  - xia_xue
-  - xia_yu
-- id: ae_021
-  fact: 夏雪与刘梅之间围绕生活安排出现意见分歧。
-  known_by:
-  - xia_xue
-  - liu_mei
-  - xia_donghai
-  state_change: 继母女关系进入磨合阶段。
-  cf_edit: 如果夏雪完全接受刘梅的安排，则继母女冲突事件不会成为锚点。
-  anchor_for:
-  - xia_xue
-  - liu_mei
-- id: ae_022
-  fact: 夏雨在需要帮助时首先寻找刘梅或夏东海。
-  known_by:
-  - xia_yu
-  - liu_mei
-  - xia_donghai
-  state_change: 夏雨形成对主要照顾者的依赖路径。
-  cf_edit: 如果夏雨更常找哥哥姐姐帮忙，则亲子援助事件会转向兄弟姐妹互动。
-  anchor_for:
-  - xia_yu
-- id: ae_023
-  fact: 刘星与夏东海之间出现关于学习和行为的沟通。
-  known_by:
-  - liu_xing
-  - xia_donghai
-  - liu_mei
-  state_change: 父亲角色进入对刘星的教育管理。
-  cf_edit: 如果夏东海不直接与刘星沟通，则刘星行为问题主要由刘梅处理。
-  anchor_for:
-  - liu_xing
-  - xia_donghai
-- id: ae_024
-  fact: 家庭在晚餐时间聚集在餐厅，形成固定的共同用餐场景。
-  known_by:
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  - xia_yu
-  state_change: 晚餐时段成为全家信息交流和情感互动的重要节点。
-  cf_edit: 如果家庭成员作息时间完全错开，则共同用餐事件会消失。
-  anchor_for:
-  - liu_mei
-  - xia_donghai
-  - liu_xing
-  - xia_xue
-  - xia_yu
+  chapter_order: "10.2"
+  source_ref: 第一季第10集《角马的故事》
+  trigger: 夏雪需要解决汇演节目不被小演员接受的问题
+  fact: 夏雪把节目改为《角马的故事》并使汇演成功；随后买方上门提出购买夏东海的剧本。
+  known_by: [xia_xue, xia_donghai, liu_mei, liu_xing, xia_yu]
+  state_change: "目标/资源/要约：夏雪汇演受阻且剧本无人购买 -> 汇演目标完成，夏东海获得明确购买要约，父女确认改编合作有效。"
+  cf_edit: "仅改为夏雪未采用父亲的角马素材；则该次成功汇演不能成为买方转而提出购买剧本的同一证据。"
+  anchor_for: [xia_xue, xia_donghai, liu_mei, liu_xing, xia_yu]

@@ -6,7 +6,7 @@ runtime_state:
       level: loyal
       basis_event: initial_state
     jia_mu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     wang_xifeng:
       level: neutral
@@ -26,47 +26,47 @@ runtime_state:
   goals:
   - id: g_xiren_care_baoyu
     content: 照管贾宝玉起居，确保他安稳少出祸事。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_xiren_maintain_order
     content: 维持怡红院日常秩序，避免丫头们言行出格。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_xiren_keep_wang_trust
     content: 继续以识大体的表现获得王夫人信任。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_xiren_urge_distance
     content: 找机会继续劝贾宝玉与姐妹们保持适当距离。
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
-    k_xiren_baoyu_dream:
-      content: 贾宝玉曾梦见警幻仙姑所示册页曲文，并把梦中心事私下告诉了袭人。
+    k_xiren_baoyu_private_relation:
+      content: 她知道自己发现过贾宝玉梦后的生理异状，并与他有过不可外传的私密身体关系；她不知道梦中册页曲文的具体内容。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_jia_baoyu_xiren_first_intimacy
     k_xiren_baoyu_liaisons:
       content: 她清楚贾宝玉与林黛玉相处异常亲近，也留意到金玉之说在府中流传。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:xiren.worldview.stances
     k_xiren_qingwen_fan:
       content: 她知道晴雯曾因口角后撕扇，与贾宝玉之间有不拘主仆的任性。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_qingwen_tears_fan
     k_xiren_advised_wang:
       content: 她曾向王夫人进言，建议让贾宝玉与姐妹们保持适当距离。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_xiren_advises_wang
     k_xiren_baoyu_beaten:
       content: 她经历并知道贾政重责贾宝玉一事，明白贾府对宝玉言行极为敏感。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: e_jia_zheng_beats_baoyu
 environment:
   health:
     xiren: 100
@@ -77,7 +77,19 @@ environment:
   locations:
     xiren: loc_yihong_yuan
     player: loc_yihong_yuan
-  access: {}
+  access:
+    res_household_assignments:
+      controllers: [wang_xifeng, jia_mu]
+      subjects:
+        player: denied
+    res_major_household_decisions:
+      controllers: [jia_mu]
+      subjects:
+        player: denied
+    res_yihong_assignments:
+      controllers: [jia_baoyu, xiren]
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

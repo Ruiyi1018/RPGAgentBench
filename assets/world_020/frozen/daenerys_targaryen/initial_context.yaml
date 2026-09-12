@@ -34,7 +34,10 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g_dany_003
-    content: Avoid being controlled or humiliated by Viserys again
+    content: Personally decide whether to keep the dragon eggs or transfer them to
+      another present holder, and carry out that decision; complete when actual custody
+      matches her stated choice, and fail if she transfers them solely to a demand
+      made under Viserys's former authority
     status: active
     basis_event: initial_state
   disclosures: []
@@ -42,35 +45,42 @@ runtime_state:
     k_dany_001:
       content: Khal Drogo is a powerful Dothraki leader and Daenerys's husband
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_dany_002:
       content: Her brother Viserys believes he is the rightful Targaryen heir and
         intends to use the Dothraki to retake the Iron Throne
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_dany_003:
       content: She was given three dragon eggs as a wedding gift and keeps them close
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_dany_004:
       content: She is adapting to Dothraki ways and beginning to understand her role
         as khaleesi
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
+    k_dany_005:
+      content: Drogo killed Viserys after Viserys threatened Daenerys and her unborn
+        child; Viserys can no longer command her
+      status: active
+      visibility: [npc]
+      source_event: ae_021
 environment:
   health:
     daenerys_targaryen: 100
     player: 100
   inventories:
-    daenerys_targaryen: []
+    daenerys_targaryen:
+    - dragon_eggs
     player: []
   locations:
-    daenerys_targaryen: pentos
-    player: pentos
+    daenerys_targaryen: dothraki_camp
+    player: dothraki_camp
   access: {}
   offers: []
   task_status: active

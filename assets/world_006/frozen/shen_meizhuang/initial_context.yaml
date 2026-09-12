@@ -2,78 +2,35 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    zhen_huan:
-      level: loyal
-      basis_event: initial_state
-    emperor_yongzheng:
-      level: trusting
-      basis_event: initial_state
-    hua_fei:
-      level: hostile
-      basis_event: initial_state
-    empress_yixiu:
-      level: neutral
-      basis_event: initial_state
-    an_lingrong:
-      level: trusting
-      basis_event: initial_state
-    su_peisheng:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    zhen_huan: {level: loyal, basis_event: canon_fact_zhen_shen_friendship}
+    emperor_yongzheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    hua_fei: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    empress_yixiu: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    an_lingrong: {level: neutral, basis_event: ev_012_yu_executed}
+    su_peisheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: shen_meizhuang_goal_001
-    content: 在受宠和受排挤并存的情况下稳住自身宫中的地位
-    status: active
-    basis_event: initial_state
-  - id: shen_meizhuang_goal_002
-    content: 继续与甄嬛、安陵容互相扶持，防范华妃一方的针对
-    status: active
-    basis_event: initial_state
-  - id: shen_meizhuang_goal_003
-    content: 观察皇后与后宫事务变化，避免自己被卷入无法脱身的冲突
-    status: active
-    basis_event: initial_state
+  - {id: shen_meizhuang_goal_001, content: 在保持皇帝当前看重的同时谨慎学习宫务。, status: active, basis_event: ev_005_shen_favored}
+  - {id: shen_meizhuang_goal_002, content: 与甄嬛继续互相扶持，并在对安陵容产生戒备后审慎维持往来。, status: active, basis_event: ev_012_yu_executed}
+  - {id: shen_meizhuang_goal_003, content: 见华妃公开针对甄嬛后，谨慎防范类似竞争风险波及自己；不视为华妃已对自己施压。, status: active, basis_event: ev_009_hua_punishes}
   disclosures: []
   knowledge:
-    shen_meizhuang_knowledge_001:
-      content: 自己入宫后较早得到皇帝看重，已经成为华妃等人的注意对象
-      status: active
-      visibility: self
-      source_event: initial_state
-    shen_meizhuang_knowledge_002:
-      content: 甄嬛起初不愿卷入后宫争斗，初期曾称病避宠
-      status: active
-      visibility: zhen_huan
-      source_event: initial_state
-    shen_meizhuang_knowledge_003:
-      content: 安陵容因出身较低，入宫初期常被轻视，因此对姐妹关系有依赖
-      status: active
-      visibility: an_lingrong
-      source_event: initial_state
-    shen_meizhuang_knowledge_004:
-      content: 华妃一派对自己已有明显排挤和对立
-      status: active
-      visibility: hua_fei
-      source_event: initial_state
-    shen_meizhuang_knowledge_005:
-      content: 甄嬛受宠后，后宫势力明显分化，华妃与甄嬛之间冲突在加剧
-      status: active
-      visibility: zhen_huan
-      source_event: initial_state
+    shen_meizhuang_knowledge_001: {content: 自己较早承宠并获准学习协理六宫事务。, status: active, visibility: [npc, player], source_event: ev_005_shen_favored}
+    shen_meizhuang_knowledge_003: {content: 华妃曾在景仁宫请安时公开以专宠为由讥讽甄嬛，皇后当场制止。, status: active, visibility: [npc, player], source_event: ev_009_hua_punishes}
+    shen_meizhuang_knowledge_004: {content: 自己现居咸福宫存菊堂。, status: active, visibility: [npc, player], source_event: ev_002_palace_assignment}
+    shen_meizhuang_knowledge_005: {content: 自己后来知道安陵容曾推动强制执行余氏，但不知道冷宫现场的全部执行过程。, status: active, visibility: [npc], source_event: ev_012_yu_executed}
+    shen_meizhuang_knowledge_006: {content: 甄嬛后来已经首次承宠，皇帝公开表现出对她的明显恩宠。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
 environment:
-  health:
-    shen_meizhuang: 100
-    player: 100
-  inventories:
-    shen_meizhuang: []
-    player: []
-  locations:
-    shen_meizhuang: loc_006
-    player: loc_006
-  access: {}
+  health: {shen_meizhuang: 100, player: 100}
+  inventories: {shen_meizhuang: [], player: []}
+  locations: {shen_meizhuang: loc_007, player: loc_007}
+  access:
+    res_six_palaces_learning:
+      controllers: [empress_yixiu, emperor_yongzheng]
+      subjects: {shen_meizhuang: granted, player: denied}
+    res_cunjutang_household:
+      controllers: [shen_meizhuang]
+      subjects: {shen_meizhuang: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

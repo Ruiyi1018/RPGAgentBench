@@ -2,69 +2,42 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    wei_xiaobao:
-      level: neutral
-      basis_event: initial_state
-    kangxi:
-      level: neutral
-      basis_event: initial_state
-    chen_jinnan:
-      level: neutral
-      basis_event: initial_state
-    shuang_er:
-      level: neutral
-      basis_event: initial_state
-    a_ke:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    wei_xiaobao: {level: neutral, basis_event: ev_012}
+    kangxi: {level: neutral, basis_event: runtime_initialization}
+    chen_jinnan: {level: neutral, basis_event: ev_014}
+    shuang_er: {level: neutral, basis_event: ev_012}
+    a_ke: {level: neutral, basis_event: ev_014}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: goal_001
-    content: 在神龙岛当前局面中保持自身地位和可调动的资源。
-    status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: 评估与韦小宝的合作是否能继续带来实际利益。
-    status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: 避免自身立场被外部势力利用或暴露。
-    status: active
-    basis_event: initial_state
+  - {id: goal_001, content: 在通吃岛会面中保护自己与腹中孩子。, status: active, basis_event: ev_010b}
+  - {id: goal_002, content: 评估韦小宝能否提供具体可靠的保护。, status: active, basis_event: ev_012}
+  - {id: goal_003, content: 防止外部势力借神龙教旧身份控制或追责自己。, status: active, basis_event: ev_012}
   disclosures: []
   knowledge:
     kn_001:
-      content: 韦小宝在清廷和天地会之外还卷入了神龙教相关事件。
+      content: 洪安通已经死亡，神龙教原指挥体系瓦解，自己不再拥有教内调动权。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [su_quan]
+      source_event: ev_012
     kn_002:
-      content: 苏荃与韦小宝已经形成过合作，但合作深度未公开。
+      content: 自己怀有韦小宝的孩子，此事不向无关者公开。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [su_quan]
+      source_event: ev_010b
     kn_003:
-      content: 神龙教内部存在可感知的权力变化，但具体威胁尚未公开确认。
+      content: 康熙曾命韦小宝率军攻打神龙岛。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [su_quan]
+      source_event: ev_011
     kn_004:
-      content: 韦小宝有身份便利，可获取重要物品和信息。
+      content: 陈近南已经抵达通吃岛并仍任天地会总舵主。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [su_quan, player]
+      source_event: ev_014
 environment:
-  health:
-    su_quan: 100
-    player: 100
-  inventories:
-    su_quan: []
-    player: []
-  locations:
-    su_quan: loc_shenlongdao
-    player: loc_shenlongdao
+  health: {su_quan: 100, player: 100}
+  inventories: {su_quan: [item_su_quan_blade], player: []}
+  locations: {su_quan: loc_tongchi_island, player: loc_tongchi_island}
   access: {}
   offers: []
   task_status: active

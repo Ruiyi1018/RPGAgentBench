@@ -2,86 +2,48 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    hannibal_lecter:
-      level: neutral
-      basis_event: initial_state
-    will_graham:
-      level: trusting
-      basis_event: initial_state
-    jack_crawford:
-      level: trusting
-      basis_event: initial_state
-    alana_bloom:
-      level: neutral
-      basis_event: initial_state
-    abigail_hobbs:
-      level: neutral
-      basis_event: initial_state
-    beverly_katz:
-      level: loyal
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    hannibal_lecter: {level: neutral, basis_event: initial_state_no_personal_relationship}
+    will_graham: {level: trusting, basis_event: initial_state_fbi_colleague}
+    jack_crawford: {level: trusting, basis_event: initial_state_supervisor}
+    alana_bloom: {level: neutral, basis_event: initial_state_fbi_colleague}
+    abigail_hobbs: {level: neutral, basis_event: initial_state_case_subject}
+    player: {level: neutral, basis_event: initial_state_opening_briefing}
   goals:
-  - id: beverly_complete_evidence_comparison
-    content: Complete forensic comparison between the Shrike crime scenes and the
-      copycat staging evidence
-    status: active
-    basis_event: initial_state
-  - id: beverly_warn_will_about_staging
-    content: Ensure Will Graham and Jack Crawford understand that some findings point
-      toward deliberate staging
-    status: active
-    basis_event: initial_state
-  - id: beverly_preserve_evidence_chain
-    content: Keep chain of custody and analytical rigor strong as the investigation
-      expands
-    status: active
-    basis_event: initial_state
+  - {id: compare_boyle_staging, content: Preserve and compare evidence from Cassie Boyle's staged death, status: active, basis_event: cassie_boyle_copycat_discovered}
+  - {id: preserve_chain, content: Maintain chain of custody for Shrike and Boyle evidence, status: active, basis_event: cassie_boyle_copycat_discovered}
   disclosures: []
   knowledge:
-    beverly_knows_hobbs_case_shift:
-      content: The investigation shifted to Garrett Jacob Hobbs as the Minnesota Shrike
-        suspect
+    hobbs_identified:
+      content: The team identified Garrett Jacob Hobbs as the Minnesota Shrike.
       status: active
-      visibility: shared
-      source_event: initial_state
-    beverly_knows_copycat_staging:
-      content: Forensic findings in the copycat case suggest deliberate staging rather
-        than simple imitation
+      visibility: [npc]
+      source_event: will_identifies_hobbs
+    copycat_possible:
+      content: Cassie Boyle's conspicuous staging differs from Hobbs's concealed victims and supports a separate-offender hypothesis.
       status: active
-      visibility: shared
-      source_event: initial_state
-    beverly_knows_abigail_questioned:
-      content: Abigail Hobbs is being questioned by the FBI while recovering in the
-        hospital
+      visibility: [npc]
+      source_event: cassie_boyle_copycat_discovered
+    opening_scene:
+      content: The Player is a pre-cleared observer at a verbal lab briefing and may not inspect, handle, or remove evidence.
       status: active
-      visibility: shared
-      source_event: initial_state
-    beverly_knows_abigail_faces_scrutiny:
-      content: The FBI treats Abigail Hobbs as a possible accomplice or material witness
-        in her father's crimes
-      status: active
-      visibility: shared
-      source_event: initial_state
-    beverly_knows_investigation_open:
-      content: The serial murder investigation remains open and not yet fully exposed
-        in the fixed Season 1 range
-      status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: initial_state_opening_briefing
 environment:
-  health:
-    beverly_katz: 100
-    player: 100
+  health: {beverly_katz: 100, player: 100}
   inventories:
-    beverly_katz: []
+    beverly_katz: [fbi_badge, evidence_bags, forensic_kit]
     player: []
-  locations:
-    beverly_katz: baltimore_maryland
-    player: baltimore_maryland
-  access: {}
+  locations: {beverly_katz: fbi_forensics_lab, player: fbi_forensics_lab}
+  access:
+    fbi_forensics_lab:
+      controllers: [jack_crawford, beverly_katz]
+      subjects: {beverly_katz: granted, player: granted}
+    cassie_boyle_field_minnesota:
+      controllers: [jack_crawford]
+      subjects: {beverly_katz: granted, player: denied}
+    port_haven_psychiatric_facility:
+      controllers: [port_haven_staff]
+      subjects: {beverly_katz: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

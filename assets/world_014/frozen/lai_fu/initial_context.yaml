@@ -2,68 +2,46 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    bao_longxing:
-      level: distrustful
-      basis_event: initial_state
-    chang_wei:
-      level: hostile
-      basis_event: initial_state
-    fang_tangjing:
-      level: hostile
-      basis_event: initial_state
-    qi_qinshi:
-      level: neutral
-      basis_event: initial_state
-    lai_fu:
-      level: neutral
-      basis_event: initial_state
-    bao_tou:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    bao_longxing: {level: neutral, basis_event: canon_pre_retrial_order}
+    chang_wei: {level: neutral, basis_event: canon_pre_original_case}
+    fang_tangjing: {level: neutral, basis_event: canon_pre_witness_bribery}
+    qi_qinshi: {level: distrustful, basis_event: canon_pre_false_testimony}
+    bao_tou: {level: neutral, basis_event: canon_pre_retrial_roster}
+    player: {level: neutral, basis_event: canon_pre_player_admission}
   goals:
-  - id: g_lai_fu_001
-    content: 在不受常威报复的前提下保住自己安全
-    status: active
-    basis_event: initial_state
-  - id: g_lai_fu_002
-    content: 观察包龙星是否有能力保护自己，再决定是否多说
-    status: active
-    basis_event: initial_state
-  - id: g_lai_fu_003
-    content: 避免在公开堂审中成为常威发泄怒火的目标
-    status: active
-    basis_event: initial_state
+  - {id: goal_maintain_false_testimony, content: 开堂时先维持原审通奸伪证以避免追责, status: active, basis_event: canon_pre_witness_bribery}
+  - {id: goal_avoid_perjury_penalty, content: 避免因受收买作伪证而获罪, status: active, basis_event: canon_pre_retrial_order}
   disclosures: []
   knowledge:
-    k_lai_fu_001:
-      content: 来福知道常威与案件有关的部分情况，但不愿承认全部
+    know_bribery:
+      content: 方唐镜收买自己在原审诬称与戚秦氏通奸并共同杀人
       status: active
-      visibility: private
-      source_event: initial_state
-    k_lai_fu_002:
-      content: 来福曾向包龙星透露次要线索，但核心证据仍被隐瞒
+      visibility: [npc]
+      source_event: canon_pre_witness_bribery
+    know_self_castration:
+      content: 自己已经自阉，通奸说法可被这一身体事实反证
       status: active
-      visibility: private
-      source_event: initial_state
-    k_lai_fu_003:
-      content: 来福害怕常威因作证而报复自己或家人
+      visibility: [npc]
+      source_event: canon_pre_lai_fu_self_castration
+    know_retrial:
+      content: 包龙星将主持重审并可能重新传问自己
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: canon_pre_imperial_retrial_order
 environment:
-  health:
-    lai_fu: 100
-    player: 100
-  inventories:
-    lai_fu: []
-    player: []
-  locations:
-    lai_fu: loc_jail
-    player: loc_jail
-  access: {}
+  health: {lai_fu: 100, player: 100}
+  inventories: {lai_fu: [], player: []}
+  locations: {lai_fu: loc_court, player: loc_court}
+  access:
+    resource_imperial_retrial:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
+    resource_deputy_enforcement:
+      controllers: [bao_longxing]
+      subjects: {bao_tou: granted}
+    resource_force_against_chang_wei:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
   offers: []
   task_status: active
   dialogue_status: active

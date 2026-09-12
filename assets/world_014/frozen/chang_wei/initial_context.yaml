@@ -2,75 +2,46 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    bao_longxing:
-      level: hostile
-      basis_event: initial_state
-    fang_tangjing:
-      level: trusting
-      basis_event: initial_state
-    qi_qinshi:
-      level: hostile
-      basis_event: initial_state
-    lai_fu:
-      level: hostile
-      basis_event: initial_state
-    bao_tou:
-      level: distrustful
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    bao_longxing: {level: hostile, basis_event: canon_pre_imperial_retrial_order}
+    fang_tangjing: {level: neutral, basis_event: canon_pre_chang_family_engagement}
+    qi_qinshi: {level: hostile, basis_event: canon_pre_qi_accusation}
+    lai_fu: {level: neutral, basis_event: canon_pre_false_testimony}
+    bao_tou: {level: neutral, basis_event: canon_pre_retrial_roster}
+    player: {level: neutral, basis_event: canon_pre_player_admission}
   goals:
-  - id: goal_changwei_escape_charge
-    content: 让戚家案无法定到自己头上
-    status: active
-    basis_event: initial_state
-  - id: goal_changwei_neutralize_testimony
-    content: 阻止来福或戚秦氏的证词形成稳定攻击
-    status: active
-    basis_event: initial_state
-  - id: goal_changwei_undermine_evidence
-    content: 通过方唐镜削弱新发现物证的法律效力
-    status: active
-    basis_event: initial_state
+  - {id: goal_avoid_conviction, content: 借原审伪证和常家权势避免定罪, status: active, basis_event: canon_pre_original_trial_fraud}
+  - {id: goal_keep_crime_private, content: 不在重审中泄露只有真凶掌握的命案细节, status: active, basis_event: canon_pre_imperial_retrial_order}
   disclosures: []
   knowledge:
-    know_changwei_case_reopened:
-      content: 包龙星已开始重查戚家案并要求提审自己
+    know_crime:
+      content: 自己侵害戚秦氏并杀害戚家多人
       status: active
-      visibility: public
-      source_event: initial_state
-    know_changwei_denial:
-      content: 自己已在堂上否认所有指控
+      visibility: [npc]
+      source_event: canon_pre_chang_committed_crime
+    know_false_witnesses:
+      content: 方唐镜收买证人把罪责嫁祸给戚秦氏
       status: active
-      visibility: public
-      source_event: initial_state
-    know_changwei_fang_defense:
-      content: 方唐镜已以讼师身份介入并公开为其辩护
+      visibility: [npc]
+      source_event: canon_pre_chang_family_collusion
+    know_retrial:
+      content: 包龙星已奉旨主持重审
       status: active
-      visibility: public
-      source_event: initial_state
-    know_changwei_witness_pressure:
-      content: 来福因惧怕自己而可能翻供或不敢说出核心真相
-      status: active
-      visibility: private
-      source_event: initial_state
-    know_changwei_scene_cleaned:
-      content: 戚家已被安排人手清理过，部分现场证据被削弱
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: canon_pre_imperial_retrial_order
 environment:
-  health:
-    chang_wei: 100
-    player: 100
-  inventories:
-    chang_wei: []
-    player: []
-  locations:
-    chang_wei: loc_yamen
-    player: loc_yamen
-  access: {}
+  health: {chang_wei: 100, player: 100}
+  inventories: {chang_wei: [], player: []}
+  locations: {chang_wei: loc_court, player: loc_court}
+  access:
+    resource_imperial_retrial:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
+    resource_deputy_enforcement:
+      controllers: [bao_longxing]
+      subjects: {bao_tou: granted}
+    resource_force_against_chang_wei:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
   offers: []
   task_status: active
   dialogue_status: active

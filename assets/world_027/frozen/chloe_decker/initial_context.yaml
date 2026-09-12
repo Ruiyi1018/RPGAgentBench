@@ -2,80 +2,61 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    lucifer_morningstar:
-      level: neutral
-      basis_event: initial_state
-    dan_espinoza:
-      level: neutral
-      basis_event: initial_state
-    mazikeen:
-      level: distrustful
-      basis_event: initial_state
-    amenadiel:
-      level: neutral
-      basis_event: initial_state
-    linda_martin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    lucifer_morningstar: {level: trusting, basis_event: ae15_malcolm_defeated}
+    dan_espinoza: {level: distrustful, basis_event: ae10_dan_confesses_palmetto}
+    mazikeen: {level: neutral, basis_event: pre_existing.lux_acquaintance}
+    amenadiel: {level: neutral, basis_event: pre_existing.no_material_contact}
+    linda_martin: {level: neutral, basis_event: pre_existing.no_material_contact}
+    player: {level: neutral, basis_event: pre_existing.default_player}
   goals:
   - id: g01
-    content: Maintain order and procedure on an active homicide case while handling
-      Lucifer as a consultant
+    content: Ensure Dan's Palmetto confession is handled through official procedure
     status: active
-    basis_event: initial_state
+    basis_event: ae10_dan_confesses_palmetto
   - id: g02
-    content: Keep Trixie's routine stable despite the demands of her job and her separation
-      from Dan
+    content: Protect Trixie's stability while Dan faces legal and disciplinary consequences
     status: active
-    basis_event: initial_state
+    basis_event: ae10_dan_confesses_palmetto
   - id: g03
-    content: Resolve any doubts about Lucifer's identity through observable evidence
-      rather than his claims
+    content: Evaluate Lucifer's unexplained behavior through observable evidence
     status: active
-    basis_event: initial_state
+    basis_event: ae02_chloe_shoots_lucifer
   disclosures: []
   knowledge:
     k01:
-      content: Lucifer Morningstar owns Lux and has begun helping her with murder
-        investigations
+      content: Lucifer helped her investigate Delilah's murder and now works as a civilian consultant
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae01_delilah_case_partnership
     k02:
-      content: Lucifer openly tells people he is the Devil
+      content: Lucifer openly claims to be the Devil, but she lacks proof of that claim
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae02_chloe_shoots_lucifer
     k03:
-      content: Dan is her ex-husband and the father of her daughter
+      content: Lucifer bled when she shot him at close range
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae02_chloe_shoots_lucifer
     k04:
-      content: Mazikeen is associated with Lucifer and works at Lux
+      content: Dan confessed that he shot Malcolm at Palmetto, concealed it, and committed further misconduct
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae10_dan_confesses_palmetto
     k05:
-      content: The LAPD expects her to manage the consultant arrangement without letting
-        it undermine the cases
+      content: Mazikeen works at Lux and is closely associated with Lucifer
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: pre_existing.lux_acquaintance
 environment:
-  health:
-    chloe_decker: 100
-    player: 100
+  health: {chloe_decker: 100, player: 100}
   inventories:
-    chloe_decker: []
+    chloe_decker: [badge, chloe_service_sidearm]
     player: []
-  locations:
-    chloe_decker: chloe_lapd
-    player: chloe_lapd
-  access: {}
+  locations: {chloe_decker: chloe_lapd, player: chloe_lapd}
+  access:
+    chloe_decker: [lapd_detective, case_files, evidence_requests, arrest_authority]
+    player: [temporary_conversation_access]
   offers: []
   task_status: active
   dialogue_status: active

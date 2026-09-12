@@ -1,6 +1,12 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: penny_leonard_dating
+    target: leonard_hofstadter
+    content: Continue the restarted romantic relationship with Leonard as their agreed beta test.
+    condition: The relationship restarted in S5E13 remains active at the shared snapshot.
+    status: active
+    source_event: ev_018
   relationships:
     sheldon_cooper:
       level: neutral
@@ -12,7 +18,7 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     raj_koothrappali:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     amy_farrah_fowler:
       level: loyal
@@ -25,8 +31,8 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: g_001
-    content: Enjoy the social gathering with the full group without letting Sheldon's
-      rules dominate the evening
+    content: Enjoy the social gathering with the full group without letting Sheldon's rules dominate the
+      evening
     status: active
     basis_event: initial_state
   - id: g_002
@@ -34,8 +40,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g_003
-    content: Maintain her close friendships with Amy and Bernadette during the group
-      hangout
+    content: Maintain her close friendships with Amy and Bernadette during the group hangout
     status: active
     basis_event: initial_state
   - id: g_004
@@ -45,41 +50,50 @@ runtime_state:
   disclosures: []
   knowledge:
     k_001:
-      content: She knows that Raj's mutism around women is a real limitation and does
-        not force him to speak.
+      content: She knows that Raj's mutism around women is a real limitation and does not force him to
+        speak.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_006
     k_002:
-      content: She knows Howard has a history of overconfident flirting and treats
-        his attempts with skepticism.
+      content: She knows Howard has a history of overconfident flirting and treats his attempts with skepticism.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_005
     k_003:
-      content: She knows Sheldon's rituals, including the couch spot and knock sequence,
-        are important to him even when she finds them excessive.
+      content: She knows Sheldon's designated couch spot is important to him even when she finds it excessive.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_002
     k_004:
-      content: She knows the group treats game nights and shared meals as regular
-        activities centered in Apartment 4A.
+      content: She knows the friend group uses Apartment 4A for shared gaming and social gatherings.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s5e19_group_gathering
     k_005:
-      content: She knows Leonard's feelings for her are serious and that the group
-        has adjusted to them being a couple.
+      content: She knows Leonard's feelings for her are serious and that the group has adjusted to them
+        being a couple.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_018
+    k_006:
+      content: She knows Sheldon uses a repeated triple-knock-and-name ritual at her apartment door.
+      status: active
+      visibility:
+      - npc
+      source_event: ke_s5e10_penny_observes_knock_ritual
 environment:
   health:
     penny: 100
     player: 100
   inventories:
-    penny: []
+    penny:
+    - amy_friendship_painting
     player: []
   locations:
     penny: apartment_4a

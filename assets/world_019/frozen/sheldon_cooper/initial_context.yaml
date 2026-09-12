@@ -1,9 +1,15 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: sheldon_amy_relationship_agreement
+    target: amy_farrah_fowler
+    content: Continue the boyfriend-girlfriend relationship under the written Relationship Agreement.
+    condition: The relationship and agreement established in S5E10 remain active at the shared snapshot.
+    status: active
+    source_event: ev_013
   relationships:
     leonard_hofstadter:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     penny:
       level: neutral
@@ -33,59 +39,68 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: goal_agreement
-    content: Remind Leonard of any Roommate Agreement clause relevant to the evening's
-      activities.
+    content: Remind Leonard of any Roommate Agreement clause relevant to the evening's activities.
     status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_meet_penny:
-      content: Penny moved into Apartment 4B and has since become part of the social
-        group.
+      content: Penny moved into Apartment 4B and has since become part of the social group.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_001
     k_spot_rule:
-      content: The couch seat Sheldon uses is scientifically optimal and must remain
-        assigned.
+      content: The couch seat Sheldon uses is scientifically optimal and must remain assigned.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_002
     k_roommate_agreement:
-      content: The Roommate Agreement contains binding clauses governing apartment
-        routines.
+      content: The Roommate Agreement contains binding clauses governing apartment routines.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_008
     k_drive_penny:
-      content: Sheldon became involved in one of Penny's errands and found the practical
-        arrangement uncomfortable.
+      content: Penny once drove Sheldon toward Caltech and ended the ride after he repeatedly criticized
+        her driving.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_004
     k_amy_match:
-      content: Amy Farrah Fowler entered his social orbit after a dating service match
-        arranged by Howard and Raj.
+      content: Amy Farrah Fowler entered his social orbit after a dating service match arranged by Howard
+        and Raj.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_012
     k_relationship_pace:
-      content: Amy and Sheldon experienced a disagreement about their relationship
-        pace, but the connection remains active.
+      content: Amy accepted Sheldon's request to become his girlfriend under a written Relationship Agreement.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_013
 environment:
   health:
     sheldon_cooper: 100
     player: 100
   inventories:
-    sheldon_cooper: []
+    sheldon_cooper:
+    - laptop_sheldon
+    - roommate_agreement
     player: []
   locations:
     sheldon_cooper: apartment_4a
     player: apartment_4a
-  access: {}
+  access:
+    roommate_agreement:
+      controllers:
+      - sheldon_cooper
+      - leonard_hofstadter
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

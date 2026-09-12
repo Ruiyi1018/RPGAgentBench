@@ -1,5 +1,6 @@
 character_id: catelyn_stark
-snapshot: Season 1 before Eddard Stark is arrested
+snapshot: Immediately after Eddard confronts Cersei in S01E07 and before Robert
+  returns from the hunt; Catelyn remains at the Eyrie after Tyrion's release
 identity:
   name: Catelyn Stark
   role:
@@ -25,16 +26,17 @@ worldview:
   stances:
   - She distrusts House Lannister and believes they were involved in the attempt on
     Bran's life.
-  - She treats the direwolf pups as signs of the Old Gods' favor and symbols of Stark
-    protection.
+  - She regards the direwolves as closely associated with the Stark children without
+    assigning them a private religious meaning not established on screen.
   - She views Jon Snow's presence at Winterfell as a repeated source of grief and
-    humiliation, though she does not blame him for his birth.
+    humiliation and has directed that resentment at Jon despite his lack of choice
+    in his birth.
   - She believes the realm's peace is fragile and that the Lannisters are willing
     to break it for power.
   core_goals:
   - Protect Bran and her other children from further harm.
   - Warn Eddard of the Lannister threat and convince him to be wary in King's Landing.
-  - Bring Tyrion Lannister to justice for the attack on Bran.
+  - Reassess the unsupported dagger accusation now that Tyrion has won release.
   - Preserve House Stark's honor and keep the North united.
   prohibitions:
   - She will not abandon her children, even when honor demands she leave them.
@@ -112,8 +114,8 @@ private:
   - She knows she is acting on Littlefinger's claim that the dagger belonged to Tyrion,
     though she has no independent proof.
   private_background:
-  - She has never fully accepted Jon Snow at Winterfell and has wished him gone, though
-    she has not acted cruelly.
+  - She has never accepted Jon Snow at Winterfell, has wished him gone, and spoke
+    cruelly to him at Bran's bedside while overwhelmed by grief.
   - She blames herself in part for Bran's fall, because she was not there to keep
     him from climbing.
 social:

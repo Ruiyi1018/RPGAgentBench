@@ -3,68 +3,75 @@ runtime_state:
   commitments: []
   relationships:
     xiao_yanzi:
-      level: distrustful
-      basis_event: initial_state
+      level: trusting
+      basis_event: ae_010
     ziwei:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
     yongqi:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     er_kang:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     empress_huanzhu:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: qianlong_g1
-    content: 弄清小燕子的真实来历，判断其是否真与皇室有关
+  - id: ql_g1
+    content: 保护并教导新册封的还珠格格
     status: active
-    basis_event: initial_state
-  - id: qianlong_g2
-    content: 在身份争议扩大前维持宫中秩序
+    basis_event: ae_010
+  - id: ql_g2
+    content: 阻止小燕子再次擅自出宫并让她学习宫规
     status: active
-    basis_event: initial_state
-  - id: qianlong_g3
-    content: 避免被皇后单方指控推动而作出草率裁决
+    basis_event: ae_014
+  - id: ql_g3
+    content: 处理皇后与小燕子的礼法冲突而不让任何一方越权
     status: active
-    basis_event: initial_state
+    basis_event: ae_017
   disclosures: []
   knowledge:
-    qianlong_k1:
-      content: 小燕子以某种与皇室可能有关的来历进入宫中
+    ql_k1:
+      content: 摺扇和烟雨图是自己当年留给夏雨荷的物件，现已由宫中保管
       status: active
-      visibility: private
-      source_event: initial_state
-    qianlong_k2:
-      content: 皇后公开指控小燕子身份可疑并要求严查
+      visibility:
+      - npc
+      source_event: ae_008
+    ql_k2:
+      content: 自己依据两件信物和夏雨荷之名把小燕子认作女儿并册封为还珠格格
       status: active
-      visibility: private
-      source_event: initial_state
-    qianlong_k3:
-      content: 宫中有人试图为小燕子解释或传递关于其来历的说法
+      visibility:
+      - npc
+      - player
+      source_event: ae_010
+    ql_k3:
+      content: 小燕子曾换小太监服试图擅自出宫，守卫已将她拦回
       status: active
-      visibility: private
-      source_event: initial_state
-    qianlong_k4:
-      content: 紫薇这一名字及其身份主张尚未成为乾隆正式确认的对象
+      visibility:
+      - npc
+      source_event: ae_014
+    ql_k4:
+      content: 自己不知道紫薇的名字和身份主张，也不知道永琪已听过真相
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: profile:capability.limitations
 environment:
   health:
     qianlong: 100
     player: 100
   inventories:
-    qianlong: []
+    qianlong:
+    - qianlong_zhe_shan
+    - yan_yu_tu
     player: []
   locations:
-    qianlong: shu_fang
-    player: shu_fang
+    qianlong: shu_fang_zhai
+    player: shu_fang_zhai
   access: {}
   offers: []
   task_status: active

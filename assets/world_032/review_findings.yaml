@@ -1,0 +1,175 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_current_state_consistency
+  evidence: shared_snapshot覆盖试播集至第一季结局的整段变化期，却未指定统一当前时点；同一资产集同时采用订婚/考虑奖学金/追求Robin等季中状态与季末后状态，无法得到唯一当前答案。
+  required_change: 锁定一个所有入选角色同时成立的明确剧集后快照，或明确区分历史区间与唯一当前有效时点，并据此统一全部Profile、Frozen状态和候选事件边界。
+  resolution: 已将shared_snapshot锁定为S1E22内ae_018与ae_019均已发生、Lily尚未离开纽约的单一时点；全部Profile和Frozen当前字段已同步到该时点。
+  status: fixed
+
+- item_id: canon.event_entities
+  severity: blocker
+  rule_id: source_scope_future_leakage
+  evidence: yellow_umbrella、swarley_bill、robin_music_video、barneys_playbook、goat、red_cowboy_boots以及metronatural_bank、metropolitan_magazine、world_wide_news等实体不属于第一季既定事实；liberty_bell还被错误描述成Ted与Robin初次约会的酒吧。最终复核又确认当前stuarts_apartment被错误描述为Game Night场所，且主公寓被全局写成Apartment 4D而非画面门牌4C。
+  required_change: 删除所有第一季之后或错误归属的实体；将Game Night映射回Ted与Marshall的主公寓，并把主公寓名称、稳定ID及全部引用统一修正为Apartment 4C。
+  resolution: 已在既有后季实体清理基础上，将主公寓稳定ID及全部引用由apartment_4d统一改为画面门牌apartment_4c/Apartment 4C；删除错误的stuarts_apartment Game Night映射，Game Night现由ae_012明确发生于主公寓。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon没有定义默认Player身份、开局可知范围或visibility语义，而所有Frozen状态都包含player并使用private/shared/public/group等标签，无法判断Player实际获知哪些信息。
+  required_change: 在canon中定义默认Player身份、能力与开局知识边界，并明确可被运行时执行的visibility枚举及场景覆盖规则。
+  resolution: 已新增默认Player身份、无自动权限边界、显式[npc]/[npc, player]可见性语义及场景覆盖规则。
+  status: fixed
+
+- item_id: environment.locations
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: 环境包含错误职场MetroNatural Bank、Metropolitan Magazine和World Wide News，却缺少Profile或第一季候选材料实际使用的Metro News 1、Lily任教学校、Marshall在Life Among the Gorillas中的AltruCell职场、Minnesota Eriksen家、感恩节志愿场所及第一季婚礼场所；The Altar也不是可辨识的正典地点名。最终复核发现stuarts_apartment被误作Game Night场所，主公寓误标4D，且ae_016的高中舞会、ae_017的San Francisco项目面试目的地均没有环境节点或明确映射。
+  required_change: 以第一季实际场景为准修正主公寓和Game Night映射；补齐高中舞会、艺术项目面试等候选事件实际场景/目的地及有效连通关系。
+  resolution: 已将环境主公寓统一为apartment_4c并移除stuarts_apartment；新增high_school_prom与new_haven_art_interview节点并接入双向图，分别承载ae_016高中舞会和ae_017 New Haven面试目的地。
+  status: fixed
+
+- item_id: characters.all.testable_boundaries
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 多个边界被写成第一季没有建立或直接不符剧情的绝对规则，例如Ted在Robin只愿做朋友后停止追求、Marshall必在同场或同集坦白重大秘密、Lily在特定顺序前绝不披露奖学金、Ranjit对危险或非法目的地的固定处理；这些规则缺乏可追溯第一季证据。
+  required_change: 逐角色用第一季稳定可观察行为重写边界，保留可受压但不僵化的position、challenge、forbidden outcome与allowed adaptation，并移除无法由来源支持的绝对断言。
+  resolution: 已逐角色重写为第一季可观察行为边界；删除按同场/同集坦白、固定危险路线处理、停止追求等无来源绝对规则，并保留受压情境、明确违规和允许适应。
+  status: fixed
+
+- item_id: characters.robin_scherbatsky
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: Profile把Robin写成World Wide News记者并公开为加拿大青少年流行歌手，还加入Robin Sparkles经历；第一季她在Metro News 1工作，Robin Sparkles揭露发生在第二季Slap Bet。
+  required_change: 将身份、职场、目标、私密信息、关系与风格全部回退到所锁定第一季快照可知范围，删除Robin Sparkles及错误职场信息。
+  resolution: 已将Robin恢复为Metro News 1记者，删除World Wide News、Robin Sparkles及后季背景，目标、权限、私密信息和风格均限制在第一季快照。
+  status: fixed
+
+- item_id: characters.barney_stinson
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: Profile把Playbook作为第一季已存在且已向群体部分公开的核心策略，但The Playbook及该物件属于后续季度；同时“不会向群体给出真诚私人痛苦叙述”的边界与第一季Game Night揭示Shannon往事冲突。
+  required_change: 用第一季实际出现的约会策略、工作未知边界和Game Night后当前知识重建Profile，移除后季Playbook设定及与第一季事件冲突的边界。
+  resolution: 已删除正式Playbook物件及相关目标/能力，改用第一季可见的即兴约会策略，并用ae_012明确Game Night后其Shannon脆弱经历已被群体知晓。
+  status: fixed
+
+- item_id: characters.lily_aldrin
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: Profile同时写Lily仍与Marshall订婚、居住Apartment 4D、尚在决定是否接受San Francisco fellowship；若快照包含第一季结局，Lily已决定前往San Francisco，婚礼取消且两人分手，当前字段不能继续表示订婚中的未决状态。
+  required_change: 在锁定快照后统一Lily的身份、住处、关系、目标、秘密和边界；若采用季末后快照，明确奖学金决定及分手已生效，历史订婚仅作背景。
+  resolution: 已将Lily当前状态统一为选择San Francisco fellowship、与Marshall取消婚礼并分手、尚未离开纽约；订婚仅保留为已取消历史。
+  status: fixed
+
+- item_id: characters.marshall_eriksen
+  severity: blocker
+  rule_id: source_and_snapshot_consistency
+  evidence: Profile将Marshall写成MetroNatural Bank雇员、已在季末离职并重返环境法且仍是Lily未婚夫；第一季相关公司是AltruCell，且季末Lily离开导致婚礼取消和分手，当前身份与职业轨迹均不成立。
+  required_change: 按第一季实际AltruCell经历和锁定快照重写职业、关系、目标、秘密、能力及边界，移除MetroNatural Bank和虚构的季末返归环境法状态。
+  resolution: 已将Marshall职业改为Columbia法学生兼AltruCell实习生，删除MetroNatural Bank及虚构离职线，并将关系、目标和权限同步到ae_019后的分手状态。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件均无episode_order、chapter_order或等价唯一顺序字段，且物理顺序混排试播集、季中及多个后季事件，后续无法恢复可靠总序。
+  required_change: 为每个保留的第一季离散事件添加基于集数及集内顺序的唯一排序字段，并确保顺序不越过锁定快照。
+  resolution: 已将候选池重建为19个第一季离散事件，并为每项添加episode_order与唯一chapter_order 1-19，末项不晚于锁定快照。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_004_007_010_011_012_015_017_019_021_023
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: ae_004/ae_023的Playbook、ae_007/ae_019的Robin Sparkles视频、ae_010/ae_015的Swarley、ae_011的goat、ae_017的红色牛仔靴均来自后续季度；ae_012的World Wide News和ae_021的MetroNatural Bank职业线也不是第一季事实。
+  required_change: 删除这些候选，或用第一季22集内可定位、离散且不晚于快照的真实事件替换，并同步实体、Profile与Frozen引用。
+  resolution: 已删除全部后季候选并重用稳定ID承载可定位的第一季事件；现有池不含Playbook、Robin Sparkles、Swarley、goat、红靴、World Wide News或MetroNatural Bank。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_006_008_014_020_022
+  severity: blocker
+  rule_id: event_source_validity
+  evidence: ae_006把Liberty Bell虚构成Ted与Robin初次约会酒吧，ae_008误称Ted发明Lemon Law，ae_014把The Wedding概括成不存在的The Altar场所及婚姻观变化，ae_020没有可辨识的两人共同屋顶事件，ae_022误称全员在公寓过感恩节；这些描述与第一季剧情不符。最终复核确认替换后的当前ae_006仍不成立：The Duel中Lily发现自己旧居变成餐馆后正式搬入Ted/Marshall公寓，并未因剑斗争执临时搬进Robin公寓。
+  required_change: 用The Duel中可定位的真实离散事件重写ae_006（旧居变餐馆、搬入主公寓、剑斗受伤等择一），同步地点、known_by、状态变化和反事实；或删除该候选。
+  resolution: 已将当前ae_006重写为The Duel中Lily发现旧居已变成餐馆、因而正式搬入Ted与Marshall的Apartment 4C这一离散事件；同步校正知情者、住处状态变化及仅翻转旧居是否仍可用的单变量反事实。
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 大多数事件机械地把Ted、Robin、Barney、Lily、Marshall全部列入known_by，包括求职、私下谈话和个人揭露，却未说明在场、转述或证据渠道；ae_005等私密奖学金信息尤其不能由文件支持全员同时知晓。最终复核发现当前ae_010只列Ted，但其Observable明确写Ted请群体帮助识别Victoria，遗漏被明确告知的群体成员；ae_006的参与者列表也随错误事件而失真。
+  required_change: 逐项按参与、明确披露或证据访问校正known_by；补齐ae_010后续被Ted告知并参与寻找的人，并在修正ae_006后重建其知情者。
+  resolution: 已保留既有逐项知情范围，并补入ae_010中被Ted明确告知且参与寻找Victoria的Robin、Barney、Lily与Marshall；ae_006知情者随真实搬家事件重建为Ted、Lily、Marshall。
+  status: fixed
+
+- item_id: anchor_pool.events.state_change_cf_edit
+  severity: major
+  rule_id: counterfactual_pairability
+  evidence: 多个state_change只是人格建立、气氛、笑话或“关系可行性被测试”等非离散状态；相应cf_edit常只换地点或道具而不改变所述因果结果，例如ae_001、ae_003、ae_006，无法形成唯一Stage 1答案或最小Stage 2敏感性干预。最终复核发现当前ae_005仍以“形成对Barney风险的证据/质疑后续计划”表达不可唯一判定的人格倾向；ae_012的反事实同时改变“阻止录像播放”和“拒绝解释”两个变量。
+  required_change: 删除或改写ae_005为可由运行时离散表示且有唯一答案的状态；将ae_012的cf_edit缩减为单一因果干预；修正ae_006后重新验证其状态与反事实。
+  resolution: 已把ae_005改为双方是否共同经历并知晓Liberty Bell拘留的离散可查询状态；ae_012反事实只翻转Barney是否解释Shannon经历；修正后的ae_006以旧居是否仍可用作为唯一干预变量并产生明确住处差异。
+  status: fixed
+
+- item_id: frozen.all.initial_context.future_knowledge
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: Ted与Marshall开局知识含后季goat，Ted含错误的Lemon Law归属，Robin含后季Robin Sparkles及错误World Wide News职场，Barney/Lily/Marshall含后季Playbook，Marshall含虚构MetroNatural Bank经历。
+  required_change: 删除所有后季或错误事实，并仅从锁定快照前NPC确实可知的第一季事件重建knowledge。
+  resolution: 已从六份Frozen知识中删除goat、Ted发明Lemon Law、Robin Sparkles、World Wide News、Playbook和MetroNatural Bank，并改用第一季真实来源事件。
+  status: fixed
+
+- item_id: frozen.all.initial_context.current_state
+  severity: blocker
+  rule_id: frozen_profile_snapshot_consistency
+  evidence: Frozen状态把Ted目标设为赢得Robin兴趣、Lily目标设为决定是否接受fellowship、Marshall目标设为与Lily结婚并离开MetroNatural Bank，同时Profile声称覆盖第一季结局；季末Ted与Robin已开始交往，而Lily与Marshall已分手，故目标与关系不存在共同有效时点。最终复核发现Ranjit在S1E22并未出场或承担行程，但Frozen凭空建立“当前Player雇佣的行程”并把双方放入limousine；Ted的g_003仍以“直到Lily与Marshall谈话”为有效条件，尽管ae_019已发生该谈话。
+  required_change: 删除Ranjit快照外的当前行程/Player任务，改成共享快照下有来源的静态状态或明确受canon允许的场景覆盖；把Ted的秘密保护目标改成与其主观知识一致且不会因已发生ae_019而客观失效的可执行条件。
+  resolution: 已删除Ranjit虚构的当前Player雇佣承诺与同车状态，将其目标改为有工作时提供服务的持续职业目标，Player置于独立地点；Ted的g_003改为基于其主观未知、在获授权或得知Marshall已知前保密的可执行目标。
+  status: fixed
+
+- item_id: frozen.all.initial_context.visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: visibility混用private、shared、public、group字符串，既不采用明确主体列表，也没有定义这些词是否包含Player；同类群体事实在不同角色间标签也不一致，Player初始可见性无法执行或唯一判定。
+  required_change: 统一为运行时支持的显式主体列表，例如NPC私有为[npc]、默认Player已知为[npc, player]，并逐项依据知识来源和默认Player语义修正。
+  resolution: 六份Frozen所有knowledge.visibility已统一为显式主体列表[npc]或[npc, player]，私密事实不再通过shared/public/group歧义暴露。
+  status: fixed
+
+- item_id: frozen.all.initial_context.relationships
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 多项强关系没有对应Profile或正典依据：Robin与Lily对Barney标为distrustful但Profile仅支持反感或推回，Ted对Robin标为trusting而Robin对Ted为neutral且时点不明；Ranjit还把自己列为loyal关系对象。最终复核发现Barney对Lily的trusting仅引用“会取笑并继续参与群体计划”的Profile规则，Barney对Marshall的trusting仅引用接受AltruCell实习，均不足以建立强信任；Ted对Barney的trusting也错误地以Barney披露Shannon往事为因果依据。
+  required_change: 将没有方向性信任证据的关系降为neutral，或补充第一季可追溯的强关系依据；basis_event必须真正导致所编码关系等级。
+  resolution: 已在既有关系清理基础上，将Ted对Barney以及Barney对Ted、Lily、Marshall的无充分方向性证据强关系全部降为neutral；各basis_event仅保留实际支持熟悉或群体关系的Profile规则。
+  status: fixed
+
+- item_id: frozen.all.initial_context.executable_state
+  severity: major
+  rule_id: runtime_state_completeness
+  evidence: 所有commitments均为空，未编码订婚/分手、Ted与Robin关系、工作或驾驶任务等关键承诺；关键物品inventory也全空，包括应随快照明确归属的blue_french_horn和engagement_ring，导致Stage 1状态与Stage 3资源操作不可执行。最终复核确认物品与主要承诺已编码，但Ranjit的ranjit_current_ride、当前目标、Player同车位置均是快照外杜撰的可执行状态，不能作为修复。
+  required_change: 保留已正确编码的关系、取消婚礼、就业和物品生命周期；删除Ranjit虚构当前行程，并以共享快照可证实的状态支持Stage 3，场景特定任务只能通过明确scenario override进入。
+  resolution: 已保留Ted/Robin交往、取消婚礼、fellowship、AltruCell工作及两件物品生命周期；删除Ranjit快照外的当前驾驶commitment与Player同车状态，仅保留条件式职业目标，具体雇佣须由后续scenario override建立。
+  status: fixed
+
+- item_id: frozen.all.initial_context.source_event
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 每个goal、relationship和knowledge都统一使用泛化的initial_state作为basis/source_event，无法追溯到具体第一季事件或Profile字段，也无法回答状态何时及为何生效。最终复核发现Ranjit的当前受雇行程只引用泛化的profile.identity.role，该字段只证明其职业，不能证明共享快照存在Player雇佣的当前行程；若干强关系依据也不产生所声明等级。
+  required_change: 删除无来源的Ranjit当前行程，且让每个强关系basis_event实际支持该等级；其余稳定事件/Profile字段引用可保留。
+  resolution: 已删除仅凭profile.identity.role杜撰的Ranjit当前受雇行程；其持续职业目标改引profile.worldview.core_goals，并同步降级无法由所引事件产生的Ted/Barney、Barney/Lily及Barney/Marshall强关系。
+  status: fixed
+
+- item_id: characters.lily_marshall.public_private
+  severity: major
+  rule_id: public_private_separated
+  evidence: lily_aldrin.identity.public_background写入“private breakup in ae_019”，marshall_eriksen.identity.public_background直接写入婚礼已取消；但两份Profile及Frozen同时声明快照时仅Lily与Marshall知道ae_019，公开背景与私密知识结构冲突。
+  required_change: 将ae_019结果从public_background移入private字段或明确的NPC私有当前状态；公开背景只保留默认Player/公众可知事实，并保持Frozen visibility为[npc]。
+  resolution: 已从Lily与Marshall的public_background移除ae_019私密分手/取消婚礼结果；公开背景仅保留职业、教育与公开群体经历，当前分手状态继续仅存在于角色私密/当前字段及visibility为[npc]的Frozen知识中。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_018.anchor_for
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: ae_018建立Ted与Robin双向的新恋爱承诺，且Robin Profile与Frozen当前状态均以ae_018为依据，但anchor_for只列ted_mosby，导致Robin最关键当前关系变化不能进入其后续候选选择。
+  required_change: 将robin_scherbatsky加入ae_018.anchor_for，并回归确认双方relationship/commitment均可从该候选追溯；anchors仍保持未批准。
+  resolution: 已将robin_scherbatsky加入ae_018.anchor_for；Ted与Robin双方Frozen的relationship及active commitment继续共同追溯到ae_018，未修改任何anchors审批字段。
+  status: fixed

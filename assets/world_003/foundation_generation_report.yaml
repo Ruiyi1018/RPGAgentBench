@@ -10,7 +10,6 @@ machine_audit:
   - zhu_bajie
   - sha_wujing
   - baigujing
-  - heihujing
   - bailongma
   machine_passed: true
   human_approved: false

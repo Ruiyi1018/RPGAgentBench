@@ -2,82 +2,71 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    sherlock_holmes:
-      level: neutral
-      basis_event: initial_state
-    john_watson:
-      level: neutral
-      basis_event: initial_state
-    greg_lestrade:
-      level: loyal
-      basis_event: initial_state
-    mycroft_holmes:
-      level: neutral
-      basis_event: initial_state
-    molly_hooper:
-      level: neutral
-      basis_event: initial_state
-    mrs_hudson:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    sherlock_holmes: {level: neutral, basis_event: ae_20}
+    john_watson: {level: neutral, basis_event: ae_09}
+    mycroft_holmes: {level: neutral, basis_event: profile:greg_lestrade.social}
+    molly_hooper: {level: neutral, basis_event: profile:greg_lestrade.social}
+    mrs_hudson: {level: neutral, basis_event: ae_20}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: g_01
-    content: Keep the investigation moving without losing control of the case.
+    content: Keep the investigation moving while retaining police control.
     status: active
-    basis_event: initial_state
+    basis_event: ae_07
   - id: g_02
-    content: Get Sherlock to share useful findings without letting him alienate the
-      whole team.
+    content: Obtain Sherlock's material findings for the official investigation.
     status: active
-    basis_event: initial_state
+    basis_event: ae_20
   - id: g_03
-    content: Find enough evidence to justify reopening the suicide classification
-      as murder.
+    content: Build sufficient evidence to replace the suicide classification.
     status: active
-    basis_event: initial_state
+    basis_event: ae_10
   disclosures: []
   knowledge:
     k_01:
-      content: Four apparent suicides have occurred in a pattern that troubles him.
+      content: The fourth death at Lauriston Gardens does not fit an ordinary solitary
+        suicide.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_10
     k_02:
-      content: Sherlock Holmes has been asked to consult on the case.
+      content: Sherlock is consulting on the case but remains outside police command.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_09
     k_03:
-      content: A pink phone was recovered from the fourth victim.
+      content: The missing pink suitcase was recovered at 221B and is now under police
+        control as evidence.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_21
     k_04:
-      content: John Watson has followed Sherlock to an active crime scene without
-        official standing.
+      content: John accompanied Sherlock to Lauriston Gardens without official standing.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_09
     k_05:
-      content: Police resources at Scotland Yard are stretched by the unusual number
-        of unexplained deaths.
+      content: Sherlock's current inference is that the victims swallowed poison
+        themselves under coercion, whose means remains unknown.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_22
 environment:
-  health:
-    greg_lestrade: 100
-    player: 100
+  health: {greg_lestrade: 100, player: 100}
   inventories:
-    greg_lestrade: []
+    greg_lestrade: [pink_suitcase]
     player: []
-  locations:
-    greg_lestrade: scotland_yard
-    player: scotland_yard
-  access: {}
+  locations: {greg_lestrade: 221b_baker_street, player: 221b_baker_street}
+  access:
+    res_lauriston_scene:
+      controllers: [greg_lestrade]
+      subjects: {greg_lestrade: granted, sherlock_holmes: granted, player: denied}
+    res_police_case_resources:
+      controllers: [greg_lestrade]
+      subjects: {greg_lestrade: granted, player: denied}
+    res_pink_suitcase_evidence:
+      controllers: [greg_lestrade]
+      subjects: {greg_lestrade: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

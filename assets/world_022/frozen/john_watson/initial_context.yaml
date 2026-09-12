@@ -2,109 +2,83 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    sherlock_holmes:
-      level: trusting
-      basis_event: initial_state
-    greg_lestrade:
-      level: neutral
-      basis_event: initial_state
-    mycroft_holmes:
-      level: distrustful
-      basis_event: initial_state
-    molly_hooper:
-      level: neutral
-      basis_event: initial_state
-    mrs_hudson:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    sherlock_holmes: {level: neutral, basis_event: ae_15}
+    greg_lestrade: {level: neutral, basis_event: ae_09}
+    mycroft_holmes: {level: distrustful, basis_event: ae_17}
+    molly_hooper: {level: neutral, basis_event: ae_02}
+    mrs_hudson: {level: neutral, basis_event: ae_06}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: g_01
-    content: Settle into 221B Baker Street and establish a stable daily routine after
-      leaving the army.
-    status: ongoing
-    basis_event: initial_state
+    content: Establish a stable civilian routine at 221B.
+    status: active
+    basis_event: ae_06
   - id: g_02
-    content: Decide how far to trust Sherlock Holmes during the serial suicide investigation.
-    status: ongoing
-    basis_event: initial_state
+    content: Decide how far Sherlock's methods and judgment can be trusted.
+    status: active
+    basis_event: ae_15
   - id: g_03
-    content: Assist Sherlock without overstepping into official police work.
-    status: ongoing
-    basis_event: initial_state
+    content: Assist Sherlock without claiming police authority.
+    status: active
+    basis_event: ae_09
   disclosures: []
   knowledge:
     k_01:
-      content: Sherlock Holmes possesses unusual deductive abilities, demonstrated
-        during a riding crop experiment at St Bartholomew's Hospital.
+      content: Sherlock inferred John's military and medical history from observation
+        and John's phone.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_03
     k_02:
-      content: Mrs Hudson is the landlady of 221B Baker Street.
+      content: Mrs Hudson is the landlady and John is a co-tenant at 221B.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_06
     k_03:
-      content: Lestrade has formally brought Sherlock into the investigation of the
-        serial suicide case.
+      content: Lestrade permits Sherlock, but not John, to act as a police consultant.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_09
     k_04:
-      content: A pink phone belonging to the fourth victim has been identified as
-        key evidence.
+      content: The fourth victim was left-handed and her pink suitcase was removed
+        from the crime scene.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_11
     k_05:
-      content: The fourth victim was left-handed, based on small details Sherlock
-        observed at the crime scene.
+      content: Mycroft arranged the warehouse meeting, knew private details about
+        John, and offered money for reports about Sherlock.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_17
     k_06:
-      content: Mycroft Holmes is Sherlock's brother and has arranged a private meeting
-        to question John.
+      content: John refused Mycroft's offer and made no reporting commitment.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_18
     k_07:
-      content: The victims voluntarily took poison from the murderer.
+      content: Sherlock's current inference is that the victims swallowed poison
+        themselves under coercion, whose means remains unknown.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_08:
-      content: A suspicious cab has been seen driving near locations connected to
-        the case.
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_09:
-      content: Sherlock uses the skull at Baker Street as part of his private thinking
-        process.
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_10:
-      content: Mycroft has warned John about the potential dangers of living with
-        Sherlock.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_22
 environment:
-  health:
-    john_watson: 100
-    player: 100
+  health: {john_watson: 100, player: 100}
   inventories:
     john_watson: []
+    greg_lestrade: [pink_suitcase]
     player: []
-  locations:
-    john_watson: 221b_baker_street
-    player: 221b_baker_street
-  access: {}
+  locations: {john_watson: 221b_baker_street, player: 221b_baker_street}
+  access:
+    res_221b_tenancy:
+      controllers: [mrs_hudson]
+      subjects: {john_watson: granted, player: denied}
+    res_lauriston_scene:
+      controllers: [greg_lestrade]
+      subjects: {john_watson: denied, player: denied}
+    res_pink_suitcase_evidence:
+      controllers: [greg_lestrade]
+      subjects: {john_watson: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

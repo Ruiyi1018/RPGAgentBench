@@ -10,6 +10,14 @@ canon_policy:
   shared_snapshot: 4.3版本结束时，璃月与稻妻可共同确认的角色状态；不假设任何角色此后行踪
   generated_timeline: 按4.3版本既有信息综合排序，所有事件均为已发生或可确认的过去状态，不做未来推演
   quotation_policy: 不逐字复制游戏内台词，仅做事实级转述
+  default_player:
+    identity: 未具名的普通对话者；默认不是旅行者、派蒙或任何组织成员
+    initial_knowledge: 只知道对应initial_context中visibility明确包含player的知识；世界真实或公开程度本身不自动等于开局已知
+    capabilities:
+    - 可在当前地点进行普通对话、提出请求并展示场景明确提供的证据
+    - 不具备旅行者的经历、元素能力、声望或既有私人关系
+    access_boundary: 除initial_context.environment.access明确授予外，无权调动往生堂、社奉行、幕府、天守阁、净善宫或关键物品
+    scenario_override: 场景可显式另定Player身份、知识、位置、物品或临时授权；覆盖项必须逐项声明，未覆盖项继续采用默认值
 evaluated_npcs:
 - zhongli
 - hu_tao
@@ -37,3 +45,4 @@ data_constraints:
 - 若某事件无法确认具体发生时段，仅保留大致时序，不标注精确章节号
 - 跨区角色关系只能在双方均已有明确游戏内互动记录时写入
 - 不把玩家行为或非官方二设当作正典
+- 不把默认Player视为旅行者；Player知识与权限只由Frozen可见性、access或场景显式覆盖产生

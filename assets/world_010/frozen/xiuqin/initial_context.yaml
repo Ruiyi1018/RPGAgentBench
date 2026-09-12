@@ -1,12 +1,19 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: xiuqin_deliver_shoe_supply
+    target: independent_regiment
+    content: 把赵家峪妇救会赶制的一批军鞋送交独立团
+    condition: 该批军鞋赶制完成并由独立团接收
+    status: fulfilled
+    source_event: anchor_011
+    resolution_event: anchor_011
   relationships:
     li_yunlong:
       level: trusting
-      basis_event: initial_state
+      basis_event: anchor_013
     zhao_gang:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     chu_yunfei:
       level: neutral
@@ -38,34 +45,53 @@ runtime_state:
     knowledge_001:
       content: 独立团团长是李云龙，赵刚担任政委，两人共同在独立团工作
       status: active
-      visibility: known
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: 独立团在赵家峪及周边有活动，团部与赵家峪相连
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anchor_006
     knowledge_003:
       content: 赵家峪及周边地形、住户和群众情况
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_004:
-      content: 独立团成员中有些人对自己比较熟悉，彼此有一定信任
+      content: 自己代表赵家峪妇救会交付的军鞋已由独立团接收
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anchor_011
+    knowledge_005:
+      content: 自己完成装枪射击并命中后，李云龙已依约把勃朗宁手枪交给自己
+      status: active
+      visibility: [npc]
+      source_event: anchor_013
 environment:
   health:
     xiuqin: 100
     player: 100
   inventories:
-    xiuqin: []
+    xiuqin: [xiuqin_satchel, zhaojiayu_route_notes, chu_gift_browning_pistol]
+    zhaojiayu_womens_association: []
+    independent_regiment: [shoe_supply_batch]
     player: []
   locations:
     xiuqin: zhaojiayu
     player: zhaojiayu
-  access: {}
+  access:
+    zhaojiayu_meeting_area:
+      controllers: [xiuqin]
+      subjects: {xiuqin: granted, player: granted}
+    zhaojiayu_route_notes:
+      controllers: [xiuqin]
+      subjects: {xiuqin: granted, player: denied}
+    independent_regiment_full_command:
+      controllers: [li_yunlong]
+      subjects: {xiuqin: denied, player: denied}
+    independent_regiment_intelligence:
+      controllers: [li_yunlong, zhao_gang]
+      subjects: {xiuqin: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

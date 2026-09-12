@@ -2,141 +2,43 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    rachel_green:
-      level: neutral
-      basis_event: initial_state
-    monica_geller:
-      level: trusting
-      basis_event: initial_state
-    phoebe_buffay:
-      level: trusting
-      basis_event: initial_state
-    joey_tribbiani:
-      level: loyal
-      basis_event: initial_state
-    ross_geller:
-      level: trusting
-      basis_event: initial_state
-    gunther:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    rachel_green: {level: neutral, basis_event: snapshot_fact_friend_group}
+    monica_geller: {level: neutral, basis_event: snapshot_fact_friend_group}
+    phoebe_buffay: {level: neutral, basis_event: snapshot_fact_friend_group}
+    joey_tribbiani: {level: trusting, basis_event: snapshot_fact_roommates}
+    ross_geller: {level: neutral, basis_event: snapshot_fact_friend_group}
+    gunther: {level: neutral, basis_event: snapshot_fact_counter_employee}
+    player: {level: neutral, basis_event: snapshot_fact_unfamiliar_visitor}
   goals:
-  - id: chandler_avoid_boss_fate
-    content: Avoid becoming like his boss and find a way to tolerate or change his
-      job situation.
+  - id: chandler_perform_supervisor_role
+    content: Perform his current data-processing supervisor duties
     status: active
-    basis_event: initial_state
-  - id: chandler_maintain_apartment_with_joey
-    content: Keep living with Joey and protect their shared apartment setup.
+    basis_event: chandler_returns_as_supervisor
+  - id: chandler_maintain_shared_home
+    content: Maintain the shared apartment with Joey
     status: active
-    basis_event: initial_state
-  - id: chandler_stay_connected_to_group
-    content: Remain a regular part of the friend group's daily life at Central Perk
-      and Monica's apartment.
-    status: active
-    basis_event: initial_state
+    basis_event: snapshot_fact_roommates
   disclosures: []
   knowledge:
-    k_rachel_wedding_dress_arrival:
-      content: Rachel entered Central Perk in a wedding dress after leaving her wedding.
+    chandler_knows_current_role:
+      content: Chandler accepted the raise and returned as a data-processing supervisor.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_rachel_moved_in_with_monica:
-      content: Monica recognized Rachel as an old friend and Rachel ended up staying
-        with Monica.
+      visibility: [npc]
+      source_event: chandler_returns_as_supervisor
+    chandler_knows_marcel_transferred:
+      content: Marcel is at the zoo and no longer in Ross's custody.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_rachel_cut_credit_cards:
-      content: Rachel cut up her father's credit cards to show she can support herself.
+      visibility: [npc]
+      source_event: ross_transfers_marcel_to_zoo
+    chandler_knows_ben:
+      content: Ross's son Ben has been born.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_rachel_waitress_at_central_perk:
-      content: Rachel got a job as a waitress at Central Perk.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_monica_paul_date:
-      content: Monica went on a date with Paul from her restaurant.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_ross_carol_lesbian:
-      content: Ross revealed his wife Carol is a lesbian and their marriage is ending.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_ross_moved_out:
-      content: Ross moved out of the apartment he shared with Carol and into a new
-        place.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_ross_has_marcel:
-      content: Ross has a pet monkey named Marcel.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_joey_butt_double_job:
-      content: Joey landed and then lost a role as Al Pacino's butt double after overacting.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_chandler_job_dissatisfaction:
-      content: Chandler complains about his office job and worries about becoming
-        like his boss.
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_gunther_works_at_central_perk:
-      content: Gunther works behind the counter at Central Perk.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_ross_son_ben:
-      content: Ross's son Ben was born, and Ross decided on the name Ben.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_monica_hosted_thanksgiving:
-      content: Monica hosted Thanksgiving dinner for the group, and Rachel accidentally
-        burned part of the potatoes.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_underdog_balloon:
-      content: The group watched the Underdog balloon escape during the Thanksgiving
-        parade from Monica's roof.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_marcel_lost:
-      content: Marcel escaped and got lost in the city, leading the group to search
-        for him.
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_rachel_paycheck_shock:
-      content: Rachel got her first paycheck and realized how little remains after
-        taxes.
-      status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ross_son_ben_born_and_named
 environment:
-  health:
-    chandler_bing: 100
-    player: 100
-  inventories:
-    chandler_bing: []
-    player: []
-  locations:
-    chandler_bing: chandler_joey_apartment
-    player: chandler_joey_apartment
+  health: {chandler_bing: 100, player: 100}
+  inventories: {chandler_bing: [], player: []}
+  locations: {chandler_bing: hospital, player: hospital}
   access: {}
   offers: []
   task_status: active

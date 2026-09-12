@@ -1,80 +1,67 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_pawnshop_control
+    target: mr_gold_pawnshop
+    content: Maintain control of his pawnshop, property, and stored bargains
+    status: active
+    basis_event: ouat_s1_e1
   relationships:
-    regina_mills:
-      level: neutral
-      basis_event: initial_state
-    emma_swan:
-      level: neutral
-      basis_event: initial_state
-    henry_mills:
-      level: neutral
-      basis_event: initial_state
-    snow_white:
-      level: neutral
-      basis_event: initial_state
-    prince_charming:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    regina_mills: {level: distrustful, basis_event: ae_012}
+    emma_swan: {level: neutral, basis_event: ouat_s1_e1}
+    henry_mills: {level: neutral, basis_event: ouat_s1_e2}
+    snow_white: {level: neutral, basis_event: initial_state}
+    prince_charming: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g_001
-    content: Leverage Emma Swan's presence to advance his own long-term position.
+    content: Observe Emma Swan without claiming knowledge of a supernatural role for her
     status: active
-    basis_event: initial_state
+    basis_event: ouat_s1_e1
   - id: g_002
-    content: Maintain the Mr. Gold persona without exposing his true identity.
+    content: Preserve his Mr. Gold public persona and unexplained leverage
     status: active
-    basis_event: initial_state
+    basis_event: ae_012
   - id: g_003
-    content: Extract a meaningful favor from Regina in exchange for helping with Emma.
+    content: Refuse Regina's questions about Emma and Henry unless answering benefits him
     status: active
-    basis_event: initial_state
+    basis_event: ae_012
   disclosures: []
   knowledge:
     k_001:
-      content: He is Mr. Gold in Storybrooke and Rumplestiltskin in the fairytale
-        realm.
+      content: He operates the Storybrooke pawnshop as Mr. Gold
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ouat_s1_e1
     k_002:
-      content: Regina asked him to remove Emma Swan from town and he demanded a favor
-        in return.
+      content: He arranged Henry's adoption and has refused to tell Regina where Henry came from
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     k_003:
-      content: He met Snow White in a fairytale prison cell under the Evil Queen's
-        control.
+      content: Invoking the word please compels Regina under leverage he does not explain
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     k_004:
-      content: Emma Swan's arrival has started a chain of events he says is already
-        in motion.
+      content: Emma's arrival interests him, but Episodes 1-7 do not establish that
+        he knows she can break the curse
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_005:
-      content: The curse is real and Emma may be connected to breaking it.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ouat_s1_e1
 environment:
-  health:
-    rumplestiltskin: 100
-    player: 100
+  health: {rumplestiltskin: 100, player: 100}
   inventories:
-    rumplestiltskin: []
+    rumplestiltskin: [pawnshop_key]
     player: []
   locations:
-    rumplestiltskin: storybrooke
-    player: storybrooke
-  access: {}
+    rumplestiltskin: mr_gold_pawnshop
+    player: mr_gold_pawnshop
+  access:
+    mr_gold_pawnshop:
+      controllers: [rumplestiltskin]
+      subjects:
+        rumplestiltskin: granted
   offers: []
   task_status: active
   dialogue_status: active

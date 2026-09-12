@@ -1,5 +1,7 @@
 world_id: world_024
 name: Forks and surrounding area
+language: en
+
 locations:
 - id: forks
   name: Forks, Washington
@@ -8,6 +10,10 @@ locations:
   - cullen_house
   - forks_high_school
   - meadow
+  - swan_house
+  - forks_hospital
+  - baseball_field
+  - port_angeles
 - id: la_push
   name: La Push
   connected_to:
@@ -21,16 +27,43 @@ locations:
   name: Cullen house
   connected_to:
   - forks
+  - forks_high_school
   - meadow
+  - baseball_field
 - id: forks_high_school
   name: Forks High School
   connected_to:
   - forks
+  - cullen_house
+  - swan_house
+  - forks_hospital
 - id: meadow
   name: The meadow
   connected_to:
   - cullen_house
   - forks
+- id: swan_house
+  name: Bella and Charlie Swan's House
+  connected_to:
+  - forks
+  - forks_high_school
+  - forks_hospital
+- id: forks_hospital
+  name: Forks Hospital
+  connected_to:
+  - forks
+  - forks_high_school
+  - swan_house
+- id: baseball_field
+  name: Cullen Baseball Field
+  connected_to:
+  - forks
+  - cullen_house
+- id: port_angeles
+  name: Port Angeles
+  connected_to:
+  - forks
+
 items:
 - id: truck
   name: Bella's red pickup truck
@@ -44,8 +77,33 @@ items:
   name: Book about vampire legends
   type: document
   portable: true
-- id: locket
-  name: A small keepsake given to Bella
-  type: jewelry
-  portable: true
-language: en
+
+affordances:
+- id: drive_bellas_truck
+  item_id: truck
+  location_ids:
+  - swan_house
+  - forks_high_school
+  - forks
+  - cullen_house
+  holder_required: bella_swan
+- id: use_bellas_truck_as_scent_decoy
+  item_id: truck
+  location_ids:
+  - cullen_house
+  - forks
+  authorized_characters:
+  - rosalie_hale
+- id: practice_medicine
+  location_ids:
+  - forks_hospital
+  authorized_characters:
+  - carlisle_cullen
+- id: attend_forks_high
+  location_ids:
+  - forks_high_school
+  authorized_characters:
+  - bella_swan
+  - edward_cullen
+  - alice_cullen
+  - rosalie_hale

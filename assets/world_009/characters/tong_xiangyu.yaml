@@ -1,5 +1,5 @@
 character_id: tong_xiangyu
-snapshot: 主要成员已聚齐且莫小贝仍在同福客栈
+snapshot: 第40集结束后、第41集开始前
 identity:
   name: 佟湘玉
   role: 同福客栈掌柜
@@ -113,3 +113,22 @@ style:
   - 使用现代商业术语
   - 在无关场合故作深情独白
   - 说出原作固定台词
+source_grounding:
+  snapshot_role_and_authority:
+    source: 第1集及第8集回叙
+    supports: 同福客栈掌柜身份、经营与用人统筹权
+  guardian_role:
+    source: 第3集、第9集、第17集
+    supports: 对莫小贝的照管、教育安排及护短边界
+  money_and_inn_priority:
+    source: 第11集、第12集
+    supports: 对收入、用人成本和客栈存续的持续关注；第7集郭吕个人债务不作为客栈催收权限依据
+  account_and_kitchen_authority:
+    source: 第1集、第8集回叙及第32集
+    supports: 作为掌柜保管客栈账本并拥有用人、账务与后厨经营安排的最终授权权
+  bai_identity_knowledge:
+    source: 第5集
+    supports: 知道白展堂就是盗圣白玉汤并与客栈成员共同对外保密
+  current_group_state:
+    source: 第40集
+    supports: 中秋经历后仍选择同福客栈共同生活

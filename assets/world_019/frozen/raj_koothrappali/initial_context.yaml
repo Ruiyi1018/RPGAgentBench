@@ -33,36 +33,37 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: g3
-    content: Avoid being put on the spot to speak directly to Penny, Amy, or Bernadette
-      while sober.
+    content: Avoid being put on the spot to speak directly to Penny, Amy, or Bernadette while sober.
     status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k1:
-      content: Howard now has serious aerospace-related responsibilities and is occupied
-        with Bernadette in addition to the friend group.
+      content: Howard now has serious aerospace-related responsibilities and is occupied with Bernadette
+        in addition to the friend group.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_010
     k2:
-      content: Amy and Sheldon share specific scientific interests and remain socially
-        paired even when their relationship is strained.
+      content: Amy and Sheldon are girlfriend and boyfriend.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s5e19_group_relationship_status
     k3:
-      content: The full seven-character group is now active and regularly gathers
-        in Apartment 4A.
+      content: The friend group uses Apartment 4A for shared gaming and social gatherings.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s5e19_group_gathering
     k4:
-      content: Raj's selective mutism persists around women unless alcohol or another
-        factor reduces his inhibition.
+      content: Raj's selective mutism persists around women unless alcohol or another factor reduces his
+        inhibition.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_006
 environment:
   health:
     raj_koothrappali: 100
@@ -73,7 +74,12 @@ environment:
   locations:
     raj_koothrappali: apartment_4a
     player: apartment_4a
-  access: {}
+  access:
+    raj_astrophysics_workspace:
+      controllers:
+      - raj_koothrappali
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

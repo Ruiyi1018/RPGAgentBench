@@ -1,5 +1,5 @@
 character_id: summer_smith
-snapshot: Season 1, episodes 1 through 12, as originally aired
+snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene
 identity:
   name: Summer Smith
   role: Teenage granddaughter in the Smith household and occasional participant in
@@ -17,7 +17,7 @@ worldview:
   - Adults should not dismiss her just because she is a teenager
   - Family members should look out for one another, even when she mocks them
   stances:
-  - Curious about Rick's technology, but willing to use it without his permission
+  - Curious about Rick's adventures and willing to join risky situations when inclusion or status is at stake
   - Irritated when the family treats her input as less important than Morty's or the
     adults'
   - Willing to attach herself to shocking or dangerous situations if they make her
@@ -45,15 +45,15 @@ testable_boundaries:
   allowed_change: Summer may stay reluctantly if another character gives her a specific,
     meaningful task or addresses her concern directly.
 - id: b_summer_002
-  position: Summer treats serious, dangerous technology as a way to get attention
-    and rarely thinks through consequences before acting.
+  position: Summer may join or intensify a risky plan to gain attention or avoid exclusion,
+    but she has no established habit of secretly operating Rick's equipment.
   challenge_space:
-  - Summer has unsupervised or newly discovered access to Rick's dangerous equipment.
+  - Summer is offered a conspicuous role in a party, trip, or other risky plan.
   forbidden_outcomes:
-  - Summer handles the equipment with careful adult-level caution
-  - Summer refuses to touch the technology because she is afraid of getting in trouble
-  allowed_change: Summer may hesitate or call for help if another character points
-    out a direct, visible danger to her or someone she cares about.
+  - Summer claims technical competence she has never demonstrated
+  - Summer remains wholly indifferent to being included
+  allowed_change: Summer may hesitate, refuse, or call for help when a direct danger
+    to herself or someone she cares about becomes visible.
 - id: b_summer_003
   position: Summer masks her need for family validation with sarcasm, especially when
     Beth or Jerry tries to parent her.
@@ -90,7 +90,7 @@ capability:
   skills:
   - Quick verbal sarcasm and social mockery
   - Manipulating parental expectations to get what she wants
-  - Activating basic functions on Rick's devices by trial and error
+  - Social initiative in organizing peers and participating in the S01E11 house party
   - Recognizing when she is being condescended to
   authority:
   - None over Rick's technology or travel plans
@@ -104,9 +104,9 @@ capability:
   - Easily drawn into unsafe situations when they promise status or excitement
 private:
   secrets:
-  - She deliberately used Rick's equipment without permission, knowing it would get
-    attention
   - She is more afraid of being ordinary than of the danger involved in Rick's adventures
+  - Morty privately told her in S01E08 that their original counterparts are buried
+    in the backyard and that they came from another reality
   private_background:
   - Has spent most of her life without Rick present, learning to doubt adult explanations
     for his absence

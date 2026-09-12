@@ -1,0 +1,191 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_timeline_boundary
+  evidence: shared_snapshot仅写“主要成员已聚齐且莫小贝仍在同福客栈”，该描述从前40集早期一直成立，无法判断第17集莫小贝接掌衡山派、第18集郭芙蓉与吕秀才错定情、第26集二人关系变化、第30至31集郭芙蓉离店又返回等状态是否已经发生；generated_timeline也没有起止边界。
+  required_change: 将共享快照锚定到前40集内一个可恢复的事件窗口，并明确generated_timeline起止范围，使全部Profile、Frozen状态和候选事件能据此排除未来信息并确定当前有效状态。
+  resolution: 已将共享快照明确为第40集结束后、第41集开始前，并把generated_timeline限定为第1集开场前可由第8集回叙确认的聚首至第40集结束，规定按集序及同集事件顺序排序；六份Profile同步使用该快照，并显式排除莫小贝第46集以后身份。
+  status: fixed
+
+- item_id: canon.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可知范围、可接触材料或临时授权边界，而所有Frozen场景都让player位于tongfu_inn，并使用public/shared/private等未定义可见性标签。
+  required_change: 在canon中定义统一默认Player语义及visibility含义，并规定场景特定Player身份如何显式覆盖默认知识和权限。
+  resolution: 已在canon定义默认Player为无额外职务或权限的普通住客，限定其初始位置、可观察知识和账本/后厨/门派权限，并定义[npc]、[npc, player]及场景覆盖规则；六份Frozen已统一采用该受众列表。
+  status: fixed
+
+- item_id: environment.locations.qixia_school
+  severity: major
+  rule_id: active_scene_location_mapping
+  evidence: Profile、ae_006、ae_017及Frozen知识均把莫小贝上学作为当前可执行状态，但environment仅有泛称“七侠镇学堂”；前40集中的实际学校是白马书院，资产未声明二者映射，也没有学校相关访问语义。
+  required_change: 将该节点明确映射为正典中的白马书院（可保留现有稳定ID），并补足后续上学、接送或进入学校场景所需的最小访问语义。
+  resolution: 保留稳定ID qixia_school，将名称和canonical_mapping明确为前40集白马书院，并补充学童上学、普通住客进入和接送至门外的最小访问语义；莫小贝Frozen增加可执行上学访问记录。
+  status: fixed
+
+- item_id: characters.all.source_grounding
+  severity: major
+  rule_id: character_claim_traceability
+  evidence: 郭吕关系与强关系依据已校正，但李大嘴current_kitchen_authority仍错误写成“第32集后段祝无双离开后恢复”：第32集结尾祝无双仍在客栈且承担做饭，第37集才离店。郭芙蓉work_and_debt也只引用第1至2集，未覆盖第30集债务解除及第36集回店后其第40集当前杂役状态。
+  required_change: 用前40集内真实事件重建李大嘴从第32集被撤换到第40集当前厨子/后厨权限的有效依据，并同步Profile与Frozen source_event；为郭芙蓉第30集债务解除后、第36集回店至第40集仍为杂役的当前职务补充可核实依据。
+  resolution: 李大嘴current_kitchen_authority改以祝无双第37集离店及第40集快照支撑，并同步佟湘玉、李大嘴Frozen的ae_010_restore引用；郭芙蓉work_and_debt补入第7集债务闭合、第30集离店、第36集回店及第40集当前杂役状态，Frozen新增对应NPC知识及来源。
+  status: fixed
+
+- item_id: characters.bai_zhantang.identity_and_private
+  severity: blocker
+  rule_id: current_knowledge_canon_consistency
+  evidence: Profile仅称白展堂向客栈众人承认“曾有过江湖背景”，并把完整身份继续作为秘密；但第5集客栈众人已明确知道他就是盗圣白玉汤并共同隐瞒。Frozen也只记录模糊“江湖背景”，与前40集当前知识状态不兼容。
+  required_change: 明确区分“客栈成员已知其盗圣身份”“外部人员默认不知”与仍未披露的具体旧事，并同步Profile和Frozen知识，避免把已确认身份降格为模糊背景。
+  resolution: 白展堂Profile已明确第5集后六名客栈成员知道其盗圣白玉汤身份、外部人员默认不知，并将未披露秘密收窄为具体旧案旧怨；ae_003和六份Frozen中的相应知识已同步为内部确认、对外保密。
+  status: fixed
+
+- item_id: characters.mo_xiaobei.identity_authority
+  severity: major
+  rule_id: snapshot_role_consistency
+  evidence: 资产已采用第18集以后郭芙蓉与吕秀才关系发展的状态，因此快照不早于第18集；莫小贝已在第17集接掌衡山派，但Profile仍仅写“寄居学童”，affiliations、authority、limitations和Frozen知识均遗漏其衡山派掌门身份。
+  required_change: 在不引入第46集五岳盟主等未来信息的前提下，补入快照时已成立的衡山派掌门身份及其真实、有限的权限和约束。
+  resolution: 莫小贝Profile已加入衡山派掌门角色与affiliation，补充其回应本派事务的有限名义权限及年龄、监护、场景资源限制；Frozen加入ae_006来源知识，并明确不包含第46集以后五岳盟主身份。
+  status: fixed
+
+- item_id: characters.testable_boundaries.canon_fidelity
+  severity: major
+  rule_id: behavioral_boundary_grounding
+  evidence: 多条边界把正典中的可变行为写成绝对禁令，例如郭芙蓉“不会主动离开同福客栈”、李大嘴“不主动砸掉自己的后厨饭碗”、莫小贝“不能在没有佟湘玉同意的情况下离开”；前40集包含郭芙蓉回家、众人设想或尝试其他出路、莫小贝逃学及出走式行为，绝对化后会把合乎角色的选择误判为失败。
+  required_change: 将边界改为有触发条件、代价和允许适应空间的可观察约束，只把明确违背稳定动机的结果列为forbidden_outcomes。
+  resolution: 已将郭芙蓉离店、李大嘴离开后厨及莫小贝逃学/短暂出走相关绝对禁令改为带触发、代价和回归条件的边界；forbidden_outcomes仅保留无重大触发便永久切断核心归属等稳定动机违例，并加入正典允许的短暂离开适应路径。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件均无chapter_order/canon_order；事件混合了两年前聚首、开篇雇佣状态、第5集盗圣身份、第17集上学/掌门线、第18集以后感情线及长期概括，YAML顺序不能恢复正典总时间线。
+  required_change: 为每个保留的离散候选事件增加唯一、可核对的集序/事件顺序，并按共享快照和来源范围排除越界事件。
+  resolution: 已重建候选池为12个保留事件，每项均设置唯一chapter_order和source_ref，按第1至40集排序；池级声明快照终点和排序规则，未保留第40集后的事件。
+  status: fixed
+
+- item_id: anchor_pool.events.discreteness_and_evidence
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: 多数候选不是单一可定位事件，而是长期状态或重复总结，例如ae_007“确立掌柜权威”、ae_010“形成一套做菜习惯”、ae_011“开始习惯生活”、ae_012“因经营压力显露关注”、ae_020“多次保护众人”、ae_021“逐渐确立”、ae_023“形成稳定供应节奏”和ae_024“共同经历多次日常事件”；全部事件也都没有具体来源定位。
+  required_change: 将概括项替换为前40集内具有单一触发、明确参与者、可观察前后状态和可追溯集序的离散事件；删除仅重复静态职位或人格特征的项。
+  resolution: 已移除原24项中的长期习惯、逐渐确立、反复保护和多次日常等趋势概括，改为第1、3、5、7、12、17、18、29、30、32、33、40集内具有单一触发、参与者和明确前后状态的12个离散事件，并逐项写明source_ref。
+  status: fixed
+
+- item_id: anchor_pool.ae_013
+  severity: blocker
+  rule_id: canon_event_factual_accuracy
+  evidence: ae_013把第5集后的结果写成白展堂只承认“曾有过江湖背景”，state_change称“过去不再是客栈内部秘密”，但正典结果是客栈众人明确知道其盗圣白玉汤身份，并继续对外保密；known_by还遗漏了客栈成员莫小贝。
+  required_change: 依据第5集重写事件事实、客栈内部与外部的分层可见性、known_by和状态变化，并与白展堂Profile/Frozen知识保持一致。
+  resolution: 原ae_013已由新ae_003替代，事实明确为第5集白展堂向六名客栈主要成员确认盗圣白玉汤身份；known_by包含莫小贝，visibility_note区分客栈内部知情与默认Player/外部不知，state_change写明确认知识及共同保密约束。
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: known_by与事件参与及Frozen知识不一致：ae_008遗漏莫小贝，但ae_020及Frozen把白展堂多次保护客栈视为其已知事实；ae_013同样遗漏莫小贝；ae_015、ae_021等长期公开分工状态却只列佟湘玉和吕秀才。当前无披露事件或证据访问说明可解释这些差异。
+  required_change: 对每个离散事件分别按亲历、直接披露或证据访问重建known_by；不要把事件存在、原因、结果和公开职位状态混成同一可见性结论。
+  resolution: 重建候选池时已逐项按现场亲历、任务交付或直接事件结果设置known_by；删除了长期公开分工却只列少数人的旧项，并对第5集身份事件额外注明known_by不等于外部可见。
+  status: fixed
+
+- item_id: anchor_pool.events.stage2_pairability
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: ae_007与ae_012的反事实已收窄，但ae_010_restore建立在错误事件上：祝无双并未在第32集后段离店，因而“是否继续留任”不是该时点可受控改变李大嘴权限的正典变量。ae_004也遗漏当集结尾吕秀才明确放弃追讨，使“债务保持未解决”分支缺少与实际主分支对应的闭合状态。
+  required_change: 在修正ae_004完整事件边界及替换或重定时ae_010_restore后，重新给出只改变单一原因、且主分支和反事实分支都具有不同可执行状态或决定的cf_edit。
+  resolution: ae_004的cf_edit改为仅改变吕秀才是否最终放弃追讨，对应债务当集闭合或继续有效；ae_010_restore移至第37集并仅改变祝无双是否离店继续掌勺，对应李大嘴后厨权限恢复或仍未恢复，其他职务与权限保持不变。
+  status: fixed
+
+- item_id: frozen.all.knowledge.visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份initial_context的全部知识项都使用public、private、shared标量，而规范语义要求用[npc]或[npc, player]受众列表；public/shared/private在运行时没有定义，且不同角色对同类客栈公开事实的标签不一致，无法唯一判断Player开局是否知情。
+  required_change: 在canon确定默认Player后，把全部knowledge.visibility统一为执行器可判定的受众列表，并逐项区分NPC私有知识、客栈内部共享知识与默认Player实际可知内容。
+  resolution: 六份Frozen的public/private/shared标量已全部替换为[npc]或[npc, player]；客栈公开可观察职务可供默认Player知道，盗圣身份、关系内情和有限掌门权限仅NPC知道，并与canon默认Player语义一致。
+  status: fixed
+
+- item_id: frozen.all.runtime_state.goals.status
+  severity: minor
+  rule_id: runtime_status_vocabulary
+  evidence: 佟湘玉、白展堂和吕秀才的目标使用ongoing，其余角色使用active；FixtureEngine的set_goal规范状态为active、fulfilled、cancelled、failed，ongoing没有定义的生命周期语义。
+  required_change: 将初始有效目标统一为active，或在运行时schema和操作语义中正式定义ongoing及其转换规则。
+  resolution: 佟湘玉、白展堂和吕秀才的全部ongoing初始目标已改为FixtureEngine支持的active；其余角色原有active保持不变。
+  status: fixed
+
+- item_id: frozen.all.relationships.strong_levels
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 无依据的多数强关系已降格，但全部保留的trusting仍写basis_event为initial_state；其中郭芙蓉与吕秀才的知识又错误引用ae_007（第18集实际是郭芙蓉误会燕小六），无法追溯到第40集当前有效关系，未达到“保留者须有具体正典事件依据”的修复要求。
+  required_change: 在先修正郭吕关系轨迹后，为每个保留的trusting按方向填写真实、具体且可恢复的basis_event（或新增与正典事件映射明确的稳定依据），并核对Profile、Frozen知识与快照当前关系完全一致。
+  resolution: 保留的五条trusting全部改为具体basis_event：佟湘玉与白展堂双向使用第5集身份确认及共同保密事件ae_003，郭芙蓉与吕秀才双向使用第24集确立恋爱关系的ae_007，莫小贝对佟湘玉使用第3集监护上学安排ae_002；郭吕Profile与Frozen知识同时补全第24、26、30至31、36、39集至第40集快照的关系轨迹，其余方向继续为neutral。
+  status: fixed
+
+- item_id: frozen.all.environment.executable_resources
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: 关键资源已写入Frozen，但同一共享快照出现互斥状态：account_book在佟湘玉上下文由佟湘玉持有且controller为佟湘玉，在吕秀才上下文又由吕秀才持有且controller为吕秀才；kitchen_operations在佟湘玉上下文controller为佟湘玉，在李大嘴上下文又变为李大嘴。跨NPC世界真相不唯一，资源转移和授权题无法客观判分。
+  required_change: 为六份Frozen建立一致的共享环境基线；同一唯一物品只能有一个当前持有人，controller与granted subject须在所有NPC上下文中一致，并明确区分所有权/最终授权权与日常操作权限，使Stage 3授权、拒绝和交付均可执行。
+  resolution: 六份Frozen已写入完全一致的共享环境基线：account_book仅由佟湘玉持有，扫帚仅由郭芙蓉持有，菜刀仅由李大嘴持有；五类资源controller统一为拥有最终授权权的佟湘玉，并分别授予吕秀才查账、李大嘴后厨操作、白展堂跑堂区、郭芙蓉清洁物资及莫小贝上学权限，默认Player均为denied；六人及Player地点也统一为tongfu_inn。
+  status: fixed
+
+- item_id: anchor_pool.ae_004
+  severity: blocker
+  rule_id: canon_event_factual_accuracy
+  evidence: 事件已正确改为郭吕二钱个人债务，也删除了客栈催收权限推论；但state_change仍称债务与追讨决定“保持为未解决状态”，遗漏第7集结尾吕秀才明确让郭芙蓉留下二钱、放弃追讨。当前候选没有后续闭合事件，会把当集临时状态错误延续到第40集时间线。
+  required_change: 依据第7集完整事件边界纳入吕秀才最终放弃追讨、个人债务闭合的结果，或拆成有唯一同集顺序的建立与闭合事件；同步state_change、cf_edit，并确保不会把该债务作为第40集仍有效义务。
+  resolution: ae_004事实补入吕秀才当集最终放弃追讨，state_change明确二钱个人债务在第7集闭合且不延续到第40集；cf_edit仅以是否放弃追讨区分债务闭合与继续有效，并显式保持客栈职务和账本权限不变。
+  status: fixed
+
+- item_id: anchor_pool.ae_007_and_profiles.relationship_state
+  severity: blocker
+  rule_id: current_relationship_canon_consistency
+  evidence: ae_007错误声称第18集郭芙蓉误把吕秀才表现理解为情意；第18集“心痴错定情”的对象是燕小六。郭芙蓉与吕秀才在第24集明确形成恋爱关系，之后经历第26集冲突、第30至31集分离、第36集回归及第39集和解；当前Profile却仍以错误第18集把两人写成“亲近但不公开确立”，Frozen知识也引用ae_007。
+  required_change: 删除或重写错误ae_007，并按第40集快照重建郭芙蓉与吕秀才的当前关系及必要历史轨迹；同步两份Profile、Frozen relationships/knowledge/basis_event/source_event及相关边界，确保Stage 1当前答案唯一。
+  resolution: ae_007已从错误的第18集燕小六误会改为第24集郭芙蓉与吕秀才彼此确认情意；两份Profile、双向trusting、目标、知识、basis_event/source_event和关系边界均改为第40集仍有效的恋爱关系，并明确第26集冲突、第30至31集分离、第36集回归和第39集和解不等于解除关系，也不把恋爱关系夸大为婚约或已定终身。
+  status: fixed
+
+- item_id: anchor_pool.ae_012
+  severity: major
+  rule_id: event_causal_state_accuracy
+  evidence: ae_012称第40集梦境结束使“六人当前地点恢复为同福客栈”，并假设郭芙蓉梦醒后不返回；但第40集现实开场六人本就在客栈赏月，郭芙蓉已于第36集回归，梦境没有改变现实地点或杂役承诺。当前state_change与cf_edit把梦境假设误当成真实地点转移。
+  required_change: 将第40集候选的状态变化限定为正典中真实发生、可观察且可执行的认知/目标确认，或替换为另一离散事件；不得伪造现实地点转移，也不得用推翻第36集前态的反事实。
+  resolution: ae_012已明确六人在第40集现实开场即位于同福客栈，梦境只新增对共同生活与当前归属的认知确认；state_change明确现实地点、既有职务、资源及郭芙蓉第36集已恢复的在店状态均不转移，cf_edit仅改变假设人生是否呈现分离困境，不再伪造梦醒返回或推翻前态。
+  status: fixed
+
+- item_id: environment.locations.active_candidate_scenes
+  severity: major
+  rule_id: active_scene_location_mapping
+  evidence: ae_005实际涉及众伙计假装投奔并打探对门怡红楼，ae_009明确以郭芙蓉离店回家为移动事件；environment仅有同福客栈、街道、镇门、集市和白马书院，既无怡红楼节点/映射，也未为郭家这一实际移动目的地提供节点或明确的外部离场语义。
+  required_change: 为会作为候选事件实际场景或移动目的地的怡红楼和郭家补充最小节点/明确映射及可达关系；若郭家只作为世界外离场终点，则显式定义外部离场语义并使事件状态操作可执行。
+  resolution: environment新增yihonglou节点，明确映射第12集对门竞争客栈并连接tongfu_inn与街道；新增guo_family_home作为第30集郭芙蓉离店探亲的七侠镇外移动终点，连接镇门并显式定义外部离场的一步可达语义，不把现实旅程距离扩成Benchmark寻路步骤。
+  status: fixed
+
+- item_id: anchor_pool.ae_010_restore
+  severity: blocker
+  rule_id: canon_event_factual_accuracy
+  evidence: ae_010_restore声称第32集后段祝无双离开同福客栈、李大嘴因此恢复掌勺；央视第32集梗概及该集剧情均显示祝无双仍负责做饭，祝无双实际到第37集才离店。错误事件又被李大嘴Profile、佟湘玉和李大嘴Frozen及Stage 2 cf_edit共同引用。
+  required_change: 删除该伪造事件，或改为前40集内可核实且时间准确的李大嘴权限恢复事件；同步chapter_order、source_ref、fact、known_by、state_change、cf_edit、Profile grounding及全部Frozen引用。
+  resolution: ae_010_restore已改为第37集祝无双离店后李大嘴恢复掌勺，chapter_order移至37.1并按时间重排；同步更新source_ref、fact、state_change、cf_edit、李大嘴Profile及佟湘玉和李大嘴Frozen引用。
+  status: fixed
+
+- item_id: characters.lv_xiucai.private.secrets
+  severity: blocker
+  rule_id: current_relationship_canon_consistency
+  evidence: 吕秀才Profile的public_background、目标和关系规则均确认第24集后与郭芙蓉已确立且第40集仍有效的恋爱关系，但private.secrets仍写“对郭芙蓉的情感尚未完全公开表白”，与第24集公开求婚式表白及当前态直接冲突。
+  required_change: 删除这条过时秘密，或改写为第40集仍真实且不否认已表白、已确立关系的私密顾虑。
+  resolution: 已将过时的“尚未完全公开表白”改为不愿旁人把已确立的恋爱关系直接等同婚约或代替二人安排将来，不再否认第24集表白及第40集有效关系。
+  status: fixed
+
+- item_id: frozen.li_dazui.knowledge.k_li_dazui_001.visibility
+  severity: major
+  rule_id: player_knowledge_bounded
+  evidence: k_li_dazui_001把“第32集撤换风波、恢复后厨操作权、佟湘玉最终授权权”整段历史标为[npc, player]；默认Player只是普通住客，只能由公共空间观察当前职务，不能自动知道此前撤权/复权经过和内部授权层级。
+  required_change: 将历史与内部权限部分限定为[npc]，或拆分为Player可观察的当前厨子职务与NPC掌握的撤换/授权历史，并在修正正典时间线后使用有效source_event。
+  resolution: k_li_dazui_001改为仅[npc]可见并按第37集修正撤换、复职及内部授权历史；新增k_li_dazui_005，仅向[npc, player]公开可观察的当前厨子职务与日常供餐职责。
+  status: fixed
+
+- item_id: environment.locations.ae_011_hostage_scene
+  severity: major
+  rule_id: active_scene_location_mapping
+  evidence: ae_011以第33集吕秀才、祝无双被姬无病扣作人质并获救为离散候选，正典中二人实际被关在带栅栏的牢房并从该处脱困；environment没有牢房节点，也未声明其映射或世界外场景语义。
+  required_change: 为第33集实际人质场景补充最小牢房节点及可达关系，或在ae_011中明确映射到已有节点/外部场景并保证绑架、关押和脱困状态可执行。
+  resolution: environment新增hostage_cell节点，映射第33集姬无病关押吕秀才、祝无双的带栅栏牢房；节点连接七侠镇镇门，并定义扣押移入、解除扣押后返回的最小外部场景语义。
+  status: fixed

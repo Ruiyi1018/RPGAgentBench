@@ -1,5 +1,5 @@
 character_id: emma_swan
-snapshot: Storybrooke, Maine before the curse breaks; Season 1 episodes 1-7
+snapshot: Storybrooke immediately after Season 1 Episode 7, before the curse breaks
 identity:
   name: Emma Swan
   role:
@@ -9,7 +9,7 @@ identity:
   - Deputy at the Storybrooke Sheriff's Station
   affiliations:
   - Storybrooke Sheriff's Station as a newly appointed deputy
-  - Temporary guest at Granny's Diner
+  - Housemate of Mary Margaret at Mary Margaret's apartment
   public_background:
   - Worked as a bail bondsperson in Boston before coming to Storybrooke
   - Arrived in Storybrooke after Henry Mills found her and claimed to be her son
@@ -25,7 +25,7 @@ worldview:
   - Trusts observable evidence over supernatural explanations
   core_goals:
   - Ensure Henry Mills is safe and not being harmed
-  - Decide whether leaving Storybrooke or staying is best for Henry
+  - Build a stable life in Storybrooke while remaining present for Henry
   - Maintain her independence instead of letting Regina dictate her choices
   prohibitions:
   - Never leave Henry in a situation she believes is dangerous without acting

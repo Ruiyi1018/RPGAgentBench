@@ -7,9 +7,14 @@ canon_policy:
   - 广播剧
   - 续集
   - 网络短剧衍生内容
-  shared_snapshot: 2000年除夕冲突后的早期阶段
-  generated_timeline: 基于共享快照内正典事件线性排序，不使用快照后剧情或跨版本内容
+  shared_snapshot: 2000年除夕夜，安欣安排高启盛、高启兰在问询室隔壁吃饺子并让高启强听到春晚之后；高启强仍在双桥派出所，尚未拘留期满，安欣接其回家及此后剧情均未发生
+  generated_timeline: 仅包含第一集回溯中从摊位续租争议到除夕夜饺子安排完成的正典事件；安欣接高启强回家、徐雷案、孟钰在后续集数登场及一切后续剧情均属快照未来
   quotation_policy: 不复制原作台词，只做事实级转述
+  player_semantics:
+    default_identity: 经场景明确许可、与当前NPC当面交谈的中立外部人
+    initial_knowledge: 仅知道场景公开说明以及visibility同时包含npc和player的知识项
+    permissions: 无警务、市场管理或私人住所固有权限；当前NPC可在运行态决定隔壁会客区的生活照顾许可，但默认Player不得由当前NPC直接取得问询区或问询记录访问
+    override_policy: 具体场景若改变Player身份、地点、知识或权限，必须显式覆盖；问询区或问询记录访问还必须同时覆盖对应运行态控制权，不得仅以已核验身份或请求理由代替正式授权，也不得据此自动获得NPC私密知识
 evaluated_npcs:
 - an_xin
 - gao_qiqiang
@@ -28,10 +33,16 @@ sources:
 - id: src_tv_kuangbiao
   title: 狂飙
   creator: 徐纪周执导电视剧
-  scope: 2000年除夕冲突后早期剧情
+  scope: 第1集2000年除夕回溯，从摊位续租争议至双桥派出所饺子安排完成
   authority: primary
+- id: src_china_newsweek_20230208
+  title: 主创深度揭秘，《狂飙》何以“狂飙”
+  creator: 中国新闻周刊
+  scope: 主创对电视、冲突、问询与饺子场景的事实级说明
+  authority: corroborating
+  url: http://www.inewsweek.cn/wh/2023-02-08/17533.shtml
 data_constraints:
-- 所有事件必须限定在2000年除夕冲突后的早期阶段
+- 所有事件必须不晚于除夕夜饺子安排完成这一截止事件
 - 不得使用共享快照之后的剧情内容
 - 不得混入小说、广播剧或其他版本设定
 - Anchor池事件按时间排序，只做事实级转述
@@ -39,3 +50,4 @@ data_constraints:
 - 所有known_by和anchor_for必须使用roster中的角色ID
 - 每个cf_edit必须给出真实替代情形并改变关键原因
 - 地点和物品只能来自当前来源范围及共享快照
+- 孟钰在该截止点尚未参与旧厂街冲突线，不得赋予其案件知识或与安欣就该案的互动

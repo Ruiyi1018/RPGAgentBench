@@ -1,36 +1,44 @@
 world_id: world_010
 name: 亮剑剧集共享快照环境
-locations:
-- id: zhaojiayu
-  name: 赵家峪
-  connected_to:
-  - independent_regiment_hq
-  - japanese_stronghold
-- id: independent_regiment_hq
-  name: 独立团团部
-  connected_to:
-  - zhaojiayu
-  - japanese_stronghold
-- id: japanese_stronghold
-  name: 日军据点
-  connected_to:
-  - zhaojiayu
-  - independent_regiment_hq
-- id: nearby_village
-  name: 附近村庄
-  connected_to:
-  - zhaojiayu
-items:
-- id: li_yunlong_sword
-  name: 李云龙的指挥刀
-  type: 武器
-  portable: true
-- id: independent_regiment_flag
-  name: 独立团军旗
-  type: 标志物
-  portable: true
-- id: xiuqin_satchel
-  name: 秀芹的针线包
-  type: 日常用品
-  portable: true
 language: zh
+
+locations:
+  - id: zhaojiayu
+    name: 赵家峪
+    connected_to: [independent_regiment_hq_zhaojiayu, japanese_stronghold, nearby_village]
+  - id: independent_regiment_hq_zhaojiayu
+    name: 独立团团部（赵家峪驻地）
+    connected_to: [zhaojiayu, independent_regiment_hq, japanese_stronghold, nearby_village, new_first_regiment_hq, new_second_regiment_hq, jinsui_army_garrison, heyuan_county]
+  - id: independent_regiment_hq
+    name: 独立团团部（迁驻赵家峪前）
+    connected_to: [independent_regiment_hq_zhaojiayu, japanese_stronghold, nearby_village, new_first_regiment_hq, new_second_regiment_hq, jinsui_army_garrison, heyuan_county]
+  - id: japanese_stronghold
+    name: 日军据点
+    connected_to: [zhaojiayu, independent_regiment_hq_zhaojiayu, independent_regiment_hq, new_first_regiment_hq, new_second_regiment_hq, jinsui_army_garrison]
+  - id: nearby_village
+    name: 附近村庄
+    connected_to: [zhaojiayu, independent_regiment_hq_zhaojiayu, independent_regiment_hq, new_first_regiment_hq, new_second_regiment_hq, jinsui_army_garrison]
+  - id: new_first_regiment_hq
+    name: 新一团团部
+    connected_to: [independent_regiment_hq_zhaojiayu, independent_regiment_hq, japanese_stronghold, nearby_village, new_second_regiment_hq]
+  - id: new_second_regiment_hq
+    name: 新二团团部
+    connected_to: [independent_regiment_hq_zhaojiayu, independent_regiment_hq, japanese_stronghold, nearby_village, new_first_regiment_hq]
+  - id: jinsui_army_garrison
+    name: 晋绥军358团驻地
+    connected_to: [independent_regiment_hq_zhaojiayu, independent_regiment_hq, japanese_stronghold, nearby_village, heyuan_county]
+  - id: heyuan_county
+    name: 河源县城（含聚仙楼）
+    connected_to: [independent_regiment_hq_zhaojiayu, independent_regiment_hq, jinsui_army_garrison]
+
+items:
+  - {id: li_yunlong_sword, name: 李云龙的指挥刀, type: 武器, portable: true}
+  - {id: independent_regiment_flag, name: 独立团军旗, type: 标志物, portable: true}
+  - {id: xiuqin_satchel, name: 秀芹的针线包, type: 日常用品, portable: true}
+  - {id: independent_regiment_order_book, name: 独立团团部命令簿, type: 军令资源, portable: true}
+  - {id: jinsui_358_deployment_map, name: 晋绥军358团部署图, type: 军事情报, portable: true}
+  - {id: new_first_regiment_order_book, name: 新一团命令簿, type: 军令资源, portable: true}
+  - {id: new_second_regiment_order_book, name: 新二团命令簿, type: 军令资源, portable: true}
+  - {id: zhaojiayu_route_notes, name: 赵家峪地方路线记录, type: 地方情报, portable: true}
+  - {id: shoe_supply_batch, name: 赵家峪妇救会赶制的军鞋, type: 支前物资, portable: true}
+  - {id: chu_gift_browning_pistol, name: 楚云飞赠李云龙后由秀芹取得的勃朗宁手枪, type: 武器, portable: true}

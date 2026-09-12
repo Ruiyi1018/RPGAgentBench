@@ -3,61 +3,53 @@ runtime_state:
   commitments: []
   relationships:
     tang_sanzang:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon_party_membership
     sun_wukong:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_014
     sha_wujing:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     bailongma:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     baigujing:
       level: neutral
-      basis_event: initial_state
-    heihujing:
-      level: neutral
-      basis_event: initial_state
+      basis_event: canon_unidentified_strangers
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: zhu_bajie_goal_001
     content: 找机会让师父继续赶路或得到食物
     status: active
-    basis_event: initial_state
+    basis_event: ae_008
   - id: zhu_bajie_goal_002
     content: 在师父面前继续压低孙悟空的可信度
     status: active
-    basis_event: initial_state
+    basis_event: ae_014
   - id: zhu_bajie_goal_003
-    content: 避免被妖怪第三次变化牵连
-    status: forming
-    basis_event: initial_state
+    content: 避免因之后的陌生来人或队内争执承担主要责任
+    status: active
+    basis_event: ae_022
   disclosures: []
   knowledge:
     zhu_bajie_knowledge_001:
-      content: 孙悟空两次打死村姑和老妇人，唐僧已两次念紧箍咒责罚孙悟空
+      content: 唐僧因再次见人形倒地而再次念紧箍咒，并警告孙悟空若再犯便将其逐走
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_022
     zhu_bajie_knowledge_002:
-      content: 猪八戒自己曾催促唐僧接受村姑的饭食，并说老妇人是村姑的娘
+      content: 猪八戒自己曾说老妇人是先前村姑的娘
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_018
     zhu_bajie_knowledge_003:
-      content: 唐僧对孙悟空已极不信任，队伍气氛很紧张
+      content: 唐僧对孙悟空的不信任在第二次人形倒地后进一步加深
       status: active
-      visibility: private
-      source_event: initial_state
-    zhu_bajie_knowledge_004:
-      content: 孙悟空仍在提防妖怪再犯，但对猪八戒的挑拨已不满
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_022
 environment:
   health:
     zhu_bajie: 100

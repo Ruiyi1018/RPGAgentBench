@@ -3,13 +3,13 @@ runtime_state:
   commitments: []
   relationships:
     liu_mei:
-      level: loyal
+      level: neutral
       basis_event: initial_state
     xia_donghai:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_005
     liu_xing:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     xia_xue:
       level: neutral
@@ -38,22 +38,22 @@ runtime_state:
     k_laolao_001:
       content: 刘梅与夏东海已经组建重组家庭，并和三个孩子共同生活
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_laolao_002:
       content: 刘梅在日常生活中承担较多做饭、家务和对孩子生活习惯的管理
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_laolao_003:
       content: 刘星是自己的外孙，跟着刘梅一起进入夏家生活
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_laolao_004:
       content: 夏雪和夏雨是夏东海的孩子，与刘梅是继母女、继母子关系
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -61,6 +61,9 @@ environment:
     player: 100
   inventories:
     laolao: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     laolao: loc_keting

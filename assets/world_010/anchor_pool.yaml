@@ -1,257 +1,232 @@
 world_id: world_010
 source: 电视剧《亮剑》
 events:
-- id: anchor_001
-  fact: 李云龙担任八路军独立团团长。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  - chu_yunfei
-  - xiuqin
-  state_change: 李云龙确立独立团军事主官身份。
-  cf_edit: 上级任命他人为团长，李云龙未获独立团指挥权。
-  anchor_for:
-  - li_yunlong
-- id: anchor_002
-  fact: 赵刚来到独立团担任政委，与李云龙开始共同任职。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  - chu_yunfei
-  - xiuqin
-  state_change: 独立团形成李云龙与赵刚共同领导格局。
-  cf_edit: 赵刚被调往其他部队，未与李云龙共事。
-  anchor_for:
-  - zhao_gang
-  - li_yunlong
 - id: anchor_003
-  fact: 秀芹在赵家峪一带活动，与李云龙及独立团有联系。
+  chapter_order: "010"
+  fact: 上级任命丁伟接任新一团团长。
   known_by:
+  - ding_wei
   - li_yunlong
-  - zhao_gang
-  - xiuqin
-  state_change: 秀芹作为地方群众成员进入独立团活动范围。
-  cf_edit: 秀芹在赵家峪以外地区活动，未与独立团产生联系。
+  state_change: 丁伟取得新一团职责范围内的指挥权限，并激活建设新一团的目标。
+  state_path: environment.access.new_first_regiment_full_command.subjects.ding_wei
+  state_paths_by_npc:
+    ding_wei: environment.access.new_first_regiment_full_command.subjects.ding_wei
+    li_yunlong: runtime_state.knowledge.li_yunlong_knowledge_ding_appointment
+  goal_state_paths_by_npc:
+    ding_wei: runtime_state.goals.goal_ding_wei_002
+  cf_edit: 仅将任命对象改为另一名干部。
+  counterfactual_consequence: 丁伟不拥有新一团调兵权限，也不会以新一团团长身份制定部队建设计划。
   anchor_for:
-  - xiuqin
+  - ding_wei
+  - li_yunlong
+- id: anchor_001
+  chapter_order: "020"
+  fact: 山本一木率特工队突袭孔捷任团长时的独立团，独立团遭受重大损失。
+  known_by:
+  - kong_jie
+  state_change: 孔捷新增“袭击者是一支训练和装备特殊的日军小部队”的亲历知识，并激活查明敌军与整顿部队的目标。
+  state_path: runtime_state.knowledge.kong_jie_knowledge_5
+  cf_edit: 仅将“孔捷亲历袭击”改为“孔捷事后只收到损失通报”。
+  counterfactual_consequence: 孔捷不能确认袭击者的战术细节，只能请求进一步侦察而不能据此部署针对性防范。
+  anchor_for:
+  - kong_jie
+- id: anchor_002
+  chapter_order: "030"
+  fact: 上级因独立团遭袭失利撤去孔捷团长职务，并令其留在独立团戴罪立功。
+  known_by:
+  - kong_jie
+  state_change: 孔捷失去独立团最终指挥权，形成服从新团长并协助整顿部队的当前承诺。
+  state_path: environment.access.independent_regiment_full_command.subjects.kong_jie
+  cf_edit: 仅将上级处理改为“保留孔捷团长职务并记过”。
+  counterfactual_consequence: 孔捷继续拥有全团指挥权，不需要以副职身份请求团长批准调动。
+  anchor_for:
+  - kong_jie
 - id: anchor_004
-  fact: 楚云飞作为晋绥军军官与李云龙在同一战区活动。
+  chapter_order: "040"
+  fact: 上级任命李云龙接任独立团团长，孔捷留团任副团长协助工作。
   known_by:
   - li_yunlong
-  - zhao_gang
-  - chu_yunfei
   - kong_jie
   - ding_wei
-  state_change: 楚云飞与李云龙形成国共两军在同一战区的互动关系。
-  cf_edit: 楚云飞被调离该战区，与李云龙失去直接接触。
+  state_change: 李云龙取得独立团最终军事指挥权；孔捷取得受团长节制的副团长权限。
+  state_path: environment.access.independent_regiment_full_command.subjects.li_yunlong
+  state_paths_by_npc:
+    li_yunlong: environment.access.independent_regiment_full_command.subjects.li_yunlong
+    kong_jie: environment.access.independent_regiment_deputy_command.subjects.kong_jie
+    ding_wei: runtime_state.knowledge.knowledge_ding_wei_li_appointment
+  cf_edit: 仅将团长任命对象改为另一名干部。
+  counterfactual_consequence: 李云龙不能调动独立团，孔捷须向另一名团长报告并请求批准。
   anchor_for:
-  - chu_yunfei
+  - li_yunlong
+  - kong_jie
+  - ding_wei
 - id: anchor_005
-  fact: 孔捷与李云龙同属八路军，彼此熟识并保持联系。
+  chapter_order: "050"
+  fact: 赵刚到独立团团部报到并正式就任政委。
   known_by:
   - li_yunlong
-  - kong_jie
-  - ding_wei
   - zhao_gang
-  state_change: 孔捷作为李云龙的战友进入共同军事关系网。
-  cf_edit: 孔捷被调往其他战略方向，与李云龙失去日常联系。
-  anchor_for:
   - kong_jie
-- id: anchor_006
-  fact: 丁伟与李云龙同属八路军，彼此熟识并保持联系。
+  state_change: 赵刚取得独立团政治工作与纪律事务权限，李云龙新增“赵刚已正式到任”的知识。
+  state_path: environment.access.independent_regiment_political_work.subjects.zhao_gang
+  state_paths_by_npc:
+    zhao_gang: environment.access.independent_regiment_political_work.subjects.zhao_gang
+    li_yunlong: runtime_state.knowledge.li_yunlong_knowledge_zhao_role
+    kong_jie: runtime_state.knowledge.kong_jie_knowledge_zhao_appointment
+  cf_edit: 仅将赵刚的调令目的地改为其他部队。
+  counterfactual_consequence: 赵刚不拥有独立团政工权限，李云龙仍需等待政委到任。
+  anchor_for:
+  - zhao_gang
+  - li_yunlong
+  - kong_jie
+- id: anchor_012
+  chapter_order: "060"
+  fact: 李家坡战斗后，上级调任孔捷担任八路军新二团团长，孔捷离开独立团并到新二团履职。
   known_by:
+  - kong_jie
   - li_yunlong
   - ding_wei
-  - kong_jie
-  - zhao_gang
-  state_change: 丁伟作为李云龙的战友进入共同军事关系网。
-  cf_edit: 丁伟被调往其他根据地，未与李云龙保持联系。
+  state_change: 孔捷的当前职务由独立团副团长更新为新二团团长，失去独立团副职权限并取得新二团最终军事指挥权，当前位置更新为新二团团部。
+  state_path: environment.access.new_second_regiment_full_command.subjects.kong_jie
+  state_paths_by_npc:
+    kong_jie: environment.access.new_second_regiment_full_command.subjects.kong_jie
+    li_yunlong: runtime_state.knowledge.li_yunlong_knowledge_kong_appointment
+    ding_wei: runtime_state.knowledge.knowledge_ding_wei_kong_appointment
+  revoked_access_state_paths_by_npc:
+    kong_jie: environment.access.independent_regiment_deputy_command.subjects.kong_jie
+  location_state_paths_by_npc:
+    kong_jie: environment.locations.kong_jie
+  cf_edit: 仅将调任对象从孔捷改为另一名干部。
+  counterfactual_consequence: 孔捷不会取得新二团调兵权限，也不会以新二团团长身份制定本团整顿和防范计划；其独立团副团长权限不会因本次调任而撤销，当前位置也不会更新为new_second_regiment_hq。
   anchor_for:
+  - kong_jie
+  - li_yunlong
   - ding_wei
 - id: anchor_007
-  fact: 李云龙与赵刚在独立团团部共同处理军事事务。
+  chapter_order: "070"
+  fact: 楚云飞以晋绥军358团团长身份到独立团观摩；李云龙仅在此次到访期间允许其进入团部会面和指定观摩区域，楚云飞结束观摩离开时该临时权限随即撤销。
   known_by:
   - li_yunlong
   - zhao_gang
-  - kong_jie
-  - ding_wei
-  - xiuqin
-  state_change: 独立团领导核心开始协同运作。
-  cf_edit: 李云龙与赵刚因职责分工不同，长期分头行动。
+  - chu_yunfei
+  state_change: 楚云飞在观摩期间临时获得独立团会面和指定观摩区域访问权，离开时该权限即转为revoked；其在整个生命周期内均无独立团命令簿、内部部署或指挥权。
+  state_path: environment.access.independent_regiment_guest_area.subjects.chu_yunfei
+  state_paths_by_npc:
+    li_yunlong: environment.access.independent_regiment_guest_area.subjects.chu_yunfei
+    chu_yunfei: environment.access.independent_regiment_guest_area.subjects.chu_yunfei
+    zhao_gang: runtime_state.knowledge.zhao_gang_knowledge_chu_observation
+  cf_edit: 仅将李云龙的接待决定改为拒绝进入团部、改在驻地外会面。
+  counterfactual_consequence: 楚云飞从未取得指定观摩区域访问权，不能观察团部训练与工作，只能根据驻地外会谈形成判断；主分支的临时权限则在离开时按期撤销。
   anchor_for:
-  - li_yunlong
-  - zhao_gang
-- id: anchor_008
-  fact: 李云龙与楚云飞在战区中保持一定程度的相互注意。
-  known_by:
   - li_yunlong
   - chu_yunfei
   - zhao_gang
-  state_change: 国共两军军官之间形成互相观察和防备关系。
-  cf_edit: 楚云飞被调往其他区域，未与李云龙形成互相注意。
+- id: anchor_006
+  chapter_order: "080"
+  fact: 独立团团部转移并驻扎到赵家峪，开始以当地作为当前活动基地。
+  known_by:
+  - li_yunlong
+  - zhao_gang
+  - xiuqin
+  state_change: 李云龙与赵刚的当前位置从赵家峪驻扎前的独立团团部更新为independent_regiment_hq_zhaojiayu，明确表示赵家峪内的当前团部驻地；秀芹新增“独立团已驻扎赵家峪”的在地知识；孔捷的新二团驻地不受此事件改变。
+  state_path: environment.locations.li_yunlong
+  state_paths_by_npc:
+    li_yunlong: environment.locations.li_yunlong
+    zhao_gang: environment.locations.zhao_gang
+    xiuqin: runtime_state.knowledge.knowledge_002
+  cf_edit: 仅将团部驻地从independent_regiment_hq_zhaojiayu改为nearby_village。
+  counterfactual_consequence: 李云龙与赵刚的位置值改为nearby_village而非independent_regiment_hq_zhaojiayu，秀芹不能通过本村群众工作直接联络团部。
+  anchor_for:
+  - li_yunlong
+  - zhao_gang
+  - xiuqin
+- id: anchor_011
+  chapter_order: "090"
+  fact: 秀芹以赵家峪妇救会干部身份，把本村妇女赶制的一批军鞋送交独立团接收。
+  known_by:
+  - xiuqin
+  - li_yunlong
+  - zhao_gang
+  state_change: 军鞋从赵家峪妇救会转交独立团，秀芹对该批支前物资的交付承诺转为fulfilled。
+  state_path: environment.inventories.independent_regiment
+  state_paths_by_npc:
+    li_yunlong: environment.inventories.independent_regiment
+    zhao_gang: environment.inventories.independent_regiment
+    xiuqin: environment.inventories.independent_regiment
+  cf_edit: 仅将“军鞋已完成”改为“尚缺材料、未能完成”。
+  counterfactual_consequence: 独立团不能接收该批军鞋，秀芹的交付承诺保持active并需先解决材料问题。
+  anchor_for:
+  - li_yunlong
+  - zhao_gang
+  - xiuqin
+- id: anchor_013
+  chapter_order: "100"
+  fact: 秀芹与李云龙约定若能装好手枪并打中目标便把枪给她；秀芹完成装枪射击并命中，李云龙依约把楚云飞所赠的勃朗宁手枪交给秀芹。
+  known_by:
+  - xiuqin
+  - li_yunlong
+  state_change: 勃朗宁手枪从李云龙转交秀芹，双方因具体互动和履约形成有依据的方向性信任；秀芹持枪但不获得任何军事指挥或情报权限。
+  state_path: runtime_state.relationships.xiuqin
+  state_paths_by_npc:
+    li_yunlong: runtime_state.relationships.xiuqin
+    xiuqin: runtime_state.relationships.li_yunlong
+  resource_state_path: environment.inventories.xiuqin
+  cf_edit: 仅将秀芹的射击结果改为未命中目标。
+  counterfactual_consequence: 李云龙不交付手枪，秀芹的inventory中没有该枪，双方关系保持neutral而不能以此次互动作为trusting依据。
+  anchor_for:
+  - li_yunlong
+  - xiuqin
+- id: anchor_008
+  chapter_order: "110"
+  fact: 早期独立团观摩已经结束后，李云龙后来化装进入河源县城并与楚云飞会面；两人在城内临时获得聚仙楼有日军军官聚会的情报。
+  known_by:
+  - li_yunlong
+  - chu_yunfei
+  state_change: 李云龙与楚云飞新增“聚仙楼将在明确时段出现日军军官目标”的任务情报，李云龙激活是否实施突袭的决策目标；赵刚未参与现场获知。
+  state_path: runtime_state.knowledge.li_yunlong_knowledge_heyuan_intelligence
+  state_paths_by_npc:
+    li_yunlong: runtime_state.knowledge.li_yunlong_knowledge_heyuan_intelligence
+    chu_yunfei: runtime_state.knowledge.knowledge_005
+  cf_edit: 仅将情报来源改为未经复核的单一匿名传闻。
+  counterfactual_consequence: 李云龙与楚云飞不能直接据此出击，必须先侦察核实。
   anchor_for:
   - li_yunlong
   - chu_yunfei
 - id: anchor_009
-  fact: 秀芹在独立团活动范围内承担群众工作。
+  chapter_order: "120"
+  fact: 李云龙决定组织小队突袭聚仙楼，楚云飞明确决定一同参加，但双方不合并各自部队指挥权。
   known_by:
-  - xiuqin
   - li_yunlong
-  - zhao_gang
-  state_change: 秀芹成为独立团周边群众工作参与者。
-  cf_edit: 秀芹未参与任何独立团相关的群众工作。
+  - chu_yunfei
+  state_change: 李云龙与楚云飞分别形成执行同一突袭目标的临时承诺，有限协同行动获准但跨部队调兵权限仍被拒绝。
+  state_path: runtime_state.commitments.heyuan_joint_raid
+  state_paths_by_npc:
+    li_yunlong: runtime_state.commitments.heyuan_joint_raid
+    chu_yunfei: runtime_state.commitments.heyuan_joint_raid
+  cf_edit: 仅将楚云飞的决定改为不参加突袭。
+  counterfactual_consequence: 李云龙仍可决定独立行动，但不能把楚云飞列为行动成员或依赖其现场配合。
   anchor_for:
-  - xiuqin
+  - li_yunlong
+  - chu_yunfei
 - id: anchor_010
-  fact: 李云龙在独立团日常训练或作战准备中表现主动。
+  chapter_order: "130"
+  fact: 李云龙与楚云飞完成对聚仙楼日军军官聚会的突袭，并分别返回独立团与晋绥军358团驻地。
   known_by:
   - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  state_change: 独立团保持战斗准备状态。
-  cf_edit: 独立团处于休整状态，军事准备明显滞后。
-  anchor_for:
-  - li_yunlong
-- id: anchor_011
-  fact: 赵刚在独立团开展政治工作，配合李云龙的军事指挥。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  - xiuqin
-  state_change: 独立团在军事指挥之外增加政治工作维度。
-  cf_edit: 赵刚未能在独立团有效开展政治工作。
-  anchor_for:
-  - zhao_gang
-- id: anchor_012
-  fact: 李云龙了解并利用赵家峪及周边地形。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - xiuqin
-  state_change: 独立团在赵家峪一带形成地形依托。
-  cf_edit: 独立团初到赵家峪，对周边地形尚不熟悉。
-  anchor_for:
-  - li_yunlong
-- id: anchor_013
-  fact: 楚云飞掌握其所部在共享快照范围内的军事部署。
-  known_by:
   - chu_yunfei
-  - li_yunlong
-  - zhao_gang
-  state_change: 楚云飞在本战区拥有一定军事主动权。
-  cf_edit: 楚云飞所部因上级调动暂时失去完整部署。
+  state_change: 李云龙与楚云飞各自的聚仙楼突袭承诺转为fulfilled，并分别返回独立团与晋绥军358团驻地；双方因亲历并完成此次有限协同行动，对彼此的方向性关系由neutral更新为trusting，但不取得对方部队指挥权；早期独立团观摩权限已由anchor_007在离开观摩时撤销，本事件不创建、延长或收束该权限；未收到后续通报的角色不自动获得行动细节或结果知识。
+  state_path: runtime_state.commitments.heyuan_joint_raid
+  state_paths_by_npc:
+    li_yunlong: runtime_state.commitments.heyuan_joint_raid
+    chu_yunfei: runtime_state.commitments.heyuan_joint_raid
+  relationship_state_paths_by_npc:
+    li_yunlong: runtime_state.relationships.chu_yunfei
+    chu_yunfei: runtime_state.relationships.li_yunlong
+  location_state_paths_by_npc:
+    li_yunlong: environment.locations.li_yunlong
+    chu_yunfei: environment.locations.chu_yunfei
+  cf_edit: 仅将突袭结果改为“目标在行动前撤离，行动取消”。
+  counterfactual_consequence: 两人的突袭承诺状态改为cancelled，双方不能把日军军官伤亡作为已确认战果，且因未发生共同作战，双方关系保持neutral；取消后李云龙仍返回independent_regiment_hq_zhaojiayu、楚云飞仍返回jinsui_army_garrison。主分支承诺为fulfilled、关系为trusting，并可据亲历确认行动完成及各自返驻地。
   anchor_for:
+  - li_yunlong
   - chu_yunfei
-- id: anchor_014
-  fact: 孔捷与李云龙交流过对日作战的看法。
-  known_by:
-  - li_yunlong
-  - kong_jie
-  - zhao_gang
-  - ding_wei
-  state_change: 八路军同级指挥员形成对日作战的经验交流。
-  cf_edit: 孔捷因作战任务紧张未与李云龙交流。
-  anchor_for:
-  - kong_jie
-  - li_yunlong
-- id: anchor_015
-  fact: 丁伟与李云龙交流过部队建设或作战经验。
-  known_by:
-  - li_yunlong
-  - ding_wei
-  - kong_jie
-  - zhao_gang
-  state_change: 李云龙与丁伟之间形成军事经验共享。
-  cf_edit: 丁伟所部因距离较远未能与李云龙当面交流。
-  anchor_for:
-  - ding_wei
-  - li_yunlong
-- id: anchor_016
-  fact: 秀芹与独立团成员之间有一定信任关系。
-  known_by:
-  - xiuqin
-  - li_yunlong
-  - zhao_gang
-  state_change: 秀芹成为独立团在赵家峪群众中的可依靠力量。
-  cf_edit: 秀芹起初对独立团持观望态度，信任建立较慢。
-  anchor_for:
-  - xiuqin
-- id: anchor_017
-  fact: 赵刚在独立团中与李云龙共同应对日军据点威胁。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - chu_yunfei
-  - kong_jie
-  - ding_wei
-  state_change: 独立团领导核心面对日军威胁形成协作。
-  cf_edit: 日军据点威胁暂时减弱，独立团领导层未集中应对。
-  anchor_for:
-  - zhao_gang
-  - li_yunlong
-- id: anchor_018
-  fact: 楚云飞在共享快照范围内保持与八路军的战区分界。
-  known_by:
-  - chu_yunfei
-  - li_yunlong
-  - zhao_gang
-  state_change: 国共双方在相同战区维持一定界线。
-  cf_edit: 战区分界模糊，双方活动范围出现重叠。
-  anchor_for:
-  - chu_yunfei
-- id: anchor_019
-  fact: 李云龙在独立团中拥有较强个人威信。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  - xiuqin
-  state_change: 独立团在李云龙影响下形成较强凝聚力。
-  cf_edit: 李云龙初到独立团时威信尚未建立。
-  anchor_for:
-  - li_yunlong
-- id: anchor_020
-  fact: 赵刚在独立团中逐渐获得李云龙的认可。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  state_change: 独立团军事主官与政委之间协作加强。
-  cf_edit: 李云龙与赵刚因工作方式不同长期存在隔阂。
-  anchor_for:
-  - zhao_gang
-  - li_yunlong
-- id: anchor_021
-  fact: 秀芹在赵家峪及独立团周边环境中熟悉地形和群众情况。
-  known_by:
-  - xiuqin
-  - li_yunlong
-  - zhao_gang
-  state_change: 秀芹具备为独立团提供地方情况的能力。
-  cf_edit: 秀芹对赵家峪周边情况了解有限。
-  anchor_for:
-  - xiuqin
-- id: anchor_022
-  fact: 李云龙、赵刚与孔捷、丁伟均处于对日作战的同一阶段。
-  known_by:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei
-  - chu_yunfei
-  state_change: 八路军多名指挥员在同一时期共同面对日军压力。
-  cf_edit: 几名指挥员因分散作战未形成同一阶段互动。
-  anchor_for:
-  - li_yunlong
-  - zhao_gang
-  - kong_jie
-  - ding_wei

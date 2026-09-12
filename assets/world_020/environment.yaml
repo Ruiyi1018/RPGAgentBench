@@ -1,16 +1,22 @@
 world_id: world_020
-name: Westeros and the Narrow Sea region, Season 1 before Eddard Stark's arrest
+name: Westeros and the Narrow Sea region at the shared S01E07 cutoff
+language: en
+
 locations:
 - id: winterfell
   name: Winterfell
   connected_to:
-  - kings_landing
+  - the_kingsroad
   - the_wall
+  - winterfell_tower
 - id: kings_landing
   name: King's Landing
   connected_to:
-  - winterfell
+  - the_kingsroad
   - the_eyrie
+  - pentos
+  - red_keep
+  - kingswood
 - id: the_wall
   name: The Wall
   connected_to:
@@ -19,14 +25,73 @@ locations:
   name: The Eyrie
   connected_to:
   - kings_landing
+  - the_kingsroad
+  - vale_high_road
+  - crossroads_inn
 - id: pentos
   name: Pentos
-  connected_to: []
+  connected_to:
+  - kings_landing
+  - dothraki_camp
 - id: the_kingsroad
   name: The Kingsroad
   connected_to:
   - winterfell
   - kings_landing
+  - the_eyrie
+  - vale_high_road
+  - crossroads_inn
+  - riverlands
+- id: vale_high_road
+  name: Vale High Road in the Mountains of the Moon
+  connected_to:
+  - the_eyrie
+  - the_kingsroad
+- id: winterfell_tower
+  name: Winterfell Tower
+  connected_to:
+  - winterfell
+- id: red_keep
+  name: The Red Keep
+  connected_to:
+  - kings_landing
+- id: kingswood
+  name: Kingswood
+  connected_to:
+  - kings_landing
+- id: crossroads_inn
+  name: Inn at the Crossroads
+  connected_to:
+  - the_kingsroad
+  - the_eyrie
+  - riverlands
+- id: riverlands
+  name: The Riverlands
+  connected_to:
+  - the_kingsroad
+  - crossroads_inn
+  - the_twins
+  - riverrun
+  - tywins_camp
+- id: the_twins
+  name: The Twins
+  connected_to:
+  - riverlands
+  - riverrun
+- id: riverrun
+  name: Riverrun
+  connected_to:
+  - riverlands
+  - the_twins
+- id: tywins_camp
+  name: Tywin Lannister's Camp
+  connected_to:
+  - riverlands
+- id: dothraki_camp
+  name: Dothraki Khalasar Camp
+  connected_to:
+  - pentos
+
 items:
 - id: iron_throne
   name: Iron Throne
@@ -48,4 +113,3 @@ items:
   name: Longclaw
   type: weapon
   portable: true
-language: en

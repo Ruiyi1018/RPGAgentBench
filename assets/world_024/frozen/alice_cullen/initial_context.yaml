@@ -1,22 +1,28 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: alice_escort_bella
+    target: bella_swan
+    content: Escort Bella away from Forks with Jasper
+    condition: Final protection teams begin departure
+    status: active
+    source_event: ae_021
   relationships:
     bella_swan:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_010
     edward_cullen:
       level: loyal
-      basis_event: initial_state
+      basis_event: family_background
     carlisle_cullen:
       level: loyal
-      basis_event: initial_state
+      basis_event: family_background
     rosalie_hale:
-      level: neutral
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     jacob_black:
       level: neutral
-      basis_event: initial_state
+      basis_event: no_direct_contact
     player:
       level: neutral
       basis_event: initial_state
@@ -24,40 +30,39 @@ runtime_state:
   - id: alice_goal_001
     content: Monitor her visions for any new danger to Bella from the nomadic vampires.
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: alice_goal_002
     content: Help implement the Cullen family plan to hide Bella from James.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   - id: alice_goal_003
     content: Maintain Bella's trust and keep her informed about the protective plan.
     status: active
-    basis_event: initial_state
+    basis_event: ae_010
   disclosures: []
   knowledge:
     alice_know_001:
-      content: The nomadic vampire coven has arrived in the area and includes the
-        tracker James.
+      content: Laurent, Victoria, and James reached the Cullen baseball field during
+        the family game.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_017
     alice_know_002:
-      content: Her visions indicate the nomadic vampires are hunting in the area and
-        may target Bella.
+      content: James chose Bella as his target after detecting her human scent.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_018
     alice_know_003:
       content: The Cullen family has formed a plan to protect Bella by moving her
         away from Forks.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
     alice_know_004:
       content: Bella has learned the secret that the Cullens are vampires.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_010
 environment:
   health:
     alice_cullen: 100
@@ -68,7 +73,9 @@ environment:
   locations:
     alice_cullen: cullen_house
     player: cullen_house
-  access: {}
+  access:
+    alice_cullen:
+    - attend_forks_high
   offers: []
   task_status: active
   dialogue_status: active

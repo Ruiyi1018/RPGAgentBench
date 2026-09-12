@@ -38,22 +38,27 @@ runtime_state:
     lin_pingzhi_k01:
       content: 自己是福州福威镖局后人，家传辟邪剑谱引来灭门之祸
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     lin_pingzhi_k02:
       content: 岳不群收自己入门并许配岳灵珊，可能别有所图
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     lin_pingzhi_k03:
       content: 余沧海是灭门仇人之一
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     lin_pingzhi_k04:
-      content: 自己与岳灵珊已成亲
+      content: 自己与岳灵珊关系亲近，但当前尚未成亲，也没有岳不群女婿身份
       status: active
-      visibility: public
+      visibility: [npc]
+      source_event: initial_state
+    lin_pingzhi_k05:
+      content: 自己尚未取得或修炼辟邪剑谱，当前只具林家武学基础，尚无完成复仇的武力。
+      status: active
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:

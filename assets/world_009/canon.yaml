@@ -7,9 +7,21 @@ canon_policy:
   - 动画版
   - 衍生小说
   - 后40集剧情
-  shared_snapshot: 主要成员已聚齐且莫小贝仍在同福客栈
-  generated_timeline: 基于剧集内明确事件顺序与人物状态变化的事实级重建
+  shared_snapshot: 第40集结束后、第41集开始前；中秋经历结束，佟湘玉、白展堂、郭芙蓉、吕秀才、李大嘴、莫小贝均已回到同福客栈，莫小贝已是衡山派掌门但尚未成为五岳盟主
+  generated_timeline:
+    start: 第1集开场前可由第8集回叙确认的客栈聚首
+    end: 第40集结束
+    ordering: 先按剧集序号、再按同集内事件发生顺序
   quotation_policy: 不得直接引用原作台词，仅作事实转述
+  default_player_semantics:
+    identity: 同福客栈内无额外职务、官府身份或江湖身份的普通住客
+    initial_location: tongfu_inn
+    initial_knowledge: 仅知道在客栈公共空间可直接观察到的人员职务、地点和公开经营事实；不因事实属于世界真相或客栈内部共享信息而自动知情
+    initial_authority: 无权查阅账本、进入后厨操作、替掌柜调度人员或处置衡山派事务；临时授权必须由具体场景显式写入access
+    visibility_semantics:
+      npc_only: "[npc]表示该Frozen角色知道、默认Player不知道"
+      npc_and_player: "[npc, player]表示该Frozen角色与默认Player在开局时都知道"
+    scenario_override: 场景若赋予Player特定身份、既有关系、知识或权限，必须逐项显式覆盖默认值；未写出的项目继续沿用默认语义
 evaluated_npcs:
 - tong_xiangyu
 - bai_zhantang

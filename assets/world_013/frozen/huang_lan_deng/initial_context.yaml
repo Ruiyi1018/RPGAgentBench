@@ -3,14 +3,14 @@ runtime_state:
   commitments: []
   relationships:
     qin_feng:
-      level: hostile
-      basis_event: initial_state
-    tang_ren:
-      level: hostile
-      basis_event: initial_state
-    kun_tai:
       level: neutral
       basis_event: initial_state
+    tang_ren:
+      level: neutral
+      basis_event: initial_state
+    kun_tai:
+      level: distrustful
+      basis_event: pre_ev_police_rank_competition
     a_xiang:
       level: neutral
       basis_event: initial_state
@@ -22,39 +22,25 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: g_01
-    content: 继续负责颂帕命案的警方调查
+    content: 通过严格办案取得副局长竞争优势
     status: active
-    basis_event: initial_state
+    basis_event: pre_ev_police_rank_competition
   - id: g_02
-    content: 追查并盘问唐仁与秦风
+    content: 维持警方对案件现场、卷宗和物证的控制
     status: active
-    basis_event: initial_state
-  - id: g_03
-    content: 限制非警方人员接触案发现场和卷宗
-    status: active
-    basis_event: initial_state
+    basis_event: pre_ev_police_authority
   disclosures: []
   knowledge:
-    k_01:
-      content: 颂帕工坊发生命案，自己是警方调查负责警官
+    k_hld_rank:
+      content: 自己与坤泰同为刑警探长，双方正在竞争副局长职位
       status: active
-      visibility: public
-      source_event: initial_state
-    k_02:
-      content: 唐仁是警方正在追查的对象
+      visibility: [npc, player]
+      source_event: pre_ev_police_rank_competition
+    k_hld_authority:
+      content: 非警方人员默认无权进入受限警务区域、读取卷宗或接触物证
       status: active
-      visibility: public
-      source_event: initial_state
-    k_03:
-      content: 秦风与唐仁在案件中反复出现，属于需要盘查的介入者
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_04:
-      content: 颂帕工坊现场被封锁，非警方人员不应进入
-      status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: pre_ev_police_authority
 environment:
   health:
     huang_lan_deng: 100
@@ -65,7 +51,22 @@ environment:
   locations:
     huang_lan_deng: loc_police_station
     player: loc_police_station
-  access: {}
+  access:
+    police_station_public_area:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {huang_lan_deng: granted, player: granted}
+    police_station_restricted:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {huang_lan_deng: granted, player: denied}
+    case_file:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {huang_lan_deng: granted, tang_ren: denied, qin_feng: denied, player: denied}
+    evidence_storage:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {huang_lan_deng: granted, tang_ren: denied, qin_feng: denied, player: denied}
+    songpa_workshop_scene:
+      controllers: [huang_lan_deng]
+      subjects: {huang_lan_deng: granted, tang_ren: denied, qin_feng: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

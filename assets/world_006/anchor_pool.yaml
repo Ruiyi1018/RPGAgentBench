@@ -1,284 +1,111 @@
 world_id: world_006
-source: 电视剧《甄嬛传》
+source: 2011年中国大陆76集版电视剧《甄嬛传》第1至第10集
 events:
-- id: ev_001
-  fact: 甄嬛入宫后被安置在碎玉轩居住。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - hua_fei
-  - empress_yixiu
-  - su_peisheng
-  state_change: 甄嬛从宫外女子正式成为后宫妃嫔，并开始以碎玉轩为主要居所。
-  cf_edit: 如果甄嬛入宫时被安置在更偏远的宫室而非碎玉轩，她与后宫核心区域的日常往来会明显减少。
-  anchor_for:
-  - zhen_huan
-- id: ev_002
-  fact: 甄嬛因不愿卷入后宫争斗，初期称病避宠。
-  known_by:
-  - zhen_huan
-  - shen_meizhuang
-  state_change: 甄嬛在后宫权力结构中暂时保持低调，未立即进入皇帝视野。
-  cf_edit: 如果甄嬛初期没有称病避宠，而是直接参与宫掖走动，她会更早面对华妃一派的敌意。
-  anchor_for:
-  - zhen_huan
-- id: ev_003
-  fact: 沈眉庄入宫后获得皇帝看重，并在妃嫔中较早得到恩宠。
-  known_by:
-  - emperor_yongzheng
-  - zhen_huan
-  - shen_meizhuang
-  - hua_fei
-  - empress_yixiu
-  - an_lingrong
-  - su_peisheng
-  state_change: 沈眉庄在后宫的地位和存在感上升，成为华妃等人的注意对象。
-  cf_edit: 如果沈眉庄没有较早获得皇帝看重，华妃初期的主要压制对象可能更集中于其他新入宫妃嫔。
-  anchor_for:
-  - shen_meizhuang
-- id: ev_004
-  fact: 安陵容因出身较低，入宫初期在后宫中受轻视。
-  known_by:
-  - an_lingrong
-  - zhen_huan
-  - shen_meizhuang
-  - hua_fei
-  - empress_yixiu
-  state_change: 安陵容形成自卑与敏感心态，并促使她与甄嬛、沈眉庄等人走近。
-  cf_edit: 如果安陵容入宫后没有频繁因出身受轻视，她不会那么早对周围人的态度产生强烈防备。
-  anchor_for:
-  - an_lingrong
-- id: ev_005
-  fact: 甄嬛在御花园中偶然遇见皇帝，但当时不知其真实身份。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  state_change: 甄嬛与皇帝之间产生接触，这一相遇后续推动甄嬛受宠。
-  cf_edit: 如果甄嬛在御花园中没有遇见过皇帝，她获得恩宠的时间和路径会被明显推迟。
-  anchor_for:
-  - zhen_huan
-- id: ev_006
-  fact: 甄嬛得知御花园中所遇之人是皇帝后，开始获得显著恩宠。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - hua_fei
-  - empress_yixiu
-  - an_lingrong
-  - shen_meizhuang
-  - su_peisheng
-  state_change: 甄嬛从避宠状态转变为受宠妃嫔，后宫局势随之变化。
-  cf_edit: 如果皇帝没有在御花园与甄嬛发展出好感，甄嬛不会在此时迅速进入后宫权力中心。
-  anchor_for:
-  - zhen_huan
-  - emperor_yongzheng
-- id: ev_007
-  fact: 甄嬛受宠后，华妃对甄嬛产生较强敌意。
-  known_by:
-  - zhen_huan
-  - hua_fei
-  - emperor_yongzheng
-  - empress_yixiu
-  - su_peisheng
-  state_change: 华妃将甄嬛视为威胁，后宫对立从分散转为围绕甄嬛与华妃的阵营化。
-  cf_edit: 如果华妃没有因甄嬛受宠而敌意升级，甄嬛前期的处境会少很多来自翊坤宫的压力。
-  anchor_for:
-  - hua_fei
-  - zhen_huan
-- id: ev_008
-  fact: 皇后在明面上对甄嬛表现出一定照顾，同时观察后宫争斗。
-  known_by:
-  - empress_yixiu
-  - zhen_huan
-  - shen_meizhuang
-  - an_lingrong
-  state_change: 皇后建立相对温和的表象，使部分妃嫔容易视她为可依靠者。
-  cf_edit: 如果皇后在明面上没有表现出照顾甄嬛，甄嬛初期可能更依赖沈眉庄与安陵容形成小团体。
-  anchor_for:
-  - empress_yixiu
-- id: ev_009
-  fact: 苏培盛作为皇帝近侍，常在皇帝与妃嫔之间传递信息和安排事务。
-  known_by:
-  - emperor_yongzheng
-  - su_peisheng
-  - zhen_huan
-  - hua_fei
-  - empress_yixiu
-  state_change: 苏培盛在皇帝身边维持重要执行作用，其态度和安排会影响妃嫔与皇帝的接触。
-  cf_edit: 如果苏培盛没有在皇帝近前负责此类事务，很多妃嫔面见皇帝的机会和方式都会改变。
-  anchor_for:
-  - su_peisheng
-- id: ev_010
-  fact: 甄嬛与沈眉庄、安陵容形成较为亲近的姐妹关系。
-  known_by:
-  - zhen_huan
-  - shen_meizhuang
-  - an_lingrong
-  state_change: 三人彼此支持，在初期后宫环境中形成相对稳固的小团体。
-  cf_edit: 如果安陵容没有进入这个姐妹关系，沈眉庄和甄嬛在应对后宫压力时会缺少一个原本可依靠的盟友。
-  anchor_for:
-  - zhen_huan
-  - shen_meizhuang
-  - an_lingrong
-- id: ev_011
-  fact: 甄嬛在与皇帝互动中逐渐表现出不同于一般妃嫔的谈吐和见解。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  state_change: 皇帝对甄嬛的重视超出一般恩宠层面，开始与她进行更多交流。
-  cf_edit: 如果甄嬛没有在皇帝面前展现出这种谈吐，皇帝可能只将她视为普通受宠妃嫔。
-  anchor_for:
-  - zhen_huan
-- id: ev_012
-  fact: 沈眉庄在受宠后遭到华妃一方的排挤和对立。
-  known_by:
-  - shen_meizhuang
-  - hua_fei
-  - zhen_huan
-  - emperor_yongzheng
-  - empress_yixiu
-  state_change: 沈眉庄的处境从单纯得宠变为需要应对华妃势力打压。
-  cf_edit: 如果沈眉庄没有较早受宠并引起华妃注意，她会少一些来自华妃势力的直接针对。
-  anchor_for:
-  - shen_meizhuang
-- id: ev_013
-  fact: 甄嬛在宫中逐渐接触并了解皇后、华妃等高位妃嫔的权力格局。
-  known_by:
-  - zhen_huan
-  - empress_yixiu
-  - hua_fei
-  state_change: 甄嬛从初入宫时的陌生状态转为对后宫斗争结构和各方立场有基本认识。
-  cf_edit: 如果甄嬛长期避宠不涉足宫务往来，她对后宫权力格局的了解会严重滞后。
-  anchor_for:
-  - zhen_huan
-- id: ev_014
-  fact: 安陵容因自身处境不稳，对甄嬛和沈眉庄产生依赖感，但也容易受到外部拉拢影响。
-  known_by:
-  - an_lingrong
-  - zhen_huan
-  - shen_meizhuang
-  - empress_yixiu
-  state_change: 安陵容在姐妹关系与外部势力之间处于潜在摇摆状态。
-  cf_edit: 如果安陵容初期没有因出身和处境产生强烈依赖感，她面对外部拉拢时会更加保守。
-  anchor_for:
-  - an_lingrong
-- id: ev_015
-  fact: 皇帝对甄嬛的恩宠使甄嬛开始频繁进入养心殿等皇帝所在场所。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - su_peisheng
-  - hua_fei
-  - empress_yixiu
-  state_change: 甄嬛的活动范围扩大，与皇帝决策和日常活动产生更密切联系。
-  cf_edit: 如果皇帝没有让甄嬛频繁进入养心殿，甄嬛对皇帝的影响力不会在初期快速增长。
-  anchor_for:
-  - zhen_huan
-  - emperor_yongzheng
-- id: ev_016
-  fact: 华妃借后宫事务之便，对甄嬛等人施压，试图削弱甄嬛在皇帝心中的分量。
-  known_by:
-  - hua_fei
-  - zhen_huan
-  - shen_meizhuang
-  - empress_yixiu
-  - su_peisheng
-  state_change: 华妃从情绪敌意转向更实际的压制行为，后宫冲突进一步升级。
-  cf_edit: 如果华妃没有借事务之便施压，而只是保持敌意态度，甄嬛受宠后的阻力会小得多。
-  anchor_for:
-  - hua_fei
-- id: ev_017
-  fact: 甄嬛在应对华妃压力时，开始依托与皇帝的关系和姐妹支持寻找立足点。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - shen_meizhuang
-  - an_lingrong
-  - hua_fei
-  - empress_yixiu
-  state_change: 甄嬛从被动受宠转向有意识地维护自身位置，后宫权力竞争更加明显。
-  cf_edit: 如果甄嬛在受宠后没有积极应对华妃压力，她在后宫中的地位会更快受到削弱。
-  anchor_for:
-  - zhen_huan
-- id: ev_018
-  fact: 苏培盛在皇帝与甄嬛之间传递消息时，对甄嬛的态度较为配合。
-  known_by:
-  - su_peisheng
-  - zhen_huan
-  - emperor_yongzheng
-  state_change: 苏培盛在皇帝近前对甄嬛形成相对友好的实际关系，有助于甄嬛获得信息或机会。
-  cf_edit: 如果苏培盛对甄嬛保持冷淡或疏远，甄嬛在皇帝身边获取信息和安排会面的难度会增加。
-  anchor_for:
-  - su_peisheng
-  - zhen_huan
-- id: ev_019
-  fact: 沈眉庄受排挤后，仍与甄嬛保持互相关照。
-  known_by:
-  - shen_meizhuang
-  - zhen_huan
-  state_change: 沈眉庄与甄嬛的关系在外部压力下没有断裂，反而成为彼此的支撑。
-  cf_edit: 如果沈眉庄受排挤后疏远甄嬛，甄嬛在前期会失去最重要的盟友之一。
-  anchor_for:
-  - shen_meizhuang
-  - zhen_huan
-- id: ev_020
-  fact: 安陵容在甄嬛、沈眉庄与后宫其他势力之间，开始感受到身份差异带来的隔阂。
-  known_by:
-  - an_lingrong
-  - zhen_huan
-  - shen_meizhuang
-  state_change: 安陵容对姐妹关系的信任开始受到自身处境和外部环境的影响。
-  cf_edit: 如果安陵容没有强烈感受到身份差异带来的隔阂，她不会那么早对姐妹关系产生疑虑。
-  anchor_for:
-  - an_lingrong
-- id: ev_021
-  fact: 皇后利用后宫事务安排，逐渐促使华妃与甄嬛的矛盾公开化。
-  known_by:
-  - empress_yixiu
-  - hua_fei
-  - zhen_huan
-  - su_peisheng
-  state_change: 后宫冲突不再只是私下敌意，而开始通过具体事务公开显露。
-  cf_edit: 如果皇后没有利用事务安排推动双方冲突公开化，华妃与甄嬛的矛盾可能仍停留在私下较劲阶段。
-  anchor_for:
-  - empress_yixiu
-- id: ev_022
-  fact: 甄嬛在受宠过程中仍保持谨慎，并未完全依赖皇帝恩宠。
-  known_by:
-  - zhen_huan
-  - shen_meizhuang
-  - an_lingrong
-  state_change: 甄嬛在后宫中的行动带有一定自保意识，避免在形势不利时完全暴露弱点。
-  cf_edit: 如果甄嬛受宠后完全依赖皇帝恩宠而不再谨慎，她面对华妃和皇后压力时会更加被动。
-  anchor_for:
-  - zhen_huan
-- id: ev_023
-  fact: 后宫局势在甄嬛受宠后明显分化为支持或敌视甄嬛的不同力量。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - hua_fei
-  - empress_yixiu
-  - an_lingrong
-  - shen_meizhuang
-  - su_peisheng
-  state_change: 后宫权力斗争由分散状态进入以甄嬛为中心的集中冲突阶段。
-  cf_edit: 如果甄嬛受宠后后宫各方没有迅速分化，前期争斗会更加模糊而混乱。
-  anchor_for:
-  - zhen_huan
-  - hua_fei
-- id: ev_024
-  fact: 在甄嬛初次失宠之前，皇帝对甄嬛总体上仍保持明显恩宠。
-  known_by:
-  - zhen_huan
-  - emperor_yongzheng
-  - hua_fei
-  - empress_yixiu
-  - an_lingrong
-  - shen_meizhuang
-  - su_peisheng
-  state_change: 甄嬛在共享快照结束前仍处于受宠状态，但周边矛盾已逐渐累积。
-  cf_edit: 如果皇帝在此前已经不再明显恩宠甄嬛，那么初次失宠将提前，后续事态也不会形成当前格局。
-  anchor_for:
-  - zhen_huan
-  - emperor_yongzheng
+- id: ev_001_selection
+  canon_order: '01.1'
+  source_locator: 76集版第1集，选秀
+  fact: 甄嬛、沈眉庄与安陵容参加选秀并被选入宫。
+  known_by: [zhen_huan, emperor_yongzheng, empress_yixiu, an_lingrong, shen_meizhuang, su_peisheng]
+  state_change: 甄嬛、沈眉庄与安陵容取得后宫妃嫔身份及入宫资格。
+  cf_edit: 若安陵容未获留牌，仅将安陵容的入宫资格改为未取得，她便不能以妃嫔身份参与后续宫中往来。
+  anchor_for: [zhen_huan, an_lingrong, shen_meizhuang]
+- id: ev_002_palace_assignment
+  canon_order: '03.1'
+  source_locator: 76集版第3集，新人入宫安置
+  fact: 甄嬛入住碎玉轩，沈眉庄入住咸福宫存菊堂，安陵容入住延禧宫。
+  known_by: [zhen_huan, emperor_yongzheng, empress_yixiu, an_lingrong, shen_meizhuang, su_peisheng]
+  state_change: 三人的当前居所和各自宫室通行起点被确定。
+  cf_edit: 若只将安陵容的安置地点改为碎玉轩，她的当前居所与日常接触对象会改变，甄嬛和沈眉庄的居所不变。
+  anchor_for: [zhen_huan, an_lingrong, shen_meizhuang]
+- id: ev_003_haitang_buried
+  canon_order: '04.1'
+  source_locator: 76集版第4集，碎玉轩海棠树
+  fact: 甄嬛发现碎玉轩海棠树下埋有麝香，确认此处曾被用于暗害芳贵人。
+  known_by: [zhen_huan]
+  state_change: 甄嬛新增“碎玉轩曾有隐蔽加害风险”的私密知识，并提高对宫中环境的警惕。
+  cf_edit: 若树下挖出的物品不含麝香，仅撤销这一证据，甄嬛便不能据此确认碎玉轩曾有该项加害风险。
+  anchor_for: [zhen_huan]
+- id: ev_004_zhen_avoids_favor
+  canon_order: '04.2'
+  source_locator: 76集版第4集，甄嬛请温实初协助称病
+  fact: 甄嬛请温实初协助长期称病，以暂避侍寝和后宫争宠。
+  known_by: [zhen_huan]
+  state_change: 甄嬛建立暂避侍寝的主动计划，并把“自保优先于立刻获宠”设为当时承诺。
+  cf_edit: 若只改变甄嬛是否请温实初配合称病，她将不具备持续避宠的执行条件，而其入宫身份与居所不变。
+  anchor_for: [zhen_huan]
+- id: ev_005_shen_favored
+  canon_order: '04.3'
+  source_locator: 76集版第4集，沈眉庄首次承宠后
+  fact: 沈眉庄较早获皇帝召幸，并获准学习协理六宫事务。
+  known_by: [emperor_yongzheng, hua_fei, empress_yixiu, an_lingrong, shen_meizhuang, su_peisheng, zhen_huan]
+  state_change: 沈眉庄由新入宫妃嫔转为受宠贵人，并取得学习宫务的有限权限。
+  cf_edit: 若只撤销皇帝让沈眉庄学习宫务的许可，她仍曾承宠，但没有该项宫务学习权限。
+  anchor_for: [shen_meizhuang, emperor_yongzheng, hua_fei, empress_yixiu]
+- id: ev_006_garden_meeting
+  canon_order: '06.1'
+  source_locator: 76集版第6集，御花园秋千旁
+  fact: 甄嬛在御花园秋千旁与隐瞒身份的皇帝相遇，并把他当作果郡王。
+  known_by: [zhen_huan, emperor_yongzheng]
+  state_change: 皇帝知道称病的甄嬛可以在御花园活动；甄嬛记住了这位自称果郡王的男子，但尚不知道其真实身份。
+  cf_edit: 若皇帝没有隐瞒身份，甄嬛会当场知道对方是皇帝；只改变身份披露，不改变相遇本身。
+  anchor_for: [zhen_huan, emperor_yongzheng]
+- id: ev_007_identity_revealed
+  canon_order: '07.1'
+  source_locator: 76集版第7集，皇帝出面制止余氏欺凌
+  fact: 皇帝向甄嬛表明真实身份，甄嬛得知此前相遇者就是皇帝。
+  known_by: [zhen_huan, emperor_yongzheng, su_peisheng]
+  state_change: 甄嬛关于相遇者身份的知识由“果郡王”纠正为“皇帝”，避宠状态随之结束。
+  cf_edit: 若皇帝此次仍不披露身份，仅保留身份隐瞒，甄嬛就不会在该时点纠正身份认知。
+  anchor_for: [zhen_huan, emperor_yongzheng, su_peisheng]
+- id: ev_008_zhen_first_favor
+  canon_order: '08.1'
+  source_locator: 76集版第8集，甄嬛首次侍寝
+  location_id: loc_009
+  fact: 甄嬛首次承宠，皇帝公开表现出对她的明显恩宠。
+  known_by: [zhen_huan, emperor_yongzheng, hua_fei, empress_yixiu, an_lingrong, shen_meizhuang, su_peisheng]
+  state_change: 甄嬛由称病避宠转为受宠的莞常在，并取得由苏培盛通传皇帝召见的渠道。
+  cf_edit: 若只撤销此次召幸，甄嬛仍知道皇帝身份，但不会在该时点取得受宠状态和召见渠道。
+  anchor_for: [zhen_huan, emperor_yongzheng, hua_fei, empress_yixiu, su_peisheng]
+- id: ev_009_hua_punishes
+  canon_order: '08.2'
+  source_locator: 76集版第8集，景仁宫众妃请安
+  fact: 众妃在景仁宫请安时，华妃公开以专宠为由讥讽甄嬛，皇后出面制止。
+  known_by: [zhen_huan, hua_fei, empress_yixiu, an_lingrong, shen_meizhuang]
+  state_change: 甄嬛取得华妃公开敌视自己的直接证据，对华妃的关系转为不信任；皇后公开维持了中宫秩序。
+  cf_edit: 若华妃在该次请安中没有以专宠为由针对甄嬛，仅撤销这次公开言语行动，甄嬛便缺少该次敌意的直接证据。
+  anchor_for: [zhen_huan, hua_fei]
+- id: ev_010_poison_exposed
+  canon_order: '10.1'
+  source_locator: 76集版第10集，碎玉轩查出下药
+  fact: 甄嬛与身边人查出花穗、小印子受余氏指使，在她的汤药中下药。
+  known_by: [zhen_huan, emperor_yongzheng, su_peisheng]
+  state_change: 甄嬛取得余氏指使下药的证据；皇帝据禀报取得处分余氏的事实依据。
+  cf_edit: 若审问时花穗、小印子没有供出余氏，仅撤销指向余氏的口供，甄嬛与皇帝便不能据此确认主使者。
+  anchor_for: [zhen_huan, emperor_yongzheng, su_peisheng]
+- id: ev_011_yu_ordered_dead
+  canon_order: '10.2'
+  source_locator: 76集版第10集，皇帝下旨处死余氏
+  fact: 甄嬛向皇帝说明下药及倚梅园冒名之事后，皇帝下旨处死余氏。
+  known_by: [zhen_huan, emperor_yongzheng, su_peisheng]
+  state_change: 皇帝建立处死余氏的明确口谕，苏培盛取得监督执行该口谕的权限与责任。
+  cf_edit: 若皇帝只下旨将余氏继续幽禁而非处死，仅改变处分内容，苏培盛就没有执行死刑的授权。
+  anchor_for: [emperor_yongzheng, su_peisheng, zhen_huan]
+- id: ev_012_yu_executed
+  canon_order: '10.3'
+  source_locator: 76集版第10集，安陵容提示后宫人执行赐死
+  location_id: loc_010
+  fact: 余氏抗旨不肯自尽；安陵容提示既有赐死旨意即可强制执行，苏培盛随后令宫人完成处置。
+  known_by: [an_lingrong, su_peisheng, zhen_huan, shen_meizhuang]
+  knowledge_scope:
+    execution_result:
+      known_by: [an_lingrong, su_peisheng, zhen_huan, shen_meizhuang, emperor_yongzheng]
+      content: 余氏已按赐死旨意被处置。
+    an_lingrong_suggestion:
+      known_by: [an_lingrong, su_peisheng, zhen_huan, shen_meizhuang]
+      content: 安陵容曾提示可依既有赐死旨意强制执行；甄嬛与沈眉庄随后议论该处置方式，安陵容听到议论。
+    physical_execution_details:
+      known_by: [an_lingrong, su_peisheng]
+      content: 强制执行的现场过程只限实际推动或执行一方知晓，未赋予甄嬛、沈眉庄或默认Player。
+  state_change: 皇帝处死余氏的口谕被履行；甄嬛、沈眉庄得知安陵容推动强制执行并对此产生戒备，安陵容听到二人议论后，三方姐妹关系由此前信任转为有隔阂的中立。
+  cf_edit: 若安陵容没有作出这一提示，仅撤销该信息输入，苏培盛在该时点不会因她的建议而改用强制执行。
+  anchor_for: [an_lingrong, su_peisheng, zhen_huan, shen_meizhuang]

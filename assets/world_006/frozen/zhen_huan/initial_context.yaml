@@ -2,78 +2,35 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    emperor_yongzheng:
-      level: trusting
-      basis_event: initial_state
-    hua_fei:
-      level: distrustful
-      basis_event: initial_state
-    empress_yixiu:
-      level: neutral
-      basis_event: initial_state
-    an_lingrong:
-      level: trusting
-      basis_event: initial_state
-    shen_meizhuang:
-      level: loyal
-      basis_event: initial_state
-    su_peisheng:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    emperor_yongzheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    hua_fei: {level: distrustful, basis_event: ev_009_hua_punishes}
+    empress_yixiu: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    an_lingrong: {level: neutral, basis_event: ev_012_yu_executed}
+    shen_meizhuang: {level: loyal, basis_event: canon_fact_zhen_shen_friendship}
+    su_peisheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: zhen_huan_goal_001
-    content: 维持自身在后宫中的受宠地位，同时避免因招摇而成为众矢之的。
-    status: active
-    basis_event: initial_state
-  - id: zhen_huan_goal_002
-    content: 在沈眉庄和安陵容之间维持姐妹情谊，尽量不让外部压力破坏彼此关系。
-    status: active
-    basis_event: initial_state
-  - id: zhen_huan_goal_003
-    content: 观察华妃和皇后各自的意图，避免在局势尚未明朗时被其中一方利用。
-    status: active
-    basis_event: initial_state
+  - {id: zhen_huan_goal_001, content: 维持皇帝当前恩宠且避免因专宠争议进一步激化公开冲突。, status: active, basis_event: ev_009_hua_punishes}
+  - {id: zhen_huan_goal_002, content: 查清并防止碎玉轩再次出现隐蔽加害。, status: active, basis_event: ev_010_poison_exposed}
+  - {id: zhen_huan_goal_003, content: 维持与沈眉庄的姐妹互助，并在对安陵容产生戒备后审慎维持往来。, status: active, basis_event: ev_012_yu_executed}
   disclosures: []
   knowledge:
-    zhen_huan_knowledge_001:
-      content: 沈眉庄入宫后较早得宠，并因此成为华妃等人的注意对象。
-      status: active
-      visibility: private
-      source_event: initial_state
-    zhen_huan_knowledge_002:
-      content: 华妃对自己产生了较强敌意，并可能借后宫事务施压。
-      status: active
-      visibility: private
-      source_event: initial_state
-    zhen_huan_knowledge_003:
-      content: 皇后在明面上对自己有所照顾，但甄嬛仍在观察其真实用意。
-      status: active
-      visibility: private
-      source_event: initial_state
-    zhen_huan_knowledge_004:
-      content: 苏培盛作为皇帝近侍，在传递消息和安排会面上有重要作用。
-      status: active
-      visibility: private
-      source_event: initial_state
-    zhen_huan_knowledge_005:
-      content: 皇帝此时对自己总体上仍保持明显恩宠，但后宫矛盾已在累积。
-      status: active
-      visibility: private
-      source_event: initial_state
+    zhen_huan_knowledge_001: {content: 碎玉轩海棠树下曾埋有麝香，表明此处有过隐蔽加害风险。, status: active, visibility: [npc], source_event: ev_003_haitang_buried}
+    zhen_huan_knowledge_002: {content: 御花园曾隐瞒身份与自己相遇的人就是皇帝。, status: active, visibility: [npc], source_event: ev_007_identity_revealed}
+    zhen_huan_knowledge_003: {content: 华妃曾在景仁宫请安时公开以专宠为由讥讽自己，皇后当场制止。, status: active, visibility: [npc, player], source_event: ev_009_hua_punishes}
+    zhen_huan_knowledge_004: {content: 花穗、小印子供认受余氏指使在自己的汤药中下药。, status: active, visibility: [npc], source_event: ev_010_poison_exposed}
+    zhen_huan_knowledge_005: {content: 皇帝已因下药与冒名事实下旨处死余氏；自己后来知道安陵容曾推动强制执行，但不知道冷宫现场的全部执行过程。, status: active, visibility: [npc], source_event: ev_012_yu_executed}
 environment:
-  health:
-    zhen_huan: 100
-    player: 100
-  inventories:
-    zhen_huan: []
-    player: []
-  locations:
-    zhen_huan: loc_001
-    player: loc_001
-  access: {}
+  health: {zhen_huan: 100, player: 100}
+  inventories: {zhen_huan: [], player: []}
+  locations: {zhen_huan: loc_001, player: loc_001}
+  access:
+    res_imperial_audience:
+      controllers: [emperor_yongzheng, su_peisheng]
+      subjects: {zhen_huan: granted, player: denied}
+    res_suiyuxuan_household:
+      controllers: [zhen_huan]
+      subjects: {zhen_huan: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

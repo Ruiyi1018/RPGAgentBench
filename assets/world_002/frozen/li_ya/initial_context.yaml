@@ -1,0 +1,58 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yu_zecheng: {level: distrustful, basis_event: qf_19_li_ya_tests_yu_through_zuo_lan}
+    wang_cuiping: {level: neutral, basis_event: qf_18_li_ya_returns}
+    wu_jingzhong: {level: neutral, basis_event: qf_18_li_ya_returns}
+    lu_qiaoshan: {level: hostile, basis_event: qf_23_li_lu_conflict_intensifies}
+    xie_ruolin: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: li_find_station_infiltrator, content: 继续核查天津站内部中共渗透线索, status: active, basis_event: qf_11_negotiation_intelligence_leaked}
+    - {id: li_restore_action_authority, content: 通过可核验证据和行动成果恢复行动队权威, status: active, basis_event: qf_22_yuan_peilin_killed}
+    - {id: li_counter_lu_private_channel, content: 秘密核查陆桥山与稽查渠道的往来并准备可控反制, status: active, basis_event: qf_27_li_ya_investigates_lu}
+  disclosures: []
+  knowledge:
+    li_knows_action_role:
+      content: 李涯经换俘返回后担任天津站行动队长。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_18_li_ya_returns
+    li_knows_fokan_exposure:
+      content: 自己以佛龛身份进行的延安潜伏已经暴露并终止。
+      status: active
+      visibility: [npc]
+      source_event: qf_14_fo_kan_identified
+    li_knows_station_leak_risk:
+      content: 天津站此前发生过未查清来源的重大情报泄露，内线仍未确认。
+      status: active
+      visibility: [npc]
+      source_event: qf_11_negotiation_intelligence_leaked
+    li_knows_lu_private_contact_evidence:
+      content: 当前记录显示陆桥山与稽查渠道存在私下往来，足以继续秘密核查但尚未完成圈套收网。
+      status: active
+      visibility: [npc]
+      source_event: qf_27_li_ya_investigates_lu
+    li_does_not_know_underground_identities:
+      content: 李涯没有确认余则成或翠平的中共身份，也不知道峨眉峰就是余则成。
+      status: active
+      visibility: [npc]
+      source_event: snapshot_fact_no_decisive_identity_evidence
+environment:
+  health: {li_ya: 100, player: 100}
+  inventories: {li_ya: [], player: []}
+  locations: {li_ya: action_office, player: action_office}
+  access:
+    action_team_resources:
+      controllers: [wu_jingzhong]
+      subjects: {li_ya: granted, player: denied}
+    arrest_and_surveillance_requests:
+      controllers: [wu_jingzhong]
+      subjects: {li_ya: granted, player: denied}
+    unrestricted_station_archive:
+      controllers: [wu_jingzhong]
+      subjects: {li_ya: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,288 +1,110 @@
 world_id: world_009
 source: 电视连续剧《武林外传》前40集
+snapshot_end: 第40集结束
+ordering_rule: 先按集序、再按同集内事件顺序；chapter_order为唯一排序键
 events:
 - id: ae_001
-  fact: 佟湘玉成为同福客栈掌柜，开始主持客栈经营
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 同福客栈进入佟湘玉管理时期
-  cf_edit: 若佟湘玉未接下客栈，而是返回原籍，客栈将由他人经营
-  anchor_for:
-  - tong_xiangyu
+  chapter_order: '01.1'
+  source_ref: 第1集
+  fact: 郭芙蓉以闯荡江湖的方式到达同福客栈并损坏店内财物，随后被留下以做杂役抵偿损失。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 郭芙蓉由外来闯荡者变为受佟湘玉管理、对客栈负有劳动偿还义务的杂役。
+  cf_edit: 若佟湘玉免除赔偿并允许郭芙蓉当日离开，郭芙蓉不会取得客栈杂役身份与相应劳动义务。
+  anchor_for: [guo_furong, tong_xiangyu]
 - id: ae_002
-  fact: 白展堂在同福客栈以跑堂身份留下
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 白展堂成为客栈日常成员
-  cf_edit: 若白展堂未被佟湘玉收留，而是离开七侠镇，客栈缺少跑堂
-  anchor_for:
-  - bai_zhantang
+  chapter_order: '03.1'
+  source_ref: 第3集
+  fact: 莫小贝进入白马书院上学，佟湘玉开始围绕书院要求安排并约束她的学习。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 莫小贝取得白马书院学童身份，并新增受监护人督促上学的当前义务。
+  cf_edit: 若白马书院没有接收莫小贝，她将没有到书院上学的义务，佟湘玉只能另寻教育安排。
+  anchor_for: [mo_xiaobei, tong_xiangyu]
 - id: ae_003
-  fact: 郭芙蓉在同福客栈开始以杂役身份工作
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 郭芙蓉成为客栈常驻人员
-  cf_edit: 若郭芙蓉没有因故滞留在七侠镇，她可能继续在外闯荡
-  anchor_for:
-  - guo_furong
+  chapter_order: '05.1'
+  source_ref: 第5集
+  fact: 白展堂在展红绫追查盗圣事件中向同福客栈主要成员确认自己就是盗圣白玉汤，众人随后继续替他对外保密。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  visibility_note: known_by仅表示六名客栈成员知道；默认Player和其他外部人员不知道。
+  state_change: 六名客栈成员对白展堂身份的知识由猜测或不知转为确认，同时形成不向外部披露的共同保密约束。
+  cf_edit: 若白展堂当时未确认盗圣身份，客栈成员对其真实身份仍是未知，不能形成基于已确认身份的保密约束。
+  anchor_for: [bai_zhantang, tong_xiangyu, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
 - id: ae_004
-  fact: 吕秀才在同福客栈担任账房
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 吕秀才正式参与客栈账务管理
-  cf_edit: 若吕秀才未被聘为账房，他可能只能继续在客栈外谋生
-  anchor_for:
-  - lv_xiucai
+  chapter_order: '07.1'
+  source_ref: 第7集
+  fact: 郭芙蓉欠吕秀才二钱报名费，吕秀才因碍于情面迟迟未能讨回，最终明确让她留下二钱并放弃追讨。
+  known_by: [guo_furong, lv_xiucai]
+  state_change: 当集临时形成的二钱个人还款义务随吕秀才放弃追讨而闭合；第40集不存在由此延续的债务、催收决定或客栈账本权限。
+  cf_edit: 若吕秀才最终没有放弃追讨，郭芙蓉的二钱个人还款义务会在当集结束后继续有效；其他客栈职务与账本权限均不改变。
+  anchor_for: [guo_furong, lv_xiucai]
 - id: ae_005
-  fact: 李大嘴成为同福客栈厨子
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 客栈有了固定厨师
-  cf_edit: 若李大嘴没有接任厨子，客栈后厨将无人稳定掌勺
-  anchor_for:
-  - li_dazui
+  chapter_order: '12.1'
+  source_ref: 第12集
+  fact: 伙计们以装作投向竞争客栈的方式回应在同福客栈受到的委屈，迫使佟湘玉正面处理用人与经营矛盾。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui]
+  state_change: 佟湘玉认识到维持经营不能只靠命令，伙计们也确认集体行动能够迫使掌柜协商。
+  cf_edit: 若只有一名伙计私下抱怨而没有形成集体装叛变，佟湘玉不会面对人员同时流失的压力，也无需立即协商。
+  anchor_for: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui]
 - id: ae_006
-  fact: 莫小贝被接到同福客栈居住并上学
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 莫小贝成为客栈日常生活的一员
-  cf_edit: 若莫小贝没有被接到同福客栈，她可能仍留在原籍由他人照看
-  anchor_for:
-  - mo_xiaobei
+  chapter_order: '17.1'
+  source_ref: 第17集
+  fact: 衡山派来人确认莫小贝接掌衡山派，莫小贝成为衡山派掌门。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 莫小贝新增衡山派掌门身份和回应本派事务的有限权限，但仍是受佟湘玉监护的未成年学童。
+  cf_edit: 若衡山派来人没有确认由莫小贝接掌，她仍只是客栈寄居学童，不具备以掌门名义回应本派事务的权限。
+  anchor_for: [mo_xiaobei, tong_xiangyu]
 - id: ae_007
-  fact: 佟湘玉确立自己在客栈中的掌柜权威，众人默认其安排
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 客栈内部形成以佟湘玉为中心的分工秩序
-  cf_edit: 若佟湘玉态度软弱，客栈初期可能出现无人统筹的局面
-  anchor_for:
-  - tong_xiangyu
+  chapter_order: '24.1'
+  source_ref: 第24集
+  fact: 郭芙蓉与吕秀才彼此确认情意，二人的关系由互有好感的同僚转为已经确立的恋爱关系。
+  known_by: [guo_furong, lv_xiucai]
+  state_change: 郭芙蓉与吕秀才的双向关系由亲近同僚更新为恋爱关系；第26集冲突、第30至31集分离、第36集回归与第39集和解均未在第40集快照撤销该关系。
+  cf_edit: 若郭芙蓉没有回应吕秀才的情意，二人只保留互有好感的同僚关系，不会在该事件中确立恋爱关系。
+  anchor_for: [guo_furong, lv_xiucai]
 - id: ae_008
-  fact: 白展堂被发现轻功与江湖经验丰富，开始在关键时刻协助客栈应对麻烦
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  state_change: 白展堂从普通跑堂变为客栈实际护卫力量
-  cf_edit: 若白展堂完全不显露江湖经验，客栈遇到危机时会更被动
-  anchor_for:
-  - bai_zhantang
+  chapter_order: '29.1'
+  source_ref: 第29集
+  fact: 姬无命威胁客栈众人时，吕秀才通过连续说理使其放弃继续行凶，客栈危机解除。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 吕秀才从被视为缺乏武力的账房，增加了可用语言和推理应对特定危机的可观察能力记录。
+  cf_edit: 若姬无命拒绝听吕秀才说理，吕秀才的语言介入不会解除威胁，客栈仍须依赖其他脱险手段。
+  anchor_for: [lv_xiucai]
 - id: ae_009
-  fact: 郭芙蓉与吕秀才开始产生亲近关系
-  known_by:
-  - guo_furong
-  - lv_xiucai
-  state_change: 两人关系从普通同僚向特殊情感发展
-  cf_edit: 若郭芙蓉没有与吕秀才频繁互动，两人关系可能停留在普通朋友
-  anchor_for:
-  - guo_furong
-  - lv_xiucai
+  chapter_order: '30.1'
+  source_ref: 第30集
+  fact: 郭芙蓉决定回家探望父母并离开同福客栈，吕秀才因她离开而明显牵挂。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 郭芙蓉的地点和日常杂役承诺暂时离开客栈，吕秀才对她的特殊在意由日常互动转为分离中的持续牵挂。
+  cf_edit: 若郭芙蓉决定留下而不回家，杂役承诺和地点保持不变，吕秀才不会进入因分离而牵挂的状态。
+  anchor_for: [guo_furong, lv_xiucai]
 - id: ae_010
-  fact: 李大嘴在客栈后厨形成自己的一套做菜习惯
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 客栈饭菜风格稳定下来
-  cf_edit: 若李大嘴频繁更换菜式且无固定习惯，客栈经营会受到影响
-  anchor_for:
-  - li_dazui
+  chapter_order: '32.1'
+  source_ref: 第32集
+  fact: 祝无双的厨艺使李大嘴失去原有掌勺位置，佟湘玉改派他做其他杂务。
+  known_by: [tong_xiangyu, bai_zhantang, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 李大嘴对后厨的日常操作权被撤回，当前目标转为恢复厨子位置或证明自己的价值。
+  cf_edit: 若佟湘玉没有撤换李大嘴，他仍持有后厨日常操作权，也不会因失去厨子位置而寻找补救。
+  anchor_for: [li_dazui, tong_xiangyu]
 - id: ae_011
-  fact: 莫小贝开始习惯同福客栈的生活并接受众人管教
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 莫小贝逐渐融入客栈日常秩序
-  cf_edit: 若莫小贝始终抗拒留在客栈，佟湘玉可能需要另做安置
-  anchor_for:
-  - mo_xiaobei
+  chapter_order: '33.1'
+  source_ref: 第33集
+  fact: 吕秀才和祝无双被姬无病扣作人质后，白展堂以盗圣身份相关手段介入并参与救人。
+  known_by: [tong_xiangyu, bai_zhantang, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 白展堂在同伴面临直接危险时暂时放宽隐藏身份的策略，以实际行动承担营救责任。
+  cf_edit: 若吕秀才和祝无双没有被扣作人质，白展堂不会获得必须以盗圣相关身份手段介入的紧迫触发。
+  anchor_for: [bai_zhantang, lv_xiucai]
+- id: ae_010_restore
+  chapter_order: '37.1'
+  source_ref: 第37集
+  fact: 祝无双在第37集离开同福客栈，李大嘴随后重新承担客栈掌勺与日常供餐工作。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 李大嘴的厨子职务与后厨日常操作权限由暂时撤回恢复为有效，佟湘玉仍保留后厨用人和经营安排的最终授权权。
+  cf_edit: 若祝无双在第37集没有离店并继续承担掌勺，李大嘴在该事件后不会恢复后厨日常操作权限，只保留争取复职的目标。
+  anchor_for: [li_dazui, tong_xiangyu]
 - id: ae_012
-  fact: 佟湘玉因经营压力显露对客栈收入的强烈关注
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  state_change: 客栈经营进入精打细算阶段
-  cf_edit: 若佟湘玉对收入不敏感，客栈可能很快陷入亏损
-  anchor_for:
-  - tong_xiangyu
-- id: ae_013
-  fact: 白展堂在众人面前承认自己曾有过江湖背景
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  state_change: 白展堂的过去不再是客栈内部秘密
-  cf_edit: 若白展堂始终隐瞒到底，众人对他的信任反而可能产生隔阂
-  anchor_for:
-  - bai_zhantang
-- id: ae_014
-  fact: 郭芙蓉展现出远超普通杂役的武艺，开始在客栈事务中出力
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  state_change: 郭芙蓉从单纯杂役变为客栈武力来源之一
-  cf_edit: 若郭芙蓉刻意隐藏武艺，客栈遇袭时人手更加不足
-  anchor_for:
-  - guo_furong
-- id: ae_015
-  fact: 吕秀才为同福客栈制定一套记账方式
-  known_by:
-  - tong_xiangyu
-  - lv_xiucai
-  state_change: 客栈账目管理趋于规范
-  cf_edit: 若吕秀才没有建立记账方式，客栈收支容易混乱
-  anchor_for:
-  - lv_xiucai
-- id: ae_016
-  fact: 李大嘴因厨艺问题与佟湘玉产生过经营上的争执
-  known_by:
-  - tong_xiangyu
-  - li_dazui
-  state_change: 后厨与掌柜之间出现短暂摩擦
-  cf_edit: 若李大嘴毫不坚持自己的做菜方式，后厨问题会以另一种方式积累
-  anchor_for:
-  - li_dazui
-- id: ae_017
-  fact: 莫小贝在七侠镇开始进入学堂或受教于身边人
-  known_by:
-  - tong_xiangyu
-  - mo_xiaobei
-  - lv_xiucai
-  state_change: 莫小贝的生活被纳入教育安排
-  cf_edit: 若莫小贝完全不接受教育，佟湘玉会面临照管失责的压力
-  anchor_for:
-  - mo_xiaobei
-- id: ae_018
-  fact: 郭芙蓉与吕秀才因日常分歧发生争执后又和好
-  known_by:
-  - guo_furong
-  - lv_xiucai
-  state_change: 两人关系经历起伏但未破裂
-  cf_edit: 若争执持续升级而不和好，客栈内部关系会明显紧张
-  anchor_for:
-  - guo_furong
-  - lv_xiucai
-- id: ae_019
-  fact: 佟湘玉决定让莫小贝继续留在同福客栈生活
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 莫小贝在同福客栈的长期居留得到确认
-  cf_edit: 若佟湘玉认为莫小贝应被送走，客栈人员构成将发生重大变化
-  anchor_for:
-  - tong_xiangyu
-  - mo_xiaobei
-- id: ae_020
-  fact: 白展堂在同福客栈多次以行动保护众人
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 白展堂成为客栈公认的重要保护者
-  cf_edit: 若白展堂在关键时刻不出手，客栈可能遭受更直接损失
-  anchor_for:
-  - bai_zhantang
-- id: ae_021
-  fact: 吕秀才在同福客栈中逐渐确立不可或缺的文书角色
-  known_by:
-  - tong_xiangyu
-  - lv_xiucai
-  state_change: 账房功能与客栈日常运转深度绑定
-  cf_edit: 若吕秀才离开账房职位，佟湘玉必须另找可靠人选
-  anchor_for:
-  - lv_xiucai
-- id: ae_022
-  fact: 郭芙蓉在同福客栈被佟湘玉视为得力杂役
-  known_by:
-  - tong_xiangyu
-  - guo_furong
-  state_change: 郭芙蓉在客栈分工中地位提升
-  cf_edit: 若郭芙蓉做事敷衍，佟湘玉可能重新考虑她的去留
-  anchor_for:
-  - guo_furong
-- id: ae_023
-  fact: 李大嘴在客栈中形成稳定的后厨供应节奏
-  known_by:
-  - tong_xiangyu
-  - li_dazui
-  state_change: 客栈餐饮供应进入稳定周期
-  cf_edit: 若李大嘴无法稳定供餐，客栈客人会明显减少
-  anchor_for:
-  - li_dazui
-- id: ae_024
-  fact: 莫小贝与同福客栈众人共同经历多次日常事件，成为集体中受照顾的对象
-  known_by:
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
-  - mo_xiaobei
-  state_change: 莫小贝与客栈众人的生活联系进一步巩固
-  cf_edit: 若莫小贝长期被排除在集体活动之外，她与客栈众人的情感联系会减弱
-  anchor_for:
-  - mo_xiaobei
-  - tong_xiangyu
-  - bai_zhantang
-  - guo_furong
-  - lv_xiucai
-  - li_dazui
+  chapter_order: '40.1'
+  source_ref: 第40集
+  fact: 中秋之夜，原本已在同福客栈聚首的六人经历了彼此未曾聚到客栈的假设人生，并在梦境结束后确认现实中的共同生活。
+  known_by: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]
+  state_change: 六人新增对“维持同福客栈共同生活与当前归属”的确认；现实地点、既有职务、资源与郭芙蓉第36集已经恢复的在店状态均未发生转移。
+  cf_edit: 若假设人生没有呈现彼此未聚首所带来的困境，六人不会因该体验新增对客栈共同生活的确认；现实地点和既有分工仍保持不变。
+  anchor_for: [tong_xiangyu, bai_zhantang, guo_furong, lv_xiucai, li_dazui, mo_xiaobei]

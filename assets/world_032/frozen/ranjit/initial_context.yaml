@@ -4,43 +4,39 @@ runtime_state:
   relationships:
     ted_mosby:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     robin_scherbatsky:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     barney_stinson:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     lily_aldrin:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     marshall_eriksen:
       level: neutral
-      basis_event: initial_state
-    ranjit:
-      level: loyal
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: g_001
-    content: Drive the friend group in his limousine for a special evening and ensure
-      they arrive safely
+    content: Remain available for future paid driving work and provide courteous service when hired.
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
   disclosures: []
   knowledge:
     k_001:
-      content: Ranjit drives the group in his limousine for a special evening.
+      content: Ranjit drove Ted, Robin, Barney, Lily, and Marshall during their New Year's Eve outing.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_009
     k_002:
       content: The friend group hires him as a professional limousine driver.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile.identity.role
 environment:
   health:
     ranjit: 100
@@ -49,7 +45,7 @@ environment:
     ranjit: []
     player: []
   locations:
-    ranjit: maclarens_pub
+    ranjit: ranjits_limousine
     player: maclarens_pub
   access: {}
   offers: []

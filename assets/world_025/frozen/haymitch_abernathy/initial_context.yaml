@@ -4,67 +4,57 @@ runtime_state:
   relationships:
     katniss_everdeen:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     peeta_mellark:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     gale_hawthorne:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: background:no_direct_contact:gale_hawthorne
     effie_trinket:
-      level: distrustful
-      basis_event: initial_state
-    president_snow:
-      level: hostile
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[2]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: haymitch_goal_001
-    content: Make Katniss and Peeta visible enough to attract sponsors.
+    content: Use Katniss and Peeta's established public appeal to pursue sponsor support
+      after the arena opens.
     status: active
-    basis_event: initial_state
-  - id: haymitch_goal_002
-    content: Keep the tributes useful to each other instead of splitting apart before
-      the arena.
-    status: active
-    basis_event: initial_state
-  - id: haymitch_goal_003
-    content: Stay drunk enough to function without feeling the full weight of what
-      is coming.
-    status: active
-    basis_event: initial_state
+    basis_event: ae_022
   disclosures: []
   knowledge:
     haymitch_k_001:
-      content: Katniss volunteered to save Prim, a move that broke decades of District
-        12 passivity.
+      content: Katniss volunteered to take Prim's place as District 12's female tribute.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     haymitch_k_002:
       content: The Capitol audience responded strongly to the fire costumes during
         the parade.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_017
     haymitch_k_003:
       content: Peeta confessed his feelings for Katniss in the interview, which he
         knows is a powerful sponsor lever.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_020
     haymitch_k_004:
-      content: He has seen tributes with Katniss's fire before, and most still died.
+      content: Katniss and Peeta accepted his instruction to train together, appear
+        friendly, and conceal their strongest skills until private scoring.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     haymitch_k_005:
-      content: The Gamemakers will punish visible defiance, but invisibility is worse.
+      content: Peeta's confession made Katniss appear desirable to the audience and
+        may help later sponsor work, but Katniss made no commitment to a romance strategy
+        and no sponsor gift has yet been obtained.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_022
 environment:
   health:
     haymitch_abernathy: 100
@@ -75,7 +65,16 @@ environment:
   locations:
     haymitch_abernathy: tribute_apartment
     player: tribute_apartment
-  access: {}
+  access:
+    runtime_scenario_contact:
+      controllers: [haymitch_abernathy]
+      subjects: {haymitch_abernathy: granted, player: granted}
+    district_12_mentor_strategy:
+      controllers: [haymitch_abernathy]
+      subjects: {haymitch_abernathy: granted, player: denied}
+    sponsor_outreach:
+      controllers: [haymitch_abernathy]
+      subjects: {haymitch_abernathy: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

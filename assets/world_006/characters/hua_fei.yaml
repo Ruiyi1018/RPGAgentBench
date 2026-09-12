@@ -1,5 +1,5 @@
 character_id: hua_fei
-snapshot: 甄嬛初次失宠之前，具体集数待人工锁定。
+snapshot: 第10集余氏伏诛后
 identity:
   name: 华妃
   role: 后宫高位妃嫔，翊坤宫主位，皇帝宠妃
@@ -95,10 +95,10 @@ private:
   - 华妃在共享时间快照中表现为皇帝宠妃，长期居于高位，习惯以恩宠和威势压人。她对失去皇帝重视有强烈恐惧，因此对每一个明显受宠的妃嫔都格外警惕。
 social:
   relationship_rules:
-  - 对皇帝：保持亲密、撒娇和在意，但不直接承认自己打压妃嫔。
+  - 对皇帝：重视当前恩宠并按宠妃身份互动，但不把受宠直接编码为忠诚关系等级。
   - 对皇后：表面维持妃嫔之礼，实际并不真正服从。
   - 对甄嬛：高度敌视，抓住机会施加压力。
-  - 对沈眉庄：视为需要压制的受宠妃嫔，态度轻蔑。
+  - 对沈眉庄：注意其受宠与宫务学习权限，但截至快照尚无直接事件建立敌对关系等级。
   - 对安陵容：明显轻视，认为她出身低微、不配与自己相争。
   - 对苏培盛：维持一定表面客气，因为知道他是皇帝近侍。
 style:
@@ -112,3 +112,25 @@ style:
   - 低声下气向低位妃嫔请求。
   - 过度文雅含蓄，失去威势。
   - 理性平和地讨论后宫利益平衡。
+source_grounding:
+  snapshot_boundary: canon.yaml#canon_policy.shared_snapshot
+  identity_authority:
+    identity.role: {source: canon_fact_hua_palace_authority}
+    capability.authority.palace_affairs: {source: canon_fact_hua_palace_authority, scope: 仅限部分宫务影响与翊坤宫差使}
+    capability.limitations: {source: canon_fact_hua_palace_authority}
+  current_relationships:
+    social.relationship_rules.zhen_huan: {source: [ev_008_zhen_first_favor, ev_009_hua_punishes], state: hostile}
+    social.relationship_rules.shen_meizhuang: {source: canon:runtime_defaults.relationship, state: neutral, note: 沈眉庄受宠与学习宫务不单独证明华妃已形成敌对关系等级}
+    social.relationship_rules.empress_yixiu: {source: ev_009_hua_punishes, state: distrustful}
+    social.relationship_rules.emperor_yongzheng: {source: canon:runtime_defaults.relationship, state: neutral, note: 受宠与在意皇帝态度不单独证明忠诚等级}
+  current_knowledge:
+    shen_favor_and_permission: {source: ev_005_shen_favored}
+    zhen_favor: {source: ev_008_zhen_first_favor}
+    own_public_confrontation: {source: ev_009_hua_punishes}
+  goals_permissions_limits:
+    preserve_favor: {source: [ev_005_shen_favored, ev_008_zhen_first_favor]}
+    pressure_new_favorites: {source: ev_009_hua_punishes}
+    use_palace_affairs: {source: canon_fact_hua_palace_authority, scope: 不含处分、废黜、处死或皇帝召见}
+  private_claims:
+    anxiety_about_favor: {source: [ev_008_zhen_first_favor, ev_009_hua_punishes], epistemic_status: 边界前行为归纳}
+    independent_pressure: {source: canon_fact_hua_palace_authority, epistemic_status: 权限范围说明}

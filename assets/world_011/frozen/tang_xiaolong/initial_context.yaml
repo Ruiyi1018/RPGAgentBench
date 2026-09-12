@@ -2,75 +2,28 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    an_xin:
-      level: distrustful
-      basis_event: initial_state
-    gao_qiqiang:
-      level: hostile
-      basis_event: initial_state
-    li_xiang:
-      level: distrustful
-      basis_event: initial_state
-    tang_xiaohu:
-      level: neutral
-      basis_event: initial_state
-    meng_yu:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    an_xin: {level: neutral, basis_event: ev_005}
+    gao_qiqiang: {level: hostile, basis_event: ev_004}
+    li_xiang: {level: neutral, basis_event: ev_005}
+    tang_xiaohu: {level: loyal, basis_event: initial_state}
+    meng_yu: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
-  - id: goal_tang_xiaolong_01
-    content: 避免自己和弟弟在除夕冲突调查中成为主要责任人
-    status: active
-    basis_event: initial_state
-  - id: goal_tang_xiaolong_02
-    content: 让唐小虎配合统一说法，减少警方突破口
-    status: active
-    basis_event: initial_state
-  - id: goal_tang_xiaolong_03
-    content: 维持唐家兄弟在旧厂街市场的店铺和利益不受太大影响
-    status: active
-    basis_event: initial_state
+  - {id: goal_reduce_liability, content: 降低自己和唐小虎在斗殴中的责任风险, status: active, basis_event: ev_004}
+  - {id: goal_keep_market_role, content: 维持旧厂街市场管理员位置, status: active, basis_event: initial_state}
   disclosures: []
   knowledge:
-    knowledge_tang_xiaolong_01:
-      content: 除夕夜旧厂街市场发生冲突，自己和唐小虎、高启强等均卷入其中
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_tang_xiaolong_02:
-      content: 警方已经对旧厂街市场冲突展开调查，并向自己进行过问询
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_tang_xiaolong_03:
-      content: 自己在问询中把主要责任推向高启强
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_tang_xiaolong_04:
-      content: 唐小虎在冲突后留在市场处理过摊位后续
-      status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_tang_xiaolong_05:
-      content: 自己要求唐小虎统一口径应对警方
-      status: active
-      visibility: private
-      source_event: initial_state
+    k_long_001: {content: 自己和唐小虎以鱼摊续租为由向高启强暗示需要等离子电视, status: active, visibility: [npc], source_event: ev_001}
+    k_long_002: {content: 唐小虎推搡致电视摔坏，高启强随后先动手并遭围殴, status: active, visibility: [npc], source_event: ev_004}
+    k_long_003: {content: 安欣和李响已到场介入处置, status: active, visibility: [npc, player], source_event: ev_005}
 environment:
-  health:
-    tang_xiaolong: 100
-    player: 100
-  inventories:
-    tang_xiaolong: []
-    player: []
-  locations:
-    tang_xiaolong: loc_tang_shop
-    player: loc_tang_shop
-  access: {}
+  health: {tang_xiaolong: 100, player: 100}
+  inventories: {tang_xiaolong: [], player: []}
+  locations: {tang_xiaolong: loc_tang_residence, player: loc_tang_residence}
+  access:
+    market_stall_arrangement:
+      controllers: [tang_xiaolong, tang_xiaohu]
+      subjects: {player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -2,97 +2,34 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    zhen_huan:
-      level: neutral
-      basis_event: initial_state
-    emperor_yongzheng:
-      level: loyal
-      basis_event: initial_state
-    hua_fei:
-      level: distrustful
-      basis_event: initial_state
-    an_lingrong:
-      level: neutral
-      basis_event: initial_state
-    shen_meizhuang:
-      level: neutral
-      basis_event: initial_state
-    su_peisheng:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    zhen_huan: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    emperor_yongzheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    hua_fei: {level: distrustful, basis_event: ev_009_hua_punishes}
+    an_lingrong: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    shen_meizhuang: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    su_peisheng: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: g_001
-    content: 维持皇后在后宫事务中的统辖地位。
-    status: ongoing
-    basis_event: initial_state
-  - id: g_002
-    content: 观察甄嬛受宠带来的后宫格局变化。
-    status: ongoing
-    basis_event: initial_state
-  - id: g_003
-    content: 防止华妃借势压过中宫。
-    status: ongoing
-    basis_event: initial_state
-  - id: g_004
-    content: 在明面上保持对甄嬛的照顾姿态。
-    status: ongoing
-    basis_event: initial_state
+  - {id: empress_yixiu_goal_001, content: 维持中宫对日常宫务与礼制的统辖。, status: active, basis_event: profile:empress_yixiu.capability.authority}
+  - {id: empress_yixiu_goal_002, content: 观察甄嬛受宠后与华妃公开冲突的影响。, status: active, basis_event: ev_009_hua_punishes}
+  - {id: empress_yixiu_goal_003, content: 防止华妃借宫务影响力越过中宫名分。, status: active, basis_event: ev_009_hua_punishes}
   disclosures: []
   knowledge:
-    k_001:
-      content: 甄嬛入宫后被安置在碎玉轩居住。
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_002:
-      content: 沈眉庄入宫后较早获得皇帝看重。
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_003:
-      content: 安陵容因出身较低，在宫中受到轻视。
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_004:
-      content: 甄嬛已从避宠状态转为受宠，并开始频繁进入皇帝所在场所。
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_005:
-      content: 华妃对甄嬛受宠有较强敌意，并借事务施压。
-      status: active
-      visibility: public
-      source_event: initial_state
-    k_006:
-      content: 自己曾在明面上对甄嬛表现照顾，并观察后宫争斗。
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_007:
-      content: 自己利用后宫事务安排，推动华妃与甄嬛的矛盾逐步公开化。
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_008:
-      content: 苏培盛在皇帝近前对甄嬛态度较配合，可能影响甄嬛与皇帝的接触。
-      status: active
-      visibility: private
-      source_event: initial_state
+    empress_yixiu_knowledge_001: {content: 甄嬛、沈眉庄与安陵容已被选入宫并各有固定居所。, status: active, visibility: [npc, player], source_event: ev_002_palace_assignment}
+    empress_yixiu_knowledge_002: {content: 沈眉庄较早承宠并获准学习协理六宫事务。, status: active, visibility: [npc, player], source_event: ev_005_shen_favored}
+    empress_yixiu_knowledge_003: {content: 甄嬛已经首次承宠。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
+    empress_yixiu_knowledge_004: {content: 华妃曾在景仁宫请安时公开以专宠为由讥讽甄嬛，自己当场出面制止。, status: active, visibility: [npc, player], source_event: ev_009_hua_punishes}
 environment:
-  health:
-    empress_yixiu: 100
-    player: 100
-  inventories:
-    empress_yixiu: []
-    player: []
-  locations:
-    empress_yixiu: loc_003
-    player: loc_003
-  access: {}
+  health: {empress_yixiu: 100, player: 100}
+  inventories: {empress_yixiu: [item_006], player: []}
+  locations: {empress_yixiu: loc_003, player: loc_003}
+  access:
+    res_six_palaces_routine:
+      controllers: [empress_yixiu]
+      subjects: {empress_yixiu: granted, player: denied}
+    res_imperial_reward_and_discipline:
+      controllers: [emperor_yongzheng]
+      subjects: {empress_yixiu: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

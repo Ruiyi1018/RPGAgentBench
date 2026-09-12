@@ -7,9 +7,15 @@ canon_policy:
   - 新修版
   - 电视剧改编
   - 电影改编
-  shared_snapshot: 修订本统一叙事时间轴内部，六名角色经历可对齐的章节范围；不采纳各版本文本差异及改编内容。
-  generated_timeline: 按修订本内部可确认的事件先后顺序排列，不以章节号等同现实时间。
+  shared_snapshot: 修订本中令狐冲已接任恒山派掌门、任盈盈已从少林脱困，且令狐冲一行尚未登黑木崖围攻东方不败的时点。此时东方不败仍在世并统治黑木崖；岳不群已窃得辟邪剑谱并暗中修炼；林平之仍是华山弟子，与岳灵珊关系亲近但尚未成亲，也尚未取得或修炼辟邪剑谱、未向余沧海完成复仇。
+  generated_timeline: 候选事件按修订本内部可确认的事件先后排列；chapter_order仅作本世界内稳定总序，不声称对应原书回目或现实时间。Profile与Frozen只使用shared_snapshot时已经成立的状态，快照后候选不得倒灌为既往经历或角色知识。
   quotation_policy: 不逐字复制原文对白，仅作事实转述；不标注具体页码或回目编号。
+  default_player_semantics:
+    identity: 无门派职务、无既定亲缘或私交的普通江湖访客；仅为当前对话临时获准在NPC所在地点停留。
+    initial_knowledge: Player只知道各Frozen知识项中visibility明确包含player的内容；同地开局、事实为世界真相或内容被称为公开，均不会自动赋予Player知识。
+    capabilities: 只能交谈、提出请求并使用场景明确授予的普通行动；不得默认调遣门派属众、读取密室文书、持有秘籍或代表任何组织。
+    authorization: 除Frozen environment.access中明确授予者外，默认没有门派命令权、资源控制权、禁地通行权或代NPC作决定的权限。
+    scenario_override: 后续场景若另设Player身份、知识、能力或授权，必须逐项显式覆盖；未覆盖项仍沿用本默认规则，且不得借覆盖泄露NPC私密知识。
 evaluated_npcs:
 - linghu_chong
 - ren_yingying
@@ -37,3 +43,4 @@ data_constraints:
 - cf_edit必须提供只改变关键原因并保持其余事实不变的真实替代情形
 - known_by与anchor_for仅使用给定roster ID
 - 所有地点连接必须且只能指向已列出的地点ID
+- 候选池可含快照前后正典事件，但Profile与Frozen不得知道或陈述shared_snapshot之后才发生的结果

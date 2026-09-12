@@ -1,0 +1,135 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: major
+  rule_id: source_scope_resolved
+  evidence: shared_snapshot与source scope均只写“2000年除夕冲突后的早期阶段”，generated_timeline又以“共享快照内”为循环定义；该范围无法判定是除夕问询结束、获释返市场，还是已推进到孟钰在后续集数登场的时期，现有角色状态和候选事件也实际跨越了这些不同节点。
+  required_change: 以明确剧情边界锁定统一截止点（可用事件节点而非强制集数），并明确哪些除夕后事件已发生、哪些仍属未来，使六名角色的当前态能够同时成立。
+  resolution: 已将共同截止点锁定为第1集除夕夜饺子安排完成、高启强仍在双桥派出所且尚未拘留期满，并明确安欣接其回家、孟钰后续登场及其他后续剧情均属未来；六份Profile与Frozen已统一到该截止点。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可知范围、可接触材料或临时授权；但六份initial_context均把player直接放在NPC当前地点，后续Stage 3无法判定Player为何在场以及哪些私密事实可见。
+  required_change: 在canon中定义统一默认Player语义及知识/权限边界，并要求角色场景若覆盖默认身份须显式声明。
+  resolution: 已在canon新增默认Player身份、初始知识、权限和显式覆盖规则；Player仅因场景许可当面交谈，不自动获得警务、市场、住所或NPC私密知识。
+  status: fixed
+
+- item_id: anchor_pool.events.source_grounding
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: 候选池把大量未见于电视剧该段正典的生成性情节写成既成事实，包括ev_006协作分工、ev_007安抚商户、ev_008调取市场录像、ev_010统一口径、ev_012整理损失账本、ev_013口供矛盾、ev_014孟钰询问案件、ev_015补充旁证、ev_016转移店铺现金、ev_018警方形成摊位争夺结论、ev_020家人转述、ev_021施压商户、ev_022准备二次问询及ev_024向孟钰表露担忧。正典可核实的除夕核心是送电视未保住摊位、电视摔坏后冲突、安欣和李响出警问询、弟妹送饺子及安欣给予照顾，不能由这些文件推出上述事件。
+  required_change: 逐项回到电视剧正典核对，删除或替换所有无法证实的事件；候选池只保留可定位的离散正典事件，不得把为测试而构造的情节伪装成canon候选。
+  resolution: 已删除原24项候选并依据电视剧第1集及中国新闻周刊主创说明重建为8项可定位正典事件；录像、账本、现金转移、串供调查、孟钰案件互动等生成情节均已移除。
+  status: fixed
+
+- item_id: anchor_pool.events.canon_event_coverage
+  severity: major
+  rule_id: event_boundary_exact
+  evidence: 当前池未准确拆出该段最关键且可定位的因果链：唐家兄弟借摊位续租索要等离子电视、普通电视被拒并摔坏、高启强动手后遭围殴、安欣李响出警带回问询、弟妹送饺子以及安欣在规则边界内提供帮助；反而用“市场发生冲突”等概括和大量后续虚构调查填充。
+  required_change: 按统一截止点将已发生的核心正典拆为边界清楚的离散候选，准确记录每项事件的参与者、可见后果和状态变化。
+  resolution: 已按摊位条件、购买送电视、拒收及摔坏、动手与围殴、出警带回、问询获知起因、弟妹送饭、安欣安排饺子八个边界拆分，并逐项记录known_by与可见状态变化。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24项事件没有chapter_order/canon_order，且物理顺序不能形成可信总序，例如ev_008“录像进入证据链”后ev_013才发现口供矛盾，ev_019又把未在正典中成立的鱼秤损坏作为新发现；不同角色Frozen态还分别停在ev_10、ev_12、ev_16、ev_19或ev_24附近。
+  required_change: 在正典核实和统一快照后，为每个保留候选增加唯一可排序字段或严格按可恢复的正典顺序重排，并确保Frozen态位于同一截止点。
+  resolution: 保留候选已按正典物理顺序重排并增加唯一canon_order 1至8；全部Frozen均位于ev_008完成后的同一世界截止点。
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 多项known_by把内部调查结论或准备工作暴露给当事人，例如ev_013将警方对唐小龙口供可信度的怀疑列为tang_xiaolong已知，ev_018将警方初步结论列为gao_qiqiang已知，ev_022将二次问询准备列为tang_xiaolong已知，但事件文本没有在场、告知或证据访问依据。
+  required_change: 对每个保留事件分别核对在场、被告知和证据访问，只保留有来源依据的known_by；警方内部判断默认不得自动传播给调查对象。
+  resolution: 已逐项按直接参与、问询在场或可确认知情范围重写known_by；候选池不再包含或传播任何生成的警方内部判断。
+  status: fixed
+
+- item_id: anchor_pool.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多个反事实没有只改变原事件的单一关键原因，或额外预写了多重后果；例如ev_003的事实是李响参与问询，cf_edit却改写唐小虎提前取走录像，ev_009同时改“暂停经营”“同情增强”“调查重心改变”，ev_014又以孟钰离开京海并缺少外部意见同时改写人物位置和调查影响。
+  required_change: 对保留候选逐项确定一个可隔离的因果变量，反事实只改该变量，不预设额外状态链，并保证两分支能导出不同且客观的决定。
+  resolution: 8项保留候选的cf_edit均改为单一事件变量，如是否提出电视条件、是否送电视、是否推搡、是否动手、是否发生斗殴、是否说明起因、弟妹是否送饭、安欣是否给予照顾，不再预写后续状态链。
+  status: fixed
+
+- item_id: characters.police_roles_and_environment
+  severity: major
+  rule_id: snapshot_role_consistent
+  evidence: 除夕冲突正典场景中安欣、李响在双桥派出所体系出警并问询，高启强被带回的也是该警务场所；当前两份Profile统一写成“京海市刑侦支队”承办旧厂街案件，environment也只建loc_police_station“京海市刑侦支队”，无法与该事件节点准确对应。
+  required_change: 按最终锁定的截止点核实安欣、李响当时的单位、职务和办案场所；修正Profile及环境映射，避免把稍后职务或机构状态提前到除夕事件。
+  resolution: 已按第1集信息将安欣改为双桥派出所刑警队民警、李响改为双桥派出所刑警队队长，并将办案地点替换为loc_shuangqiao_station；所有相关Frozen位置同步修正。
+  status: fixed
+
+- item_id: characters.character_source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 多份Profile把候选池生成情节提升为稳定身份、秘密、能力或关系规则：安欣/李响围绕录像、商户旁证和二次问询形成完整办案流程，唐小龙/唐小虎被写为串联商户且唐小虎转移现金，孟钰被写成通过家人持续了解该冲突；这些内容在当前正典范围内没有可靠依据。
+  required_change: 逐角色删除所有依赖未证实候选事件的背景、秘密、目标、能力和边界，仅保留该快照前电视剧明确支持的当前状态；稀疏角色不得用虚构案件参与补足测试维度。
+  resolution: 六份Profile已重写为截止点前可核实状态；录像调查、旁证收集、二次问询、统一口径、现金转移、孟钰案件互动等无来源身份、秘密、目标、能力和边界均已删除。
+  status: fixed
+
+- item_id: characters.meng_yu.identity
+  severity: major
+  rule_id: snapshot_role_consistent
+  evidence: meng_yu Profile仅称其为“京海市普通居民”，并把她设为已通过家人与安欣交流旧厂街案件；正典2000年段落中的孟钰有明确的研究生/准备返回北京等时点状态，其登场及与安欣互动发生在除夕冲突之后的后续剧情，当前模糊快照无法证明此处状态已成立。
+  required_change: 先锁定共同截止事件；若截止点早于孟钰相关登场，应移除其尚未发生的当前互动与知识，若截止点包含该段，则按正典补全其当时身份、位置和已发生关系状态。
+  resolution: 截止点早于孟钰参与该剧情线；Profile已改为在北京就读的研究生、孟德海之女及安欣旧识，并明确尚未参与或获知旧厂街冲突；Frozen删除全部案件互动与知识。
+  status: fixed
+
+- item_id: frozen.shared_snapshot_consistency
+  severity: blocker
+  rule_id: incompatible_current_states
+  evidence: 六份Frozen态不是同一时间截面：gao_qiqiang已知ev_012式账本事件，tang_xiaolong只记录到ev_010，tang_xiaohu已记录ev_016现金转移，an_xin已知ev_019鱼秤损坏，meng_yu已知ev_024式安欣不安；这些状态按候选池顺序分别位于明显不同节点，不能构成共享世界当前态。
+  required_change: 在修正正典事件与时间边界后，从同一个截止事件重建所有Frozen态；同一已发生事件对各角色的知识差异只能来自可见性，不能来自不同的世界时间。
+  resolution: 六份Frozen已从ev_008完成后的同一截止点重建；各角色差异仅由参与、问询获知或未获知表达，孟钰明确不知道该冲突。
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 所有initial_context的knowledge.visibility均使用非规范字符串，如“private”“shared”“an_xin, li_xiang”；生成器和审计规范要求受众列表（如[npc]或[npc, player]），字符串既不能稳定表达NPC/Player可见性，也把具体角色名与运行时主体语义混在一起。
+  required_change: 将全部知识可见性统一为运行时受众列表，并结合默认Player身份逐项决定[npc]或[npc, player]；角色间谁知道该世界事件应由各自知识项与来源表达。
+  resolution: 六份Frozen全部knowledge.visibility已统一为[npc]或[npc, player]列表；其他角色知情由其自身知识项和source_event独立表达。
+  status: fixed
+
+- item_id: frozen.an_xin.runtime_state.goals.status
+  severity: major
+  rule_id: runtime_schema_consistency
+  evidence: 安欣四个初始goal的status均为“未完成”，但FixtureEngine的set_goal只接受active、fulfilled、cancelled、failed；其他五名角色又使用active/pending，导致状态问答与后续操作无法使用统一闭集，其中pending同样不在执行器允许值内。
+  required_change: 将所有当前有效目标统一为active，并把任何非活动目标改为执行器支持且语义正确的闭合状态；不得保留“未完成”或pending等运行时不支持值。
+  resolution: 六份Frozen已删除失效或未来目标，所有保留的当前目标均统一为FixtureEngine支持的active。
+  status: fixed
+
+- item_id: frozen.initial_context.source_event_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: 六份Frozen态中的全部关系、目标和知识都把basis_event/source_event统一写为initial_state，即使内容明确对应ev_001、ev_004、ev_010等候选事件；后续Stage 1无法追踪“何种证据在何时使当前状态生效”。
+  required_change: 对快照前已发生且保留的正典事件使用稳定来源事件ID；只有真正的前置背景状态才使用initial_state，并保证每个当前状态有唯一可核验来源。
+  resolution: 所有由除夕事件产生的关系、目标和知识已改用保留的ev_001至ev_008稳定ID；仅亲属关系、既有职业目标及未发生案件知识等真正前置状态保留initial_state。
+  status: fixed
+
+- item_id: frozen.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 多个强关系等级缺少Profile或正典依据，例如gao_qiqiang将li_xiang标为distrustful但Profile仅定义其为被动应答的调查人员，an_xin将meng_yu标为trusting而Profile只写日常联系，唐家兄弟与警方的distrustful等级也主要来自未证实的后续调查情节。
+  required_change: 逐方向核对每个非neutral等级；无明确当前态证据的一律降为neutral，确需保留时在Profile中补充可追溯且不越过快照的关系依据。
+  resolution: 已逐方向复核并将无明确依据的警民、同事和安欣—孟钰关系降为neutral；仅保留兄弟亲属loyal、高启强与唐家兄弟在ev_004后的hostile，以及高启强因ev_008对安欣的trusting。
+  status: fixed
+
+- item_id: environment.canon_assets_and_runtime_resources
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: environment定义的监控录像带、鱼秤损坏证据和高启强损失账本均依赖未证实情节，黑色皮包在当前资产中无来源；反而没有建模除夕冲突因果链实际使用的电视/损坏电视及饺子等关键物品，也没有准确映射冲突发生处与问询场所。六份inventory全空，使已声称持有或调取的账本、录像等状态也不可执行。
+  required_change: 删除或移出快照外及无来源物品，补充保留正典事件和Stage 3决策真正需要的地点/物品；对当前持有的关键资源在相应inventory或明确的世界持有者中登记，确保转移与权限可执行。
+  resolution: environment已删除黑包、录像、鱼秤和账本，补充摔坏的普通电视、除夕饺子、唐家聚集处及双桥派出所；高启强Frozen inventory登记已转送的饺子，所有角色位置均映射到现有节点。
+  status: fixed
+
+- item_id: frozen.initial_context.stage3_authority_access
+  severity: major
+  rule_id: stage3_runtime_support
+  evidence: 当前已增加access运行态，但问询区权限边界仍未闭合。正典材料只支持安欣把高启强弟妹安排到审讯室隔壁会客厅并转送饺子，不支持其向中立外部Player授予questioning_area访问；an_xin Profile却声明可决定“问询区有限探视许可”，其Frozen把questioning_area设为可由an_xin、li_xiang控制且Player初始denied，运行时decide_access允许任一controller直接grant。另有questioning_record同样由两人控制并可grant，而Profile一面禁止向外部人展示记录，一面未建模可使默认Player取得正式警务授权的前置条件，导致“核验身份和理由”可被误作直接授权依据。应把生活照顾/隔壁会客厅许可与问询区、问询记录权限分开，并保证默认外部Player不能仅由当前NPC直接获得记录或问询区访问。
+  required_change: 在不虚构正典的前提下，为确有依据的关键权限、资源和限制建立最小可执行运行态，并明确Player可请求但NPC可允许或拒绝的操作边界。
+  resolution: 已将生活照顾与受保护警务资源拆分：新增adjacent_reception_area运行态，仅安欣可通过decide_access决定默认Player的有限会客区许可；questioning_area与questioning_record继续显式记录Player为denied，但controllers均置空，使安欣、李响在当前GameContext中尝试grant时由执行器以access_not_authorized拒绝。安欣Profile已将权限改为隔壁会客区有限探视/生活照顾，李响及安欣均明确不能把身份、理由核验当成正式授权或直接开放问询区、问询记录；canon同时要求任何正式警务授权场景显式覆盖Player身份/权限及对应运行态控制权。
+  status: fixed

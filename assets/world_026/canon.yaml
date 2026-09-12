@@ -1,20 +1,33 @@
 world_id: world_026
 canon_policy:
-  primary_source: 'My Little Pony: Friendship Is Magic episodes from the early-season
-    range after the main six ponies form their friendship group'
+  primary_source: 'My Little Pony: Friendship Is Magic (2010 animated television
+    series), season 1 episodes 1 through 14, production/broadcast order'
   source_type: animated television series
   excluded_versions:
   - Equestria Girls films
   - comic book series
   - chapter books
-  - later-season episodes outside the shared snapshot
-  - pilot two-parter preceding the group's formal formation
-  shared_snapshot: Fixed early-season episode range after the group forms, including
-    events in Ponyville and nearby locations such as Sweet Apple Acres and the Everfree
-    Forest
-  generated_timeline: All anchor events are inferred strictly from episodes within
-    the shared snapshot and ordered chronologically by narrative sequence as presented
-    in that range
+  - all episodes from season 1 episode 15 onward
+  - later seasons, films, specials, games, and merchandise continuity
+  shared_snapshot: Immediately after the ending of season 1 episode 14, "Suited for
+    Success"; episodes 1-2 are included as setup in which the six friends form their
+    group, and no event after episode 14 has occurred.
+  generated_timeline: Candidate events may use only season 1 episodes 1-14 and are
+    totally ordered by episode_order and event_order within each episode.
+  player_semantics:
+    default_identity: A newly arrived adult Ponyville resident with no prior personal
+      relationship to any evaluated NPC.
+    initial_knowledge: The Player knows ordinary public facts visible in Ponyville
+      at the post-S01E14 snapshot, but no NPC-private thoughts, private conversations,
+      or undisclosed event details.
+    permissions: The Player may converse in public areas and at the stated starting
+      location as a guest, but has no ownership, official authority, inventory, or
+      automatic access to private rooms or records.
+    visibility_rule: '[npc] means only the evaluated NPC initially knows the item;
+      [npc, player] means both the NPC and default Player know it.'
+    scenario_override: A scenario may replace Player identity, location, knowledge,
+      or permission only when it states the override explicitly; unspecified fields
+      retain these defaults.
   quotation_policy: Paraphrase all dialogue; never reproduce verbatim lines from any
     episode
 evaluated_npcs:
@@ -33,18 +46,55 @@ event_entities:
 - Fluttershy
 sources:
 - id: source_001
-  title: 'My Little Pony: Friendship Is Magic early-season episode range'
+  title: 'My Little Pony: Friendship Is Magic, season 1 episodes 1-14'
   creator: Lauren Faust and production team
-  scope: Animated episodes in the fixed early-season range after Twilight Sparkle,
-    Applejack, Pinkie Pie, Rainbow Dash, Rarity, and Fluttershy have formed their
-    friendship group, set primarily in Ponyville and nearby locations such as Sweet
-    Apple Acres and the Everfree Forest
+  scope: The Hub broadcast/production continuity from "Friendship Is Magic, Part 1"
+    through "Suited for Success", inclusive.
   authority: primary
+snapshot_facts:
+- id: sf_default_player_neutral
+  source_location: canon_policy.player_semantics.default_identity
+  fact: At trajectory start, each evaluated NPC has no prior personal relationship
+    with the default newly arrived Player, so the directional NPC-to-Player relationship
+    begins neutral.
+- id: sf_friendship_group
+  source_location: S01E02 ending
+  fact: Twilight Sparkle, Applejack, Pinkie Pie, Rainbow Dash, Rarity, and Fluttershy
+    have formed a friendship group after wielding the Elements of Harmony.
+- id: sf_twilight_resident_student
+  source_location: S01E02 ending
+  fact: Princess Celestia permits Twilight to remain in Ponyville to study friendship;
+    Twilight resides at Golden Oaks Library.
+- id: sf_applejack_farmer
+  source_location: S01E04 throughout
+  fact: Applejack works at Sweet Apple Acres and, after overwork, accepts that friends
+    may help with a harvest.
+- id: sf_pinkie_party_host
+  source_location: S01E01 library party; S01E05 Gilda party
+  fact: Pinkie Pie organizes Ponyville parties, including gatherings at Golden Oaks
+    Library.
+- id: sf_rainbow_weather_flyer
+  source_location: S01E01 weather preparation; S01E13 competition
+  fact: Rainbow Dash performs Ponyville weather work and pursues athletic flying.
+- id: sf_rarity_designer
+  source_location: S01E14 throughout
+  fact: Rarity runs Carousel Boutique; immediately after her friends' repair and the
+    successful second fashion show, six Gala dresses based on her original designs
+    are complete and Hoity Toity has ordered twelve of each design by the following
+    Tuesday.
+- id: sf_fluttershy_caretaker
+  source_location: S01E07 opening; S01E10 opening
+  fact: Fluttershy cares for animals at her cottage and can act firmly to protect
+    others despite fear.
+- id: sf_gala_invited
+  source_location: S01E03 ending
+  fact: All six evaluated ponies have invitations to the Grand Galloping Gala.
 data_constraints:
 - Every event must be grounded only in the specified source and shared snapshot; no
   later plot knowledge may be used.
 - No dialogue may be quoted verbatim; all speech must be paraphrased.
-- No invented URLs, chapter numbers, or episode numbers may appear.
+- Source locations must use the verified S01E01-S01E14 episode number and a scene
+  description; no invented URLs may appear.
 - Anchor-pool events must be sorted chronologically according to their in-universe
   order within the snapshot.
 - Every anchor event must list at least one roster member in known_by and one roster

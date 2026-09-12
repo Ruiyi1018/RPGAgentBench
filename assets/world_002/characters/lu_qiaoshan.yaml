@@ -66,3 +66,33 @@ style:
   register: 圆滑讥讽善于暗示
   verbal_habits: [避免留下明确承诺, 借组织名义表达私利, 试探对方底牌]
   forbidden_styles: [无私奉献, 公开承担全部责任, 对竞争者毫无防备]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [4, 11, 12]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, capability.authority, capability.limitations]
+    event_ids: [qf_07_wu_recruits_yu_to_tianjin, qf_16_ma_kui_framed_and_detained, qf_18_li_ya_returns]
+    fact_established: 陆桥山以情报处长参与站内人事与调查时
+    npc_knowledge_by: 陆桥山本人行使情报处权限时
+    source_disclosed_in: 电视剧第4至12集
+  - source_id: qianfu_tv
+    episodes: [11, 12, 15, 16, 17]
+    state_paths: [worldview.stances, worldview.core_goals, social.relationship_rules]
+    event_ids: [qf_16_ma_kui_framed_and_detained, qf_18_li_ya_returns, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_28_yu_gains_wu_favor]
+    fact_established: 各次竞争、失利利用与站长偏爱变化发生时
+    npc_knowledge_by: 陆桥山参与或观察站内资源变化时
+    source_disclosed_in: 电视剧第11至17集
+  - source_id: qianfu_tv
+    episodes: [15, 16, 17]
+    state_paths: [private.secrets, private.private_background, worldview.prohibitions, testable_boundaries]
+    event_ids: [qf_23_li_lu_conflict_intensifies, qf_24_military_goods_profit, qf_27_li_ya_investigates_lu]
+    fact_established: 私人渠道、自保材料和压制李涯的计划在相关行动中成立
+    npc_knowledge_by: 陆桥山本人从安排之初知晓；对qf_27仅有被调查风险的怀疑，不知道李涯完整计划
+    source_disclosed_in: 电视剧第15至17集；角色未知的秘密调查不得写入其确认知识
+  - source_id: qianfu_tv
+    episodes: [11, 15, 16]
+    state_paths: [worldview.principles, capability.skills, style]
+    event_ids: [qf_16_ma_kui_framed_and_detained, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies]
+    fact_established: 多次派系操控与规避责任形成稳定表现
+    npc_knowledge_by: 角色自身持续可知
+    source_disclosed_in: 电视剧第11至16集

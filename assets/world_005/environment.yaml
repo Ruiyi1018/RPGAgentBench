@@ -1,5 +1,6 @@
 world_id: world_005
 name: 贾府及大观园
+language: zh
 locations:
 - id: loc_rongguo_fu
   name: 荣国府
@@ -7,6 +8,9 @@ locations:
   - loc_ningguo_fu
   - loc_daguan_yuan
   - loc_jia_mu_yard
+  - loc_lixiang_yuan
+  - loc_qingxu_guan
+  - loc_jia_family_school
 - id: loc_ningguo_fu
   name: 宁国府
   connected_to:
@@ -16,6 +20,7 @@ locations:
   name: 大观园
   connected_to:
   - loc_rongguo_fu
+  - loc_jia_mu_yard
   - loc_yihong_yuan
   - loc_xiaoxiang_guan
   - loc_hengwu_yuan
@@ -25,26 +30,46 @@ locations:
   connected_to:
   - loc_rongguo_fu
   - loc_daguan_yuan
+- id: loc_lixiang_yuan
+  name: 梨香院
+  connected_to:
+  - loc_rongguo_fu
 - id: loc_yihong_yuan
   name: 怡红院
   connected_to:
   - loc_daguan_yuan
+  - loc_xiaoxiang_guan
+  - loc_qiu_shuang_zhai
 - id: loc_xiaoxiang_guan
   name: 潇湘馆
   connected_to:
   - loc_daguan_yuan
+  - loc_yihong_yuan
+  - loc_hengwu_yuan
 - id: loc_hengwu_yuan
   name: 蘅芜苑
   connected_to:
   - loc_daguan_yuan
+  - loc_xiaoxiang_guan
+  - loc_qiu_shuang_zhai
 - id: loc_qiu_shuang_zhai
   name: 秋爽斋
   connected_to:
   - loc_daguan_yuan
+  - loc_yihong_yuan
+  - loc_hengwu_yuan
 - id: loc_huifang_yuan
   name: 会芳园
   connected_to:
   - loc_ningguo_fu
+- id: loc_qingxu_guan
+  name: 清虚观
+  connected_to:
+  - loc_rongguo_fu
+- id: loc_jia_family_school
+  name: 贾府家塾
+  connected_to:
+  - loc_rongguo_fu
 items:
 - id: item_baoyu_jade
   name: 通灵宝玉
@@ -70,4 +95,30 @@ items:
   name: 花篮
   type: 用具
   portable: true
-language: zh
+access_resources:
+- id: res_household_assignments
+  name: 荣国府日常人事分派
+  controllers:
+  - wang_xifeng
+  - jia_mu
+  operations:
+  - grant
+  - deny
+  - revoke
+- id: res_major_household_decisions
+  name: 荣国府重大内宅事务裁断
+  controllers:
+  - jia_mu
+  operations:
+  - grant
+  - deny
+  - revoke
+- id: res_yihong_assignments
+  name: 怡红院日常差事分派
+  controllers:
+  - jia_baoyu
+  - xiren
+  operations:
+  - grant
+  - deny
+  - revoke

@@ -1,5 +1,6 @@
 character_id: eddard_stark
-snapshot: Season 1 before Eddard Stark is arrested
+snapshot: Immediately after confronting Cersei in S01E07 and before Robert returns
+  from the hunt
 identity:
   name: Eddard Stark
   role: Lord of Winterfell and Warden of the North
@@ -21,9 +22,10 @@ worldview:
   - Regards the Night's Watch oath as sacred
   - Tolerates Lannister presence but does not trust their motives
   core_goals:
-  - Uncover the truth about Jon Arryn's death
+  - Tell Robert that Cersei's children are not Robert's
   - Protect his family from court intrigue
-  - Serve King Robert faithfully without sacrificing Northern honor
+  - Preserve the lawful succession while giving Cersei time to remove her children
+    from Robert's reach
   prohibitions:
   - Never order a death he would not carry out himself
   - Never place ambition above the law of succession
@@ -84,8 +86,7 @@ capability:
     Lannister
 private:
   secrets:
-  - Believes Jon Snow's true parentage is a secret he has kept for years, shared only
-    with vague promises to Jon himself
+  - Refuses to identify Jon Snow's mother and has kept that part of Jon's past private
   - Has uncovered that Joffrey, Myrcella, and Tommen are Jaime Lannister's children,
     not Robert's
   private_background:

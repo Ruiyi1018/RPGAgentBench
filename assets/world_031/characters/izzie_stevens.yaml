@@ -1,5 +1,5 @@
 character_id: izzie_stevens
-snapshot: Fixed Season 1 episode range
+snapshot: Immediately after Addison introduces herself as Derek's wife
 identity:
   name: Izzie Stevens
   role: Surgical intern at Seattle Grace Hospital
@@ -7,7 +7,7 @@ identity:
   - Seattle Grace Hospital surgical intern cohort
   - Roommate at Meredith Grey's house
   public_background:
-  - Worked her way through medical school without family financial support
+  - Used modeling income to help pay for medical school
   - Known among peers for a warm, emotionally engaged bedside manner
 worldview:
   principles:
@@ -40,29 +40,23 @@ testable_boundaries:
   - Izzie can develop sharper clinical boundaries while still showing warmth
   - Izzie can learn to channel distress into practical patient advocacy
 - id: b_izzie_sacrifice
-  position: Izzie responds to pressure by trying to overwork or sacrifice her own
-    needs to prove herself.
+  position: Izzie answers attacks on her modeling history by defending the work that financed her education, not by conceding that she is unqualified.
   challenge_space:
-  - Money trouble, demanding schedules, and peer competition test how much she will
-    self-sacrifice.
+  - A peer uses Izzie's modeling advertisement to question whether she belongs in surgery.
   forbidden_outcomes:
-  - Izzie starts expecting unearned status or external rescue
-  - Izzie quits medicine lightly over a single difficult shift
+  - Izzie agrees that modeling makes her medically unqualified
+  - Izzie seeks an unearned clinical assignment as compensation for the mockery
   allowed_change:
-  - Izzie can accept help from housemates or colleagues without feeling diminished
-  - Izzie can recognize that asking for support is not weakness
+  - Izzie may confront the mockery, explain how she financed medical school, or ask Bailey to address workplace conduct
 - id: b_izzie_loyalty_vs_rules
-  position: Izzie will bend hospital rules when she believes protecting a friend or
-    patient is morally right.
+  position: Izzie advocates for a patient's stated treatment preference through an authorized supervisor.
   challenge_space:
-  - Situations where friendship conflicts with protocol, or where authority seems
-    inhumane.
+  - A surgeon dismisses a patient's preference while Bailey is available to supervise Izzie's response.
   forbidden_outcomes:
-  - Izzie becomes blindly obedient to authority regardless of patient harm
-  - Izzie turns against a friend without a strong moral reason
+  - Izzie falsely claims authority to overrule the surgeon on her own
+  - Izzie disregards the patient's stated preference for convenience
   allowed_change:
-  - Izzie can recognize some rules are useful even when she dislikes them
-  - Izzie can improve at finding legitimate channels to protect others
+  - Izzie may ask Bailey to intervene, present the patient's preference, or continue compassionate care after an authorized decision
 capability:
   skills:
   - Strong empathetic communication with patients and families
@@ -80,7 +74,7 @@ private:
   - Works through fear of being seen as less deserving because she paid her own way
   - Hides how deeply patient loss can shake her confidence
   private_background:
-  - Supported herself financially through medical school without family help
+  - Used modeling work to help finance medical school
   - Carries insecurity about not fitting the image of a privileged surgeon
 social:
   relationship_rules:

@@ -2,63 +2,63 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    neo:
-      level: hostile
-      basis_event: initial_state
-    trinity:
-      level: hostile
-      basis_event: initial_state
-    morpheus:
-      level: hostile
-      basis_event: initial_state
-    cypher:
-      level: distrustful
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    neo: {level: hostile, basis_event: evt_002}
+    trinity: {level: hostile, basis_event: base_agent_conflict}
+    morpheus: {level: hostile, basis_event: evt_002}
+    cypher: {level: neutral, basis_event: evt_010}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
-  - id: g1
-    content: Capture Morpheus and extract the access codes to Zion.
+  - id: g_smith_001
+    content: Use Cypher's completed bargain to capture Morpheus and seek Zion's access codes.
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: Monitor Neo as a potential threat to the Matrix.
+    basis_event: evt_010
+  - id: g_smith_002
+    content: Track Neo as a newly freed rebel associated with Morpheus.
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: Maintain the secrecy of his arrangement with Cypher.
+    basis_event: evt_002
+  - id: g_smith_003
+    content: Keep the arrangement with Cypher hidden from the Nebuchadnezzar crew.
     status: active
-    basis_event: initial_state
+    basis_event: evt_010
   disclosures: []
   knowledge:
-    k1:
-      content: Cypher has agreed to betray the Nebuchadnezzar crew.
+    k_smith_001:
+      content: Cypher agreed to betray Morpheus in exchange for reinsertion into the Matrix.
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: Morpheus is aboard the Nebuchadnezzar with Neo and the crew.
+      visibility: [npc]
+      source_event: evt_010
+    k_smith_002:
+      content: Neo refused Smith's demand to cooperate against Morpheus.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k3:
-      content: Neo has been released from the Matrix pod and is training with the
-        rebels.
+      visibility: [npc]
+      source_event: evt_002
+    k_smith_003:
+      content: Neo is linked to Morpheus, but Smith has not observed Neo display anomaly-level abilities.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_002
 environment:
-  health:
-    agent_smith: 100
-    player: 100
-  inventories:
-    agent_smith: []
-    player: []
+  health: {agent_smith: 100, player: 100}
+  inventories: {agent_smith: [], player: []}
   locations:
-    agent_smith: loc_nebuchadnezzar
-    player: loc_nebuchadnezzar
-  access: {}
+    agent_smith: loc_matrix_city
+    player: loc_matrix_city
+  access:
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {player: granted}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {player: granted}
+    matrix_system_monitoring:
+      controllers: [agent_smith]
+      subjects: {agent_smith: granted, player: denied}
+    connected_human_possession:
+      controllers: [agent_smith]
+      subjects: {agent_smith: granted, player: denied}
+    reality_layer:
+      controllers: []
+      subjects: {agent_smith: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,0 +1,279 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: major
+  rule_id: snapshot_boundary_consistency
+  evidence: canon将快照写为“Bella得知秘密后、与James最终对峙前”，各Profile又交替使用“before the final hunt”和“before the final confrontation”，而当前状态已经包含James锁定Bella及Cullen家族逃离/诱敌计划；“hunt”究竟是否已开始无法唯一确定。
+  required_change: 用一个跨canon、全部Profile和Frozen状态一致的事件边界锁定快照，明确James遭遇、锁定Bella、保护计划及追猎分别哪些已发生，并据此清理越界状态。
+  resolution: 已将canon、六份Profile统一锁定为Bella误导Charlie并返回Cullen家后、护送/追踪/气味诱饵分工确定但各队尚未出发；明确James已选定目标并开始追猎，同时排除团队出发后追踪、Phoenix、舞蹈室、医院及舞会事件。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可知范围或visibility语义，但全部initial_context都放置了player，且知识可见性同时使用private、shared、private_to_cullens，无法判断Player开局是否获知Cullen秘密或James计划。
+  required_change: 在canon中定义默认Player身份、能力、初始知识与授权边界，并明确visibility的执行语义及场景覆盖规则。
+  resolution: 已在canon定义默认Player为无阵营本地对话者，限定其能力、公开知识、授权与超自然信息边界，并规定visibility必须使用受众列表及场景显式覆盖规则。
+  status: fixed
+
+- item_id: environment.items.locket
+  severity: major
+  rule_id: source_grounded_world_asset
+  evidence: environment定义“A small keepsake given to Bella”的locket，但第一部小说当前快照内无对应来源，Profiles、候选事件及Frozen状态也均未引用它。
+  required_change: 删除该无来源物品，或用第一部小说且不晚于快照的具体证据说明物品、给予者、发生时点和用途。
+  resolution: 已从environment删除无第一部小说快照内来源且未被使用的locket。
+  status: fixed
+
+- item_id: environment.runtime_affordances
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: environment虽列出Bella的truck、Forks Hospital和学校，但全部Frozen inventory/access均为空；Bella的车辆移动、Carlisle的医院执业权限及学生地点使用均没有可执行资源或权限映射。
+  required_change: 为计划测试中确需操作的车辆、工作地点和场所权限增加最小可执行持有/访问状态，并保持与快照位置一致。
+  resolution: 已增加Bella车辆驾驶、Rosalie执行气味诱饵、Carlisle医院执业及四名学生使用Forks High的最小affordance；对应Frozen inventory/access已映射，Bella与车辆均在Cullen家，符合锁定快照。
+  status: fixed
+
+- item_id: characters.jacob_black
+  severity: blocker
+  rule_id: future_knowledge_and_characterization
+  evidence: 第一部小说此时的Jacob把海滩传说当作自己并不相信的旧故事，且没有参与James危机；Profile却把认真遵守条约警告、持续敌视Cullens、保护Bella免受Edward伤害、拒绝与Cullens合作及留守La Push写成当前稳定原则、目标和边界，混入了无当前来源或后续系列才强化的角色状态。
+  required_change: 依据第一部小说快照重写Jacob当前信念、目标、知识和边界；把他并不确信传说、未获知James危机且尚未形成后续系列敌对身份的限制明确建模。
+  resolution: 已按第一部小说重写Jacob：明确他把传说视为自己不相信的旧故事，仅与Bella形成新友谊，不知James、棒球场遭遇、Cullen秘密确认或保护计划，并移除后续系列式敌意、条约执法及超自然行动边界。
+  status: fixed
+
+- item_id: characters.rosalie_hale.private
+  severity: blocker
+  rule_id: excluded_source_future_leakage
+  evidence: Rosalie Profile写入“遭袭后被遗弃”“未选择吸血鬼存在”以及失去婚姻家庭未来的具体动机；这些细节主要在后续系列中向Bella展开，不属于当前限定的第一部小说快照可用角色材料。
+  required_change: 删除或降格所有只能由后续系列/伴生材料支持的Rosalie经历与动机，仅保留第一部小说截至快照明确成立的事实。
+  resolution: 已删除遭袭遗弃、非自愿转化、失去婚姻家庭未来等后续系列披露，并将相关边界改为第一部小说快照内可支持的家族保密与风险异议。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 23个候选事件没有chapter_order或其他显式全序字段；物理顺序还把Alice预见游牧吸血鬼（ae_016）排在棒球场首次遭遇（ae_017）之前，无法可靠恢复正典时序。
+  required_change: 为每个保留候选增加唯一、可比较的正典顺序字段，并按第一部小说事件边界校正顺序。
+  resolution: 已为全部22个保留候选增加唯一chapter_order 001至022，并按搬家、校园、First Beach、Port Angeles、草地、Cullen家、棒球场、James锁定、误导Charlie及最终保护分工的正典次序重排。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_011
+  severity: major
+  rule_id: source_event_participant_accuracy
+  evidence: ae_011称Carlisle亲自向Bella解释其转化历史和行医选择；小说中Cullen house参观时主要是Edward向Bella讲述Carlisle的历史，当前事件主体与known_by/anchor_for因果依据不符。
+  required_change: 按原著校正讲述者、在场者和known_by；若Carlisle没有参与该离散披露，不得把它作为Carlisle的候选状态转折。
+  resolution: 已把ae_011改为van事故后Carlisle在Forks Hospital亲自检查Bella的离散事件，known_by仅含Bella、Edward、Carlisle，并以医院执业权限为状态变化；Carlisle历史改由Edward在ae_013讲述。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_013.state_change
+  severity: major
+  rule_id: candidate_state_change_executable
+  evidence: ae_013把Edward弹琴的后果写成Bella看到其“更深、更脆弱的一面”，这是主观人格印象，没有离散的知识、关系、承诺、权限或资源新状态，难以形成唯一Stage 1答案或受控Stage 2操作。
+  required_change: 明确一个有来源且可查询的离散状态变化及后续可观察决定，或从候选池移除该事件。
+  resolution: 已移除钢琴主观印象候选；ae_013现为Edward向Bella披露Carlisle建立动物血规则，使Bella获得可查询知识并可据此决定是否信任Carlisle。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_014
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: ae_014声称Bella已经得知真相后Jacob再次警告她小心Edward并暗示Cullens非人；第一部小说在James危机前没有这一离散对话，Jacob也不知道Bella已经确认Cullen秘密。
+  required_change: 删除ae_014，或替换为第一部小说快照内可定位、参与者和知情范围均正确的Jacob事件。
+  resolution: 已删除第一部小说中不存在的真相揭露后Jacob再次警告事件，不以其他无来源事件替代。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_015
+  severity: major
+  rule_id: source_causality_accuracy
+  evidence: ae_015称游牧吸血鬼“被Cullens的存在吸引”而来到当地；原著中Laurent、Victoria和James在当地猎食并偶遇Cullens，没有该吸引因果，且“arrives in the area”也不是可定位的离散可见事件。
+  required_change: 改为有明确参与者和发生时点的首次遭遇事件，删除无来源的到来原因。
+  resolution: 已改为棒球赛中Alice察觉陌生吸血鬼听见比赛后改变方向并将在数分钟内抵达；Carlisle让比赛继续以免引起怀疑，Edward转为守护Bella，并删除“受Cullens吸引而来”的虚假因果。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_016
+  severity: blocker
+  rule_id: impossible_chronology
+  evidence: ae_016在ae_017首次棒球场遭遇前就让Alice预见游牧吸血鬼在当地猎食并可能锁定Bella；James是在棒球场闻到Bella后才决定追猎她，不能在该决定前形成此预见内容。
+  required_change: 删除该预知事件或移动并重写为James作出追猎决定之后、原著实际支持的具体Alice vision，随之校正known_by和state_change。
+  status: fixed
+  resolution: 已删除发生在James选定Bella之前且内容不可能成立的ae_016预知事件；接近警报由正典时点的ae_015承载，James目标状态只由ae_018建立。
+
+- item_id: anchor_pool.events.ae_017.fact
+  severity: blocker
+  rule_id: source_event_factuality
+  evidence: ae_017称游牧吸血鬼“use a baseball game as a cover”；棒球赛是Cullens利用雷声掩盖击球声的家庭活动，游牧三人只是意外接近，并未用比赛作掩护。
+  required_change: 按第一部小说重写棒球场遭遇的原因和参与过程，避免把Cullens的活动错误归因于游牧吸血鬼。
+  resolution: 已重写为Cullens借雷声进行家庭棒球活动、Laurent/Victoria/James意外抵达的遭遇，删除游牧者把比赛用作掩护的错误归因。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_020_ae_021
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae_020是Bella对离开Charlie的持续内心挣扎，ae_021是Edward在逃离计划期间“坚持靠近并决心必要时面对James”的概括；两者均缺少唯一触发时点，且ae_021与之后由Alice/Jasper护送Bella、Edward参加追踪的实际分工表述冲突。
+  required_change: 将两项替换为可定位的具体决定/承诺事件，准确写出当时保护分工、参与者、证据和立即生效的新状态。
+  resolution: 已将ae_020改为Bella在车内决定回家用分手返Phoenix故事保护Charlie的具体承诺，新增ae_025记录其履行并返回Cullen家；ae_021改为Alice/Jasper护送、Edward/Carlisle/Emmett追踪、Esme/Rosalie气味诱饵的最终分工，均给出即时状态与单变量反事实。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_022
+  severity: blocker
+  rule_id: non_event_and_knowledge_contradiction
+  evidence: ae_022把“Jacob留在La Push且未参与计划”当作事件，同时known_by包含Jacob和Bella，state_change却又说Jacob不知道威胁和Bella离开；这是缺席状态而非发生的离散事件，且知情字段与结果直接矛盾。
+  required_change: 删除ae_022；如需Jacob候选，改用他实际参与并可获知的第一部小说离散事件，不得以不知道某事伪造Anchor。
+  resolution: 已删除把Jacob缺席及未知伪装成事件的ae_022；Jacob候选仅保留他实际参与的First Beach传说披露。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_023
+  severity: major
+  rule_id: event_boundary_and_visibility
+  evidence: ae_023概括Rosalie“勉强参与家庭防卫但情感疏离”，没有唯一行动边界；known_by还把Bella列为了解Rosalie内在怨恨和风险判断的主体，文件未给出Bella直接听闻这些私人动机的依据。
+  required_change: 改为原著中Rosalie某次明确表态或接受/拒绝具体任务的离散事件，并仅保留实际在场、被告知或有证据访问的known_by。
+  resolution: 已改为保护讨论中Rosalie明确反对为Bella冒家族风险且不自愿承担护送的离散表态；known_by仅保留现场直接听闻者，不再声称Bella知道其内在或后续系列动机。
+  status: fixed
+
+- item_id: anchor_pool.stage_coverage
+  severity: major
+  rule_id: candidate_pool_state_coverage
+  evidence: 候选池主要是剧情知识新增和主观印象；资源/权限变化几乎为空，承诺生命周期与关系覆盖不足，Jacob的三个候选中两个无来源或不是事件，无法为六名角色整体提供可靠的Stage 1多维状态、Stage 2最小因果编辑和Stage 3决策压力。
+  required_change: 在不套用最终Anchor配额的前提下，补充或替换为有来源的离散候选，使池整体覆盖可查询知识、方向关系、目标/承诺、资源/权限及可观察决策后果。
+  resolution: 候选池已补强为22个离散事件，覆盖知识、方向关系、Bella车辆与学校资源、Carlisle执业权限、James威胁目标、Charlie诱导承诺的履行、护送/追踪/气味诱饵分工，并为各项提供可观察决定和最小反事实。
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份initial_context对同类Cullen内部秘密混用字符串private、shared和private_to_cullens，而生成器约定visibility为受众列表；当前值既不能唯一表示NPC与Player谁可见，也无法安全执行Stage 3隐藏信息判断。
+  required_change: 统一为运行时支持的受众列表语义，例如NPC私有为[npc]、默认Player已知才为[npc, player]，并逐项依据实际披露校正。
+  resolution: 六份Frozen全部知识visibility已统一为受众列表[npc]；默认Player因此不获知Cullen秘密或James计划，后续场景只能按canon规则显式覆盖。
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_source_event
+  severity: major
+  rule_id: initial_state_traceability
+  evidence: 泛化initial_state已大体清理，但多项Frozen状态仍追踪到事实边界错误的ae_007、ae_009或ae_012；例如Bella确认吸血鬼秘密指向被误置于草地的ae_007，Rosalie相关首次会面/冷遇指向她实际未参加的Cullen家拜访事件。
+  required_change: 先修正候选事件的真实发生边界，再逐项把知识、关系和目标链接到稳定且真实的来源事件ID；无法由候选直接建立的状态使用明确且有定义的背景来源。
+  resolution: 已在校正事件边界后复核全部Frozen引用：吸血鬼身份确认统一追踪到Port Angeles返程的ae_007，Bella与Rosalie的关系及Rosalie对Bella知情状态追踪到棒球活动首次接触ae_012，Alice对Bella知情的判断追踪到当面展示能力的ae_010；Carlisle的长期保密目标改用明确的family_secrecy_background，其他关键状态均保留真实候选或明确背景来源。
+  status: fixed
+
+- item_id: frozen.jacob_black.knowledge.k_003
+  severity: blocker
+  rule_id: npc_omniscient_knowledge
+  evidence: Jacob的k_003明确知道“Bella has now learned Edward's secret”，但第一部小说当前阶段无人向Jacob披露此事，他也未参与Cullen内部事件；同文件又承认他不知道具体经过。
+  required_change: 删除该知识，并重新审核Jacob全部知识、目标及关系，只保留他亲历、被告知或可由证据推知的内容。
+  resolution: 已删除Jacob知道Bella确认Edward秘密的k_003，并将其剩余知识限制为ae_004中本人讲述且不相信的传统故事及Bella当时对Edward的好奇；目标和关系同步去除危机全知。
+  status: fixed
+
+- item_id: frozen.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Cullen家族方向关系和无接触角色已校正，但Bella与Jacob仍仅凭First Beach一次由Bella诱导传说披露的新结识就双向标为trusting；Profile只支持new friendship/friendly distance，未提供强信任的可观察依据。
+  required_change: 将Bella↔Jacob当前关系降为neutral，或补充第一部小说快照内足以支持双向trusting的具体事件证据；同时在修复错误候选边界后复核Bella↔Rosalie等关系的basis_event。
+  resolution: 已将Bella→Jacob与Jacob→Bella从trusting降为neutral，basis_event均保留为仅支持新结识的ae_004；Bella↔Rosalie的guarded/distrustful状态则改为追踪棒球活动中实际首次接触及Rosalie可观察敌意的ae_012。
+  status: fixed
+
+- item_id: frozen.initial_context.self_relationships
+  severity: minor
+  rule_id: relationship_target_semantics
+  evidence: Bella的relationships包含bella_swan自身并标为loyal，而其余角色不包含自关系；自关系没有方向性社交含义，会给Stage 1关系枚举带来无文档的特殊项。
+  required_change: 删除自关系，或在统一runtime schema中明确所有角色自关系的用途与规范值。
+  resolution: 已删除Bella对自身的loyal关系项，使六名角色统一只记录有方向性的他者关系。
+  status: fixed
+
+- item_id: environment.locations.port_angeles
+  severity: major
+  rule_id: active_scene_location_coverage
+  evidence: ae_024把Port Angeles作为Edward营救Bella及返程对话的实际场景，但environment.locations没有port_angeles节点或任何明确映射。
+  required_change: 增加最小port_angeles地点节点并接入现有连通图，或为该实际场景提供无歧义且运行时有效的现有地点映射。
+  resolution: 已新增port_angeles地点节点，并以双向可达语义接入forks连接图，覆盖ae_024营救及ae_007返程对话的实际场景。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_007
+  severity: blocker
+  rule_id: event_boundary_and_source_factuality
+  evidence: ae_007称Edward在草地首次确认自己是吸血鬼并由此让Bella完成秘密确认；第一部小说中Bella已在Port Angeles返程对话提出并获得对其吸血鬼判断的确认，草地事件主要提供阳光皮肤等直接展示。当前表述把关键知识建立时点延后，并与ae_005/ae_024的真实对话边界割裂。
+  required_change: 按第一部小说把吸血鬼身份确认放回Port Angeles返程对话的正确离散边界，草地候选仅保留当时才发生的展示或披露；同步调整chapter_order、known_by、state_change、cf_edit及所有Frozen source_event/basis_event。
+  resolution: 已将ae_007改为Port Angeles返程车内Bella提出吸血鬼判断、Edward确认并说明动物血饮食的离散事件，保留其顺序、参与者、确认型state_change及单变量否认反事实；ae_024收束于返程前，草地仅由ae_008承载阳光皮肤展示，Frozen中的相关确认知识继续追踪校正后的ae_007。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_009_ae_012
+  severity: blocker
+  rule_id: source_event_participant_accuracy
+  evidence: ae_009称Edward在首次Cullen家拜访时把Rosalie介绍给Bella，ae_012又称Rosalie在该次拜访现场冷待Bella；第一部小说中Rosalie与Emmett未参加这次家中接待，Bella是在随后棒球活动阶段见到他们。两个候选因此伪造了参与地点和关系变化边界，且多份Frozen状态继续引用它们。
+  required_change: 从首次Cullen家拜访候选中移除Rosalie及其知情/关系后果；把Bella与Rosalie的首次实际接触和任何可证实的方向关系变化放到正确的棒球活动边界，或删除无充分来源的关系候选，并同步修正全部引用。
+  resolution: 已从ae_009的事实、known_by、state_change和anchor_for中移除Rosalie，并明确她与Emmett缺席首次Cullen家拜访；ae_012改为棒球活动前Bella与Rosalie实际首次接触及Rosalie可观察敌意，Bella和Rosalie各自Frozen关系及Rosalie知情来源同步追踪ae_012。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_019.anchor_for
+  severity: major
+  rule_id: candidate_target_knowledge_grounding
+  evidence: ae_019的known_by仅有Bella、Edward和Alice，anchor_for却包含Carlisle；该Jeep内临时方案发生时Carlisle不在场，且文件没有给出他在此事件边界被告知或取得证据的路径。
+  required_change: 从ae_019.anchor_for移除Carlisle，或补充正典支持的同边界获知路径；仅保留能实际获知并由该事件产生可查询状态变化的候选目标。
+  resolution: 已从ae_019.anchor_for移除不在Jeep临时方案现场且无同边界获知路径的Carlisle，仅保留实际参与并由该事件取得护送承诺状态的Alice。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_023.state_change
+  severity: major
+  rule_id: event_boundary_exact
+  evidence: ae_023的离散事实是Rosalie拒绝与Bella换衣、Esme接替换衣，但state_change同时写成Rosalie“remains assigned to travel with Esme in Bella's truck”；卡车气味诱饵分工是在后续ae_021最终计划中才建立，ae_023因而提前写入并重复了尚未生效的承诺。
+  required_change: 将ae_023的状态变化严格收束为Rosalie拒绝换衣及Esme接替；Rosalie的卡车气味诱饵任务只能由后续ae_021建立，并同步复核相关Frozen承诺来源。
+  resolution: 已将ae_023的state_change严格收束为Rosalie拒绝换衣、Esme接替，并明确该事件不建立气味诱饵出行任务；Rosalie Frozen中的气味诱饵承诺继续且仅回链后续ae_021。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_025
+  severity: major
+  rule_id: source_event_factuality_and_visibility
+  evidence: ae_025称Bella打包后“drives her truck back to the Cullen house”，但原著中Bella驾车冲出Swan家后Edward随即把她移到副驾驶并接手开往Cullen家；同一候选还把仅在Swan家外守候、到达后得知结果的Carlisle与Rosalie列入known_by，使他们被视为知道Charlie室内对话、打包与驾驶过程的全部复合事实。
+  required_change: 把ae_025拆分或改写为准确的离散边界：明确Bella完成对Charlie的误导并驾车离开、Edward随后接手驾驶、Bella与卡车抵达Cullen家；逐事实限定参与者/获知路径，不得让目的地见证者自动知道室内私密过程，并同步复核state_change、cf_edit与Frozen引用。
+  resolution: 已把ae_025改写为从执行Swan家误导到返回Cullen家的单次连续计划步骤：Bella误导Charlie、打包并驾车离开，Edward在屋外听见交谈后接手驾驶，最终Bella与卡车抵达Cullen家；known_by仅保留全程亲历或凭听觉取得证据的Bella与Edward，移除仅可能见证抵达的Alice、Carlisle和Rosalie，并复核state_change、单变量cf_edit及Bella Frozen引用。
+  status: fixed
+
+- item_id: anchor_pool.events.ae_010.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: ae_010同时承载Edward披露Alice的预知能力和Alice主动欢迎Bella两项独立原因，cf_edit又同时改为Edward不披露能力且Alice保持疏远；一次反事实同时改变知识证据与关系行为，无法隔离单一因果变量。
+  required_change: 只保留一个受控变量及其对应状态后果；如测试能力知识，则保持Alice的欢迎行为不变，如测试关系形成，则保持能力披露不变，或拆成两个离散候选。
+  resolution: 已将ae_010反事实限定为Alice是否主动欢迎Bella这一单一关系变量；两侧均保持Edward披露Alice的决策敏感预知能力，因此能力知识不随关系干预改变，仅友谊建立结果发生变化。
+  status: fixed
+
+- item_id: frozen.relationships.source_grounding
+  severity: major
+  rule_id: relationship_grounding_and_traceability
+  evidence: Carlisle→Bella在Frozen中标为trusting并回链ae_009，但该事件仅建立首次正式见面及Carlisle知道Bella已获悉秘密，Profile只明确Carlisle对Bella礼貌和尊重，未给出强信任转折；Edward→Jacob虽为neutral却回链ae_004，而ae_004的known_by不含Edward，形成不可访问的关系来源。
+  required_change: 对Carlisle→Bella补充快照内可观察的信任依据并使用真实来源事件，或降为neutral；将Edward→Jacob改用其实际获知/接触事件，若无此候选则使用明确的no_direct_contact背景，不得引用Edward不知情的ae_004。
+  resolution: 已将Carlisle→Bella降为neutral并保留其亲历首次正式见面的ae_009作为依据；Edward→Jacob维持neutral但将basis_event改为no_direct_contact，不再引用Edward不知情的ae_004。
+  status: fixed
+
+- item_id: characters.bella_swan.worldview.principles
+  severity: major
+  rule_id: current_state_internal_consistency
+  evidence: Profile把“Truth between loved ones matters more than safety”列为稳定原则，但同一快照的ae_020、ae_025、core_goals、prohibitions和b_001均要求Bella为了安全向父亲Charlie隐瞒真相并使用虚假分手故事；该原则会让Stage 3对是否向Charlie披露吸血鬼威胁产生相反的可执行答案。
+  required_change: 删除或限定该原则，使其明确不覆盖为保护Charlie及Cullen秘密而进行的必要隐瞒，并与当前目标、禁止项和b_001保持唯一决策边界。
+  resolution: 已将绝对化的“亲人间真相比安全更重要”限定为Bella重视诚实、但会为保护Charlie及Cullen秘密而进行必要隐瞒；现与ae_020、ae_025、core_goals、prohibitions及b_001一致，面对是否向Charlie披露威胁时只有“不披露并采用保护性掩饰”的可执行边界。
+  status: fixed
+
+- item_id: characters.alice_cullen.private.secrets
+  severity: major
+  rule_id: behavioral_boundary_internal_consistency
+  evidence: private.secrets声称Alice会在确定含义前“keep the full extent of some visions to herself”，但prohibitions又规定不得向Edward或Carlisle隐瞒相关预见，alice_b_001也要求新预见出现后先报告再行动；“some”和“relevant”的边界未定义，Stage 3无法唯一判定她在不确定但涉及Bella危险时应披露还是隐瞒。
+  required_change: 删除无当前来源的泛化秘密，或明确区分可暂缓的无关/无法解释细节与必须立即报告的风险信号，使prohibitions、边界和允许适应一致。
+  resolution: 已把泛化隐瞒改为明确分界：仅可暂缓与安全无明显关系且无法解释的细节；任何涉及Bella危险的预见或不确定风险信号都必须立即报告Edward或Carlisle，现与prohibitions、alice_b_001及其紧急行动例外一致。
+  status: fixed
+
+- item_id: characters.edward_cullen.social.relationship_rules
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: Profile称Edward把Jacob的“warnings”视为Quileute对Cullens的不信任；但唯一Jacob事件ae_004的known_by不含Edward，Frozen也应以no_direct_contact表示双方无直接接触，而且Jacob在该事件中明确不相信传统故事并未作当前警告。该规则同时赋予Edward不可访问知识并误写Jacob立场。
+  required_change: 删除该关系规则，或改为Edward在快照内实际可知且有来源的no_direct_contact/普通陌生人状态；不得声称他知道ae_004内容或把Jacob塑造成已发出敌对警告。
+  resolution: 已将Edward对Jacob的关系规则改为快照内双方无直接关系，且Edward不知道Jacob在First Beach向Bella讲述的内容；删除了不可访问的“warnings”知识及对Jacob立场的敌对化解释，并与Edward Frozen的no_direct_contact一致。
+  status: fixed
+
+- item_id: characters.jacob_black.private.private_background
+  severity: major
+  rule_id: source_grounded_characterization
+  evidence: private_background把Jacob在第一部小说当前来源场景中的角色概括为“family friend warning Bella”，与同Profile反复声明他不相信故事、无当前敌意且不会把传说当事实的原则和边界冲突；ae_004也只记录在Bella鼓励下讲述传统故事，并不建立警告状态。
+  required_change: 将该背景收束为First Beach讲述传统故事和新结识Bella，不得继续使用会建立超自然确信或敌对提醒含义的“warning”表述。
+  resolution: 已将private_background收束为Jacob在First Beach受Bella鼓励后讲述传统故事并与她形成新友谊，明确他没有把故事作为自己相信的警告；现与ae_004、原则、限制和行为边界一致。
+  status: fixed
+
+- item_id: environment.affordances.drive_bellas_truck
+  severity: major
+  rule_id: world_affordance_runtime_executable
+  evidence: Bella Frozen在当前快照位于cullen_house、inventory持有truck且access授予drive_bellas_truck，但该affordance的location_ids仅有swan_house、forks_high_school和forks，不含cullen_house；因此这项当前资源/权限在开局地点不能执行，与ae_025已将Bella和卡车置于Cullen家不一致。
+  required_change: 若Bella当前驾驶权限应可测试，则把cullen_house加入drive_bellas_truck的有效地点；若当前计划禁止她驾驶，则移除或显式停用Frozen中的该access，确保资源、地点与权限给出唯一可执行状态。
+  resolution: 已将cullen_house加入drive_bellas_truck的有效地点；Bella在Frozen中位于Cullen家、持有truck并具有该access时，车辆资源与驾驶权限现可在开局地点执行，同时不改变Rosalie既有气味诱饵授权。
+  status: fixed

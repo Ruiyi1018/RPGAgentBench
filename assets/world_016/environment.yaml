@@ -1,86 +1,88 @@
 world_id: world_016
-name: 紫禁城与宫外邻近区域
+name: 第5集末的北京城、福府与紫禁城
+language: zh
 locations:
+- id: liang_fu
+  name: 梁府
+  connected_to:
+  - gong_wai
+- id: gong_wai
+  name: 宫外街巷
+  connected_to:
+  - liang_fu
+  - da_za_yuan
+  - fu_fu
+  - ji_tian_jie_dao
+  - wei_chang_shan_ya
+- id: da_za_yuan
+  name: 大杂院
+  connected_to:
+  - gong_wai
+  - wei_chang_shan_ya
+- id: wei_chang_shan_ya
+  name: 进入皇家围场所经山崖
+  connected_to:
+  - da_za_yuan
+  - gong_wai
+  - huang_jia_wei_chang
+- id: huang_jia_wei_chang
+  name: 皇家围场
+  connected_to:
+  - wei_chang_shan_ya
+  - gong_men
+- id: ji_tian_jie_dao
+  name: 祭天仪仗途经街市
+  connected_to:
+  - gong_wai
+  - fu_fu
+  - gong_men
 - id: fu_fu
   name: 福府
   connected_to:
   - gong_wai
+  - ji_tian_jie_dao
   - gong_men
-- id: gong_wai
-  name: 宫外街巷
-  connected_to:
-  - fu_fu
-  - gong_men
-  - jiao_wai
 - id: gong_men
-  name: 宫门
+  name: 紫禁城宫门
   connected_to:
-  - gong_wai
-  - yu_huayuan
-  - da_dian
-- id: yu_huayuan
-  name: 御花园
-  connected_to:
-  - gong_men
-  - shu_fang
-- id: da_dian
-  name: 大殿外
+  - huang_jia_wei_chang
+  - ji_tian_jie_dao
+  - fu_fu
+  - shu_fang_zhai
+  - yang_xin_dian
+- id: shu_fang_zhai
+  name: 漱芳斋
   connected_to:
   - gong_men
-  - shu_fang
-- id: shu_fang
-  name: 书房偏厅
+  - yang_xin_dian
+- id: yang_xin_dian
+  name: 养心殿
   connected_to:
-  - yu_huayuan
-  - da_dian
-- id: jiao_wai
-  name: 郊外
-  connected_to:
-  - gong_wai
-- id: shu_fang_zhai_wai
-  name: 漱芳斋外
-  connected_to:
-  - yu_huayuan
   - gong_men
+  - shu_fang_zhai
 items:
-- id: xin_wu
-  name: 身份信物
-  type: 凭据
+- id: qianlong_zhe_shan
+  name: 乾隆题字摺扇
+  type: 身份证物
   portable: true
-- id: shu_xin
-  name: 书信
-  type: 文书
+  canonical_owner: ziwei
+  current_custody: qianlong
+  transfer_chain:
+  - ziwei在围场山崖交给xiao_yanzi
+  - xiao_yanzi带入皇家围场
+  - qianlong查验后纳入宫中保管
+- id: yan_yu_tu
+  name: 烟雨图画卷
+  type: 身份证物
   portable: true
-- id: tuan_shan
-  name: 团扇
-  type: 日用品
+  canonical_owner: ziwei
+  current_custody: qianlong
+  transfer_chain:
+  - ziwei在围场山崖交给xiao_yanzi
+  - xiao_yanzi带入皇家围场
+  - qianlong查验后纳入宫中保管
+- id: xiao_taijian_fu
+  name: 小太监服
+  type: 伪装衣物
   portable: true
-- id: ling_pai
-  name: 令牌
-  type: 凭据
-  portable: true
-- id: pei_yu
-  name: 佩玉
-  type: 饰物
-  portable: true
-- id: yao_fang
-  name: 药方
-  type: 文书
-  portable: true
-- id: bian_zi
-  name: 鞭子
-  type: 武器
-  portable: true
-- id: tuo_pan
-  name: 托盘
-  type: 器皿
-  portable: false
-- id: gong_deng
-  name: 宫灯
-  type: 照明
-  portable: false
-- id: hua_zhou
-  name: 画轴
-  type: 文书
-  portable: true
-language: zh
+  current_custody: palace_guards

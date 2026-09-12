@@ -2,78 +2,60 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    meredith_grey:
-      level: neutral
-      basis_event: initial_state
-    cristina_yang:
-      level: neutral
-      basis_event: initial_state
-    derek_shepherd:
-      level: neutral
-      basis_event: initial_state
-    izzie_stevens:
-      level: neutral
-      basis_event: initial_state
-    george_omalley:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    meredith_grey: {level: neutral, basis_event: ae02}
+    cristina_yang: {level: neutral, basis_event: ae02}
+    derek_shepherd: {level: neutral, basis_event: pre_existing_hospital_staff}
+    izzie_stevens: {level: neutral, basis_event: ae02}
+    george_omalley: {level: neutral, basis_event: ae02}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g01
-    content: Oversee the new surgical interns during their shifts and enforce hospital
-      protocol.
+    content: Supervise the intern cohort and enforce safe clinical practice.
     status: active
-    basis_event: initial_state
+    basis_event: ae02
   - id: g02
-    content: Correct intern mistakes in patient care as they occur.
+    content: Assign intern work according to demonstrated readiness and patient safety.
     status: active
-    basis_event: initial_state
+    basis_event: ae06
   - id: g03
-    content: Establish and maintain her authority as the interns' supervising resident.
+    content: Keep observed staff relationships from distorting clinical supervision.
     status: active
-    basis_event: initial_state
+    basis_event: ae12
   disclosures: []
   knowledge:
-    k01:
-      content: Meredith Grey has begun her surgical internship at Seattle Grace Hospital.
+    k1:
+      content: Bailey directly supervises the intern cohort's clinical work.
       status: active
-      visibility: private
-      source_event: initial_state
-    k02:
-      content: The new interns have been assigned pagers to manage hospital communication.
+      visibility: [npc]
+      source_event: ae02
+    k2:
+      content: George froze during his first appendectomy and required intervention.
       status: active
-      visibility: private
-      source_event: initial_state
-    k03:
-      content: Cristina Yang had a medical emergency while working a shift.
+      visibility: [npc]
+      source_event: ae06
+    k3:
+      content: Bailey directly observed Meredith and Derek together in his car.
       status: active
-      visibility: private
-      source_event: initial_state
-    k04:
-      content: Meredith Grey took on a leadership role to help Cristina Yang during
-        her medical emergency.
+      visibility: [npc]
+      source_event: ae12
+    k4:
+      content: Izzie and Cristina performed an autopsy after Bailey stated that the family had refused authorization.
       status: active
-      visibility: private
-      source_event: initial_state
-    k05:
-      content: The intern cohort has experienced its first major professional crisis
-        together.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae13
 environment:
-  health:
-    miranda_bailey: 100
-    player: 100
+  health: {miranda_bailey: 100, player: 100}
   inventories:
-    miranda_bailey: []
+    miranda_bailey: [patient_chart, pager]
     player: []
-  locations:
-    miranda_bailey: seattle_grace_hospital
-    player: seattle_grace_hospital
-  access: {}
+  locations: {miranda_bailey: seattle_grace_hospital, player: seattle_grace_hospital}
+  access:
+    patient_charts:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {miranda_bailey: granted, player: denied}
+    intern_task_assignment:
+      controllers: [miranda_bailey]
+      subjects: {miranda_bailey: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

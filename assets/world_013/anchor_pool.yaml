@@ -1,243 +1,156 @@
 world_id: world_013
 source: 电影《唐人街探案》（2015）
+timeline_scope: 全部候选均发生在Frozen初始化之后、canon.canon_policy.generated_timeline.end之前，并按chapter_order构成唯一顺序
+known_by_semantics: 仅列出亲历该事实、被明确告知或实际接触对应证据的受评NPC；怀疑不等于确认，player不因同地或世界事实自动知情
+fact_layer_semantics: 事件含fact_layers时，顶层known_by只对应顶层fact；每层知识以该层自己的known_by及必要的suspected_by或outcome_known_by为准，不在层间自动传播
 events:
-- id: ev_001
-  fact: 秦风抵达曼谷并前往唐仁侦探社寻找唐仁。
-  known_by:
-  - qin_feng
-  state_change: 秦风进入曼谷案件环境
-  cf_edit: 秦风抵达后直接去警局而不是侦探社，导致与唐仁会合时间推迟并改变前期调查路径。
-  anchor_for:
-  - qin_feng
-- id: ev_002
-  fact: 唐仁在侦探社向秦风介绍自己当前在曼谷唐人街的活动。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 两人建立初步合作关系
-  cf_edit: 唐仁因临时外出未在侦探社，秦风只能通过阿香了解唐仁行踪，延迟了两人共同行动。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_003
-  fact: 阿香出现在唐仁侦探社附近，与秦风或唐仁发生短暂接触。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - a_xiang
-  state_change: 阿香进入调查外围关系
-  cf_edit: 阿香当时未在侦探社附近，改为之后在唐人街街口偶然碰见，使秦风和唐仁失去一个即时信息来源。
-  anchor_for:
-  - a_xiang
-- id: ev_004
-  fact: 秦风与唐仁得知颂帕工坊发生命案。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 案件成为二人核心调查目标
-  cf_edit: 命案消息由坤泰稍后才通知唐仁，而非在侦探社阶段得知，延后两人对案件的介入。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_005
-  fact: 唐仁向秦风介绍死者颂帕与黄金佛像的事。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 黄金佛像成为关键物品线索
-  cf_edit: 唐仁没来得及介绍黄金佛像，秦风在颂帕工坊自行发现佛像后才知道其存在，改变线索发现顺序。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_006
-  fact: 秦风与唐仁前往颂帕工坊查看现场。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 现场勘查启动
-  cf_edit: 颂帕工坊被警方提前封锁禁止进入，二人只能通过黄兰登了解现场，无法直接观察密室。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_007
-  fact: 在颂帕工坊内发现监控录像设备与录像资料。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 监控录像成为时间线关键证据
-  cf_edit: 监控设备已被凶手破坏且无法恢复，二人只能依赖证人口供，录像线索缺失。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_008
-  fact: 秦风与唐仁查看监控录像后关注到凶手进入工坊的时间片段。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 锁定作案时间窗口
-  cf_edit: 录像时间戳被证明经过修改，二人无法立刻信任录像，转而重新寻找旁证。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_009
-  fact: 坤泰以警局人员身份接触唐仁和秦风，询问案件相关信息。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - kun_tai
-  state_change: 坤泰进入案件调查网络
-  cf_edit: 坤泰被上级安排去处理另一案件，未及时接触唐仁，导致警方内部信息进入主线的时间推迟。
-  anchor_for:
-  - kun_tai
-- id: ev_010
-  fact: 黄兰登负责颂帕命案的警方调查。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - kun_tai
-  - huang_lan_deng
-  state_change: 警方调查正式主导者明确
-  cf_edit: 黄兰登被停职，改由陌生警官负责颂帕案，使唐仁和秦风在警局内的情报获取难度提高。
-  anchor_for:
-  - huang_lan_deng
-- id: ev_011
-  fact: 秦风与唐仁在唐人街询问案发前后路人行踪。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 民间线索收集进入唐人街范围
-  cf_edit: 唐人街突然下雨导致行人稀少，二人问不到有效目击证词，调查重心被迫转向物证。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_012
-  fact: 秦风与唐仁在曼谷街头遭遇追捕，被迫转入停车场。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - a_xiang
-  state_change: 调查由公开活动转为躲避状态
-  cf_edit: 追捕发生在狭窄巷道而非停车场，二人无法利用车辆掩护，被逼入死路后由阿香另寻方式解围。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-  - a_xiang
-- id: ev_013
-  fact: 阿香在调查过程中为唐仁或秦风提供帮助。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - a_xiang
-  state_change: 阿香从外围关系变为实质协助者
-  cf_edit: 阿香因被警告而拒绝协助，只提供一句不明确的提示，使二人失去关键行动支持。
-  anchor_for:
-  - a_xiang
-- id: ev_014
-  fact: 坤泰私下向唐仁透露警方正在追查唐仁。
-  known_by:
-  - tang_ren
-  - kun_tai
-  state_change: 唐仁从被调查者变为潜逃关联人
-  cf_edit: 坤泰为避免问责没有提前透露，唐仁在公开场合被黄兰登撞见后才知道自己已被追查。
-  anchor_for:
-  - tang_ren
-  - kun_tai
-- id: ev_015
-  fact: 秦风与唐仁进入医院调查与案件相关的线索。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 医院进入案件地点网络
-  cf_edit: 医院因突发急诊封锁，二人无法进入，只能改由坤泰事后转述内部情况。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_016
-  fact: 思诺在学校附近被秦风与唐仁询问。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - si_nuo
-  state_change: 思诺介入案件线索链
-  cf_edit: 思诺当时被老师叫走，没有接受询问，导致她与案件的关系延后至另一地点才被发现。
-  anchor_for:
-  - si_nuo
-- id: ev_017
-  fact: 思诺在咖啡馆与秦风或唐仁见面，谈及相关信息。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - si_nuo
-  state_change: 咖啡馆成为信息交换点
-  cf_edit: 咖啡馆临时关门，改为在街边谈话，被路人打断，关键信息只传达了一半。
-  anchor_for:
-  - si_nuo
-- id: ev_018
-  fact: 秦风与唐仁再次查看案件卷宗，梳理颂帕工坊密室结构。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 密室结构成为核心推理对象
-  cf_edit: 案件卷宗被警方收走，二人只能凭现场记忆推理，遗漏了一扇暗门。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_019
-  fact: 坤泰在警局内部帮助唐仁接触案件相关证据。
-  known_by:
-  - tang_ren
-  - kun_tai
-  state_change: 警方证据进入民间调查链
-  cf_edit: 坤泰被发现协助外人而被调离档案室，导致唐仁无法接触现场物证照片。
-  anchor_for:
-  - kun_tai
-- id: ev_020
-  fact: 黄兰登在警局与唐仁或秦风发生正面冲突。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - huang_lan_deng
-  state_change: 黄兰登与主角方对立关系强化
-  cf_edit: 黄兰登当时临时外出，换成另一名警员盘问二人，使黄兰登对唐仁的追捕线暂时中断。
-  anchor_for:
-  - huang_lan_deng
-- id: ev_021
-  fact: 秦风根据监控录像与现场痕迹推理出凶手可能熟悉工坊内部。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 推理焦点从不特定凶手转向熟人作案
-  cf_edit: 现场痕迹被警方取证时意外破坏，秦风无法确认这一点，导致熟人作案假设晚一步出现。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_022
-  fact: 唐仁与秦风在停车场复盘当前证据与嫌疑人范围。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 停车场成为阶段性推理地点
-  cf_edit: 停车场保安提前驱赶二人，复盘改在河岸旁进行，环境嘈杂导致部分证据被误解。
-  anchor_for:
-  - qin_feng
-  - tang_ren
-- id: ev_023
-  fact: 思诺向秦风提供与案件有关的个人信息或观察。
-  known_by:
-  - qin_feng
-  - tang_ren
-  - si_nuo
-  state_change: 思诺的信息推动推理方向改变
-  cf_edit: 思诺临时改口，只说了与案件无关的学校话题，使真正线索延迟到之后另一次见面才出现。
-  anchor_for:
-  - si_nuo
-- id: ev_024
-  fact: 唐仁与秦风确认颂帕工坊内黄金佛像与案件存在关联。
-  known_by:
-  - qin_feng
-  - tang_ren
-  state_change: 黄金佛像被纳入案件动机分析
-  cf_edit: 黄金佛像在两人到达前已被转移，现场只留下底座痕迹，动机分析因此缺少直观物证。
-  anchor_for:
-  - qin_feng
-  - tang_ren
+- id: ev_101
+  chapter_order: "010"
+  fact: 唐仁接到匿名电话，被告知警方已经包围并准备抓捕他；他与秦风随即逃离黄兰登带队的追捕。
+  known_by: [tang_ren, qin_feng, huang_lan_deng]
+  player_visible: false
+  state_change: 唐仁和秦风分别新增“警方正在抓捕唐仁”的知识，唐仁的洗清嫌疑目标与两人的躲避状态转为active。
+  state_paths_by_npc:
+    tang_ren: runtime_state.knowledge.tangren_k_police_pursuit
+    qin_feng: runtime_state.knowledge.know_qf_police_pursuit
+    huang_lan_deng: runtime_state.goals.hld_goal_arrest_tang
+  cf_edit: 仅将匿名电话是否成功接通改为未接通。
+  counterfactual_consequence: 唐仁不能提前确认包围行动，无法在警方合围前主动逃离。
+  anchor_for: [tang_ren, qin_feng, huang_lan_deng]
+- id: ev_102
+  chapter_order: "020"
+  fact: 黄金盗窃团伙三人抓住唐仁与秦风；唐仁为自保披露自己曾把颂帕交付的密封箱送到海天大厦地下停车场。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 秦风新增箱子交付地点知识，唐仁新增与秦风共同查清箱子去向的active承诺。
+  state_path: runtime_state.knowledge.know_qf_haitian_delivery
+  commitment_state_path: runtime_state.commitments.investigate_delivery_crate
+  cf_edit: 仅将唐仁是否说出停车场地点改为拒绝披露。
+  counterfactual_consequence: 秦风不会从本次逼问得知交付地点，两人也不会据此把停车场作为下一调查目标。
+  anchor_for: [tang_ren, qin_feng]
+- id: ev_103
+  chapter_order: "030"
+  fact: 唐仁与秦风逃脱后到海天大厦地下停车场查找接走箱子的面包车；秦风闻到鱼腥味，并沿海鲜运输线索查到废车场。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 两人新增“接箱车辆与海鲜运输、废车场有关”的调查线索知识。
+  state_paths_by_npc:
+    qin_feng: runtime_state.knowledge.know_qf_scrapyard_route
+    tang_ren: runtime_state.knowledge.tangren_k_scrapyard_route
+  cf_edit: 仅将面包车是否留下鱼腥味改为没有留下该气味。
+  counterfactual_consequence: 两人不能由停车场证据把车辆路线收窄到海鲜市场和废车场。
+  anchor_for: [qin_feng, tang_ren]
+- id: ev_104
+  chapter_order: "040"
+  fact: 唐仁与秦风潜入颂帕工坊查看现场，并在丹的房间床下发现有人长期藏身留下的生活痕迹。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 秦风新增“案发前有人曾在工坊床下长期藏身”的确认知识。
+  state_path: runtime_state.knowledge.know_qf_workshop_hiding
+  cf_edit: 仅将床下是否保留藏身痕迹改为已被彻底清理。
+  counterfactual_consequence: 秦风不能从现场确认有人提前进入并长期藏匿。
+  anchor_for: [qin_feng, tang_ren]
+- id: ev_105
+  chapter_order: "050"
+  fact: 坤泰利用警局职务便利让唐仁与秦风限时查看颂帕案件资料和消费记录，但拒绝让二人带走卷宗或物证。
+  known_by: [kun_tai, tang_ren, qin_feng]
+  player_visible: false
+  state_change: 唐仁和秦风对item_case_file的访问由denied临时变为granted，离开查看区域后恢复为denied；坤泰的卷宗访问保持granted。
+  state_path: environment.access.case_file.subjects.tang_ren
+  state_paths_by_npc:
+    qin_feng: environment.access.case_file.subjects.qin_feng
+    kun_tai: environment.access.case_file.subjects.kun_tai
+  cf_edit: 仅将坤泰的决定改为拒绝临时查看。
+  counterfactual_consequence: 唐仁与秦风的卷宗访问持续为denied，不能从官方资料获得颂帕家庭与消费记录。
+  anchor_for: [kun_tai, tang_ren, qin_feng]
+- id: ev_106
+  chapter_order: "060"
+  fact: 唐仁与秦风根据消费记录到颂帕常去的咖啡馆，确认颂帕常持相机拍摄街对面的思诺住所。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 两人新增“颂帕持续拍摄思诺住所方向”的知识，但尚不能据此确认拍摄动机。
+  state_paths_by_npc:
+    qin_feng: runtime_state.knowledge.know_qf_songpa_photos
+    tang_ren: runtime_state.knowledge.tangren_k_songpa_photos
+  cf_edit: 仅将咖啡馆人员是否确认颂帕经常拍摄街对面改为无法确认。
+  counterfactual_consequence: 两人不能由消费记录把颂帕与思诺住所建立可核验联系。
+  anchor_for: [qin_feng, tang_ren]
+- id: ev_107
+  chapter_order: "070"
+  fact: 秦风与唐仁到思诺住所询问；思诺明知二人正被通缉仍允许他们进入，并只披露自己父母去世、被李先生领养。
+  known_by: [si_nuo, qin_feng, tang_ren]
+  player_visible: false
+  state_change: 思诺对二人的住宅会面区访问由denied临时变为granted；秦风和唐仁新增其公开披露的家庭背景知识，思诺的日记设计仍仅自己知情。
+  state_path: environment.access.si_nuo_meeting_area.subjects.qin_feng
+  state_paths_by_npc:
+    tang_ren: environment.access.si_nuo_meeting_area.subjects.tang_ren
+    si_nuo: runtime_state.knowledge.si_nuo_knows_controlled_disclosure
+  cf_edit: 仅将思诺是否开门允许二人进入改为拒绝会面。
+  counterfactual_consequence: 二人不能进入住所或当面获得家庭背景，思诺也无需在本次会面维持选择性披露。
+  anchor_for: [si_nuo, qin_feng, tang_ren]
+- id: ev_108
+  chapter_order: "080"
+  fact: 李先生回到思诺住所，秦风、唐仁与思诺亲历其到场。
+  known_by: [qin_feng, tang_ren, si_nuo]
+  fact_layers:
+  - id: ev_108_li_returns
+    content: 李先生回到思诺住所。
+    known_by: [qin_feng, tang_ren, si_nuo]
+  - id: ev_108_qin_recognizes_li
+    content: 秦风凭此前在废车场见过的面孔认出李先生是废车场工人。
+    known_by: [qin_feng]
+  - id: ev_108_qin_suspects_li
+    content: 秦风把李先生列为与面包车线索有关的怀疑对象，尚未确认其为凶手。
+    known_by: [qin_feng]
+    suspected_by: [qin_feng]
+  suspected_by: [qin_feng]
+  outcome_known_by: [qin_feng]
+  player_visible: false
+  state_change: 秦风新增“李先生在废车场工作并可能关联面包车”的suspected知识，尚未确认他是凶手。
+  state_path: runtime_state.knowledge.know_qf_suspects_li
+  cf_edit: 仅将秦风是否在废车场见过李先生改为没有见过。
+  counterfactual_consequence: 秦风无法凭面孔把思诺养父与废车场线索连接起来。
+  anchor_for: [qin_feng]
+- id: ev_109
+  chapter_order: "090"
+  fact: 闫先生的人抓住唐仁与秦风，并限令二人在五天内找回失窃黄金。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 两人新增“五天内找回黄金”的active外部承诺与期限压力。
+  state_path: runtime_state.commitments.recover_gold_for_yan
+  cf_edit: 仅将闫先生是否给出五日期限改为不设期限。
+  counterfactual_consequence: 两人仍可调查黄金，但不存在五日到期的可判分承诺状态。
+  anchor_for: [tang_ren, qin_feng]
+- id: ev_110
+  chapter_order: "100"
+  fact: 唐仁与秦风再次进入工坊时遭戴面具的李先生袭击，李先生纵火试图毁掉现场；二人逃出。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 秦风对“李先生会为阻止调查而毁坏现场”的判断由suspected更新为亲历确认。
+  state_path: runtime_state.knowledge.know_qf_li_destroyed_scene
+  cf_edit: 仅将李先生是否点火毁坏现场改为未点火。
+  counterfactual_consequence: 二人仍遭袭击，但不能确认袭击者同时意图销毁工坊痕迹。
+  anchor_for: [qin_feng, tang_ren]
+- id: ev_111
+  chapter_order: "110"
+  fact: 唐仁与秦风回到阿香住所，发现黄金盗窃团伙成员挟持阿香；脱困过程中阿香受伤，二人把她送往医院。
+  known_by: [a_xiang, tang_ren, qin_feng]
+  player_visible: false
+  state_change: 阿香的位置更新为医院、health由100降为受伤状态；唐仁形成把阿香送医并确保安全的active承诺。
+  state_path: environment.health.a_xiang
+  location_state_path: environment.locations.a_xiang
+  commitment_state_path: runtime_state.commitments.protect_a_xiang
+  cf_edit: 仅将阿香是否在脱困中受伤改为没有受伤。
+  counterfactual_consequence: 阿香health保持100且无需转移到医院，唐仁不会形成送医承诺。
+  anchor_for: [a_xiang, tang_ren, qin_feng]
+- id: ev_112
+  chapter_order: "120"
+  fact: 在医院，唐仁单向向秦风解释自己来到泰国的私人缘由。
+  known_by: [tang_ren, qin_feng]
+  player_visible: false
+  state_change: 仅将秦风对唐仁的定向关系由neutral更新为trusting；唐仁对秦风的关系及双方其他状态在本候选中保持不变。
+  state_owner: qin_feng
+  state_path: runtime_state.relationships.tang_ren.level
+  cf_edit: 仅将唐仁是否披露该私人缘由改为唐仁保持沉默，医院地点、脱身条件及此前关系均保持不变。
+  counterfactual_consequence: 秦风对唐仁的定向关系保持neutral；唐仁对秦风的关系及双方其他状态仍不变。
+  anchor_for: [qin_feng]

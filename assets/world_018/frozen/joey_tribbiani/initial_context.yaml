@@ -2,81 +2,39 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    rachel_green:
-      level: trusting
-      basis_event: initial_state
-    monica_geller:
-      level: trusting
-      basis_event: initial_state
-    phoebe_buffay:
-      level: trusting
-      basis_event: initial_state
-    chandler_bing:
-      level: loyal
-      basis_event: initial_state
-    ross_geller:
-      level: trusting
-      basis_event: initial_state
-    gunther:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    rachel_green: {level: neutral, basis_event: snapshot_fact_friend_group}
+    monica_geller: {level: neutral, basis_event: snapshot_fact_friend_group}
+    phoebe_buffay: {level: neutral, basis_event: snapshot_fact_friend_group}
+    chandler_bing: {level: trusting, basis_event: snapshot_fact_roommates}
+    ross_geller: {level: neutral, basis_event: snapshot_fact_friend_group}
+    gunther: {level: neutral, basis_event: snapshot_fact_counter_employee}
+    player: {level: neutral, basis_event: snapshot_fact_unfamiliar_visitor}
   goals:
   - id: joey_get_acting_work
-    content: Find another acting job after losing the butt double role.
+    content: Obtain another acting job
     status: active
-    basis_event: initial_state
-  - id: joey_keep_up_appearances
-    content: Avoid letting the group see how worried he is about money and career
-      failure.
-    status: active
-    basis_event: initial_state
-  - id: joey_support_chandler
-    content: Stay available as Chandler's roommate and friend during Chandler's job
-      frustration.
-    status: active
-    basis_event: initial_state
+    basis_event: joey_fired_butt_double_job
   disclosures: []
   knowledge:
-    known_rachel_arrived_wedding_dress:
-      content: Rachel entered Central Perk in a wedding dress after leaving her wedding.
+    joey_knows_role_lost:
+      content: Joey was fired from the body-double role after disregarding direction.
       status: active
-      visibility: known
-      source_event: initial_state
-    known_ross_marriage_ending:
-      content: Ross's wife Carol is a lesbian and their marriage is ending.
+      visibility: [npc]
+      source_event: joey_fired_butt_double_job
+    joey_knows_marcel_transferred:
+      content: Marcel is at the zoo and no longer in Ross's custody.
       status: active
-      visibility: known
-      source_event: initial_state
-    known_joey_butt_double_fired:
-      content: Joey landed and then was fired from a role as Al Pacino's butt double.
+      visibility: [npc]
+      source_event: ross_transfers_marcel_to_zoo
+    joey_knows_ben:
+      content: Ross's son Ben has been born.
       status: active
-      visibility: known
-      source_event: initial_state
-    known_marcel_present:
-      content: Ross has a pet monkey named Marcel who has become part of the group's
-        life.
-      status: active
-      visibility: known
-      source_event: initial_state
-    known_chandler_hates_job:
-      content: Chandler complains about his office job and worries about becoming
-        like his boss.
-      status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ross_son_ben_born_and_named
 environment:
-  health:
-    joey_tribbiani: 100
-    player: 100
-  inventories:
-    joey_tribbiani: []
-    player: []
-  locations:
-    joey_tribbiani: chandler_joey_apartment
-    player: chandler_joey_apartment
+  health: {joey_tribbiani: 100, player: 100}
+  inventories: {joey_tribbiani: [], player: []}
+  locations: {joey_tribbiani: hospital, player: hospital}
   access: {}
   offers: []
   task_status: active

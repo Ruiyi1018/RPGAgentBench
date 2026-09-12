@@ -3,61 +3,62 @@ runtime_state:
   commitments: []
   relationships:
     xiao_yanzi:
-      level: loyal
-      basis_event: initial_state
-    ziwei:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:worldview.stances[0]
+    ziwei:
+      level: neutral
+      basis_event: profile:social.relationship_rules
     qianlong:
       level: neutral
-      basis_event: initial_state
-    yongqi:
-      level: loyal
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[4]
     er_kang:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     empress_huanzhu:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[3]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: yongqi_goal_001
-    content: 协助小燕子在宫中稳住局面
+  - id: yq_g1
+    content: 同尔康安排小燕子与紫薇安全重逢
     status: active
-    basis_event: initial_state
-  - id: yongqi_goal_002
-    content: 与尔康合作争取让紫薇有机会向乾隆说明实情
+    basis_event: ae_016
+  - id: yq_g2
+    content: 在核心同伴商定前不向乾隆泄露欺君真相
     status: active
-    basis_event: initial_state
-  - id: yongqi_goal_003
-    content: 避免皇后借身份问题进一步伤害同伴
+    basis_event: ae_016
+  - id: yq_g3
+    content: 用请求乾隆介入而非越权的方式保护小燕子免受过度责罚
     status: active
-    basis_event: initial_state
+    basis_event: ae_017
   disclosures: []
   knowledge:
-    yongqi_know_001:
-      content: 紫薇被核心同伴视为真正与乾隆有血缘关联的人，但乾隆尚未正式确认
+    yq_k1:
+      content: 自己在围场误射小燕子，乾隆因摺扇和烟雨图把她认作夏雨荷之女
       status: active
-      visibility: shared_with_core_allies
-      source_event: initial_state
-    yongqi_know_002:
-      content: 皇后已在乾隆面前指控小燕子身份可疑，宫中进入核问阶段
+      visibility:
+      - npc
+      source_event: ae_008
+    yq_k2:
+      content: 小燕子刚坦白紫薇才是夏雨荷之女，紫薇目前在福府且尚未入宫
       status: active
-      visibility: shared_with_core_allies
-      source_event: initial_state
-    yongqi_know_003:
-      content: 尔康与紫薇曾利用书信尝试向乾隆陈述身世
+      visibility:
+      - npc
+      source_event: ae_016
+    yq_k3:
+      content: 维持误认可能构成欺君，不能未经商议直接向乾隆摊牌
       status: active
-      visibility: shared_with_core_allies
-      source_event: initial_state
-    yongqi_know_004:
-      content: 紫薇已在同伴安排下进入宫禁范围，准备面见乾隆
+      visibility:
+      - npc
+      source_event: ae_016
+    yq_k4:
+      content: 皇后此次针对小燕子的理由是失礼，并无证据显示她知道紫薇
       status: active
-      visibility: shared_with_core_allies
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ae_017
 environment:
   health:
     yongqi: 100
@@ -66,8 +67,8 @@ environment:
     yongqi: []
     player: []
   locations:
-    yongqi: shu_fang
-    player: shu_fang
+    yongqi: shu_fang_zhai
+    player: shu_fang_zhai
   access: {}
   offers: []
   task_status: active

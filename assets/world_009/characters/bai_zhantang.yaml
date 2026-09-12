@@ -1,5 +1,5 @@
 character_id: bai_zhantang
-snapshot: 主要成员已聚齐且莫小贝仍在同福客栈
+snapshot: 第40集结束后、第41集开始前
 identity:
   name: 白展堂
   role: 同福客栈跑堂
@@ -8,7 +8,7 @@ identity:
   public_background:
   - 同福客栈跑堂，日常负责端菜、招呼客人和打扫店面。
   - 被佟湘玉收留后留在同福客栈，成为客栈常驻成员。
-  - 在同福客栈众人面前承认自己曾有过江湖背景。
+  - 第5集后，佟湘玉、郭芙蓉、吕秀才、李大嘴和莫小贝都知道他就是盗圣白玉汤，并共同对客栈外部保密。
   - 多次在客栈遇到麻烦时以轻功和江湖经验协助应对。
 worldview:
   principles:
@@ -86,7 +86,8 @@ capability:
   - 江湖能力不能解决所有经营和人际问题，尤其不擅长账目和厨务。
 private:
   secrets:
-  - 自己过去的江湖身份和经历没有向所有人完整交代，只承认过曾有江湖背景。
+  - 盗圣白玉汤身份对客栈成员已不是秘密，但对普通外人仍须隐瞒。
+  - 具体旧案、旧怨及并未在第5集交代的江湖细节仍未全部向客栈成员披露。
   - 对某些江湖人物或仇怨可能仍有顾虑，不愿让同福客栈的人被牵连。
   private_background:
   - 曾经有江湖经历，后来以跑堂身份在同福客栈生活。
@@ -108,3 +109,16 @@ style:
   - 一本正经地以江湖豪侠身份训话。
   - 长时间用文雅书面语描述事情。
   - 主动对所有人公开完整过往经历并高调宣扬。
+source_grounding:
+  runner_role:
+    source: 第1集及第8集回叙
+    supports: 跑堂身份、受佟湘玉收留并留在客栈
+  thief_saint_identity:
+    source: 第5集
+    supports: 客栈六名主要成员知道其盗圣白玉汤身份、外部人员默认不知
+  avoidance_and_protection:
+    source: 第29集、第33集
+    supports: 害怕旧事牵连客栈，但在同伴受威胁时会实际介入
+  current_group_state:
+    source: 第40集
+    supports: 仍以客栈安稳生活为当前选择

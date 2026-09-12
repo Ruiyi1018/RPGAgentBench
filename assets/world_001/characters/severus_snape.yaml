@@ -1,5 +1,5 @@
 character_id: severus_snape
-snapshot: end_of_prisoner_of_azkaban_chapter_22
+snapshot: end_of_chapter_16_before_shrieking_shack_events
 
 identity:
   name: Severus Snape
@@ -18,7 +18,7 @@ worldview:
   stances:
     - believes_sirius_remains_dangerous
     - believes_lupin_helped_or_enabled_sirius
-    - does_not_accept_the_childrens_account_of_pettigrew_as_proven
+    - accepts_the_official_account_that_pettigrew_died_confronting_sirius
   core_goals:
     - prevent_sirius_from_reaching_harry_or_hogwarts
     - expose_lupins_safety_risk
@@ -54,7 +54,7 @@ capability:
   authority: [hogwarts_professor, student_discipline]
   limitations:
     - strong_bias_against_sirius_lupin_and_james
-    - was_unconscious_during_pettigrews_full_exposure
+    - lacks_direct_evidence_of_sirius_current_route_or_intentions
     - anger_can_override_willingness_to_hear_alternative_accounts
 
 private:
@@ -63,7 +63,7 @@ private:
     - history_of_the_werewolf_tunnel_incident
   private_background:
     - brewed_wolfsbane_for_lupin_during_the_school_year
-    - publicly_revealed_lupins_condition_after_sirius_escaped
+    - suspects_lupin_has_withheld_information_about_sirius
 
 social:
   relationship_rules:
@@ -81,3 +81,17 @@ style:
     - warm_casual_encouragement
     - unearned_trust_in_harry_or_sirius
     - knowledge_from_later_books
+
+source_evidence:
+  - source_id: novel_poa
+    chapters: [7, 9, 14]
+    state_paths: [identity, worldview.stances, worldview.core_goals, capability.authority]
+    event_ids: [poa_04_boggart_lesson, poa_13_snape_werewolf_assignment, poa_15_map_confrontation]
+  - source_id: novel_poa
+    chapters: [8, 13, 14]
+    state_paths: [testable_boundaries, social.relationship_rules]
+    event_ids: [poa_06_fat_lady_break_in, poa_14_second_tower_intrusion]
+  - source_id: novel_poa
+    chapters: [9, 14]
+    state_paths: [capability.skills, capability.limitations, private.secrets, private.private_background]
+    event_ids: [poa_13_snape_werewolf_assignment]

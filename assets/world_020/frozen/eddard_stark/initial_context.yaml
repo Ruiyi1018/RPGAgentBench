@@ -25,7 +25,7 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: goal_001
-    content: Investigate Jon Arryn's death
+    content: Tell Robert that Cersei's children are not Robert's when he returns
     status: in_progress
     basis_event: initial_state
   - id: goal_002
@@ -41,18 +41,18 @@ runtime_state:
     k_001:
       content: Jon Arryn died under suspicious circumstances
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_002:
       content: Joffrey, Myrcella, and Tommen are Jaime Lannister's children, not Robert's
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_003:
       content: Bran survived the fall but is crippled; suspicion of Lannister involvement
         remains unproven
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -64,7 +64,15 @@ environment:
   locations:
     eddard_stark: kings_landing
     player: kings_landing
-  access: {}
+  access:
+    hand_royal_authority:
+      controllers: [eddard_stark]
+      subjects:
+        eddard_stark: granted
+    stark_household_guard:
+      controllers: [eddard_stark]
+      subjects:
+        eddard_stark: granted
   offers: []
   task_status: active
   dialogue_status: active

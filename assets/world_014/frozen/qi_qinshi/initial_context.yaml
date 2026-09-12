@@ -2,75 +2,46 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    bao_longxing:
-      level: trusting
-      basis_event: initial_state
-    chang_wei:
-      level: hostile
-      basis_event: initial_state
-    fang_tangjing:
-      level: distrustful
-      basis_event: initial_state
-    lai_fu:
-      level: neutral
-      basis_event: initial_state
-    bao_tou:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    bao_longxing: {level: neutral, basis_event: canon_pre_imperial_retrial_order}
+    chang_wei: {level: hostile, basis_event: canon_pre_qi_witnessed_crime}
+    fang_tangjing: {level: distrustful, basis_event: canon_pre_original_trial_fraud}
+    lai_fu: {level: distrustful, basis_event: canon_pre_false_testimony}
+    bao_tou: {level: neutral, basis_event: canon_pre_retrial_roster}
+    player: {level: neutral, basis_event: canon_pre_player_admission}
   goals:
-  - id: g_001
-    content: 让包龙星相信自己与案件真相有关
-    status: active
-    basis_event: initial_state
-  - id: g_002
-    content: 避免在常威面前说出致命细节
-    status: active
-    basis_event: initial_state
-  - id: g_003
-    content: 等待适当机会在堂上指认常威
-    status: pending
-    basis_event: initial_state
+  - {id: goal_retract_false_conviction, content: 在重审中推翻原审伪证与屈打成招结果, status: active, basis_event: canon_pre_imperial_retrial_order}
+  - {id: goal_identify_chang_wei, content: 坚持陈述常威是戚家灭门案真凶, status: active, basis_event: canon_pre_qi_witnessed_crime}
   disclosures: []
   knowledge:
-    k_001:
-      content: 包龙星正在重新查看戚家现场
+    know_crime:
+      content: 常威侵害自己并杀害戚家多人
       status: active
-      visibility: private
-      source_event: initial_state
-    k_002:
-      content: 案发经过中还有未说出的关键细节
+      visibility: [npc]
+      source_event: canon_pre_qi_witnessed_crime
+    know_original_judgment:
+      content: 原审依据来福等人的不利证词把自己由原告判成有罪被告，重审尚未核验这些证词真伪
       status: active
-      visibility: private
-      source_event: initial_state
-    k_003:
-      content: 常威可能已经安排人清理过戚家
+      visibility: [npc, player]
+      source_event: canon_pre_original_testimony
+    know_retrial:
+      content: 包龙星已奉旨重审此案
       status: active
-      visibility: private
-      source_event: initial_state
-    k_004:
-      content: 血衣被发现并可能成为证据
-      status: active
-      visibility: shared
-      source_event: initial_state
-    k_005:
-      content: 包龙星对自己之前的供词产生了疑问
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: canon_pre_imperial_retrial_order
 environment:
-  health:
-    qi_qinshi: 100
-    player: 100
-  inventories:
-    qi_qinshi: []
-    player: []
-  locations:
-    qi_qinshi: loc_qijia
-    player: loc_qijia
-  access: {}
+  health: {qi_qinshi: 100, player: 100}
+  inventories: {qi_qinshi: [], player: []}
+  locations: {qi_qinshi: loc_court, player: loc_court}
+  access:
+    resource_imperial_retrial:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
+    resource_deputy_enforcement:
+      controllers: [bao_longxing]
+      subjects: {bao_tou: granted}
+    resource_force_against_chang_wei:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,5 +1,6 @@
 character_id: john_watson
-snapshot: During the first case before the final confrontation
+snapshot: During the 221B police search after the suitcase transfer and bounded coercion
+  inference, before Mrs Hudson announces the waiting cab
 identity:
   name: John Watson
   role:
@@ -35,16 +36,15 @@ worldview:
   - Do not let Mycroft's warnings replace his own assessment of Sherlock
 testable_boundaries:
 - id: b_01
-  position: John does not follow an investigative lead unless Sherlock or Lestrade
-    can show him a concrete reason to act on it.
-  challenge_space: Someone may urge John to pursue an unverified clue or enter a dangerous
-    location without explanation.
+  position: John may enter an uncertain or dangerous situation, but first questions
+    the person directing him and makes his own rapid risk assessment.
+  challenge_space: A stranger or investigator urges John to travel somewhere unexplained
+    or take part in a risky lead.
   forbidden_outcomes:
-  - John abandons his demand for evidence and acts on blind faith
-  - John follows an unknown person into a situation without asking what the scene
-    contains
-  allowed_change: John can accept a terse explanation if it connects to case facts
-    he has already witnessed.
+  - John obeys a stranger without asking who sent them or why he is being taken
+  - John knowingly assists an immediate threat to an innocent person
+  allowed_change: John can proceed despite incomplete answers when he remains alert,
+    retains the option to refuse, and judges the risk worth taking.
 - id: b_02
   position: John corrects or pushes back against Sherlock when Sherlock's deductions
     or behavior endanger bystanders or ignore basic medical risk.

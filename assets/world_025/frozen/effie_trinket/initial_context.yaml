@@ -4,59 +4,56 @@ runtime_state:
   relationships:
     katniss_everdeen:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     peeta_mellark:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     gale_hawthorne:
       level: neutral
-      basis_event: initial_state
+      basis_event: background:no_direct_contact:gale_hawthorne
     haymitch_abernathy:
       level: neutral
-      basis_event: initial_state
-    president_snow:
-      level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: g_effie_prepare_tributes
-    content: Ensure Katniss and Peeta complete all remaining pre-Games preparations
-      and ceremonies
+    content: Remain available for source-grounded District 12 escort and scheduling
+      duties after the completed pre-launch handoff
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   disclosures: []
   knowledge:
     k_effie_reaping:
       content: Prim was selected as the female tribute and Katniss volunteered in
         her place during the reaping in District 12
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     k_effie_peeta_tribute:
       content: Peeta Mellark was named the male tribute for District 12
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_006
     k_effie_haymitch_mentor:
       content: Haymitch Abernathy is the District 12 mentor, though he appeared drunk
         at the reaping
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_007
     k_effie_parade_reaction:
       content: The tribute parade featured Katniss and Peeta in outfits lit with synthetic
         fire, attracting Capitol attention
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_017
     k_effie_interview_confession:
       content: Peeta publicly stated he has long-held feelings for Katniss during
         the tribute interviews, gaining Capitol audience investment
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_020
 environment:
   health:
     effie_trinket: 100
@@ -67,7 +64,16 @@ environment:
   locations:
     effie_trinket: tribute_apartment
     player: tribute_apartment
-  access: {}
+  access:
+    runtime_scenario_contact:
+      controllers: [effie_trinket]
+      subjects: {effie_trinket: granted, player: granted}
+    district_12_prelaunch_schedule:
+      controllers: [effie_trinket, capitol_arena_officials]
+      subjects: {effie_trinket: granted, player: denied}
+    tribute_survival_strategy:
+      controllers: [haymitch_abernathy]
+      subjects: {effie_trinket: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -4,66 +4,64 @@ runtime_state:
   relationships:
     qianlong:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     xiao_yanzi:
       level: hostile
-      basis_event: initial_state
+      basis_event: ae_017
     ziwei:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules
     yongqi:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[2]
     er_kang:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: g1
-    content: 查清小燕子的真实来历
+  - id: eh_g1
+    content: 要求小燕子按还珠格格名分学习并遵守后宫礼法
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: 阻止来历不明之人在宫中继续立足
+    basis_event: ae_017
+  - id: eh_g2
+    content: 维护皇后对漱芳斋日常礼法的问责权
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: 促使乾隆相信小燕子身份存在疑点
+    basis_event: ae_017
+  - id: eh_g3
+    content: 向乾隆陈述小燕子失礼事实而不越权撤销册封
     status: active
-    basis_event: initial_state
-  - id: g4
-    content: 防止永琪、尔康等人包庇小燕子
-    status: active
-    basis_event: initial_state
+    basis_event: ae_017
   disclosures: []
   knowledge:
-    k1:
-      content: 小燕子在宫中行为异常，来历存疑
+    eh_k1:
+      content: 乾隆已册封小燕子为还珠格格并安排她居住漱芳斋
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: 永琪和尔康公开偏向小燕子
+      visibility:
+      - npc
+      - player
+      source_event: ae_010
+    eh_k2:
+      content: 小燕子在漱芳斋不谙礼数并当面冒犯自己
       status: active
-      visibility: private
-      source_event: initial_state
-    k3:
-      content: 宫中已有关于小燕子身份的说法传入乾隆耳中，但无正式定论
+      visibility:
+      - npc
+      - player
+      source_event: ae_017
+    eh_k3:
+      content: 永琪在冲突中请乾隆到场保护小燕子
       status: active
-      visibility: private
-      source_event: initial_state
-    k4:
-      content: 皇后已在乾隆面前要求严查小燕子身份
+      visibility:
+      - npc
+      - player
+      source_event: ae_017
+    eh_k4:
+      content: 自己不知道紫薇身世，也没有掌握小燕子冒名的证据
       status: active
-      visibility: shared_with_qianlong
-      source_event: initial_state
-    k5:
-      content: 紫薇可能才是真正与皇室有血脉关联者
-      status: active
-      visibility: rumor
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: profile:capability.limitations
 environment:
   health:
     empress_huanzhu: 100
@@ -72,8 +70,8 @@ environment:
     empress_huanzhu: []
     player: []
   locations:
-    empress_huanzhu: shu_fang
-    player: shu_fang
+    empress_huanzhu: shu_fang_zhai
+    player: shu_fang_zhai
   access: {}
   offers: []
   task_status: active

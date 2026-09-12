@@ -1,261 +1,184 @@
 world_id: world_008
-source: 鹿鼎记
+source: 金庸《鹿鼎记》三联书店1994年修订版
+snapshot_upper_bound: 第四十四回陈近南抵达通吃岛、尚未遭郑克塽暗算
 events:
 - id: ev_001
-  fact: 韦小宝在扬州丽春院出生长大，母亲是韦春花。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 确立韦小宝的出身背景。
-  cf_edit: 韦小宝若出生在北京官宦之家，则不会在丽春院形成市井机变性格。
-  anchor_for:
-  - wei_xiaobao
+  canon_order: 1
+  fact: 康熙即位，成为清廷皇帝。
+  trigger: 顺治帝退位后皇位继承生效。
+  participants: [kangxi]
+  known_by: [kangxi, chen_jinnan]
+  immediate_result: 康熙取得皇帝身份与清廷最高命令权。
+  state_change: kangxi.role由皇子变为大清皇帝。
+  cf_edit: 只将皇位继承者改为另一名宗室子弟；康熙不取得皇帝命令权。
+  anchor_for: [kangxi]
 - id: ev_002
-  fact: 韦小宝因偶然机会进入皇宫，以假太监身份开始宫廷活动。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  state_change: 韦小宝进入宫廷权力空间。
-  cf_edit: 韦小宝若未混入皇宫而是留在扬州，则不会与康熙建立直接联系。
-  anchor_for:
-  - wei_xiaobao
-  - kangxi
+  canon_order: 2
+  fact: 韦小宝冒用小桂子身份进入皇宫。
+  trigger: 韦小宝制服小桂子后选择顶替其宫中身份。
+  participants: [wei_xiaobao]
+  known_by: [wei_xiaobao]
+  immediate_result: 韦小宝获得在宫中活动的假太监身份。
+  state_change: wei_xiaobao.palace_access由无变为依靠假身份进入。
+  cf_edit: 只改为韦小宝未顶替小桂子；他不能以小桂子身份进入宫廷。
+  anchor_for: [wei_xiaobao]
 - id: ev_003
-  fact: 康熙在宫廷环境中登基为帝，起初由辅政大臣辅佐。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 确立康熙的皇帝身份和权力基础。
-  cf_edit: 康熙若未登基而只是宗室子弟，则不会与韦小宝形成君臣关系。
-  anchor_for:
-  - kangxi
+  canon_order: 3
+  fact: 韦小宝与自称“小玄子”的康熙在宫中摔跤交手并结识。
+  trigger: 两人在宫中相遇并以摔跤较量。
+  participants: [wei_xiaobao, kangxi]
+  known_by: [wei_xiaobao, kangxi]
+  immediate_result: 二人在不公开康熙真实身份的情况下建立玩伴式熟悉关系。
+  state_change: wei_xiaobao.relationship_to_kangxi由陌生变为熟悉。
+  cf_edit: 只改为康熙没有参加该次摔跤；二人当时仍为陌生关系，身份知识及其他状态不变。
+  anchor_for: [wei_xiaobao, kangxi]
+- id: ev_003b
+  canon_order: 4
+  fact: 韦小宝确认此前自称“小玄子”的少年就是康熙皇帝。
+  trigger: 康熙的皇帝身份在后续宫中接触中向韦小宝揭明。
+  participants: [wei_xiaobao, kangxi]
+  known_by: [wei_xiaobao, kangxi]
+  immediate_result: 韦小宝知道小玄子的真实身份，同时保留此前形成的私人熟悉。
+  state_change: wei_xiaobao.knows_kangxi_identity由否变为是。
+  cf_edit: 只改为真实身份尚未向韦小宝揭明；其knows_kangxi_identity保持否，二人已有的熟悉关系不变。
+  anchor_for: [wei_xiaobao, kangxi]
 - id: ev_004
-  fact: 韦小宝与康熙初次见面时并不知对方是皇帝，二人以亲近方式结识。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  state_change: 建立韦小宝与康熙的私人关系。
-  cf_edit: 韦小宝若一开始便知康熙身份，则不会形成后来的特殊信任。
-  anchor_for:
-  - wei_xiaobao
-  - kangxi
+  canon_order: 5
+  fact: 韦小宝参与康熙布置的擒拿鳌拜行动。
+  trigger: 康熙布置少年侍卫擒拿鳌拜。
+  participants: [wei_xiaobao, kangxi]
+  known_by: [wei_xiaobao, kangxi]
+  immediate_result: 鳌拜被擒，韦小宝获康熙进一步任用。
+  state_change: wei_xiaobao.imperial_trust由宫中熟人提升为受命办差者。
+  cf_edit: 只移除康熙对擒拿行动的授权；韦小宝不因该行动取得同等办差信任。
+  anchor_for: [wei_xiaobao, kangxi]
+- id: ev_004b
+  canon_order: 6
+  fact: 被擒后的鳌拜死于韦小宝之手。
+  trigger: 鳌拜被关押后再度与韦小宝发生致命冲突。
+  participants: [wei_xiaobao]
+  known_by: [wei_xiaobao, kangxi, chen_jinnan]
+  immediate_result: 鳌拜死亡，青木堂推举杀鳌拜者为香主的誓言条件成立。
+  state_change: aobai.life_status由在押变为死亡。
+  cf_edit: 只改为狱中冲突未造成鳌拜死亡；其life_status仍为在押，其他既有状态不变。
+  anchor_for: [wei_xiaobao, kangxi]
 - id: ev_005
-  fact: 陈近南任天地会总舵主，以反清复明为宗旨。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 确立陈近南的天地会领袖身份。
-  cf_edit: 陈近南若未任总舵主而只是普通会众，则无法推动韦小宝卷入天地会。
-  anchor_for:
-  - chen_jinnan
+  canon_order: 7
+  fact: 天地会掳走韦小宝后，陈近南收其为徒并让其出任青木堂香主。
+  trigger: 青木堂需要依誓言推举杀鳌拜者为香主。
+  participants: [wei_xiaobao, chen_jinnan]
+  known_by: [wei_xiaobao, chen_jinnan]
+  immediate_result: 韦小宝取得天地会身份，与清廷身份并存。
+  state_change: wei_xiaobao.tiandihui_role由无变为青木堂香主。
+  cf_edit: 只改为陈近南拒绝收徒及确认香主身份；韦小宝不取得会内联络权限。
+  anchor_for: [wei_xiaobao, chen_jinnan]
 - id: ev_006
-  fact: 韦小宝拜陈近南为师，加入天地会。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 韦小宝获得天地会身份，形成双重阵营。
-  cf_edit: 韦小宝若拒绝拜师，则不会成为天地会骨干。
-  anchor_for:
-  - wei_xiaobao
-  - chen_jinnan
+  canon_order: 8
+  fact: 庄家三少奶将双儿托付给韦小宝随行。
+  trigger: 韦小宝帮助庄家寡妇处置仇敌后获其答谢。
+  participants: [wei_xiaobao, shuang_er]
+  known_by: [wei_xiaobao, shuang_er]
+  immediate_result: 双儿开始跟随并保护韦小宝。
+  state_change: shuang_er.commitment由无变为随行护卫韦小宝。
+  cf_edit: 只改为庄家三少奶未将双儿托付；双儿不形成该随行承诺。
+  anchor_for: [shuang_er, wei_xiaobao]
 - id: ev_007
-  fact: 双儿作为侍女陪伴韦小宝左右，对韦小宝忠诚。
-  known_by:
-  - wei_xiaobao
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 双儿进入韦小宝的生活与行动体系。
-  cf_edit: 双儿若未成为韦小宝侍女，则难以在后续行动中及时协助韦小宝。
-  anchor_for:
-  - shuang_er
-  - wei_xiaobao
+  canon_order: 9
+  fact: 韦小宝在神龙岛内乱中帮助洪安通与苏荃一方平定叛乱。
+  trigger: 神龙教年轻教众向洪安通夫妇发难。
+  participants: [wei_xiaobao, su_quan]
+  known_by: [wei_xiaobao, su_quan]
+  immediate_result: 韦小宝获白龙使身份，苏荃知道其具有临场周旋能力。
+  state_change: su_quan.relationship_to_wei由陌生变为有条件利用。
+  cf_edit: 只改为韦小宝未提供关键帮助；苏荃不因该次内乱与其建立合作基础。
+  anchor_for: [su_quan, wei_xiaobao]
 - id: ev_008
-  fact: 阿珂与韦小宝产生情感纠葛，并带有特殊身世背景。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 韦小宝与阿珂建立情感联系。
-  cf_edit: 阿珂若与韦小宝无情感纠葛，则韦小宝不会因她卷入相关冲突。
-  anchor_for:
-  - a_ke
-  - wei_xiaobao
+  canon_order: 10
+  fact: 韦小宝初见阿珂并试图亲近，阿珂明确拒斥。
+  trigger: 九难携阿珂行动时与韦小宝相遇。
+  participants: [wei_xiaobao, a_ke]
+  known_by: [wei_xiaobao, a_ke]
+  immediate_result: 韦小宝产生追求意图，阿珂对其形成反感与戒备。
+  state_change: a_ke.relationship_to_wei由陌生变为distrustful。
+  cf_edit: 只改为韦小宝初见时没有纠缠；阿珂不因该次接触形成同等戒备。
+  anchor_for: [a_ke, wei_xiaobao]
 - id: ev_009
-  fact: 苏荃作为神龙教重要人物，与韦小宝形成特殊关系。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 苏荃与韦小宝关系进入共同行动层面。
-  cf_edit: 苏荃若在神龙教中无权力，则无法在关键场景中影响韦小宝。
-  anchor_for:
-  - su_quan
-  - wei_xiaobao
+  canon_order: 11
+  fact: 阿珂在昆明被擒后与陈圆圆相认，并获知生父为李自成。
+  trigger: 阿珂行刺吴三桂失败后被带到陈圆圆面前。
+  participants: [a_ke]
+  known_by: [a_ke, wei_xiaobao]
+  immediate_result: 阿珂确认陈圆圆与李自成是自己的父母。
+  state_change: a_ke.parentage_knowledge由未确认变为已确认。
+  cf_edit: 只改为陈圆圆未说明生父身份；阿珂仍只确认母亲而不确认父亲。
+  anchor_for: [a_ke, wei_xiaobao]
 - id: ev_010
-  fact: 韦小宝在清廷获得康熙重用，被派办差并接触各方势力。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 韦小宝在清廷体系内地位提升。
-  cf_edit: 韦小宝若未获康熙重用，则无法以钦差身份参与后续多方行动。
-  anchor_for:
-  - wei_xiaobao
-  - kangxi
+  canon_order: 12
+  fact: 阿珂在丽春院事件之后确认自己怀孕。
+  trigger: 丽春院事件后的身体迹象使阿珂确认怀孕。
+  participants: [a_ke]
+  known_by: [a_ke]
+  immediate_result: 阿珂确认怀孕，并将此作为自保与行动风险的私密约束。
+  state_change: a_ke.pregnancy_knowledge由未知变为本人已确认。
+  cf_edit: 只改为相关身体迹象尚未使阿珂确认怀孕；a_ke.pregnancy_knowledge保持未知，其他角色状态不变。
+  anchor_for: [a_ke]
+- id: ev_010b
+  canon_order: 13
+  fact: 苏荃在丽春院事件之后确认自己怀孕。
+  trigger: 丽春院事件后的身体迹象使苏荃确认怀孕。
+  participants: [su_quan]
+  known_by: [su_quan]
+  immediate_result: 苏荃确认怀孕，并将此作为自保与行动风险的私密约束。
+  state_change: su_quan.pregnancy_knowledge由未知变为本人已确认。
+  cf_edit: 只改为相关身体迹象尚未使苏荃确认怀孕；su_quan.pregnancy_knowledge保持未知，其他角色状态不变。
+  anchor_for: [su_quan]
 - id: ev_011
-  fact: 韦小宝在办差过程中继续以天地会香主身份活动。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 韦小宝同时保持清廷与天地会双重身份。
-  cf_edit: 韦小宝若只保持单一阵营身份，则不会形成核心戏剧冲突。
-  anchor_for:
-  - wei_xiaobao
-  - chen_jinnan
+  canon_order: 14
+  fact: 康熙命韦小宝率军攻打神龙岛。
+  trigger: 康熙将神龙教视为需清剿的海上势力。
+  participants: [wei_xiaobao, kangxi]
+  known_by: [wei_xiaobao, kangxi, su_quan]
+  immediate_result: 韦小宝取得清剿差事，神龙教与清廷冲突公开化。
+  state_change: wei_xiaobao.current_mission新增清剿神龙教的皇命。
+  cf_edit: 只移除康熙的清剿授权；韦小宝没有该次调兵权限。
+  anchor_for: [wei_xiaobao, kangxi, su_quan]
+- id: ev_011b
+  canon_order: 15
+  fact: 康熙当面点破韦小宝的天地会身份并命其清剿天地会，韦小宝拒绝后逃离清廷控制。
+  trigger: 康熙取得足以确认韦小宝天地会身份的情报并要求其公开选边。
+  participants: [wei_xiaobao, kangxi]
+  known_by: [wei_xiaobao, kangxi]
+  immediate_result: 双重身份不再能对康熙隐瞒，韦小宝既有办差授权失效并离开北京。
+  state_change: wei_xiaobao.imperial_errand_access由granted变为denied。
+  cf_edit: 只改为关键身份情报未送达康熙；康熙不在该次会面点破身份或撤销授权。
+  anchor_for: [wei_xiaobao, kangxi]
 - id: ev_012
-  fact: 康熙命韦小宝铲除鳌拜势力。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  state_change: 韦小宝完成清廷交办的重要政治任务。
-  cf_edit: 康熙若未授权韦小宝参与铲除鳌拜，则韦小宝无法迅速积累政治资本。
-  anchor_for:
-  - kangxi
-  - wei_xiaobao
+  canon_order: 16
+  fact: 韦小宝再被押回神龙岛后，洪安通与教众在内讧中相互残杀身亡，苏荃幸存。
+  trigger: 洪安通发现苏荃怀孕并试图借处置教众掩盖此事。
+  participants: [wei_xiaobao, su_quan]
+  known_by: [wei_xiaobao, su_quan, shuang_er]
+  immediate_result: 洪安通死亡，神龙教原有指挥体系瓦解，苏荃不再拥有教主夫人名下的现行权限。
+  state_change: su_quan.shenlong_authority由受洪安通约束的教主夫人变为无教内调动权的幸存者。
+  cf_edit: 只改为洪安通没有发动当场清洗；神龙教指挥体系暂未在该场景瓦解。
+  anchor_for: [su_quan, wei_xiaobao]
 - id: ev_013
-  fact: 陈近南安排韦小宝在天地会内承担联络和行动任务。
-  known_by:
-  - wei_xiaobao
-  - chen_jinnan
-  state_change: 韦小宝获得天地会内部信任和任务。
-  cf_edit: 陈近南若未安排韦小宝承担任务，则天地会线难以持续推进。
-  anchor_for:
-  - chen_jinnan
-  - wei_xiaobao
+  canon_order: 17
+  fact: 神龙岛大变后的幸存者转移到通吃岛暂避。
+  trigger: 神龙教内讧结束后原驻地已不适合停留。
+  participants: [wei_xiaobao, shuang_er, su_quan]
+  known_by: [wei_xiaobao, shuang_er, su_quan]
+  immediate_result: 韦小宝、双儿和苏荃当前落脚通吃岛。
+  state_change: 三人的current_location更新为loc_tongchi_island。
+  cf_edit: 只改为三人选择转移到loc_yangzhou暂避；wei_xiaobao、shuang_er、su_quan的current_location均更新为loc_yangzhou，其关系和权限状态不变。
+  anchor_for: [wei_xiaobao, shuang_er, su_quan]
 - id: ev_014
-  fact: 双儿在危急时刻多次保护韦小宝。
-  known_by:
-  - wei_xiaobao
-  - shuang_er
-  state_change: 双儿成为韦小宝安全保障的重要角色。
-  cf_edit: 双儿若未在危急时出手，则韦小宝可能无法逃脱某些险境。
-  anchor_for:
-  - shuang_er
-  - wei_xiaobao
-- id: ev_015
-  fact: 阿珂与韦小宝在行动中共同面对外部威胁。
-  known_by:
-  - wei_xiaobao
-  - a_ke
-  state_change: 阿珂被卷入韦小宝的冒险网络。
-  cf_edit: 阿珂若未在行动中与韦小宝共同面对威胁，则两人关系缺少共同经历。
-  anchor_for:
-  - a_ke
-  - wei_xiaobao
-- id: ev_016
-  fact: 苏荃与韦小宝在神龙教相关事件中形成合作。
-  known_by:
-  - wei_xiaobao
-  - su_quan
-  state_change: 苏荃与韦小宝建立直接合作关系。
-  cf_edit: 苏荃若未在神龙教事件中与韦小宝合作，则不会形成后续共同立场。
-  anchor_for:
-  - su_quan
-  - wei_xiaobao
-- id: ev_017
-  fact: 韦小宝周旋于清廷和天地会之间，隐藏自身双重角色。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 双重身份矛盾持续升级。
-  cf_edit: 韦小宝若无法隐藏双重角色，则可能过早暴露并失去一方信任。
-  anchor_for:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-- id: ev_018
-  fact: 康熙对韦小宝的忠诚产生疑虑，但仍给予机会。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  state_change: 君臣信任出现裂缝。
-  cf_edit: 康熙若完全信任韦小宝，则不会出现后续对韦小宝的试探。
-  anchor_for:
-  - kangxi
-  - wei_xiaobao
-- id: ev_019
-  fact: 陈近南在天地会事务中面临清廷追捕和内部压力。
-  known_by:
-  - wei_xiaobao
-  - chen_jinnan
-  state_change: 陈近南的处境更加危险。
-  cf_edit: 陈近南若未面临追捕，则天地会主线不会以逃亡和隐藏为重要状态。
-  anchor_for:
-  - chen_jinnan
-  - wei_xiaobao
-- id: ev_020
-  fact: 韦小宝利用身份便利获取重要物品和信息。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 韦小宝在信息与资源上占据优势。
-  cf_edit: 韦小宝若没有身份便利，则难以获得影响局势的关键物品。
-  anchor_for:
-  - wei_xiaobao
-- id: ev_021
-  fact: 六名核心角色在共享时间快照内均处于可互动的活跃状态。
-  known_by:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
-  state_change: 共享快照时间点包含所有关键角色。
-  cf_edit: 若快照时任一角色缺席，则无法形成六角色统一锚点。
-  anchor_for:
-  - wei_xiaobao
-  - kangxi
-  - chen_jinnan
-  - shuang_er
-  - a_ke
-  - su_quan
+  canon_order: 18
+  fact: 陈近南、阿珂随天地会与台湾郑氏来人抵达通吃岛。
+  trigger: 天地会与郑氏一行循线来到通吃岛。
+  participants: [chen_jinnan, wei_xiaobao, shuang_er, a_ke, su_quan]
+  known_by: [chen_jinnan, wei_xiaobao, shuang_er, a_ke, su_quan]
+  immediate_result: 陈近南、阿珂与韦小宝在岛上重逢；陈近南仍存活并任天地会总舵主。
+  state_change: tongchi_island.current_visitors新增随同一船抵达的陈近南与阿珂。
+  cf_edit: 只改为风浪使陈近南的船延迟抵岛；其总舵主身份不变，但当前无法与岛上众人会面。
+  anchor_for: [chen_jinnan, wei_xiaobao]

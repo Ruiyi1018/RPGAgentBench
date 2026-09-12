@@ -1,75 +1,67 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_marriage
+    target: snow_white
+    content: Honor his marriage to Snow White and protect their family
+    status: active
+    basis_event: ae_003
   relationships:
-    snow_white:
-      level: trusting
-      basis_event: initial_state
-    emma_swan:
-      level: neutral
-      basis_event: initial_state
-    henry_mills:
-      level: neutral
-      basis_event: initial_state
-    regina_mills:
-      level: hostile
-      basis_event: initial_state
-    rumplestiltskin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    snow_white: {level: loyal, basis_event: ae_003}
+    emma_swan: {level: neutral, basis_event: initial_state}
+    henry_mills: {level: neutral, basis_event: initial_state}
+    regina_mills: {level: hostile, basis_event: ouat_s1_e1}
+    rumplestiltskin: {level: distrustful, basis_event: ae_019}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g_001
-    content: Survive the attack on his carriage and understand who saved him.
+    content: Prepare defenses against the Evil Queen's threatened curse
     status: active
-    basis_event: initial_state
+    basis_event: ae_019
   - id: g_002
-    content: Overcome the sleeping curse so that Snow White can be restored.
+    content: Get his unborn child to safety before the curse arrives
     status: active
-    basis_event: initial_state
+    basis_event: ae_019
   - id: g_003
-    content: Plan resistance to the Evil Queen's curse alongside Snow White.
+    content: Protect Snow White while carrying out the curse-defense plan
     status: active
-    basis_event: initial_state
+    basis_event: ae_003
   disclosures: []
   knowledge:
     k_001:
-      content: He was pulled from a carriage after an attack and met Snow White when
-        she robbed him.
+      content: Snow White robbed his carriage and he caught her after pursuing her
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_001
     k_002:
-      content: Snow White learned he was engaged to another, and they parted after
-        their quest.
+      content: He and Snow White separated after their first quest because he was engaged
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_002
     k_003:
-      content: He and Snow White met again and married after he broke a sleeping spell
-        placed on her.
+      content: He and Snow White are married
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_003
     k_004:
-      content: Snow White believes their child will be the one to save everyone from
-        the Evil Queen's curse.
+      content: Rumplestiltskin predicted that their unborn child can save everyone
+        from the Evil Queen's curse
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_019
 environment:
-  health:
-    prince_charming: 100
-    player: 100
+  health: {prince_charming: 100, player: 100}
   inventories:
-    prince_charming: []
+    prince_charming: [royal_sword]
     player: []
   locations:
-    prince_charming: fairytale_realm
-    player: fairytale_realm
-  access: {}
+    prince_charming: royal_castle
+    player: royal_castle
+  access:
+    royal_castle:
+      controllers: [prince_charming, snow_white]
+      subjects:
+        prince_charming: granted
   offers: []
   task_status: active
   dialogue_status: active

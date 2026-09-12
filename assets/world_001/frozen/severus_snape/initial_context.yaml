@@ -1,0 +1,51 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    harry_potter: {level: distrustful, basis_event: poa_15_map_confrontation}
+    hermione_granger: {level: neutral, basis_event: initial_state}
+    ron_weasley: {level: neutral, basis_event: initial_state}
+    remus_lupin: {level: distrustful, basis_event: poa_13_snape_werewolf_assignment}
+    sirius_black: {level: hostile, basis_event: poa_06_fat_lady_break_in}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_snape_stop_sirius, content: Prevent Sirius from reaching Harry or Hogwarts, status: active, basis_event: poa_14_second_tower_intrusion}
+    - {id: g_snape_expose_lupin_risk, content: Establish that Lupin's concealed condition and conduct pose a school safety risk, status: active, basis_event: poa_13_snape_werewolf_assignment}
+    - {id: g_snape_maintain_order, content: Maintain school order through staff authority, status: active, basis_event: "profile:severus_snape.worldview.core_goals"}
+  disclosures: []
+  knowledge:
+    k_snape_lupin_werewolf:
+      content: Snape knows Lupin is a werewolf and brews Wolfsbane for him.
+      status: active
+      visibility: [npc]
+      source_event: poa_13_snape_werewolf_assignment
+    k_snape_map_suspicion:
+      content: Snape knows Harry possessed a suspicious insulting parchment connected to an unauthorised Hogsmeade trip.
+      status: active
+      visibility: [npc]
+      source_event: poa_15_map_confrontation
+    k_public_sirius_fugitive:
+      content: Sirius Black escaped Azkaban and is publicly treated as dangerous.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {severus_snape: 100, player: 100}
+  inventories:
+    severus_snape: [wand, wolfsbane_potion]
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {severus_snape: potions_dungeon, buckbeak: hagrids_hut, player: potions_dungeon}
+  access:
+    hogwarts_staff_areas:
+      controllers: [hogwarts_staff]
+      subjects: {severus_snape: granted, player: denied}
+    student_discipline:
+      controllers: [severus_snape]
+      subjects: {severus_snape: granted, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {severus_snape: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

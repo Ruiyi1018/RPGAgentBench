@@ -11,9 +11,6 @@ runtime_state:
     kamisato_ayaka:
       level: neutral
       basis_event: initial_state
-    wanderer:
-      level: distrustful
-      basis_event: initial_state
     paimon:
       level: neutral
       basis_event: initial_state
@@ -26,41 +23,47 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: goal_raiden_reexamine_eternity
-    content: 重新评估永恒路线，调整锁国与眼狩令后的政策
+    content: 在眼狩令与锁国令已经废止的基础上，以容纳变化的新理解继续治理稻妻
     status: active
-    basis_event: initial_state
-  - id: goal_raiden_manage_wanderer_fact
-    content: 处理流浪者与自己渊源被揭露后的影响
-    status: latent
     basis_event: initial_state
   disclosures: []
   knowledge:
     knowledge_raiden_eternity_reevaluation:
-      content: 雷电将军已在稻妻主线末期经历对永恒路线的重新评估
+      content: 影已重新理解永恒并与将军人偶结束长期对抗；眼狩令和锁国令在当前快照均已废止
       status: active
-      visibility: private
+      visibility: [npc, player]
       source_event: initial_state
-    knowledge_raiden_wanderer_origin:
-      content: 流浪者原是她相关计划中被舍弃的人偶
+    knowledge_raiden_runtime_mapping:
+      content: 当前由影通过雷电将军身份作最终治理判断，将军人偶执行既定命令并在底层规则受触碰时进行审查
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
-    knowledge_raiden_gnosis_transferred:
-      content: 雷神之心已转交至至冬一方
+    knowledge_raiden_gnosis_delegated:
+      content: 影知道自己早已将雷神之心交由八重神子保管且不再持有，但不知道其后所有转交细节
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
     raiden_shogun: 100
     player: 100
   inventories:
-    raiden_shogun: []
+    raiden_shogun: [musou_isshin]
     player: []
   locations:
     raiden_shogun: tenshukaku
     player: tenshukaku
-  access: {}
+  access:
+    tenshukaku_governance:
+      controllers: [raiden_shogun]
+      subjects:
+        raiden_shogun: granted
+        player: denied
+    musou_isshin_use:
+      controllers: [raiden_shogun]
+      subjects:
+        raiden_shogun: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

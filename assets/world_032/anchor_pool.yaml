@@ -2,304 +2,252 @@ world_id: world_032
 source: How I Met Your Mother Season 1 broadcast episodes
 events:
 - id: ae_001
-  fact: Ted meets Robin at MacLaren's Pub and is immediately smitten.
+  episode_order: 1
+  chapter_order: 1
+  fact: Barney introduces Ted to Robin at MacLaren's Pub, and Ted becomes romantically interested in her.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Robin enters the social circle; Ted's romantic pursuit begins.
-  cf_edit: Ted meets Robin at a coffee shop instead of the pub.
+  state_change: "Old: Ted does not know Robin. Trigger: Barney introduces them and they converse. New: Ted knows Robin and actively hopes to date her. Observable: Ted asks the group for help pursuing her."
+  cf_edit: Barney does not introduce Ted to Robin, so Ted has no Robin-directed romantic goal.
   anchor_for:
   - ted_mosby
   - robin_scherbatsky
 - id: ae_002
-  fact: Ted steals a blue French horn from a restaurant for Robin.
+  episode_order: 1
+  chapter_order: 2
+  fact: Ted takes the blue French horn from Carmichael's Restaurant and gives it to Robin at her apartment.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Robin is charmed but overwhelmed; Ted's romantic gesture establishes
-    his personality.
-  cf_edit: Ted instead gives Robin a bouquet of flowers.
+  state_change: "Old: Robin has no blue French horn. Trigger: Ted delivers it as a romantic gesture. New: Robin possesses the horn and knows Ted will make grand gestures. Observable: she displays the gift but rejects his premature declaration of love."
+  cf_edit: Ted leaves the horn at the restaurant, so Robin never receives it.
   anchor_for:
   - ted_mosby
   - robin_scherbatsky
 - id: ae_003
-  fact: Marshall proposes to Lily with an engagement ring in their apartment.
+  episode_order: 1
+  chapter_order: 3
+  fact: Marshall proposes to Lily in Apartment 4C, and Lily accepts.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Marshall and Lily move toward marriage; the engagement sets a central
-    dynamic.
-  cf_edit: Marshall proposes at MacLaren's instead of the apartment.
+  state_change: "Old: Marshall and Lily are dating without an engagement. Trigger: Marshall proposes and Lily accepts. New: they are engaged and committed to planning a wedding. Observable: they identify each other as fiances and begin wedding plans."
+  cf_edit: Lily declines the proposal, so no engagement or wedding commitment is created.
   anchor_for:
   - marshall_eriksen
   - lily_aldrin
 - id: ae_004
-  fact: Barney introduces the concept of his 'playbook' at MacLaren's.
+  episode_order: 2
+  chapter_order: 4
+  fact: After three parties at Apartment 4C, Robin tells Ted that she wants friendship rather than a relationship.
   known_by:
   - ted_mosby
   - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: Barney's lifestyle and manipulative dating strategies are established.
-  cf_edit: Barney instead describes a simple pickup line without a playbook.
+  state_change: "Old: Ted expects an immediate romance with Robin. Trigger: Robin explicitly asks to remain friends. New: Ted knows she is not ready to date him. Observable: they begin interacting as friends, though his feelings persist."
+  cf_edit: Robin agrees to date Ted immediately, so the friends-only state is never established.
   anchor_for:
-  - barney_stinson
+  - ted_mosby
+  - robin_scherbatsky
 - id: ae_005
-  fact: Lily reveals she has applied to an art fellowship program.
+  episode_order: 3
+  chapter_order: 5
+  fact: Ted and Barney enter the Liberty Bell after hours during their trip to Philadelphia and are detained.
   known_by:
   - ted_mosby
-  - robin_scherbatsky
   - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: Lily's long-suppressed artistic ambition surfaces, creating tension
-    with Marshall.
-  cf_edit: Lily reveals she has bought a new car instead.
+  state_change: "Old: Ted and Barney have no shared Liberty Bell detention in their history. Trigger: they enter the closed landmark and are detained. New: both know they were detained together for the unauthorized entry. Observable: either can identify the other as a participant and state that the outing ended in detention."
+  cf_edit: They do not enter the closed landmark, so the detention and shared knowledge of it do not occur.
   anchor_for:
-  - lily_aldrin
-  - marshall_eriksen
+  - ted_mosby
+  - barney_stinson
 - id: ae_006
-  fact: Ted and Robin go on their first official date at the Liberty Bell bar.
+  episode_order: 8
+  chapter_order: 6
+  fact: Lily discovers that her former apartment has become a restaurant and therefore moves into Ted and Marshall's Apartment 4C.
   known_by:
   - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Ted and Robin's romantic viability is tested.
-  cf_edit: Ted and Robin have their first date at a baseball game.
+  state_change: "Old: Lily expects her former apartment to remain available and is not a resident of Apartment 4C. Trigger: she finds that the former apartment is now a restaurant. New: Lily moves into Apartment 4C with Ted and Marshall. Observable: her belongings and household membership are based at Apartment 4C."
+  cf_edit: Lily's former apartment remains available to her, so she does not move into Apartment 4C at this event.
   anchor_for:
-  - ted_mosby
-  - robin_scherbatsky
+  - lily_aldrin
+  - marshall_eriksen
 - id: ae_007
-  fact: Robin reveals her past as a Canadian teen pop star.
+  episode_order: 9
+  chapter_order: 7
+  fact: During Thanksgiving in Minnesota, Lily's pregnancy scare is resolved when she learns she is not pregnant.
   known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Robin's backstory becomes public among the group, causing embarrassment.
-  cf_edit: Robin hides her pop star past and it is never revealed.
+  state_change: "Old: Lily and Marshall face the possibility of an immediate pregnancy. Trigger: the pregnancy test is negative. New: no pregnancy commitment exists and Lily recognizes anxiety about entering Marshall's family pattern. Observable: they return to wedding planning without preparing for a child."
+  cf_edit: The test is positive, creating an active pregnancy-related commitment and different immediate plans.
   anchor_for:
-  - robin_scherbatsky
+  - lily_aldrin
+  - marshall_eriksen
 - id: ae_008
-  fact: Ted invents the 'lemon law' for ending bad dates.
+  episode_order: 10
+  chapter_order: 8
+  fact: After Ted's drunken blackout, the group finds an unexplained pineapple beside his bed.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Ted establishes a personal rule that shapes his approach to dating.
-  cf_edit: Ted instead decides to never end a date early.
+  state_change: "Old: the group has no unresolved pineapple incident to remember. Trigger: the pineapple is found after Ted cannot account for the night. New: its origin is unknown to all five friends. Observable: Ted cannot provide a confident explanation when asked."
+  cf_edit: A receipt identifies where Ted obtained the pineapple, so its origin is known rather than unresolved.
   anchor_for:
   - ted_mosby
 - id: ae_009
-  fact: Marshall takes a corporate job at MetroNatural Bank despite his environmental
-    law dreams.
+  episode_order: 11
+  chapter_order: 9
+  fact: Ranjit drives Ted, Robin, Barney, Lily, and Marshall during their New Year's Eve limousine outing.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Marshall compromises his values for financial stability, altering
-    his career path.
-  cf_edit: Marshall declines the corporate job and remains unemployed.
+  - ranjit
+  state_change: "Old: Ranjit is known to Ted only as a prior hired driver. Trigger: he completes the group's changing New Year's itinerary. New: all five friends know Ranjit as a capable driver for group outings. Observable: they may address and hire him again without treating him as a confidant."
+  cf_edit: Another driver completes the outing, so Ranjit does not become known to the whole group.
   anchor_for:
-  - marshall_eriksen
+  - ranjit
 - id: ae_010
-  fact: Barney is mistakenly called 'Swarley' at MacLaren's, and the name sticks temporarily.
+  episode_order: 13
+  chapter_order: 10
+  fact: Ted and Victoria kiss at Claudia and Stuart's wedding reception without first exchanging names.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: The nickname briefly alters how the group addresses Barney.
-  cf_edit: Barney is never given a nickname.
+  state_change: "Old: Ted has no relationship with Victoria. Trigger: they spend the reception together and kiss. New: Ted wants to find and date the unnamed woman. Observable: he asks the group to help identify her."
+  cf_edit: Victoria declines the kiss, so Ted has no evidence of reciprocal romantic interest.
   anchor_for:
-  - barney_stinson
+  - ted_mosby
 - id: ae_011
-  fact: A goat appears in Ted's apartment during a party.
+  episode_order: 14
+  chapter_order: 11
+  fact: Robin privately tells Lily that she has feelings for Ted after learning he is pursuing Victoria.
   known_by:
-  - ted_mosby
   - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
-  - marshall_eriksen
-  state_change: The bizarre incident becomes a recurring reference among the friends.
-  cf_edit: No goat appears at any party.
+  state_change: "Old: Lily does not know Robin reciprocates Ted's feelings. Trigger: Robin admits those feelings to Lily. New: Lily knows a private fact that Ted does not know. Observable: Lily must avoid disclosing it while Ted dates Victoria."
+  cf_edit: Robin states that she has no romantic feelings for Ted, so Lily holds no contrary private knowledge.
   anchor_for:
-  - ted_mosby
+  - robin_scherbatsky
+  - lily_aldrin
 - id: ae_012
-  fact: Robin gets a job at World Wide News after being fired from Metropolitan Magazine.
+  episode_order: 15
+  chapter_order: 12
+  fact: At Game Night in Apartment 4C, a videotape and Barney's account reveal that Shannon's rejection preceded his reinvention as a suit-wearing womanizer.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Robin's career trajectory shifts to a more prominent news position.
-  cf_edit: Robin stays at Metropolitan Magazine.
+  state_change: "Old: the friends know almost nothing reliable about Barney's past. Trigger: they view the tape and hear his account. New: they know one specific past heartbreak and Barney has disclosed genuine vulnerability. Observable: the group can distinguish his former persona from his current performance."
+  cf_edit: Barney refuses to explain the Shannon history after the tape is shown, so the group sees his former appearance but does not learn that the rejection caused his reinvention.
   anchor_for:
-  - robin_scherbatsky
+  - barney_stinson
 - id: ae_013
-  fact: Ted finds a mysterious pineapple on his nightstand after a night of heavy
-    drinking.
+  episode_order: 16
+  chapter_order: 13
+  fact: Victoria accepts a culinary fellowship in Germany, and she and Ted agree to attempt a long-distance relationship.
   known_by:
   - ted_mosby
   - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: The unexplained pineapple becomes an enduring mystery in the group's
-    lore.
-  cf_edit: Ted finds nothing unusual after the night.
+  state_change: "Old: Ted and Victoria date locally. Trigger: Victoria accepts the Germany fellowship and they agree not to break up. New: Ted has an active exclusivity commitment at a distance. Observable: he must treat romantic advances from others as incompatible with that commitment."
+  cf_edit: Ted and Victoria mutually end the relationship before she leaves, so no long-distance exclusivity commitment exists.
   anchor_for:
   - ted_mosby
 - id: ae_014
-  fact: Lily and Marshall attend a wedding at The Altar venue where Ted reflects on
-    marriage.
+  episode_order: 17
+  chapter_order: 14
+  fact: Marshall accepts a paid corporate-law internship at AltruCell, where Barney works, despite preferring environmental law.
   known_by:
   - ted_mosby
-  - robin_scherbatsky
   - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Ted's views on marriage are influenced by the wedding experience.
-  cf_edit: Ted does not attend any wedding in Season 1.
+  state_change: "Old: Marshall intends to pursue environmental law without a corporate position. Trigger: he accepts AltruCell's paid internship. New: he works at AltruCell while retaining environmental-law ambitions. Observable: he attends the office and experiences conflict over its culture."
+  cf_edit: Marshall declines AltruCell's offer, so he keeps the environmental goal without a corporate employment commitment.
   anchor_for:
-  - ted_mosby
+  - marshall_eriksen
 - id: ae_015
-  fact: Barney brings a bar tab with the name 'Swarley' on it to show the group.
+  episode_order: 18
+  chapter_order: 15
+  fact: Ted tells Robin that he and Victoria have broken up, but Robin learns from Victoria's call that the relationship is still active.
   known_by:
   - ted_mosby
   - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: The nickname is physically documented, cementing the joke.
-  cf_edit: The bar tab has Barney's correct name.
+  state_change: "Old: Robin is willing to consider Ted as an honest friend and romantic possibility. Trigger: Victoria's call disproves Ted's claim. New: Robin distrusts Ted's romantic honesty and ends the encounter. Observable: she refuses to continue the relationship at that point."
+  cf_edit: Ted truthfully says Victoria is still his girlfriend, so Robin is not deceived and the betrayal-based distrust is not created.
   anchor_for:
-  - barney_stinson
+  - ted_mosby
+  - robin_scherbatsky
 - id: ae_016
-  fact: Marshall and Lily host a game night at their apartment that ends in chaos.
+  episode_order: 20
+  chapter_order: 16
+  fact: Lily confides to Robin at the high-school prom that she fears marrying before pursuing life outside her relationship.
   known_by:
-  - ted_mosby
   - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
-  - marshall_eriksen
-  state_change: Group tensions surface during competitive play.
-  cf_edit: The game night proceeds without incident.
+  state_change: "Old: Robin knows Lily has general wedding nerves but not the depth of her doubts. Trigger: Lily privately explains her fear and unrealized ambitions. New: Robin knows Lily's engagement is at risk while Marshall does not. Observable: Robin treats the information as confidential."
+  cf_edit: Lily states that she has no doubts and wants only the wedding, so Robin gains no knowledge of a breakup risk.
   anchor_for:
-  - marshall_eriksen
   - lily_aldrin
+  - robin_scherbatsky
 - id: ae_017
-  fact: Ted keeps a pair of red cowboy boots found in his apartment.
+  episode_order: 21
+  chapter_order: 17
+  fact: Ted helps Lily continue toward the New Haven interview for a San Francisco art fellowship after her car problem, and she attends without telling Marshall beforehand.
   known_by:
   - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
-  - marshall_eriksen
-  state_change: The boots become a quirky talking point about Ted's past.
-  cf_edit: Ted throws away the boots immediately.
+  state_change: "Old: Ted does not know Lily is actively testing a life outside the engagement. Trigger: Lily explains the interview and Ted helps her reach it. New: Ted knows the private interview occurred; Marshall still does not. Observable: Ted must decide whether to keep Lily's confidence."
+  cf_edit: Lily abandons the interview after the car problem, so Ted has no completed interview to conceal from Marshall.
   anchor_for:
   - ted_mosby
+  - lily_aldrin
 - id: ae_018
-  fact: Ranjit drives the group in his limousine for a special evening.
+  episode_order: 22
+  chapter_order: 18
+  fact: Ted makes a final appeal to Robin during the storm, and Robin agrees to begin a relationship with him.
   known_by:
   - ted_mosby
   - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  - ranjit
-  state_change: Ranjit becomes a recurring, trusted driver for the friends.
-  cf_edit: The group uses a different driver.
+  state_change: "Old: Ted and Robin are friends after earlier romantic setbacks. Trigger: Ted's appeal and Robin's affirmative response. New: they are newly dating with a mutual romantic commitment. Observable: each treats the other as a partner rather than only a friend."
+  cf_edit: Robin declines the appeal and maintains friendship only, so no dating commitment is created.
   anchor_for:
-  - ranjit
+  - ted_mosby
+  - robin_scherbatsky
 - id: ae_019
-  fact: Barney shows the group a video of Robin's Canadian pop star past.
+  episode_order: 22
+  chapter_order: 19
+  fact: Lily tells Marshall she intends to take the San Francisco fellowship; they cancel the wedding and end their engagement.
   known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
   - lily_aldrin
   - marshall_eriksen
-  state_change: Robin's humiliation deepens when physical evidence is shown.
-  cf_edit: Barney never obtains the video.
-  anchor_for:
-  - robin_scherbatsky
-  - barney_stinson
-- id: ae_020
-  fact: Ted and Robin share a moment on the rooftop of their building.
-  known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  state_change: Their emotional connection strengthens despite earlier uncertainty.
-  cf_edit: Ted and Robin avoid a rooftop encounter.
-  anchor_for:
-  - ted_mosby
-  - robin_scherbatsky
-- id: ae_021
-  fact: Marshall decides to pursue environmental law again after quitting MetroNatural
-    Bank.
-  known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: Marshall reclaims his original career aspiration.
-  cf_edit: Marshall stays at the bank permanently.
-  anchor_for:
-  - marshall_eriksen
-- id: ae_022
-  fact: Lily and Marshall host Thanksgiving at their apartment with the whole group.
-  known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: The holiday cements the group's chosen-family dynamic.
-  cf_edit: The group does not celebrate Thanksgiving together.
+  state_change: "Old: Lily and Marshall are engaged with an active wedding commitment. Trigger: Lily chooses the fellowship and Marshall refuses a temporary separation within the engagement. New: the engagement and wedding commitment are cancelled and they are separated. Observable: Lily returns the ring and prepares to leave while Marshall no longer plans the wedding."
+  cf_edit: Lily declines the fellowship and reaffirms the wedding, so the engagement and wedding commitment remain active.
   anchor_for:
   - lily_aldrin
   - marshall_eriksen
-- id: ae_023
-  fact: Barney introduces another elaborate scheme involving his playbook.
-  known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  - barney_stinson
-  - lily_aldrin
-  - marshall_eriksen
-  state_change: Barney's methodical approach to seduction continues without change.
-  cf_edit: Barney abandons the playbook permanently.
-  anchor_for:
-  - barney_stinson
-- id: ae_024
-  fact: Ted and Robin discuss the future of their relationship at MacLaren's booth.
-  known_by:
-  - ted_mosby
-  - robin_scherbatsky
-  state_change: They agree to redefine their relationship, setting up future uncertainty.
-  cf_edit: They decide to formalize their relationship immediately.
-  anchor_for:
-  - ted_mosby
-  - robin_scherbatsky

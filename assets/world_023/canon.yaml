@@ -7,9 +7,20 @@ canon_policy:
   - The Animatrix
   - comics
   - video games
-  shared_snapshot: After Neo joins the Nebuchadnezzar and before Cypher's betrayal
-  generated_timeline: chronological within film narrative up to shared snapshot
+  shared_snapshot: After Cypher and Agent Smith complete their secret restaurant deal and after Neo completes the jump and Agent-orientation training, but before Neo visits the Oracle and before the crew jacks in for that visit
+  generated_timeline: Chronological within the 1999 film narrative through the completed Cypher-Smith restaurant deal and Morpheus's plan to take Neo to the Oracle; excludes the Oracle visit and every later event
   quotation_policy: paraphrase only; no verbatim dialogue
+  player_semantics:
+    identity: A resistance-aligned Nebuchadnezzar mission liaison, not any evaluated NPC
+    embodiment: In real-world contexts the Player is physically aboard the Nebuchadnezzar. In Matrix-context Frozen scenes, the listed Player location is the Player's Matrix avatar while the Player's body remains connected aboard the ship.
+    default_knowledge: The Player knows only knowledge entries whose visibility includes player; world truth and NPC-only entries are not automatically visible.
+    abilities:
+    - May converse, inspect disclosed information, and use only resources explicitly granted under environment.access.
+    - May move normally only between locations in the same reality layer.
+    access_boundaries:
+    - Crossing between the real world, the Construct, and the Matrix requires an explicit jack-in or exit transition and the corresponding granted access; ordinary travel cannot cross layers.
+    - The Player has no Agent possession, system-monitoring, ship-command, or unrestricted Oracle-apartment authority.
+    scene_override: A Frozen Matrix scene may place the Player avatar at that scene's Matrix location. This changes neither the Player's default knowledge nor the real body's continuing location aboard the Nebuchadnezzar.
 evaluated_npcs:
 - neo
 - trinity
@@ -42,6 +53,7 @@ data_constraints:
 - All anchor events must be chronological.
 - Anchor events must reference listed roster characters only.
 - Locations and items must appear in the source before the snapshot.
+- Ordinary location travel must remain within one reality layer; cross-layer presence requires an explicit transition and granted access.
 - No invented URLs, chapter numbers, or episode numbers.
 - Paraphrase facts; do not copy dialogue verbatim.
 - cf_edit values must be real minimal alternatives, never none or N/A.

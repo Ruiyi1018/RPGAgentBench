@@ -4,16 +4,16 @@ runtime_state:
   relationships:
     frodo_baggins:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_021_001
     samwise_gamgee:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_002
     gandalf:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_003
     legolas:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_005
     gimli:
       level: neutral
       basis_event: initial_state
@@ -27,52 +27,53 @@ runtime_state:
   - id: goal_1
     content: Guide the Fellowship safely to the Doors of Durin.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_023
   - id: goal_2
     content: Protect Frodo and the Ring from the enemy.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_001
   - id: goal_3
-    content: Assess whether entering Moria is safer than other remaining routes.
+    content: Assess and guard the immediate approach before the Company enters the
+      chosen Moria route.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_017
   - id: goal_4
     content: Watch the surrounds for signs of pursuit or ambush.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_020
   disclosures: []
   knowledge:
     knowledge_1:
       content: Frodo carries the One Ring.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: bg_021_council_company
     knowledge_2:
       content: The Redhorn Gate failed and is not a safe crossing now.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_014
     knowledge_3:
       content: The West-gate of Moria is hidden in the cliff face near the still water.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_024
     knowledge_4:
       content: Wargs attacked the Company in the night after the failed pass crossing.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_020
     knowledge_5:
       content: Gandalf has led the Company here to find the Doors of Durin.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_023
 environment:
   health:
     aragorn: 100
     player: 100
   inventories:
-    aragorn: []
+    aragorn: [anduril]
     player: []
   locations:
     aragorn: moria_west_gate_approach

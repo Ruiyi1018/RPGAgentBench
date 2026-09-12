@@ -2,272 +2,100 @@ world_id: world_031
 source: Grey's Anatomy Season 1 episode transcripts
 events:
 - id: ae01
-  fact: Meredith Grey begins her surgical internship at Seattle Grace Hospital.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  - miranda_bailey
-  - derek_shepherd
-  state_change: Meredith starts her professional medical career as an intern.
-  cf_edit: Meredith Grey starts working as a surgical intern at Seattle Grace.
-  anchor_for:
-  - meredith_grey
+  chapter_order: '001'
+  fact: Meredith, Cristina, George, and Izzie report to Seattle Grace as new surgical interns.
+  known_by: [meredith_grey, cristina_yang, george_omalley, izzie_stevens, miranda_bailey]
+  state_change: The four interns enter Bailey's supervised intern cohort.
+  cf_edit: If these four interns had instead been enrolled in a different resident's cohort, with their intern roles unchanged, Bailey would have no supervisory authority over their current hospital work.
+  anchor_for: [meredith_grey, cristina_yang, george_omalley, izzie_stevens, miranda_bailey]
 - id: ae02
-  fact: Meredith Grey meets Derek Shepherd on the morning before her first shift.
-  known_by:
-  - meredith_grey
-  - derek_shepherd
-  state_change: Meredith and Derek become personally acquainted.
-  cf_edit: Meredith encounters Derek before her first hospital shift.
-  anchor_for:
-  - meredith_grey
-  - derek_shepherd
-- id: ae03
-  fact: Miranda Bailey introduces herself as the interns' resident and sets expectations
-    for their conduct.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  - miranda_bailey
-  state_change: The interns are formally placed under Bailey's supervision.
-  cf_edit: Bailey establishes her authority as the residents' supervisor.
-  anchor_for:
-  - miranda_bailey
+  chapter_order: '002'
+  fact: Bailey introduces herself to the new interns and states the rules governing their first shift.
+  known_by: [meredith_grey, cristina_yang, george_omalley, izzie_stevens, miranda_bailey]
+  state_change: The interns learn that Bailey directly assigns and supervises their clinical work.
+  cf_edit: If another resident had been assigned the cohort, Bailey would not control their shift assignments.
+  anchor_for: [miranda_bailey, george_omalley]
 - id: ae04
-  fact: Meredith Grey and Derek Shepherd learn they both work at Seattle Grace Hospital
-    after their earlier encounter.
-  known_by:
-  - meredith_grey
-  - derek_shepherd
-  state_change: Meredith and Derek discover their professional connection.
-  cf_edit: Meredith and Derek realize they are colleagues.
-  anchor_for:
-  - meredith_grey
-  - derek_shepherd
-- id: ae05
-  fact: Meredith and other interns are assigned pagers that dictate their workflow.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  - miranda_bailey
-  state_change: Interns are equipped with pagers for hospital communication.
-  cf_edit: Interns receive pagers to manage their responsibilities.
-  anchor_for:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
+  chapter_order: '003'
+  fact: Bailey issues the interns hospital pagers and instructs them to answer every page at a run.
+  known_by: [meredith_grey, cristina_yang, george_omalley, izzie_stevens, miranda_bailey]
+  state_change: Each intern gains a pager as an executable work resource and a duty to answer its calls.
+  cf_edit: If Bailey had given the same instructions but not issued the pagers, the interns would lack the devices needed to receive pager-directed calls.
+  anchor_for: [meredith_grey, cristina_yang, george_omalley, izzie_stevens]
+- id: ae03
+  chapter_order: '004'
+  fact: Meredith and Derek recognize each other at the hospital and discover that he is an attending while she is an intern.
+  known_by: [meredith_grey, derek_shepherd]
+  state_change: Their prior personal encounter acquires a workplace hierarchy and a need for professional caution.
+  cf_edit: If their prior encounter were unchanged but Derek held no role at Seattle Grace, it would not create an attending-intern workplace conflict there.
+  anchor_for: [meredith_grey, derek_shepherd]
 - id: ae06
-  fact: Cristina Yang identifies herself as a competitive intern eager for complex
-    surgical cases.
-  known_by:
-  - cristina_yang
-  - meredith_grey
-  state_change: Cristina's competitiveness is established among her peers.
-  cf_edit: Cristina shows strong interest in difficult procedures.
-  anchor_for:
-  - cristina_yang
+  chapter_order: '005'
+  fact: George tears the cecum during his first appendectomy and Burke takes over the procedure.
+  known_by: [george_omalley, miranda_bailey, meredith_grey, cristina_yang, izzie_stevens]
+  state_change: George and the observing interns gain evidence that he is not ready to lead a procedure without close supervision.
+  cf_edit: If George had completed the appendectomy safely without Burke taking over, that operation would provide evidence of competence rather than failure.
+  anchor_for: [george_omalley, miranda_bailey]
+- id: ae05
+  chapter_order: '006'
+  fact: Meredith and Cristina jointly investigate Katie Bryce's seizures; Meredith identifies and presents the decisive aneurysm clue, and Derek selects Meredith to scrub in.
+  known_by: [meredith_grey, derek_shepherd, cristina_yang]
+  state_change: Meredith gains the supervised surgical opportunity under Derek's stated rule because she is the intern who presents the decisive diagnosis.
+  cf_edit: Holding the jointly developed diagnosis and Derek's selection rule fixed, if Cristina rather than Meredith had first presented the decisive clue, Cristina would have received the supervised surgical opportunity instead of Meredith.
+  anchor_for: [meredith_grey, derek_shepherd, cristina_yang]
 - id: ae07
-  fact: George O'Malley is assigned to follow Miranda Bailey and observe her patient
-    care.
-  known_by:
-  - george_omalley
-  - miranda_bailey
-  state_change: George begins his clinical observation under Bailey.
-  cf_edit: George shadows Bailey to learn patient management.
-  anchor_for:
-  - george_omalley
+  chapter_order: '007'
+  fact: George and Izzie move into Meredith's house with Meredith's agreement.
+  known_by: [meredith_grey, george_omalley, izzie_stevens]
+  state_change: George and Izzie become Meredith's housemates and gain ordinary access to the home.
+  cf_edit: If Meredith had refused the arrangement, George and Izzie would not be her housemates or have household access.
+  anchor_for: [meredith_grey, george_omalley, izzie_stevens]
 - id: ae08
-  fact: Izzie Stevens struggles with the emotional impact of losing a patient.
-  known_by:
-  - izzie_stevens
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  state_change: Izzie's emotional response to patient death becomes apparent.
-  cf_edit: Izzie has difficulty coping with a patient's death.
-  anchor_for:
-  - izzie_stevens
+  chapter_order: '008'
+  fact: Izzie confronts interns who mock her modeling advertisement by showing that the work paid for medical school.
+  known_by: [izzie_stevens, george_omalley]
+  state_change: George directly learns that Izzie's modeling income financed medical school, while Izzie openly affirms that choice to the witnessing interns.
+  cf_edit: If Alex had not displayed and mocked the advertisement, Izzie would not have made that financing disclosure in the locker room then.
+  anchor_for: [izzie_stevens]
 - id: ae09
-  fact: Derek Shepherd performs a complicated procedure that establishes his surgical
-    reputation among the interns.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - derek_shepherd
-  - george_omalley
-  - izzie_stevens
-  state_change: Derek's surgical expertise is demonstrated to the interns.
-  cf_edit: Derek's reputation as a skilled surgeon is reinforced.
-  anchor_for:
-  - derek_shepherd
-- id: ae10
-  fact: Meredith Grey and Derek Shepherd continue their romantic involvement while
-    hiding it at work.
-  known_by:
-  - meredith_grey
-  - derek_shepherd
-  state_change: Meredith and Derek maintain a secret relationship.
-  cf_edit: Meredith and Derek keep their romance private.
-  anchor_for:
-  - meredith_grey
-  - derek_shepherd
-- id: ae11
-  fact: Cristina Yang and Preston Burke begin a professional relationship that develops
-    personal undertones.
-  known_by:
-  - cristina_yang
-  state_change: Cristina's dynamic with Burke shifts beyond purely professional.
-  cf_edit: Cristina and Burke's connection intensifies.
-  anchor_for:
-  - cristina_yang
+  chapter_order: '009'
+  fact: When Elizabeth "Liz" Fallon arrests, Cristina continues CPR after a nurse states that Liz has a DNR until Burke physically stops the resuscitation.
+  known_by: [cristina_yang]
+  state_change: Cristina learns that her attachment to Liz led her to disregard a recorded DNR and that the directive must govern any further response.
+  cf_edit: If Cristina had accepted the nurse's DNR notice when it was given, she would have stopped CPR then instead of continuing until Burke intervened.
+  anchor_for: [cristina_yang]
 - id: ae12
-  fact: Meredith Grey confides in Cristina Yang about her complicated feelings for
-    Derek Shepherd.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  state_change: Meredith and Cristina's friendship deepens through personal disclosure.
-  cf_edit: Meredith shares her romantic confusion with Cristina.
-  anchor_for:
-  - meredith_grey
-  - cristina_yang
+  chapter_order: '010'
+  fact: Bailey sees Meredith and Derek together in Derek's car and realizes they are personally involved.
+  known_by: [miranda_bailey]
+  state_change: Bailey gains direct evidence of the hidden attending-intern relationship.
+  cf_edit: If Bailey had not seen them together, she would not have direct evidence of their relationship at the snapshot.
+  anchor_for: [miranda_bailey]
+- id: ae11
+  chapter_order: '011'
+  fact: Cristina and Burke begin a private sexual relationship after working together.
+  known_by: [cristina_yang]
+  state_change: Cristina acquires a private personal involvement that complicates her professional relationship with an attending.
+  cf_edit: If Cristina had declined Burke's private advance, their relationship would have remained professional at this point.
+  anchor_for: [cristina_yang]
 - id: ae13
-  fact: George O'Malley develops unspoken romantic feelings for Meredith Grey.
-  known_by:
-  - george_omalley
-  state_change: George's affection for Meredith becomes part of his internal conflict.
-  cf_edit: George begins to harbor feelings for Meredith.
-  anchor_for:
-  - george_omalley
+  chapter_order: '012'
+  fact: After Bailey relays the family's refusal, Izzie and Cristina perform an unauthorized autopsy and Bailey catches them.
+  known_by: [izzie_stevens, cristina_yang, miranda_bailey]
+  state_change: Bailey gains direct evidence that Izzie and Cristina bypassed her instruction, while both interns become accountable for that breach.
+  cf_edit: If the family had authorized the autopsy, Bailey would permit the examination and the interns would not acquire an unauthorized-procedure breach.
+  anchor_for: [izzie_stevens, cristina_yang, miranda_bailey]
+- id: ae10
+  chapter_order: '013'
+  fact: Meredith privately tells Derek that Ellis Grey has Alzheimer's disease and lives in a nursing home.
+  known_by: [meredith_grey, derek_shepherd]
+  state_change: Derek gains private knowledge of Ellis's diagnosis directly from Meredith.
+  cf_edit: If Meredith had withheld the diagnosis from Derek, he would not know why Ellis is absent from public life at the snapshot.
+  anchor_for: [meredith_grey, derek_shepherd]
 - id: ae14
-  fact: Meredith Grey finds a dog and brings him to the hospital, eventually naming
-    him Doc.
-  known_by:
-  - meredith_grey
-  - george_omalley
-  - izzie_stevens
-  - cristina_yang
-  state_change: Meredith adopts a stray dog, introducing Doc into the intern household.
-  cf_edit: Meredith takes in a stray dog and names him Doc.
-  anchor_for:
-  - meredith_grey
-- id: ae15
-  fact: Izzie Stevens reveals financial hardship from having supported herself through
-    medical school.
-  known_by:
-  - izzie_stevens
-  state_change: Izzie's background of self-support and financial strain is disclosed.
-  cf_edit: Izzie explains she paid her own way through school.
-  anchor_for:
-  - izzie_stevens
-- id: ae16
-  fact: Miranda Bailey disciplines the interns for mistakes during a single shift.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  - miranda_bailey
-  state_change: Bailey reinforces the consequences of errors in patient care.
-  cf_edit: Bailey reprimands interns after several errors.
-  anchor_for:
-  - miranda_bailey
-- id: ae17
-  fact: The interns gather at Emerald City Bar after shifts to decompress.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  state_change: The Emerald City Bar becomes a regular social spot for interns.
-  cf_edit: Interns unwind at Emerald City Bar after work.
-  anchor_for:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-- id: ae18
-  fact: Derek Shepherd and Meredith Grey have a significant disagreement about the
-    secrecy of their relationship.
-  known_by:
-  - meredith_grey
-  - derek_shepherd
-  state_change: Tension arises over how to handle their hidden romance.
-  cf_edit: Meredith and Derek argue about keeping their relationship secret.
-  anchor_for:
-  - meredith_grey
-  - derek_shepherd
-- id: ae19
-  fact: Cristina Yang collapses from a medical emergency while working a shift.
-  known_by:
-  - cristina_yang
-  - meredith_grey
-  - miranda_bailey
-  state_change: Cristina's health crisis leaves her temporarily unable to work.
-  cf_edit: Cristina suffers a medical emergency at the hospital.
-  anchor_for:
-  - cristina_yang
-- id: ae20
-  fact: Meredith Grey takes on a leadership role to help Cristina during her medical
-    emergency.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - miranda_bailey
-  state_change: Meredith assumes responsibility for Cristina's care.
-  cf_edit: Meredith steps up to assist Cristina during her crisis.
-  anchor_for:
-  - meredith_grey
-  - cristina_yang
-- id: ae21
-  fact: George O'Malley moves into Meredith Grey's house as a roommate.
-  known_by:
-  - george_omalley
-  - meredith_grey
-  - izzie_stevens
-  state_change: George becomes a member of Meredith's household.
-  cf_edit: George joins Meredith's home as a roommate.
-  anchor_for:
-  - george_omalley
-- id: ae22
-  fact: Izzie Stevens moves into Meredith Grey's house as a roommate.
-  known_by:
-  - izzie_stevens
-  - meredith_grey
-  - george_omalley
-  state_change: Izzie joins the shared residency at Meredith's house.
-  cf_edit: Izzie becomes a roommate at Meredith's house.
-  anchor_for:
-  - izzie_stevens
-- id: ae23
-  fact: Derek Shepherd reveals an ongoing complication in his personal life that affects
-    Meredith.
-  known_by:
-  - meredith_grey
-  - derek_shepherd
-  state_change: Meredith learns of Derek's unresolved personal situation.
-  cf_edit: Derek discloses a personal complication to Meredith.
-  anchor_for:
-  - derek_shepherd
-- id: ae24
-  fact: The surgical interns survive their first major professional crisis together.
-  known_by:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
-  - miranda_bailey
-  state_change: The intern group demonstrates resilience after a collective ordeal.
-  cf_edit: The intern cohort emerges from a shared crisis.
-  anchor_for:
-  - meredith_grey
-  - cristina_yang
-  - george_omalley
-  - izzie_stevens
+  chapter_order: '014'
+  fact: Addison arrives at Seattle Grace and introduces herself to Meredith as Derek's wife.
+  known_by: [meredith_grey, derek_shepherd]
+  state_change: Meredith learns from Addison that Derek is married and that Derek concealed this fact.
+  cf_edit: If Addison had not identified herself as Derek's wife, Meredith would still lack confirmation that Derek was married.
+  anchor_for: [meredith_grey, derek_shepherd]

@@ -4,65 +4,52 @@ runtime_state:
   relationships:
     sun_wukong:
       level: hostile
-      basis_event: initial_state
+      basis_event: ae_020
     tang_sanzang:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_005
     zhu_bajie:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_008
     sha_wujing:
       level: neutral
-      basis_event: initial_state
-    heihujing:
-      level: trusting
-      basis_event: initial_state
+      basis_event: ae_006
     bailongma:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_006
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: g_001
-    content: 第三次变化接近唐僧，寻找孙悟空不在或队伍松懈时动手
+    content: 再次选择变化身份接近唐僧，并避开与孙悟空正面硬拼
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   - id: g_002
     content: 避免真身被孙悟空识破后当场拿住
     status: active
-    basis_event: initial_state
+    basis_event: ae_020
   - id: g_003
-    content: 利用唐僧对孙悟空的疑心，让取经队伍内部继续不稳
+    content: 利用凡人外表继续争取接近唐僧的机会
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   disclosures: []
   knowledge:
     k_001:
-      content: 唐僧师徒已进入白虎岭，唐僧曾因饥饿让孙悟空去寻食物
+      content: 自己在空中看见唐僧，认出取经僧人并产生加害意图
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_005
     k_002:
-      content: 孙悟空两次识破自己变化，并打毁村姑与老妇人两具假身
+      content: 老妇人变化之身被孙悟空打中后，自己再次留下假尸并让真身脱离现场
       status: active
-      visibility: private
-      source_event: initial_state
-    k_003:
-      content: 唐僧因连续见伤者而斥责孙悟空，并两次念紧箍咒
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
     k_004:
-      content: 猪八戒在队伍中表现过贪吃和对孙悟空的不满，可被利用
+      content: 猪八戒见到饭食后急于上前取用
       status: active
-      visibility: private
-      source_event: initial_state
-    k_005:
-      content: 黑狐精对前两次失败表示担忧，但白骨精已决定再试一次
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_008
 environment:
   health:
     baigujing: 100
@@ -71,8 +58,8 @@ environment:
     baigujing: []
     player: []
   locations:
-    baigujing: yaodong
-    player: yaodong
+    baigujing: yunduan
+    player: shandao
   access: {}
   offers: []
   task_status: active

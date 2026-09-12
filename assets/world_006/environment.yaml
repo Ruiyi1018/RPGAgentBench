@@ -1,5 +1,6 @@
 world_id: world_006
 name: 紫禁城后宫
+language: zh
 locations:
 - id: loc_001
   name: 碎玉轩
@@ -10,11 +11,13 @@ locations:
   name: 翊坤宫
   connected_to:
   - loc_004
+  - loc_005
   - loc_006
 - id: loc_003
   name: 景仁宫
   connected_to:
   - loc_004
+  - loc_005
   - loc_006
 - id: loc_004
   name: 御花园
@@ -24,11 +27,17 @@ locations:
   - loc_003
   - loc_005
   - loc_006
+  - loc_007
+  - loc_008
 - id: loc_005
   name: 养心殿
   connected_to:
+  - loc_002
+  - loc_003
   - loc_004
   - loc_006
+  - loc_009
+  - loc_010
 - id: loc_006
   name: 长街
   connected_to:
@@ -37,6 +46,28 @@ locations:
   - loc_003
   - loc_004
   - loc_005
+  - loc_007
+  - loc_008
+  - loc_010
+- id: loc_007
+  name: 咸福宫存菊堂
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_008
+  name: 延禧宫
+  connected_to:
+  - loc_004
+  - loc_006
+- id: loc_009
+  name: 汤泉行宫
+  connected_to:
+  - loc_005
+- id: loc_010
+  name: 冷宫
+  connected_to:
+  - loc_005
+  - loc_006
 items:
 - id: item_001
   name: 绣鞋
@@ -54,4 +85,15 @@ items:
   name: 书案
   type: 家具
   portable: false
-language: zh
+- id: item_005
+  name: 养心殿通传名册
+  type: 通传凭据
+  portable: true
+- id: item_006
+  name: 中宫宫务牌
+  type: 宫务权限凭据
+  portable: true
+- id: item_007
+  name: 翊坤宫差使牌
+  type: 宫务权限凭据
+  portable: true

@@ -1,273 +1,163 @@
 world_id: world_020
-source: A Game of Thrones television series, Season 1
+source: A Game of Thrones television series, Season 1 through the shared S01E07 cutoff
 events:
 - id: ae_001
-  fact: Eddard Stark executes a deserter from the Night's Watch at Winterfell, with
-    his sons Bran and Robb witnessing the beheading.
-  known_by:
-  - eddard_stark
-  - jon_snow
-  - catelyn_stark
-  state_change: Establishes Eddard's role as Lord of Winterfell and Warden of the
-    North, and the seriousness of desertion from the Night's Watch.
-  cf_edit: Eddard Stark executes a deserter at Winterfell with only his household
-    guard present.
-  anchor_for:
-  - eddard_stark
-  - jon_snow
+  source_ref: S01E01
+  canon_order: S01E01.01
+  fact: Eddard personally executes a Night's Watch deserter after passing sentence.
+  known_by: [eddard_stark, robb_stark, bran_stark, jon_snow, theon_greyjoy]
+  state_change: "Before: Bran has not witnessed his father enforce the desertion law. After: Bran and Jon have witnessed Eddard carry out that sentence himself."
+  cf_edit: The deserter is returned alive to the Night's Watch; Eddard does not execute him.
+  anchor_for: [eddard_stark, jon_snow]
 - id: ae_002
-  fact: The Stark family discovers six direwolf pups, one for each Stark child, after
-    the dead mother direwolf is found with a broken antler in her throat.
-  known_by:
-  - eddard_stark
-  - catelyn_stark
-  - arya_stark
-  - jon_snow
-  state_change: Each Stark child receives a direwolf companion, symbolizing the Stark
-    family and foreshadowing their fates.
-  cf_edit: The Stark family discovers a single direwolf pup and decides to keep it
-    at Winterfell.
-  anchor_for:
-  - arya_stark
-  - jon_snow
-- id: ae_003
-  fact: Jon Snow, Eddard Stark's illegitimate son, decides to join the Night's Watch
-    and travels to the Wall with his uncle Benjen Stark.
-  known_by:
-  - jon_snow
-  - eddard_stark
-  - catelyn_stark
-  state_change: Jon Snow leaves Winterfell and begins his life as a brother of the
-    Night's Watch, removing him from the Stark succession.
-  cf_edit: Jon Snow remains at Winterfell and becomes a household guard.
-  anchor_for:
-  - jon_snow
+  source_ref: S01E01
+  canon_order: S01E01.02
+  fact: Jon finds a sixth direwolf pup and the Stark children are permitted to keep the litter.
+  known_by: [eddard_stark, robb_stark, bran_stark, sansa_stark, arya_stark, rickon_stark, jon_snow, theon_greyjoy]
+  state_change: "Before: the children possess no direwolves. After: Arya possesses Nymeria and Jon possesses Ghost."
+  cf_edit: Eddard refuses permission to keep the pups, so none becomes a child's possession.
+  anchor_for: [arya_stark, jon_snow]
 - id: ae_004
-  fact: King Robert Baratheon and the royal court arrive at Winterfell, seeking to
-    persuade Eddard Stark to become the new Hand of the King.
-  known_by:
-  - eddard_stark
-  - catelyn_stark
-  - cersei_lannister
-  state_change: The royal visit initiates Eddard's eventual departure to King's Landing
-    and the central plot of the season.
-  cf_edit: King Robert sends a raven to Winterfell asking Eddard Stark to send troops
-    south.
-  anchor_for:
-  - eddard_stark
-  - cersei_lannister
+  source_ref: S01E01
+  canon_order: S01E01.03
+  fact: Robert privately offers Eddard the office of Hand in Winterfell's crypt.
+  known_by: [robert_baratheon, eddard_stark]
+  state_change: "Before: Eddard has no royal-office offer. After: he must accept or refuse Robert's offer to become Hand."
+  cf_edit: During the same private crypt meeting, Robert does not offer Eddard the office of Hand.
+  anchor_for: [eddard_stark, cersei_lannister]
 - id: ae_005
-  fact: Bran Stark accidentally witnesses Queen Cersei Lannister and her twin brother
-    Jaime Lannister in a romantic encounter in a tower at Winterfell.
-  known_by:
-  - cersei_lannister
-  - eddard_stark
-  - catelyn_stark
-  state_change: Jaime pushes Bran from the tower to hide the secret, leaving Bran
-    unconscious and crippled, and igniting suspicion among the Starks.
-  cf_edit: Bran falls from a tower while climbing after losing his grip on a stone.
-  anchor_for:
-  - cersei_lannister
-  - eddard_stark
+  source_ref: S01E01
+  canon_order: S01E01.04
+  fact: Bran sees Cersei and Jaime together in the tower, and Jaime pushes him from the window.
+  known_by: [bran_stark, jaime_lannister, cersei_lannister]
+  state_change: "Before: Bran does not know Cersei and Jaime's secret. After: Bran has seen it and is incapacitated by the fall; Eddard and Catelyn know neither what he saw nor who pushed him."
+  cf_edit: Bran leaves the tower before seeing Cersei and Jaime; no one pushes him.
+  anchor_for: [cersei_lannister]
 - id: ae_006
-  fact: Eddard Stark accepts the position of Hand of the King after a letter reveals
-    that Jon Arryn, the previous Hand, died suspiciously.
-  known_by:
-  - eddard_stark
-  - catelyn_stark
-  state_change: Eddard commits to traveling to King's Landing, leaving the North and
-    his family, and begins investigating Jon Arryn's death.
-  cf_edit: Eddard Stark refuses the King's offer and remains at Winterfell.
-  anchor_for:
-  - eddard_stark
-- id: ae_007
-  fact: Arya Stark receives sword-fighting lessons from Syrio Forel in King's Landing
-    after Eddard discovers her hidden sword Needle.
-  known_by:
-  - arya_stark
-  - eddard_stark
-  state_change: Arya begins formal training in the Braavosi water dance style, embracing
-    her identity outside traditional Westerosi gender roles.
-  cf_edit: Arya Stark hides Needle but never receives formal training.
-  anchor_for:
-  - arya_stark
-- id: ae_008
-  fact: Catelyn Stark secretly travels to King's Landing to warn Eddard about the
-    Lannisters after an assassin tries to kill Bran, and she arrests Tyrion Lannister
-    at the crossroads inn.
-  known_by:
-  - catelyn_stark
-  - tyrion_lannister
-  - eddard_stark
-  state_change: Catelyn's arrest of Tyrion escalates the conflict between the Starks
-    and Lannisters, leading to Tyrion's imprisonment at the Eyrie.
-  cf_edit: Catelyn Stark travels to King's Landing but does not arrest Tyrion Lannister.
-  anchor_for:
-  - catelyn_stark
-  - tyrion_lannister
-- id: ae_009
-  fact: Tyrion Lannister is taken to the Eyrie and demands a trial by combat to prove
-    his innocence in the attempted murder of Bran Stark.
-  known_by:
-  - tyrion_lannister
-  - catelyn_stark
-  state_change: Tyrion's demand for trial by combat secures his temporary freedom
-    when his champion Bronn defeats the Eyrie's champion.
-  cf_edit: Tyrion Lannister confesses and is executed at the Eyrie.
-  anchor_for:
-  - tyrion_lannister
-- id: ae_010
-  fact: Jon Snow arrives at the Wall, struggles to fit in with the other recruits,
-    but eventually becomes a steward to the Lord Commander and receives the sword
-    Longclaw.
-  known_by:
-  - jon_snow
-  state_change: Jon establishes himself at the Wall, gains Longclaw, and begins to
-    prove his leadership potential among the Night's Watch.
-  cf_edit: Jon Snow is rejected by the Night's Watch and returns to Winterfell.
-  anchor_for:
-  - jon_snow
+  source_ref: S01E01
+  canon_order: S01E01.05
+  fact: After Catelyn relays Lysa's warning about Jon Arryn, Eddard accepts the office of Hand.
+  known_by: [eddard_stark, catelyn_stark]
+  state_change: "Before: Eddard has not committed to royal service. After: he is Hand-designate and committed to travel to King's Landing and investigate Jon Arryn's death."
+  cf_edit: Lysa's warning says Jon Arryn died naturally; Eddard refuses the office.
+  anchor_for: [eddard_stark]
 - id: ae_011
-  fact: Daenerys Targaryen is married to Khal Drogo in Pentos as part of her brother
-    Viserys's plan to reclaim the Iron Throne with a Dothraki army.
-  known_by:
-  - daenerys_targaryen
-  state_change: Daenerys begins her transformation from a timid exile into a confident
-    leader and khaleesi.
-  cf_edit: Daenerys Targaryen refuses to marry Khal Drogo and remains in Pentos.
-  anchor_for:
-  - daenerys_targaryen
+  source_ref: S01E01
+  canon_order: S01E01.06
+  fact: Daenerys marries Khal Drogo and becomes khaleesi of his khalasar.
+  known_by: [daenerys_targaryen, khal_drogo, viserys_targaryen, illyrio_mopatis]
+  state_change: "Before: Daenerys is an unmarried exile under Viserys's control. After: she is Drogo's wife and holds the social role of khaleesi."
+  cf_edit: Drogo declines the marriage arrangement, so Daenerys does not become khaleesi.
+  anchor_for: [daenerys_targaryen]
 - id: ae_012
-  fact: Daenerys receives three dragon eggs as a wedding gift from Illyrio Mopatis,
-    which she keeps with her always.
-  known_by:
-  - daenerys_targaryen
-  state_change: The dragon eggs become a symbol of Daenerys's Targaryen heritage and
-    her potential to restore dragons to the world.
-  cf_edit: Daenerys Targaryen receives a set of silver jewelry as a wedding gift.
-  anchor_for:
-  - daenerys_targaryen
-- id: ae_013
-  fact: Eddard Stark investigates the death of Jon Arryn in King's Landing and discovers
-    that King Robert's children are not his biological offspring, but are fathered
-    by Jaime Lannister.
-  known_by:
-  - eddard_stark
-  - cersei_lannister
-  state_change: Eddard learns the truth about Cersei's children, setting the stage
-    for his confrontation with Cersei and the Lannisters.
-  cf_edit: Eddard Stark concludes that Jon Arryn died of natural causes and ends his
-    investigation.
-  anchor_for:
-  - eddard_stark
-  - cersei_lannister
-- id: ae_014
-  fact: Cersei Lannister warns Eddard Stark that in the game of thrones, one either
-    wins or dies, after he confronts her about her children's parentage.
-  known_by:
-  - cersei_lannister
-  - eddard_stark
-  state_change: Cersei confirms Eddard's discovery and establishes her willingness
-    to use lethal force to protect her children's claim.
-  cf_edit: Cersei Lannister denies the accusation and flees King's Landing.
-  anchor_for:
-  - cersei_lannister
-  - eddard_stark
-- id: ae_015
-  fact: Tyrion Lannister, after winning his freedom at the Eyrie, joins his father
-    Tywin's army in the Riverlands and meets the mountain clans.
-  known_by:
-  - tyrion_lannister
-  state_change: Tyrion aligns himself with House Lannister's military campaign and
-    begins to gain the mountain clans as allies.
-  cf_edit: Tyrion Lannister returns to King's Landing alone after his trial.
-  anchor_for:
-  - tyrion_lannister
+  source_ref: S01E01
+  canon_order: S01E01.07
+  fact: Illyrio gives Daenerys three dragon eggs at her wedding.
+  known_by: [daenerys_targaryen, illyrio_mopatis, viserys_targaryen, khal_drogo, jorah_mormont]
+  state_change: "Before: Daenerys does not possess the eggs. After: the three dragon eggs are her personal possessions."
+  cf_edit: Illyrio gives Daenerys jewelry instead of dragon eggs.
+  anchor_for: [daenerys_targaryen]
+- id: ae_003
+  source_ref: S01E02
+  canon_order: S01E02.01
+  fact: Jon leaves Winterfell with Benjen to seek admission to the Night's Watch.
+  known_by: [jon_snow, benjen_stark, eddard_stark, catelyn_stark, robb_stark, bran_stark, arya_stark]
+  state_change: "Before: Jon resides at Winterfell. After: he is traveling to the Wall as a prospective recruit."
+  cf_edit: Benjen refuses to take Jon to the Wall, so Jon remains at Winterfell.
+  anchor_for: [jon_snow]
+- id: ae_007
+  source_ref: S01E03
+  canon_order: S01E03.01
+  fact: After discovering Needle, Eddard hires Syrio Forel to train Arya.
+  known_by: [arya_stark, eddard_stark, syrio_forel]
+  state_change: "Before: Arya has no sword instructor. After: she is Syrio's active water-dance student."
+  cf_edit: Eddard confiscates Needle and does not hire Syrio.
+  anchor_for: [arya_stark]
+- id: ae_008
+  source_ref: S01E03
+  canon_order: S01E03.02
+  fact: Catelyn secretly meets Eddard in King's Landing and reports the attack on Bran and Littlefinger's dagger claim.
+  known_by: [catelyn_stark, eddard_stark, petyr_baelish, rodrik_cassel]
+  state_change: "Before: Eddard does not know of the second attack or dagger claim. After: he knows both claims and treats Lannister involvement as an unproven possibility."
+  cf_edit: Littlefinger does not identify the dagger as Tyrion's; Catelyn reports only the attack.
+  anchor_for: [catelyn_stark, eddard_stark]
+- id: ae_024
+  source_ref: S01E04
+  canon_order: S01E04.01
+  fact: Catelyn publicly seizes Tyrion at the crossroads inn on the dagger accusation.
+  known_by: [catelyn_stark, tyrion_lannister, rodrik_cassel]
+  state_change: "Before: Tyrion is free and Catelyn has made no public arrest. After: Tyrion is Catelyn's prisoner under an explicit accusation."
+  cf_edit: The inn's armed travelers refuse Catelyn's call for support, so Tyrion remains free.
+  anchor_for: [catelyn_stark, tyrion_lannister]
+- id: ae_026
+  source_ref: S01E04
+  canon_order: S01E04.02
+  fact: Jon persuades the other recruits to stop hurting Sam during training.
+  known_by: [jon_snow, samwell_tarly, grenn, pyp, rast]
+  state_change: "Before: Sam is repeatedly attacked in training. After: Jon has undertaken to protect him and the participating recruits stop targeting him."
+  cf_edit: The recruits reject Jon's intervention and continue targeting Sam.
+  anchor_for: [jon_snow]
 - id: ae_016
-  fact: Arya Stark overhears a conversation in the Red Keep and learns of the Lannisters'
-    plans against her father, then begins trying to warn him.
-  known_by:
-  - arya_stark
-  state_change: Arya becomes aware of the danger facing her father and attempts to
-    act on the information.
-  cf_edit: Arya Stark spends the day in the Red Keep without overhearing any important
-    information.
-  anchor_for:
-  - arya_stark
-- id: ae_017
-  fact: Catelyn Stark returns to the Riverlands after releasing Tyrion at the Eyrie
-    and reunites with her son Robb, who has called the Northern banners.
-  known_by:
-  - catelyn_stark
-  state_change: Catelyn joins Robb's military camp, where the North prepares for war
-    against the Lannisters.
-  cf_edit: Catelyn Stark remains at the Eyrie as a guest of Lysa Arryn.
-  anchor_for:
-  - catelyn_stark
-- id: ae_018
-  fact: Robb Stark, with Catelyn present, negotiates passage at the Twins with Walder
-    Frey and begins planning to lift the siege of Riverrun.
-  known_by:
-  - catelyn_stark
-  state_change: Robb secures the Frey alliance, a crucial strategic move for the Northern
-    army's campaign in the Riverlands.
-  cf_edit: Robb Stark retreats north without attempting to cross the Twins.
-  anchor_for:
-  - catelyn_stark
-- id: ae_019
-  fact: Khal Drogo agrees to lead his khalasar across the Narrow Sea to conquer Westeros
-    for Daenerys after an assassination attempt is made on her life.
-  known_by:
-  - daenerys_targaryen
-  state_change: Drogo commits to invading Westeros, giving Daenerys the military force
-    she needs to pursue the Iron Throne.
-  cf_edit: Khal Drogo refuses to cross the Narrow Sea and instead decides to raid
-    other Dothraki khalasars.
-  anchor_for:
-  - daenerys_targaryen
-- id: ae_020
-  fact: Jon Snow attempts to desert the Night's Watch after learning of his father's
-    arrest, but is persuaded to return by his friends Samwell Tarly, Grenn, and Pyp.
-  known_by:
-  - jon_snow
-  state_change: Jon recommits to the Night's Watch, accepting his vows over his family
-    loyalty.
-  cf_edit: Jon Snow deserts the Night's Watch and rides south to join Robb's army.
-  anchor_for:
-  - jon_snow
+  source_ref: S01E05
+  canon_order: S01E05.01
+  fact: Arya overhears two men discussing danger to Eddard beneath the Red Keep.
+  known_by: [arya_stark, varys, illyrio_mopatis]
+  state_change: "Before: Arya knows of no covert plan around her father. After: she knows an overheard warning but cannot identify the speakers or verify every detail."
+  cf_edit: Arya enters the passage after the men leave and hears no warning.
+  anchor_for: [arya_stark]
+- id: ae_025
+  source_ref: S01E05
+  canon_order: S01E05.02
+  fact: Arya reaches Eddard and reports the warning she overheard.
+  known_by: [arya_stark, eddard_stark]
+  state_change: "Before: Eddard has not heard Arya's report. After: he has heard it, while Arya's one-time warning task is complete."
+  cf_edit: A guard delays Arya until Eddard has left, so she cannot deliver the warning.
+  anchor_for: [arya_stark, eddard_stark]
+- id: ae_009
+  source_ref: S01E06
+  canon_order: S01E06.01
+  fact: Bronn wins Tyrion's demanded trial by combat, requiring the Eyrie to release Tyrion.
+  known_by: [tyrion_lannister, catelyn_stark, bronn, lysa_arryn, robin_arryn, vardis_egen]
+  state_change: "Before: Tyrion is imprisoned under threat of judgment. After: he is released from Eyrie custody and travels with Bronn."
+  cf_edit: Bronn loses the combat, so Tyrion is not released.
+  anchor_for: [tyrion_lannister, catelyn_stark]
+- id: ae_013
+  source_ref: S01E06
+  canon_order: S01E06.02
+  fact: Eddard verifies from the royal lineages and Robert's bastards that Cersei's children are not Robert's.
+  known_by: [eddard_stark]
+  state_change: "Before: Eddard suspects a connection to Jon Arryn's death. After: he knows the children's parentage conclusion; Cersei does not yet know that Eddard has reached it."
+  cf_edit: The lineage evidence does not show the inherited trait, so Eddard cannot reach the parentage conclusion.
+  anchor_for: [eddard_stark]
 - id: ae_021
-  fact: Daenerys Targaryen defies Viserys and begins to assert herself as khaleesi
-    after he threatens her and is eventually killed by Khal Drogo with molten gold.
-  known_by:
-  - daenerys_targaryen
-  state_change: Viserys is dead, leaving Daenerys as the primary Targaryen claimant
-    and freeing her from his control.
-  cf_edit: Viserys Targaryen accepts Drogo's authority and remains in the khalasar.
-  anchor_for:
-  - daenerys_targaryen
-- id: ae_022
-  fact: Eddard Stark is betrayed in the throne room by Petyr Baelish and taken prisoner
-    after King Robert dies and Joffrey Baratheon takes the Iron Throne.
-  known_by:
-  - eddard_stark
-  - cersei_lannister
-  - arya_stark
-  state_change: Eddard is arrested, shifting power entirely to the Lannisters and
-    leaving his fate and the realm in crisis.
-  cf_edit: Eddard Stark successfully leaves King's Landing before Joffrey takes the
-    throne.
-  anchor_for:
-  - eddard_stark
-  - cersei_lannister
-  - arya_stark
-- id: ae_023
-  fact: After Eddard is imprisoned, the Stark loyalists in King's Landing are killed,
-    and Arya Stark escapes the Red Keep with Syrio Forel's help and disappears into
-    the city.
-  known_by:
-  - arya_stark
-  state_change: Arya is alone in King's Landing, separated from her family and forced
-    to survive on the streets.
-  cf_edit: Arya Stark is captured along with her father and held in the Red Keep.
-  anchor_for:
-  - arya_stark
+  source_ref: S01E06
+  canon_order: S01E06.03
+  fact: Drogo kills Viserys after Viserys threatens Daenerys and her unborn child.
+  known_by: [daenerys_targaryen, khal_drogo, viserys_targaryen, jorah_mormont]
+  state_change: "Before: Viserys is alive and pressures Daenerys for an army. After: Viserys is dead and can no longer control or threaten her."
+  cf_edit: Viserys leaves the feast without making the threat, so Drogo does not kill him.
+  anchor_for: [daenerys_targaryen]
+- id: ae_010
+  source_ref: S01E07
+  canon_order: S01E07.01
+  fact: Jon is assigned to serve as Lord Commander Mormont's steward.
+  known_by: [jon_snow, jeor_mormont, maester_aemon, alliser_thorne, samwell_tarly, grenn, pyp, rast]
+  state_change: "Before: Jon is a recruit with no assigned office. After: he is assigned Mormont's steward duties but has not yet taken the Night's Watch vows."
+  cf_edit: Mormont assigns Jon to the rangers instead of naming him steward.
+  anchor_for: [jon_snow]
+- id: ae_027
+  source_ref: S01E07
+  canon_order: S01E07.02
+  fact: Jon takes the Night's Watch vows before a heart tree beyond the Wall.
+  known_by: [jon_snow, samwell_tarly]
+  state_change: "Before: Jon has a steward assignment but remains free to decline lifelong service. After: he is a sworn brother bound by the Night's Watch oath; he does not yet possess Longclaw."
+  cf_edit: Jon declines to speak the vows, so he does not become a sworn brother.
+  anchor_for: [jon_snow]
+- id: ae_014
+  source_ref: S01E07
+  canon_order: S01E07.03
+  fact: Eddard privately tells Cersei he knows her children's parentage and warns her to leave before he tells Robert; Cersei refuses to yield.
+  known_by: [cersei_lannister, eddard_stark]
+  state_change: "Before: Cersei does not know Eddard has completed the discovery. After: both know the discovery and warning occurred; Cersei remains in King's Landing and Eddard intends to tell Robert."
+  cf_edit: Eddard postpones the meeting, so Cersei does not learn that he has completed the discovery.
+  anchor_for: [cersei_lannister, eddard_stark]

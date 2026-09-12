@@ -4,16 +4,16 @@ runtime_state:
   relationships:
     frodo_baggins:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_021_001
     samwise_gamgee:
       level: neutral
       basis_event: initial_state
     gandalf:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_003
     aragorn:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_004
     gimli:
       level: neutral
       basis_event: initial_state
@@ -28,46 +28,47 @@ runtime_state:
     content: Keep watch on the still water and the cliff while the Company searches
       for the Doors of Durin.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_024
   - id: g_legolas_002
     content: Protect Frodo and the Company from any attack near the West-gate of Moria.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_020
   - id: g_legolas_003
-    content: Follow Gandalf's lead on the route into Moria despite personal misgivings.
+    content: Follow Gandalf's lead in opening and safely entering Moria despite personal
+      misgivings.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_017
   disclosures: []
   knowledge:
     k_legolas_001:
       content: The Company has reached the still water before the cliff where the
         Doors of Durin are hidden.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_024
     k_legolas_002:
       content: The Redhorn Gate failed because of the storm; Moria was chosen after
         the retreat.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_017
     k_legolas_003:
       content: Wargs attacked the Company in the wilderness and were driven off.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_020
     k_legolas_004:
       content: His own senses tell him the water before the cliff is still and dark,
         and he watches for movement or hidden dangers near it.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_024
 environment:
   health:
     legolas: 100
     player: 100
   inventories:
-    legolas: []
+    legolas: [legolas_bow]
     player: []
   locations:
     legolas: moria_west_gate_approach

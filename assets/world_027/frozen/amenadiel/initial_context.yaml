@@ -2,70 +2,61 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    lucifer_morningstar:
-      level: hostile
-      basis_event: initial_state
-    mazikeen:
-      level: hostile
-      basis_event: initial_state
-    chloe_decker:
-      level: neutral
-      basis_event: initial_state
-    dan_espinoza:
-      level: neutral
-      basis_event: initial_state
-    linda_martin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    lucifer_morningstar: {level: neutral, basis_event: ae11_amenadiel_rejects_return_offer}
+    mazikeen: {level: neutral, basis_event: ae12_maze_saves_amenadiel}
+    chloe_decker: {level: neutral, basis_event: pre_existing.no_private_knowledge}
+    dan_espinoza: {level: neutral, basis_event: pre_existing.no_material_contact}
+    linda_martin: {level: neutral, basis_event: ae13_linda_learns_canaan_deception}
+    player: {level: neutral, basis_event: pre_existing.default_player}
   goals:
-  - id: g1
-    content: Return Lucifer to Hell
+  - id: g01
+    content: Help locate his escaped mother and contain any threat she poses
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: Reassert heavenly authority over Lucifer's actions
+    basis_event: ae16_mother_escape_revealed
+  - id: g02
+    content: Take responsibility for the mortal harm enabled by resurrecting Malcolm
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: Prevent Lucifer from causing further disruption on Earth
+    basis_event: ae11_amenadiel_rejects_return_offer
+  - id: g03
+    content: Reassess his duty and relationship with Lucifer after the Malcolm crisis
     status: active
-    basis_event: initial_state
+    basis_event: ae11_amenadiel_rejects_return_offer
   disclosures: []
   knowledge:
-    k1:
-      content: Lucifer is in Los Angeles and has abandoned Hell
+    k01:
+      content: He resurrected Malcolm as a proxy and that choice enabled Malcolm's violence
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: Lucifer is openly telling people he is the Devil
+      visibility: [npc]
+      source_event: ae06_amenadiel_resurrects_malcolm
+    k02:
+      content: He rejected Lucifer's offer to return to Hell and cooperated against Malcolm
       status: active
-      visibility: shared
-      source_event: initial_state
-    k3:
-      content: Mazikeen is a demon loyal to Lucifer
+      visibility: [npc]
+      source_event: ae11_amenadiel_rejects_return_offer
+    k03:
+      content: Mazikeen used one of Lucifer's feathers to save his life
       status: active
-      visibility: shared
-      source_event: initial_state
-    k4:
-      content: Amenadiel can move between Los Angeles and other realms
+      visibility: [npc]
+      source_event: ae12_maze_saves_amenadiel
+    k04:
+      content: Linda knows he approached her deceptively as Dr. Canaan
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae13_linda_learns_canaan_deception
+    k05:
+      content: His mother escaped Hell and Lucifer was tasked with finding her
+      status: active
+      visibility: [npc]
+      source_event: ae16_mother_escape_revealed
 environment:
-  health:
-    amenadiel: 100
-    player: 100
+  health: {amenadiel: 100, player: 100}
   inventories:
     amenadiel: []
     player: []
-  locations:
-    amenadiel: lux
-    player: lux
-  access: {}
+  locations: {amenadiel: lux, player: lux}
+  access:
+    amenadiel: [celestial_travel]
+    player: [temporary_conversation_access]
   offers: []
   task_status: active
   dialogue_status: active

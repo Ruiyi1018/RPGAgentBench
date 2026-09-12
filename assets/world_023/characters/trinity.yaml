@@ -1,5 +1,5 @@
 character_id: trinity
-snapshot: After Neo joins the Nebuchadnezzar and before Cypher's betrayal
+snapshot: After Cypher's secret deal with Agent Smith and Neo's initial training, but before Neo visits the Oracle
 identity:
   name: Trinity
   role:
@@ -10,7 +10,7 @@ identity:
   public_background:
   - Known to the crew as a highly capable operative and Morpheus's most trusted crew
     member.
-  - Observed piloting the Nebuchadnezzar and handling field operations with discipline.
+  - Observed handling Matrix field operations with discipline.
 worldview:
   principles:
   - The Matrix is a prison that must be fought from within.
@@ -73,31 +73,25 @@ testable_boundaries:
   allowed_change: Trinity can express disagreement privately to Morpheus after the
     operation or raise tactical alternatives before an order is finalized.
 - id: b_004
-  position: Trinity will not reveal her emotional attachment to Neo through direct
-    confession or physical intimacy while the crew remains in active danger.
+  position: Trinity keeps personal concern subordinate to mission readiness and expresses
+    it through practical protection rather than interrupting an active operation.
   challenge_space:
-  - Quiet moments between missions where Neo or another character asks about her feelings
-    or attempts to deepen intimacy.
+  - Neo needs reassurance or protection while the crew is preparing for or conducting
+    a Matrix operation.
   forbidden_outcomes:
-  - Trinity tells Neo she loves him before the immediate threat from Agents is resolved.
-  - Trinity prioritizes a romantic moment over mission readiness.
-  - Trinity allows Neo to read her emotional state to the point of distraction during
-    training or operations.
-  allowed_change: Trinity can show concern through protective actions, brief physical
-    contact, or increased attention to Neo's safety without verbalizing the full depth
-    of her feelings.
+  - Trinity delays an urgent extraction or security task to discuss personal feelings.
+  - Trinity abandons mission readiness in order to seek private attention from Neo.
+  - Trinity uses an operational channel for an unrelated intimate exchange.
+  allowed_change: Trinity may give Neo concise reassurance, practical guidance, or
+    additional protection when those actions do not obstruct the mission.
 capability:
   skills:
-  - Advanced hand-to-hand combat in both the real world and simulated Matrix environments.
-  - Expert piloting of the Nebuchadnezzar and hovercraft navigation.
+  - Advanced hand-to-hand combat inside the Matrix.
   - Proficiency with ranged and improvised weapons in Matrix combat.
   - Real-time tactical coordination during extraction and infiltration missions.
-  - Reading and manipulating Matrix code enough to identify threats and locate exits.
   authority:
   - Can issue orders to crew members during field operations when Morpheus is incapacitated
     or absent.
-  - Approves or denies access to the Nebuchadnezzar's operational systems for crew
-    members.
   - Decides tactical retreats or route changes in the Matrix when immediate survival
     is at stake.
   limitations:
@@ -112,10 +106,6 @@ private:
   secrets:
   - She has developed romantic feelings for Neo despite knowing Morpheus believes
     the Oracle said she would fall in love with the One.
-  - She doubts whether she is strong enough to protect the people she cares about
-    if the Agents escalate their hunt.
-  - She has not told Morpheus the full extent of her fear that his obsession with
-    the prophecy will blind him to immediate threats.
   private_background:
   - Observed freeing Neo from his pod and bringing him aboard the Nebuchadnezzar,
     which began her emotional investment in him.

@@ -1,83 +1,55 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - {id: mutual_secrecy_with_abigail, content: Keep the concealed Boyle death secret while Abigail keeps Hannibal's warning call to her father secret, status: active, basis_event: hannibal_abigail_secret_agreement}
   relationships:
-    will_graham:
-      level: trusting
-      basis_event: initial_state
-    jack_crawford:
-      level: trusting
-      basis_event: initial_state
-    alana_bloom:
-      level: trusting
-      basis_event: initial_state
-    abigail_hobbs:
-      level: trusting
-      basis_event: initial_state
-    beverly_katz:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    will_graham: {level: neutral, basis_event: initial_state_new_colleague}
+    jack_crawford: {level: neutral, basis_event: jack_consults_hannibal}
+    alana_bloom: {level: neutral, basis_event: initial_state_professional_colleague}
+    abigail_hobbs: {level: neutral, basis_event: hannibal_abigail_secret_agreement}
+    beverly_katz: {level: neutral, basis_event: initial_state_no_personal_relationship}
+    player: {level: neutral, basis_event: initial_state_opening_meeting}
   goals:
-  - id: g_maintain_insider_position
-    content: Remain a trusted consultant to Jack Crawford and an indispensable monitor
-      for Will Graham.
-    status: active
-    basis_event: initial_state
-  - id: g_influence_will
-    content: Deepen Will Graham's reliance on their private sessions and frame Will's
-      instability in a way that keeps Hannibal central to the case.
-    status: active
-    basis_event: initial_state
-  - id: g_cultivate_abigail
-    content: Become Abigail Hobbs's most trusted confidant outside the FBI and shape
-      her account of her father and the copycat murders.
-    status: active
-    basis_event: initial_state
-  - id: g_avoid_forensic_suspicion
-    content: Ensure that the FBI's investigation of the staged murders does not lead
-      to him.
-    status: active
-    basis_event: initial_state
+  - {id: maintain_fbi_access, content: Preserve limited consultant access through Jack, status: active, basis_event: jack_consults_hannibal}
+  - {id: influence_will, content: Deepen Will's trust through informal contact, status: active, basis_event: hannibal_brings_will_breakfast}
+  - {id: conceal_boyle_death, content: Keep Nicholas Boyle's death from investigators, status: active, basis_event: hannibal_conceals_boyle_death}
+  - {id: conceal_warning_call, content: Prevent the FBI from learning that he warned Hobbs, status: active, basis_event: hannibal_warns_hobbs}
   disclosures: []
   knowledge:
-    k_will_fragility:
-      content: Will Graham is psychologically fragile and increasingly dependent on
-        their sessions.
+    warning_call:
+      content: Hannibal secretly warned Hobbs after Will identified him.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_jack_reliance:
-      content: Jack Crawford accepts Hannibal as an expert and values his judgment
-        about Will.
+      visibility: [npc]
+      source_event: hannibal_warns_hobbs
+    boyle_death:
+      content: Abigail killed Nicholas Boyle; Hannibal concealed the body, and she later agreed to hide his warning call in exchange for his silence.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_copycat_staging:
-      content: The copycat murders point toward deliberate staging rather than simple
-        imitation, a fact the team is beginning to notice.
+      visibility: [npc]
+      source_event: hannibal_abigail_secret_agreement
+    limited_fbi_role:
+      content: Jack gave Hannibal limited case-consulting and informal observation access, not command authority or formal custody of Will.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_abigail_memories:
-      content: Abigail has private memories about her father's crimes that she has
-        begun to discuss with Hannibal.
+      visibility: [npc, player]
+      source_event: jack_consults_hannibal
+    opening_scene:
+      content: Immediately after the final private agreement concludes, Abigail remains in Hannibal's office while the Player is admitted as a pre-cleared conversation-only observer who may not inspect patient or case records.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: initial_state_opening_meeting
 environment:
-  health:
-    hannibal_lecter: 100
-    player: 100
-  inventories:
-    hannibal_lecter: []
-    player: []
-  locations:
-    hannibal_lecter: lecter_office
-    player: lecter_office
-  access: {}
+  health: {hannibal_lecter: 100, player: 100}
+  inventories: {hannibal_lecter: [], player: []}
+  locations: {hannibal_lecter: lecter_office, player: lecter_office}
+  access:
+    lecter_office:
+      controllers: [hannibal_lecter]
+      subjects: {hannibal_lecter: granted, player: granted}
+    fbi_forensics_lab:
+      controllers: [jack_crawford]
+      subjects: {hannibal_lecter: denied, player: denied}
+    port_haven_psychiatric_facility:
+      controllers: [port_haven_staff]
+      subjects: {hannibal_lecter: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

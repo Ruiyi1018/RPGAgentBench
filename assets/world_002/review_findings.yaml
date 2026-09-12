@@ -1,0 +1,113 @@
+- item_id: canon.yaml.canon_policy.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: "canon_policy 只声明来源、快照、生成时间线和引用政策，没有定义默认 Player 的身份、初始可见知识、权限、可接触材料或场景覆盖优先级；六名 NPC 均含地下身份、调查线索、腐败材料等私密信息，Stage 3 开局无法唯一判断 Player 可知与可做的范围。"
+  required_change: "在 canon_policy 中定义默认 Player 语义及显式场景覆盖规则，至少明确默认身份、初始知识边界、权限和材料边界，并与全部 Frozen knowledge visibility、inventory 和 access 保持一致。"
+  resolution: "已在canon_policy.default_player_semantics中明确默认Player为无既有关系和正式身份的普通来访者，限定初始知识、公开交谈权限、受限地点与材料、空inventory，并定义场景逐项覆盖及禁止赋予快照后正典知识的规则；六份Frozen均据此将私密知识保持为[npc]并显式拒绝Player受限access。"
+  status: fixed
+- item_id: canon.yaml.canon_policy.generated_timeline
+  severity: major
+  rule_id: generated_timeline_bounded
+  evidence: "generated_timeline 仅写“从共享快照继续生成原创可控事件”，没有终止边界，也没有明确原创事件不得被当作电视剧正典事实；这不足以防止后续受控事件越过来源时序或与第18集以后正典混合。"
+  required_change: "为生成时间线声明可审核的终止边界或明确的受控非正典沙盒边界，并规定与第18集以后正典事实发生冲突时的处理原则，确保后续状态不会被误标为来源正典。"
+  resolution: "已把generated_timeline改为从共享快照开始、以单次受控任务或对话结束为终点且不延伸到第18集以后；明确后续生成事件属于非正典沙盒，冲突时不得反向写入正典、Profile或Frozen初始状态。"
+  status: fixed
+- item_id: environment.yaml.locations.candidate_scene_coverage
+  severity: major
+  rule_id: missing_active_location_mapping
+  evidence: "候选 qf_14_fo_kan_identified 的 fact 明确把延安作为实际潜伏与身份识别场景，但 environment.locations 只有天津站及天津街区节点，没有延安节点或到现有节点的明确运行时映射；anchor_pool 其余候选也未提供 scene_location，无法完整核验实际场景和移动端点覆盖。"
+  required_change: "为延安这一候选实际场景增加运行时有效节点或明确无歧义映射，并为全部候选补足可审核的场景/移动端点依据后回归环境覆盖；仅作为背景且不发生场景的地点无需建模。"
+  resolution: "保留用户既有environment扩展，仅新增pre_tianjin_operations与yanan_field_site两个连通运行时节点，并为候选逐项填写scene_location；延安识别与换俘映射到yanan_field_site，其余候选映射到明确的现有或赴津前合并节点。"
+  status: fixed
+- item_id: characters.source_traceability
+  severity: major
+  rule_id: character_state_evidence_traceable
+  evidence: "六份 Character Profile 均只有叙述性身份、立场、目标、权限、秘密和边界，没有逐项 source/event 映射或稳定证据 ID。仅凭 canon.yaml 的整剧来源列表，无法确认诸如陆桥山“争夺副站长的真实计划”、谢若林“对翠平和余则成的具体怀疑”、吴敬中的权限及各角色当前目标究竟由快照前哪一事件支持。"
+  required_change: "为六份 Profile 的重要当前状态增加可解析到批准来源和快照内事件的稳定证据映射，至少覆盖身份/职务、当前目标、方向性关系、权限与限制、私密知识及关键行为边界，并区分事实成立时间、角色获知时间和来源披露时间。"
+  resolution: "已为六份Profile增加source_evidence，按身份/职务与权限、当前目标与方向性关系、私密知识与边界、能力与风格分组映射qianfu_tv批准来源及稳定qf事件ID；每组均分别说明fact_established、npc_knowledge_by与source_disclosed_in，并明确观众披露不等于默认Player可见。"
+  status: fixed
+- item_id: frozen.initial_context
+  severity: blocker
+  rule_id: missing_frozen_runtime_state
+  evidence: "六份 initial_context.yaml 已存在且结构字段齐全，但修复尚未闭环：wang_cuiping.relationships.lu_qiaoshan 使用强关系 distrustful，却以只描述李涯回站的 qf_18_li_ya_returns 为 basis_event，候选及 Profile 证据都未给出翠平获知陆桥山威胁的参与、披露或证据访问；wu_jingzhong、li_ya、lu_qiaoshan 对 xie_ruolin 的 NPC 间 neutral 关系又以仅描述默认 Player 的 default_player_unfamiliar_visitor 为依据；四项否定知识使用的 snapshot_fact_no_decisive_identity_evidence 也未在 canon 或候选池定义为可解析证据 ID。当前关系与知识引用仍不能完整追踪。"
+  required_change: "将翠平对陆桥山的关系降为 neutral 并使用与其可见历史相符的依据，或补充快照内可验证的披露/证据事件；为 NPC 间 neutral 关系改用语义正确的已定义依据（或按运行时规范省略无须依据的字段）；将 snapshot_fact_no_decisive_identity_evidence 映射到 canon 中稳定、可解析的快照约束 ID，或改用明确的批准来源/事件引用。完成后重新回归六份初态。"
+  resolution: "已完成六份初态回归：将翠平对陆桥山降为neutral并保留其可见的qf_18回站事件作为相识依据；将吴敬中、李涯、陆桥山与谢若林之间无直接事件支撑的neutral关系（含谢若林反向关系）统一改用运行时标准initial_state，不再误引默认Player依据；并在canon.snapshot_constraints中定义可解析的snapshot_fact_no_decisive_identity_evidence，绑定qianfu_tv第1至17集与共享快照，供四项否定知识引用。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.discrete_event_boundary
+  severity: major
+  rule_id: candidate_event_discrete
+  evidence: "qf_09_cuiping_cover_difficulties 把第5至7集“多次”掩护困难及翠平学习目标、余则成能力信任两个状态变化合并；qf_10_wu_uses_yu_for_private_profit 横跨第3、4、8集的多次私利事务；qf_23_li_lu_conflict_intensifies 汇总第15至16集持续争斗。这些是重复/阶段性摘要，不是单一生效点的离散事件。"
+  required_change: "将这些汇总候选拆成来源中可定位、只有一个事件边界和主要生效点的候选，或仅保留一个明确实例；分别重写 chronology、known_by、state_change 和最小 cf_edit，避免把多轮过程当作一次状态操作。"
+  resolution: "已将qf_09收窄为第5集一次掩护失误后的明确训练目标建立，将qf_10收窄为第8集一项穆连成相关具体委托，将qf_23收窄为第16集陆桥山就袁佩林案失利向吴敬中进言并影响本次资源主张；三项均只保留单一事件边界、生效点、可见者、状态变化和局部反事实。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.chronology_metadata
+  severity: major
+  rule_id: candidate_chronology_recoverable
+  evidence: "29项候选仅使用 episode 或 episodes，没有 chapter_order/episode_order 或声明 YAML 列表顺序具有规范时序。第17集内 qf_25、qf_26、qf_27、qf_28 又跨越“谢若林身份明确之后、李涯圈套收网之前”的共享快照边界，当前元数据无法唯一判定同集先后及每项候选相对快照的位置。"
+  required_change: "为全部候选提供全局唯一且与来源一致的顺序字段，并显式标记相对共享快照的 before/at/after 位置；重点核验第17集四项候选，不得把快照后的事实倒灌进 Profile 或初始状态。"
+  resolution: "已为全部候选增加全局唯一episode_order、timeline_position与scene_location；第17集明确排序为qf_25=17.01、qf_26=17.02、qf_28=17.03、qf_27=17.04，前三项为before_snapshot，qf_27标记为at_snapshot_ongoing且明确圈套尚未收网。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.qf_20_zuo_lan_and_ma_kui_die.known_by
+  severity: blocker
+  rule_id: candidate_visibility_correct
+  evidence: "该 fact 不仅包含左蓝与马奎死亡的公开结果，还包含“翠平未能及时拦下左蓝”这一地下行动细节，却把 wu_jingzhong、li_ya、lu_qiaoshan 全部列入 known_by。canon.data_constraints 明确禁止向这些角色暴露余则成和翠平的中共身份，候选也没有给出他们获知翠平秘密行动的披露或证据来源。"
+  required_change: "拆分公开可知的死亡结果与仅余则成/翠平可知的拦阻行动，按参与、披露或证据访问分别设置 known_by/outcome_known_by；不得让天津站角色因知道结果而自动知道地下行动原因和参与者。"
+  resolution: "已将qf_20拆为公开双亡fact与仅余则成、翠平可知的private_fact，分别使用known_by和private_known_by；天津站角色只知道公开结果，不再获得翠平拦阻行动，状态变化也分别绑定公开结果与私密失败。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.knowledge_facets
+  severity: major
+  rule_id: candidate_known_by_grounded
+  evidence: "qf_09 把吴敬中、陆桥山列为整个复合 fact 的 known_by，但 state_change 包含翠平内在的“认识到城市掩护能力不足并建立学习目标”和余则成对其业务能力的私人判断；qf_24 同样把翠平列为军需倒卖、内部争斗、利益交易和吴敬中获利整组事实的知情者，却未说明参与、披露或证据访问。"
+  required_change: "逐项拆分世界真相、可观察表象、结果和内在状态，只有存在参与、披露或证据访问的角色才能进入对应 known_by；对事后结果、怀疑和推断使用不同字段并给出来源。"
+  resolution: "已将qf_09的完整known_by收窄为亲历提醒的余则成、翠平，并移除吴敬中、陆桥山及二人的anchor_for；qf_24拆分为站内处置公开层、仅余则成与吴敬中知道的private_transaction_fact及李涯、陆桥山的inferred_outcome_by，翠平不再被列为知情者。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: counterfactual_variable_isolatable
+  evidence: "多项 cf_edit 直接打包多个变化或改写最终结果：qf_04 同时要求“刺杀失败且身份暴露”，qf_09 把横跨三集的多次掩护困难整体改为从一开始熟练，qf_22 直接把结果改成李涯成功保护袁佩林。它们没有声明唯一受控变量、保持不变的上下文及预期状态差异，无法支持最小 Stage 2 编辑。"
+  required_change: "逐项将 cf_edit 改成一个局部、可执行的关键原因或证据变化，并明确 hold-constant 上下文及 expected difference；删除同时改变原因与后果、整段经历或直接指定相反结局的编辑。"
+  resolution: "已将全部候选cf_edit统一改写为variable、单一edit、hold_constant和expected_difference四段式；qf_04只改变刺杀是否成功而保持安全撤离，qf_09只改变翠平是否接受训练，qf_22只改变关键掩护是否奏效，不再同时改写原因、身份暴露与最终结果。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.qf_27_li_ya_investigates_lu.anchor_for
+  severity: major
+  rule_id: candidate_target_state_change_usable
+  evidence: "qf_27 的 known_by 只有 li_ya，lu_qiaoshan 仅为 suspected_by，state_change 也只创建李涯针对陆桥山的秘密行动目标；但 anchor_for 同时包含 lu_qiaoshan。候选没有定义陆桥山在该事件发生时获得的知识、关系、目标或资源变化，因而不能作为其客观状态更新。"
+  required_change: "若陆桥山在该时点没有可证明的状态变化，则从 anchor_for 移除；若确有其察觉圈套的独立事件，应拆成有来源、可见性和明确状态变化的离散候选，不得用他人的秘密目标替代其状态。"
+  resolution: "已从qf_27.anchor_for移除lu_qiaoshan，仅保留发生秘密知识与目标变化的li_ya；陆桥山在共享快照只有受qf_27支撑的风险怀疑，已作为Frozen知识记录且明确不知道李涯完整证据和圈套计划。"
+  status: fixed
+- item_id: frozen.source_review.foundation_checks
+  severity: major
+  rule_id: source_review_check_evidence_consistent
+  evidence: "yu_zecheng、wang_cuiping、li_ya 的 source_review 将 character_source_grounded、public_private_separated、world_affordances_sufficient 等检查标为 true，但六份必需 initial_context 全部缺失、Profile 没有逐项证据映射、默认 Player 边界也未定义；这些 true 记录与当前可审核材料不一致。其余三名 NPC 的 Foundation 检查仍全部为 false。"
+  required_change: "在材料修复并由独立 Auditor 复核前，将无充分证据支持的 Foundation 检查保持为 false；完成六名 NPC 的统一复核后再逐项更新检查记录，foundation.approved 继续保持 false，anchors.approved 不得修改。"
+  resolution: "已把yu_zecheng、wang_cuiping、li_ya三份source_review中原先无充分材料支持的Foundation true全部恢复为false；其余三份继续保持false，六份foundation.approved均为false，reviewer/reviewed_at为空，anchors区及anchors.approved完全未修改，等待独立Auditor复核。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.qf_24_military_goods_profit.anchor_for
+  severity: major
+  rule_id: candidate_target_state_change_usable
+  evidence: "qf_24 已将翠平从公开处置、私下利益交易及推断结果的所有知情字段中移除，state_change 也只改变吴敬中对余则成的工具性信任并使李涯受挫；但 anchor_for 仍包含 wang_cuiping。翠平既不知该事件对应事实，也没有在该候选中发生可追踪的知识、目标、关系、权限或资源变化。"
+  required_change: "从 qf_24.anchor_for 移除 wang_cuiping；若来源确有翠平通过参与、披露或证据访问获知某一独立层面的事实，应先为该层面增加明确可见性和客观状态变化，不得仅为名单覆盖保留她。"
+  resolution: "已从qf_24_military_goods_profit.anchor_for移除wang_cuiping，仅保留在该事件中具有可追踪状态变化的yu_zecheng、wu_jingzhong、li_ya与lu_qiaoshan；未新增翠平可见性、事实层或状态变化。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.qf_24_military_goods_profit.anchor_for.remaining_targets
+  severity: major
+  rule_id: candidate_target_state_change_usable
+  evidence: "qf_24.anchor_for 仍包含 yu_zecheng 与 lu_qiaoshan，但 state_change 只明确“吴敬中对余则成的利益信任增强且李涯再次受挫”。余则成虽参与私下利益安排，候选未声明其知识、目标、关系、权限或资源在该事件中发生变化；陆桥山仅列于 inferred_outcome_by，知道或推断处置结果也不等于其自身状态发生变化。现有字段无法为这两个目标生成唯一、可追踪的状态操作。"
+  required_change: "从 qf_24.anchor_for 移除 yu_zecheng 与 lu_qiaoshan，仅保留 state_change 明确覆盖的 wu_jingzhong、li_ya；若确需保留任一角色，必须先基于来源为该角色补充独立且可审核的知识、目标、关系、权限或资源变化，并使可见性、state_change 与最小 cf_edit 一致。"
+  resolution: "已按最小修复从qf_24_military_goods_profit.anchor_for移除yu_zecheng与lu_qiaoshan，仅保留state_change明确覆盖的wu_jingzhong与li_ya；未改动既有可见性分层、state_change或最小cf_edit，因此恢复Stage 1目标状态唯一性并保持Stage 2/3材料不变。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.qf_24_military_goods_profit.anchor_for.li_ya
+  severity: major
+  rule_id: counterfactual_target_alignment
+  evidence: "qf_24.anchor_for 保留 li_ya，state_change 将“李涯再次受挫”列为其目标状态变化；但 cf_edit 的唯一变量是 wu_accepts_private_benefit，edit 仅让吴敬中拒绝余则成安排的私人利益，hold_constant 又明确保持军需倒卖线索、派系争斗和吴敬中调查权限不变，expected_difference 也只有吴敬中不提高对余则成的工具性信任。该私下利益交易仅由余则成与吴敬中知晓，编辑不会改变李涯可见的处置、受挫状态或后续决定，因此无法为 li_ya 隔离相关因果变量。"
+  required_change: "从 qf_24.anchor_for 移除 li_ya，仅保留 cf_edit 与 state_change 均明确覆盖的 wu_jingzhong；或者基于批准来源把 qf_24 重写为一个会最小改变李涯可见处置或行动状态的单变量反事实，并同步明确李涯的离散、可追踪 state_change 与 expected_difference。"
+  resolution: "已按最小修复从qf_24_military_goods_profit.anchor_for移除li_ya，仅保留其state_change与cf_edit共同覆盖的wu_jingzhong；未改动李涯既有受挫事实、公开处置、私下交易可见性或其他候选，因此保持Stage 1/3既有材料并恢复该候选的Stage 2单变量因果对齐。"
+  status: fixed
+
+- item_id: repository_gate.evaluation_imports_and_root_findings
+  severity: major
+  rule_id: machine_regression_and_root_finding_gate
+  evidence: "2026-09-11 在仓库根目录执行 `pytest -q`，测试于收集阶段以 exit code 2 失败：tests/test_full_experiment_metrics.py 与 tests/test_pilot_runner.py 无法从 evaluation 导入 ActiveChallenge，tests/test_stage3_contracts.py 无法导入 ChallengeController；同目录 `python3 -m pytest -q` 可正确导入 evaluation，但因 tests/test_datagen.py::test_review_gates_require_reapproval_when_rules_expand 仍硬编码期望 world_002 未获人工批准而出现 1 项失败。另经代码与实跑确认，datagen.audit.source_assets._review_section_passed 只检查角色目录及 drafts 下的 review_findings.yaml，不读取世界根 assets/world_002/review_findings.yaml：本 open major 存在时，Foundation 审计仍错误报告 machine_passed=true、human_approved=true、ready_for_anchor_generation=true。此项是全仓测试/机器门禁缺陷，不是 world_002 世界语义 finding。"
+  required_change: "统一 pytest 启动环境中的 evaluation 包解析并更新审批状态回归测试，使完整测试通过；同时让 Foundation 审计读取并阻断世界根 review_findings.yaml 中 open blocker/major（并补充对应回归测试）。修复后重跑两种 pytest 入口、world_002 Foundation 审计及 YAML 校验。"
+  resolution: "已核验evaluation公共包导出ActiveChallenge与ChallengeController，并通过pytest配置统一仓库根模块解析；Foundation人工审批门禁现同时读取世界根、角色目录及drafts的review_findings.yaml，open blocker/major/minor均阻断。回归测试使用tmp_path构造批准记录及世界根open finding，逐一验证三种severity阻断，并验证fixed/accepted不阻断；world_002真实资产测试仅检查机器审计与Anchor指标，不再依赖该世界必须保留open finding或未批准状态。2026-09-12实跑隔离门禁测试、world_002 Foundation审计、YAML解析及`pytest -q`与`python3 -m pytest -q`均以exit code 0通过；Foundation在本finding保持open时正确报告machine_passed=true、human_approved=false、ready_for_anchor_generation=false。"
+  status: fixed

@@ -3,58 +3,49 @@ runtime_state:
   commitments: []
   relationships:
     qin_feng:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_ev_qin_arrival
     si_nuo:
       level: neutral
       basis_event: initial_state
     a_xiang:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_ev_a_xiang_lodging
     kun_tai:
       level: neutral
       basis_event: initial_state
     huang_lan_deng:
-      level: hostile
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
       basis_event: initial_state
   goals:
   - id: tangren_goal_001
-    content: 与秦风会合并继续调查颂帕工坊命案
+    content: 接待来曼谷散心的秦风
     status: active
-    basis_event: initial_state
+    basis_event: pre_ev_qin_arrival
   - id: tangren_goal_002
-    content: 确认警方追查自己的具体程度
+    content: 维持侦探社生意与唐人街人脉
     status: active
-    basis_event: initial_state
-  - id: tangren_goal_003
-    content: 找出黄金佛像与命案的关联
-    status: active
-    basis_event: initial_state
+    basis_event: pre_ev_tang_agency
   disclosures: []
   knowledge:
-    tangren_k_001:
-      content: 颂帕工坊发生命案，警方正在追查相关线索。
+    tangren_k_qin_arrival:
+      content: 秦风是来曼谷投奔自己、由自己负责接待的远房表外甥
       status: active
-      visibility: shared_with_qin_feng
-      source_event: initial_state
-    tangren_k_002:
-      content: 颂帕与黄金佛像之间存在某种联系。
+      visibility: [npc, player]
+      source_event: pre_ev_qin_arrival
+    tangren_k_lodging:
+      content: 阿香是自己的房东，自己只能使用获准的租住和会面区域
       status: active
-      visibility: shared_with_qin_feng
-      source_event: initial_state
-    tangren_k_003:
-      content: 警方已把唐仁列为追查对象。
+      visibility: [npc, player]
+      source_event: pre_ev_a_xiang_lodging
+    tangren_k_kuntai:
+      content: 坤泰是警局刑警探长，与自己有私人往来，但不等于自己拥有警务权限
       status: active
-      visibility: private_with_kun_tai
-      source_event: initial_state
-    tangren_k_004:
-      content: 阿香在调查中可能向自己提供帮助。
-      status: active
-      visibility: shared_with_a_xiang
-      source_event: initial_state
+      visibility: [npc]
+      source_event: pre_ev_tang_kuntai_acquaintance
 environment:
   health:
     tang_ren: 100
@@ -63,9 +54,24 @@ environment:
     tang_ren: []
     player: []
   locations:
-    tang_ren: loc_chinatown_street
-    player: loc_chinatown_street
-  access: {}
+    tang_ren: loc_a_xiang_residence
+    player: loc_a_xiang_residence
+  access:
+    a_xiang_meeting_area:
+      controllers: [a_xiang]
+      subjects: {tang_ren: granted, player: granted}
+    a_xiang_private_area:
+      controllers: [a_xiang]
+      subjects: {tang_ren: denied, player: denied}
+    police_station_restricted:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {tang_ren: denied, player: denied}
+    case_file:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {tang_ren: denied, player: denied}
+    songpa_workshop_scene:
+      controllers: [huang_lan_deng]
+      subjects: {tang_ren: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

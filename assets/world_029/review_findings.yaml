@@ -1,0 +1,203 @@
+- item_id: canon.yaml.canon_policy.primary_source
+  severity: blocker
+  rule_id: source_scope_invalid_episode_range
+  evidence: "canon_policy、shared_snapshot、sources.scope及六份Profile均写作Season 1 episodes 1-12；第一季播出版实际仅有11集（Pilot至S01E11 Ricksy Business），不存在S01E12。"
+  required_change: "将正典范围统一锁定为明确版本的S01E01-S01E11，并同步修正所有Profile、anchor_pool.source及约束中的错误集数范围。"
+  resolution: "已将canon policy、source scope和六份Profile统一为Adult Swim原始播出版S01E01-S01E11；anchor_pool亦使用同一范围并删除S01E12。"
+  status: fixed
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_unbounded
+  evidence: "canon_policy未定义默认Player身份、初始可见知识、能力或临时授权；Frozen状态却以public/private/shared/family等标签隐式推断Player可见性。"
+  required_change: "在canon policy中定义默认Player语义及其知识、能力和授权边界，并使全部Frozen可见性逐项遵循该定义。"
+  resolution: "已在canon_policy.player_semantics中定义默认Player身份、初始知识判定、能力、限制和授权；六份Frozen均改用显式[npc]或[npc, player]。"
+  status: fixed
+- item_id: canon.yaml.data_constraints
+  severity: minor
+  rule_id: candidate_pool_final_quota_conflation
+  evidence: "data_constraints要求Every Longitudinal-core character must have ten canonical anchors，但当前文件是候选事件池，角色层级尚未选定，Pre-Anchor阶段不应施加最终Anchor配额。"
+  required_change: "删除候选池阶段的最终每角色十条配额约束，或明确该规则只在后续Longitudinal角色选定和最终Anchor生成时生效。"
+  resolution: "已将十条Anchor要求明确限定为后续选定Longitudinal-core角色后的最终Anchor生成规则，不再作为候选池配额。"
+  status: fixed
+- item_id: environment.yaml.locations
+  severity: major
+  rule_id: active_location_mapping_incomplete
+  evidence: "环境以单一alien_dimension笼统承载不同维度，并以giant_organism_interior承载不存在的mega-seed事件；现有候选还涉及Dimension 35-C及星际海关等可区分实际场景，却无独立节点或明确映射。Beth的职业场景也没有可执行工作地点。"
+  required_change: "已补齐的节点保留；继续为候选仍实际使用但尚未映射的场景/移动目的地建立唯一节点或明确映射，至少包括S01E04外星模拟设施、S01E02狗群离开的维度，以及S01E11房屋被传送到的派对地点。"
+  resolution: "在保留既有正确节点的基础上，新增S01E04 Zigerion模拟设施、S01E02狗群迁往维度、S01E11房屋被传送到的外星派对地点及Birdperson季末未指明的离场后位置；全部节点均以双向边连接至现有地图。"
+  status: fixed
+- item_id: characters.rick_sanchez.current_council_state
+  severity: blocker
+  rule_id: current_state_contradicts_snapshot
+  evidence: "Profile把Rick当前写成Council fugitive并以Avoid capture为持续目标，Frozen又称Council仍因violations怀疑他；S01E10中Rick被栽赃后已找出真凶并洗清该案，季末快照不能继续把该次指控当作未解决追捕。"
+  required_change: "区分Rick对Council的长期敌意与S01E10已解决的具体指控，移除或改写当前fugitive/被怀疑/逃避该案的状态和目标。"
+  resolution: "已将Rick对Council的当前状态改为与其长期敌对但S01E10具体谋杀指控已洗清，并移除持续逃避该已结案件的目标。"
+  status: fixed
+- item_id: characters.rick_sanchez.capability.authority
+  severity: major
+  rule_id: ungrounded_household_authority
+  evidence: "Profile声称Rick可决定Morty何时离校或离家办事；第一季只支持Rick会擅自带走Morty，不支持他拥有合法或家庭授予的决定权限。"
+  required_change: "把该项改为事实上的行动能力及其限制，明确Beth/Jerry的家长权限和Rick绕过权限的行为，避免把越权写成authority。"
+  resolution: "已把带Morty离校改为Rick事实上会绕过规则的行动能力，并明确Beth/Jerry拥有家长权限、Rick不具有合法或家庭授予权限。"
+  status: fixed
+- item_id: characters.beth_smith.authority_and_boundaries
+  severity: major
+  rule_id: profile_boundary_not_source_grounded
+  evidence: "Profile把Beth写成会在Rick带孩子前强制取得解释/授权、并能控制Rick活动是否涉及Morty或Summer；第一季反复呈现Rick绕过父母带Morty行动，未建立Beth拥有或稳定执行这种控制权。"
+  required_change: "按第一季实际可观察行为重写Beth的权限、限制和边界，区分她会质问/反对与她能阻止或授权Rick的能力。"
+  resolution: "已重写Beth的权限和三号边界，区分她会质问、反对及事后施加普通后果，与她无法稳定阻止Rick秘密或单方面带走孩子。"
+  status: fixed
+- item_id: characters.jerry_smith.prohibitions_and_boundaries
+  severity: major
+  rule_id: profile_boundary_contradicts_source
+  evidence: "Profile声称Jerry不会公开使用Rick的技术，并规定除生存需要外拒绝使用；但S01E05 Meeseeks and Destroy中Jerry主动、持续使用Rick提供的Meeseeks Box解决高尔夫问题。"
+  required_change: "依据第一季实际行为重写Jerry对Rick技术的边界，区分他对跨维度危险的恐惧与他会为个人问题使用看似便利设备的事实。"
+  resolution: "已按S01E05重写Jerry技术边界：他会为高尔夫主动使用简单Meeseeks Box，但不具备portal gun或复杂跨维技术能力。"
+  status: fixed
+- item_id: characters.summer_smith.private.secrets
+  severity: major
+  rule_id: fabricated_profile_fact
+  evidence: "Profile断言Summer故意无许可使用Rick设备以获取注意，且已造成garage accident；候选ae_s1_ch007_001沿用该事件，但第一季播出版没有这一离散事件。"
+  required_change: "删除该伪造经历及由其推出的秘密/边界，改用S01E01-S01E11中可定位的Summer行为证据。"
+  resolution: "已删除Summer无许可操作设备及garage accident设定，改用S01E07出行、S01E08获知替代现实和S01E11派对等可定位事实。"
+  status: fixed
+- item_id: characters.birdperson
+  severity: blocker
+  rule_id: profile_built_on_noncanonical_event
+  evidence: "Birdperson在第一季仅于S01E11 Ricksy Business到Smith家参加派对并与Morty交谈；Profile却以Rick前往其homeworld避险、Birdperson藏匿Rick和抵御追兵为当前身份、目标、权限及三条边界的核心，这些情节不在第一季。"
+  required_change: "依据S01E11实际出场从头重建Birdperson Profile，删除homeworld shelter/pursuer情节及其推导状态，只保留第一季明确展示或陈述的关系、知识和能力。"
+  resolution: "已依据S01E11 Smith家派对从头重建Birdperson Profile；删除homeworld shelter、追兵、政治与未展示战斗权限，仅保留老友身份、语言解释和对Morty的披露。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.source_trace
+  severity: major
+  rule_id: chronology_not_recoverable
+  evidence: "26条候选只有笼统Season 1来源；无episode/source locator或chapter_order。ID中的ch001-ch012既未定义为集序，又包含不存在的ch012，并把S01E08/S01E10/S01E11事件错排到ch004/ch008/ch007。"
+  required_change: "为每条保留候选增加可核验的集号/事件定位与显式总序字段，按S01E01-S01E11实际顺序重排并使用稳定、含义明确的ID。"
+  resolution: "已重建候选池，为每条事件加入episode、source_locator和chapter_order，并按S01E01-S01E11及集内顺序使用稳定ID排序。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.canon_validity
+  severity: blocker
+  rule_id: candidate_events_outside_canon
+  evidence: "候选池系统性虚构或拼接情节：ae_s1_ch001_004把mega seeds与进入巨型生物体内混为一事；ch002_001-003虚构学校科学演示/时间线观看设备；ch005_001-002虚构外星盟友及Rick护Morty受伤；ch007_001虚构Summer设备事故；ch009_001虚构Birdperson在homeworld藏匿Rick；ch012_001引用不存在的第12集危机。多条真实元素亦被放入错误集序。"
+  required_change: "逐条对照S01E01-S01E11播出版，删除全部虚构/拼接候选，纠正真实事件的事实边界和集序；不得用后季情节补足。"
+  resolution: "已逐条对照第一季播出版重建14条离散候选，删除巨型生物取种、学校演示、时间线设备、虚构盟友受伤、Summer事故、Birdperson藏匿及第12集等伪造或拼接内容。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.known_by
+  severity: major
+  rule_id: candidate_visibility_unsupported
+  evidence: "known_by多处未由参与、披露或证据访问支持：ae_s1_ch001_001把Rick回到家庭只列Rick；ae_s1_ch002_002称设备让Morty观看却只列Rick；ae_s1_ch006_002把家庭争论只列Jerry；大量伪造事件的known_by也无法成立。"
+  required_change: "在事件事实纠正后，逐条依据在场、被告知或证据访问重建known_by，保持私人对话不向未获知角色扩散。"
+  resolution: "已按现场参与、直接披露或既有秘密持有者逐条重建known_by；替代现实与Birdperson-Morty谈话等私人信息未扩散给其他家人或Player。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.state_change
+  severity: major
+  rule_id: candidate_state_change_not_testable
+  evidence: "多条state_change只是场景复述或含糊情绪，如moves into the giant's body、becomes involved in a new Rick project、feels dismissed、enters the current story，未给出可唯一查询的知识/关系/目标/承诺/资源前后态。"
+  required_change: "仅保留会产生明确可追踪状态的离散事件，并将state_change写成可判定的旧态到新态及后续可观察决定；无状态价值者降为普通记忆或移除。"
+  resolution: "已将每条state_change改写为明确的前态到后态，覆盖知识、信念、关系判断、目标完成、案件状态或可执行位置后果。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: counterfactual_not_minimal_or_causal
+  evidence: "多数cf_edit仅机械替换人物或物品（Rick→Beth、Morty→Summer、cable box→portal gun），同时改变参与者、能力、关系和可行性；部分替换人物并不可能执行原事件，不能隔离单一因果变量。"
+  required_change: "继续修正仍未改变目标状态的反事实：ae_s01e05_01_meeseeks_golf的当前编辑只消除升级危机，但原分支与编辑分支都会改善挥杆并完成高尔夫目标，因而没有产生与state_change相反的状态或决定。使单一编辑直接改变所声明的目标状态，或重写state_change以与可隔离结果一致。"
+  resolution: "将ae_s01e05_01_meeseeks_golf的cf_edit改为只改变Jerry是否按下盒子并提出高尔夫请求；反事实分支不获得该方法且不完成改善目标，与原state_change直接相反。"
+  status: fixed
+- item_id: frozen.all.initial_context.knowledge_visibility
+  severity: major
+  rule_id: runtime_visibility_vocabulary_ambiguous
+  evidence: "六份Frozen使用private/shared/public/family字符串，而规范语义要求明确列出[npc]或[npc, player]等主体；canon又未定义这些别名，因而无法判断默认Player究竟知道哪些事实。"
+  required_change: "列表词汇已修复，但须逐项收窄Player初始知识：普通陌生访客没有来源得知Morty的interdimensional cable经历、Rick的跨维旅行或其他家庭内部经历；尤其移除morty_knows_interdimensional_cable的player可见性，并复核全部[npc, player]项只保留现场可观察或明确公开且Player可接触的事实。"
+  resolution: "逐项复核六份Frozen后，将Rick跨维活动、返家及家庭内部经历全部收窄为[npc]，删除无稳定来源的morty_knows_interdimensional_cable；仅保留Player在St. Equis马医院现场可接触的Beth马外科医生职业事实为[npc, player]。"
+  status: fixed
+- item_id: frozen.all.initial_context.relationships
+  severity: major
+  rule_id: strong_relationships_ungrounded
+  evidence: "Frozen包含Morty→Rick trusting、Beth→Rick distrustful、Jerry→Rick hostile、Summer→Rick distrustful、Birdperson→Rick loyal等强状态，但Profile/第一季证据更多是矛盾、依赖或友谊，未给出支撑这些离散等级的basis event；Birdperson还给自己设置loyal关系。"
+  required_change: "自关系与多数无依据强等级已修复；继续处理Rick↔Birdperson的trusting：当前basis_event是Birdperson向Morty披露解释，只能证明熟悉和披露，不能证明Rick对Birdperson或Birdperson对Rick的离散信任。改为neutral，或引用第一季内分别支持每个方向trusting的具体证据。"
+  resolution: "将Rick→Birdperson及Birdperson→Rick均由trusting降为neutral，保留S01E11披露事件仅作为老友熟悉度依据；未恢复Birdperson自关系，Jerry→Rick仍按Profile明确敌意保留distrustful。"
+  status: fixed
+- item_id: frozen.rick_sanchez.environment.inventories
+  severity: major
+  rule_id: key_runtime_resource_missing
+  evidence: "Rick Profile明确其控制并使用portal_gun，环境也定义该可携带关键物品，但Frozen中rick_sanchez inventory为空，使其核心移动能力在Stage 3不可执行。"
+  required_change: "若季末初始场景中Rick持有portal gun，将portal_gun加入Rick库存并验证对应行动；若不持有，则明确其位置、访问条件和由此产生的能力限制。"
+  resolution: "已将portal_gun加入Rick库存，并把Rick与Player起始位置设为定义完备的garage，使核心移动资源可执行。"
+  status: fixed
+- item_id: frozen.birdperson.initial_context
+  severity: blocker
+  rule_id: frozen_state_outside_canon
+  evidence: "Birdperson Frozen把他置于birdperson_home，并设置Shelter Rick、隐藏Rick位置、抵御追踪威胁三个当前目标和相应知识；这些均来自第一季不存在的候选ae_s1_ch009_001，而其第一季实际场景是S01E11 Smith家派对。"
+  required_change: "伪造避难情节已删除，但当前Birdperson Profile/Frozen仍停在S01E11派对进行中，并把“参加派对、向Morty解释”列为active；canon共享快照却是S01E11全部事件之后，其他NPC也使用季末快照。统一为一个兼容时点，并将已完成的派对与披露目标关闭或改为快照后仍有效的目标；位置也须符合该时点及environment。"
+  resolution: "将Birdperson Profile/Frozen统一到S01E11结束后；派对参与和向Morty披露两个目标均标为fulfilled，仅保留维持友谊为active，知识改为历史完成态，并把NPC与Player起点移至environment中明确标注为第一季未指明的离场后外星位置。"
+  status: fixed
+- item_id: frozen.rick_sanchez.knowledge.k_rick_005
+  severity: blocker
+  rule_id: resolved_event_encoded_as_current_threat
+  evidence: "k_rick_005把Council怀疑Rick并审问Morty编码为当前有效共享知识，同时g_rick_003要求持续躲避Council；S01E10该次栽赃案已被查清，不能在季末快照中作为未解决当前威胁。"
+  required_change: "把S01E10经历改为历史知识并注明案件已解决，或删除由其错误推出的当前追捕状态和目标。"
+  resolution: "k_rick_005现明确记录S01E10历史指控及已洗清结果，并链接ae_s01e10_01_council_case_cleared；错误的当前逃亡目标已替换。"
+  status: fixed
+- item_id: frozen.all.initial_context.source_event
+  severity: major
+  rule_id: runtime_state_untraceable
+  evidence: "所有关系、目标和知识几乎统一使用initial_state作为basis/source_event，未链接Profile字段或经核验的正典候选；其中还包含虚构候选衍生知识，无法支持Stage 1唯一答案或回归核验。"
+  required_change: "为每项关键运行时状态提供能解析到真实字段或候选ID的稳定来源；当前profile:worldview.core_goals.*、profile:social.relationship_rules.*等伪路径无法解析到列表项，且Summer关于Morty离校的知识引用了known_by不含Summer的事件。修正全部伪路径和主体不可见引用后再复核。"
+  resolution: "将六份Frozen中所有Profile引用改为可直接解析到数组项的profile:section.field[index]路径，canon引用改为实际canon_policy字段，事件引用仅使用候选ID；删除Summer中known_by不含Summer的离校及家庭争论知识，并修正其余来源与内容的一致性。"
+  status: fixed
+- item_id: characters.rick_sanchez.private_background.birdperson_war_history
+  severity: blocker
+  rule_id: future_knowledge_leakage
+  evidence: "Rick Profile仍称其与Birdperson曾共同作战，Frozen k_rick_003也称二人并肩参与过往冲突；同一世界重建后的Birdperson Profile明确Season 1只建立老友关系、未建立战争或战斗经历。该战史来自后季信息，超出S01E01-S01E11范围。"
+  required_change: "从Rick Profile及Frozen中删除共同作战/过往冲突断言，仅保留S01E11可支持的老友关系与派对互动，并把source_event改为实际支持该内容的来源。"
+  resolution: "从Rick Profile完整删除共同作战/过往冲突背景，未以其他战史替代；Frozen k_rick_003仅保留Birdperson为S01E11派对老友，source_event使用ae_s01e11_01_birdperson_disclosure。"
+  status: fixed
+- item_id: characters.jerry_smith.current_employment
+  severity: blocker
+  rule_id: current_state_contradicts_snapshot
+  evidence: "Jerry Profile在S01E11之后的共享快照仍称其“works in a mundane advertising-related job”，但S01E04现实中的广告提案失败后他被解雇；Frozen又把护目镜看到的替代人生错误写成interdimensional cable，混淆了真实当前职业与替代人生影像。"
+  required_change: "把Jerry当前职业状态改为S01E04之后的失业状态；将Frozen jerry_know_003准确表述为通过替代人生护目镜看到的可能人生，并保持它不覆盖现实职业状态。"
+  resolution: "将Jerry的季末角色身份改为失业，并在Profile记录S01E04真实工作被解雇及恢复就业目标；Frozen jerry_know_003改为替代人生护目镜所示可能人生，另增jerry_know_004明确现实失业状态，两者来源和语义分离。"
+  status: fixed
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_omits_active_time_freeze
+  evidence: "S01E11结尾Rick在Beth与Jerry进门前冻结时间，季终画面结束时冻结仍有效；canon却定义为“After the events shown in S01E11”，六份Frozen又把Beth置于医院、Jerry置于屋内、Rick置于车库等日常并行起点，隐含了正典范围内从未展示的解冻，无法形成同一兼容快照。"
+  required_change: "明确锁定S01E11结尾冻结开始前或冻结中的可观察时点，并统一六份Frozen位置、可行动主体和当前状态；或者把正典范围扩至明确展示解冻的来源，但不得在当前S01E01-S01E11范围内凭空假定解冻。"
+  resolution: "已将共享快照锁定为S01E11末场Rick启动时间冻结前一刻：Beth/Jerry已进入回到地球但仍狼藉的Smith house，Rick/Morty/Summer也在屋内，Birdperson已与Tammy离场；六份Profile使用同一时点，Rick与Beth Frozen位置同步到smith_house，未假定正典范围外解冻。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_s01e11_02_house_restored
+  severity: blocker
+  rule_id: candidate_event_boundary_false
+  evidence: "该候选的source_locator与fact声称Rick、Morty、Summer在Beth与Jerry回来前清场并隐瞒派对；S01E11实际是房屋回到地球后Morty赶客，Birdperson在Beth与Jerry抵达时才离开，屋内仍一片狼藉，Rick随后冻结时间准备清理。"
+  required_change: "按画面顺序重写为房屋回地球、Morty赶客、Beth/Jerry抵达、Rick冻结时间这几个准确边界；state_change、known_by与cf_edit必须只对应所选离散事件，不得提前写成已经清场或完成隐瞒。"
+  resolution: "已按画面顺序重写该离散候选：房屋先回地球、Morty赶客、Birdperson与Tammy离场、Beth/Jerry进入仍未清理的房屋；state_change改为地点恢复且父母已可观察狼藉，known_by覆盖实际在场者，cf_edit仅改变Rick是否启动返航控制。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_s01e05_01_meeseeks_golf.known_by
+  severity: major
+  rule_id: candidate_visibility_result_unsupported
+  evidence: "Summer知道家人最初使用Meeseeks Box，也见过屋内大量Meeseeks，但Jerry最终在餐厅用临时球杆证明挥杆改善并完成目标时只有Beth直接在场；当前fact/state_change包含最终完成结果，却把summer_smith列入known_by，未给出后续披露。"
+  required_change: "从该完整事件的known_by移除summer_smith，或拆分初始使用与餐厅完成两个事件，并分别按实际在场或有明确披露的主体设置known_by。"
+  resolution: "已从包含最终餐厅挥杆改善结果的完整事件known_by中移除summer_smith，仅保留直接在场并获知最终结果的beth_smith与jerry_smith。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_s01e02_01_snuffles_leaves.cf_edit
+  severity: major
+  rule_id: counterfactual_target_state_misaligned
+  evidence: "state_change声明Jerry从试图控制Snuffles变为不再拥有Snuffles并知道装置使其独立；cf_edit只把Snuffles最终决定改为继续囚禁家人。该反事实中Snuffles仍已独立、Jerry仍不再控制或拥有它，因此没有改变所声明的目标状态，只改变家庭是否恢复自由。"
+  required_change: "让单一反事实直接改变Snuffles离开/独立及Jerry失去控制这一目标状态，或把state_change重写为“家庭由被囚禁到恢复自由”并确保原事件和编辑分支产生相反、可查询的状态。"
+  resolution: "已将单一反事实变量改为Rick的装置是否提升Snuffles智力；未提升分支中Snuffles不会独立或离开，Jerry仍拥有并可普通控制它，与原state_change的离开、独立及失去控制直接相反。"
+  status: fixed
+- item_id: characters.birdperson.current_relationships_and_goals
+  severity: major
+  rule_id: current_state_omits_canonical_relationship
+  evidence: "S01E11明确展示Birdperson向Tammy披露自己刚结束一段soul bond、随后与Tammy结伴并在离场时呼唤她；季末Profile与Frozen完全遗漏Tammy，却把“只从亲自知道的内容说话”等数据编写约束写成active core goal，当前关系与目标因而不完整且不可唯一查询。"
+  required_change: "在不引入后季信息的前提下，记录S01E11结束时Birdperson与Tammy已建立的可观察关系状态及对应来源；移除把防止模型编造写成角色active goal的元数据约束，改成第一季行为可支持的当前目标。"
+  resolution: "已在Birdperson Profile记录其披露前一段soul bond结束后选择与Tammy结伴离场的第一季可观察关系，并增加对应stance、relationship rule与继续同行目标；Frozen新增Tammy方向关系、active同行目标及可解析Profile来源，同时删除把防编造约束写成active core goal的内容。"
+  status: fixed
+- item_id: characters.rick_sanchez.testable_boundaries.b_rick_004
+  severity: major
+  rule_id: profile_boundary_not_source_grounded
+  evidence: "b_rick_004把“除生存或阻止更严重灾难外绝不毁掉自己的portal gun”写成绝对行为边界，但S01E01-S01E11没有展示Rick面对毁枪选择或声明这一禁令；该边界及两个forbidden_outcomes无法由批准范围内来源验证。"
+  required_change: "删除该绝对毁枪边界，或改为S01E01-S01E11中有具体场景证据的可观察设备控制边界，并给出能支持position、forbidden_outcomes与allowed_change的第一季事件。"
+  resolution: "已删除第一季无可核验毁枪选择支撑的b_rick_004及同源绝对prohibition；保留其余三条有具体第一季行为基础的设备控制、情感回避和Council对抗边界。"
+  status: fixed

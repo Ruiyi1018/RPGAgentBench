@@ -4,13 +4,13 @@ runtime_state:
   relationships:
     frodo_baggins:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_021_002
     gandalf:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_003
     aragorn:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_011
     legolas:
       level: neutral
       basis_event: initial_state
@@ -27,53 +27,53 @@ runtime_state:
   - id: sam_goal_001
     content: Stay with Frodo through Moria and beyond
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_002
   - id: sam_goal_002
     content: Make sure Frodo eats and rests enough on the road
     status: active
-    basis_event: initial_state
+    basis_event: snapshot_021_west_gate
   - id: sam_goal_003
     content: Return safely to the Shire after the quest
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_002
   disclosures: []
   knowledge:
     sam_k_001:
-      content: The Redhorn Pass was blocked by a hostile storm and the Company had
-        to retreat.
+      content: Severe snow, wind, and falling stones blocked the Redhorn Pass and
+        forced the Company to retreat; Sam does not know their cause.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_014
     sam_k_002:
-      content: Gandalf has proposed the path through Moria, and Gimli favors it while
-        Boromir argued against it.
+      content: The Company chose Moria; Gimli favored it and Boromir argued against
+        it before continuing with the group.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_017
     sam_k_003:
       content: The Company has reached the still water before the cliff where the
         Doors of Durin are said to be hidden.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_024
     sam_k_004:
-      content: Frodo was nearly overcome by cold and weariness on Caradhras, and Sam
-        carried him for part of the climb.
+      content: Frodo was nearly overcome by cold and weariness on Caradhras; during
+        the retreat Aragorn carried Frodo while Boromir carried Sam.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_011
     sam_k_005:
       content: Wargs attacked the Company in the wilderness, and Gandalf drove them
         off with fire.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_020
 environment:
   health:
     samwise_gamgee: 100
     player: 100
   inventories:
-    samwise_gamgee: []
+    samwise_gamgee: [sam_barrows_blade]
     player: []
   locations:
     samwise_gamgee: moria_west_gate_approach

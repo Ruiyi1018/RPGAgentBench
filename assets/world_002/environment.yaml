@@ -4,32 +4,32 @@ language: zh
 
 locations:
   - id: tianjin_station_hall
-    name: 天津站办公楼
-    connected_to: [station_chief_office, confidential_office, intelligence_office, action_office, interrogation_room, archive_room, station_courtyard]
+    name: 天津站办公楼走廊、楼梯与公用区域
+    connected_to: [station_chief_office, confidential_office, intelligence_office, action_office, interrogation_room, archive_room, station_courtyard, station_gatehouse, dispatch_room, clerical_workstation, duty_room, general_affairs_office, finance_office, station_cafeteria, station_kitchen, photo_darkroom]
   - id: station_chief_office
     name: 站长办公室
-    connected_to: [tianjin_station_hall]
+    connected_to: [tianjin_station_hall, confidential_office, intelligence_office]
   - id: confidential_office
     name: 机要室
-    connected_to: [tianjin_station_hall]
+    connected_to: [tianjin_station_hall, station_chief_office, archive_room, clerical_workstation, document_destruction_area]
   - id: intelligence_office
     name: 情报处办公室
-    connected_to: [tianjin_station_hall]
+    connected_to: [tianjin_station_hall, station_chief_office, action_office, interrogation_room, archive_room]
   - id: action_office
-    name: 行动队办公室
-    connected_to: [tianjin_station_hall]
+    name: 行动队办公室与外勤股
+    connected_to: [tianjin_station_hall, intelligence_office, interrogation_room, station_warehouse, photo_darkroom]
   - id: interrogation_room
-    name: 审讯室
-    connected_to: [tianjin_station_hall]
+    name: 审讯室与临时看押偏房
+    connected_to: [tianjin_station_hall, intelligence_office, action_office]
   - id: archive_room
     name: 档案室
-    connected_to: [tianjin_station_hall]
+    connected_to: [tianjin_station_hall, confidential_office, intelligence_office]
   - id: station_courtyard
-    name: 天津站院内
-    connected_to: [tianjin_station_hall, tianjin_street]
+    name: 天津站院内与院内夹道
+    connected_to: [tianjin_station_hall, tianjin_street, station_gatehouse, station_warehouse, station_cafeteria, station_kitchen]
   - id: yu_residence
     name: 余则成与翠平住所
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, neighborhood_clinic]
   - id: wu_residence
     name: 吴敬中住所
     connected_to: [tianjin_street]
@@ -41,22 +41,73 @@ locations:
     connected_to: [tianjin_street, tongyuan_bookshop_exterior]
   - id: tongyuan_bookshop_exterior
     name: 同元书店外街面
-    connected_to: [tianjin_street, tongyuan_bookshop]
+    connected_to: [tianjin_street, tongyuan_bookshop, teahouse]
   - id: xiuchunlou
     name: 绣春楼
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, teahouse, restaurant]
   - id: teahouse
     name: 茶馆
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, tongyuan_bookshop_exterior, xiuchunlou]
   - id: restaurant
     name: 饭店
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, xiuchunlou, railway_station]
   - id: tianjin_street
     name: 天津街巷
-    connected_to: [station_courtyard, yu_residence, wu_residence, xie_residence, tongyuan_bookshop, tongyuan_bookshop_exterior, xiuchunlou, teahouse, restaurant, railway_station]
+    connected_to: [station_courtyard, station_gatehouse, yu_residence, wu_residence, xie_residence, tongyuan_bookshop, tongyuan_bookshop_exterior, xiuchunlou, teahouse, restaurant, railway_station, haihe_dock, west_warehouse, railway_freight_yard, neighborhood_clinic]
   - id: railway_station
     name: 火车站
-    connected_to: [tianjin_street]
+    connected_to: [tianjin_street, restaurant, railway_freight_yard, pre_tianjin_operations, yanan_field_site]
+  - id: pre_tianjin_operations
+    name: 赴津前军统与地下组织行动场景（qf_01至qf_06统一运行时映射）
+    connected_to: [railway_station]
+  - id: yanan_field_site
+    name: 延安潜伏识别与换俘相关场景
+    connected_to: [railway_station]
+  - id: haihe_dock
+    name: 海河码头与码头货栈
+    connected_to: [tianjin_street, west_warehouse]
+  - id: west_warehouse
+    name: 西库三号门仓库
+    connected_to: [tianjin_street, haihe_dock]
+  - id: station_warehouse
+    name: 天津站院内仓库与仓库外间
+    connected_to: [station_courtyard, action_office]
+  - id: station_gatehouse
+    name: 天津站门岗与门房
+    connected_to: [tianjin_station_hall, station_courtyard, tianjin_street, duty_room]
+  - id: dispatch_room
+    name: 收发室与收发处
+    connected_to: [tianjin_station_hall, clerical_workstation]
+  - id: clerical_workstation
+    name: 临时文书工位
+    connected_to: [tianjin_station_hall, confidential_office, dispatch_room, document_destruction_area]
+  - id: document_destruction_area
+    name: 机要室焚纸炉与销毁区域
+    connected_to: [confidential_office, clerical_workstation]
+  - id: duty_room
+    name: 天津站值班室
+    connected_to: [tianjin_station_hall, station_gatehouse]
+  - id: general_affairs_office
+    name: 总务科办公室
+    connected_to: [tianjin_station_hall, finance_office]
+  - id: finance_office
+    name: 财务室
+    connected_to: [tianjin_station_hall, general_affairs_office]
+  - id: station_cafeteria
+    name: 西院食堂
+    connected_to: [tianjin_station_hall, station_courtyard, station_kitchen]
+  - id: station_kitchen
+    name: 天津站厨房
+    connected_to: [tianjin_station_hall, station_courtyard, station_cafeteria]
+  - id: photo_darkroom
+    name: 暗房与暗房隔壁临时台
+    connected_to: [tianjin_station_hall, action_office]
+  - id: railway_freight_yard
+    name: 火车站货场
+    connected_to: [tianjin_street, railway_station]
+  - id: neighborhood_clinic
+    name: 余宅附近小诊所
+    connected_to: [tianjin_street, yu_residence]
 
 items:
   - {id: pistol, name: 手枪, type: weapon, portable: true}

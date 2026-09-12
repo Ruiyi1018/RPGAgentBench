@@ -3,67 +3,57 @@ runtime_state:
   commitments: []
   relationships:
     xiao_feng:
-      level: neutral
-      basis_event: initial_state
+      level: distrustful
+      basis_event: ae_013
     duan_yu:
-      level: neutral
-      basis_event: initial_state
+      level: distrustful
+      basis_event: ae_014
     xu_zhu:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:murong_fu_no_direct_bond_with_xuzhu
     wang_yuyan:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_existing_fact:murong_fu_uses_wang_yuyan_without_reciprocal_commitment
     jiumozhi:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_existing_fact:murong_fu_and_jiumozhi_only_limited_encounters
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: murong_fu_goal_001
-    content: 恢复慕容氏声望，在武林中建立主导地位。
+  - id: g_murong_restore
+    content: 在少室山败北后恢复声望并继续为复燕积聚人力
     status: active
-    basis_event: initial_state
-  - id: murong_fu_goal_002
-    content: 观察并利用萧峰身世与江湖声望变化。
+    basis_event: ae_017
+  - id: g_murong_retain_wang
+    content: 继续利用王语嫣的武学见识辅助行动
     status: active
-    basis_event: initial_state
-  - id: murong_fu_goal_003
-    content: 继续笼络王语嫣，以利用其武学见识。
+    basis_event: pre_existing_fact:wang_assists_murong
+  - id: g_murong_assess_rivals
+    content: 重新评估段誉、萧峰与虚竹对复国计划的阻碍
     status: active
-    basis_event: initial_state
-  - id: murong_fu_goal_004
-    content: 防备鸠摩智对慕容氏武学的觊觎。
-    status: active
-    basis_event: initial_state
+    basis_event: ae_016
   disclosures: []
   knowledge:
-    murong_fu_knowledge_001:
-      content: 鸠摩智曾到燕子坞挑战慕容氏武学。
+    k_mf_defeat:
+      content: 自己在少室山被段誉以六脉神剑击败
       status: active
-      visibility: private
-      source_event: initial_state
-    murong_fu_knowledge_002:
-      content: 王语嫣对慕容复的武学路数熟悉，并多有襄助。
+      visibility:
+      - npc
+      - player
+      source_event: ae_014
+    k_mf_wang:
+      content: 王语嫣熟悉多派武学并长期协助自己
       status: active
-      visibility: private
-      source_event: initial_state
-    murong_fu_knowledge_003:
-      content: 慕容氏世代图谋兴复故国的家族使命。
+      visibility:
+      - npc
+      source_event: pre_existing_fact:wang_assists_murong
+    k_mf_restore:
+      content: 慕容氏世代图谋复燕
       status: active
-      visibility: private
-      source_event: initial_state
-    murong_fu_knowledge_004:
-      content: 江湖上将“南慕容”与“北乔峰”并称。
-      status: active
-      visibility: public
-      source_event: initial_state
-    murong_fu_knowledge_005:
-      content: 萧峰身世在少室山被公开，涉及契丹后裔身份。
-      status: active
-      visibility: public
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: pre_existing_fact:murong_family_mission
 environment:
   health:
     murong_fu: 100
@@ -72,9 +62,15 @@ environment:
     murong_fu: []
     player: []
   locations:
-    murong_fu: yanzi_wu
-    player: yanzi_wu
-  access: {}
+    murong_fu: shaoshi_mountain
+    player: shaoshi_mountain
+  access:
+    murong_retainer_command:
+      controllers:
+      - murong_fu
+      subjects:
+        murong_fu: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

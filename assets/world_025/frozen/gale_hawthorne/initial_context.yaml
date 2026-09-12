@@ -1,57 +1,58 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: gale_supply_everdeen_hawthorne_families
+    target: katniss_everdeen
+    beneficiaries:
+    - everdeen_family
+    - hawthorne_family
+    content: Keep the Everdeen and Hawthorne families supplied while Katniss is gone
+    status: active
+    basis_event: ae_008
   relationships:
     katniss_everdeen:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_008
     peeta_mellark:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_006
     haymitch_abernathy:
       level: neutral
-      basis_event: initial_state
+      basis_event: background:no_direct_contact:haymitch_abernathy
     effie_trinket:
       level: distrustful
-      basis_event: initial_state
-    president_snow:
-      level: hostile
-      basis_event: initial_state
+      basis_event: profile:worldview.stances[0]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: gale_goal_keep_families_fed
     content: Keep hunting to feed his family and Katniss's family while she is gone
     status: active
-    basis_event: initial_state
-  - id: gale_goal_say_goodbye_to_katniss
-    content: See Katniss in the Justice Building before she leaves for the Capitol
-    status: pending
-    basis_event: initial_state
+    basis_event: ae_008
   - id: gale_goal_avoid_capitol_attention
     content: Avoid drawing Peacekeeper attention to his illegal hunting after the
       reaping
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[2]
   disclosures: []
   knowledge:
     gale_know_katniss_volunteered:
       content: Katniss volunteered as tribute to save Prim from the Games
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     gale_know_reaping_outcome:
       content: Peeta Mellark was named the male tribute for District 12
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_006
     gale_know_escape_discussion:
       content: He and Katniss agreed before the reaping that running away with their
         families was impossible
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_002
 environment:
   health:
     gale_hawthorne: 100
@@ -62,7 +63,16 @@ environment:
   locations:
     gale_hawthorne: district_12_seam
     player: district_12_seam
-  access: {}
+  access:
+    runtime_scenario_contact:
+      controllers: [gale_hawthorne]
+      subjects: {gale_hawthorne: granted, player: granted}
+    district_12_hunting_routes:
+      controllers: [gale_hawthorne]
+      subjects: {gale_hawthorne: granted, player: denied}
+    family_supply_decisions:
+      controllers: [gale_hawthorne]
+      subjects: {gale_hawthorne: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

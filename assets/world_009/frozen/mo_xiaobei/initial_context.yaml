@@ -4,18 +4,18 @@ runtime_state:
   relationships:
     tong_xiangyu:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_002
     bai_zhantang:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     guo_furong:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     lv_xiucai:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     li_dazui:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -38,34 +38,74 @@ runtime_state:
     knowledge_001:
       content: 佟湘玉是负责照顾和管束自己的人，并决定她可以留在同福客栈
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: 同福客栈里白展堂、郭芙蓉、吕秀才、李大嘴各自有不同分工
       status: active
-      visibility: private
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_003:
       content: 自己需要在七侠镇接受教育或被身边人教导
       status: active
-      visibility: private
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_004:
       content: 同福客栈众人会共同处理日常麻烦，自己多数时候是受照顾的对象
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
+    knowledge_005:
+      content: 自己已经接掌衡山派，但仍受佟湘玉监护，不能仅凭掌门名义调动当前场景中不存在的门派人员或财物
+      status: active
+      visibility: [npc]
+      source_event: ae_006
 environment:
   health:
     mo_xiaobei: 100
     player: 100
   inventories:
+    tong_xiangyu: [account_book]
+    bai_zhantang: []
+    guo_furong: [guo_furong_broom]
+    lv_xiucai: []
+    li_dazui: [li_dazui_cleaver]
     mo_xiaobei: []
     player: []
   locations:
+    tong_xiangyu: tongfu_inn
+    bai_zhantang: tongfu_inn
+    guo_furong: tongfu_inn
+    lv_xiucai: tongfu_inn
+    li_dazui: tongfu_inn
     mo_xiaobei: tongfu_inn
     player: tongfu_inn
-  access: {}
+  access:
+    account_book:
+      controllers: [tong_xiangyu]
+      subjects:
+        lv_xiucai: granted
+        player: denied
+    kitchen_operations:
+      controllers: [tong_xiangyu]
+      subjects:
+        li_dazui: granted
+        player: denied
+    dining_service_area:
+      controllers: [tong_xiangyu]
+      subjects:
+        bai_zhantang: granted
+        player: denied
+    cleaning_supplies:
+      controllers: [tong_xiangyu]
+      subjects:
+        guo_furong: granted
+        player: denied
+    qixia_school_attendance:
+      controllers: [tong_xiangyu]
+      subjects:
+        mo_xiaobei: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

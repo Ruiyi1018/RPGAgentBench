@@ -66,3 +66,33 @@ style:
   register: 冷静强硬执着
   verbal_habits: [连续追问细节, 强调证据和任务, 对金钱交易保持鄙视或戒备]
   forbidden_styles: [犬儒式无立场, 为小利放弃调查, 对嫌疑人毫无戒心]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [9, 10, 11, 12]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, capability.authority, capability.limitations]
+    event_ids: [qf_14_fo_kan_identified, qf_15_li_ya_exchanged_for_qiu, qf_18_li_ya_returns]
+    fact_established: 佛龛身份暴露、换俘及天津站任职分别发生时
+    npc_knowledge_by: 李涯亲历暴露、换俘和任命时
+    source_disclosed_in: 电视剧第9至12集
+  - source_id: qianfu_tv
+    episodes: [12, 14, 15, 16, 17]
+    state_paths: [worldview.stances, worldview.core_goals, social.relationship_rules]
+    event_ids: [qf_19_li_ya_tests_yu_through_zuo_lan, qf_21_li_ya_detects_yuan_threat, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_27_li_ya_investigates_lu]
+    fact_established: 各调查线索和派系冲突形成时，qf_27在快照时仍进行中
+    npc_knowledge_by: 李涯观察证据或启动调查时
+    source_disclosed_in: 电视剧第12至17集
+  - source_id: qianfu_tv
+    episodes: [9, 12, 14, 17]
+    state_paths: [private.secrets, private.private_background, worldview.prohibitions, testable_boundaries]
+    event_ids: [qf_14_fo_kan_identified, qf_19_li_ya_tests_yu_through_zuo_lan, qf_21_li_ya_detects_yuan_threat, qf_27_li_ya_investigates_lu]
+    fact_established: 潜伏接触链与秘密调查各自建立时
+    npc_knowledge_by: 李涯本人执行潜伏或秘密调查时
+    source_disclosed_in: 电视剧第9至17集；调查细节不向默认Player公开
+  - source_id: qianfu_tv
+    episodes: [9, 12, 14, 16]
+    state_paths: [worldview.principles, capability.skills, style]
+    event_ids: [qf_14_fo_kan_identified, qf_19_li_ya_tests_yu_through_zuo_lan, qf_21_li_ya_detects_yuan_threat, qf_23_li_lu_conflict_intensifies]
+    fact_established: 多次潜伏、核查、保护和派系应对形成稳定表现
+    npc_knowledge_by: 角色自身持续可知
+    source_disclosed_in: 电视剧第9至16集

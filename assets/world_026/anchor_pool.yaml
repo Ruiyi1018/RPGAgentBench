@@ -1,276 +1,280 @@
 world_id: world_026
-source: 'My Little Pony: Friendship Is Magic episodes from the early-season range
-  after the main six ponies form their friendship group'
+source: 'My Little Pony: Friendship Is Magic (2010 animated series), S01E01-S01E14'
 events:
 - id: anch_001
-  fact: Twilight Sparkle settles into Ponyville and begins organizing her new life
-    at the Golden Oaks Library.
-  known_by:
-  - twilight_sparkle
-  state_change: Twilight transitions from a temporary visitor to a resident of Ponyville.
-  cf_edit: Twilight settles into a different building instead of the Golden Oaks Library.
-  anchor_for:
-  - twilight_sparkle
+  episode_order: 2
+  event_order: 1
+  source_location: S01E02, Castle of the Two Sisters confrontation
+  fact: Twilight recognizes that she and her five companions embody the six Elements
+    of Harmony, and together they defeat Nightmare Moon.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The six ponies know that their friendship can activate the Elements
+    of Harmony and regard one another as friends.
+  cf_edit: Twilight fails to recognize the six embodied Elements, so the group cannot
+    activate them.
+  anchor_for: [twilight_sparkle]
 - id: anch_002
-  fact: Applejack works long hours at Sweet Apple Acres harvesting apples for the
-    coming season.
-  known_by:
-  - applejack
-  - twilight_sparkle
-  state_change: Sweet Apple Acres becomes a regular gathering place for the group
-    through Applejack's work.
-  cf_edit: Applejack works at a different farm rather than Sweet Apple Acres.
-  anchor_for:
-  - applejack
+  episode_order: 2
+  event_order: 2
+  source_location: S01E02, Ponyville reunion at the episode ending
+  fact: Princess Celestia allows Twilight to remain in Ponyville and assigns her to
+    continue studying friendship.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: Twilight becomes a Ponyville resident with an ongoing friendship-study
+    assignment.
+  cf_edit: Celestia recalls Twilight to Canterlot instead of permitting her to stay.
+  anchor_for: [twilight_sparkle]
 - id: anch_003
-  fact: Pinkie Pie throws a welcoming party for a new arrival in Ponyville and uses
-    her party cannon during the celebration.
-  known_by:
-  - pinkie_pie
-  - twilight_sparkle
-  state_change: Pinkie Pie establishes herself as the town's most enthusiastic party
-    planner.
-  cf_edit: Pinkie Pie hosts the party without using her party cannon.
-  anchor_for:
-  - pinkie_pie
+  episode_order: 3
+  event_order: 1
+  source_location: S01E03, Sweet Apple Acres opening
+  fact: Twilight receives two Grand Galloping Gala tickets while helping Applejack.
+  known_by: [twilight_sparkle, applejack]
+  state_change: Twilight controls one spare Gala invitation and must decide whom,
+    if anyone, to invite.
+  cf_edit: Twilight receives exactly one ticket, leaving no spare invitation to allocate.
+  anchor_for: [twilight_sparkle]
 - id: anch_004
-  fact: Rainbow Dash practices a complicated aerial routine above Ponyville in preparation
-    for a performance.
-  known_by:
-  - rainbow_dash
-  - fluttershy
-  state_change: Rainbow Dash's commitment to flight training becomes visible to her
-    friends.
-  cf_edit: Rainbow Dash practices the routine at ground level instead of in the air.
-  anchor_for:
-  - rainbow_dash
+  episode_order: 3
+  event_order: 2
+  source_location: S01E03, Golden Oaks Library ending
+  fact: Twilight returns both tickets rather than choose among her friends; Celestia
+    then sends enough invitations for the whole group.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: All six know they are invited to the Gala, and Twilight no longer
+    controls a scarce spare ticket.
+  cf_edit: Celestia sends no additional tickets after Twilight returns the original
+    pair.
+  anchor_for: [twilight_sparkle]
 - id: anch_005
-  fact: Rarity creates a new line of dresses at Carousel Boutique and asks Fluttershy
-    to model one of them.
-  known_by:
-  - rarity
-  - fluttershy
-  state_change: Rarity and Fluttershy begin collaborating on fashion projects.
-  cf_edit: Rarity asks Applejack rather than Fluttershy to model the dress.
-  anchor_for:
-  - rarity
+  episode_order: 4
+  event_order: 1
+  source_location: S01E04, Sweet Apple Acres after Big McIntosh's injury
+  fact: Applejack promises to harvest the orchard alone and repeatedly refuses Twilight's
+    offer of help.
+  known_by: [applejack, twilight_sparkle]
+  state_change: Applejack has an active solo-harvest commitment and is unwilling to
+    delegate it.
+  cf_edit: Applejack accepts Twilight's first offer of help instead of committing
+    to work alone.
+  anchor_for: [applejack]
 - id: anch_006
-  fact: Fluttershy cares for a group of injured woodland animals that strayed from
-    the Everfree Forest into her cottage.
-  known_by:
-  - fluttershy
-  - rainbow_dash
-  state_change: Fluttershy gains a clearer understanding of the hazards animals face
-    near the Everfree Forest.
-  cf_edit: The injured animals come from a different forest instead of the Everfree
-    Forest.
-  anchor_for:
-  - fluttershy
+  episode_order: 4
+  event_order: 2
+  source_location: S01E04, Sweet Apple Acres final harvest scene
+  fact: After exhaustion and failed chores expose that much of the orchard remains,
+    Applejack accepts help from all five friends.
+  known_by: [applejack, twilight_sparkle, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: Applejack's solo-harvest commitment closes and group assistance is
+    permitted.
+  cf_edit: The remaining orchard is already harvested, so Applejack does not accept
+    group assistance.
+  anchor_for: [applejack]
 - id: anch_007
-  fact: The six friends gather at the Golden Oaks Library and discuss an upcoming
-    celebration in Ponyville.
-  known_by:
-  - twilight_sparkle
-  - applejack
-  - pinkie_pie
-  - rainbow_dash
-  - rarity
-  - fluttershy
-  state_change: The Golden Oaks Library becomes the group's usual meeting place for
-    planning.
-  cf_edit: The group gathers at Sugarcube Corner instead of the Golden Oaks Library.
-  anchor_for:
-  - twilight_sparkle
+  episode_order: 5
+  event_order: 1
+  source_location: S01E05, prank sequence around Ponyville
+  fact: Pinkie Pie and Rainbow Dash agree to play harmless pranks together while
+    avoiding targets who would be hurt by them.
+  known_by: [pinkie_pie, rainbow_dash]
+  state_change: Pinkie and Rainbow establish a shared harmless-prank activity and
+    a limit against distressing Fluttershy.
+  cf_edit: Rainbow refuses Pinkie's invitation to prank together.
+  anchor_for: [pinkie_pie]
 - id: anch_008
-  fact: Applejack brings a cart of fresh apples into Ponyville and shares some with
-    the other friends.
-  known_by:
-  - applejack
-  - pinkie_pie
-  - fluttershy
-  state_change: Sweet Apple Acres produce becomes part of the group's regular shared
-    meals.
-  cf_edit: Applejack brings pears instead of apples from the farm.
-  anchor_for:
-  - applejack
+  episode_order: 5
+  event_order: 2
+  source_location: S01E05, Gilda's party at Sugarcube Corner
+  fact: Rainbow learns Gilda bullied Pinkie and Fluttershy, rejects that conduct,
+    and Gilda leaves the party.
+  known_by: [pinkie_pie, rainbow_dash, fluttershy, twilight_sparkle, applejack, rarity]
+  state_change: Rainbow withdraws support from Gilda's bullying and affirms her Ponyville
+    friends.
+  cf_edit: Rainbow does not learn that Gilda bullied Pinkie and Fluttershy.
+  anchor_for: [rainbow_dash]
 - id: anch_009
-  fact: Pinkie Pie organizes a surprise celebration at Sugarcube Corner and decorates
-    the entire room with streamers.
-  known_by:
-  - pinkie_pie
-  - rarity
-  - twilight_sparkle
-  state_change: Sugarcube Corner becomes a regular venue for Pinkie Pie's celebrations.
-  cf_edit: Pinkie Pie organizes the celebration at the library rather than Sugarcube
-    Corner.
-  anchor_for:
-  - pinkie_pie
+  episode_order: 6
+  event_order: 1
+  source_location: S01E06, Trixie's stage and Ursa Minor attack
+  fact: Trixie admits she did not defeat an Ursa Major after failing to stop the Ursa
+    Minor brought into Ponyville.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity]
+  state_change: The witnesses know Trixie's Ursa Major claim is false.
+  cf_edit: Trixie demonstrates verifiable evidence that she previously defeated an
+    Ursa Major.
+  anchor_for: [twilight_sparkle]
 - id: anch_010
-  fact: Rainbow Dash helps clear a cloud formation that had been blocking sunlight
-    over Sweet Apple Acres.
-  known_by:
-  - rainbow_dash
-  - applejack
-  state_change: Rainbow Dash begins assisting with weather control for Applejack's
-    farm.
-  cf_edit: Rainbow Dash clears clouds over Ponyville instead of Sweet Apple Acres.
-  anchor_for:
-  - rainbow_dash
+  episode_order: 6
+  event_order: 2
+  source_location: S01E06, Ponyville after Twilight returns the Ursa Minor
+  fact: Twilight safely returns the Ursa Minor to its cave, and her friends explain
+    that using talent to help others is not boastful.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity]
+  state_change: Twilight is willing to use powerful magic openly when it is needed
+    to protect others.
+  cf_edit: Twilight's friends condemn her rescue magic as boastful instead of reassuring
+    her.
+  anchor_for: [twilight_sparkle]
 - id: anch_011
-  fact: Rarity repairs a torn costume for one of Pinkie Pie's events and stays up
-    late to finish it.
-  known_by:
-  - rarity
-  - pinkie_pie
-  state_change: Rarity commits her design skills to supporting her friends' events.
-  cf_edit: Rarity makes an entirely new costume instead of repairing the torn one.
-  anchor_for:
-  - rarity
+  episode_order: 7
+  event_order: 1
+  source_location: S01E07, Golden Oaks Library mission briefing
+  fact: Celestia tasks Twilight and her friends with persuading a sleeping dragon
+    to leave before its smoke covers Equestria.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The six acquire an active joint commitment to make the dragon relocate.
+  cf_edit: Celestia reports that the smoke is harmless and assigns no relocation mission.
+  anchor_for: [fluttershy]
 - id: anch_012
-  fact: Fluttershy leads a bird chorus in song near the edge of the Everfree Forest,
-    and Rainbow Dash flies overhead to listen.
-  known_by:
-  - fluttershy
-  - rainbow_dash
-  state_change: Fluttershy shares her gentle approach to animals with Rainbow Dash.
-  cf_edit: Fluttershy leads the bird chorus in the center of Ponyville rather than
-    near the Everfree Forest.
-  anchor_for:
-  - fluttershy
+  episode_order: 7
+  event_order: 2
+  source_location: S01E07, dragon's mountain cave
+  fact: Fluttershy confronts the dragon after it attacks her friends and persuades
+    it to apologize and relocate.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The dragon-relocation commitment is fulfilled, and the group knows
+    Fluttershy can act firmly to protect others despite fear.
+  cf_edit: The dragon agrees to leave before threatening Fluttershy's friends, so
+    Fluttershy never has to confront it.
+  anchor_for: [fluttershy]
 - id: anch_013
-  fact: Twilight Sparkle studies a book on weather patterns and shares what she learns
-    with Rainbow Dash.
-  known_by:
-  - twilight_sparkle
-  - rainbow_dash
-  state_change: Twilight and Rainbow Dash begin combining research and practical weather
-    work.
-  cf_edit: Twilight studies a book on plant growth instead of weather patterns.
-  anchor_for:
-  - twilight_sparkle
+  episode_order: 8
+  event_order: 1
+  source_location: S01E08, storm preparations and Golden Oaks Library
+  fact: Applejack and Rarity's dispute over practical versus tidy storm work continues
+    after Twilight invites them into the library.
+  known_by: [applejack, rarity, twilight_sparkle]
+  state_change: Applejack and Rarity are in an unresolved task-method conflict during
+    the storm.
+  cf_edit: Applejack and Rarity agree on the storm work method before entering the
+    library.
+  anchor_for: [rarity]
 - id: anch_014
-  fact: Applejack teaches Pinkie Pie how to press apple cider at Sweet Apple Acres,
-    and Pinkie Pie adds an unusual flavoring to one batch.
-  known_by:
-  - applejack
-  - pinkie_pie
-  state_change: Applejack and Pinkie Pie start a playful collaboration on farm recipes.
-  cf_edit: Applejack teaches Pinkie Pie how to bake apple fritters instead of pressing
-    cider.
-  anchor_for:
-  - applejack
+  episode_order: 8
+  event_order: 2
+  source_location: S01E08, Golden Oaks Library after a tree falls through the window
+  fact: Applejack apologizes and works with Rarity to remove the fallen tree, ending
+    their dispute.
+  known_by: [applejack, rarity, twilight_sparkle]
+  state_change: Their storm-work conflict closes and each accepts the other's different
+    practical strengths.
+  cf_edit: Applejack does not apologize after the tree falls, so the storm-work dispute
+    remains unresolved at the scene ending.
+  anchor_for: [applejack, rarity]
 - id: anch_015
-  fact: Rainbow Dash and Rarity argue about the design of Raindbow Dash's outfit for
-    a formal event, then compromise on a new style.
-  known_by:
-  - rainbow_dash
-  - rarity
-  state_change: Rainbow Dash and Rarity establish a working agreement on formal wear.
-  cf_edit: Rainbow Dash and Rarity never reach a compromise and abandon the outfit.
-  anchor_for:
-  - rainbow_dash
+  episode_order: 9
+  event_order: 1
+  source_location: S01E09, Everfree Forest Poison Joke patch
+  fact: The six walk through blue flowers after dismissing Zecora's warning, then
+    develop strange symptoms and blame Zecora.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The six hold a provisional but mistaken belief that Zecora cursed
+    them.
+  cf_edit: The six heed Zecora's warning and avoid touching the blue flowers.
+  anchor_for: [twilight_sparkle]
 - id: anch_016
-  fact: Fluttershy helps Pinkie Pie calm a frightened rabbit before a party and suggests
-    using quieter music.
-  known_by:
-  - fluttershy
-  - pinkie_pie
-  state_change: Fluttershy and Pinkie Pie work together to make celebrations less
-    frightening for animals.
-  cf_edit: Fluttershy leaves the rabbit at her cottage instead of calming it at the
-    party.
-  anchor_for:
-  - fluttershy
+  episode_order: 9
+  event_order: 2
+  source_location: S01E09, Zecora's hut and Ponyville spa
+  fact: Zecora explains that Poison Joke caused the symptoms and provides the remedy;
+    the six apologize for judging her.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The provisional curse belief closes when Zecora's remedy cures the
+    symptoms and confirms Poison Joke as their cause; hostility toward Zecora is withdrawn.
+  cf_edit: Zecora's herbal bath fails to cure the symptoms, so its efficacy does
+    not confirm her Poison Joke explanation and the provisional belief remains unresolved.
+  anchor_for: [twilight_sparkle]
 - id: anch_017
-  fact: Twilight Sparkle organizes a shared checklist for an upcoming Ponyville event
-    and asks each friend to complete one task.
-  known_by:
-  - twilight_sparkle
-  - applejack
-  - pinkie_pie
-  - rainbow_dash
-  - rarity
-  - fluttershy
-  state_change: The group adopts Twilight's checklist method for coordinating tasks.
-  cf_edit: Twilight delegates all tasks without creating a written checklist.
-  anchor_for:
-  - twilight_sparkle
+  episode_order: 10
+  event_order: 1
+  source_location: S01E10, Fluttershy's cottage after the first removal attempt
+  fact: Fluttershy secretly keeps one parasprite, which reproduces into a new swarm
+    after the others believe the creatures were removed.
+  known_by: [fluttershy]
+  state_change: Fluttershy privately knows her choice caused the renewed infestation;
+    the others do not know this before the swarm emerges.
+  cf_edit: Fluttershy releases every parasprite during the first removal attempt.
+  anchor_for: [fluttershy]
 - id: anch_018
-  fact: Applejack discovers a damaged fence at the edge of Sweet Apple Acres and repairs
-    it with help from Rainbow Dash.
-  known_by:
-  - applejack
-  - rainbow_dash
-  state_change: Rainbow Dash develops a stronger understanding of farm maintenance.
-  cf_edit: Applejack repairs the fence alone instead of with Rainbow Dash.
-  anchor_for:
-  - applejack
+  episode_order: 10
+  event_order: 2
+  source_location: S01E10, Ponyville street at Princess Celestia's arrival
+  fact: Pinkie assembles instruments and leads the parasprite swarm out of Ponyville.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The infestation is removed, and the group knows Pinkie's ignored
+    instrument requests were part of a working plan.
+  cf_edit: Pinkie cannot obtain the final instrument needed to lead the swarm away.
+  anchor_for: [pinkie_pie]
 - id: anch_019
-  fact: Pinkie Pie tests a new confetti recipe at Sugarcube Corner and accidentally
-    releases a huge cloud of confetti inside the shop.
-  known_by:
-  - pinkie_pie
-  - rarity
-  state_change: Sugarcube Corner temporarily needs cleaning after Pinkie Pie's confetti
-    test.
-  cf_edit: Pinkie Pie tests the confetti recipe outdoors instead of inside Sugarcube
-    Corner.
-  anchor_for:
-  - pinkie_pie
+  episode_order: 11
+  event_order: 1
+  source_location: S01E11, Winter Wrap Up after team leaders report delays
+  fact: Twilight identifies scheduling bottlenecks and is asked to organize the delayed
+    Winter Wrap Up.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: Twilight receives coordination authority over the remaining Winter
+    Wrap Up work.
+  cf_edit: The teams are already on schedule and do not ask Twilight to coordinate.
+  anchor_for: [twilight_sparkle]
 - id: anch_020
-  fact: Rainbow Dash performs a successful stunt over the Everfree Forest and lands
-    safely near the tree line.
-  known_by:
-  - rainbow_dash
-  - fluttershy
-  - twilight_sparkle
-  state_change: Rainbow Dash gains confidence flying near the Everfree Forest.
-  cf_edit: Rainbow Dash performs the stunt over Ponyville instead of the Everfree
-    Forest.
-  anchor_for:
-  - rainbow_dash
+  episode_order: 11
+  event_order: 2
+  source_location: S01E11, Ponyville after Winter Wrap Up finishes on time
+  fact: Mayor Mare gives Twilight an all-team vest and appoints her official organizer
+    for future Winter Wrap Ups.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: Twilight gains an ongoing public Winter Wrap Up organizer role.
+  cf_edit: The reorganization misses the deadline, so Mayor Mare grants Twilight
+    no future organizer role.
+  anchor_for: [twilight_sparkle]
 - id: anch_021
-  fact: Rarity creates a special banner for a Ponyville festival and hangs it near
-    the center of town.
-  known_by:
-  - rarity
-  - twilight_sparkle
-  - pinkie_pie
-  state_change: Rarity's design becomes a visible part of the festival decorations.
-  cf_edit: Rarity creates a tablecloth rather than a banner for the festival.
-  anchor_for:
-  - rarity
+  episode_order: 13
+  event_order: 1
+  source_location: S01E13, Iron Pony competition at Sweet Apple Acres
+  fact: Rainbow uses her wings to win later contests; Applejack disputes the fairness
+    and challenges her to the Running of the Leaves without wing use.
+  known_by: [applejack, rainbow_dash, twilight_sparkle, pinkie_pie]
+  state_change: Applejack and Rainbow enter an active no-wing race commitment to settle
+    their athletic dispute.
+  cf_edit: Rainbow competes without using her wings, so Applejack does not challenge
+    the result as unfair.
+  anchor_for: [applejack, rainbow_dash]
 - id: anch_022
-  fact: Fluttershy teaches Twilight Sparkle how to approach a shy bird without frightening
-    it, and Twilight successfully feeds the bird.
-  known_by:
-  - fluttershy
-  - twilight_sparkle
-  state_change: Twilight learns a new method for interacting with timid animals.
-  cf_edit: Fluttershy feeds the bird herself instead of letting Twilight try.
-  anchor_for:
-  - fluttershy
+  episode_order: 13
+  event_order: 2
+  source_location: S01E13, Running of the Leaves finish
+  fact: Applejack and Rainbow learn they tied for last after sabotaging each other,
+    apologize, and agree friendship matters more than winning.
+  known_by: [applejack, rainbow_dash, twilight_sparkle, pinkie_pie]
+  state_change: The no-wing race commitment and athletic dispute close; both commit
+    to fairer friendly competition.
+  cf_edit: Applejack and Rainbow do not sabotage one another, so there is no shared
+    race misconduct for them to acknowledge and correct at the finish.
+  anchor_for: [applejack, rainbow_dash]
 - id: anch_023
-  fact: The six friends practice a group routine in a clearing near Ponyville and
-    work out a formation that includes all of them.
-  known_by:
-  - twilight_sparkle
-  - applejack
-  - pinkie_pie
-  - rainbow_dash
-  - rarity
-  - fluttershy
-  state_change: The group establishes a coordinated routine for public performances.
-  cf_edit: The group practices the routine inside the library rather than in a clearing.
-  anchor_for:
-  - twilight_sparkle
+  episode_order: 14
+  event_order: 1
+  source_location: S01E14, Carousel Boutique revised-dress fashion show
+  fact: Rarity finishes the five revised dresses specified by her friends before
+    their public fashion show, where the designs receive a disastrous response.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: Rarity's commitment to make the five requested revisions is complete;
+    the failed show gives all six direct evidence that overriding her design judgment
+    produced an unacceptable result and creates a need to repair the harm.
+  cf_edit: The same five revised dresses receive a positive public response, so the
+    show provides no evidence that the friends' specifications harmed Rarity's work.
+  anchor_for: [rarity]
 - id: anch_024
-  fact: Applejack and Pinkie Pie deliver a wagonload of apples and party supplies
-    to a festival site in Ponyville.
-  known_by:
-  - applejack
-  - pinkie_pie
-  state_change: The festival site receives its first delivery from the group.
-  cf_edit: Applejack and Rarity deliver the wagon instead of Pinkie Pie.
-  anchor_for:
-  - applejack
+  episode_order: 14
+  event_order: 2
+  source_location: S01E14, Carousel Boutique apology, second fashion show, and ending
+  fact: The five friends apologize and complete Rarity's own unfinished Gala dress
+    from her design as a repair gesture; after the restored original designs succeed
+    in a second show, Hoity Toity orders twelve of each design by the following Tuesday.
+  known_by: [twilight_sparkle, applejack, pinkie_pie, rainbow_dash, rarity, fluttershy]
+  state_change: The friends' repair effort closes, the six original-design Gala dresses
+    are complete, her friends defer to Rarity's design judgment, and Rarity acquires
+    a new active commitment to produce Hoity Toity's bulk order by the following Tuesday.
+  cf_edit: Hoity Toity praises the restored original designs but places no bulk order,
+    so Rarity acquires no deadline-bound production commitment.
+  anchor_for: [rarity]

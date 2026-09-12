@@ -3,53 +3,62 @@ runtime_state:
   commitments: []
   relationships:
     ziwei:
-      level: loyal
-      basis_event: initial_state
+      level: trusting
+      basis_event: ae_013
     xiao_yanzi:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     yongqi:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     qianlong:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[4]
     empress_huanzhu:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: goal_001
-    content: 确保紫薇在正式确认前有可庇护的途径
+  - id: ek_g1
+    content: 保护在福府养伤的紫薇并限制无关者接触
     status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: 防止皇后一方利用紫薇身份未明的空当制造事端
+    basis_event: ae_013
+  - id: ek_g2
+    content: 通过永琪促成小燕子与紫薇安全重逢
     status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: 保持紫薇信物完整，等待乾隆进一步追查结论
+    basis_event: ae_015
+  - id: ek_g3
+    content: 在姐妹对清事实前不直接向乾隆揭露误认
     status: active
-    basis_event: initial_state
+    basis_event: ae_015
   disclosures: []
   knowledge:
-    knowledge_001:
-      content: 紫薇向核心同伴说明自己与乾隆存在血统渊源但尚未得到正式承认
+    ek_k1:
+      content: 围场中的摺扇和烟雨图来自紫薇，现由乾隆控制而不在紫薇或自己手中
       status: active
-      visibility: known_to_er_kang_and_core_allies
-      source_event: initial_state
-    knowledge_002:
-      content: 紫薇信物曾让核心同伴查看，目前保存完好
+      visibility:
+      - npc
+      source_event: ae_013
+    ek_k2:
+      content: 紫薇是夏雨荷之女且已被福府收留
       status: active
-      visibility: known_to_er_kang_and_ziwei
-      source_event: initial_state
-    knowledge_003:
-      content: 皇后已注意到紫薇与小燕子等人往来并可能主动找破绽
+      visibility:
+      - npc
+      source_event: ae_013
+    ek_k3:
+      content: 福府一方已决定通过永琪传递紫薇安全的消息并促成姐妹重逢
       status: active
-      visibility: er_kang_suspects_but_not_directly_confirmed
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ae_015
+    ek_k4:
+      content: 截至当前没有证据表明皇后知道紫薇或正在调查冒名真相
+      status: active
+      visibility:
+      - npc
+      source_event: profile:capability.limitations
 environment:
   health:
     er_kang: 100
@@ -58,8 +67,8 @@ environment:
     er_kang: []
     player: []
   locations:
-    er_kang: yu_huayuan
-    player: yu_huayuan
+    er_kang: fu_fu
+    player: fu_fu
   access: {}
   offers: []
   task_status: active

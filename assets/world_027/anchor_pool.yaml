@@ -1,275 +1,192 @@
 world_id: world_027
-source: Lucifer Season 1 episodes
+source: Lucifer Season 1 episodes 1-13
 events:
-- id: ae01
-  fact: Lucifer Morningstar is a charming nightclub owner in Los Angeles.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Establishes Lucifer's public identity and base of operations.
-  cf_edit: Lucifer is a charming nightclub owner in Las Vegas.
-  anchor_for:
-  - lucifer_morningstar
-- id: ae02
-  fact: Chloe Decker is a homicide detective with the LAPD.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Establishes Chloe's profession and investigative role.
-  cf_edit: Chloe Decker is a patrol officer with the LAPD.
-  anchor_for:
-  - chloe_decker
-- id: ae03
-  fact: Lucifer openly tells people he is the Devil.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Introduces Lucifer's unconventional honesty and central mystery.
-  cf_edit: Lucifer hides the fact he is the Devil.
-  anchor_for:
-  - lucifer_morningstar
-- id: ae04
-  fact: Lucifer begins helping Chloe Decker with a murder investigation.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  state_change: Initiates the central detective partnership of the season.
-  cf_edit: Lucifer refuses to help Chloe Decker with a murder investigation.
-  anchor_for:
-  - lucifer_morningstar
-  - chloe_decker
-- id: ae05
-  fact: Chloe Decker learns Lucifer claims to be the Devil.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - mazikeen
-  - amenadiel
-  state_change: Chloe becomes aware of Lucifer's central claim while remaining skeptical.
-  cf_edit: Chloe Decker immediately believes Lucifer is the Devil.
-  anchor_for:
-  - chloe_decker
-- id: ae06
-  fact: Dan Espinoza is a detective and Chloe Decker's ex-husband.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Establishes Dan's professional and personal tie to Chloe.
-  cf_edit: Dan Espinoza is Chloe Decker's current husband.
-  anchor_for:
-  - dan_espinoza
-- id: ae07
-  fact: Dan Espinoza and Chloe Decker share a daughter.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  state_change: Defines a key family connection within the season.
-  cf_edit: Dan Espinoza and Chloe Decker have no children.
-  anchor_for:
-  - dan_espinoza
-  - chloe_decker
-- id: ae08
-  fact: Mazikeen is Lucifer's loyal demon ally and bartender.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Establishes Mazikeen's supernatural nature and role at Lux.
-  cf_edit: Mazikeen is a human bartender with no supernatural tie.
-  anchor_for:
-  - mazikeen
-- id: ae09
-  fact: Mazikeen is highly protective of Lucifer.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - mazikeen
-  - amenadiel
-  state_change: Reveals Mazikeen's allegiance and potential for violence.
-  cf_edit: Mazikeen is indifferent to Lucifer's safety.
-  anchor_for:
-  - mazikeen
-- id: ae10
-  fact: Amenadiel is an angel sent to Los Angeles concerning Lucifer.
-  known_by:
-  - lucifer_morningstar
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Introduces heavenly involvement and Amenadiel's mission.
-  cf_edit: Amenadiel is a demon sent to Los Angeles concerning Lucifer.
-  anchor_for:
-  - amenadiel
-- id: ae11
-  fact: Amenadiel pressures Lucifer to return to Hell.
-  known_by:
-  - lucifer_morningstar
-  - mazikeen
-  - amenadiel
-  state_change: Establishes the central conflict between Lucifer and Amenadiel.
-  cf_edit: Amenadiel encourages Lucifer to stay on Earth.
-  anchor_for:
-  - amenadiel
-- id: ae12
-  fact: Linda Martin is a therapist who begins treating Lucifer.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Introduces Linda's professional relationship with Lucifer.
-  cf_edit: Linda Martin is a police consultant who begins working with Lucifer.
-  anchor_for:
-  - linda_martin
-- id: ae13
-  fact: Lucifer becomes a consultant for the LAPD.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Formalizes Lucifer's role alongside Chloe and the LAPD.
-  cf_edit: Lucifer becomes a consultant for the FBI.
-  anchor_for:
-  - lucifer_morningstar
-- id: ae14
-  fact: Chloe Decker remains skeptical of Lucifer's claim to be the Devil.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Maintains a tension between supernatural claims and rational skepticism.
-  cf_edit: Chloe Decker accepts Lucifer is the Devil without doubt.
-  anchor_for:
-  - chloe_decker
-- id: ae15
-  fact: Lucifer displays unusual charisma and persuasiveness.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Highlights Lucifer's supernatural or extraordinary influence.
-  cf_edit: Lucifer has no unusual persuasive ability.
-  anchor_for:
-  - lucifer_morningstar
-- id: ae16
-  fact: Dan Espinoza works cases at the LAPD precinct.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  state_change: Grounds Dan's activity within the season's law-enforcement setting.
-  cf_edit: Dan Espinoza works cases for a private security firm.
-  anchor_for:
-  - dan_espinoza
-- id: ae17
-  fact: Mazikeen can handle weapons and fight effectively.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - mazikeen
-  - amenadiel
-  state_change: Establishes Mazikeen's combat capability and dangerousness.
-  cf_edit: Mazikeen has no combat skill.
-  anchor_for:
-  - mazikeen
-- id: ae18
-  fact: Lucifer owns and plays a piano in his penthouse.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Establishes a signature element of Lucifer's lifestyle.
-  cf_edit: Lucifer owns a guitar in his penthouse.
-  anchor_for:
-  - lucifer_morningstar
-- id: ae19
-  fact: Amenadiel can move between Los Angeles and other realms.
-  known_by:
-  - lucifer_morningstar
-  - mazikeen
-  - amenadiel
-  state_change: Reinforces Amenadiel's celestial nature within the season.
-  cf_edit: Amenadiel is limited to Los Angeles.
-  anchor_for:
-  - amenadiel
-- id: ae20
-  fact: Linda Martin treats Lucifer in a professional therapy setting.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Grounds Linda's therapeutic practice and her dynamic with Lucifer.
-  cf_edit: Linda Martin gives Lucifer spiritual counseling as a priest.
-  anchor_for:
-  - linda_martin
-- id: ae21
-  fact: Lucifer and Chloe Decker investigate a case involving a murdered friend of
-    Lucifer's.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  state_change: Places Lucifer's personal life inside an official investigation.
-  cf_edit: Lucifer and Chloe Decker investigate a missing-person case with no personal
-    tie.
-  anchor_for:
-  - lucifer_morningstar
-  - chloe_decker
-- id: ae22
-  fact: Lucifer's presence causes unusual reactions in people around him.
-  known_by:
-  - lucifer_morningstar
-  - chloe_decker
-  - dan_espinoza
-  - mazikeen
-  - amenadiel
-  - linda_martin
-  state_change: Deepens the mystery of Lucifer's supernatural identity on Earth.
-  cf_edit: Lucifer's presence produces no unusual reactions.
-  anchor_for:
-  - lucifer_morningstar
+- id: ae01_delilah_case_partnership
+  episode_order: '01.1'
+  fact: After Delilah is murdered outside Lux, Chloe investigates and Lucifer joins
+    her pursuit of the killer.
+  known_by: [lucifer_morningstar, chloe_decker]
+  state_change: Chloe changes from treating Lucifer only as a civilian witness to
+    working with him on the case; Lucifer commits to helping investigate Delilah's death.
+  cf_edit: Delilah survives the shooting and identifies her attacker immediately, so
+    Lucifer has no unresolved murder to investigate with Chloe.
+  anchor_for: [lucifer_morningstar, chloe_decker]
+- id: ae02_chloe_shoots_lucifer
+  episode_order: '04.1'
+  fact: Chloe shoots Lucifer in the leg after he insists, and both observe that he
+    bleeds while she is near him.
+  known_by: [lucifer_morningstar, chloe_decker]
+  state_change: Lucifer changes from assuming mortal invulnerability to privately
+    investigating an unexplained vulnerability associated with Chloe; Chloe gains
+    physical evidence that his body is unusual but not proof that he is the Devil.
+  cf_edit: Chloe lowers the gun and does not shoot, leaving Lucifer without observed
+    evidence that he can be wounded near her.
+  anchor_for: [lucifer_morningstar, chloe_decker]
+- id: ae03_maze_gives_linda_lead
+  episode_order: '05.1'
+  fact: At a coffee shop, Mazikeen resents Lucifer's attachment to Earth and tells
+    Amenadiel that Linda is a route through which he can influence Lucifer.
+  known_by: [mazikeen, amenadiel]
+  state_change: Mazikeen crosses from resisting Amenadiel to a secret tactical
+    collaboration against Lucifer's current wishes; Amenadiel gains a specific human
+    contact to approach.
+  cf_edit: Mazikeen withholds Linda's identity, so Amenadiel lacks that route to
+    Lucifer's private thinking.
+  anchor_for: [mazikeen, amenadiel]
+- id: ae04_amenadiel_poses_as_canaan
+  episode_order: '05.2'
+  fact: Amenadiel approaches Linda under the false identity Dr. Canaan and elicits
+    information connected to Lucifer's therapy.
+  known_by: [amenadiel]
+  state_change: Amenadiel gains private information through deception while Linda
+    forms an initially false belief about his identity.
+  cf_edit: Amenadiel introduces himself truthfully as Lucifer's brother, so Linda
+    does not disclose information under a fabricated professional identity.
+  anchor_for: [amenadiel, linda_martin]
+- id: ae05_linda_ends_sexual_exchange
+  episode_order: '06.1'
+  fact: After early sessions included sex as an exchange for therapy, Linda ends that
+    arrangement and requires a professional therapist-patient relationship.
+  known_by: [lucifer_morningstar, linda_martin]
+  state_change: Linda's current boundary changes from an unethical dual relationship
+    to professional treatment without sexual exchange; Lucifer must engage through
+    therapy rather than seduction.
+  cf_edit: Linda does not end the sexual exchange, leaving the dual relationship active
+    and preventing a clear professional treatment boundary.
+  anchor_for: [lucifer_morningstar, linda_martin]
+- id: ae06_amenadiel_resurrects_malcolm
+  episode_order: '07.1'
+  fact: Amenadiel brings Malcolm back from death to use him in the effort to force
+    Lucifer back to Hell.
+  known_by: [amenadiel]
+  state_change: Amenadiel commits to a coercive mortal proxy and becomes causally
+    responsible for Malcolm's later violence.
+  cf_edit: Amenadiel refuses to resurrect Malcolm, leaving Malcolm dead and unavailable
+    as a proxy against Lucifer.
+  anchor_for: [amenadiel]
+- id: ae07_dan_blackmailed_by_malcolm
+  episode_order: '08.1'
+  fact: Malcolm uses Dan's role in the Palmetto shooting and cover-up to coerce Dan
+    into cooperating with him.
+  known_by: [dan_espinoza]
+  state_change: Dan changes from concealing Palmetto independently to acting under
+    Malcolm's leverage, placing his badge, family, and freedom at risk.
+  cf_edit: Malcolm has no evidence of Dan's Palmetto role, so Dan refuses his demand
+    without fear of exposure.
+  anchor_for: [dan_espinoza]
+- id: ae08_maze_and_lucifer_break
+  episode_order: '09.1'
+  fact: Lucifer learns that Mazikeen aided Amenadiel's effort through Linda and calls
+    her conduct a betrayal.
+  known_by: [lucifer_morningstar, mazikeen]
+  state_change: Their relationship changes from assumed loyalty to a damaged,
+    distrustful alliance, and Mazikeen's goal shifts toward independence from Lucifer.
+  cf_edit: Lucifer does not learn of Mazikeen's cooperation, so their apparent loyal
+    alliance remains intact.
+  anchor_for: [lucifer_morningstar, mazikeen]
+- id: ae09_dan_takes_evidence_gun
+  episode_order: '12.1'
+  fact: Under Malcolm's pressure, Dan removes a gun from LAPD evidence and gives it
+    to Malcolm.
+  known_by: [dan_espinoza]
+  state_change: Dan crosses from concealment into a concrete evidence violation and
+    becomes committed to ending Malcolm's leverage and accepting consequences.
+  cf_edit: Dan refuses to remove the gun, so Malcolm does not receive that weapon from
+    LAPD evidence and Dan avoids this additional offense.
+  anchor_for: [dan_espinoza]
+- id: ae10_dan_confesses_palmetto
+  episode_order: '13.1'
+  fact: At a crime scene, Dan tells Chloe that he shot Malcolm at Palmetto, concealed
+    it, and committed further misconduct under Malcolm's coercion.
+  known_by: [dan_espinoza, chloe_decker]
+  state_change: Chloe's belief changes from unresolved suspicion to knowing Dan's
+    responsibility; Dan's concealment from Chloe ends and he commits to accepting
+    official consequences, but he has not yet formally surrendered at this event.
+  cf_edit: Dan continues denying his role, so Chloe remains uncertain and Dan remains
+    committed to concealment rather than accountability.
+  anchor_for: [dan_espinoza, chloe_decker]
+- id: ae11_amenadiel_rejects_return_offer
+  episode_order: '13.2'
+  fact: After recognizing the harm caused by using Malcolm, Amenadiel declines
+    Lucifer's offer to return to Hell and instead works with him against Malcolm.
+  known_by: [lucifer_morningstar, amenadiel]
+  state_change: Amenadiel's active goal changes from forcing Lucifer back to Hell to
+    stopping Malcolm and taking responsibility; the brothers move from hostility to
+    wary cooperation.
+  cf_edit: Amenadiel accepts Lucifer's offer and sends him back to Hell, so the brothers
+    do not cooperate against Malcolm.
+  anchor_for: [lucifer_morningstar, amenadiel]
+- id: ae13_linda_learns_canaan_deception
+  episode_order: '13.3'
+  fact: Linda learns that Dr. Canaan is Amenadiel, Lucifer's brother, and that his
+    approach to her was deceptive.
+  known_by: [lucifer_morningstar, amenadiel, linda_martin]
+  state_change: Linda's belief about Dr. Canaan's identity changes from false to
+    corrected, ending any trust based on his cover while she still interprets the
+    brothers' supernatural claims clinically.
+  cf_edit: Amenadiel's false identity is not exposed, so Linda continues believing
+    Dr. Canaan is unrelated to Lucifer.
+  anchor_for: [linda_martin, amenadiel]
+- id: ae17_amenadiel_wounded_first_warehouse
+  episode_order: '13.4'
+  fact: During the first warehouse confrontation, Malcolm stabs Amenadiel with a
+    demonic blade and escapes while Amenadiel remains gravely wounded.
+  known_by: [lucifer_morningstar, amenadiel]
+  state_change: Amenadiel changes from actively helping confront Malcolm to requiring
+    immediate supernatural healing; the brothers' goal of stopping Malcolm remains unresolved.
+  cf_edit: Malcolm fails to stab Amenadiel, so Amenadiel remains able to pursue him
+    and does not require Mazikeen's feather to survive.
+  anchor_for: [lucifer_morningstar, amenadiel]
+- id: ae12_maze_saves_amenadiel
+  episode_order: '13.5'
+  fact: Mazikeen uses one of Lucifer's feathers to heal the gravely wounded Amenadiel.
+  known_by: [mazikeen, amenadiel]
+  state_change: Amenadiel survives and his view of Mazikeen changes from a mere enemy
+    or tool to a demon who chose to save him; Mazikeen expends a concealed celestial
+    resource to make that choice.
+  cf_edit: Mazikeen withholds the feather, so Amenadiel remains gravely wounded and
+    receives no evidence that she will save him.
+  anchor_for: [mazikeen, amenadiel]
+- id: ae18_dan_formally_surrenders
+  episode_order: '13.6'
+  fact: Dan reports to the LAPD precinct, formally confesses his Palmetto and evidence
+    misconduct, and submits to arrest.
+  known_by: [dan_espinoza]
+  state_change: Dan's status changes from a detective who has privately confessed
+    to Chloe to an officer in custody without active police authority, case-file access,
+    evidence access, investigative resources, or official interview powers.
+  cf_edit: Dan does not report to the precinct, so he remains outside custody and has
+    not submitted his misconduct to formal LAPD process.
+  anchor_for: [dan_espinoza]
+- id: ae14_lucifer_bargains_for_chloe
+  episode_order: '13.7'
+  fact: After Malcolm kills him at the aircraft hangar, Lucifer asks his Father to
+    protect Chloe and promises to serve in return; he is restored and returns to confront Malcolm.
+  known_by: [lucifer_morningstar]
+  state_change: Lucifer acquires an active commitment to perform his Father's assigned
+    service, overriding his former absolute refusal of divine demands when Chloe's
+    safety is at stake.
+  cf_edit: Chloe is not endangered, so Lucifer makes no promise of service and acquires
+    no new divine commitment.
+  anchor_for: [lucifer_morningstar]
+- id: ae15_malcolm_defeated
+  episode_order: '13.8'
+  fact: Chloe shoots Malcolm during the final aircraft-hangar confrontation and the
+    immediate threat to her, Lucifer, and Trixie ends.
+  known_by: [lucifer_morningstar, chloe_decker]
+  state_change: The active goal of stopping Malcolm is resolved, allowing Chloe to
+    focus on Dan's confession and Lucifer to address the new divine task.
+  cf_edit: Chloe's shot misses, so Malcolm remains an immediate active threat and the
+    characters cannot close that crisis.
+  anchor_for: [lucifer_morningstar, chloe_decker]
+- id: ae16_mother_escape_revealed
+  episode_order: '13.9'
+  fact: Lucifer learns that the escaped soul his Father requires him to pursue is his
+    mother and tells Amenadiel.
+  known_by: [lucifer_morningstar, amenadiel]
+  state_change: Lucifer and Amenadiel acquire a shared active goal to locate their
+    escaped mother before she causes harm, while her location and intentions remain
+    unknown at the snapshot.
+  cf_edit: Lucifer learns the escaped soul is an unknown prisoner rather than his
+    mother, so the brothers lack the same personal urgency and family-specific search.
+  anchor_for: [lucifer_morningstar, amenadiel]

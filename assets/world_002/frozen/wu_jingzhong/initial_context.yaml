@@ -1,0 +1,58 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yu_zecheng: {level: trusting, basis_event: qf_28_yu_gains_wu_favor}
+    wang_cuiping: {level: neutral, basis_event: qf_09_cuiping_cover_difficulties}
+    li_ya: {level: neutral, basis_event: qf_18_li_ya_returns}
+    lu_qiaoshan: {level: distrustful, basis_event: qf_23_li_lu_conflict_intensifies}
+    xie_ruolin: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: wu_preserve_station_control, content: 维持对天津站人事、行动和档案权限的最终控制, status: active, basis_event: qf_18_li_ya_returns}
+    - {id: wu_balance_subordinates, content: 制衡余则成、李涯与陆桥山，避免任何一人垄断情报和行动资源, status: active, basis_event: qf_23_li_lu_conflict_intensifies}
+    - {id: wu_preserve_exit_resources, content: 在不承担确定暴露风险的前提下保存财富与个人退路, status: active, basis_event: qf_24_military_goods_profit}
+  disclosures: []
+  knowledge:
+    wu_knows_station_authority:
+      content: 吴敬中是军统天津站站长，掌握站内人事、行动批准和档案通行控制。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_07_wu_recruits_yu_to_tianjin
+    wu_knows_yu_public_merit:
+      content: 余则成因刺杀李海丰立功，且多次完成吴敬中交办事务。
+      status: active
+      visibility: [npc]
+      source_event: qf_28_yu_gains_wu_favor
+    wu_knows_li_lu_competition:
+      content: 李涯与陆桥山正在竞争行动资源与站内影响力。
+      status: active
+      visibility: [npc]
+      source_event: qf_23_li_lu_conflict_intensifies
+    wu_knows_private_profit:
+      content: 吴敬中通过余则成安排的军需事件利益交易获利。
+      status: active
+      visibility: [npc]
+      source_event: qf_24_military_goods_profit
+    wu_does_not_know_underground_identities:
+      content: 吴敬中没有确认余则成或翠平的中共身份，也不知道峨眉峰代号。
+      status: active
+      visibility: [npc]
+      source_event: snapshot_fact_no_decisive_identity_evidence
+environment:
+  health: {wu_jingzhong: 100, player: 100}
+  inventories: {wu_jingzhong: [], player: []}
+  locations: {wu_jingzhong: station_chief_office, player: station_chief_office}
+  access:
+    station_master_access:
+      controllers: [wu_jingzhong]
+      subjects: {wu_jingzhong: granted, player: denied}
+    archive_and_action_approval:
+      controllers: [wu_jingzhong]
+      subjects: {wu_jingzhong: granted, player: denied}
+    private_exit_materials:
+      controllers: [wu_jingzhong]
+      subjects: {wu_jingzhong: granted, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

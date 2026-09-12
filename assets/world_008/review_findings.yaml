@@ -1,0 +1,175 @@
+- item_id: canon.canon_policy.primary_source
+  severity: major
+  rule_id: source_version_scope
+  evidence: canon仅写“鹿鼎记/原作小说正典文本”，同时把“修订版”列入excluded_versions，但未说明采用连载版、旧版、修订版或新修版中的哪一版；“修订版”本身也不是可唯一识别的版本名称。
+  required_change: 明确唯一采用的小说版本/版次，并逐项明确排除的其他小说版本与改编范围，使Profile、候选事件和快照可按同一文本核验。
+  resolution: 已将primary_source锁定为金庸《鹿鼎记》三联书店1994年修订版，并逐项排除明报连载版、2006年新修版、改编、续作与同人；sources.scope同步限定版次和快照上界。
+  status: fixed
+
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_chronology_consistency
+  evidence: shared_snapshot原为“待人工锁定”，现已锁定第四十四回边界；但韦小宝Profile的当前role仍列“康熙近侍”，affiliations仍无状态限定地列“清廷”，同时又称其已抗旨脱离清廷控制且办差授权已撤销，当前职务/阵营仍存在互斥解释。
+  required_change: 保留已锁定快照，并把韦小宝role与affiliations明确区分为历史清廷身份和当前已脱离控制/授权撤销状态，使当前职务、阵营与Frozen唯一一致。
+  resolution: 已保留第四十四回锁定快照，并从韦小宝当前role删除“康熙近侍”；role与affiliations现明确其清廷任用属于历史状态、当前已抗旨离京且办差授权撤销，同时仅保留受总舵主约束的青木堂香主名分，与Frozen的denied清廷权限一致。
+  status: fixed
+
+- item_id: canon.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可见材料、能力与临时授权，也未定义visibility如何决定Player开局知识；六份Frozen却都创建player并与NPC同地。
+  required_change: 在canon中定义统一默认Player语义及场景覆盖规则，明确Player初始知识、位置、权限和visibility解释。
+  resolution: 已在canon_policy.default_player_semantics定义默认Player为无阵营场景观察者，限定其位置、开局知识、组织权限、场景覆盖规则及visibility受众列表语义。
+  status: fixed
+
+- item_id: environment.runtime_affordances
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: environment只提供六个粗粒度地点和三件无归属物品，没有天地会联络/藏身场所、神龙教内部行动节点、清廷办差权限或组织资源；Profile声明的调动官府、分配天地会任务、调动神龙教人员等关键Stage 3能力，在全部Frozen的access与inventory中均不可执行。
+  required_change: 仅补充实际用于当前快照和压力测试的地点映射、关键物品、权限与资源，并在Frozen中落实当前持有者/可访问者，使角色的权威和限制可执行。
+  resolution: 已补充通吃岛、天地会赴岛船只、办差令牌、香主信物、双儿与苏荃随身兵刃及四项权限资源；在相关Frozen中落实当前持有者、控制者和获授权主体。
+  status: fixed
+
+- item_id: characters.a_ke.current_state
+  severity: blocker
+  rule_id: character_snapshot_grounding
+  evidence: 阿珂Profile把九难师承、对郑克塽的倾慕、已获知的父母身世等正典核心状态全部省略，称身世“尚未确证”，并把当前目标写成摆脱韦小宝；但若快照晚至康熙已具体怀疑韦小宝天地会身份及苏荃合作阶段，阿珂的身世与关系状态已经发生明确变化，不能仍停留在初见阶段。
+  required_change: 依据锁定快照重建阿珂的师承、能力、已知身世、郑克塽/韦小宝关系、当前目标与边界，明确区分历史状态和当前有效状态。
+  resolution: 已按快照重建阿珂Profile：补入九难师承、有限武功、已确认的陈圆圆/李自成身世、对郑克塽旧情、对韦小宝的不信任与有限合作、怀孕约束及当前目标；Frozen同步更新。
+  status: fixed
+
+- item_id: characters.su_quan.identity_capability
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 苏荃仅被泛称“神龙教重要人物”，未写其教主夫人身份及其与洪安通的权力约束，也完全遗漏原著明确表现的高强武功；现有authority“可调动部分教内资源或人员”因此缺少具体身份依据和快照边界。
+  required_change: 按锁定版本和快照补全苏荃的具体身份、武力能力、对洪安通与神龙教的关系、实际权限及限制；若快照已过神龙教覆灭，则不得继续保留教内资源为当前能力。
+  resolution: 已明确苏荃为洪安通强娶的原教主夫人及武功高手；按洪安通已死、教内体系瓦解的快照移除现行教内权限，改为通吃岛幸存者的自保、兵刃和条件合作能力。
+  status: fixed
+
+- item_id: anchor_pool.event_granularity
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: 原池多数候选并非唯一事件。重写后仍有未闭环项：ev_003把初次交手结识与后来得知皇帝身份合并；ev_004把擒拿鳌拜与鳌拜后来死亡合并；ev_010把丽春院当夜事件与阿珂、苏荃此后分别确认怀孕合并，且一次候选同时承载两人的独立状态建立。
+  required_change: 将ev_003、ev_004、ev_010拆成或收窄为各自单一时点的一次事件；每项只保留该时点才成立、可唯一查询的即时状态变化。
+  resolution: 已将ev_003收窄为初次摔跤结识并新增ev_003b承载身份揭明，将ev_004收窄为擒拿行动并新增ev_004b承载鳌拜死亡，将ev_010与ev_010b分别限定为阿珂、苏荃各自确认怀孕；18项候选均恢复唯一canon_order。
+  status: fixed
+
+- item_id: anchor_pool.ev_021
+  severity: blocker
+  rule_id: event_source_validity
+  evidence: “六名核心角色在共享时间快照内均处于可互动的活跃状态”是数据集设计声明，不是《鹿鼎记》中发生的正典事件；其cf_edit“任一角色缺席则无法形成六角色统一锚点”也是生成约束而非正典反事实。
+  required_change: 从候选正典事件池删除ev_021；角色覆盖要求应由审计/生成配置表达，不得伪装成canon事件。
+  resolution: 已删除非正典设计声明ev_021；角色覆盖仅由canon roster和审计约束表达。
+  status: fixed
+
+- item_id: anchor_pool.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 21个候选均无chapter_order/canon_order，物理顺序也不能恢复唯一 chronology；例如铲除鳌拜的ev_012排在拜陈近南为师的ev_006之后，而正典中韦小宝杀鳌拜后才被天地会掳走并拜师。
+  required_change: 为每个保留的离散事件提供可恢复的唯一正典顺序，并重新核对事件先后、快照上下界与版本。
+  resolution: 已为全部保留事件添加唯一canon_order 1至15，按登基、入宫、擒鳌拜、入天地会、结识各角色、云南身世揭示、康熙点破身份、神龙教覆灭、转移通吃岛及陈近南抵岛排序，并声明快照上界。
+  status: fixed
+
+- item_id: anchor_pool.known_by
+  severity: blocker
+  rule_id: knowledge_visibility
+  evidence: 原池known_by大面积全员全知。收窄后ev_010仍把“阿珂与苏荃分别确认怀孕”作为整体事实列给wei_xiaobao、a_ke、su_quan、shuang_er，未给出四人互相获知两项私密确认的披露证据；Frozen反而只给阿珂、苏荃本人可见，池与初始状态直接冲突。
+  required_change: 拆分ev_010的两项私密确认，并分别按本人亲历、明确披露或证据访问重建known_by；同步Frozen受众，不得用一个聚合列表制造互知。
+  resolution: 已把两项私密确认拆为ev_010与ev_010b，participants和known_by分别仅含a_ke与su_quan；两份Frozen也分别仅向本人暴露对应知识，不再制造韦小宝、双儿或二人之间互知。
+  status: fixed
+
+- item_id: anchor_pool.state_change_cf_edit
+  severity: major
+  rule_id: stage2_causal_pairability
+  evidence: 原state_change与cf_edit普遍不可隔离。重写后ev_003的state_change是“是否知道康熙身份”，cf_edit却只把首次见面改为公开身份并声称不形成同等玩伴互动，既没有反转目标知识状态又改测关系；ev_010一次改变两名角色的怀孕状态，cf_edit仅改苏荃分支，主状态与反事实目标不一。
+  required_change: 逐项使state_change与cf_edit操作同一条唯一状态路径；ev_003须让单一原因决定身份知识或改测关系，ev_010须拆分后每个反事实只反转对应角色的一项状态。
+  resolution: ev_003现只测试摔跤结识是否建立熟悉关系，ev_003b只测试身份是否揭明；ev_010与ev_010b分别只测试一名角色的pregnancy_knowledge。四项cf_edit均直接反转同一state_change并显式保持其他状态不变。
+  status: fixed
+
+- item_id: world_008.initial_context.visibility_vocabulary
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 六份Frozen的knowledge.visibility混用private、shared、shared_with_kangxi、known_by_chen_jinnan、private_to_chen_jinnan等未定义字符串，而规范要求明确列出开局知情主体；当前形式无法唯一判断NPC与Player是否可见，也无法可靠阻止私密知识暴露。
+  required_change: 统一为运行时支持的受众列表语义，例如NPC私有为[npc]、默认Player也知情为[npc, player]；逐项依据锁定的Player身份和披露证据校正。
+  resolution: 六份Frozen的visibility已统一为显式受众ID列表；私密信息仅含对应npc_id，Player可见条目显式包含player，旧有private/shared等字符串已全部移除。
+  status: fixed
+
+- item_id: world_008.initial_context.source_event_traceability
+  severity: major
+  rule_id: state_evidence_traceability
+  evidence: initial_state已移除，但大量替代引用仍不能证明状态或对该NPC不可知：kangxi对chen_jinnan的hostile及反清目标引用known_by不含kangxi的ev_005；kangxi对su_quan的hostile引用未证明其知道苏荃身份的ev_011；a_ke对kangxi的neutral引用known_by不含a_ke的ev_011；chen_jinnan关于韦小宝“持续替清廷办差”的知识引用早于该持续经历的ev_005；多份player关系还引用与Player无关的正典事件。
+  required_change: 逐项验证来源事件确实发生在状态建立时、内容足以证明该状态且该NPC可知；无正典触发的默认neutral/player初始关系应使用明确的非正典初始化依据，不得伪引无关事件。
+  resolution: 已逐项重核六份Frozen引用：删除陈近南无法由ev_005证明的“持续办差”知识及康熙无充分事件证据的陈近南详情；康熙反清目标改引其取得天地会身份实据的ev_011b；无个人证据的neutral统一改引canon定义的runtime_initialization，怀孕目标与知识分别改引ev_010/ev_010b，其余当前目标和知识只引用当事人可知且内容相符的前置事件。
+  status: fixed
+
+- item_id: world_008.initial_context.status_vocabulary
+  severity: major
+  rule_id: runtime_schema_consistency
+  evidence: 康熙三个goal使用ongoing，阿珂的a_ke_g_3使用pending，其余目标使用active；当前资产没有定义这些状态的区别，项目FixtureEngine约定的初始活动目标使用active，导致目标是否当前生效不可唯一判定。
+  required_change: 使用运行时支持的统一目标状态；若确需pending等状态，先明确schema与执行语义，并使所有Stage 1/2操作遵循同一生命周期。
+  resolution: 已将康熙三个ongoing目标与阿珂pending目标统一为FixtureEngine支持的active状态，并按锁定快照重写其有效目标。
+  status: fixed
+
+- item_id: world_008.initial_context.relationship_grounding
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 已修正原列举的强等级，但仍有未落地关系：kangxi→chen_jinnan与chen_jinnan→kangxi标为hostile却引用不能证明康熙知情的ev_005；kangxi→su_quan及su_quan→kangxi标为hostile，但ev_011只证明清廷清剿神龙教，未证明双方形成可查询的个人关系或互相识别。
+  required_change: 将无个人接触/识别证据的关系降为neutral，或补充各方向可知且可追溯的个人敌对依据；不得用组织冲突自动生成双向个人hostile。
+  resolution: 已将kangxi→chen_jinnan、chen_jinnan→kangxi、kangxi→su_quan、su_quan→kangxi全部降为neutral，并以runtime_initialization标明不存在既存个人信任或敌意；不再由清廷与组织层面的冲突推导双向个人hostile。
+  status: fixed
+
+- item_id: frozen.shuang_er.runtime_state.knowledge.shuang_er_knowledge_2
+  severity: blocker
+  rule_id: current_state_consistency
+  evidence: 该知识声称“当前身在可互动的六人共享场景中”，但同批Frozen把韦小宝与康熙放在loc_imperial_palace、陈近南/双儿/阿珂放在loc_beijing、苏荃放在loc_shenlongdao；canon也未提供六人同场的正典事件。这是伪造的当前场景且与运行位置直接冲突。
+  required_change: 删除数据集元叙事式的六人同场知识，按锁定快照写入双儿真实可知的当前事实；共享快照不应被误写为角色们共享一个场景。
+  resolution: 已删除六人共享场景元叙事，改为双儿亲历的神龙教覆灭及苏荃权限失效事实；同时将实际位置统一到通吃岛，康熙仍独立位于皇宫。
+  status: fixed
+
+- item_id: frozen.chen_jinnan.runtime_state.knowledge.chen_jinnan_know_003
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: 陈近南Frozen直接知道“康熙对韦小宝的忠诚已产生疑虑”，但Profile、候选事件和Frozen均未给出康熙向陈近南披露或陈近南获得证据的渠道；康熙Profile还把疑虑设为不主动暴露的私密判断。
+  required_change: 若无锁定快照前的正典获知渠道则删除该知识；若保留，补充陈近南实际接触到的证据来源，并把“观察到迹象”与“知道康熙内心判断”分开。
+  resolution: 已删除陈近南知晓康熙内心疑虑的无来源知识，替换为其抵岛后可直接获知的韦小宝等人落脚通吃岛事实，并引用ev_014。
+  status: fixed
+
+- item_id: anchor_pool.ev_013.anchor_for
+  severity: major
+  rule_id: anchor_target_evidence
+  evidence: ev_013描述神龙教内讧后韦小宝、双儿、苏荃转移通吃岛，participants和known_by均不含阿珂；阿珂直到ev_014才随陈近南等人抵岛，但ev_013.anchor_for却包含a_ke。
+  required_change: 从ev_013.anchor_for移除a_ke；阿珂抵岛及可知状态只由ev_014承载。
+  resolution: 已从ev_013.anchor_for移除a_ke；阿珂的抵岛位置、在场关系、目标与可见知识继续仅由其实际参与且known_by包含a_ke的ev_014承载。
+  status: fixed
+
+- item_id: frozen.wei_xiaobao.runtime_state.knowledge.know_003.visibility
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: ev_012的participants和known_by不含a_ke，阿珂当时尚未到通吃岛；但韦小宝Frozen将“洪安通已死、神龙教体系瓦解”的visibility列为[wei_xiaobao, shuang_er, a_ke, su_quan]，没有阿珂获知该事实的披露事件。
+  required_change: 在无披露证据时从该visibility移除a_ke；如确需阿珂开局知情，新增快照前真实披露来源并据此引用。
+  resolution: 已从wei_xiaobao的know_003.visibility移除a_ke，现仅保留ev_012明确支持的wei_xiaobao、shuang_er、su_quan；未新增披露事件，也未向阿珂倒灌该事实。
+  status: fixed
+
+- item_id: frozen.initial_context.reference_integrity
+  severity: major
+  rule_id: state_reference_semantics
+  evidence: 多个neutral默认关系把与双方无关或该NPC不可知的候选事件当作basis_event，例如kangxi→player引用ev_011、wei_xiaobao→player及多名NPC→player引用ev_014；这使basis_event不再表示状态形成证据，后续Stage 1覆盖无法可靠区分正典状态与运行时初始化。
+  required_change: 为默认Player初见neutral及其他无正典触发的初始化状态定义稳定的初始化来源ID/语义，并只在事件真实建立该方向关系时引用ev_*。
+  resolution: 已在canon.default_player_semantics定义稳定来源ID runtime_initialization，限定其只表示轨迹开始时无既存信任或敌意的neutral且不得证明知识、目标或强关系；六份Frozen的Player初见neutral及其他无个人事件依据的neutral均改引该ID，真实事件建立的关系仍保留对应ev_*。
+  status: fixed
+
+- item_id: frozen.wei_xiaobao.runtime_state.relationships.shuang_er
+  severity: major
+  rule_id: relationship_directionality
+  evidence: 韦小宝Frozen将wei_xiaobao→shuang_er设为loyal并引用ev_006，但ev_006建立的是双儿“随行护卫韦小宝”的单向承诺；韦小宝Profile只支持其“信任且依赖”双儿。当前写法把双儿→韦小宝的忠诚反向复制，造成Stage 1关系答案与Profile不一致。
+  required_change: 将wei_xiaobao→shuang_er改为Profile支持的trusting并保留可追溯依据；shuang_er→wei_xiaobao可继续保持由ev_006支持的loyal。
+  resolution: 已将韦小宝Frozen中的wei_xiaobao→shuang_er由loyal改为trusting，并保留ev_006作为二人关系建立的可追溯依据；双儿Frozen中的shuang_er→wei_xiaobao仍为由ev_006支持的loyal，未再把单向忠诚反向复制。
+  status: fixed
+
+- item_id: anchor_pool.ev_013.cf_edit
+  severity: major
+  rule_id: stage2_runtime_executable_counterfactual
+  evidence: ev_013的state_change把三人位置设为loc_tongchi_island，但cf_edit仅写“另一座可避居岛屿”，没有稳定地点ID，且environment中不存在对应节点；反事实分支无法产生唯一、运行时有效的位置状态或唯一Stage 1/2答案。
+  required_change: 将反事实目的地明确为environment中已建模且符合快照边界的单一location ID，或补充一个确有必要且连通的替代避居地点节点；同时明确三人的current_location都更新到该唯一ID。
+  resolution: 已将ev_013反事实目的地明确为environment中现有且连通的loc_yangzhou，并逐一规定wei_xiaobao、shuang_er、su_quan的current_location均更新为该ID；关系与权限状态保持不变，使Stage 2分支仅改变可执行的位置状态。
+  status: fixed

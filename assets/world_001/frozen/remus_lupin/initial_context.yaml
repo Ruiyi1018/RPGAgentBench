@@ -1,0 +1,51 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    harry_potter: {level: trusting, basis_event: poa_10_patronus_lessons}
+    hermione_granger: {level: trusting, basis_event: poa_04_boggart_lesson}
+    ron_weasley: {level: trusting, basis_event: poa_04_boggart_lesson}
+    sirius_black: {level: distrustful, basis_event: "novel_poa:accepted_betrayal_account"}
+    severus_snape: {level: distrustful, basis_event: poa_13_snape_werewolf_assignment}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_lupin_student_safety, content: Keep Harry and the other students safe, status: active, basis_event: "profile:remus_lupin.worldview.core_goals"}
+    - {id: g_lupin_stop_sirius, content: Stop Sirius from entering Hogwarts or reaching Harry, status: active, basis_event: poa_14_second_tower_intrusion}
+    - {id: g_lupin_manage_condition, content: Take Wolfsbane and isolate himself for the approaching full moon, status: active, basis_event: "novel_poa:chapter_16"}
+  disclosures: []
+  knowledge:
+    k_lupin_werewolf_condition:
+      content: Lupin knows his own werewolf condition and the need for Wolfsbane and isolation.
+      status: active
+      visibility: [npc]
+      source_event: "profile:remus_lupin.private.secrets"
+    k_lupin_sirius_animagus:
+      content: Lupin knows Sirius can transform into a large black dog.
+      status: active
+      visibility: [npc]
+      source_event: "profile:remus_lupin.private.secrets"
+    k_public_sirius_fugitive:
+      content: Sirius Black escaped Azkaban and is publicly treated as dangerous.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {remus_lupin: 100, player: 100}
+  inventories:
+    remus_lupin: [marauders_map, wand]
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {remus_lupin: lupins_office, buckbeak: hagrids_hut, player: lupins_office}
+  access:
+    hogwarts_staff_areas:
+      controllers: [hogwarts_staff]
+      subjects: {remus_lupin: granted, player: denied}
+    dada_classroom_safety:
+      controllers: [remus_lupin]
+      subjects: {remus_lupin: granted, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {remus_lupin: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

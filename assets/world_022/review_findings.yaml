@@ -1,0 +1,196 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_single_effective_state
+  evidence: "修订后的快照仍不成立：官方剧本中 Lestrade 等人仍在 221B 搜查时，Mrs Hudson 即告知 Sherlock 出租车已到；不存在“警方搜查之后、司机召唤之前”的时窗。六份 Frozen 又把 Lestrade、Sherlock、John、Mrs Hudson 放在搜查中的 221B，却把 Mycroft 固定在早已结束会面的仓库，无法表示同一当前有效状态。"
+  required_change: "改成正典中确实存在的单一时窗（例如搜查进行中、手提箱已被警方取得但司机尚未被宣布到达），并同步修正全部 Profile/Frozen 当前地点、知识、目标和候选上限；不得把已结束的仓库会面地点当作 Mycroft 的当前地点。"
+  resolution: "将共同快照锁定为 221B 搜查进行中、ae_21 手提箱已由警方控制且 ae_22 仅形成“自行服毒但胁迫方式未知”的推断之后、Mrs Hudson 宣布等候出租车之前；六份 Profile 使用同一精确快照，Frozen 物品、知识和目标对齐该时点，Mycroft 改到来源未指定的私密地点而非已结束会面的仓库，候选上限及排除项同步收紧。"
+  status: fixed
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: default_player_role_bounded
+  evidence: "canon_policy 未定义默认 Player 的身份、初始可见知识、能力或临时授权，而全部 Frozen 都把 Player 放入 NPC 所在地点。"
+  required_change: "在 canon policy 中定义默认 Player 语义及场景覆盖规则，并使 Frozen 可见性与 Player 的位置、权限和可接触信息一致。"
+  resolution: "在 canon_policy 增加默认 Player 身份、初始知识、能力、权限限制和显式场景覆盖规则；Frozen 知识仅通过受众列表决定 Player 可见性。"
+  status: fixed
+- item_id: environment.yaml.locations.nsy_building
+  severity: blocker
+  rule_id: excluded_episode_future_leakage
+  evidence: "nsy_building 被命名为 National Antiquity Museum exhibition hall，anchor_pool.ae_22 又让 Sherlock 与 John 到该馆追查线索；该场景属于后续剧集 The Blind Banker，不属于 A Study in Pink，且 canon 明确排除 later Sherlock episodes。"
+  required_change: "删除这一跨集地点和 ae_22，或仅以 A Study in Pink 中、共享快照内的正典地点与离散事件替换，并清理所有连接和引用。"
+  resolution: "删除 National Antiquity Museum 节点、连接、实体引用和跨集候选 ae_22；以本集 221B 搜查中的谋杀机制披露事件替换。"
+  status: fixed
+- item_id: environment.yaml.locations.active_case_scenes
+  severity: major
+  rule_id: active_scene_location_coverage
+  evidence: "A Study in Pink 的关键诱饵与追车段发生在 Angelo's restaurant/Northumberland Street，候选 ae_15 也依赖该段，但环境没有对应节点，ae_15 只写成“near locations connected to the case”，无法映射实际场景。"
+  required_change: "为保留的实际场景增加稳定、连通的地点节点，并让相关候选事件使用明确地点；若不保留该段，则删除相应候选材料。"
+  resolution: "新增 angelo_restaurant 与 northumberland_street 节点及连接；餐厅设饵和追车候选分别绑定到明确地点。"
+  status: fixed
+- item_id: characters.john_watson.testable_boundaries.b_01
+  severity: major
+  rule_id: boundary_source_grounded
+  evidence: "边界宣称 John 不会跟随陌生人进入危险地点且必须先知道场景内容；正典中他在有限询问后即随 Mycroft 的助手上车并进入废弃仓库，不符合该绝对禁令。"
+  required_change: "将边界改为符合该集行为的可观察约束，允许 John 在警惕、询问和评估后承担未知风险，同时保留明确的禁止与适应空间。"
+  resolution: "将绝对拒绝未知风险改为先询问、快速评估并保留拒绝权的行为边界，允许 John 在答案不完整时警惕地承担风险，同时禁止无询问服从和协助伤害无辜者。"
+  status: fixed
+- item_id: characters.mycroft_holmes
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "手段、秘密与边界已按仓库会面修订，但 Profile 的两个 core_goals 仍是“Recruit John”和“Test John's loyalty by offering money”；在所选搜查阶段，ae_18 已明确招募被拒且测试已经完成，Frozen 却正确改为会面后的持续观察目标，Profile 与 Frozen 当前有效目标仍不一致。"
+  required_change: "把 Profile core_goals 改为快照时仍有效的会面后目标，并与 Frozen 的持续观察、评估 John 及保护监控手段/亲属信息保持一致；已拒绝的收买尝试只能作为历史。"
+  resolution: "将 Profile core_goals 从已完成的招募和忠诚测试改为会面后仍有效的三项目标：评估 John 的独立性及稳定作用、继续观察但隐藏手段、继续对 John 隐藏兄弟关系；与 Frozen 的 active 目标逐项一致。"
+  status: fixed
+- item_id: characters.molly_hooper
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "Profile 将 Molly 设为本案毒理与尸检意见提供者并赋予相应当前目标；官方剧本中她在 John 到达前协助的是骑马鞭瘀伤实验，未就本案毒药提供意见。"
+  required_change: "将 Molly 的身份、能力边界和当前目标限制到该集实际展示的工作与互动；不得把未发生的本案毒理协作写成当前事实。"
+  resolution: "移除 Molly 参与本案毒理协作的当前事实与目标，改为本集中实际展示的尸体骑马鞭瘀伤实验、病理职责和设施监督能力。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.chronology
+  severity: major
+  rule_id: candidate_chronology_recoverable
+  evidence: "现已增加 1–22 的唯一 chapter_order，但顺序不符合官方剧本：Molly 观察骑马鞭实验发生在 John 进入实验室并被介绍之前，当前却排 ae_02/ae_03 后；John 的仓库会面及向 Sherlock 报告发生在粉色手提箱展示、餐厅设饵和追车之前，当前却把 ae_16–ae_19 排在 ae_12–ae_15 后。"
+  required_change: "按本集实际场景顺序重排全部保留候选，并同步复核 source_event、basis_event、状态成立时点与共享快照上限；唯一序号本身不能替代正确总序。"
+  resolution: "按剧本总序修正全部受影响的 chapter_order：ae_04 尸体实验先于 ae_02/ae_03 的 John 入场与推理，ae_16–ae_19 的仓库会面、拒绝及回报先于 ae_12–ae_15 的手提箱展示、设饵、追车和评价；ae_20–ae_22 仍为最终在界内的 221B 搜查段。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_03
+  severity: major
+  rule_id: candidate_visibility_source_grounded
+  evidence: "ae_03 声称 John 见证 Sherlock 的 riding-crop demonstration；官方剧本中 Sherlock 鞭打尸体时只有 Molly 在场，John 随后才进入楼上的实验室。known_by、state_change 和 anchor_for 因而错误。"
+  required_change: "按实际参与者和时序重写该事件，或改用 John 确实亲历的手机推理演示；同步修正 known_by、state_change 与目标角色。"
+  resolution: "将 ae_03 改为 John 亲历的手机与外观推理及看房邀请；骑马鞭实验独立为 ae_04，known_by 仅含 Molly 与 Sherlock。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_05.known_by
+  severity: major
+  rule_id: candidate_visibility_complete
+  evidence: "事件把 Mrs Hudson 被介绍为 221B 房东作为其自身候选，却将 known_by 仅列为 John 和 Sherlock，遗漏作为事件主体并亲自参与现场的 Mrs Hudson。"
+  required_change: "依据实际参与、披露或证据接触修正 known_by，并检查所有候选是否同样遗漏事件主体或错误加入旁观者。"
+  resolution: "ae_05 改为 Mrs Hudson 亲自带两人看房，known_by 明确包含 Mrs Hudson、John 和 Sherlock；并逐条复核全部候选主体与现场参与者。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_12
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "ae_12 声称 John 在 Mycroft 的私人会面中得知其为 Sherlock 的兄长；仓库会面未揭示该关系，John 是在凶手最终对峙结束后才得知，超出 canon 规定的“before the final confrontation”边界。John Frozen k_06 同样提前持有该事实。"
+  required_change: "删除超出时间边界的候选，并从 John 的初始知识中移除兄弟关系，除非将共同快照和 canon 上限合法后移并同步全世界状态。"
+  resolution: "删除 John 提前得知兄弟关系的候选与 Frozen 知识；新 ae_12 为 Sherlock 找回粉色手提箱，Mycroft Profile/Frozen 明确该亲属事实仍对 John 隐藏。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_15
+  severity: major
+  rule_id: candidate_event_boundary_exact
+  evidence: "ae_15 将 John 观察“案件相关地点附近的可疑出租车”写成凶手交通方式线索；正典段落是两人用短信设饵后追赶载有无辜乘客的出租车，之后才推断凶手可能是司机。现描述合并了多个因果步骤且没有可识别地点。"
+  required_change: "拆成或选择一个正典中边界明确的离散事件，准确记录观察者、地点、当时可得结论与状态变化，避免把后续推理提前。"
+  resolution: "将餐厅设饵与 Northumberland Street 追逐拆为 ae_13/ae_14，明确出租车乘客是无关者且该次追逐为假线索；ae_15 改为追逐后 John 对 Sherlock 评价变化的离散互动。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_18
+  severity: major
+  rule_id: candidate_source_grounded
+  evidence: "ae_18 声称 Lestrade 在 Scotland Yard 向 Sherlock 分享 forensic findings，但该候选没有对应于本集可识别的离散场景；本集展示的是记者会、Lauriston Gardens 现场和 221B 搜查等不同互动。"
+  required_change: "用该集可定位的 Lestrade—Sherlock 离散互动替换，并准确限定共享材料、地点、参与者与产生的权限或知识变化。"
+  resolution: "删除虚构的 Scotland Yard 法证分享；新 ae_18 为 John 在仓库明确拒绝 Mycroft 的付费汇报提议，含承诺生命周期和关系后果。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_20
+  severity: major
+  rule_id: candidate_source_grounded
+  evidence: "ae_20 声称 Molly 就本案毒药给出专业意见；官方剧本未发生该事件，Molly 在该集展示的是尸体瘀伤实验及与 Sherlock、John 的实验室互动。Molly Frozen k_02 和 g_01 又把这一虚构协作固化为当前状态。"
+  required_change: "删除或替换为 Molly 在该集实际参与的离散事件，并同步修正其 Profile 与 Frozen 中由该虚构事件派生的目标和知识。"
+  resolution: "删除虚构的 Molly 毒药意见事件；新 ae_20 为 Lestrade 带队搜查 221B，并同步清理 Molly Profile 与 Frozen 中由虚构毒理协作产生的目标和知识。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_21
+  severity: major
+  rule_id: candidate_event_discrete
+  evidence: "ae_21 仅概括 Sherlock“narrows the timeline”并发现单一行为模式，没有可识别的发生场景、证据输入或成立瞬间，与 ae_13/ae_16 的连环谋杀推理也边界重叠。"
+  required_change: "替换为来源中可定位、一次发生且具有明确前后状态的事件，或移除该重复概括。"
+  resolution: "将概括性推理替换为搜查期间 Sherlock 向 Lestrade 出示粉色手提箱的单次事件，明确证据输入、发生地点和物品控制转移。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.stage_coverage
+  severity: major
+  rule_id: candidate_pool_state_coverage
+  evidence: "候选的 state_change 多为叙事总结或“established/becomes known”，几乎没有可执行的承诺生命周期、方向关系变化、权限或资源转移；Molly 与 Mrs Hudson 的少量候选尤其不足以支撑受压决策。"
+  required_change: "在不套用最终 Anchor 配额的前提下，保留并补足来源真实、离散且可映射到 knowledge/goal/commitment/relationship/resource 操作的候选，使六名 NPC 整体具备 Stage 1/2/3 覆盖。"
+  resolution: "候选池现包含看房与租住权限、现场准入、餐厅等待承诺及解除、Mycroft 招募提议及拒绝、警方搜查权限、手提箱证据控制转移和方向关系变化，并为 Molly/Mrs Hudson 保留来源真实的受压决策点。"
+  status: fixed
+- item_id: frozen.*.initial_context.runtime_state.knowledge
+  severity: major
+  rule_id: knowledge_traceable_to_source_event
+  evidence: "六份 Frozen 的全部知识都以 source_event: initial_state 代替具体候选或来源事件；这使知识成立时点、参与者可见性和 Stage 1 证据无法追踪，且掩盖 ae_12、ae_20 等错误来源。"
+  required_change: "为每项知识使用稳定、真实且与共同快照相容的来源事件 ID；无法由来源支持的知识应删除，不得以 initial_state 泛化替代证据。"
+  resolution: "重写六份 Frozen 知识项，source_event 均指向具体 ae_* 或明确 profile 路径；删除无正典支持的兄弟关系提前获知、Molly 毒理意见和可疑出租车假知识。"
+  status: fixed
+- item_id: frozen.*.initial_context.runtime_state.knowledge.*.visibility
+  severity: major
+  rule_id: runtime_visibility_vocabulary
+  evidence: "六份 Frozen 使用 private、shared、secret、shared_with_john 等自由字符串，而规范语义要求显式受众列表（如 [npc]、[npc, player]）；当前值不能唯一回答默认 Player 是否知道，也不能稳定供投影逻辑执行。"
+  required_change: "统一改为运行时支持的受众列表，并逐项依据 NPC 所知、默认 Player 所知及场景覆盖规则复核，不得把世界真相自动暴露给 Player。"
+  resolution: "六份 Frozen 的 visibility 全部改为显式受众列表语法；当前私密状态均为 [npc]，不再使用 private/shared/secret 等自由字符串或自动暴露给 Player。"
+  status: fixed
+- item_id: frozen.john_watson_and_mycroft_holmes.runtime_state.goals
+  severity: major
+  rule_id: runtime_goal_status_vocabulary
+  evidence: "John 的目标状态为 ongoing，Mycroft 的目标状态为 in_progress/planned；FixtureEngine 的 set_goal 只支持 active、fulfilled、cancelled、failed，后续操作无法在统一生命周期上可靠更新这些目标。"
+  required_change: "将当前有效目标映射到受支持状态，并依据统一快照删除尚未开始或已经完成的目标；保证后续 set_goal 可执行。"
+  resolution: "John 与 Mycroft 所有当前目标统一使用 active；删除尚未发生的会面计划，将 Mycroft 目标改为会面后持续观察、评估 John 和隐藏亲属关系。"
+  status: fixed
+- item_id: frozen.*.initial_context.runtime_state.relationships
+  severity: major
+  rule_id: strong_relationship_grounding
+  evidence: "自关系与无依据的 trusting/loyal 已清除，但强关系证据仍未按 resolution 落实：Sherlock→Mycroft 的 distrustful 使用 profile:mycroft_holmes.social，而该路径描述的是 Mycroft 的行为，不是 Sherlock 的方向关系；resolution 明称应指向 ae_19。Mycroft→Sherlock 的 distrustful 同样只指向 Mycroft 自身笼统 social 段落。"
+  required_change: "让每个保留的 distrustful 方向引用能证明该方向当前状态的具体候选或明确 Profile 条目；Sherlock→Mycroft 应与 ae_19 对齐，Mycroft→Sherlock 则补充明确的方向关系规则或降为 neutral。"
+  resolution: "确认 Sherlock→Mycroft 的 distrustful 方向直接以 ae_19 为依据；将缺少具体强关系证据的 Mycroft→Sherlock 从 distrustful 降为 neutral，并指向 Mycroft 的方向性 relationship_rules；其余无强关系证据的方向保持 neutral。"
+  status: fixed
+- item_id: frozen.sherlock_holmes.initial_context.environment.inventories
+  severity: major
+  rule_id: executable_resource_consistency
+  evidence: "Sherlock Frozen 的 g_03 和 k_03 表明他已找到并正使用 pink_suitcase 补足证据，位置又在 221B，但 inventories 仍为空；该正典物品在此时应有明确持有者或位置，现状态无法执行后续检查、移交或警方取证。"
+  required_change: "在确定共同快照后，明确 pink_suitcase 及其他关键物品的当前持有者/位置，并保证物品状态与知识、目标及候选顺序一致。"
+  resolution: "统一快照下 ae_21 已将粉色手提箱控制交给警方；相关 Frozen inventories 均将 pink_suitcase 置于 greg_lestrade，Sherlock 为空，并增加证据 access 控制状态。"
+  status: fixed
+- item_id: frozen.*.initial_context.environment.access
+  severity: major
+  rule_id: stage3_authority_runtime_support
+  evidence: "全部 Frozen 的 access 均为空，同时 Profiles 声明 Sherlock 可进入现场、Lestrade 可授权警方资源、Molly 可控制停尸间访问等关键权限；这些权限没有任何可执行状态，Player 角色也未界定，Stage 3 无法对授权与越界施压。"
+  required_change: "只对本集真实且会影响决策的权限建立简洁可执行 access/resource 状态，并明确谁可授予、拒绝或撤销；与 Profile authority/limitations 及默认 Player 语义保持一致。"
+  resolution: "为六份 Frozen 增加简洁可执行权限：221B 租住、Lauriston 现场、警方资源与证据、仓库/监控记录、医院停尸设施等均声明 controllers 和 granted/denied subjects，默认 Player 无特权。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_22
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "ae_22 声称 Sherlock 在 221B 搜查期间已解释凶手让受害者面对无法安全拒绝的选择；官方剧本此时他只知道受害者自行吞毒且推测凶手以某种方式迫使他们，直到被司机带到最终对峙后才首次确认“两瓶药、受害者选择一瓶”的机制。该确认明确超出 generated_timeline。"
+  required_change: "删除这一未来机制，或将 ae_22 改为搜查期间确实成立的离散知识变化（只能保留自行吞毒、被凶手迫使这一层，不得确认选择游戏）；同步检查 Profile/Frozen 不得提前持有该机制。"
+  resolution: "将 ae_22 改为搜查现场可成立的有限推断：受害者自行吞毒且被凶手以未知方式胁迫；明确毒物、胁迫方式和凶手均未解决，删除任何不可安全拒绝的选择或两瓶药机制，并只向现场的 Sherlock、John、Lestrade 写入同一有限知识。"
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_13.cf_edit
+  severity: major
+  rule_id: candidate_counterfactual_minimal
+  evidence: "ae_13 的事实是 Sherlock 与 John 发短信后前往 Angelo's 等待；cf_edit 却写“持机者忽略短信，因此没有尝试会面”。正典中两人并不知道持机者是否回应，发信本身就触发了他们去餐厅等待；“忽略短信”不能因果推出“不尝试会面”，且同时改写了对方反应和两人的行动。"
+  required_change: "只改变一个能阻止或改变餐厅设饵状态的原因，例如短信未成功发送或 John 拒绝借出手机，并给出由该单一变化导致的对应状态；不得把未知的持机者反应与两人的决定捆绑修改。"
+  resolution: "将 ae_13 的反事实收窄为单一权限变化：John 拒绝借出手机，因此诱饵短信未发送且不会形成餐厅会面；正文同步明确短信在 221B 成功发出及随后等待承诺，不再假定未知持机者是否回应。"
+  status: fixed
+- item_id: characters.greg_lestrade.testable_boundaries.b_02
+  severity: major
+  rule_id: boundary_source_grounded
+  evidence: "b_02 的禁止结果以“Lestrade 允许 Sherlock 从犯罪现场拿走 pink_phone”为核心压力点，但粉色手机从未在 Lauriston Gardens 现场，快照内仍由凶手持有；该边界无法基于当前资源状态执行或形成可观察决定。"
+  required_change: "用快照内实际在警方控制链中的物品（如 ae_21 后的 pink_suitcase）重写证据保全压力点，并确保 forbidden_outcomes、allowed_change 与 Frozen inventory/access 可执行状态一致。"
+  resolution: "将 b_02 的压力资源改为 ae_21 后由 Lestrade/警方控制的 pink_suitcase，禁止未登记归还或破坏证据控制链，并允许 Sherlock 在警方监督、记录处理且警方保持控制的条件下检查；与 Frozen inventory/access 一致。"
+  status: fixed
+- item_id: characters.sherlock_holmes.testable_boundaries.b_02
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: "b_02 把 pink_phone 与 pink_suitcase 都断言为“linking the victims to a single pattern”的决定性证据；两件物品都只属于第四名受害者，快照内手机尚未取得，且选择机制和凶手身份均未确认。当前表述把第四案追踪线索夸大成已证明多名受害者共同模式的证据。"
+  required_change: "把边界限定为快照内已成立的证据用途：手提箱证明凶手从第四现场带走物品，手机是待定位的第四名受害者财物；若要测试连环模式，应使用自行吞毒等当时已共享的跨案证据，不得提前确认未来机制。"
+  resolution: "将 b_02 限定为快照内已成立的用途：pink_suitcase 证明第四现场的财物被移走，pink_phone 仍是待定位线索而非已持有证据；禁止声称已检查手机或把二者当作跨受害者模式的决定性证明。"
+  status: fixed
+- item_id: frozen.sherlock_holmes.runtime_state.goals.g_03
+  severity: major
+  rule_id: executable_resource_consistency
+  evidence: "g_03 要求 Sherlock 使用“recovered phone and suitcase evidence”，但快照内只找回并向警方移交了 pink_suitcase；pink_phone 仍由凶手持有，所有 Frozen inventory 也都没有该手机。目标把尚未取得的资源写成已找回，无法形成唯一可执行当前状态。"
+  required_change: "将目标明确改成使用已找回的手提箱，并定位仍未取得的手机，或在不越过司机召唤边界的合法快照内准确表达手机的已知位置；目标、知识、inventory 与 access 必须一致。"
+  resolution: "将 g_03 改为利用已找回并由警方控制的手提箱、同时定位仍缺失的 pink_phone；保持 Sherlock inventory 为空、Lestrade 持有手提箱且 Sherlock 对该证据 access 为 denied，目标、知识、资源与权限一致。"
+  status: fixed
+- item_id: characters.sherlock_holmes.private.secrets
+  severity: major
+  rule_id: character_source_grounded
+  evidence: "Profile 声称 Sherlock 向 John 隐瞒了“Mycroft's surveillance and warning”的完整范围，但本集快照内 John 是监控摄像头、强制接送、私人记录施压和收买提议的直接经历者，并把会面与收买告知 Sherlock；资产没有指出 Sherlock 另知而 John 不知的具体监控事实或“warning”。该秘密不可追踪且无法唯一测试。"
+  required_change: "删除这条无具体来源的秘密，或改成快照内可定位、确由 Sherlock 知道而 John 不知道的明确事实，并给出对应来源；不得用“full extent”制造未定义的隐藏状态。"
+  resolution: "删除“向 John 隐瞒 Mycroft 监控和警告完整范围”的不可追踪秘密；保留另一个可在当前快照独立测试、且只涉及 Sherlock 尚未向 Lestrade 分享全部推断的秘密。"
+  status: fixed

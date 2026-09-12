@@ -1,0 +1,199 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_role_consistent
+  evidence: “包龙星开始重查戚家案件之后”没有锁定重查前段、进京告御状后或奉旨三堂会审阶段；现有资产同时把包龙星写成九品候补知县和重审主审官、把豹子头写成原有跟班，又使用最终公堂阶段状态，混合了彼此不兼容的电影时段。
+  required_change: 依据1994年电影锁定一个所有角色同时成立的明确快照，并明确包龙星受封八府巡按、豹子头转任副官等状态是在快照前还是快照后；同步约束所有Profile、Frozen状态和候选事件。
+  resolution: 已将共享快照锁定为皇帝任命包龙星为八府巡按并任命豹子头为副官之后、三堂会审开堂前；canon、六份Profile、Frozen和候选池均按此边界重建。
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon现已定义Player为loc_court的普通记录协助者，但chang_wei、qi_qinshi、lai_fu三份Frozen把NPC置于loc_court_holding，同时保持Player在loc_court且dialogue_status为active；默认角色只有公堂旁听准入，没有进入候审羁押处或跨地点对话的依据，三名NPC的Stage 3开局互动不可执行。
+  required_change: 为三名候审NPC提供与默认Player同处且符合快照的可执行开局场景，或逐场景显式覆盖Player位置与候审区准入；不得在双方分处不同地点且Player无准入依据时直接启用对话。
+  resolution: 已将共享快照明确为会审人员均已在公堂区域就位、正式开堂在即，并把常威、戚秦氏、来福三份Frozen的NPC位置改为loc_court；默认Player仍位于loc_court且仅具旁听记录权限，因此六名NPC的active对话均为同地点可执行。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.source_validity
+  severity: blocker
+  rule_id: event_outside_approved_canon
+  evidence: 正典复核显示电影重审核心是推翻方唐镜收买来福、打更佬等人所作伪证，并以“滴血认亲”套出常威口供；当前池却以调换案卷、重访戚家、牢中密会来福、隐藏血衣、血衣合法性攻防、不在场证明和保护证人为主线，其中ae_001至ae_003、ae_007至ae_015及ae_017至ae_021多项没有电影依据或改写了电影因果。
+  required_change: 对每项候选事件逐一回看1994年电影；删除或替换无正典依据的事件，只保留可定位的离散电影事件，并记录可复核的场景顺序证据。
+  resolution: 已删除案卷调换、重访戚家、牢中密会、血衣、不在场证明和证人保护等虚构链路；候选池仅保留开堂、盘问来福、来福与原审打更人分别撤回伪证、黄马褂、滴血骗局、常威失言与逃逸、豹子头制服及伏法等电影终审主线事件。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 虽已添加chapter_order，但顺序不符合电影终审：李连英携黄马褂在包龙星准备对常威用刑时到堂，之后包龙星才传打更人、来福等证人；打更人先翻供，来福随后因不识字被揭穿并先承认收买、后出示自阉事实。当前却把来福盘问/自阉/承认收买和打更人翻供列为2至5，再把黄马褂列为6，且来福内部顺序也倒置。
+  required_change: 逐场景按电影终审顺序重排候选事件；至少保证黄马褂到堂早于打更人与来福翻供、打更人早于来福、来福承认收买早于出示自阉事实，并同步修正chapter_order、fact、state_change与cf_edit。
+  resolution: 已按电影终审顺序重排唯一chapter_order：开堂、黄马褂到堂、打更人翻供、盘问来福、来福承认收买、出示自阉反证、滴血骗局、常威失言、逃逸、制服、伏法；同时同步改写各事件状态变化与反事实。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.snapshot_boundary
+  severity: blocker
+  rule_id: event_boundary_exact
+  evidence: Frozen初始状态已经声称包龙星知道案卷被调换、现场被清理、来福提供线索、血衣被发现且常威提出不在场证明，方唐镜也已在阻止血衣入证；anchor_pool又把这些内容作为ae_001、ae_002、ae_005、ae_008、ae_010至ae_012等后续候选事件，导致事件在初始状态中提前发生。
+  required_change: 先锁定统一快照，再将快照前事实仅作为初始状态，将快照后事件仅作为候选事件；不得让同一状态变化同时位于初始态和未来候选池。
+  resolution: 已以三堂会审开堂前为唯一边界；皇命任职、原审不利证词及有依据NPC的私密犯罪或收买知识只在初始态，开堂入场、证人撤证、黄马褂、滴血骗局及终局只在候选池，Player开局不再预知证词为伪证。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_change
+  severity: major
+  rule_id: state_change_observable
+  evidence: 多项当前state_change仍没有可执行的唯一状态路径：ae_002只称来福目标“受到压力”而未给新状态；ae_006的constraint_yellow_jacket未进入运行态；ae_009的“受审被告→正在暴力逃逸”和豹子头“获得执行任务”、ae_010的“已被控制”、ae_011的“蒙冤在押状态终止”均没有对应初始字段或明确目标ID，无法唯一映射FixtureEngine Operation。
+  required_change: 为每项保留事件指定现有或最小新增的明确状态路径、前值、后值及受支持Operation；尤其补齐ae_002、ae_006、ae_009至ae_011，无法形成客观状态差异的候选项应删除。
+  resolution: 已将11项state_change逐项绑定FixtureEngine支持的set_goal、set_claim、add_knowledge、set_inventory与set_access：开堂/核验证词用闭集目标，证词用claim裁断，收买与口供用可见知识，黄马褂用物品加访问撤销，逃逸/制服/昭雪用目标active、failed或fulfilled。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多数当前cf_edit已收窄为单变量，但ae_002主分支只有“目标受到质询压力”、反事实只有“暂时未受挑战”，两边没有闭集目标状态或其他可执行状态差异；在目标状态未定义前，无法验证该反事实能导出唯一不同决定。其余涉及尚未建模限制、逃逸与控制状态的反事实也暂不能执行验证。
+  required_change: 先完成各事件状态路径与Operation，再逐项证明主分支和cf_edit只差一个原因且产生唯一不同状态/决定；至少为ae_002定义闭集前后值，并对ae_006、ae_009至ae_011执行分支差异检查。
+  resolution: 已逐项把cf_edit限制为一个原因变量，并明确其对应的不同闭集状态；重点将ae_002改为是否传问决定goal_verify_lai_testimony是否建立，ae_006改为黄马褂是否带到决定访问是否撤销，ae_009至ae_011分别由是否逃逸、是否拦截、是否伏法决定目标状态。
+  status: fixed
+
+- item_id: characters.bao_longxing.identity_and_authority
+  severity: blocker
+  rule_id: snapshot_role_consistent
+  evidence: Profile把包龙星当前身份写成“九品候补知县”并赋予重审主审权；电影中他逃狱进京后受封八府巡按并奉旨作为钦差重审，九品候补知县身份不能支撑当前三堂会审权限。
+  required_change: 按锁定快照改正当前官职、阵营、主审权限与限制，并移除或改写基于错误官职的背景、目标和边界。
+  resolution: 已将包龙星改为八府巡按、钦差主审，记录候补知县为历史身份；权限改为主持重审与命副官维持秩序，并加入上谕范围及黄马褂限制。
+  status: fixed
+
+- item_id: characters.bao_tou.identity_and_relationships
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: Profile把“豹头”写成长期跟随包龙星的衙门差役和搜查跑腿；电影中的豹子头/雷豹原为追杀越狱包龙星的京城神捕，后由皇帝任命为包龙星副官，并在终审与常威格斗。当前身份、经历、能力和对包龙星的关系均改写了正典。
+  required_change: 依据电影统一角色ID/姓名，并按快照重写其神捕或副官身份、与包龙星关系、武力能力、权限、限制和可测试边界。
+  resolution: 已统一为豹子头（别名雷豹），重写为原京城神捕、现奉皇命担任包龙星副官；恢复追捕史、格斗能力、秩序执行权限和不得代审的边界。
+  status: fixed
+
+- item_id: characters.lai_fu.identity_motivation_and_knowledge
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: Profile把来福写成受常威威胁、在牢中向包龙星逐步吐露真相的潜在证人；电影中来福是被方唐镜收买、用来反诬戚秦氏通奸杀人的戚家下人，终审时被包龙星揭穿伪证后承认收买。当前核心身份、动机、秘密和边界与正典相反。
+  required_change: 按电影中来福作伪证及终审被揭穿的实际状态重建Profile，并明确其在锁定快照时已经知道、尚未承认和Player不可见的事实。
+  resolution: 已将来福重建为被方唐镜收买的原审伪证人；开堂前目标是先维持伪证，私密知识明确为收买事实与自阉反证，均仅[npc]可见。
+  status: fixed
+
+- item_id: characters.qi_qinshi.current_state
+  severity: major
+  rule_id: snapshot_consistent
+  evidence: Profile与Frozen状态将戚秦氏设为在戚家配合现场调查、刻意保留关键细节并等待安全指认；电影中她由原告被伪证反成被告、屈打成招并被判死，重审阶段的核心状态是蒙冤在押及当堂翻案，现有状态缺少来源支持。
+  required_change: 按锁定快照重写其法律身份、位置、已公开证词、私密知识、目标和限制；只保留电影可支持的恐惧、陈情或指认边界。
+  resolution: 已将戚秦氏改为由原告被伪证诬成被告的蒙冤在押者，位置设为候审羁押处；目标改为推翻伪证、坚持指认真凶，删除现场调查和隐瞒线索设定。
+  status: fixed
+
+- item_id: characters.fang_tangjing.current_state_and_secrets
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile围绕现代化的证据合法性、血衣来源、程序先例、调换案卷和提交血衣伪证构建方唐镜；电影可支持的是其收买证人、串通常家、制造伪证并在公堂以口才抗辩，当前多项具体秘密和权限没有正典依据。
+  required_change: 删除无电影依据的案卷、血衣及程序规则事实，按实际收买证人和公堂抗辩情节重建其知识、目标、权限、秘密与行为边界。
+  resolution: 已删除调换案卷、血衣、现代证据合法性及程序先例设定；方唐镜现围绕收买原审证人、维持伪证和公堂诡辩构建。
+  status: fixed
+
+- item_id: characters.chang_wei.current_state_and_secrets
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile声称常威安排清理戚家现场、以家人安全威胁来福并预备不在场证明；电影重审中的关键可证事实是常家串通灭证、方唐镜收买证人、黄马褂阻碍用刑以及常威被套出口供，当前具体手段和状态缺少来源支持。
+  required_change: 仅保留电影可证的犯罪事实、否认策略、与常昆/方唐镜的串通及终审压力边界，并按快照区分其私密知识与公堂公开状态。
+  resolution: 已删除清理现场、威胁来福及不在场证明；仅保留犯罪事实、否认策略、常家与方唐镜的伪证串通，并将犯罪及串通知识设为仅NPC可见。
+  status: fixed
+
+- item_id: environment.yaml.runtime_affordances
+  severity: blocker
+  rule_id: world_affordances_sufficient
+  evidence: 地点与物品已按终审重建，但权限仍不可执行：Frozen把access写成holder到权限ID列表（如bao_longxing→[perm_imperial_retrial]），FixtureEngine与PromptBuilder使用的却是resource到{controllers, subjects}的映射；以当前bao_longxing和bao_tou上下文调用PromptBuilder.build_player均稳定触发AttributeError（list没有get）。environment.permissions及constraint_yellow_jacket也不会被WorldDefinition载入，ae_006声称黄马褂限制“生效”却无法表示或操作。
+  required_change: 用GameCore实际支持的最小状态结构统一表示钦差、副官与黄马褂限制，并确保初始access可被PromptBuilder读取、ae_006可由受支持Operation产生唯一状态差异；保留正确地点与物品。
+  resolution: 已删除不会被WorldDefinition载入的environment.permissions伪运行结构；六份Frozen的access均统一为resource到{controllers, subjects}映射，显式建模钦差、副官与对常威用刑资源，黄马褂事件以set_inventory加set_access(revoked)形成可执行差异，PromptBuilder可直接读取。
+  status: fixed
+
+- item_id: frozen.all.relationships
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 大部分方向已修复，但fang_tangjing→chang_wei与chang_wei→fang_tangjing仍以canon_pre_chang_family_engagement标为trusting；Profile只支持受雇、共同脱罪的利益合作，聘用与串通不等于双方形成强信任，且两份Profile均未声明该信任强度。
+  required_change: 将这两个方向降为neutral并以利益合作留在Profile/Frozen可查询事实中，或补充足以支持trusting且与双方Profile一致的具体快照前正典依据。
+  resolution: 已将fang_tangjing→chang_wei与chang_wei→fang_tangjing两个方向均由trusting降为neutral；双方受雇及共同脱罪的利益合作仍保留在Profile规则与basis_event中，不再推导无依据的强信任。
+  status: fixed
+
+- item_id: frozen.all.knowledge_traceability
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: "所有知识几乎统一使用source_event: initial_state，无法追溯到具体正典事件；多项知识又是无来源的案卷调换、现场清理、血衣、不在场证明和证人受威胁内容，导致Stage 1答案无法唯一举证。"
+  required_change: 删除无正典依据知识，并为每项保留知识关联稳定、具体且发生在快照前的正典事件ID；明确事实、怀疑和未知状态。
+  resolution: 已删除案卷调换、现场清理、血衣、不在场证明及威胁证人知识；保留项均关联具体canon_pre_*事件ID，并仅陈述快照前已发生的事实。
+  status: fixed
+
+- item_id: frozen.all.knowledge.visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: visibility使用private、shared、public、known_to_fang_tangjing_and_bao_longxing、private_to_fang_tangjing等未统一字符串，而运行时FixtureEngine使用受众列表如[npc]与[npc, player]；这会使Player可见性和隐藏事实判定不可执行。
+  required_change: 将全部知识visibility统一为运行时受众列表，并结合默认Player语义逐项确认Player是否开局知情。
+  resolution: 六份Frozen的visibility已全部统一为[npc]或[npc, player]；犯罪、收买与策略等私密事实不对Player公开，皇命重审与原审公开状态对Player可见。
+  status: fixed
+
+- item_id: frozen.bao_longxing.goals.status
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: 包龙星初始目标使用ongoing和pending，而FixtureEngine的set_goal仅支持active、fulfilled、cancelled、failed；戚秦氏也使用pending，初始状态与后续状态操作无法共享闭集语义。
+  required_change: 将所有初始目标状态统一为FixtureEngine支持的枚举；尚未激活的意图应改写为当前active目标或从当前目标列表移除。
+  resolution: 六份Frozen中的全部开局目标均已使用active，已移除ongoing与pending。
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics.initial_knowledge
+  severity: blocker
+  rule_id: hidden_event_not_disclosed
+  evidence: 默认Player在三堂会审开堂前即被告知“戚秦氏因原审伪证被判罪”，戚秦氏Frozen又把“原审以伪证……判罪”设为[npc, player]；但快照明确终审证人尚未翻供，ae_003至ae_005才使通奸说法和收买证人链公开失信，当前写法提前泄露并确认了后续事件结论。
+  required_change: 将默认Player知识及Player可见Frozen知识改为当时已公开且不预断真伪的表述，例如原审依据不利证词判罪、包龙星将复核证词；“伪证”“受收买”等确认仅保留给有快照前依据的NPC，直至对应候选事件公开。
+  resolution: 已将canon默认Player知识改为“原审依据来福等人的不利证词判罪、重审将复核”，并将戚秦氏Player可见知识同步改为不预断证词真伪的原审判决事实；收买及伪证确认仍只对有快照前依据的NPC可见。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_001.state_change
+  severity: major
+  rule_id: state_operation_aligned
+  evidence: ae_001声称perm_imperial_retrial由“待执行”变为“正在执行”，但environment权限没有生命周期字段，包龙星Frozen的access在开堂前已包含该权限；现有运行态无法唯一表示或执行这次变化。
+  required_change: 将ae_001改为可由现有状态维度表达的离散变化，或补充最小且受FixtureEngine支持的执行状态；不得把开局已生效的access再次描述为新获权限。
+  resolution: 已保留包龙星开局既有的perm_imperial_retrial，不再重复授予；ae_001改为开堂时把常威、戚秦氏和来福从loc_court_holding移至loc_court，反事实为暂缓开堂且三人位置不变，可直接映射set_location。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_005.discreteness
+  severity: major
+  rule_id: event_discrete_identifiable
+  evidence: ae_005把未具名的“其他原审证人”多次受盘问与揭穿聚合成一项，cf_edit又只写“其中一名证人”而未指定对象；事件边界、被改变的证词及反事实分支均不能唯一判定。
+  required_change: 将ae_005收窄为一个可定位、可识别的证人翻供事件并明确单一受控变量，或删除该聚合候选项；不得用不定数量证人的汇总替代离散事件。
+  resolution: 已将ae_005收窄为原审打更人这一可识别证人当堂承认收买并撤回证词的单一事件；目标状态只跟踪该证词是否撤回，反事实只改变打更人是否承认收买并撤证。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_007.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: ae_007的目标状态是包龙星把策略切换为滴血骗局，但cf_edit只改变常威是否参与；即使常威拒绝，包龙星仍已安排并切换策略，因此两分支不会产生该项声明的不同目标状态。
+  required_change: 让cf_edit只改变导致包龙星是否采用该策略的一个原因，并使两分支对ae_007目标状态及后续可观察决定给出唯一不同结果；常威是否回应应留给后续事件。
+  resolution: 已把ae_007目标状态建模为active的goal_induce_chang_detail；反事实只改变滴血水碗是否备妥，未备妥时不建立该目标而继续口头核验。常威是否回应保留给ae_008，且ae_008在其失言时将该目标置为fulfilled。
+  status: fixed
+
+- item_id: frozen.qi_qinshi.relationships.bao_longxing
+  severity: major
+  rule_id: relationship_grounding
+  evidence: 戚秦氏Profile仅写“对包龙星奉旨重审抱有希望”和“有限期待”，Frozen却以皇命重审事件直接赋值trusting；皇命授权能证明其期待程序重启，不能证明她已对包龙星形成强信任。
+  required_change: 将关系降为neutral并保留有限期待的目标/立场，或补充快照前可追溯且足以支持trusting的具体正典事件，同时保持Profile与Frozen强度一致。
+  resolution: 已将戚秦氏对包龙星的Frozen关系由trusting降为neutral，basis_event仍为canon_pre_imperial_retrial_order；其“有限期待”继续只保留在Profile立场及昭雪目标中。
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.known_by
+  severity: major
+  rule_id: visibility_correct
+  evidence: 11项事件的known_by机械地全部列出六名NPC，但电影中戚秦氏在证人翻供前退堂生产，方唐镜与来福在承认收买后被李连英下令掌嘴并失去继续参与后段公堂事件的能力；现有ae_007至ae_011仍把三人全部列为亲历知情，缺少当堂听闻、事后告知或证据接触依据。
+  required_change: 逐事件按实际在场、当堂可感知及后续披露核验known_by；对退场或失去参与能力的NPC删除无依据知情，若确有事后获知则用单独、可追溯的披露事件表达。
+  resolution: 已逐事件按终审在场性重写known_by：戚秦氏退堂后不再列入打更人及来福翻供；来福承认收买后，方唐镜与来福不再列入滴血骗局及其后的失言、逃逸、制服、伏法；后段仅保留包龙星、常威、豹子头这三名有当堂感知依据者。
+  status: fixed
+
+- item_id: characters.all.public_private_separation
+  severity: major
+  rule_id: public_private_separated
+  evidence: 多份Profile把快照时尚未公开确认的结论写入identity.role或public_background：lai_fu称“原审伪证人”、fang_tangjing称“原审伪证操纵者”、chang_wei称原审“借伪证”使戚秦氏获罪、qi_qinshi称自己“被伪证诬成被告”。这些标签与同文件private秘密及Player开局只知“不利证词尚待核验”的边界冲突。
+  required_change: 将identity与public_background改为快照时公开可陈述且不预断证词真伪的身份/案情；把收买、作伪证与串通结论仅保留在有依据NPC的private或私密Frozen knowledge中，直至候选事件公开。
+  resolution: 已将来福role改为原审不利证人、方唐镜role改为常威受雇讼师，并将常威与戚秦氏public_background改为原审采纳不利证词且真伪尚待重核的公开表述；收买、伪证与串通结论仅留在private、目标或NPC私密Frozen知识中。
+  status: fixed

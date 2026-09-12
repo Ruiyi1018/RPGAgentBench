@@ -2,75 +2,73 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    john_watson:
-      level: trusting
-      basis_event: initial_state
-    greg_lestrade:
-      level: neutral
-      basis_event: initial_state
-    mycroft_holmes:
-      level: distrustful
-      basis_event: initial_state
-    molly_hooper:
-      level: neutral
-      basis_event: initial_state
-    mrs_hudson:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    john_watson: {level: neutral, basis_event: ae_15}
+    greg_lestrade: {level: neutral, basis_event: ae_20}
+    mycroft_holmes: {level: distrustful, basis_event: ae_19}
+    molly_hooper: {level: neutral, basis_event: ae_04}
+    mrs_hudson: {level: neutral, basis_event: ae_06}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: g_01
-    content: Prove the serial suicides are connected murders
+    content: Prove that the apparent suicides are connected murders.
     status: active
-    basis_event: initial_state
+    basis_event: ae_10
   - id: g_02
-    content: Identify how the murderer persuades victims to take poison voluntarily
+    content: Identify how the murderer gets victims to take poison voluntarily.
     status: active
-    basis_event: initial_state
+    basis_event: ae_10
   - id: g_03
-    content: Use the pink phone and pink suitcase to close the evidential gap
+    content: Use the recovered suitcase and locate the still-missing pink phone to
+      identify the murderer.
     status: active
-    basis_event: initial_state
+    basis_event: ae_21
   disclosures: []
   knowledge:
     k_01:
-      content: The fourth victim was left-handed
+      content: The fourth victim was left-handed and another person was present.
       status: active
-      visibility: shared_with_john_and_lestrade
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_10
     k_02:
-      content: The pink phone belonged to the fourth victim
+      content: The fourth victim travelled with a pink suitcase that was removed
+        from Lauriston Gardens.
       status: active
-      visibility: shared_with_john_and_lestrade
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_11
     k_03:
-      content: The pink suitcase belongs to the fourth victim
+      content: The recovered pink suitcase has been shown to Lestrade during the
+        police search of 221B.
       status: active
-      visibility: shared_with_john
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_21
     k_04:
-      content: The victims appear to have taken poison voluntarily
+      content: John refused Mycroft's offer to report on Sherlock.
       status: active
-      visibility: shared_with_john_and_lestrade
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_19
     k_05:
-      content: The cab John noticed may be central to the murderer's movements
+      content: The victims swallowed poison themselves under coercion, but the means
+        of coercion is still unknown.
       status: active
-      visibility: shared_with_john
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_22
 environment:
-  health:
-    sherlock_holmes: 100
-    player: 100
+  health: {sherlock_holmes: 100, player: 100}
   inventories:
     sherlock_holmes: []
+    greg_lestrade: [pink_suitcase]
     player: []
-  locations:
-    sherlock_holmes: 221b_baker_street
-    player: 221b_baker_street
-  access: {}
+  locations: {sherlock_holmes: 221b_baker_street, player: 221b_baker_street}
+  access:
+    res_lauriston_scene:
+      controllers: [greg_lestrade]
+      subjects: {sherlock_holmes: granted, player: denied}
+    res_221b_tenancy:
+      controllers: [mrs_hudson]
+      subjects: {sherlock_holmes: granted, player: denied}
+    res_pink_suitcase_evidence:
+      controllers: [greg_lestrade]
+      subjects: {sherlock_holmes: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

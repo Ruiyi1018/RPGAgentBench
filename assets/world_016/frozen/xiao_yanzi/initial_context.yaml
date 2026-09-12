@@ -4,57 +4,69 @@ runtime_state:
   relationships:
     ziwei:
       level: loyal
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
     yongqi:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     er_kang:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     qianlong:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     empress_huanzhu:
       level: hostile
-      basis_event: initial_state
+      basis_event: ae_017
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: xiao_yanzi_goal_001
-    content: 在皇后逼问下不露出紫薇身世细节
+  - id: xy_g1
+    content: 通过永琪与尔康安排同福府中的紫薇重逢
     status: active
-    basis_event: initial_state
-  - id: xiao_yanzi_goal_002
-    content: 保住自己能在宫中继续等待解释机会的余地
+    basis_event: ae_016
+  - id: xy_g2
+    content: 在商定补救办法前不向乾隆或皇后泄露紫薇身世
     status: active
-    basis_event: initial_state
-  - id: xiao_yanzi_goal_003
-    content: 配合永琪和尔康，让紫薇有机会当面见乾隆
+    basis_event: ae_016
+  - id: xy_g3
+    content: 遵守不得擅自出宫的限制并另寻安全联络途径
     status: active
-    basis_event: initial_state
+    basis_event: ae_014
   disclosures: []
   knowledge:
-    xiao_yanzi_k_001:
-      content: 紫薇是真正与乾隆有血脉关联的人，身份尚未得到乾隆正式确认
+    xy_k1:
+      content: 紫薇是夏雨荷之女，自己只是替她携带摺扇和烟雨图入围场
       status: active
-      visibility: shared
-      source_event: initial_state
-    xiao_yanzi_k_002:
-      content: 皇后已在宫中注意到自己行为异常，并在御花园派人责问
+      visibility:
+      - npc
+      source_event: ae_004
+    xy_k2:
+      content: 乾隆因两件信物误认自己，并已册封自己为还珠格格
       status: active
-      visibility: private
-      source_event: initial_state
-    xiao_yanzi_k_003:
-      content: 永琪和尔康愿意帮助促成向乾隆当面解释的机会
+      visibility:
+      - npc
+      - player
+      source_event: ae_010
+    xy_k3:
+      content: 紫薇目前在福府并得到尔康保护，但两人尚未重逢
       status: active
-      visibility: shared
-      source_event: initial_state
-    xiao_yanzi_k_004:
-      content: 自己并非真正身份拥有者，只是一时被误认入宫
+      visibility:
+      - npc
+      source_event: ae_016
+    xy_k4:
+      content: 永琪已听完真相并知道欺君风险
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ae_016
+    xy_k5:
+      content: 皇后因自己不守宫规在漱芳斋问责并纵容容嬷嬷责打一耳光
+      status: active
+      visibility:
+      - npc
+      - player
+      source_event: ae_017
 environment:
   health:
     xiao_yanzi: 100
@@ -63,8 +75,8 @@ environment:
     xiao_yanzi: []
     player: []
   locations:
-    xiao_yanzi: yu_huayuan
-    player: yu_huayuan
+    xiao_yanzi: shu_fang_zhai
+    player: shu_fang_zhai
   access: {}
   offers: []
   task_status: active

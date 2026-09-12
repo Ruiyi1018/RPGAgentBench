@@ -1,6 +1,12 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: leonard_penny_dating
+    target: penny
+    content: Continue the restarted romantic relationship with Penny as their agreed beta test.
+    condition: The relationship restarted in S5E13 remains active at the shared snapshot.
+    status: active
+    source_event: ev_018
   relationships:
     sheldon_cooper:
       level: trusting
@@ -25,63 +31,67 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: g_leonard_001
-    content: Get through the shared social evening in Apartment 4A without a major
-      conflict over Sheldon's rules.
+    content: Get through the shared social evening in Apartment 4A without a major conflict over Sheldon's
+      rules.
     status: active
     basis_event: initial_state
   - id: g_leonard_002
-    content: Remain a dependable presence for Penny while avoiding making the evening
-      about his own frustrations.
+    content: Remain a dependable presence for Penny while avoiding making the evening about his own frustrations.
     status: active
     basis_event: initial_state
   - id: g_leonard_003
-    content: Protect enough of his own routine and lab schedule despite the group's
-      demands.
+    content: Protect enough of his own routine and lab schedule despite the group's demands.
     status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_leonard_001:
-      content: Leonard knows that Sheldon's seat on the couch is treated as a fixed
-        household rule.
+      content: Leonard knows that Sheldon's seat on the couch is treated as a fixed household rule.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_002
     k_leonard_002:
-      content: Leonard knows the Roommate Agreement governs many daily restrictions
-        in Apartment 4A.
+      content: Leonard knows the Roommate Agreement governs many daily restrictions in Apartment 4A.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_008
     k_leonard_003:
-      content: Leonard knows Penny works at The Cheesecake Factory and often comes
-        to Apartment 4A after shifts.
+      content: Leonard knows Penny works as a waitress at The Cheesecake Factory.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s1e05_group_observes_penny_at_work
     k_leonard_004:
-      content: Leonard knows Raj cannot speak directly to Penny because of selective
-        mutism around women.
+      content: Leonard knows Raj cannot speak directly to Penny because of selective mutism around women.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_006
     k_leonard_005:
-      content: Leonard knows Howard has joined a mission training program related
-        to his engineering work.
+      content: Leonard knows Howard has joined a mission training program related to his engineering work.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_010
 environment:
   health:
     leonard_hofstadter: 100
     player: 100
   inventories:
-    leonard_hofstadter: []
+    leonard_hofstadter:
+    - laptop_leonard
     player: []
   locations:
     leonard_hofstadter: apartment_4a
     player: apartment_4a
-  access: {}
+  access:
+    leonard_lab:
+      controllers:
+      - leonard_hofstadter
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

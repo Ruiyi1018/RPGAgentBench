@@ -2,79 +2,60 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    meredith_grey:
-      level: trusting
-      basis_event: initial_state
-    cristina_yang:
-      level: neutral
-      basis_event: initial_state
-    derek_shepherd:
-      level: neutral
-      basis_event: initial_state
-    george_omalley:
-      level: trusting
-      basis_event: initial_state
-    miranda_bailey:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    meredith_grey: {level: neutral, basis_event: ae07}
+    cristina_yang: {level: neutral, basis_event: ae01}
+    derek_shepherd: {level: neutral, basis_event: ae01}
+    george_omalley: {level: neutral, basis_event: ae07}
+    miranda_bailey: {level: neutral, basis_event: ae02}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g_izzie_prove_deserving
-    content: Prove she deserves her place among the surgical interns through hard
-      work.
+    content: Prove she belongs in surgery through safe, supervised work.
     status: active
-    basis_event: initial_state
+    basis_event: ae01
   - id: g_izzie_build_friendships
-    content: Build close friendships with her intern housemates.
+    content: Maintain a cooperative household with Meredith and George.
     status: active
-    basis_event: initial_state
-  - id: g_izzie_manage_loss
-    content: Learn to cope with patient death without losing her empathy.
+    basis_event: ae07
+  - id: g_izzie_preserve_empathy
+    content: Advocate for patient preferences through Bailey or another authorized clinician.
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing_izzie_patient_advocacy
   disclosures: []
   knowledge:
-    k_izzie_intern_rules:
-      content: Bailey is the resident in charge and expects discipline from the interns.
+    k1:
+      content: Bailey directly supervises the intern cohort's clinical work.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_izzie_roommates:
-      content: George O'Malley and Meredith Grey are her housemates at Meredith's
-        house.
+      visibility: [npc]
+      source_event: ae02
+    k2:
+      content: George and Izzie live with Meredith as housemates.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_izzie_emotional_loss:
-      content: She has already struggled emotionally with losing a patient during
-        the intern period.
+      visibility: [npc]
+      source_event: ae07
+    k3:
+      content: George directly witnessed Izzie disclose that modeling income paid for medical school.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_izzie_emerald_bar:
-      content: Emerald City Bar is a regular gathering spot for the interns after
-        shifts.
+      visibility: [npc]
+      source_event: ae08
+    k4:
+      content: Izzie and Cristina performed an autopsy after Bailey stated that the family had refused authorization.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_izzie_derek_skill:
-      content: Derek Shepherd is recognized among the interns for his surgical ability.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae13
 environment:
-  health:
-    izzie_stevens: 100
-    player: 100
+  health: {izzie_stevens: 100, player: 100}
   inventories:
-    izzie_stevens: []
+    izzie_stevens: [intern_badge, pager]
     player: []
-  locations:
-    izzie_stevens: seattle_grace_hospital
-    player: seattle_grace_hospital
-  access: {}
+  locations: {izzie_stevens: seattle_grace_hospital, player: seattle_grace_hospital}
+  access:
+    patient_charts:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {izzie_stevens: granted, player: denied}
+    supervised_clinical_tasks:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {izzie_stevens: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

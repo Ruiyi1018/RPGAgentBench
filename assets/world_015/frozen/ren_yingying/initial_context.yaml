@@ -38,22 +38,22 @@ runtime_state:
     knowledge_001:
       content: 令狐冲在洛阳结识自己，并接受琴曲疗伤
       status: active
-      visibility: shared
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_002:
       content: 自己为救令狐冲曾被囚于少林
       status: active
-      visibility: shared
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_003:
       content: 令狐冲已接任恒山掌门，且自己在过程中提供支持
       status: active
-      visibility: shared
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_004:
-      content: 东方不败依靠葵花宝典掌权，并对自己仍保有一定忌惮
+      content: 东方不败先夺取教主之位，后修炼葵花宝典获得极高武力；自己因圣姑身份与旧部联系而须防备其压制
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -63,9 +63,14 @@ environment:
     ren_yingying: []
     player: []
   locations:
-    ren_yingying: heimu_ya
-    player: heimu_ya
-  access: {}
+    ren_yingying: hengshan
+    player: hengshan
+  access:
+    yingying_retainer_orders:
+      controllers: [ren_yingying]
+      subjects:
+        ren_yingying: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

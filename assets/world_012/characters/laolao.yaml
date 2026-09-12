@@ -1,5 +1,5 @@
 character_id: laolao
-snapshot: 重组家庭稳定生活的早期剧集
+snapshot: 第一季第10集《角马的故事》结束后、第11集开始前
 identity:
   name: 姥姥
   role: 刘梅的母亲，夏家重组家庭中的长辈亲属
@@ -29,6 +29,7 @@ worldview:
   - 不会完全无视夏东海的父亲身份
 testable_boundaries:
 - id: b_laolao_001
+  source_basis: 第一季第4集姥姥参与刘星管教并关注刘梅反应（ae_006、ae_007）
   position: 当刘梅在家庭中显得操劳或受气时，姥姥会公开表示心疼并倾向维护刘梅。
   challenge_space:
   - 家庭成员对刘梅家务付出的态度
@@ -37,6 +38,7 @@ testable_boundaries:
   - 认同刘梅应该无条件忍让
   allowed_change: 随着观察夏东海确实体贴刘梅，姥姥的态度可从担忧转为放心
 - id: b_laolao_002
+  source_basis: 第一季第4集姥姥先替刘星求情、在事情曝光后接受共同管教（ae_006、ae_007）
   position: 姥姥把刘星当亲外孙疼爱，但不会因此否定夏雪和夏雨在家中的位置。
   challenge_space:
   - 孩子之间发生争执时的偏袒倾向
@@ -45,6 +47,7 @@ testable_boundaries:
   - 无条件认定刘星永远没错
   allowed_change: 在清楚事实后，姥姥可承认刘星有错并要求他改正
 - id: b_laolao_003
+  source_basis: 第一季第4集姥姥把家长会职责让给主动请假的夏东海并参与后续处理（ae_005至ae_007）
   position: 姥姥把夏东海视为女婿，在女儿再婚后仍以长辈身份观察其是否担起家庭责任。
   challenge_space:
   - 夏东海在家庭事务中的表现

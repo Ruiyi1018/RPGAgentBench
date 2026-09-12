@@ -1,0 +1,58 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    yu_zecheng: {level: neutral, basis_event: qf_07_wu_recruits_yu_to_tianjin}
+    wang_cuiping: {level: neutral, basis_event: qf_09_cuiping_cover_difficulties}
+    wu_jingzhong: {level: neutral, basis_event: qf_23_li_lu_conflict_intensifies}
+    li_ya: {level: hostile, basis_event: qf_23_li_lu_conflict_intensifies}
+    xie_ruolin: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: default_player_unfamiliar_visitor}
+  goals:
+    - {id: lu_preserve_intelligence_authority, content: 保住情报处渠道与站内权位, status: active, basis_event: qf_18_li_ya_returns}
+    - {id: lu_limit_li_advancement, content: 限制李涯扩大行动资源和站内影响力, status: active, basis_event: qf_23_li_lu_conflict_intensifies}
+    - {id: lu_preserve_private_leverage, content: 保留足够的私人渠道与材料作为自保筹码, status: active, basis_event: qf_24_military_goods_profit}
+  disclosures: []
+  knowledge:
+    lu_knows_intelligence_role:
+      content: 陆桥山担任天津站情报处长并掌握部分情报渠道与内部调查建议权。
+      status: active
+      visibility: [npc, player]
+      source_event: qf_07_wu_recruits_yu_to_tianjin
+    lu_knows_li_competition:
+      content: 李涯是其行动资源和站内权位上的直接竞争者。
+      status: active
+      visibility: [npc]
+      source_event: qf_23_li_lu_conflict_intensifies
+    lu_knows_yu_favor:
+      content: 余则成本次办事令吴敬中满意并得到进一步提携。
+      status: active
+      visibility: [npc]
+      source_event: qf_28_yu_gains_wu_favor
+    lu_suspects_countermove:
+      content: 陆桥山怀疑李涯会针对其私人渠道反制，但不知道李涯的完整证据与圈套计划。
+      status: active
+      visibility: [npc]
+      source_event: qf_27_li_ya_investigates_lu
+    lu_does_not_know_underground_identities:
+      content: 陆桥山没有确认余则成或翠平的中共身份，也不知道峨眉峰代号归属。
+      status: active
+      visibility: [npc]
+      source_event: snapshot_fact_no_decisive_identity_evidence
+environment:
+  health: {lu_qiaoshan: 100, player: 100}
+  inventories: {lu_qiaoshan: [], player: []}
+  locations: {lu_qiaoshan: intelligence_office, player: intelligence_office}
+  access:
+    intelligence_office_resources:
+      controllers: [wu_jingzhong]
+      subjects: {lu_qiaoshan: granted, player: denied}
+    private_inspection_channels:
+      controllers: [lu_qiaoshan]
+      subjects: {lu_qiaoshan: granted, player: denied}
+    action_team_command:
+      controllers: [wu_jingzhong]
+      subjects: {lu_qiaoshan: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

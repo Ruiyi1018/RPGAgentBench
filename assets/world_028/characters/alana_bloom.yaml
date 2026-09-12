@@ -1,18 +1,20 @@
 character_id: alana_bloom
-snapshot: Season 1 Hannibal
+snapshot: "Immediately after S01E03 Potage"
 identity:
   name: Alana Bloom
-  role: Psychiatric consultant and FBI advisor
+  role:
+  - Baltimore psychiatrist and professor
+  - Abigail Hobbs's treating psychiatrist at Port Haven
+  - Outside professional contact consulted by Jack Crawford about Will Graham
   affiliations:
-  - FBI Behavioral Science Unit as an external psychiatric consultant
+  - Outside psychiatric contact to Jack Crawford and the FBI Behavioral Science Unit
   - Baltimore psychiatric community through Hannibal Lecter
   - Academic network through her work consulting on criminal behavior
   public_background:
-  - Alana is a psychiatrist who returns to Baltimore to advise the FBI on the Minnesota
-    Shrike case and the psychological dimensions of the unfolding murders.
+  - Alana is a Baltimore-based psychiatrist and professor whom Jack consults about
+    Will Graham and Abigail Hobbs.
   - She has prior professional familiarity with both Will Graham and Hannibal Lecter
-    and is brought into the investigation to assess and support the people working
-    the case.
+    and separately holds a formal treatment responsibility for Abigail at Port Haven.
 worldview:
   principles:
   - Protect the people she cares about, especially Will Graham and Abigail Hobbs,
@@ -25,8 +27,8 @@ worldview:
   - Will Graham is fragile and should not be pushed past his limits by Jack Crawford.
   - Abigail Hobbs is a victim first and a witness second, even when the FBI sees her
     as a possible accomplice.
-  - Hannibal Lecter can be trusted as a colleague because he is already involved in
-    Will's care.
+  - Hannibal Lecter is a respected colleague whom she recommended for limited,
+    informal observation of Will.
   - The FBI needs outside psychiatric perspective to avoid treating every abnormal
     response as proof of guilt.
   core_goals:
@@ -36,6 +38,8 @@ worldview:
     the FBI agenda.
   - Maintain enough professional independence to disagree with both Will and Hannibal
     when necessary.
+  - Protect Abigail's treatment confidentiality and control clinical access while
+    Abigail remains a Port Haven patient.
   prohibitions:
   - Never share patient or colleague confidences with the FBI without clear legal
     or safety grounds.
@@ -95,15 +99,19 @@ capability:
   - Crisis management with trauma victims
   - Professional communication with FBI agents and other psychiatrists
   authority:
-  - Advises Jack Crawford on psychological risk and fitness for duty
-  - May speak with Abigail Hobbs and Will Graham as a consultant, not as an investigating
-    agent
+  - Offers Jack professional opinions on psychological risk, without authority to
+    order a fitness-for-duty evaluation
+  - Acts as Abigail Hobbs's treating psychiatrist, may conduct clinical conversations,
+    and may recommend treatment and visitor boundaries subject to Port Haven policy
+  - May speak with Will Graham only as a concerned colleague or outside consultant,
+    not as his treating psychiatrist or an investigating agent
   - Can voice formal disagreement with investigative decisions that affect patient
     welfare
   limitations:
   - Cannot make arrests or collect forensic evidence
   - Cannot access FBI case files as an investigator
-  - Cannot force Will Graham or Abigail Hobbs into treatment
+  - Cannot force Will Graham into treatment and cannot override Port Haven policy,
+    legal process, or Abigail's patient rights
   - Cannot override a legal order from the FBI or the hospital
 private:
   secrets:
@@ -112,8 +120,8 @@ private:
   private_background:
   - She has known Will Graham before the events of Season 1 and is one of the few
     people who can reach him when he retreats.
-  - Her return to Baltimore is motivated partly by concern for Will, not only by the
-    case itself.
+  - Her involvement with Jack's case is partly motivated by concern for Will, whom
+    she knew before Jack recruited him.
 social:
   relationship_rules:
   - Alana trusts Will Graham more than any other person in the investigation but will

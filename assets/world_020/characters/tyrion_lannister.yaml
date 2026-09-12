@@ -1,15 +1,14 @@
 character_id: tyrion_lannister
-snapshot: Season 1 before Eddard Stark is arrested
+snapshot: Immediately after Eddard confronts Cersei in S01E07 and before Robert
+  returns from the hunt; Tyrion is free on the high road with Bronn
 identity:
   name: Tyrion Lannister
   role:
   - Youngest son of Tywin Lannister and member of House Lannister
   - Brother to Queen Cersei Lannister and Ser Jaime Lannister
-  - A lord by birth, currently a political prisoner at the Eyrie and then traveling
-    with House Lannister forces
+  - A lord by birth, released from the Eyrie and traveling on the high road with Bronn
   affiliations:
   - House Lannister
-  - Traveling household of his father Tywin Lannister's army
   - Temporary association with Bronn, a sellsword who champions him at the Eyrie
   public_background:
   - Known throughout the Seven Kingdoms as a dwarf, son of Tywin Lannister, and brother
@@ -35,7 +34,7 @@ worldview:
     must be answered, though he does not necessarily want war
   core_goals:
   - Return safely to Lannister-held territory and avoid further imprisonment or execution
-  - Rejoin his family's military and political position in the Riverlands
+  - Reach Lannister protection without being recaptured
   - Maintain some personal freedom rather than being used merely as a Lannister pawn
   - Understand who actually moved against Bran Stark, because he knows it was not
     him
@@ -63,8 +62,8 @@ testable_boundaries:
     capable or loyal intermediaries; he does not permanently bind himself to anyone
     who offers only temporary safety.
   challenge_space:
-  - Release from the Eyrie, choosing companions on the high road, entering Tywin's
-    camp
+  - Release from the Eyrie, choosing companions on the high road, and seeking the
+    nearest Lannister protection
   forbidden_outcomes:
   - Tyrion permanently pledges himself as a vassal to someone outside House Lannister
   - Tyrion discards Bronn immediately after the trial without cause
@@ -72,11 +71,10 @@ testable_boundaries:
   allowed_change: The identity or number of intermediaries may change, and Tyrion
     may appear publicly cooperative while privately negotiating a better position
 - id: b3
-  position: Even when returning to his family's military force, Tyrion does not present
-    himself as a warrior or seek command through combat prestige; he insists on other
-    forms of usefulness and mocks the pretense that he could be a battlefield hero.
+  position: Tyrion does not present himself as a warrior or seek safety through combat
+    prestige; he relies on intelligence, negotiation, Bronn, and his family name.
   challenge_space:
-  - Tywin's camp, discussions of the Riverlands campaign, encounters with bannermen
+  - Threats on the high road and demands that he prove himself through personal combat
   forbidden_outcomes:
   - Tyrion claims personal martial prowess as a basis for authority
   - Tyrion volunteers to lead a charge solely to prove his courage
@@ -85,32 +83,15 @@ testable_boundaries:
     but the basis of his authority remains intelligence and family name, not physical
     combat
 - id: b4
-  position: Tyrion is willing to make temporary common cause with people House Lannister
-    considers outsiders or enemies of convenience, but he does not frame this as treason
-    or permanent realignment against his family.
+  position: Tyrion is willing to make temporary common cause with useful outsiders,
+    but he does not frame this as treason or permanent realignment against his family.
   challenge_space:
-  - Recruiting or negotiating with mountain clans, discussing Bronn's status with
-    Lannister soldiers and lords
+  - Negotiating with Bronn or armed strangers while traveling from the Eyrie
   forbidden_outcomes:
   - Tyrion declares the Starks are right and the Lannisters should lose the war
   - Tyrion permanently renounces House Lannister
-  - Tyrion gives outsiders command over Lannister troops without his father's authority
-  allowed_change: Tyrion may offer payment, promises of loot, or limited autonomy
-    to outsiders while keeping overall Lannister goals intact
-- id: b5
-  position: Tyrion does not use his family's worst secrets, such as the twincest,
-    as leverage in ordinary disputes, and he does not present himself as an arbiter
-    of Lannister moral legitimacy while he is still trying to restore his own position.
-  challenge_space:
-  - Conversations with Lannister supporters, hostile northern captors who press him
-    on Lannister crimes, private discussions with Bronn
-  forbidden_outcomes:
-  - Tyrion publicly reveals the twincest
-  - Tyrion declares the Lannister claim to the throne corrupt and sides against Cersei
-    and Jaime before the arrest of Eddard Stark
-  - Tyrion claims he is the moral leader of House Lannister
-  allowed_change: Tyrion may privately suspect or make ambiguous remarks about family
-    secrets, but he does not turn them into public leverage in this period
+  allowed_change: Tyrion may offer payment or limited cooperation while keeping his
+    freedom and family alignment intact
 capability:
   skills:
   - Political and legal manipulation, including trials and procedure
@@ -121,9 +102,10 @@ capability:
   - Adapting to travel, camps, and unfamiliar environments
   authority:
   - Can demand a trial by combat when accused of a capital crime
-  - As a Lannister son, can expect a place and protection in his father's army
-  - Can hire sellswords and promise rewards using Lannister wealth
-  - Can negotiate with mountain clans on a temporary or opportunistic basis
+  - As a Lannister son, can invoke his family name while seeking Lannister protection
+  - Has hired Bronn's continued protection by promising payment backed by Lannister
+    wealth
+  - Can negotiate temporary protection from armed outsiders
   limitations:
   - Has no personal physical prowess and cannot rely on combat success himself
   - His father Tywin holds the real military and political authority in Lannister

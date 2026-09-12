@@ -2,109 +2,34 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    gao_qiqiang:
-      level: neutral
-      basis_event: initial_state
-    li_xiang:
-      level: trusting
-      basis_event: initial_state
-    tang_xiaolong:
-      level: distrustful
-      basis_event: initial_state
-    tang_xiaohu:
-      level: distrustful
-      basis_event: initial_state
-    meng_yu:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    gao_qiqiang: {level: neutral, basis_event: ev_005}
+    li_xiang: {level: neutral, basis_event: initial_state}
+    tang_xiaolong: {level: neutral, basis_event: ev_005}
+    tang_xiaohu: {level: neutral, basis_event: ev_005}
+    meng_yu: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
-  - id: goal_001
-    content: 查清旧厂街市场除夕冲突主要责任归属
-    status: 未完成
-    basis_event: initial_state
-  - id: goal_002
-    content: 继续寻找现场目击商户补充旁证
-    status: 未完成
-    basis_event: initial_state
-  - id: goal_003
-    content: 与李响协调调查分工，避免调查停滞
-    status: 未完成
-    basis_event: initial_state
-  - id: goal_004
-    content: 避免调查过度影响高启强鱼摊经营
-    status: 未完成
-    basis_event: initial_state
+  - {id: goal_complete_questioning, content: 完成高启强斗殴事件的当晚问询与依法移交, status: active, basis_event: ev_005}
+  - {id: goal_keep_care_in_bounds, content: 在不改变程序结论的前提下照顾高家兄妹的除夕需求, status: active, basis_event: ev_007}
   disclosures: []
   knowledge:
-    knowledge_001:
-      content: 除夕夜旧厂街市场发生冲突，高启强与唐家兄弟等人卷入纠纷
-      status: active
-      visibility: an_xin
-      source_event: initial_state
-    knowledge_002:
-      content: 李响参与调查并已对相关人员进行问询
-      status: active
-      visibility: an_xin, li_xiang
-      source_event: initial_state
-    knowledge_003:
-      content: 唐小龙在问询中把主要责任推向高启强
-      status: active
-      visibility: an_xin, li_xiang, tang_xiaolong, gao_qiqiang
-      source_event: initial_state
-    knowledge_004:
-      content: 高启强长期在旧厂街市场卖鱼并照顾家人
-      status: active
-      visibility: an_xin, gao_qiqiang
-      source_event: initial_state
-    knowledge_005:
-      content: 高启强请求尽量不影响自己的鱼摊经营
-      status: active
-      visibility: an_xin, gao_qiqiang
-      source_event: initial_state
-    knowledge_006:
-      content: 李响调取旧厂街市场周边监控录像带作为证据
-      status: active
-      visibility: an_xin, li_xiang
-      source_event: initial_state
-    knowledge_007:
-      content: 安欣已前往旧厂街市场实地查看冲突发生位置
-      status: active
-      visibility: an_xin, li_xiang
-      source_event: initial_state
-    knowledge_008:
-      content: 唐小龙供述与市场商户说法存在明显出入
-      status: active
-      visibility: an_xin, li_xiang
-      source_event: initial_state
-    knowledge_009:
-      content: 孟钰在日常联系中问及除夕冲突调查进展
-      status: active
-      visibility: an_xin, meng_yu
-      source_event: initial_state
-    knowledge_010:
-      content: 现场商户口供与位置比对显示冲突核心可能在摊位争夺
-      status: active
-      visibility: an_xin, li_xiang
-      source_event: initial_state
-    knowledge_011:
-      content: 高启强因冲突导致鱼秤损坏
-      status: active
-      visibility: an_xin, gao_qiqiang
-      source_event: initial_state
+    k_an_001: {content: 高启强为保鱼摊送普通电视，电视被摔坏后先动手并遭围殴, status: active, visibility: [npc], source_event: ev_006}
+    k_an_002: {content: 高启盛和高启兰到派出所给高启强送年夜饭, status: active, visibility: [npc], source_event: ev_007}
+    k_an_003: {content: 自己已安排弟妹在隔壁吃饺子并把饺子转送高启强, status: active, visibility: [npc], source_event: ev_008}
 environment:
-  health:
-    an_xin: 100
-    player: 100
-  inventories:
-    an_xin: []
-    player: []
-  locations:
-    an_xin: loc_police_station
-    player: loc_police_station
-  access: {}
+  health: {an_xin: 100, player: 100}
+  inventories: {an_xin: [], player: []}
+  locations: {an_xin: loc_shuangqiao_station, player: loc_shuangqiao_station}
+  access:
+    adjacent_reception_area:
+      controllers: [an_xin]
+      subjects: {player: denied}
+    questioning_record:
+      controllers: []
+      subjects: {player: denied}
+    questioning_area:
+      controllers: []
+      subjects: {player: denied}
   offers: []
   task_status: active
   dialogue_status: active

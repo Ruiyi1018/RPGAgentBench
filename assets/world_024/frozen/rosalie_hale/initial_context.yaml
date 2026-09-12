@@ -1,22 +1,28 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: rosalie_scent_decoy
+    target: bella_swan
+    content: Travel with Esme in Bella's truck as the scent-decoy team
+    condition: Final protection teams begin departure
+    status: active
+    source_event: ae_021
   relationships:
     bella_swan:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_012
     edward_cullen:
-      level: neutral
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     jacob_black:
       level: neutral
-      basis_event: initial_state
+      basis_event: no_direct_contact
     alice_cullen:
-      level: neutral
-      basis_event: initial_state
+      level: loyal
+      basis_event: family_background
     carlisle_cullen:
       level: loyal
-      basis_event: initial_state
+      basis_event: family_background
     player:
       level: neutral
       basis_event: initial_state
@@ -24,40 +30,40 @@ runtime_state:
   - id: g_001
     content: Keep the Cullen family intact through the James crisis
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   - id: g_002
     content: Avoid personal risk for Bella's sake
     status: active
-    basis_event: initial_state
+    basis_event: ae_023
   - id: g_003
     content: Preserve the family's life in Forks
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   disclosures: []
   knowledge:
     k_001:
       content: Bella Swan has learned the Cullen family is made up of vampires.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_012
     k_002:
       content: A nomadic vampire coven, including a tracker named James, has encountered
-        the family and may target Bella.
+        the family and James has targeted Bella.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_018
     k_003:
       content: The Cullens are forming a plan to separate Bella from James and hide
         her away from Forks.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
     k_004:
       content: Carlisle and Edward are both committed to protecting Bella, despite
         the risk to the family.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
 environment:
   health:
     rosalie_hale: 100
@@ -68,7 +74,10 @@ environment:
   locations:
     rosalie_hale: cullen_house
     player: cullen_house
-  access: {}
+  access:
+    rosalie_hale:
+    - attend_forks_high
+    - use_bellas_truck_as_scent_decoy
   offers: []
   task_status: active
   dialogue_status: active

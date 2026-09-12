@@ -1,0 +1,143 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: major
+  rule_id: source_snapshot_boundary
+  evidence: shared_snapshot和generated_timeline仅写“第一季早期/前段”及“可确认的情节顺序”，没有给出截止集、截止事件或其他可复核边界；现有材料同时包含刚组建家庭、夏雪仍在磨合以及“稳定生活”等不同阶段表述，无法唯一判断哪些早期剧情已发生。
+  required_change: 为第一季材料给出可复核的起止集范围或明确截止事件，并据此统一所有Profile、候选事件和Frozen当前状态。
+  resolution: "已将来源与共享快照锁定为第一季第1至10集，并明确为第10集《角马的故事》结束后、第11集开始前；全部Profile同步同一快照，候选事件按集号及集内顺序编号。"
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可见知识、能力和临时授权；各initial_context却把Player直接放在NPC所在房间，并用private、public、family、shared等标签隐含不同可见范围。
+  required_change: 在canon中定义统一默认Player语义及可见性规则，并要求场景特定Player身份显式覆盖默认值。
+  resolution: "已在canon_policy.player_semantics定义默认Player为不掌握家庭私事的普通访客，列明初始知识、能力、限制及场景覆盖规则；Frozen知识可见性已按该语义改为明确受众列表。"
+  status: fixed
+
+- item_id: characters.xia_xue.private.private_background
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: Profile写“曾与父亲单独生活”；第一季人物背景为夏东海随前妻赴美期间夏雪留在国内由爷爷照料，父母离异后才回到父亲身边进入重组家庭，该陈述与正典经历直接冲突。
+  required_change: 按锁定的第一季来源改写夏雪进入重组家庭前的生活经历，并回归检查依赖该经历的立场、知识和关系。
+  resolution: "已将夏雪背景改为夏东海随前妻赴美期间由爷爷在国内照料、父母离异后回到父亲身边并进入重组家庭；相关立场与关系未再依赖错误的父女单独生活经历。"
+  status: fixed
+
+- item_id: characters.current_occupations
+  severity: major
+  rule_id: snapshot_role_consistent
+  evidence: 刘梅Profile把当前角色缩减为妻子、母亲和家务承担者，遗漏第一季明确的医院护士长身份；夏东海Profile遗漏第一季早期的儿童剧院编导身份。两人的职业、工作约束及相关权限均未进入当前有效状态。
+  required_change: 依据锁定快照补齐刘梅和夏东海的当前职业身份、相应能力与时间/权限限制；若工作地点将成为实际场景或移动目标，再补充环境节点。
+  resolution: "已补充刘梅当前医院护士长、夏东海当前儿童剧院编导身份，并写入相应技能、职责权限、工作时间限制；environment已增加医院和儿童剧院节点。"
+  status: fixed
+
+- item_id: characters.testable_boundaries
+  severity: major
+  rule_id: boundaries_source_grounded
+  evidence: "新增source_basis并未全部解决来源问题：夏东海boundary_003、夏雪b_xia_xue_003、夏雨b_xiayu_003及刘梅liu_mei_boundary_1均引用实际属于第46集的ae_013；刘星tb_liuxing_001又用第4集家长会和第6集作文取材推导“面对作业检查会交出作业本”等未由这些事件直接支持的规则。边界仍含快照外或证据不蕴含结论的依据。"
+  required_change: "删除所有ae_013依赖，并逐条确认source_basis中的第1至10集事件能直接支持position、forbidden_outcomes和allowed_change；无法从具体剧情推出的绝对规则应删除或收窄。"
+  resolution: "已删除四名角色边界对ae_013的全部依赖：夏东海boundary_003改由ae_001、ae_004支撑家庭协商边界，夏雪b_xia_xue_003改由ae_003、ae_004支撑共享空间边界，夏雨b_xiayu_003改由ae_014支撑失败后接受家人介入，刘梅boundary_1收窄为ae_001当次餐食；刘星tb_liuxing_001删除交出作业本等无依据结论，收窄为ae_011、ae_012直接支持的作文取材行为。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.event_boundaries
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: "候选已改为离散条目并补chapter_order，但“18条均可定位到第1至10集”的resolution不成立：ae_002把第1集带人回家与第2集揭示托儿身份合并为1.2，ae_013则把第46集洗脚情节错误定位为第7集。总顺序和事件边界仍有实质错误。"
+  required_change: "按一手分集来源修正ae_002跨集边界并删除/替换ae_013；之后重新检查18项chapter_order、source_ref、trigger和fact均指向同一离散事件。"
+  resolution: "已将ae_002整体移至第2集身份揭示事件并删除错误参与者；删除快照外ae_013；将第5集猫鼠原因、错误归因和真相披露依次拆为ae_009、ae_009b、ae_010（5.2至5.4）。候选池仍为18条，chapter_order、source_ref、trigger和fact按单集离散事件对应。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: "重建后仍用单一known_by覆盖复合信息。例如ae_009同时包含“猫吃掉小白鼠”的真实原因、夏雪的错误归因和对刘梅发火：夏雨知道直接原因，而夏雪和刘梅在真相说明前只知道死亡/冲突及错误归因，三人并不掌握同一完整事件状态。当前列表仍把阶段性知识压成全知布尔值。"
+  required_change: "拆分ae_009的原因事件、错误判断及后续披露，或为事件存在/原因/结果分别记录知情范围；对其余复合候选做同样核查，known_by只能包含对该条完整事实有在场、告知或证据依据的角色。"
+  resolution: "已拆分ae_009复合知识：ae_009仅记录猫鼠接触的直接原因，known_by仅含xia_yu；新增ae_009b记录夏雪作出归因及刘梅收到归责，known_by仅含xia_xue、liu_mei；ae_010保留真相披露后的共同知识。其余保密ae_006、跟踪ae_015及披露ae_016继续按阶段分别列知情者。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_change
+  severity: major
+  rule_id: stage1_executable_state
+  evidence: 多数state_change只是地点高频出现、角色形象、固定场景或反复关注点，例如ae_007、ae_009、ae_010、ae_013至ae_017和ae_024，没有明确旧状态、目标状态及可执行的知识、关系、目标/承诺、权限或资源路径；候选池整体也几乎不覆盖资源、权限和可闭合承诺。
+  required_change: 为保留的离散事件指定唯一可查询的前态与后态及其状态维度，确保池整体覆盖知识、关系、目标/承诺和资源/权限，并能导出后续可观察决定。
+  resolution: "已为每项候选写明知识、关系、目标/承诺、权限或资源的唯一前态与后态；候选池覆盖保密承诺闭合、宠物与剧本资源、跟踪任务权限、购买要约及可观察关系变化。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多数cf_edit改变长期人格、年龄、整个家庭结构或持续生活方式，而非单一事件原因，例如ae_006改夏雨年龄、ae_009改刘星性格、ae_010改夏雪学习态度、ae_017改全家出门习惯、ae_020改三人长期争执频率；这些干预同时改动多项背景状态，不能形成受控Stage 2分支。
+  required_change: 针对每个离散事件重写只改变一个可识别原因或证据的最小反事实，并说明该变化会导致哪一条状态或决定不同。
+  resolution: "已将每项cf_edit改为只改变一个触发原因、证据、许可或资源条件，并明确该单点变化将阻止或改变的状态/决定，未再改动人格、年龄或长期家庭结构。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.laolao_coverage
+  severity: major
+  rule_id: candidate_pool_roster_coverage
+  evidence: laolao列在evaluated_npcs且有完整Profile和Frozen状态，但24个候选事件没有任何一项anchor_for包含laolao；候选池无法为该角色提供正典状态更新、Stage 2因果变量或Stage 3压力依据。
+  required_change: 在锁定范围内补充姥姥实际参与且有状态后果的离散正典候选事件；若来源范围不能支持，则重新评估其入选角色资格。
+  resolution: "已加入姥姥在第4集《好爸爸》中参与家长会请求、短期保密与拦阻惩罚的三段离散候选ae_005至ae_007，其中ae_006、ae_007明确anchor_for包含laolao。"
+  status: fixed
+
+- item_id: frozen.initial_context.relationships
+  severity: major
+  rule_id: relationship_grounding
+  evidence: "部分强等级已下调，但保留项仍未被basis_event充分支持：刘星对刘梅为trusting却引用ae_007（该事件中他请求隐瞒并害怕被惩罚），刘梅对姥姥为trusting也引用同一隐瞒/误判事件。反向又出现Profile/Frozen不一致：夏雨Profile明确写对刘梅、夏东海“保持信任依赖”，Frozen却把两者都设为neutral。"
+  required_change: "逐方向统一Profile和Frozen关系语义；仅在具体事件直接支持信任时保留trusting，否则降为neutral，或换用能证明该方向关系的第1至10集依据。"
+  resolution: "已将刘星对刘梅、刘梅对姥姥、姥姥对刘梅及姥姥对刘星等缺少直接信任证据的方向降为neutral/initial_state；夏雨对父母的Frozen关系保持neutral并移除ae_013依据，同时把Profile中的“信任依赖”统一收窄为照顾与任务依赖；其余trusting仅保留ae_016或ae_018直接支撑的夫妻协作、父女合作方向。"
+  status: fixed
+
+- item_id: frozen.initial_context.executable_inventory
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: "当前把三名孩子的书包和作业本直接放入个人inventory、把角马剧本放入夏东海inventory，但各Frozen开局地点和第10集结束状态没有证据证明这些便携物品正被随身持有；与此同时，ae_010已产生并应持续存在的新小白鼠和猫只在environment声明，六份Frozen均未给出持有者或可执行位置。修复把“所有权”与“当前持有”混同，且仍丢失宠物资源终态。"
+  required_change: "按共享快照分别明确便携物品的实际当前持有者或可执行存放状态；将ae_010后仍存在的宠物资源投影到运行时可寻址位置/持有状态，避免以惯常所有权替代当前inventory。"
+  resolution: "已从三名孩子及夏东海的随身inventory移除无当前持有证据的书包、作业本和剧本，并在六份Frozen中统一投影可执行存放状态：学习用品及新小白鼠位于loc_woshi_haizi，角马剧本位于loc_shufang，猫与沙袋位于loc_keting；不再以所有权代替当前持有。"
+  status: fixed
+
+- item_id: frozen.initial_context.knowledge_visibility
+  severity: minor
+  rule_id: visibility_schema_consistency
+  evidence: 六份initial_context混用private、public、family和shared等未定义的标量visibility值，而规范推荐用明确受众列表区分仅NPC知情与NPC、Player共同知情；family和shared也没有列出具体知情主体。
+  required_change: 统一为运行时支持且受众明确的visibility表示，并结合默认Player语义逐项校准开局可见知识。
+  resolution: "六份initial_context的knowledge.visibility已统一为运行时支持的受众列表；当前基础知识均设为[npc]，不再使用private/public/family/shared等未定义标量，也不默认泄露给访客Player。"
+  status: fixed
+
+- item_id: frozen.liu_mei.initial_context.goals.status
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: "刘梅三个目标使用status: ongoing，其他角色使用active；FixtureEngine的目标状态闭集为active、fulfilled、cancelled、failed，ongoing无法参与规范的目标状态变更与判分。"
+  required_change: 将刘梅目标状态改为受支持的active，并全量检查Frozen目标状态词汇一致性。
+  resolution: "已将刘梅三个目标的status全部由ongoing改为FixtureEngine支持的active，并核对其余五份Frozen目标均使用active。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_002
+  severity: major
+  rule_id: evidence_supports_state
+  evidence: "ae_002标为chapter_order 1.2、source_ref第1集，并称朵朵假扮男友且家人事后确认；央视一手资料显示第1集只发生夏雪带“狂野男孩”回家，第2集才揭示该人是夏雪雇来的托儿，资料未支持此人为朵朵。当前条目混合两集并写入错误参与者，事件边界、顺序和知识更新均不可靠。"
+  required_change: "把带人回家与身份揭示按第1、2集的真实边界拆分或将揭示事件明确定位到第2集；删除无来源的“朵朵”身份，并据实际在场/获知过程重核known_by、state_change和cf_edit。"
+  resolution: "已将ae_002改为chapter_order 2.1、source_ref第一季第2集《下马威（下）》的托儿身份揭示事件；删除“朵朵”身份，仅保留家人获知受雇托儿并撤销早恋判断的单一知识更新，known_by为当时获知该揭示的五名家庭成员，cf_edit只改变身份是否被揭示。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.ae_013
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: "ae_013把“夏雪因德育作业给刘梅洗脚、揉肩”标为第一季第7集《老妈，谢谢你》，但央视一手资料显示该情节属于第一季第46集《给妈妈洗脚》；真正第7集是夏雪研究猩猩、刘梅准备猩猩展室。该快照只允许第1至10集，因而这是直接的未来剧情泄漏；characters/xia_yu、xia_xue、xia_donghai、liu_mei及多个Frozen关系又引用了ae_013。"
+  required_change: "删除ae_013及所有依赖第46集情节的Profile/Frozen依据，改用第1至10集内真实事件重建候选与边界；随后回归检查所有角色知识、关系、目标及source_basis不再引用快照后的剧情。"
+  resolution: "已从anchor_pool删除第46集洗脚情节ae_013，并清除characters/xia_yu、xia_xue、xia_donghai、liu_mei及Frozen关系中的全部ae_013引用；对应边界改用第1至10集内ae_001、ae_003、ae_004、ae_014等离散事件重建，运行态不再投影该未来剧情。"
+  status: fixed
+
+- item_id: environment.yaml.items.item_shadai
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: "候选ae_007的事实和最小反事实都以夏东海击打沙袋制造声音为关键机制，但environment.items没有沙袋，也没有其他明确映射；该候选的Stage 2因果变量和Stage 3资源操作无法在运行时指向有效物品ID。"
+  required_change: "在environment中加入可执行且ID稳定的沙袋资源，并在相关当前状态中放置或授权；或者重写ae_007，使其不依赖未建模资源，同时保持单一可执行因果变量。"
+  resolution: "已在environment.items加入稳定ID item_shadai（不可便携训练器材），并在六份Frozen的loc_keting运行时存放清单中统一放置；ae_007的声音机制及其单点反事实现在可引用有效物品ID和当前位置。"
+  status: fixed
+
+- item_id: frozen.xia_donghai.initial_context.environment.offers
+  severity: major
+  rule_id: snapshot_state_projection
+  evidence: "共享快照位于第10集结束后，ae_018明确写买方向夏东海提出购买剧本的要约，且state_change称夏东海已获得明确购买要约；但夏东海Frozen的environment.offers仍为空，claims、commitments和knowledge也均未记录该要约，当前有效状态与候选终态不一致。"
+  required_change: "依据第10集结束时的真实状态，将仍有效的购买要约以运行时支持的offer/knowledge状态投影到夏东海Frozen；若要约已接受、拒绝或闭合，则明确记录闭合结果并同步剧本资源状态。"
+  resolution: "已在夏东海Frozen加入仅NPC可见的knowledge_005，记录ae_018购买要约尚待回应；environment.offers新增pending的offer_juben_purchase_001（买方至xia_donghai，标的item_juben_jiaoma，source_event ae_018），剧本本体存放于loc_shufang，未虚构接受或拒绝结果。"
+  status: fixed

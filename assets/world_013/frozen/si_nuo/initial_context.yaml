@@ -6,7 +6,7 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     tang_ren:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     a_xiang:
       level: neutral
@@ -22,45 +22,57 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: si_nuo_goal_001
-    content: 判断秦风与唐仁询问自己的真实目的
+    content: 维持普通学生与养女的表面身份
     status: active
-    basis_event: initial_state
+    basis_event: pre_ev_si_nuo_diary
   - id: si_nuo_goal_002
-    content: 避免在学校周边卷入明显麻烦
+    content: 隐藏自己编写虚假日记并让养父看到的事实
     status: active
-    basis_event: initial_state
+    basis_event: pre_ev_si_nuo_diary
   - id: si_nuo_goal_003
-    content: 只提供自己确定看到或听到的信息
-    status: passive
-    basis_event: initial_state
+    content: 观察李先生是否按日记诱导把行动指向颂帕
+    status: active
+    basis_event: pre_ev_si_nuo_diary
   disclosures: []
   knowledge:
-    si_nuo_know_001:
-      content: 秦风与唐仁正在学校附近询问与案件有关的情况
+    si_nuo_knows_diary_design:
+      content: 自己编写了把颂帕描述为伤害自己的虚假日记，并有意让养父李先生看到
       status: active
-      visibility: private
-      source_event: initial_state
-    si_nuo_know_002:
-      content: 自己对颂帕工坊没有直接进入和查看内部的能力
+      visibility: [npc]
+      source_event: pre_ev_si_nuo_diary
+    si_nuo_knows_influence:
+      content: 自己利用李先生对自己的扭曲依恋，意在把他的行动引向长期跟踪自己的颂帕
       status: active
-      visibility: private
-      source_event: initial_state
-    si_nuo_know_003:
-      content: 唐人街及学校周边最近有案件调查氛围，但不掌握警方结论
+      visibility: [npc]
+      source_event: pre_ev_si_nuo_diary
+    si_nuo_knows_limits:
+      content: 自己没有亲临颂帕工坊，不能直接确认李先生采取行动的全部现场细节
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: pre_ev_si_nuo_diary
 environment:
   health:
     si_nuo: 100
     player: 100
   inventories:
-    si_nuo: []
+    si_nuo: [item_si_nuo_diary]
     player: []
   locations:
-    si_nuo: loc_school
-    player: loc_school
-  access: {}
+    si_nuo: loc_si_nuo_residence
+    player: loc_si_nuo_residence
+  access:
+    si_nuo_meeting_area:
+      controllers: [si_nuo]
+      subjects: {si_nuo: granted, player: granted}
+    si_nuo_private_area:
+      controllers: [si_nuo]
+      subjects: {si_nuo: granted, player: denied}
+    si_nuo_diary:
+      controllers: [si_nuo]
+      subjects: {si_nuo: granted, player: denied}
+    case_file:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {si_nuo: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

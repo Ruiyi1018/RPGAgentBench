@@ -2,82 +2,57 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    twilight_sparkle:
-      level: trusting
-      basis_event: initial_state
-    applejack:
-      level: trusting
-      basis_event: initial_state
-    pinkie_pie:
-      level: trusting
-      basis_event: initial_state
-    rainbow_dash:
-      level: trusting
-      basis_event: initial_state
-    rarity:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    twilight_sparkle: {level: trusting, basis_event: anch_001}
+    applejack: {level: trusting, basis_event: anch_001}
+    pinkie_pie: {level: trusting, basis_event: anch_008}
+    rainbow_dash: {level: trusting, basis_event: anch_008}
+    rarity: {level: trusting, basis_event: anch_001}
+    player: {level: neutral, basis_event: sf_default_player_neutral}
   goals:
   - id: goal_fluttershy_001
-    content: Check on the injured woodland animals from the Everfree Forest and make
-      sure they are calm enough to rest.
+    content: Continue caring for animals at her cottage.
     status: active
-    basis_event: initial_state
+    basis_event: sf_fluttershy_caretaker
   - id: goal_fluttershy_002
-    content: Help the group prepare for the upcoming celebration without letting party
-      noise reach the animals near her cottage.
+    content: Speak firmly when a dangerous creature threatens her friends.
     status: active
-    basis_event: initial_state
-  - id: goal_fluttershy_003
-    content: Practice the bird chorus near the Everfree Forest only while Rainbow
-      Dash or another friend is close enough to hear.
-    status: active
-    basis_event: initial_state
+    basis_event: anch_012
   disclosures: []
   knowledge:
-    knowledge_fluttershy_001:
-      content: Rainbow Dash practices a complicated aerial routine above Ponyville
-        and sometimes flies overhead during Fluttershy's bird practice.
+    know_fluttershy_001:
+      content: Rainbow Dash rejected Gilda after learning that Gilda bullied Pinkie
+        and frightened Fluttershy.
       status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_fluttershy_002:
-      content: Injured animals from the Everfree Forest have been staying in her cottage
-        and need quiet care.
+      visibility: [npc]
+      source_event: anch_008
+    know_fluttershy_002:
+      content: She persuaded the dragon to apologize and relocate after it attacked
+        her friends.
       status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_fluttershy_003:
-      content: Rarity asked her to model a dress, but the fitting must be arranged
-        quietly around the resting animals.
+      visibility: [npc]
+      source_event: anch_012
+    know_fluttershy_003:
+      content: She secretly kept one parasprite after the first removal attempt, which
+        caused the swarm to return.
       status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_fluttershy_004:
-      content: The six friends are planning an upcoming celebration in Ponyville and
-        have divided tasks among themselves.
+      visibility: [npc]
+      source_event: anch_017
+    know_fluttershy_004:
+      content: Pinkie's instruments successfully led the parasprite swarm out of Ponyville.
       status: active
-      visibility: public
-      source_event: initial_state
-    knowledge_fluttershy_005:
-      content: Twilight Sparkle has begun using a shared checklist to coordinate tasks
-        for Ponyville events.
+      visibility: [npc, player]
+      source_event: anch_018
+    know_fluttershy_005:
+      content: She apologized to Rarity and helped complete Rarity's own unfinished
+        dress; the restored original designs then succeeded and Hoity Toity gave Rarity
+        a bulk order due the following Tuesday.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_024
 environment:
-  health:
-    fluttershy: 100
-    player: 100
-  inventories:
-    fluttershy: []
-    player: []
-  locations:
-    fluttershy: loc_ponyville
-    player: loc_ponyville
+  health: {fluttershy: 100, player: 100}
+  inventories: {fluttershy: [], player: []}
+  locations: {fluttershy: loc_carousel_boutique, player: loc_carousel_boutique}
   access: {}
   offers: []
   task_status: active

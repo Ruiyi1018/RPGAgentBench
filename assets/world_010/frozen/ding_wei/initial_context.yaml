@@ -3,13 +3,13 @@ runtime_state:
   commitments: []
   relationships:
     li_yunlong:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     zhao_gang:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     kong_jie:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     chu_yunfei:
       level: neutral
@@ -22,51 +22,63 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: goal_ding_wei_001
-    content: 保持与李云龙、孔捷、赵刚等八路军指挥员的联系和经验交流
-    status: ongoing
+    content: 在不越过部队隶属关系的前提下与李云龙、孔捷保持必要联络
+    status: active
     basis_event: initial_state
   - id: goal_ding_wei_002
-    content: 在共享快照对日作战阶段中关注部队建设与作战准备
-    status: ongoing
-    basis_event: initial_state
+    content: 带领新一团完成当前对日作战准备
+    status: active
+    basis_event: anchor_003
   disclosures: []
   knowledge:
-    knowledge_ding_wei_001:
-      content: 李云龙担任八路军独立团团长，赵刚担任政委并共同任职
+    knowledge_ding_wei_li_appointment:
+      content: 李云龙已由上级任命接任八路军独立团团长
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anchor_004
     knowledge_ding_wei_002:
-      content: 丁伟与李云龙同属八路军并交流过部队建设或作战经验
+      content: 自己已由上级任命接任八路军新一团团长
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: anchor_003
     knowledge_ding_wei_003:
       content: 丁伟与孔捷、赵刚有联系，孔捷也与李云龙熟识
       status: active
-      visibility: known
+      visibility: [npc]
       source_event: initial_state
     knowledge_ding_wei_004:
       content: 同一战区中存在晋绥军军官楚云飞活动
       status: active
-      visibility: known
+      visibility: [npc]
       source_event: initial_state
-    knowledge_ding_wei_005:
-      content: 独立团在赵家峪一带面对日军据点威胁
+    knowledge_ding_wei_kong_appointment:
+      content: 孔捷已在李家坡战斗后由上级调任为八路军新二团团长
       status: active
-      visibility: known
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anchor_012
 environment:
   health:
     ding_wei: 100
     player: 100
   inventories:
-    ding_wei: []
+    ding_wei: [new_first_regiment_order_book]
     player: []
   locations:
-    ding_wei: nearby_village
-    player: nearby_village
-  access: {}
+    ding_wei: new_first_regiment_hq
+    player: new_first_regiment_hq
+  access:
+    new_first_regiment_guest_area:
+      controllers: [ding_wei]
+      subjects: {ding_wei: granted, player: granted}
+    new_first_regiment_full_command:
+      controllers: [ding_wei]
+      subjects: {ding_wei: granted, player: denied}
+    new_first_regiment_order_book:
+      controllers: [ding_wei]
+      subjects: {ding_wei: granted, player: denied}
+    independent_regiment_full_command:
+      controllers: [li_yunlong]
+      subjects: {ding_wei: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

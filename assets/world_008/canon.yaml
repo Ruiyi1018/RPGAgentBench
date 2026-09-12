@@ -1,15 +1,27 @@
 world_id: world_008
 canon_policy:
-  primary_source: 鹿鼎记
+  primary_source: 金庸《鹿鼎记》三联书店1994年修订版
   source_type: 小说
   excluded_versions:
+  - 明报连载版
+  - 2006年新修版
   - 影视改编
   - 漫画改编
   - 游戏改编
-  - 修订版
-  shared_snapshot: 六名角色均活跃的统一章节待人工锁定
-  generated_timeline: 锚点事件按作品内可推断的时间顺序排列，不断言具体日期
+  - 续作、同人及其他改编
+  shared_snapshot: 第四十四回神龙教内讧结束、洪安通已死且众人转移通吃岛之后，陈近南抵达通吃岛而尚未遭郑克塽暗算的时点；各角色共享同一时间而非同一场景
+  generated_timeline: 只收录该快照之前已发生的事件，按canon_order形成唯一顺序；不生成郑克塽暗算陈近南及其后的情节
   quotation_policy: 不复制原作台词，只做事实级转述
+  default_player_semantics:
+    identity: 无预设阵营的场景观察者；不是清廷、天地会或神龙教成员
+    initial_location: 由各NPC的initial_context将Player放在该NPC当前场景
+    initial_knowledge: 只知道visibility显式包含player的条目及场景中公开可见的事实
+    authority: 无官府、天地会或神龙教权限；不得仅因与NPC同地获得私密信息或组织资源
+    scenario_override: 后续场景可显式覆盖Player身份、位置、知识或临时授权；未覆盖字段继续采用本默认值
+    visibility_semantics: visibility为受众ID列表；仅NPC私有写[npc_id]，开局也向Player公开写[npc_id, player]
+    relationship_initialization:
+      source_id: runtime_initialization
+      semantics: 仅表示NPC与默认Player或无个人关系证据的对象在轨迹开始时没有既存信任或敌意，固定初始化为neutral；该ID不是正典事件，也不得作为知识、目标或强关系的证据。
 evaluated_npcs:
 - wei_xiaobao
 - kangxi
@@ -25,14 +37,14 @@ event_entities:
 - 事件
 sources:
 - id: src_ldj_novel
-  title: 鹿鼎记
+  title: 鹿鼎记（三联书店1994年修订版）
   creator: 金庸
-  scope: 原作小说正典文本
+  scope: 全五册；当前资产只采用第四十四回快照边界之前的事实
   authority: primary
 data_constraints:
-- 只使用鹿鼎记原作小说正典文本范围内的信息
+- 只使用金庸《鹿鼎记》三联书店1994年修订版范围内的信息
 - 不得使用共享快照之后发生的情节
-- 不得混入影视改编、漫画改编或其他版本内容
+- 不得混入明报连载版、2006年新修版、影视、漫画、游戏或续作内容
 - 无法可靠确认的细节一律省略
 - 不得伪造URL、章节号或集数
 - 所有锚点事件必须按可推断时间顺序排列
@@ -40,3 +52,4 @@ data_constraints:
 - 每个cf_edit必须给出只改变关键原因的真实替代情形
 - known_by和anchor_for只能使用roster中的角色ID
 - 所有connections必须引用已列出的地点ID
+- shared_snapshot表示统一时间边界，不表示六名角色同处一室或彼此全知

@@ -1,7 +1,7 @@
 schema_version: 2
 character_id: yu_zecheng
 foundation:
-  approved: false
+  approved: true
   checks:
     source_scope_resolved: true
     snapshot_consistent: true
@@ -9,11 +9,11 @@ foundation:
     public_private_separated: true
     boundaries_behavioral: true
     world_affordances_sufficient: true
-    snapshot_role_consistent: false
-    relationships_directional: false
-    future_knowledge_excluded: false
-    player_role_bounded: false
-    style_source_grounded: false
+    snapshot_role_consistent: true
+    relationships_directional: true
+    future_knowledge_excluded: true
+    player_role_bounded: true
+    style_source_grounded: true
 anchors:
   approved: false
   checks:
@@ -36,5 +36,5 @@ anchors:
     chronology_total_order: false
     evidence_supports_state: false
     event_boundary_exact: false
-reviewer: ''
-reviewed_at: ''
+reviewer: cursor-auditor
+reviewed_at: '2026-09-11'

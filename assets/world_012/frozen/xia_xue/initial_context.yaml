@@ -7,12 +7,12 @@ runtime_state:
       basis_event: initial_state
     xia_donghai:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_018
     liu_xing:
       level: neutral
       basis_event: initial_state
     xia_yu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -35,27 +35,27 @@ runtime_state:
     k_xia_xue_001:
       content: 家庭已经重组，自己与父亲、继母、刘星、夏雨共同生活。
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_xia_xue_002:
       content: 刘梅负责较多家务和日常管理，夏东海会参与家庭沟通和调解。
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_xia_xue_003:
       content: 刘星在作业和生活习惯上经常表现散漫。
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_xia_xue_004:
       content: 夏雨作为弟弟有更多依赖父母的行为。
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
     k_xia_xue_005:
       content: 晚餐时间常是一家人聚集在餐厅交流的固定时段。
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -63,6 +63,9 @@ environment:
     player: 100
   inventories:
     xia_xue: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     xia_xue: loc_woshi_haizi

@@ -1,26 +1,62 @@
 world_id: world_022
 name: London during the first case
+language: en
+
 locations:
+- id: john_bedsit
+  name: John's London bedsit
+  connected_to:
+  - st_bartholomews_hospital
 - id: 221b_baker_street
   name: 221B Baker Street
   connected_to:
   - st_bartholomews_hospital
   - scotland_yard
+  - lauriston_gardens_crime_scene
+  - derelict_warehouse
+  - northumberland_street
+  - mycroft_private_location
 - id: st_bartholomews_hospital
   name: St Bartholomew's Hospital
   connected_to:
+  - john_bedsit
   - 221b_baker_street
-  - nsy_building
+  - scotland_yard
+  - angelo_restaurant
 - id: scotland_yard
   name: Scotland Yard
   connected_to:
   - 221b_baker_street
-  - nsy_building
-- id: nsy_building
-  name: National Antiquity Museum exhibition hall
-  connected_to:
-  - scotland_yard
   - st_bartholomews_hospital
+  - lauriston_gardens_crime_scene
+  - derelict_warehouse
+- id: angelo_restaurant
+  name: Angelo's restaurant
+  connected_to:
+  - st_bartholomews_hospital
+  - northumberland_street
+- id: northumberland_street
+  name: Northumberland Street
+  connected_to:
+  - angelo_restaurant
+  - 221b_baker_street
+  - lauriston_gardens_crime_scene
+- id: lauriston_gardens_crime_scene
+  name: Lauriston Gardens Crime Scene
+  connected_to:
+  - 221b_baker_street
+  - scotland_yard
+  - northumberland_street
+- id: derelict_warehouse
+  name: Derelict Warehouse Meeting Place
+  connected_to:
+  - 221b_baker_street
+  - scotland_yard
+- id: mycroft_private_location
+  name: Mycroft's private location (not identified in the source at this snapshot)
+  connected_to:
+  - 221b_baker_street
+
 items:
 - id: pink_phone
   name: Pink phone
@@ -42,4 +78,3 @@ items:
   name: Sherlock's skull
   type: decoration
   portable: true
-language: en

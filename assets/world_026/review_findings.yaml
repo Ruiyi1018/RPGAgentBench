@@ -1,0 +1,143 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: source_scope_resolved
+  evidence: canon仅写“early-season episode range after the group forms”，没有季号、起止集或唯一截止事件；同时候选池混有首集、第一季与第二季才出现的素材，无法判定哪些事实在共享快照内已经成立。
+  required_change: 锁定唯一可复核的动画正剧版本与明确的起止集或截止事件，并让generated_timeline、全部Profile、候选事件及Frozen状态统一到该范围。
+  resolution: 已将唯一来源锁定为2010动画正剧S01E01-S01E14，快照定为S01E14结尾后；明确E01-E02仅作为主角团形成的前置范围，排除E15以后及其他连续性，并同步更新六份Profile、24个候选和六份Frozen。
+  status: fixed
+
+- item_id: anchor_pool.anch_001_anch_003
+  severity: blocker
+  rule_id: timeline_scope_consistency
+  evidence: canon明确排除主角团正式形成前的pilot two-parter，但anch_001的Twilight定居Golden Oaks Library及anch_003的迎新派对均发生在首集；anch_003还声称迎新派对使用party cannon，而该道具首次出现于第二季“Sweet and Elite”，把不同时点拼成了一个不存在的事件。
+  required_change: 删除或重写这两个候选，使每个事件来自锁定范围内的单一、可定位正典场景；不得把首集迎新派对与第二季party cannon合并。
+  resolution: 已删除原anch_001/anch_003的拼接内容；现anch_001改为S01E02城堡中六马激活和谐之元，anch_003改为S01E03在Sweet Apple Acres收到两张Gala票，均含可定位场景且不含第二季party cannon。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可见知识、权限或scenario覆盖规则，而六份initial_context都把Player直接放在NPC当前地点，并使用多套含义不明的visibility标签。
+  required_change: 在canon中定义统一的默认Player身份、知识与权限边界及scenario覆盖语义，并据此校准全部Frozen可见性。
+  resolution: 已在canon_policy.player_semantics定义默认Player为无既有私人关系的新成年Ponyville居民，限定公开知识、访客权限、无默认私室/记录访问，并定义[npc]、[npc, player]及显式scenario覆盖规则；六份Frozen已按此统一。
+  status: fixed
+
+- item_id: anchor_pool.events.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 24项现已有集号与场景定位，但anch_008把S01E05的Gilda派对写成Golden Oaks Library；该派对实际位于Sugarcube Corner，当前来源定位仍有实质错误。
+  required_change: 将anch_008的source_location校正为S01E05的Sugarcube Corner派对，并再次逐项核对其余场景定位与锁定正剧一致。
+  resolution: 已将anch_008的source_location从Golden Oaks Library校正为S01E05的Sugarcube Corner；并逐项复核其余23项均位于锁定的S01E02-S01E14范围且具有场景级定位。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 全部24个候选都没有chapter_order、episode_order或等价顺序字段；物理顺序在不同角色间交错，且同时含首集、第一季与至少第二季素材，无法恢复唯一总时间线。
+  required_change: 在锁定正典范围后为每个保留事件提供唯一可排序的顺序字段，并验证其与Profile及Frozen当前态一致。
+  resolution: 全部24个候选现均含episode_order与同集event_order，按(episode_order,event_order)严格升序排列；最晚事件为S01E14结尾，和post-S01E14共享快照一致。
+  status: fixed
+
+- item_id: anchor_pool.events.state_change
+  severity: major
+  rule_id: event_causal
+  evidence: 多个state_change不是事实直接触发的可执行状态变化，例如anch_002由一次收苹果推导农场成为固定聚会地、anch_003由迎新派对推导“town's most enthusiastic party planner”、anch_008由一次分享推导regular shared meals、anch_020仅写“gains confidence”；这些结果不可形成唯一Stage 1答案。
+  required_change: 为每个保留候选改写为由当场证据触发的明确知识、目标/承诺、关系、权限或资源变化；删除只有性格概括或无因果跳跃的候选。
+  resolution: 已把每项state_change重写为当场证据直接触发的知识纠正、承诺建立/闭合、关系判断、权限授予或资源完成状态；删除固定聚会地、常规共享餐、泛化信心等不可唯一判分外推。
+  status: fixed
+
+- item_id: anchor_pool.events.cf_edit
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: anch_016已收敛为单一疗效变量；但anch_024的基线事件本身仍不成立：五位朋友完成的是Rarity自己的未完成礼服，并非帮助完成六套替代礼服，因此“是否帮助完成替代礼服”的反事实不能对应正典基线或有效目标状态。
+  required_change: 先按S01E14实际事件修正anch_024的事实、状态变化和生命周期，再把cf_edit限定为该修正后事件中的一个可隔离关键事实，并明确其对应的目标状态或决定。
+  resolution: 已按S01E14事实重建anch_024基线；cf_edit现只切换Hoity Toity在同样赞扬复展示的前提下是否下达批量订单，唯一对应状态为Rarity是否获得下周二到期的制作承诺，不再使用不存在的“协助完成六套替代礼服”变量。
+  status: fixed
+
+- item_id: characters.all.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 已修正原列举的Fluttershy、Rarity边界及Twilight/Rainbow断言，但Profile仍保留缺少S01E01-S01E14可定位依据的内心或背景断言，例如Twilight“早期定居后重整图书馆并学习城镇日常”、Applejack私下担忧离开农场导致收获落后和维持农场强势形象、Rarity“比向朋友承认的更焦虑外地声望”及害怕只被视为乐于助人；Rarity social还沿用朋友们“helped restore her designs”的失实S01E14概括。
+  required_change: 删除缺少可定位来源的内心/背景推断，或改写为锁定剧集中可直接观察的事实；并把Rarity的S01E14关系规则校正为朋友们完成她自己的礼服、道歉并在其原始设计的复展示中担任模特，而非帮助制作六套礼服。
+  resolution: 已删除或改写列举的无来源推断：Twilight移除“重整图书馆/学习城镇日常”，core goal改为有S01E02依据的友谊学习，private_background改为S01E06可观察的魔法展示顾虑；Applejack移除两条私下担忧并以S01E04独自收获及接受帮助的可观察过程替代；Rarity移除两条内心状态并以S01E14公开寻求评价及失败反应替代。Rarity的b_003、social及Rainbow关系规则均已明确五位朋友完成的是Rarity自己未完成的礼服，随后担任原始设计复展示模特；Rarity Profile另记录结尾批量订单目标。
+  status: fixed
+
+- item_id: frozen.all.current_state_lifecycle
+  severity: major
+  rule_id: snapshot_state_consistency
+  evidence: Frozen把候选事件同时当作已完成知识和未完成active目标：Applejack已与Rainbow修好篱笆却仍以修篱笆为目标；Rarity已按时修完服装、已制作并挂好横幅却仍有相同active目标；Rainbow已与Rarity达成服装妥协却仍以达成妥协为目标。
+  required_change: 锁定一个共享时点，逐项区分尚未发生、进行中、已完成与已解决状态；完成事件不得继续以active目标存在。
+  resolution: 六份Frozen已按S01E14结束后重建；独自收获、风暴争执、龙迁移、竞赛争议和礼服返工均作为已闭合事件保留在知识中，不再重复为active目标；active项仅保留持续角色职责或由已完成事件导出的未来约束。
+  status: fixed
+
+- item_id: frozen.all.source_event_traceability
+  severity: major
+  rule_id: stable_evidence_sources
+  evidence: 绝大多数状态已改用anch_*或sf_*，但六份Frozen的player中立关系都以sf_friendship_group为basis_event；该快照事实只证明六位NPC组成朋友群，不涉及默认Player，不能支撑NPC→Player关系状态。
+  required_change: 为默认Player关系增加并引用明确的稳定Player语义/初始关系事实ID，或使用运行时支持且可追溯的等价依据；不得用与Player无关的朋友群事实作证据。
+  resolution: 已在canon.snapshot_facts新增sf_default_player_neutral，明确默认新来Player与各NPC无既有私人关系且NPC→Player初始为neutral；六份Frozen的player关系basis_event均改引该稳定事实ID，不再引用sf_friendship_group。
+  status: fixed
+
+- item_id: frozen.runtime_resources
+  severity: major
+  rule_id: resource_state_consistency
+  evidence: Applejack的active目标要求运送一车苹果但inventory为空，Pinkie的Profile与边界要求使用party cannon但inventory为空，Rainbow的当前正式服装妥协任务与环境中的专属礼服未映射到任何持有者；关键Stage 3资源不可执行。
+  required_change: 在确认这些任务与物品属于锁定快照后，将当前实际持有的关键物品映射到inventory或明确可执行的地点资源；不属于快照的任务和物品应删除。
+  resolution: 已删除不属于锁定范围的party cannon及对应任务；已完成的六套Gala礼服合并为item_mane_six_gala_dresses并放入Rarity inventory，Twilight获授的Winter Wrap Up背心进入其inventory；不再保留需要空inventory执行的苹果运输或礼服协商目标。
+  status: fixed
+
+- item_id: frozen.rarity.relationships.fluttershy
+  severity: major
+  rule_id: relationship_grounding
+  evidence: Rarity的initial_context将Fluttershy标为loyal，但Profile只描述温暖、慷慨及合作关系，第一季时装剧情还包含嫉妒和相互误解，没有支持高于一般friendship/trusting的忠诚等级依据。
+  required_change: 改为有依据的较弱关系等级，或在Profile与正典证据中明确补足当前loyal状态的可追溯依据。
+  resolution: 已将Rarity对Fluttershy从loyal降为由anch_001支撑的trusting，并在Rarity Profile中明确为一般温暖友谊，不再声称S01E14前已有特殊职业建模或忠诚关系。
+  status: fixed
+
+- item_id: frozen.all.visibility_vocabulary
+  severity: minor
+  rule_id: visibility_schema_consistency
+  evidence: 六份initial_context混用known_to_target、known_to_all、private、public、shared、shared_with_rainbow_dash等字符串；规范建议使用明确受众列表，当前标签无法稳定判断NPC与Player在轨迹开局分别知道什么。
+  required_change: 统一为执行器支持的受众列表语义，例如NPC私有为[npc]、默认Player可见为[npc, player]，并按默认Player规则逐项复核。
+  resolution: 六份Frozen的所有knowledge.visibility已统一为受众列表；公开且默认Player可知的事件使用[npc, player]，Fluttershy未披露的保留parasprite事实使用[npc]，已移除private/shared/public/known_to_target/shared_with_*字符串。
+  status: fixed
+
+- item_id: frozen.all.player_visibility_grounding
+  severity: blocker
+  rule_id: public_private_separated
+  evidence: 默认Player是无既有私人关系的新居民，却被赋予多项只由核心朋友在场或私下获知的精确细节，包括Applejack/Rarity在Golden Oaks Library内解决争执（anch_014）、六友在Carousel Boutique内道歉并帮助完成礼服（anch_024），以及Fluttershy随队在山洞中迫使巨龙迁离（anch_012）；这些knowledge均标为[npc, player]，canon未提供公开披露事件，构成开局隐藏信息泄漏。
+  required_change: 对每条knowledge按默认Player实际在场、公开传播或明确披露证据逐项校准；没有公开依据的核心朋友私下细节改为[npc]，或补充可定位的公开披露依据。
+  resolution: 已逐条按默认Player可观察性复核六份Frozen；农场私下援助、图书馆争执、Gilda私情、龙洞任务、Zecora解释及Boutique礼服道歉等无公开披露的精确细节均改为[npc]。仅保留公开舞台/城镇危机、公开比赛和公开任命等事件为[npc, player]，Fluttershy的parasprite隐情继续为[npc]。
+  status: fixed
+
+- item_id: environment.locations.anchor_scene_coverage
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: anch_001的实际场景是Castle of the Two Sisters，anch_010明确把Ursa Minor送回其洞穴，但environment.locations没有这两个场景/移动目的地的节点或无歧义映射；规范要求实际场景与移动目的地可运行映射。
+  required_change: 为Castle of the Two Sisters与Ursa cave添加最小、双向连通的地点节点，或在现有地点中提供无歧义映射，并复核全部候选场景和移动目的地均可解析。
+  resolution: 已新增loc_castle_two_sisters并与loc_everfree_forest双向连接，新增loc_ursa_minor_cave及loc_ponyville_spa并与loc_ponyville双向连接；同时将loc_town_square明确覆盖临时公共表演舞台。复核24项候选后，全部实际场景与移动目的地均有无歧义节点映射。
+  status: fixed
+
+- item_id: characters.applejack.capability.skills
+  severity: minor
+  rule_id: vocabulary_schema_consistency
+  evidence: Applejack Profile的capability.skills连续两次列出完全相同的“Apple harvesting and orchard maintenance”，产生无意义重复。
+  required_change: 删除重复技能项，并复核Profile列表不存在同类机械重复。
+  resolution: 已删除Applejack capability.skills中重复的“Apple harvesting and orchard maintenance”，并复核六份Profile的技能及其他列表未发现同类完全重复项。
+  status: fixed
+
+- item_id: anchor_pool.anch_024.event_boundary_and_lifecycle
+  severity: major
+  rule_id: event_boundary_exact
+  evidence: S01E14中五位朋友道歉后完成的是Rarity自己尚未完成的一套Gala礼服；随后由六位朋友穿着Rarity原始设计进行复展示，结尾Hoity Toity要求Rarity在下周二前为每款制作十二套。anch_024却写成朋友们帮助完成六套替代礼服，并把早已在失败时装秀前完成的“revision commitment”延迟到结尾才关闭，既错置事件对象也遗漏结尾新承诺。
+  required_change: 按剧集顺序重写anch_023/anch_024边界与状态生命周期：朋友指定的改版礼服在失败时装秀前已完成；朋友们后来完成Rarity自己的礼服并道歉；原始设计复展示成功后，记录Hoity Toity的批量订单及其新生效的限时制作承诺。同步校准canon快照事实、Profile和Frozen。
+  resolution: 已将anch_023边界移到改版礼服已完成且首场秀失败，明确改版承诺在此关闭并产生修复需要；anch_024依次记录道歉、五位朋友完成Rarity自己的未完成礼服、原始设计复展示成功及Hoity Toity下达每款十二套且下周二到期的订单。canon.sf_rarity_designer、Rarity Profile、环境物品及六份Frozen知识已同步，Rarity Frozen新增active批量订单承诺和目标。
+  status: fixed
+
+- item_id: frozen.all.snapshot_location
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: 共享快照被精确定义为S01E14结尾后；该结尾发生在Carousel Boutique的复展示，六位NPC均在场，Hoity Toity刚向Rarity下达批量订单。六份Frozen却把NPC分别放回图书馆、农场、Sugarcube Corner、Ponyville、Boutique和小屋，表示了剧终之后未经任何来源事件支持的移动。
+  required_change: 将六份Frozen当前地点统一校准到loc_carousel_boutique，或把共享快照改为一个明确允许各角色已返回常驻地、且不会丢失Hoity Toity订单的新时点；无论选择何者，都必须同步全部Profile/Frozen并记录Rarity在快照时有效的批量订单承诺。
+  resolution: 保持共享快照为S01E14结尾后；六份Frozen的NPC与默认Player地点均统一为loc_carousel_boutique，不再推断剧终后的返程。Rarity Profile与Frozen均已记录刚生效的Hoity Toity批量订单，Frozen中该承诺和对应目标均为active并追溯至anch_024。
+  status: fixed

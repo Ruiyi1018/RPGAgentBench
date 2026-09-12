@@ -1,17 +1,31 @@
 world_id: world_025
-source: The Hunger Games by Suzanne Collins, Part I "The Tributes"
+source: The Hunger Games by Suzanne Collins, chapters 1-10
+known_by_semantics: Lists evaluated NPCs whose knowledge is established by direct
+  participation, explicit disclosure, or access to an official announcement or
+  public broadcast by the shared snapshot. Public availability alone does not assert
+  that every evaluated NPC learned the event.
+cf_edit_semantics: stage2_eligible true means the edit changes one local fact, disclosure,
+  decision, or resource state while retaining the shared roster, snapshot boundary,
+  and prerequisites of later events. False marks a source-valid alternative that
+  is excluded from later Stage 2 pairing because it would replace a roster member
+  or break a required downstream event or resource chain.
 events:
 - id: ae_001
+  chapter_order: 1
   fact: Katniss wakes early on reaping morning and slips under the fence to meet Gale
     in the woods for hunting.
   known_by:
   - katniss_everdeen
   - gale_hawthorne
   state_change: Katniss leaves her house and enters the woods outside District 12.
-  cf_edit: Katniss wakes late and misses the hunt, leaving Gale to go alone.
+  cf_edit: Katniss does not meet Gale for the reaping-morning hunt.
+  stage2_eligible: false
+  stage2_exclusion_reason: Missing the hunt removes the shared food, discussion,
+    and catch required by ae_002 and ae_003, so the edit cannot remain local.
   anchor_for:
   - katniss_everdeen
 - id: ae_002
+  chapter_order: 2
   fact: Katniss and Gale gather strawberries and share bread while discussing running
     away from District 12.
   known_by:
@@ -19,20 +33,27 @@ events:
   - gale_hawthorne
   state_change: The two reaffirm their bond but agree that running away is impossible
     with their families.
-  cf_edit: They decide to run away immediately, abandoning the reaping.
+  cf_edit: Gale raises the possibility of escape, but Katniss ends the discussion
+    before they jointly state that their family obligations make it impossible.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
   - gale_hawthorne
 - id: ae_003
-  fact: Katniss trades some of the strawberries and greens at the Hob and buys a fresh
-    loaf of bread and mint leaves.
+  chapter_order: 3
+  fact: At the Hob, Katniss and Gale trade fish caught that morning for bread and
+    salt.
   known_by:
   - katniss_everdeen
-  state_change: Katniss obtains supplies for her family before the reaping.
-  cf_edit: Katniss keeps all the strawberries for her family and does not buy bread.
+  - gale_hawthorne
+  state_change: The hunting partners exchange part of the morning catch for bread
+    and salt to take home before the reaping.
+  cf_edit: The same fish trade provides bread but the trader withholds the salt.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
 - id: ae_004
+  chapter_order: 4
   fact: Prim is selected as the female tribute for District 12 during the reaping.
   known_by:
   - katniss_everdeen
@@ -42,9 +63,13 @@ events:
   - haymitch_abernathy
   state_change: Prim becomes the female tribute, putting her life at risk.
   cf_edit: Effie Trinket reads a different girl's name instead of Prim's.
+  stage2_eligible: false
+  stage2_exclusion_reason: Replacing Prim would remove the cause of Katniss's volunteer
+    action and cascade through the fixed roster and all later events.
   anchor_for:
   - katniss_everdeen
 - id: ae_005
+  chapter_order: 5
   fact: Katniss volunteers to take Prim's place as the female tribute for District
     12.
   known_by:
@@ -55,9 +80,13 @@ events:
   - effie_trinket
   state_change: Katniss becomes the female tribute in Prim's place.
   cf_edit: Katniss hesitates too long and Prim is taken away before she can volunteer.
+  stage2_eligible: false
+  stage2_exclusion_reason: Preventing the volunteer action replaces the evaluated
+    female tribute and is incompatible with the shared downstream timeline.
   anchor_for:
   - katniss_everdeen
 - id: ae_006
+  chapter_order: 6
   fact: Peeta Mellark is named the male tribute for District 12.
   known_by:
   - katniss_everdeen
@@ -68,44 +97,56 @@ events:
   state_change: Peeta becomes the male tribute and will compete alongside Katniss.
   cf_edit: The male tribute is another boy from the Seam, leaving Peeta safe in the
     crowd.
+  stage2_eligible: false
+  stage2_exclusion_reason: Replacing Peeta changes the evaluated roster and invalidates
+    the later District 12 team events.
   anchor_for:
   - peeta_mellark
 - id: ae_007
+  chapter_order: 7
   fact: Haymitch Abernathy staggers onto the stage and falls, earning the crowd's
     attention as the District 12 mentor.
   known_by:
   - katniss_everdeen
   - peeta_mellark
+  - gale_hawthorne
   - haymitch_abernathy
   - effie_trinket
   state_change: Haymitch appears publicly as the mentor for the District 12 tributes.
-  cf_edit: Haymitch appears sober and gives a composed speech to the district.
+  cf_edit: Haymitch staggers onto the stage but remains upright instead of falling.
+  stage2_eligible: true
   anchor_for:
   - haymitch_abernathy
 - id: ae_008
-  fact: After the reaping, Katniss says goodbye to Gale and her family in the Justice
-    Building.
+  chapter_order: 8
+  fact: During Gale's private Justice Building visit, he gives Katniss practical
+    arena advice and promises to keep both families supplied.
   known_by:
   - katniss_everdeen
   - gale_hawthorne
-  - peeta_mellark
-  state_change: Katniss completes her farewells before leaving District 12 for the
-    Capitol.
-  cf_edit: Katniss refuses to see anyone, leaving her family and Gale without a goodbye.
+  state_change: Gale makes an active commitment to provide for the Everdeen and Hawthorne
+    families while Katniss is gone.
+  cf_edit: Gale gives the same arena advice but makes no promise to supply Katniss's
+    family.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
 - id: ae_009
-  fact: Peeta asks to speak with Katniss privately before they leave District 12,
-    reminding her of the bread he once gave her.
+  chapter_order: 9
+  fact: Madge visits Katniss privately in the Justice Building and gives her the
+    mockingjay pin as a district token.
   known_by:
   - katniss_everdeen
-  - peeta_mellark
-  state_change: Katniss learns Peeta remembers their shared history from childhood.
-  cf_edit: Peeta avoids speaking to Katniss privately and boards the train without
-    speaking.
+  state_change: Katniss takes possession of the mockingjay pin and agrees to wear
+    it as her district token.
+  cf_edit: Madge visits Katniss but does not bring or transfer the mockingjay pin.
+  stage2_eligible: false
+  stage2_exclusion_reason: Removing the original transfer breaks the pin's required
+    downstream inspection and launch-room state.
   anchor_for:
-  - peeta_mellark
+  - katniss_everdeen
 - id: ae_010
+  chapter_order: 10
   fact: Katniss, Peeta, Haymitch, and Effie board the tribute train and begin the
     journey to the Capitol.
   known_by:
@@ -116,9 +157,13 @@ events:
   state_change: The District 12 tributes depart their home for the Capitol.
   cf_edit: The train is delayed and the tributes spend an extra night in District
     12.
+  stage2_eligible: false
+  stage2_exclusion_reason: An extra night shifts every later preparation boundary
+    and cannot be held local at the shared snapshot.
   anchor_for:
   - peeta_mellark
 - id: ae_011
+  chapter_order: 11
   fact: On the train, Katniss and Peeta are served lavish meals and see the luxury
     of the Capitol for the first time.
   known_by:
@@ -129,20 +174,11 @@ events:
   state_change: The tributes experience Capitol abundance, contrasting with District
     12 poverty.
   cf_edit: The train serves only simple food, giving no hint of Capitol excess.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
-- id: ae_012
-  fact: Haymitch tells Katniss and Peeta to stay together and act as a team during
-    the Games, advice they resist.
-  known_by:
-  - katniss_everdeen
-  - peeta_mellark
-  - haymitch_abernathy
-  state_change: Haymitch begins mentoring the tributes, urging them toward alliance.
-  cf_edit: Haymitch tells them to split up and avoid each other during the Games.
-  anchor_for:
-  - haymitch_abernathy
 - id: ae_013
+  chapter_order: 12
   fact: Katniss and Peeta see the Capitol for the first time as the train arrives,
     with its colorful crowds and strange fashions.
   known_by:
@@ -152,19 +188,28 @@ events:
   - effie_trinket
   state_change: The tributes enter the Capitol, leaving behind the familiar world
     of District 12.
-  cf_edit: The train arrives in the Capitol at night, hiding the crowds from view.
+  cf_edit: The train reaches the Capitol on the same schedule, but its viewing windows
+    remain screened so Katniss and Peeta do not see the waiting crowds.
+  stage2_eligible: true
   anchor_for:
   - peeta_mellark
 - id: ae_014
-  fact: Katniss meets her prep team, including Cinna, who is assigned as her stylist
-    for the Games.
+  chapter_order: 13
+  fact: After Venia, Octavia, and Flavius finish Katniss's prep work and leave, Cinna
+    enters separately and meets her for the first time as her assigned stylist.
   known_by:
   - katniss_everdeen
-  state_change: Katniss gains her stylist Cinna, who will shape her public image.
-  cf_edit: Katniss is assigned a different, less innovative stylist instead of Cinna.
+  state_change: Katniss learns that Cinna, distinct from the prep team, is her assigned
+    stylist and will direct her public presentation.
+  cf_edit: The same prep work occurs, but a different assigned stylist enters instead
+    of Cinna.
+  stage2_eligible: false
+  stage2_exclusion_reason: Replacing Cinna cascades into the fixed parade, interview,
+    and launch-room preparation events.
   anchor_for:
   - katniss_everdeen
 - id: ae_015
+  chapter_order: 14
   fact: Cinna explains that he requested District 12 so he could work with Katniss
     and Peeta.
   known_by:
@@ -172,23 +217,28 @@ events:
   state_change: Katniss learns Cinna chose District 12 on purpose, signaling his belief
     in her.
   cf_edit: Cinna reveals he was assigned to District 12 against his will.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
 - id: ae_016
+  chapter_order: 15
   fact: During the tribute parade, Katniss and Peeta wear outfits lit with synthetic
-    fire designed by Cinna.
+    fire designed by Cinna and hold hands as their chariot enters the City Circle.
   known_by:
   - katniss_everdeen
   - peeta_mellark
   - haymitch_abernathy
   - effie_trinket
-  state_change: The fire costumes make Katniss and Peeta stand out to the Capitol
-    audience and other tributes.
-  cf_edit: Katniss and Peeta wear plain black outfits that go unnoticed in the parade.
+  state_change: The fire costumes and joined hands make Katniss and Peeta stand out
+    as a coordinated District 12 pair to the Capitol audience and other tributes.
+  cf_edit: The same fire costumes appear in the parade, but Katniss and Peeta do not
+    join hands on the chariot.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
   - peeta_mellark
 - id: ae_017
+  chapter_order: 16
   fact: After the parade, Katniss and Peeta return to their apartment and watch a
     replay of the opening ceremonies with Haymitch and Effie.
   known_by:
@@ -200,85 +250,130 @@ events:
     costumes.
   cf_edit: The replay is not shown, leaving the tributes unaware of the audience's
     reaction.
+  stage2_eligible: true
   anchor_for:
   - peeta_mellark
-- id: ae_018
-  fact: During training, Katniss demonstrates her skill with a bow by shooting at
-    a target, impressing the other tributes and the Gamemakers.
+- id: ae_012
+  chapter_order: 17
+  fact: After the opening-ceremony replay and before shared training begins, Haymitch
+    instructs Katniss and Peeta to train together, appear friendly in public, and
+    keep their strongest skills private until individual scoring.
   known_by:
   - katniss_everdeen
   - peeta_mellark
-  state_change: Katniss reveals her archery skill to the Gamemakers and the other
-    tributes.
-  cf_edit: Katniss hides her archery skill and performs poorly during training.
+  - haymitch_abernathy
+  state_change: The tributes accept a bounded pre-arena commitment to joint training
+    and coordinated public presentation, not an arena alliance.
+  cf_edit: Haymitch gives the same instructions but tells them to train separately
+    rather than together.
+  stage2_eligible: true
+  anchor_for:
+  - haymitch_abernathy
+- id: ae_018
+  chapter_order: 18
+  fact: During Katniss's private scoring session, after the Gamemakers ignore her,
+    she shoots an arrow through the apple in their roast pig.
+  known_by:
+  - katniss_everdeen
+  state_change: The Gamemakers directly observe both Katniss's archery skill and her
+    defiant response; the other tributes do not witness it.
+  cf_edit: Katniss completes the same archery demonstration but does not fire at the
+    Gamemakers' table.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
 - id: ae_019
-  fact: Peeta asks Katniss whether she was serious about volunteering for Prim, and
-    she confirms it was to save her sister.
-  known_by:
-  - katniss_everdeen
-  - peeta_mellark
-  state_change: Peeta learns the motivation behind Katniss's volunteering.
-  cf_edit: Peeta never asks about Prim, leaving his understanding of Katniss incomplete.
-  anchor_for:
-  - peeta_mellark
-- id: ae_020
-  fact: Haymitch secures sponsors by presenting Katniss and Peeta as star-crossed
-    lovers from District 12.
-  known_by:
-  - katniss_everdeen
-  - peeta_mellark
-  - haymitch_abernathy
-  state_change: The tributes gain a survival strategy based on a romantic narrative
-    that attracts Capitol support.
-  cf_edit: Haymitch presents them only as fierce individual competitors, gaining fewer
-    sponsors.
-  anchor_for:
-  - haymitch_abernathy
-- id: ae_021
-  fact: During the tribute interviews, Peeta openly confesses his long-held feelings
-    for Katniss in front of the Capitol audience.
+  chapter_order: 19
+  fact: During her televised interview, Caesar asks Katniss about Prim, and Katniss
+    publicly says she loves her sister and promised to try to win.
   known_by:
   - katniss_everdeen
   - peeta_mellark
   - haymitch_abernathy
   - effie_trinket
-  state_change: The Capitol audience becomes invested in a romance between Katniss
-    and Peeta.
-  cf_edit: Peeta says he hopes to win by his own strength and does not mention Katniss
-    romantically.
+  - gale_hawthorne
+  state_change: Katniss's love for Prim and her promise to try to return become part
+    of her public interview presentation; this does not create a private disclosure
+    to Peeta.
+  cf_edit: Caesar asks about Katniss's sister, but does not ask what Katniss promised
+    Prim before leaving.
+  stage2_eligible: true
   anchor_for:
   - peeta_mellark
-- id: ae_022
-  fact: Katniss reacts to Peeta's interview confession with shock and later confronts
-    him about his strategy.
+- id: ae_020
+  chapter_order: 20
+  fact: During his televised interview, Peeta reveals that the girl he has loved
+    for years came to the Games with him.
   known_by:
   - katniss_everdeen
   - peeta_mellark
-  state_change: Tension forms between Katniss and Peeta over whether his confession
-    was real or a survival tactic.
-  cf_edit: Katniss takes Peeta's confession as a joke and ignores it completely.
+  - haymitch_abernathy
+  - effie_trinket
+  state_change: Peeta's feelings become public and the audience can identify Katniss
+    as the object of his confession; no sponsor acquisition is yet recorded.
+  cf_edit: Peeta identifies Katniss as the girl he cares for but does not disclose
+    how long he has felt that way.
+  stage2_eligible: true
+  anchor_for:
+  - peeta_mellark
+- id: ae_021
+  chapter_order: 21
+  fact: Immediately after the interviews, Katniss confronts Peeta over his public
+    confession and shoves him, leaving him cut by a broken urn.
+  known_by:
+  - katniss_everdeen
+  - peeta_mellark
+  - haymitch_abernathy
+  - effie_trinket
+  state_change: Katniss's shock becomes an explicit conflict with Peeta before any
+    sponsor explanation resolves why he made the confession.
+  cf_edit: Katniss confronts Peeta verbally but does not shove or injure him.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
+- id: ae_022
+  chapter_order: 22
+  fact: After Katniss confronts Peeta, Haymitch explains that the confession made
+    Katniss appear desirable to the audience and could improve her sponsor prospects.
+  known_by:
+  - katniss_everdeen
+  - peeta_mellark
+  - haymitch_abernathy
+  - effie_trinket
+  state_change: Katniss hears and understands Haymitch's explanation of the confession's
+    publicity value while remaining uncertain about Peeta's motives and making no
+    commitment to a romance strategy or arena alliance.
+  cf_edit: Haymitch ends the argument without explaining how Peeta's confession changed
+    the audience's view of Katniss.
+  stage2_eligible: true
+  anchor_for:
+  - haymitch_abernathy
 - id: ae_023
+  chapter_order: 23
   fact: The night before the Games, Katniss and Peeta spend time on the roof of the
     Training Center, talking about what will happen and what they want to hold onto.
   known_by:
   - katniss_everdeen
   - peeta_mellark
-  state_change: The two tributes make a fragile peace and agree to try to stay alive.
-  cf_edit: Katniss spends the night alone in her room, avoiding Peeta entirely.
+  state_change: Katniss learns that Peeta wants to preserve his identity and resist
+    becoming merely another piece in the Games; she does not understand this as a
+    mutual survival agreement.
+  cf_edit: Peeta discusses the coming arena but does not disclose his concern about
+    preserving his identity.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen
 - id: ae_024
-  fact: Immediately before the first Games begin, Katniss receives the mockingjay
-    pin from Cinna as her district token and prepares to enter the arena.
+  chapter_order: 24
+  fact: In the underground launch room, Cinna points out that the mockingjay pin
+    Madge gave Katniss has passed inspection and is fastened to Katniss's arena shirt.
   known_by:
   - katniss_everdeen
-  state_change: Katniss is fully outfitted and ready to enter the arena with the mockingjay
-    pin as her token.
-  cf_edit: Katniss enters the arena without the mockingjay pin, carrying no token
-    from District 12.
+  state_change: Katniss retains the pin as her current inventory, and official inspection
+    permits her to carry the token onto the launch plate; no ungrounded Cinna ownership
+    transfer is asserted.
+  cf_edit: Cinna completes the same outfit preparation, but inspection denies permission
+    to carry the pin onto the launch plate.
+  stage2_eligible: true
   anchor_for:
   - katniss_everdeen

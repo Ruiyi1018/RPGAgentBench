@@ -1,5 +1,6 @@
 world_id: world_007
-name: 天龙八部共享快照环境
+name: 天龙八部三联修订版少室山切点环境
+language: zh
 locations:
 - id: shaolin_temple
   name: 少林寺
@@ -10,27 +11,39 @@ locations:
   connected_to:
   - shaolin_temple
   - juxian_villa
+  - shaoshi_departure_road
 - id: juxian_villa
   name: 聚贤庄
   connected_to:
   - shaoshi_mountain
+  - leigu_mountain
+  - jiangnan
 - id: yanzi_wu
   name: 燕子坞
   connected_to:
   - taihu
+  - mantuo_villa
+  - jiangnan
 - id: taihu
   name: 太湖
   connected_to:
   - yanzi_wu
   - mantuo_villa
+  - leigu_mountain
+  - dali_city
+  - jiangnan
 - id: mantuo_villa
   name: 曼陀山庄
   connected_to:
   - taihu
+  - yanzi_wu
 - id: dali_city
   name: 大理城
   connected_to:
   - dali_palace
+  - taihu
+  - tianshan
+  - wuliang_cave
 - id: dali_palace
   name: 大理皇宫
   connected_to:
@@ -48,40 +61,56 @@ locations:
   name: 天山
   connected_to:
   - tianshan_lingjiu_palace
+  - dali_city
+  - xixia_ice_cellar
 - id: leigu_mountain
   name: 擂鼓山
-  connected_to: []
-items:
-- id: jade_sword
-  name: 碧玉剑
-  type: 兵器
-  portable: true
-- id: baihong_sword
-  name: 白虹剑
-  type: 兵器
-  portable: true
-- id: beiming_shengong_scroll
-  name: 北冥神功秘卷
-  type: 秘籍
-  portable: true
-- id: lingbo_weibu_scroll
-  name: 凌波微步图卷
-  type: 秘籍
-  portable: true
-- id: shaolin_yijinjing
-  name: 少林易筋经
-  type: 秘籍
-  portable: true
-- id: murong_family_manual
-  name: 慕容氏家传武功谱
-  type: 秘籍
-  portable: true
-- id: dali_duan_shipu
-  name: 大理段氏世谱
-  type: 文书
-  portable: true
-- id: jiumozhi_iron_staff
-  name: 鸠摩智铁杖
-  type: 兵器
-  portable: true
-language: zh
+  connected_to:
+  - juxian_villa
+  - taihu
+- id: jiangnan
+  name: 江南
+  connected_to:
+  - taihu
+  - yanzi_wu
+  - juxian_villa
+  - wuxi_city
+- id: xingzi_forest
+  name: 无锡城外杏子林
+  connected_to:
+  - wuxi_city
+- id: wuxi_city
+  name: 无锡城
+  connected_to:
+  - jiangnan
+  - xingzi_forest
+- id: wuliang_cave
+  name: 无量山石室
+  connected_to:
+  - dali_city
+- id: xixia_ice_cellar
+  name: 西夏皇宫冰窖
+  connected_to:
+  - tianshan
+- id: shaoshi_departure_road
+  name: 少室山下山道
+  connected_to:
+  - shaoshi_mountain
+items: []
+runtime_resources:
+  permissions:
+  - id: dali_princely_liaison
+    holder: duan_yu
+    effect: 可请求有限的王府联络与护送，不得调兵处理私仇
+  - id: lingjiu_household_command
+    holder: xu_zhu
+    effect: 可向灵鹫宫属下下达护卫、止争与日常命令
+  - id: murong_retainer_command
+    holder: murong_fu
+    effect: 可向慕容氏家臣分派家族事务
+  - id: mantuo_household_request
+    holder: wang_yuyan
+    effect: 可请求曼陀山庄仆从处理庄内日常事务
+  - id: tubo_entourage_command
+    holder: jiumozhi
+    effect: 可向随行吐蕃人员分派非军事行程与礼仪事务

@@ -3,16 +3,16 @@ runtime_state:
   commitments: []
   relationships:
     liu_mei:
-      level: loyal
-      basis_event: initial_state
-    liu_xing:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_016
+    liu_xing:
+      level: neutral
+      basis_event: ae_007
     xia_xue:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_018
     xia_yu:
-      level: loyal
+      level: neutral
       basis_event: initial_state
     laolao:
       level: neutral
@@ -38,34 +38,48 @@ runtime_state:
     knowledge_001:
       content: 刘梅与夏东海组建重组家庭后，一家人开始在同一住所共同生活
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: 刘梅在做饭时间使用厨房准备家庭餐食
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
     knowledge_003:
       content: 刘星、夏雪、夏雨在家庭中已有兄弟姐妹间的日常小争执
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
     knowledge_004:
       content: 夏雪与刘梅之间围绕生活安排存在意见分歧
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
+    knowledge_005:
+      content: 第10集汇演成功后，买方向自己提出购买《角马的故事》剧本的要约，该要约尚待回应
+      status: active
+      visibility: [npc]
+      source_event: ae_018
 environment:
   health:
     xia_donghai: 100
     player: 100
   inventories:
     xia_donghai: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     xia_donghai: loc_keting
     player: loc_keting
   access: {}
-  offers: []
+  offers:
+  - id: offer_juben_purchase_001
+    proposer: juben_buyer
+    recipient: xia_donghai
+    item: item_juben_jiaoma
+    status: pending
+    source_event: ae_018
   task_status: active
   dialogue_status: active

@@ -1,83 +1,57 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_hoity_bulk_order
+    content: Produce twelve copies of each successful Gala design for Hoity Toity by
+      the following Tuesday.
+    status: active
+    basis_event: anch_024
   relationships:
-    twilight_sparkle:
-      level: trusting
-      basis_event: initial_state
-    applejack:
-      level: trusting
-      basis_event: initial_state
-    pinkie_pie:
-      level: trusting
-      basis_event: initial_state
-    rainbow_dash:
-      level: neutral
-      basis_event: initial_state
-    fluttershy:
-      level: loyal
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    twilight_sparkle: {level: trusting, basis_event: anch_001}
+    applejack: {level: trusting, basis_event: anch_014}
+    pinkie_pie: {level: trusting, basis_event: anch_001}
+    rainbow_dash: {level: trusting, basis_event: anch_024}
+    fluttershy: {level: trusting, basis_event: anch_001}
+    player: {level: neutral, basis_event: sf_default_player_neutral}
   goals:
-  - id: goal_001
-    content: Complete a new line of dresses at Carousel Boutique and have Fluttershy
-      model one of them
+  - id: goal_rarity_001
+    content: Maintain Carousel Boutique as a successful design business.
     status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: Repair the torn costume for Pinkie Pie's event before the celebration
-      begins
+    basis_event: sf_rarity_designer
+  - id: goal_rarity_002
+    content: Preserve the six completed Gala dresses until her friends need them.
     status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: Create a special banner for the Ponyville festival and hang it near the
-      center of town
+    basis_event: anch_024
+  - id: goal_rarity_003
+    content: Complete Hoity Toity's bulk order by the following Tuesday.
     status: active
-    basis_event: initial_state
+    basis_event: anch_024
   disclosures: []
   knowledge:
-    know_001:
-      content: The six friends gather at the Golden Oaks Library to plan upcoming
-        celebrations in Ponyville
+    know_rarity_001:
+      content: She and Applejack resolved their storm dispute by apologizing and cooperating.
       status: active
-      visibility: shared
-      source_event: initial_state
-    know_002:
-      content: Fluttershy is comfortable modeling Rarity's designs and has a gentle,
-        reliable presence during fittings
+      visibility: [npc]
+      source_event: anch_014
+    know_rarity_002:
+      content: The friends' excessive specifications produced failed dresses and
+        harmed her fashion show.
       status: active
-      visibility: private
-      source_event: initial_state
-    know_003:
-      content: Rainbow Dash was dissatisfied with Rarity's original formal outfit
-        idea, and the two settled on a compromise style after a disagreement
+      visibility: [npc]
+      source_event: anch_023
+    know_rarity_003:
+      content: All five friends apologized and completed Rarity's own unfinished dress;
+        after the restored original designs succeeded, Hoity Toity ordered twelve
+        of each by the following Tuesday.
       status: active
-      visibility: shared_with_rainbow_dash
-      source_event: initial_state
-    know_004:
-      content: Pinkie Pie tested a new confetti recipe at Sugarcube Corner and created
-        a large mess inside the shop
-      status: active
-      visibility: shared_with_pinkie_pie
-      source_event: initial_state
-    know_005:
-      content: Rarity stayed up late to finish repairing a costume for one of Pinkie
-        Pie's events and completed the repair in time
-      status: active
-      visibility: shared_with_pinkie_pie
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_024
 environment:
-  health:
-    rarity: 100
-    player: 100
+  health: {rarity: 100, player: 100}
   inventories:
-    rarity: []
+    rarity: [item_mane_six_gala_dresses]
     player: []
-  locations:
-    rarity: loc_carousel_boutique
-    player: loc_carousel_boutique
+  locations: {rarity: loc_carousel_boutique, player: loc_carousel_boutique}
   access: {}
   offers: []
   task_status: active

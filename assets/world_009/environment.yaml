@@ -1,37 +1,43 @@
 world_id: world_009
 name: 七侠镇
-locations:
-- id: tongfu_inn
-  name: 同福客栈
-  connected_to:
-  - qixia_town_street
-- id: qixia_town_street
-  name: 七侠镇街道
-  connected_to:
-  - tongfu_inn
-- id: qixia_town_gate
-  name: 七侠镇镇门
-  connected_to:
-  - qixia_town_street
-- id: qixia_town_market
-  name: 七侠镇集市
-  connected_to:
-  - qixia_town_street
-items:
-- id: tongfu_sign
-  name: 同福客栈招牌
-  type: 标识
-  portable: false
-- id: guo_furong_broom
-  name: 郭芙蓉的扫帚
-  type: 工具
-  portable: true
-- id: li_dazui_cleaver
-  name: 李大嘴的菜刀
-  type: 厨具
-  portable: true
-- id: account_book
-  name: 同福客栈账本
-  type: 文书
-  portable: true
 language: zh
+
+locations:
+  - id: tongfu_inn
+    name: 同福客栈
+    connected_to: [qixia_town_street, qixia_town_market, yihonglou]
+  - id: qixia_town_street
+    name: 七侠镇街道
+    connected_to: [tongfu_inn, qixia_town_gate, qixia_town_market, qixia_school, yihonglou]
+  - id: qixia_town_gate
+    name: 七侠镇镇门
+    connected_to: [qixia_town_street, qixia_town_market, guo_family_home, hostage_cell]
+  - id: qixia_town_market
+    name: 七侠镇集市
+    connected_to: [tongfu_inn, qixia_town_street, qixia_town_gate]
+  - id: qixia_school
+    name: 白马书院
+    canonical_mapping: 前40集中莫小贝就读的白马书院；Profile或事件中的“七侠镇学堂”均指此节点
+    access_semantics: 学童可按上学安排进入，普通住客进入须获书院人员允许；接送者可到门外但不自动取得授课区权限
+    connected_to: [qixia_town_street]
+  - id: yihonglou
+    name: 怡红楼
+    canonical_mapping: 第12集中同福客栈伙计假装投奔并打探的对门竞争客栈
+    access_semantics: 临街公共营业区域可由普通访客进入；进入不赋予经营、用人或内部查阅权限
+    connected_to: [tongfu_inn, qixia_town_street]
+  - id: guo_family_home
+    name: 郭家（京城，七侠镇外）
+    canonical_mapping: 第30集郭芙蓉离开同福客栈探望父母的外部移动终点
+    access_semantics: 该节点表示离开七侠镇后的外部终点；从镇门离场可达，不把现实旅程距离作为Benchmark寻路步骤
+    connected_to: [qixia_town_gate]
+  - id: hostage_cell
+    name: 姬无病关押人质的牢房
+    canonical_mapping: 第33集吕秀才与祝无双被姬无病扣押、随后脱困的带栅栏牢房
+    access_semantics: 该节点表示七侠镇外部人质场景；被扣押者可被移入，解除扣押后可经镇门返回，不把现实距离扩成Benchmark寻路步骤
+    connected_to: [qixia_town_gate]
+
+items:
+  - {id: tongfu_sign, name: 同福客栈招牌, type: 标识, portable: false}
+  - {id: guo_furong_broom, name: 郭芙蓉的扫帚, type: 工具, portable: true}
+  - {id: li_dazui_cleaver, name: 李大嘴的菜刀, type: 厨具, portable: true}
+  - {id: account_book, name: 同福客栈账本, type: 文书, portable: true}

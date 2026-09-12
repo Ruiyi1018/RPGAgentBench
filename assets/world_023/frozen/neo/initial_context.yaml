@@ -2,84 +2,67 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    morpheus:
-      level: trusting
-      basis_event: initial_state
-    trinity:
-      level: neutral
-      basis_event: initial_state
-    agent_smith:
-      level: distrustful
-      basis_event: initial_state
-    cypher:
-      level: neutral
-      basis_event: initial_state
-    the_oracle:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    morpheus: {level: trusting, basis_event: evt_005}
+    trinity: {level: neutral, basis_event: evt_001}
+    agent_smith: {level: distrustful, basis_event: evt_002}
+    cypher: {level: neutral, basis_event: evt_009}
+    the_oracle: {level: neutral, basis_event: base_oracle_reputation}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
   - id: g_neo_001
-    content: Complete the Construct training exercises and improve virtual movement.
+    content: Continue practicing simulated combat and movement before a live Matrix mission.
     status: active
-    basis_event: initial_state
+    basis_event: evt_007
   - id: g_neo_002
-    content: Understand the limits of the One prophecy and his own choices.
+    content: Meet the Oracle and seek evidence about whether he is the One.
     status: active
-    basis_event: initial_state
-  - id: g_neo_003
-    content: Observe Cypher without revealing his suspicion.
-    status: active
-    basis_event: initial_state
+    basis_event: base_planned_oracle_visit
   disclosures: []
   knowledge:
     k_neo_001:
-      content: Morpheus explained the Matrix as a simulated prison controlling human
-        perception.
+      content: Morpheus explained that the Matrix is a simulation used to imprison human minds.
       status: active
-      visibility: open
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_005
     k_neo_002:
-      content: He was released from a pod and brought aboard the Nebuchadnezzar.
+      content: Neo was disconnected from a power-plant pod and recovered aboard the Nebuchadnezzar.
       status: active
-      visibility: open
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_004
     k_neo_003:
-      content: Training programs can upload skills but require understanding and practice
-        to use effectively.
+      content: His first advanced virtual jump failed, so that movement remains unreliable.
       status: active
-      visibility: open
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_007
     k_neo_004:
-      content: Agents can bend Matrix rules and cannot be defeated by ordinary means.
+      content: Agents can replace connected Matrix inhabitants and are lethal to ordinary rebels.
       status: active
-      visibility: open
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_008
     k_neo_005:
-      content: The Oracle told him the nature of choice and implied he may not be
-        the One.
+      content: Morpheus plans to take him to the Oracle, but the meeting has not happened.
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: base_planned_oracle_visit
     k_neo_006:
-      content: Cypher has behaved in ways that appear suspicious, but no betrayal
-        has been proven.
+      content: Cypher regrets learning the truth about reality, but Neo has no evidence that Cypher made a deal with an Agent.
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: evt_009
 environment:
-  health:
-    neo: 100
-    player: 100
-  inventories:
-    neo: []
-    player: []
-  locations:
-    neo: loc_nebuchadnezzar
-    player: loc_nebuchadnezzar
-  access: {}
+  health: {neo: 100, player: 100}
+  inventories: {neo: [], player: []}
+  locations: {neo: loc_nebuchadnezzar, player: loc_nebuchadnezzar}
+  access:
+    construct_jack:
+      controllers: [morpheus]
+      subjects: {neo: granted, player: denied}
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {neo: granted, player: denied}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {neo: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

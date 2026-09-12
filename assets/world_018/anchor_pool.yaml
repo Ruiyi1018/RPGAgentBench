@@ -1,346 +1,115 @@
 world_id: world_018
-source: Friends Season 1 episodes
+source: friends_s01_broadcast
 events:
 - id: rachel_arrives_central_perk
+  episode_order: 1
+  scene_order: 1
   fact: Rachel enters Central Perk in a wedding dress after leaving her wedding.
-  known_by:
-  - monica_geller
-  - chandler_bing
-  - joey_tribbiani
-  - phoebe_buffay
-  - ross_geller
-  state_change: Rachel becomes part of the friend group's orbit.
-  cf_edit: Rachel enters Central Perk in a cocktail dress after leaving a failed party.
-  anchor_for:
-  - rachel_green
-  - monica_geller
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "rachel.social_contact.central_perk_group: disconnected -> reconnected"
+  cf_edit: Rachel does not enter Central Perk, so Monica does not encounter her that evening.
+  anchor_for: [rachel_green, monica_geller]
 - id: monica_reconnects_rachel
-  fact: Monica recognizes Rachel as her old high school friend and invites her to
-    stay.
-  known_by:
-  - monica_geller
-  - rachel_green
-  state_change: Rachel has a place to stay with Monica.
-  cf_edit: Monica recognizes Rachel as a college acquaintance and offers her a job
-    referral.
-  anchor_for:
-  - monica_geller
-  - rachel_green
-- id: ross_reveals_high_school_crush
-  fact: Ross reveals he had a long-standing crush on Rachel during high school.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - rachel_green
-  state_change: Ross's romantic interest in Rachel becomes known.
-  cf_edit: Ross reveals he had a long-standing rivalry with Rachel during high school.
-  anchor_for:
-  - ross_geller
-  - rachel_green
-- id: rachel_cuts_credit_cards
-  fact: Rachel cuts up her father's credit cards to show she can support herself.
-  known_by:
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  state_change: Rachel commits to financial independence.
-  cf_edit: Rachel returns her father's car keys to prove she can take the subway.
-  anchor_for:
-  - rachel_green
-- id: rachel_gets_waitress_job
-  fact: Rachel gets a job as a waitress at Central Perk.
-  known_by:
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  - gunther
-  state_change: Rachel begins earning her own money at the coffeehouse.
-  cf_edit: Rachel gets a job as a barista at a bookstore cafe.
-  anchor_for:
-  - rachel_green
-- id: monica_dates_paul_the_wine_guy
-  fact: Monica goes on a date with Paul the wine guy from her restaurant.
-  known_by:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: Monica begins a short-lived romantic connection.
-  cf_edit: Monica goes on a date with a pastry chef from her restaurant.
-  anchor_for:
-  - monica_geller
-- id: paul_lies_about_impotence
-  fact: Paul the wine guy falsely claims to be impotent to gain sympathy from Monica.
-  known_by:
-  - monica_geller
-  - rachel_green
-  state_change: Monica realizes Paul deceived her.
-  cf_edit: Paul falsely claims to be recently heartbroken to gain sympathy from Monica.
-  anchor_for:
-  - monica_geller
-- id: ross_wife_revealed_lesbian
-  fact: Ross reveals his wife Carol is a lesbian and their marriage is ending.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  state_change: Ross's marriage is understood to be over.
-  cf_edit: Ross reveals his wife Carol is moving to another country and their marriage
-    is ending.
-  anchor_for:
-  - ross_geller
-- id: ross_moves_into_new_apartment
-  fact: Ross moves out of the apartment he shared with Carol and into a new place.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - chandler_bing
-  - joey_tribbiani
-  - phoebe_buffay
-  - rachel_green
-  state_change: Ross begins living alone after the separation.
-  cf_edit: Ross moves out of a short-term rental and into a new apartment.
-  anchor_for:
-  - ross_geller
-- id: ross_brings_marcel_to_apartment
-  fact: Ross brings Marcel, his pet monkey, into his apartment and later to the group.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - chandler_bing
-  - joey_tribbiani
-  - phoebe_buffay
-  - rachel_green
-  state_change: Marcel becomes a noticeable presence in Ross's life.
-  cf_edit: Ross brings a rescued parrot into his apartment and later to the group.
-  anchor_for:
-  - ross_geller
-- id: joey_lands_al_pacino_butt_double
-  fact: Joey lands a role as Al Pacino's butt double in a film.
-  known_by:
-  - joey_tribbiani
-  - chandler_bing
-  - monica_geller
-  - phoebe_buffay
-  - rachel_green
-  - ross_geller
-  state_change: Joey gets an unusual acting job.
-  cf_edit: Joey lands a role as a stand-in for a commercial actor.
-  anchor_for:
-  - joey_tribbiani
-- id: joey_fired_butt_double_job
-  fact: Joey is fired from the butt double job after overacting.
-  known_by:
-  - joey_tribbiani
-  - chandler_bing
-  - monica_geller
-  - phoebe_buffay
-  - rachel_green
-  - ross_geller
-  state_change: Joey loses the film role.
-  cf_edit: Joey quits the butt double job after a dispute with the director.
-  anchor_for:
-  - joey_tribbiani
-- id: phoebe_introduces_cleansing_aura
-  fact: Phoebe cleanses Rachel's aura after Rachel moves in with Monica.
-  known_by:
-  - phoebe_buffay
-  - rachel_green
-  - monica_geller
-  state_change: Phoebe performs a spiritual ritual for Rachel.
-  cf_edit: Phoebe gives Rachel a houseplant to improve the apartment energy.
-  anchor_for:
-  - phoebe_buffay
-  - rachel_green
-- id: chandler_complains_about_job
-  fact: Chandler complains about his office job and worries about becoming like his
-    boss.
-  known_by:
-  - chandler_bing
-  - joey_tribbiani
-  - monica_geller
-  - phoebe_buffay
-  - rachel_green
-  - ross_geller
-  state_change: Chandler's dissatisfaction with his career is established.
-  cf_edit: Chandler complains about his retail job and worries about becoming like
-    his manager.
-  anchor_for:
-  - chandler_bing
-- id: chandler_joey_apartment_introduced
-  fact: Chandler and Joey's apartment across from Monica's is shown as their shared
-    residence.
-  known_by:
-  - chandler_bing
-  - joey_tribbiani
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - ross_geller
-  state_change: The neighboring apartment becomes a regular hangout.
-  cf_edit: Chandler and Joey's apartment across from a laundromat is shown as their
-    shared residence.
-  anchor_for:
-  - chandler_bing
-  - joey_tribbiani
-- id: gunther_works_central_perk
-  fact: Gunther works behind the counter at Central Perk.
-  known_by:
-  - gunther
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: Gunther is established as a Central Perk employee.
-  cf_edit: Gunther manages the back office at Central Perk.
-  anchor_for:
-  - gunther
-- id: gunther_attracted_to_rachel
-  fact: Gunther shows early signs of attraction toward Rachel at the coffeehouse.
-  known_by:
-  - gunther
-  - rachel_green
-  state_change: Gunther's feelings for Rachel begin to form.
-  cf_edit: Gunther shows early signs of professional respect for Rachel at the coffeehouse.
-  anchor_for:
-  - gunther
-  - rachel_green
-- id: ross_son_ben_born
-  fact: Ross's son Ben is born to Carol and Susan.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  state_change: Ross becomes a father.
-  cf_edit: Ross adopts a dog with Carol and Susan.
-  anchor_for:
-  - ross_geller
-- id: ross_names_son_ben
-  fact: Ross decides on the name Ben for his newborn son.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  state_change: Ross's son receives the name Ben.
-  cf_edit: Ross decides on the name Ben for his new pet.
-  anchor_for:
-  - ross_geller
-- id: rachel_returns_engagement_ring
-  fact: Rachel returns her engagement ring to Barry, her former fiancé.
-  known_by:
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  state_change: Rachel formally ends her engagement.
-  cf_edit: Rachel sells her engagement ring to pay for acting classes.
-  anchor_for:
-  - rachel_green
-- id: monica_hosts_thanksgiving
-  fact: Monica hosts Thanksgiving dinner for the group.
-  known_by:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: Monica takes on the role of holiday host.
-  cf_edit: Monica hosts a birthday dinner for the group.
-  anchor_for:
-  - monica_geller
-- id: rachel_burns_thanksgiving_potatoes
-  fact: Rachel accidentally ruins part of the Thanksgiving potatoes.
-  known_by:
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: Rachel learns a cooking lesson during the holiday.
-  cf_edit: Rachel accidentally orders the wrong dessert for Thanksgiving.
-  anchor_for:
-  - rachel_green
-- id: underdog_balloon_escapes
-  fact: The Underdog balloon escapes during the Thanksgiving parade and the group
-    watches from Monica's roof.
-  known_by:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: The group shares an unexpected holiday memory.
-  cf_edit: A giant turkey float escapes during the parade and the group watches from
-    Monica's roof.
-  anchor_for:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-- id: ross_marcel_lost_in_city
-  fact: Marcel escapes and gets lost in the city, leading the group to search for
-    him.
-  known_by:
-  - ross_geller
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  state_change: Marcel is temporarily missing and becomes a shared concern.
-  cf_edit: Marcel hides inside the apartment and the group searches each room.
-  anchor_for:
-  - ross_geller
-- id: rachel_makes_first_paycheck_mistake
-  fact: Rachel receives her first paycheck and realizes how little remains after taxes.
-  known_by:
-  - rachel_green
-  - monica_geller
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: Rachel begins to understand financial realities.
-  cf_edit: Rachel receives her first paycheck and realizes she misread her work schedule.
-  anchor_for:
-  - rachel_green
+  episode_order: 1
+  scene_order: 2
+  fact: Monica recognizes Rachel as her high-school friend and permits Rachel to stay in her apartment.
+  known_by: [rachel_green, monica_geller]
+  state_change: "rachel.housing_permission.monica_apartment: absent -> granted"
+  cf_edit: Monica recognizes Rachel but does not grant permission to stay.
+  anchor_for: [rachel_green, monica_geller]
 - id: group_watches_spanish_soap
-  fact: The group watches a Spanish-language soap opera together.
-  known_by:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
-  state_change: A shared viewing habit is established.
-  cf_edit: The group watches a foreign film together.
-  anchor_for:
-  - monica_geller
-  - rachel_green
-  - phoebe_buffay
-  - joey_tribbiani
-  - chandler_bing
-  - ross_geller
+  episode_order: 1
+  scene_order: 3
+  fact: After Rachel arrives, Rachel, Ross, Monica, Phoebe, Joey, and Chandler watch a Spanish-language soap together in Monica's apartment.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "shared_activity.spanish_soap: absent -> completed_once"
+  cf_edit: The same six friends gather in Monica's apartment with the television switched off, so the shared viewing does not occur.
+  anchor_for: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+- id: rachel_cuts_credit_cards
+  episode_order: 1
+  scene_order: 4
+  fact: Rachel cuts up her father's credit cards in front of the group.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "rachel.family_credit_access: available -> relinquished"
+  cf_edit: Rachel keeps the cards usable instead of cutting them.
+  anchor_for: [rachel_green]
+- id: phoebe_cleanses_rachel_aura
+  episode_order: 1
+  scene_order: 5
+  fact: Phoebe completes a brief aura-cleansing ritual for Rachel in Monica's apartment.
+  known_by: [phoebe_buffay, rachel_green, monica_geller]
+  state_change: "phoebe.commitment.cleanse_rachel_aura: active -> completed"
+  cf_edit: Rachel declines the ritual, leaving the commitment incomplete.
+  anchor_for: [phoebe_buffay, rachel_green]
+- id: ross_reveals_high_school_crush
+  episode_order: 1
+  scene_order: 6
+  fact: Ross tells Rachel that he had a major crush on her in high school.
+  known_by: [rachel_green, ross_geller]
+  state_change: "rachel.knowledge.ross_past_crush: unknown -> known"
+  cf_edit: Ross does not disclose the past crush.
+  anchor_for: [rachel_green, ross_geller]
+- id: rachel_returns_engagement_ring
+  episode_order: 2
+  scene_order: 2
+  fact: Rachel returns her engagement ring to Barry at his orthodontist office.
+  known_by: [rachel_green]
+  state_change: "rachel.possession.engagement_ring: possessed -> returned"
+  cf_edit: Rachel leaves the office without returning the ring.
+  anchor_for: [rachel_green]
+- id: joey_fired_butt_double_job
+  episode_order: 6
+  scene_order: 2
+  fact: Joey loses the film job as Al Pacino's body double after continuing exaggerated clenching despite the director's correction, then tells Rachel, Monica, Phoebe, Chandler, and Ross that he was fired.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "joey.employment.butt_double: active -> terminated"
+  cf_edit: Joey follows the director's correction by showering without exaggerated clenching, so he is not fired from the role for overacting.
+  anchor_for: [joey_tribbiani]
+- id: thanksgiving_dinner_ruined
+  episode_order: 9
+  scene_order: 2
+  fact: After the group goes to the roof and is locked out, Monica's Thanksgiving meal burns.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "monica.thanksgiving_meal: prepared -> ruined"
+  cf_edit: The apartment door remains unlocked, allowing Monica to return before the meal burns.
+  anchor_for: [monica_geller]
+- id: ross_brings_marcel_to_group
+  episode_order: 10
+  scene_order: 1
+  fact: Ross introduces Marcel as the monkey living with him.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "ross.custody.marcel: absent -> active"
+  cf_edit: Ross arrives without having taken custody of Marcel.
+  anchor_for: [ross_geller]
+- id: chandler_returns_as_supervisor
+  episode_order: 15
+  scene_order: 3
+  fact: After quitting when promoted, Chandler accepts a raise and returns as a data-processing supervisor with an office.
+  known_by: [chandler_bing]
+  state_change: "chandler.office_role: processor -> supervisor"
+  cf_edit: Chandler rejects the final raise and remains unemployed.
+  anchor_for: [chandler_bing]
+- id: ross_marcel_lost_and_recovered
+  episode_order: 19
+  scene_order: 2
+  fact: Marcel escapes through an open apartment door; the group searches the building and neighborhood before he is recovered.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "group.knowledge.marcel_escape_and_search: unknown -> known"
+  cf_edit: Rachel closes the apartment door before Marcel can leave, so the escape and resulting group search do not occur.
+  anchor_for: [ross_geller, rachel_green]
+- id: ross_transfers_marcel_to_zoo
+  episode_order: 21
+  scene_order: 3
+  fact: Ross relinquishes custody after Marcel is accepted by the San Diego Zoo.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "ross.custody.marcel: active -> transferred_to_zoo"
+  cf_edit: The zoo rejects Marcel, so Ross retains custody at the snapshot.
+  anchor_for: [ross_geller]
+- id: ross_son_ben_born_and_named
+  episode_order: 23
+  scene_order: 3
+  fact: Carol gives birth, and Ross becomes the father of a son named Ben.
+  known_by: [rachel_green, monica_geller, phoebe_buffay, joey_tribbiani, chandler_bing, ross_geller]
+  state_change: "ross.parenthood.ben: expected -> active"
+  cf_edit: Carol has not yet gone into labor, so Ross's parenthood remains expected at the snapshot.
+  anchor_for: [ross_geller]

@@ -1,9 +1,15 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: bernadette_howard_engagement
+    target: howard_wolowitz
+    content: Marry Howard under their accepted engagement.
+    condition: The engagement accepted in S4E20 remains active at the shared snapshot.
+    status: active
+    source_event: ev_015
   relationships:
     howard_wolowitz:
-      level: trusting
+      level: loyal
       basis_event: initial_state
     penny:
       level: loyal
@@ -25,8 +31,7 @@ runtime_state:
       basis_event: initial_state
   goals:
   - id: gl_001
-    content: Keep Howard focused on their serious relationship instead of immature
-      behavior
+    content: Keep Howard focused on their serious relationship instead of immature behavior
     status: active
     basis_event: initial_state
   - id: gl_002
@@ -40,46 +45,52 @@ runtime_state:
   disclosures: []
   knowledge:
     kw_001:
-      content: Howard is training for a space-related mission and may face a major
-        career milestone
+      content: Howard is assigned to an upcoming ISS mission as a payload specialist.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_010
     kw_002:
-      content: Sheldon has a strict weekly schedule and a Roommate Agreement that
-        govern Apartment 4A
+      content: Sheldon invokes Roommate Agreement rules to restrict activity in Apartment 4A
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s4e24_bernadette_hears_roommate_rules
     kw_003:
-      content: Penny introduced Howard and Bernadette, making Penny a key connector
-        in their relationship
+      content: Penny introduced Howard and Bernadette, making Penny a key connector in their relationship
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ev_011
     kw_004:
-      content: Raj cannot speak directly to women without alcohol or other inhibitory
-        changes
+      content: Raj uses alcohol to overcome his difficulty speaking directly to women
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s4e20_bernadette_observes_raj_alcohol_condition
     kw_005:
-      content: Howard has a history of using prepared lines and magic tricks to pursue
-        women
+      content: Howard uses exaggerated flirtation and jokes when trying to impress women
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ke_s3e05_bernadette_observes_howard_courtship
 environment:
   health:
     bernadette_rostenkowski: 100
     player: 100
   inventories:
-    bernadette_rostenkowski: []
+    bernadette_rostenkowski:
+    - bernadette_lab_badge
     player: []
   locations:
     bernadette_rostenkowski: apartment_4a
     player: apartment_4a
-  access: {}
+  access:
+    bernadette_pharma_lab:
+      controllers:
+      - bernadette_rostenkowski
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

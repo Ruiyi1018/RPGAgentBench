@@ -3,61 +3,56 @@ runtime_state:
   commitments: []
   relationships:
     xiao_feng:
-      level: distrustful
-      basis_event: initial_state
-    duan_yu:
-      level: hostile
-      basis_event: initial_state
-    xu_zhu:
       level: neutral
-      basis_event: initial_state
-    murong_fu:
+      basis_event: pre_existing_fact:jiumozhi_no_direct_bond_with_xiao_feng
+    duan_yu:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_002
+    xu_zhu:
+      level: distrustful
+      basis_event: ae_012
+    murong_fu:
+      level: neutral
+      basis_event: pre_existing_fact:jiumozhi_and_murong_fu_only_limited_encounters
     wang_yuyan:
       level: neutral
-      basis_event: initial_state
-    jiumozhi:
-      level: loyal
-      basis_event: initial_state
+      basis_event: pre_existing_fact:jiumozhi_no_direct_bond_with_wang_yuyan
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: g_001
-    content: 取得大理段氏六脉神剑剑谱
+  - id: g_jiumozhi_recover_repute
+    content: 在败于虚竹后维护大轮明王的公开武名
     status: active
-    basis_event: initial_state
-  - id: g_002
-    content: 在少室山或少林范围内观察各派高手并寻找扬名机会
+    basis_event: ae_012
+  - id: g_jiumozhi_seek_martial
+    content: 继续搜求可验证的上乘武学但不假定已取得六脉神剑谱
     status: active
-    basis_event: initial_state
-  - id: g_003
-    content: 在慕容复及中原武人面前维持不下风且不可小视的地位
+    basis_event: ae_002
+  - id: g_jiumozhi_keep_office
+    content: 维持吐蕃国师与佛门高僧的公开身份
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing_fact:jiumozhi_public_office
   disclosures: []
   knowledge:
-    k_001:
-      content: 大理段氏六脉神剑为当世绝学，极难练成且有剑谱存于大理天龙寺或段氏手中
+    k_jm_temple:
+      content: 自己在天龙寺未能取得六脉神剑剑谱
       status: active
-      visibility: private
-      source_event: initial_state
-    k_002:
-      content: 慕容氏在中原素有以彼之道还施彼身的武名，慕容复与王语嫣与燕子坞相关
+      visibility:
+      - npc
+      source_event: ae_002
+    k_jm_xuzhu:
+      content: 虚竹身负逍遥派内力与武学，并在少林交手中击败自己
       status: active
-      visibility: public
-      source_event: initial_state
-    k_003:
-      content: 少室山与少林寺近日有各方人物汇聚，可形成武林中人正面争名之地
+      visibility:
+      - npc
+      source_event: ae_012
+    k_jm_skills:
+      content: 自己掌握火焰刀等武学，但强练少林绝技存在内功隐患
       status: active
-      visibility: public
-      source_event: initial_state
-    k_004:
-      content: 鸠摩智自身身怀多种吐蕃与中原武功，包括火焰刀等看家本领
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: pre_existing_fact:jiumozhi_martial_condition
 environment:
   health:
     jiumozhi: 100
@@ -66,9 +61,15 @@ environment:
     jiumozhi: []
     player: []
   locations:
-    jiumozhi: shaolin_temple
-    player: shaolin_temple
-  access: {}
+    jiumozhi: shaoshi_departure_road
+    player: shaoshi_departure_road
+  access:
+    tubo_entourage_command:
+      controllers:
+      - jiumozhi
+      subjects:
+        jiumozhi: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

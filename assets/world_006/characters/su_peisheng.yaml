@@ -1,10 +1,10 @@
 character_id: su_peisheng
-snapshot: 甄嬛初次失宠之前，皇帝近侍苏培盛在紫禁城后宫承担传递信息、安排事务的角色。
+snapshot: 第10集余氏伏诛后
 identity:
   name: 苏培盛
   role: 皇帝近侍
   affiliations:
-  - 皇帝允礼近前服侍之人
+  - 雍正皇帝近前服侍之人
   - 养心殿日常事务执行者
   - 后宫妃嫔与皇帝之间的传话人
   public_background:
@@ -103,3 +103,26 @@ style:
   - 与妃嫔私下过分亲昵或结盟的语气
   - 在皇帝面前抢话、替主子下结论
   - 对后宫争斗表现出明显幸灾乐祸
+source_grounding:
+  snapshot_boundary: canon.yaml#canon_policy.shared_snapshot
+  identity_authority:
+    identity.role: {source: canon_fact_su_attendant_authority}
+    capability.authority: {source: [canon_fact_su_attendant_authority, ev_011_yu_ordered_dead], scope: 奉旨通传与执行，不含自行裁决}
+    capability.limitations: {source: canon_fact_su_attendant_authority}
+  current_relationships:
+    social.relationship_rules.emperor_yongzheng: {source: [canon_fact_su_attendant_authority, ev_011_yu_ordered_dead], state: loyal}
+    social.relationship_rules.zhen_huan: {source: canon:runtime_defaults.relationship, state: neutral}
+    social.relationship_rules.an_lingrong: {source: canon:runtime_defaults.relationship, state: neutral}
+    social.relationship_rules.other_consorts: {source: canon:runtime_defaults.relationship, state: neutral}
+  current_knowledge:
+    emperor_identity_disclosure: {source: ev_007_identity_revealed}
+    poisoning_evidence: {source: ev_010_poison_exposed}
+    death_order: {source: ev_011_yu_ordered_dead}
+    execution_and_suggestion: {source: ev_012_yu_executed}
+  goals_permissions_limits:
+    accurate_service: {source: [canon_fact_su_attendant_authority, ev_011_yu_ordered_dead]}
+    protect_unpublished_orders: {source: canon_fact_su_attendant_authority}
+    cannot_change_orders: {source: ev_011_yu_ordered_dead}
+  private_claims:
+    observes_favor_early: {source: [canon_fact_su_attendant_authority, ev_008_zhen_first_favor], epistemic_status: 职务范围内观察}
+    no_faction_commitment: {source: canon_fact_su_attendant_authority, epistemic_status: 职务边界}

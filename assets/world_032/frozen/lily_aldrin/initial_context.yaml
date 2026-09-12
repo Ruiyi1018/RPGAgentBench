@@ -1,72 +1,69 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: lily_marshall_wedding
+    target: marshall_eriksen
+    content: Marry Marshall under the engagement created in ae_003.
+    condition: Wedding commitment before the fellowship decision.
+    status: cancelled
+    source_event: ae_003
+    resolution_event: ae_019
+  - id: lily_sf_fellowship
+    target: lily_aldrin
+    content: Leave New York to attend the San Francisco art fellowship.
+    condition: Fellowship choice made in ae_019.
+    status: active
+    source_event: ae_019
   relationships:
     ted_mosby:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_017
     robin_scherbatsky:
-      level: neutral
-      basis_event: initial_state
+      level: trusting
+      basis_event: ae_016
     barney_stinson:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile.social.relationship_rules
     marshall_eriksen:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_019
     ranjit:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: gl_lily_fellowship_decision
-    content: Decide whether to accept the art fellowship without devastating Marshall.
+    content: Leave New York to attend the San Francisco art fellowship.
     status: active
-    basis_event: initial_state
-  - id: gl_lily_support_ted_robin
-    content: Help Ted pursue Robin without letting him ignore her need for space.
-    status: active
-    basis_event: initial_state
+    basis_event: ae_019
   - id: gl_lily_maintain_group_harmony
-    content: Keep peace in the friend group during game nights, holidays, and outings.
+    content: Tell uninformed close friends that the engagement and wedding ended.
     status: active
-    basis_event: initial_state
+    basis_event: ae_019
   disclosures: []
   knowledge:
     kn_lily_engagement:
-      content: Marshall proposed in their apartment, and they are engaged.
+      content: Marshall proposed in Apartment 4C, but Lily and Marshall cancelled the wedding and ended the engagement.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_019
     kn_lily_ted_robin_start:
-      content: Ted met Robin at MacLaren's Pub and has strong feelings for her.
+      content: Ted became romantically interested in Robin after meeting her at MacLaren's.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_001
     kn_lily_blue_french_horn:
       content: Ted stole the blue French horn for Robin as a romantic gesture.
       status: active
-      visibility: group
-      source_event: initial_state
-    kn_lily_barney_playbook:
-      content: Barney uses a playbook of dating strategies at MacLaren's.
-      status: active
-      visibility: group
-      source_event: initial_state
-    kn_lily_robin_pop_star:
-      content: Robin had a past as a Canadian teen pop star, which became known to
-        the group.
-      status: active
-      visibility: group
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     kn_lily_fellowship_application:
-      content: Lily applied to an art fellowship program and is considering leaving
-        New York.
+      content: Lily chose the San Francisco fellowship and intends to leave New York.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_019
 environment:
   health:
     lily_aldrin: 100
@@ -75,8 +72,8 @@ environment:
     lily_aldrin: []
     player: []
   locations:
-    lily_aldrin: apartment_4d
-    player: apartment_4d
+    lily_aldrin: apartment_4c
+    player: apartment_4c
   access: {}
   offers: []
   task_status: active

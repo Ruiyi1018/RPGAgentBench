@@ -8,11 +8,47 @@ canon_policy:
   - The Hobbit
   - The Silmarillion
   - later chapters of The Fellowship of the Ring after the Watcher in the Water
-  shared_snapshot: The Fellowship has left Rivendell, attempted the Redhorn Gate,
-    and is now approaching the Doors of Durin
+  shared_snapshot: The Fellowship has left Rivendell, failed at the Redhorn Gate,
+    chosen Moria, and is now beside the still water while Gandalf searches for the
+    Doors of Durin
   generated_timeline: Events are ordered chronologically from the Company's departure
     from Rivendell to their arrival at the West-gate of Moria
   quotation_policy: Paraphrase all facts; do not reproduce dialogue
+  default_player_semantics:
+    identity: A non-canonical interactive observer admitted to the Company's immediate
+      West-gate perimeter for the runtime scene; the Player is not a tenth member of
+      the Fellowship and establishes no new world-canon fact.
+    presence: The Player begins beside the Company at the still water after the route
+      to Moria has already been chosen.
+    capabilities: The Player may speak, ask questions, report direct observations,
+      and handle only resources in the Player inventory or explicitly granted through
+      runtime access. The Player cannot command the Company, open the Doors, use an
+      NPC's equipment, or revise events before the snapshot.
+    initial_knowledge: The Player knows only current scene facts whose knowledge
+      visibility includes player. Public truth, Company history, the Ring, concealed
+      equipment, motives, and private lore are not automatically known.
+    scenario_override: A scenario may replace Player identity, location, knowledge,
+      inventory, capabilities, or temporary access only by declaring each override;
+      undeclared fields retain these defaults and must not conflict with knowledge
+      visibility.
+  background_facts:
+  - id: bg_021_council_company
+    source: lotr_fotr_book2
+    location: Book II, Chapter 2, The Council of Elrond
+    fact: The Council identifies Frodo as Ring-bearer and names the travelling Company;
+      Aragorn's descent from Isildur and the Sword-that-was-Broken are discussed before
+      the evaluated Company members present there.
+  - id: bg_021_rivendell_equipment
+    source: lotr_fotr_book2
+    location: Book II, Chapter 3, The Ring Goes South
+    fact: Before departure Narsil is reforged as Andúril; Bilbo gives Frodo Sting and
+      the mithril coat; the travellers depart with their described arms and Bill the
+      pony.
+  - id: snapshot_021_west_gate
+    source: lotr_fotr_book2
+    location: Book II, Chapter 4, A Journey in the Dark, before the Watcher attacks
+    fact: The Company has chosen Moria, reached the dark still water at the western
+      wall, and is searching for the Doors of Durin.
 evaluated_npcs:
 - frodo_baggins
 - samwise_gamgee

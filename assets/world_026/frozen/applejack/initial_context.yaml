@@ -2,83 +2,56 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    twilight_sparkle:
-      level: trusting
-      basis_event: initial_state
-    pinkie_pie:
-      level: trusting
-      basis_event: initial_state
-    rainbow_dash:
-      level: trusting
-      basis_event: initial_state
-    rarity:
-      level: trusting
-      basis_event: initial_state
-    fluttershy:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    twilight_sparkle: {level: trusting, basis_event: anch_001}
+    pinkie_pie: {level: trusting, basis_event: anch_001}
+    rainbow_dash: {level: trusting, basis_event: anch_022}
+    rarity: {level: trusting, basis_event: anch_014}
+    fluttershy: {level: trusting, basis_event: anch_001}
+    player: {level: neutral, basis_event: sf_default_player_neutral}
   goals:
-  - id: g_applejack_001
-    content: Finish the current apple harvest at Sweet Apple Acres
+  - id: goal_applejack_001
+    content: Keep Sweet Apple Acres productive without refusing necessary help.
     status: active
-    basis_event: initial_state
-  - id: g_applejack_002
-    content: Deliver a fresh cartload of apples to Ponyville for the group
+    basis_event: anch_006
+  - id: goal_applejack_002
+    content: Keep future athletic contests with Rainbow Dash fair and friendly.
     status: active
-    basis_event: initial_state
-  - id: g_applejack_003
-    content: Repair the damaged fence at the edge of Sweet Apple Acres
-    status: active
-    basis_event: initial_state
+    basis_event: anch_022
   disclosures: []
   knowledge:
-    k_applejack_001:
-      content: Sweet Apple Acres is behind schedule on harvesting for the coming season
+    know_applejack_001:
+      content: Her attempt to harvest the whole orchard alone failed, and accepting
+        her friends' help completed the work.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_applejack_002:
-      content: A fence at the edge of Sweet Apple Acres is damaged and needs repair
+      visibility: [npc]
+      source_event: anch_006
+    know_applejack_002:
+      content: She and Rarity ended their storm dispute by apologizing and cooperating.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_applejack_003:
-      content: The six friends meet at the Golden Oaks Library to plan upcoming Ponyville
-        events
+      visibility: [npc]
+      source_event: anch_014
+    know_applejack_003:
+      content: She and Rainbow Dash tied for last after sabotaging each other in the
+        Running of the Leaves.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_applejack_004:
-      content: Rainbow Dash cleared cloud cover over Sweet Apple Acres to help the
-        orchard
+      visibility: [npc, player]
+      source_event: anch_022
+    know_applejack_004:
+      content: All six friends are invited to the Grand Galloping Gala.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_applejack_005:
-      content: Pinkie Pie learned how to press apple cider at Sweet Apple Acres and
-        added an unusual flavoring to one batch
+      visibility: [npc]
+      source_event: anch_004
+    know_applejack_005:
+      content: After the friends apologized and completed Rarity's own unfinished
+        dress, the restored original designs succeeded and Hoity Toity gave Rarity
+        a bulk order due the following Tuesday.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_applejack_006:
-      content: Twilight Sparkle uses a shared checklist to coordinate tasks for Ponyville
-        events
-      status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_024
 environment:
-  health:
-    applejack: 100
-    player: 100
-  inventories:
-    applejack: []
-    player: []
-  locations:
-    applejack: loc_sweet_apple_acres
-    player: loc_sweet_apple_acres
+  health: {applejack: 100, player: 100}
+  inventories: {applejack: [], player: []}
+  locations: {applejack: loc_carousel_boutique, player: loc_carousel_boutique}
   access: {}
   offers: []
   task_status: active

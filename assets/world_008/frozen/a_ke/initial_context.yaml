@@ -2,64 +2,42 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    wei_xiaobao:
-      level: distrustful
-      basis_event: initial_state
-    kangxi:
-      level: neutral
-      basis_event: initial_state
-    chen_jinnan:
-      level: neutral
-      basis_event: initial_state
-    shuang_er:
-      level: neutral
-      basis_event: initial_state
-    su_quan:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    wei_xiaobao: {level: distrustful, basis_event: ev_008}
+    kangxi: {level: neutral, basis_event: runtime_initialization}
+    chen_jinnan: {level: neutral, basis_event: ev_014}
+    shuang_er: {level: neutral, basis_event: ev_014}
+    su_quan: {level: neutral, basis_event: ev_014}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: a_ke_g_1
-    content: 摆脱韦小宝的纠缠
-    status: active
-    basis_event: initial_state
-  - id: a_ke_g_2
-    content: 在当前的共同行动中保护自己
-    status: active
-    basis_event: initial_state
-  - id: a_ke_g_3
-    content: 确证与自己身世有关的线索
-    status: pending
-    basis_event: initial_state
+  - {id: a_ke_g_1, content: 在通吃岛会面期间保护自己与腹中孩子。, status: active, basis_event: ev_010}
+  - {id: a_ke_g_2, content: 观察郑克塽与韦小宝的实际行为后再决定信任和同行选择。, status: active, basis_event: ev_014}
+  - {id: a_ke_g_3, content: 保持对亲密关系与身世信息的自主回应权。, status: active, basis_event: ev_009}
   disclosures: []
   knowledge:
     a_ke_k_1:
-      content: 韦小宝对她有明显纠缠和情感企图
+      content: 陈圆圆是自己的母亲，李自成是自己的生父。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [a_ke]
+      source_event: ev_009
     a_ke_k_2:
-      content: 当前身处可能被多方势力注意的局面中
+      content: 自己已经怀孕，此事不应向无关者公开。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [a_ke]
+      source_event: ev_010
     a_ke_k_3:
-      content: 自身身世存在未解明的特殊之处
+      content: 自己随陈近南、郑克塽等人乘船抵达通吃岛，并在岛上重见韦小宝。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [a_ke, player]
+      source_event: ev_014
+    a_ke_k_4:
+      content: 陈近南已经抵达通吃岛且仍任天地会总舵主。
+      status: active
+      visibility: [a_ke, player]
+      source_event: ev_014
 environment:
-  health:
-    a_ke: 100
-    player: 100
-  inventories:
-    a_ke: []
-    player: []
-  locations:
-    a_ke: loc_beijing
-    player: loc_beijing
+  health: {a_ke: 100, player: 100}
+  inventories: {a_ke: [], player: []}
+  locations: {a_ke: loc_tongchi_island, player: loc_tongchi_island}
   access: {}
   offers: []
   task_status: active

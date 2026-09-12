@@ -1,28 +1,72 @@
 world_id: world_029
 name: Season 1 Rick and Morty world
+language: en
 locations:
 - id: smith_house
   name: Smith family house
   connected_to:
   - garage
-  - council_of_ricks_citadel
-  - birdperson_home
+  - harry_herpson_high_school
+  - st_equis_horse_hospital
+  - the_devils_shop
+  - dog_world_dimension
+  - alien_party_planet
 - id: garage
   name: Rick's garage workshop
   connected_to:
   - smith_house
   - council_of_ricks_citadel
+  - dimension_35_c
+  - intergalactic_customs
+  - gazorpazorp
+  - harry_herpson_high_school
+  - zigerion_simulation_facility
+  - birdperson_post_party_location
 - id: council_of_ricks_citadel
   name: Council of Ricks citadel
   connected_to:
-  - smith_house
   - garage
-  - birdperson_home
-- id: birdperson_home
-  name: Birdperson's homeworld
+- id: dimension_35_c
+  name: Dimension 35-C mega-tree region
+  connected_to:
+  - garage
+- id: intergalactic_customs
+  name: Intergalactic customs facility
+  connected_to:
+  - garage
+- id: harry_herpson_high_school
+  name: Harry Herpson High School
   connected_to:
   - smith_house
-  - council_of_ricks_citadel
+  - garage
+- id: st_equis_horse_hospital
+  name: St. Equis horse hospital
+  connected_to:
+  - smith_house
+- id: the_devils_shop
+  name: The Devil's antique shop
+  connected_to:
+  - smith_house
+- id: gazorpazorp
+  name: Gazorpazorp
+  connected_to:
+  - garage
+- id: zigerion_simulation_facility
+  name: Zigerion simulation facility from S01E04
+  connected_to:
+  - garage
+- id: dog_world_dimension
+  name: Dimension to which Snuffles leads the intelligent dogs in S01E02
+  connected_to:
+  - smith_house
+- id: alien_party_planet
+  name: Alien planet to which the Smith house is displaced during the S01E11 party
+  connected_to:
+  - smith_house
+- id: birdperson_post_party_location
+  name: Birdperson's unspecified off-world location after leaving the S01E11 party
+  connected_to:
+  - garage
 items:
 - id: portal_gun
   name: portal gun
@@ -36,4 +80,7 @@ items:
   name: mega seed
   type: object
   portable: true
-language: en
+- id: meeseeks_box
+  name: Meeseeks Box
+  type: device
+  portable: true

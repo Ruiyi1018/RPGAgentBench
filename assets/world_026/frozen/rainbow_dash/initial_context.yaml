@@ -1,99 +1,56 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_fair_competition
+    content: Keep future contests with Applejack fair and friendly.
+    status: active
+    basis_event: anch_022
   relationships:
-    twilight_sparkle:
-      level: trusting
-      basis_event: initial_state
-    applejack:
-      level: trusting
-      basis_event: initial_state
-    pinkie_pie:
-      level: neutral
-      basis_event: initial_state
-    rarity:
-      level: neutral
-      basis_event: initial_state
-    fluttershy:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    twilight_sparkle: {level: trusting, basis_event: anch_001}
+    applejack: {level: trusting, basis_event: anch_022}
+    pinkie_pie: {level: trusting, basis_event: anch_008}
+    rarity: {level: trusting, basis_event: anch_024}
+    fluttershy: {level: trusting, basis_event: anch_008}
+    player: {level: neutral, basis_event: sf_default_player_neutral}
   goals:
-  - id: goal_001
-    content: Perfect the aerial routine she has been practicing above Ponyville
+  - id: goal_rainbow_001
+    content: Improve her athletic and flying performance without repeating unfair sabotage.
     status: active
-    basis_event: initial_state
-  - id: goal_002
-    content: Help clear cloud cover over Sweet Apple Acres when needed
+    basis_event: anch_022
+  - id: goal_rainbow_002
+    content: Perform her Ponyville weather duties reliably.
     status: active
-    basis_event: initial_state
-  - id: goal_003
-    content: Reach a wearable compromise with Rarity on the formal outfit
-    status: active
-    basis_event: initial_state
-  - id: goal_004
-    content: Keep confidence for the next stunt near the Everfree Forest
-    status: active
-    basis_event: initial_state
+    basis_event: sf_rainbow_weather_flyer
   disclosures: []
   knowledge:
-    know_001:
-      content: Twilight Sparkle has settled into the Golden Oaks Library and uses
-        it for group meetings
+    know_rainbow_001:
+      content: Gilda bullied Pinkie Pie and frightened Fluttershy before demanding
+        that Rainbow choose between them.
       status: active
-      visibility: shared
-      source_event: initial_state
-    know_002:
-      content: Applejack depends on clear sunlight for the Sweet Apple Acres harvest
+      visibility: [npc]
+      source_event: anch_008
+    know_rainbow_002:
+      content: Fluttershy persuaded the dragon to leave after it attacked the group.
       status: active
-      visibility: shared
-      source_event: initial_state
-    know_003:
-      content: Pinkie Pie's party cannon and event planning are part of Ponyville
-        celebrations
+      visibility: [npc]
+      source_event: anch_012
+    know_rainbow_003:
+      content: She and Applejack tied for last after sabotaging each other in the
+        Running of the Leaves.
       status: active
-      visibility: shared
-      source_event: initial_state
-    know_004:
-      content: Fluttershy cares for woodland animals and can calm animals during events
+      visibility: [npc, player]
+      source_event: anch_022
+    know_rainbow_004:
+      content: She apologized for overriding Rarity's expertise and helped complete
+        Rarity's own unfinished dress; the restored original designs then succeeded
+        and Hoity Toity gave Rarity a bulk order due the following Tuesday.
       status: active
-      visibility: shared
-      source_event: initial_state
-    know_005:
-      content: Rarity can repair or create formal wear but has strong opinions about
-        style
-      status: active
-      visibility: shared
-      source_event: initial_state
-    know_006:
-      content: Twilight researches weather patterns and has shared some findings with
-        Rainbow Dash
-      status: active
-      visibility: shared
-      source_event: initial_state
-    know_007:
-      content: She helped repair a fence at Sweet Apple Acres with Applejack
-      status: active
-      visibility: shared
-      source_event: initial_state
-    know_008:
-      content: Her successful Everfree Forest stunt was observed by Fluttershy and
-        Twilight
-      status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: anch_024
 environment:
-  health:
-    rainbow_dash: 100
-    player: 100
-  inventories:
-    rainbow_dash: []
-    player: []
-  locations:
-    rainbow_dash: loc_ponyville
-    player: loc_ponyville
+  health: {rainbow_dash: 100, player: 100}
+  inventories: {rainbow_dash: [], player: []}
+  locations: {rainbow_dash: loc_carousel_boutique, player: loc_carousel_boutique}
   access: {}
   offers: []
   task_status: active

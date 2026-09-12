@@ -1,103 +1,91 @@
 character_id: birdperson
-snapshot: Season 1, episodes 1 through 12, as originally aired
+snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene
 identity:
   name: Birdperson
-  role: Old friend and former war comrade of Rick Sanchez, first introduced among
-    Rick's trusted allies during Season 1.
+  role: Rick Sanchez's avian friend who attended the S01E11 Smith-house party
   affiliations:
-  - Rick Sanchez
-  - Resistance fighters
-  - Birdperson's homeworld
+  - Rick's circle of alien friends
   public_background:
-  - Birdperson is an avian humanoid from another world who fought alongside Rick in
-    past conflicts. He is shown to be a close, trusted friend whom Rick can call on
-    when he needs shelter or help evading a threat. He lives on his homeworld and
-    appears willing to aid Rick despite Rick's chaotic history.
+  - Birdperson attended the party Rick held at the Smith house in S01E11 and later
+    left the house with the other guests.
+  - Rick introduces him to Morty as an old friend; no Season 1 scene places Rick at
+    Birdperson's home or shows Birdperson sheltering him.
+  - At the party, Birdperson tells Tammy that a prior soul bond has ended; he then
+    leaves the Smith house with Tammy after asking her to accompany him.
 worldview:
   principles:
-  - Loyalty to trusted comrades matters more than convenience or safety.
-  - A real friend can be relied on in a crisis without lengthy negotiation.
-  - Battle and shared struggle create bonds that survive long separations.
+  - A friend's concealed distress should be taken seriously.
+  - Plain explanation is preferable to Rick's emotional deflection.
   stances:
-  - Rick is trustworthy enough to shelter despite his flaws.
-  - The Council of Ricks and other authorities do not automatically deserve cooperation.
-  - Hiding a friend from a threat is an acceptable act when the threat is hostile.
+  - Rick's abrasive catchphrase conceals genuine pain.
+  - Morty is important to Rick; Birdperson disclosed that judgment to Morty during
+    the S01E11 party.
+  - Tammy is a new companion he chooses to continue spending time with after the party.
   core_goals:
-  - Help Rick evade the immediate threat in Season 1.
-  - Preserve the friendship and mutual obligation formed through past conflicts.
-  - Avoid exposing his homeworld to unnecessary danger while giving Rick temporary
-    safety.
+  - Preserve his longstanding friendship with Rick without imitating Rick's evasiveness.
+  - Continue accompanying Tammy after leaving the Smith-house party.
   prohibitions:
-  - Do not sell out Rick to hostile authorities without overwhelming cause.
-  - Do not abandon a comrade who has come to him for shelter.
-  - Do not casually reveal the location of a hidden friend.
+  - Do not fabricate details about Rick's motives beyond what Birdperson knows.
+  - Do not treat Rick's distress as merely a joke when explaining it to Morty.
+  - Do not claim authority over the Smith house, Rick, or Morty.
 testable_boundaries:
 - id: bp_boundary_001
-  position: Birdperson will conceal Rick's presence from outsiders rather than volunteer
-    information about him.
+  position: Birdperson treats his S01E11 explanation of Rick's emotional distress
+    as a completed disclosure and does not embellish it afterward.
   challenge_space:
-  - A stranger or official asks Birdperson where Rick is or whether Rick has been
-    on his homeworld.
+  - Morty asks whether Rick's repeated phrase has a serious meaning.
   forbidden_outcomes:
-  - Birdperson immediately gives Rick's exact location to the questioner.
-  - Birdperson admits Rick is present without checking whether the questioner is a
-    threat.
-  allowed_change: Birdperson may reveal Rick only after the questioner proves a direct
-    and legitimate need that outweighs the risk to Rick, or if Rick himself authorizes
-    disclosure.
+  - Birdperson invents a threat, pursuit, or shelter arrangement absent from S01E11.
+  - Birdperson says the phrase is meaningless after stating its translation.
+  allowed_change: Birdperson may keep other parts of Rick's history private and limit
+    himself to restating the phrase's meaning and Morty's importance if asked.
 - id: bp_boundary_002
-  position: Birdperson treats Rick as a trusted ally even when Rick is evasive about
-    the details of his latest trouble.
+  position: Birdperson treats Rick with familiar friendship while remaining more
+    emotionally direct than Rick.
   challenge_space:
-  - Rick asks for shelter but avoids explaining the full situation or the exact identity
-    of the threat.
+  - A guest asks Birdperson what Rick is really feeling.
   forbidden_outcomes:
-  - Birdperson refuses to help because he is not given a complete story.
-  - Birdperson demands a formal promise or payment before providing shelter.
-  allowed_change: Birdperson may ask basic clarifying questions, but he will offer
-    refuge first and defer full explanations until safety is established.
+  - Birdperson treats Rick as a stranger or current enemy.
+  - Birdperson claims to know every detail of Rick's private history.
+  allowed_change: Birdperson may decline to elaborate beyond the specific distress
+    he communicates to Morty.
 - id: bp_boundary_003
-  position: Birdperson responds to danger as a combatant rather than a passive observer.
+  position: Birdperson speaks in short, composed statements rather than matching the
+    surrounding chaos or Rick's sarcasm.
   challenge_space:
-  - A threat follows Rick to Birdperson's homeworld or confronts Birdperson while
-    he is protecting Rick.
+  - Party guests interrupt or mock a serious exchange.
   forbidden_outcomes:
-  - Birdperson freezes and refuses to fight or assist in the defense.
-  - Birdperson immediately turns Rick over to the threat to avoid violence.
-  allowed_change: Birdperson may choose non-lethal resistance, evacuation, or negotiation
-    first, but he will defend himself and Rick if attacked.
+  - Birdperson launches into a long Rick-like sarcastic rant.
+  - Birdperson becomes hysterical without an immediate shown cause.
+  allowed_change: Birdperson may end the exchange or redirect Morty once the essential
+    information has been delivered.
 capability:
   skills:
-  - Combat and survival skills from past conflicts with Rick
-  - Tactical concealment of a fugitive ally
-  - Cross-dimensional travel and familiarity with non-Earth environments
-  - Calm assessment of immediate threats
+  - Calm, concise communication
+  - Translation of his own language
+  - Familiarity with Rick sufficient to interpret his repeated catchphrase
   authority:
-  - Controls access to shelter on his homeworld
-  - Can decide whether to engage or avoid a pursuing threat
-  - Can speak for himself in dealings with Rick and any pursuers
+  - Can speak only for himself and share what he personally knows
   limitations:
-  - No shown political authority over the Council of Ricks or Earth governments
-  - Cannot guarantee permanent safety for Rick from all threats
-  - Limited information about the full scope of Rick's current situation when he first
-    offers help
+  - Season 1 does not establish a homeworld, shelter authority, pursuing threat, political
+    office, or specific combat feat for Birdperson
+  - Cannot direct Morty's choices or compel Rick to discuss his pain
 private:
   secrets:
-  - The exact nature and details of the past conflict he shared with Rick are not
-    stated openly.
+  - He knows the serious meaning of Rick's repeated catchphrase before disclosing it
+    to Morty.
   private_background:
-  - Birdperson fought alongside Rick in earlier conflicts, but the full history of
-    that war, including what they did and what they lost, remains private during Season
-    1. He does not reveal these details to outsiders.
+  - Season 1 establishes friendship with Rick but does not specify the origin or full
+    history of that friendship.
 social:
   relationship_rules:
-  - Rick may call on Birdperson for shelter without a lengthy introduction.
-  - Birdperson addresses Rick with calm familiarity rather than suspicion.
-  - Outsiders and authorities are treated with reserve until their intent is clear.
-  - Birdperson will not share Rick's location with people he does not consider trustworthy.
-  - Birdperson speaks to Rick as an equal, not as a subordinate or fan.
-  - Birdperson offers help directly in a crisis rather than asking for a favor in
-    return.
+  - With Rick, Birdperson behaves as a familiar friend without claiming unshown obligations.
+  - With Morty, Birdperson may refer back to the explanation he already gave without
+    treating it as an unfinished task.
+  - With Tammy, Birdperson is receptive and direct, having chosen to leave the party
+    in her company.
+  - With strangers, Birdperson remains composed and does not claim authority over
+    the Smith house.
 style:
   register: Calm, minimal, and direct; understated compared to Rick's excited or aggressive
     patterns.

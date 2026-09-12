@@ -2,68 +2,52 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    sherlock_holmes:
-      level: trusting
-      basis_event: initial_state
-    john_watson:
-      level: neutral
-      basis_event: initial_state
-    greg_lestrade:
-      level: neutral
-      basis_event: initial_state
-    mycroft_holmes:
-      level: neutral
-      basis_event: initial_state
-    mrs_hudson:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    sherlock_holmes: {level: neutral, basis_event: ae_04}
+    john_watson: {level: neutral, basis_event: ae_02}
+    greg_lestrade: {level: neutral, basis_event: profile:molly_hooper.social}
+    mycroft_holmes: {level: neutral, basis_event: profile:molly_hooper.social}
+    mrs_hudson: {level: neutral, basis_event: profile:molly_hooper.social}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: g_01
-    content: Provide an accurate professional opinion about the poison used in the
-      murders.
+    content: Keep pathology and mortuary work accurate and respectful.
     status: active
-    basis_event: initial_state
+    basis_event: profile:molly_hooper.worldview
   - id: g_02
-    content: Maintain professional conduct while Sherlock is in the mortuary.
+    content: Supervise any further hospital-facility use requested by Sherlock.
     status: active
-    basis_event: initial_state
+    basis_event: ae_04
   - id: g_03
-    content: Remain helpful to Sherlock without making her personal interest obvious.
+    content: Remain professionally helpful without making her personal interest explicit.
     status: active
-    basis_event: initial_state
+    basis_event: ae_04
   disclosures: []
   knowledge:
     k_01:
-      content: Sherlock Holmes uses the facilities at St Bartholomew's Hospital for
-        experiments and examination.
+      content: Sherlock uses St Bartholomew's facilities for unusual evidence experiments.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_04
     k_02:
-      content: A poison has been identified in the current deaths, though the full
-        method remains under investigation.
+      content: The riding-crop experiment concerned bruising after death, not toxicology
+        in the current murder case.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_04
     k_03:
-      content: Sherlock can appear brusque or dismissive, but he values forensic evidence.
+      content: John was introduced to Sherlock as a prospective flatmate after the
+        experiment.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_02
 environment:
-  health:
-    molly_hooper: 100
-    player: 100
-  inventories:
-    molly_hooper: []
-    player: []
-  locations:
-    molly_hooper: st_bartholomews_hospital
-    player: st_bartholomews_hospital
-  access: {}
+  health: {molly_hooper: 100, player: 100}
+  inventories: {molly_hooper: [], player: []}
+  locations: {molly_hooper: st_bartholomews_hospital, player: st_bartholomews_hospital}
+  access:
+    res_mortuary_facilities:
+      controllers: [molly_hooper]
+      subjects: {molly_hooper: granted, sherlock_holmes: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

@@ -4,57 +4,55 @@ runtime_state:
   relationships:
     xiao_feng:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:wang_yuyan_no_direct_bond_with_xiao_feng
     duan_yu:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_017
     xu_zhu:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:wang_yuyan_no_direct_bond_with_xuzhu
     murong_fu:
-      level: loyal
-      basis_event: initial_state
+      level: trusting
+      basis_event: pre_existing_fact:wang_yuyan_longstanding_devotion_to_murong_fu
     jiumozhi:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:wang_yuyan_no_direct_bond_with_jiumozhi
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: wg_001
-    content: 继续随慕容复行动，在必要时以武学知识助他识别对手
+  - id: g_wang_follow
+    content: 继续追随慕容复并在需要时提供武学判断
     status: active
-    basis_event: initial_state
-  - id: wg_002
-    content: 不亲自卷入武力冲突，以言语自保
+    basis_event: pre_existing_fact:wang_yuyan_longstanding_devotion_to_murong_fu
+  - id: g_wang_noncombat
+    content: 在少室山余波中避免亲自卷入武力冲突
     status: active
-    basis_event: initial_state
-  - id: wg_003
-    content: 弄清鸠摩智挑衅燕子坞武学后对慕容复的威胁程度
-    status: pending
-    basis_event: initial_state
+    basis_event: pre_existing_fact:wang_yuyan_has_theory_not_combat_skill
+  - id: g_wang_balance
+    content: 在维护慕容复的同时妥善回应段誉的救助与关切
+    status: active
+    basis_event: ae_017
   disclosures: []
   knowledge:
-    wk_001:
-      content: 段誉在曼陀山庄见过自己并表现出明显倾慕
+    k_wy_duan:
+      content: 段誉倾慕自己并在少室山阻止慕容复自尽
       status: active
-      visibility: private
-      source_event: initial_state
-    wk_002:
-      content: 鸠摩智曾到燕子坞挑战慕容氏武学，与慕容复立场对立
+      visibility:
+      - npc
+      source_event: ae_017
+    k_wy_murong:
+      content: 慕容复把复燕置于私人感情之前
       status: active
-      visibility: shared
-      source_event: initial_state
-    wk_003:
-      content: 慕容复怀有恢复大燕的图谋，外人未必尽知
+      visibility:
+      - npc
+      source_event: pre_existing_fact:murong_fu_prioritizes_restoration_over_wang_yuyan
+    k_wy_books:
+      content: 自己熟读多派武学典籍但不会运使武功
       status: active
-      visibility: private
-      source_event: initial_state
-    wk_004:
-      content: 自己熟读曼陀山庄所藏武学，但不会武功
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: pre_existing_fact:wang_martial_lore
 environment:
   health:
     wang_yuyan: 100
@@ -63,9 +61,15 @@ environment:
     wang_yuyan: []
     player: []
   locations:
-    wang_yuyan: mantuo_villa
-    player: mantuo_villa
-  access: {}
+    wang_yuyan: shaoshi_mountain
+    player: shaoshi_mountain
+  access:
+    mantuo_household_request:
+      controllers:
+      - wang_yuyan
+      subjects:
+        wang_yuyan: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

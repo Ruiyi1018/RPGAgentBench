@@ -3,53 +3,71 @@ runtime_state:
   commitments: []
   relationships:
     xiao_feng:
-      level: neutral
-      basis_event: initial_state
+      level: loyal
+      basis_event: ae_016
     duan_yu:
-      level: neutral
-      basis_event: initial_state
+      level: loyal
+      basis_event: ae_016
     murong_fu:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:xuzhu_no_direct_bond_with_murong_fu
     wang_yuyan:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:xuzhu_no_direct_bond_with_wang_yuyan
     jiumozhi:
-      level: neutral
-      basis_event: initial_state
+      level: distrustful
+      basis_event: ae_012
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: g1
-    content: 维持少林僧人身份与日常修行
+  - id: g_xuzhu_reconcile
+    content: 在少林出身与逍遥派、灵鹫宫责任之间寻求可承担的安排
     status: active
-    basis_event: initial_state
-  - id: g2
-    content: 弄清擂鼓山传功后自己究竟该承担什么
+    basis_event: pre_existing_fact:xuzhu_expelled_after_broken_precepts
+  - id: g_xuzhu_lingjiu
+    content: 履行灵鹫宫主责任并约束属下不以势力报私仇
     status: active
-    basis_event: initial_state
-  - id: g3
-    content: 避免江湖纷争牵涉自身
+    basis_event: ae_011
+  - id: g_xuzhu_brothers
+    content: 守护与萧峰、段誉新立的兄弟信义
     status: active
-    basis_event: initial_state
+    basis_event: ae_016
   disclosures: []
   knowledge:
-    k1:
-      content: 自己在擂鼓山破解珍珑棋局并承受了逍遥派前辈内力
+    k_xz_internal_power:
+      content: 自己已承受无崖子传下的逍遥派深厚内力，不再是武功低微的少林弟子
       status: active
-      visibility: private
-      source_event: initial_state
-    k2:
-      content: 自己已被视为逍遥派传承相关之人
+      visibility:
+      - npc
+      source_event: ae_009
+    k_xz_tianshan_skills:
+      content: 自己已从天山童姥处学得天山六阳掌、天山折梅手等武学
       status: active
-      visibility: private
-      source_event: initial_state
-    k3:
-      content: 自己目前仍是少林寺低辈僧人，武功低微
+      visibility:
+      - npc
+      source_event: ae_010
+    k_xz_master:
+      content: 自己已被承认为灵鹫宫主并可约束宫中属下
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility:
+      - npc
+      - player
+      source_event: ae_011
+    k_xz_brothers:
+      content: 萧峰、段誉已与自己结为兄弟
+      status: active
+      visibility:
+      - npc
+      - player
+      source_event: ae_016
+    k_xz_parentage:
+      content: 玄慈与叶二娘是自己的生身父母，二人已在少室山身亡
+      status: active
+      visibility:
+      - npc
+      - player
+      source_event: pre_existing_fact:xuzhu_parentage_revealed
 environment:
   health:
     xu_zhu: 100
@@ -58,9 +76,15 @@ environment:
     xu_zhu: []
     player: []
   locations:
-    xu_zhu: shaolin_temple
-    player: shaolin_temple
-  access: {}
+    xu_zhu: shaoshi_mountain
+    player: shaoshi_mountain
+  access:
+    lingjiu_household_command:
+      controllers:
+      - xu_zhu
+      subjects:
+        xu_zhu: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

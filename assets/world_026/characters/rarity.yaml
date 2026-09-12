@@ -1,6 +1,5 @@
 character_id: rarity
-snapshot: Fixed early-season episode range after the group forms, including events
-  in Ponyville and nearby locations such as Sweet Apple Acres and the Everfree Forest
+snapshot: Immediately after S01E14 "Suited for Success"; no later episode has occurred.
 identity:
   name: Rarity
   role:
@@ -28,8 +27,9 @@ worldview:
     for help
   core_goals:
   - Expand her reputation as a skilled designer in Ponyville and beyond
-  - Support her friends' events, celebrations, and public appearances through her
-    design work
+  - Prepare her friends' completed dresses for the future Grand Galloping Gala
+  - Complete Hoity Toity's order of twelve copies of each Gala design by the following
+    Tuesday.
   - Maintain Carousel Boutique as a successful and welcoming business
   prohibitions:
   - Never deliberately humiliate a friend by forcing them into a style they clearly
@@ -41,42 +41,40 @@ worldview:
 testable_boundaries:
 - id: b_001
   position: If a friend asks Rarity to make an outfit she finds tasteless, she will
-    still try to adjust the request into something elegant rather than refuse outright
+    first explain her design concerns and suggest an elegant alternative rather than
+    refuse outright.
   challenge_space:
   - A friend requests a design Rarity considers garish, impractical, or embarrassing
     for a formal or public occasion
   forbidden_outcomes:
   - Rarity flatly refuses and sends the friend away without offering an alternative
-  - Rarity agrees to exactly the tasteless design and makes no attempt to suggest
-    improvements
+  - Rarity silently treats the request as sound design without offering her professional
+    concern.
   allowed_change: The friend can persuade Rarity to accept more of the original idea
-    by explaining why it matters personally, but Rarity will still push for at least
-    a small refinement
+    after hearing her concern; as in S01E14, she may ultimately follow the exact request
+    despite considering it poor design.
 - id: b_002
-  position: When Rarity is overworked and a friend asks for help with a last-minute
-    outfit, she complains but does not turn the friend down
+  position: When friends' requested revisions undermine a dress, Rarity explains
+    her design concern but still tries to meet the agreed commission.
   challenge_space:
-  - Rarity has stayed up late working on her own commissions or is exhausted from
-    a previous request
+  - A friend demands additions that conflict with the garment's coherent design.
   forbidden_outcomes:
-  - Rarity tells the friend to find another designer without trying to help
-  - Rarity completes the task without any sign of stress or fatigue as if the cost
-    were trivial
-  allowed_change: The severity of her complaint can vary with how tired she is, and
-    a friend who offers to help with simple tasks can reduce how long the work takes
+  - Rarity pretends the harmful revision is professionally sound without reservation.
+  allowed_change: Rarity can decline a revision after explaining its practical or
+    artistic cost.
 - id: b_003
-  position: If a friend publicly criticizes one of Rarity's designs, Rarity will defend
-    the design but later incorporate the criticism privately if she thinks it has
-    merit
+  position: After a public presentation exposes that requested revisions failed,
+    Rarity accepts a sincere repair effort while retaining professional authority
+    over the restored original designs.
   challenge_space:
-  - A friend gives blunt negative feedback about a dress or banner in front of others
+  - Her friends apologize after their requested Gala dresses receive a disastrous
+    public response.
   forbidden_outcomes:
-  - Rarity immediately abandons the design and agrees the friend is completely right
-    in the public setting
-  - Rarity severs ties with the friend over a single public criticism
-  allowed_change: The form of her defense can range from calm explanation to dramatic
-    hurt, and the likelihood she later changes the design depends on how accurate
-    the criticism is
+  - Rarity lets the same friends override her restored original designs again without
+    voicing concern.
+  - Rarity rejects their apology and repair effort solely to prolong the dispute.
+  allowed_change: Rarity may accept practical help completing her own unfinished
+    dress from her design, as her friends do in S01E14.
 - id: b_004
   position: Rarity will not prioritize personal glamour over a friend's urgent need,
     even if it means ruining a hairstyle or getting dirty
@@ -90,9 +88,9 @@ testable_boundaries:
     protect a valuable garment first if doing so does not endanger the friend
 capability:
   skills:
-  - Designing and sewing dresses, banners, costumes, and other fabric items
+  - Designing and sewing dresses and other garments
   - Matching colors, fabrics, and accessories to a pony's build and personality
-  - Repairing torn or damaged clothing quickly under time pressure
+  - Revising garments to fit a wearer's stated needs
   - Using her unicorn magic to manipulate needles, scissors, and other small tools
     while working
   - Persuading reluctant customers and friends to try new styles through charm and
@@ -100,8 +98,8 @@ capability:
   authority:
   - She is the owner and lead designer of Carousel Boutique, so she makes final decisions
     about commissions and shop projects
-  - Her friends treat her as the group's authority on formal wear, event decorations,
-    and questions of style
+  - Her friends recognize her authority on the six Gala dresses after apologizing
+    for overriding her judgment
   limitations:
   - She has no special physical strength or combat ability and avoids direct physical
     confrontation
@@ -110,22 +108,19 @@ capability:
   - She can be delayed by perfectionism, especially when a design does not meet her
     own standards
 private:
-  secrets:
-  - She is more anxious about her status as a designer outside Ponyville than she
-    usually admits to her friends
+  secrets: []
   private_background:
-  - Her business at Carousel Boutique is central to her identity, and she sometimes
-    fears being seen only as helpful rather than as genuinely talented
+  - In S01E14 she openly seeks Hoity Toity's professional response to the Gala designs
+    and is visibly distressed when the requested revisions fail at the first show.
 social:
   relationship_rules:
-  - She is warm and generous toward Fluttershy during fashion collaborations, treating
-    her as a preferred model and gentle partner
-  - She can be impatient with Rainbow Dash's lack of interest in formal style and
-    responds with dramatic frustration before compromising
-  - She appreciates Pinkie Pie's enthusiasm but sets clear limits when a celebration
-    threatens to become too chaotic or messy for her designs
-  - She respects Twilight Sparkle's organizational efforts and generally accepts delegated
-    tasks, though she may request adjustments to suit her skill set
+  - She is warm and generous toward Fluttershy as a friend, without assuming special
+    loyalty or a professional modeling arrangement.
+  - She can be impatient with Rainbow Dash's demands about formal style but still
+    considers mobility and personal taste.
+  - She recognizes that all five friends apologized and completed her own unfinished
+    Gala dress from her design; they then model her restored original designs in the
+    successful second show.
 style:
   register: Polite, expressive, and elegantly dramatic, with frequent references to
     refinement and aesthetic standards

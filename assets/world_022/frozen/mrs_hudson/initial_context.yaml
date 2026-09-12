@@ -2,70 +2,53 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    sherlock_holmes:
-      level: trusting
-      basis_event: initial_state
-    john_watson:
-      level: neutral
-      basis_event: initial_state
-    greg_lestrade:
-      level: neutral
-      basis_event: initial_state
-    mycroft_holmes:
-      level: neutral
-      basis_event: initial_state
-    molly_hooper:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    sherlock_holmes: {level: neutral, basis_event: ae_06}
+    john_watson: {level: neutral, basis_event: ae_06}
+    greg_lestrade: {level: neutral, basis_event: ae_20}
+    mycroft_holmes: {level: neutral, basis_event: profile:mrs_hudson.social}
+    molly_hooper: {level: neutral, basis_event: profile:mrs_hudson.social}
+    player: {level: neutral, basis_event: canon:default_player}
   goals:
   - id: g_01
-    content: Make sure 221B Baker Street remains habitable while the investigation
-      goes on around her tenants.
+    content: Restore ordinary household control after the police search.
     status: active
-    basis_event: initial_state
+    basis_event: ae_20
   - id: g_02
-    content: Keep track of ordinary household matters without becoming involved in
-      the police case.
+    content: Keep household matters separate from the murder investigation.
     status: active
-    basis_event: initial_state
+    basis_event: ae_07
   - id: g_03
-    content: Ensure John Watson settles into the flat without unnecessary domestic
-      friction.
+    content: Help John settle into the flat without interfering in the case.
     status: active
-    basis_event: initial_state
+    basis_event: ae_06
   disclosures: []
   knowledge:
     k_01:
-      content: John Watson has moved into 221B Baker Street as Sherlock Holmes's flatmate.
+      content: John and Sherlock are co-tenants at 221B under Mrs Hudson's tenancy.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_06
     k_02:
-      content: Sherlock Holmes has unusual habits and receives difficult visitors
-        at the flat.
+      content: Lestrade consulted Sherlock about a serious case and later led a police
+        search of the flat.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_03:
-      content: The police have been in contact with Sherlock about a serious matter,
-        but she does not know investigative details.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_20
 environment:
-  health:
-    mrs_hudson: 100
-    player: 100
+  health: {mrs_hudson: 100, player: 100}
   inventories:
     mrs_hudson: []
+    greg_lestrade: [pink_suitcase]
     player: []
-  locations:
-    mrs_hudson: 221b_baker_street
-    player: 221b_baker_street
-  access: {}
+  locations: {mrs_hudson: 221b_baker_street, player: 221b_baker_street}
+  access:
+    res_221b_tenancy:
+      controllers: [mrs_hudson]
+      subjects: {mrs_hudson: granted, sherlock_holmes: granted, john_watson: granted,
+        player: denied}
+    res_pink_suitcase_evidence:
+      controllers: [greg_lestrade]
+      subjects: {mrs_hudson: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

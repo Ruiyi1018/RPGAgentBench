@@ -3,58 +3,63 @@ runtime_state:
   commitments: []
   relationships:
     xiao_yanzi:
-      level: trusting
-      basis_event: initial_state
-    qianlong:
       level: neutral
-      basis_event: initial_state
-    yongqi:
-      level: neutral
-      basis_event: initial_state
+      basis_event: ae_011
     er_kang:
       level: trusting
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[0]
+    yongqi:
+      level: neutral
+      basis_event: profile:social.relationship_rules
+    qianlong:
+      level: neutral
+      basis_event: profile:social.relationship_rules
     empress_huanzhu:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules
   goals:
-  - id: g_001
-    content: 在核心同伴协助下获得向乾隆当面陈述身份的机会
+  - id: zw_g1
+    content: 在福府养伤并等待与小燕子重逢
     status: active
-    basis_event: initial_state
-  - id: g_002
-    content: 避免小燕子因身份混淆继续受到皇后逼问
+    basis_event: ae_012
+  - id: zw_g2
+    content: 与尔康等核心同伴制定不再冲撞宫禁的认亲办法
     status: active
-    basis_event: initial_state
-  - id: g_003
-    content: 保护身份信物与书信，防止落入皇后一方手中
+    basis_event: ae_013
+  - id: zw_g3
+    content: 准确保留摺扇、烟雨图及夏雨荷往事的证言链
     status: active
-    basis_event: initial_state
+    basis_event: ae_013
   disclosures: []
   knowledge:
-    k_001:
-      content: 小燕子已入宫并被误认为可能与皇室有关的女子
+    zw_k1:
+      content: 自己已在山崖把摺扇和烟雨图交给小燕子，当前不再持有两件证物
       status: active
-      visibility: private
-      source_event: initial_state
-    k_002:
-      content: 尔康愿意保护并协助紫薇争取身份确认
+      visibility:
+      - npc
+      source_event: ae_006
+    zw_k2:
+      content: 乾隆已把小燕子册封为还珠格格
       status: active
-      visibility: private
-      source_event: initial_state
-    k_003:
-      content: 皇后已在宫中公开怀疑小燕子来历
+      visibility:
+      - npc
+      - player
+      source_event: ae_011
+    zw_k3:
+      content: 尔康相信自己的身世陈述并允许自己留在福府
       status: active
-      visibility: private
-      source_event: initial_state
-    k_004:
-      content: 核心同伴共同商定先稳住局面，再寻机向乾隆说明
+      visibility:
+      - npc
+      source_event: ae_013
+    zw_k4:
+      content: 福家计划借永琪促成自己与小燕子相见，但自己尚未入宫
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ae_015
 environment:
   health:
     ziwei: 100

@@ -6,7 +6,7 @@ runtime_state:
       level: loyal
       basis_event: initial_state
     jia_baoyu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     lin_daiyu:
       level: neutral
@@ -15,7 +15,7 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     xiren:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     qingwen:
       level: neutral
@@ -45,43 +45,43 @@ runtime_state:
     k_wang_xifeng_grandson_jade:
       content: 贾宝玉出生时口中衔玉，贾府上下视通灵宝玉为命根子。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:jia_baoyu.identity.public_background
     k_wang_xifeng_daiyu_enters:
       content: 林黛玉因母丧投靠贾母，成为荣国府常住成员，与贾母同院照管。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: e_lin_daiyu_enters_jia
     k_wang_xifeng_baochai_enters:
       content: 薛宝钗随母兄进京，住在荣国府梨香院，为府中亲眷。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: e_xue_baochai_enters_jia
     k_wang_xifeng_ningguo_affair:
       content: 自己曾受贾珍所托协理宁国府，调度秦可卿丧事，在两府立威。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: e_wang_xifeng_manages_ning
     k_wang_xifeng_liu_relief:
       content: 刘姥姥携板儿到荣国府求助，自己出面周济，建立与刘姥姥往来。
       status: active
-      visibility: internal
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_wang_xifeng_meets_liu
     k_wang_xifeng_jia_rui_affair:
       content: 贾瑞曾对自己起意，被设计摆布后致病，此事使自己威名更盛。
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_wang_xifeng_torments_jia_rui
     k_wang_xifeng_lending:
       content: 自己暗中拿荣国府月例等银钱在外放债取利。
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:wang_xifeng.private.secrets
     k_wang_xifeng_jia_lian_misconduct:
       content: 贾琏在外有偷娶等荒唐行事，自己已有所耳闻并暗中提防。
       status: active
-      visibility: secret
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:wang_xifeng.private.secrets
 environment:
   health:
     wang_xifeng: 100
@@ -92,7 +92,19 @@ environment:
   locations:
     wang_xifeng: loc_rongguo_fu
     player: loc_rongguo_fu
-  access: {}
+  access:
+    res_household_assignments:
+      controllers: [wang_xifeng, jia_mu]
+      subjects:
+        player: denied
+    res_major_household_decisions:
+      controllers: [jia_mu]
+      subjects:
+        player: denied
+    res_yihong_assignments:
+      controllers: [jia_baoyu, xiren]
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

@@ -6,55 +6,41 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     tang_ren:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_ev_a_xiang_lodging
     si_nuo:
       level: neutral
       basis_event: initial_state
     kun_tai:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     huang_lan_deng:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
       basis_event: initial_state
   goals:
   - id: g_a_xiang_1
-    content: 不让自己被颂帕命案牵进去
+    content: 维持住所与唐人街的正常生活秩序
     status: active
-    basis_event: initial_state
+    basis_event: pre_ev_a_xiang_lodging
   - id: g_a_xiang_2
-    content: 在唐仁或秦风找来时给点不显眼的帮助
+    content: 明确唐仁、秦风和普通来访者可进入的住所区域
     status: active
-    basis_event: initial_state
-  - id: g_a_xiang_3
-    content: 维持唐人街日常关系，不让人觉得自己站队
-    status: active
-    basis_event: initial_state
+    basis_event: pre_ev_a_xiang_lodging
   disclosures: []
   knowledge:
-    k_a_xiang_1:
-      content: 唐仁在曼谷唐人街有侦探社，并且常与附近的人有往来
+    k_a_xiang_lodging:
+      content: 自己是唐仁的房东，唐仁只获准使用租住与指定会面区域
       status: active
-      visibility: private
-      source_event: initial_state
-    k_a_xiang_2:
-      content: 秦风是来找唐仁的外来人，唐仁和秦风目前在躲追查
+      visibility: [npc, player]
+      source_event: pre_ev_a_xiang_lodging
+    k_a_xiang_qin:
+      content: 秦风是来曼谷投奔唐仁的远房表外甥
       status: active
-      visibility: private
-      source_event: initial_state
-    k_a_xiang_3:
-      content: 颂帕工坊出了命案，唐仁似乎被卷了进来
-      status: active
-      visibility: private
-      source_event: initial_state
-    k_a_xiang_4:
-      content: 唐仁与坤泰之间有些私下联系，但具体警方内情自己并不清楚
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: pre_ev_qin_arrival
 environment:
   health:
     a_xiang: 100
@@ -63,9 +49,18 @@ environment:
     a_xiang: []
     player: []
   locations:
-    a_xiang: loc_tangren_agency
-    player: loc_tangren_agency
-  access: {}
+    a_xiang: loc_a_xiang_residence
+    player: loc_a_xiang_residence
+  access:
+    a_xiang_meeting_area:
+      controllers: [a_xiang]
+      subjects: {a_xiang: granted, tang_ren: granted, qin_feng: granted, player: granted}
+    a_xiang_private_area:
+      controllers: [a_xiang]
+      subjects: {a_xiang: granted, tang_ren: denied, qin_feng: denied, player: denied}
+    case_file:
+      controllers: [kun_tai, huang_lan_deng]
+      subjects: {a_xiang: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

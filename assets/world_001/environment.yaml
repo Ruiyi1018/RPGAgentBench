@@ -8,16 +8,19 @@ locations:
     connected_to: [hogwarts_entrance_hall]
   - id: hogwarts_entrance_hall
     name: Hogwarts Entrance Hall
-    connected_to: [hogwarts_great_hall, hogwarts_corridors, hogwarts_grounds]
+    connected_to: [hogwarts_great_hall, hogwarts_corridors, potions_dungeon, hogwarts_grounds, hogwarts_express]
   - id: hogwarts_corridors
     name: Hogwarts Corridors
     connected_to:
       - hogwarts_entrance_hall
       - gryffindor_common_room
       - dada_classroom
+      - lupins_office
       - potions_dungeon
       - hospital_wing
       - west_tower
+      - secure_classroom
+      - lupin_containment_room
   - id: gryffindor_common_room
     name: Gryffindor Common Room
     connected_to: [hogwarts_corridors, gryffindor_dormitory]
@@ -26,16 +29,19 @@ locations:
     connected_to: [gryffindor_common_room]
   - id: dada_classroom
     name: Defence Against the Dark Arts Classroom
-    connected_to: [hogwarts_corridors]
+    connected_to: [hogwarts_corridors, lupins_office, hospital_wing, secure_classroom, lupin_containment_room]
+  - id: lupins_office
+    name: Remus Lupin's Office
+    connected_to: [hogwarts_corridors, dada_classroom]
   - id: potions_dungeon
     name: Potions Dungeon
-    connected_to: [hogwarts_corridors]
+    connected_to: [hogwarts_corridors, hogwarts_entrance_hall]
   - id: hospital_wing
     name: Hospital Wing
-    connected_to: [hogwarts_corridors]
+    connected_to: [hogwarts_corridors, dada_classroom, west_tower]
   - id: west_tower
     name: West Tower
-    connected_to: [hogwarts_corridors]
+    connected_to: [hogwarts_corridors, hospital_wing]
   - id: hogwarts_grounds
     name: Hogwarts Grounds
     connected_to:
@@ -44,9 +50,10 @@ locations:
       - whomping_willow
       - forbidden_forest_edge
       - great_lake
+      - quidditch_pitch
   - id: hagrids_hut
     name: Hagrid's Hut
-    connected_to: [hogwarts_grounds]
+    connected_to: [hogwarts_grounds, forbidden_forest_edge]
   - id: whomping_willow
     name: Whomping Willow
     connected_to: [hogwarts_grounds, willow_tunnel]
@@ -58,13 +65,31 @@ locations:
     connected_to: [willow_tunnel, hogsmeade]
   - id: forbidden_forest_edge
     name: Forbidden Forest Edge
-    connected_to: [hogwarts_grounds, great_lake]
+    connected_to: [hogwarts_grounds, hagrids_hut, great_lake]
   - id: great_lake
     name: Great Lake Shore
     connected_to: [hogwarts_grounds, forbidden_forest_edge]
   - id: hogsmeade
     name: Hogsmeade
     connected_to: [shrieking_shack]
+  - id: hogwarts_express
+    name: Hogwarts Express
+    connected_to: [hogwarts_entrance_hall, kings_cross]
+  - id: kings_cross
+    name: King's Cross Station
+    connected_to: [hogwarts_express, azkaban]
+  - id: azkaban
+    name: Azkaban
+    connected_to: [kings_cross]
+  - id: quidditch_pitch
+    name: Hogwarts Quidditch Pitch
+    connected_to: [hogwarts_grounds]
+  - id: secure_classroom
+    name: Secure Classroom
+    connected_to: [hogwarts_corridors, dada_classroom]
+  - id: lupin_containment_room
+    name: Lupin's Isolated Containment Room
+    connected_to: [hogwarts_corridors, dada_classroom]
 
 items:
   - id: marauders_map
@@ -107,3 +132,15 @@ items:
     name: Wand
     type: magical_tool
     portable: true
+  - id: scabbers
+    name: Scabbers
+    type: animal_companion
+    portable: true
+  - id: buckbeak
+    name: Buckbeak
+    type: animal_mount
+    portable: true
+    runtime_semantics: inventory_and_location_entity
+    initial_holder: rubeus_hagrid
+    initial_location: hagrids_hut
+    capabilities: [can_be_untethered, can_carry_riders, can_move_between_connected_locations]

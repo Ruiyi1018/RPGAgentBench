@@ -9,10 +9,10 @@ runtime_state:
       level: hostile
       basis_event: initial_state
     arya_stark:
-      level: hostile
+      level: neutral
       basis_event: initial_state
     tyrion_lannister:
-      level: distrustful
+      level: neutral
       basis_event: initial_state
     jon_snow:
       level: neutral
@@ -33,7 +33,8 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: goal_003
-    content: Remove King Robert as a threat to her family's power
+    content: Use loyal court retainers to protect her children and prevent unauthorized
+      access while Robert remains away
     status: active
     basis_event: initial_state
   disclosures: []
@@ -41,30 +42,30 @@ runtime_state:
     know_001:
       content: Bran Stark saw her with Jaime in the tower at Winterfell
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     know_002:
       content: Her children are fathered by Jaime Lannister, not King Robert
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     know_003:
       content: Eddard Stark has learned the truth about her children's parentage and
         confronted her with it
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     know_004:
       content: King Robert is hunting in the Kingswood and is expected to return to
         King's Landing
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     know_005:
-      content: She warned Eddard Stark that in the game of thrones you win or you
-        die
+      content: She answered Eddard's warning by framing their conflict as a zero-sum
+        struggle for power and survival
       status: active
-      visibility: public
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -76,7 +77,16 @@ environment:
   locations:
     cersei_lannister: kings_landing
     player: kings_landing
-  access: {}
+  access:
+    lannister_household_retainers:
+      controllers: [cersei_lannister]
+      subjects:
+        cersei_lannister: granted
+    royal_family_private_access:
+      controllers: [cersei_lannister]
+      subjects:
+        cersei_lannister: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

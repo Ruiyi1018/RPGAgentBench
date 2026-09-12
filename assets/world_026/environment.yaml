@@ -1,5 +1,6 @@
 world_id: world_026
 name: Ponyville and surrounding region
+language: en
 locations:
 - id: loc_ponyville
   name: Ponyville
@@ -9,42 +10,91 @@ locations:
   - loc_sugarcube_corner
   - loc_carousel_boutique
   - loc_golden_oaks_library
+  - loc_fluttershy_cottage
+  - loc_town_square
+  - loc_dragon_mountain
+  - loc_running_leaves_route
+  - loc_ursa_minor_cave
+  - loc_ponyville_spa
 - id: loc_sweet_apple_acres
   name: Sweet Apple Acres
   connected_to:
   - loc_ponyville
+  - loc_everfree_forest
+  - loc_running_leaves_route
 - id: loc_everfree_forest
   name: Everfree Forest
   connected_to:
   - loc_ponyville
+  - loc_sweet_apple_acres
+  - loc_fluttershy_cottage
+  - loc_everfree_forest_edge
+  - loc_zecora_hut
+  - loc_castle_two_sisters
 - id: loc_sugarcube_corner
   name: Sugarcube Corner
   connected_to:
   - loc_ponyville
+  - loc_golden_oaks_library
 - id: loc_carousel_boutique
   name: Carousel Boutique
   connected_to:
   - loc_ponyville
+  - loc_golden_oaks_library
 - id: loc_golden_oaks_library
   name: Golden Oaks Library
   connected_to:
   - loc_ponyville
+  - loc_sugarcube_corner
+  - loc_carousel_boutique
+- id: loc_fluttershy_cottage
+  name: Fluttershy's cottage
+  connected_to:
+  - loc_ponyville
+  - loc_everfree_forest
+  - loc_everfree_forest_edge
+- id: loc_everfree_forest_edge
+  name: Clearing at the edge of the Everfree Forest
+  connected_to:
+  - loc_everfree_forest
+  - loc_fluttershy_cottage
+- id: loc_town_square
+  name: Ponyville town square and temporary public performance stage
+  connected_to:
+  - loc_ponyville
+- id: loc_dragon_mountain
+  name: Dragon's mountain cave
+  connected_to:
+  - loc_ponyville
+- id: loc_zecora_hut
+  name: Zecora's hut in the Everfree Forest
+  connected_to:
+  - loc_everfree_forest
+- id: loc_castle_two_sisters
+  name: Castle of the Two Sisters in the Everfree Forest
+  connected_to:
+  - loc_everfree_forest
+- id: loc_ursa_minor_cave
+  name: Ursa Minor's cave outside Ponyville
+  connected_to:
+  - loc_ponyville
+- id: loc_ponyville_spa
+  name: Ponyville spa
+  connected_to:
+  - loc_ponyville
+- id: loc_running_leaves_route
+  name: Running of the Leaves forest route
+  connected_to:
+  - loc_ponyville
+  - loc_sweet_apple_acres
 items:
 - id: item_elements_harmony
   name: Elements of Harmony
   type: artifact
   portable: true
-- id: item_cutie_mark_crusaders_cape
-  name: Cutie Mark Crusaders cape
-  type: clothing
-  portable: true
-- id: item_rainbow_dash_gala_dress
-  name: Rainbow Dash's Grand Galloping Gala dress
-  type: clothing
-  portable: true
-- id: item_pinkie_pie_party_cannon
-  name: Pinkie Pie's party cannon
-  type: party equipment
+- id: item_mane_six_gala_dresses
+  name: Six completed original-design Grand Galloping Gala dresses
+  type: clothing set
   portable: true
 - id: item_fluttershy_animal_food
   name: Fluttershy's animal feed bucket
@@ -54,4 +104,7 @@ items:
   name: Applejack's apple cart
   type: cart
   portable: false
-language: en
+- id: item_twilight_winter_wrap_up_vest
+  name: Twilight Sparkle's all-team Winter Wrap Up vest
+  type: clothing
+  portable: true

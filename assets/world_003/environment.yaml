@@ -1,11 +1,11 @@
 world_id: world_003
 name: 白虎岭
+language: zh
 locations:
 - id: baihuling
   name: 白虎岭
   connected_to:
   - qulu
-  - yaodong
   - yunduan
   - shandao
 - id: qulu
@@ -13,19 +13,22 @@ locations:
   connected_to:
   - baihuling
   - shandao
-- id: yaodong
-  name: 妖精洞府
-  connected_to:
-  - baihuling
 - id: yunduan
   name: 云端
   connected_to:
   - baihuling
+  - nanshan_peach_grove
 - id: shandao
   name: 山道
   connected_to:
   - baihuling
   - qulu
+  - nanshan_peach_grove
+- id: nanshan_peach_grove
+  name: 南山摘桃处
+  connected_to:
+  - yunduan
+  - shandao
 items:
 - id: jgb
   name: 金箍棒
@@ -51,4 +54,3 @@ items:
   name: 石头
   type: 自然物
   portable: false
-language: zh

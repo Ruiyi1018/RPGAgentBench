@@ -1,0 +1,175 @@
+- item_id: canon.canon_policy.primary_source
+  severity: major
+  rule_id: source_version_explicit
+  evidence: primary_source和sources.scope都只写“电视剧《甄嬛传》/全剧”，未锁定2011年76集大陆版等具体发行剪辑；不同电视剪辑的集数与内容边界可能不同。
+  required_change: 明确唯一采用的电视剧发行版本/剪辑及其识别信息，并让后续事件定位均以该版本为准。
+  resolution: 已将primary_source与src_001锁定为2011年首播、郑晓龙执导的中国大陆76集剪辑版，并声明所有事件集数和集内顺序均以该版为准。
+  status: fixed
+
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: shared_snapshot仍为“甄嬛初次失宠之前，具体集数待人工锁定”。按电视剧常见76集顺序，甄嬛小产约在第30集、正式失宠约在第32集；该边界前沈眉庄已历经假孕冤案及复位、甄嬛已小产、华妃已因罚跪事件受降位惩处，但Profile、initial_context和候选池仍主要停留在更早的初受宠/初受排挤状态，无法确定一个共同的最新有效状态。最终复核补充：边界虽已锁定到第10集末，但an_lingrong Profile已写余氏执行后“开始产生隔阂感”，其Frozen仍把甄嬛、沈眉庄均设为trusting，并新增无来源的主动隐瞒目标，说明边界末端状态仍未同步。2026-09-11独立终审补充：Frozen三方已改为neutral，但甄嬛identity.role仍称安陵容为“姐妹盟友”、identity.affiliations仍称“亲近的姐妹小团体”，安陵容identity.affiliations仍称与二人“交好”，沈眉庄identity.role仍称安陵容为“姐妹盟友”，与同文件当前social及Frozen的“有隔阂的中立”并不唯一一致。
+  required_change: 保留已锁定的第10集离散边界；将三份Profile的当前身份/阵营/关系概括同步为第10集末状态，明确“仍有姐妹名分与往来”不等于当前盟友或交好，并与social及Frozen的neutral保持唯一一致。
+  resolution: 已保留第10集末离散边界；甄嬛identity.role/affiliations、安陵容identity.affiliations及沈眉庄identity.role均改为“仍有姐妹名分或往来但已生隔阂”，不再把安陵容与二人概括为当前盟友或交好。三方social与Frozen继续统一为ev_012覆盖后的neutral，甄嬛与沈眉庄之间的loyal保持不变。
+  status: fixed
+
+- item_id: canon.default_player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、知识来源、可接触材料、行动权限及scenario覆盖规则；所有initial_context却都创建了player状态，无法判定Player开局应知内容和可执行行为。
+  required_change: 在canon中定义统一默认Player语义及显式scenario覆盖规则，明确默认Player的知识与权限边界。
+  resolution: 已在canon.default_player_semantics中定义默认Player身份、公开知识范围、材料、开局地点内对话权限及禁止权限，并规定scenario必须逐项显式覆盖冲突语义。
+  status: fixed
+
+- item_id: environment.locations
+  severity: major
+  rule_id: referenced_assets_exist
+  evidence: environment仅有碎玉轩、翊坤宫、景仁宫、御花园、养心殿和长街；沈眉庄在该时段的咸福宫/存菊堂、安陵容的延禧宫等实际住所未建模，且两人的initial_context均无事件依据地把当前位置设为loc_006长街。最终复核补充：住所已补齐，但候选ev_008的汤泉行宫侍寝场景和ev_012的冷宫执行场景仍无地点节点或明确映射。
+  required_change: 保留新增住所与当前位置修复，并为候选池实际使用的汤泉行宫、冷宫补充最小地点节点和双向可达连接，或在候选中提供到现有节点的无歧义映射。
+  resolution: 在保留咸福宫存菊堂与延禧宫及当前位置修复的基础上，新增loc_009汤泉行宫与loc_010冷宫，为ev_008、ev_012分别填写location_id，并补齐养心殿/长街与两节点的双向可达连接。
+  status: fixed
+
+- item_id: environment.stage3_affordances
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: Profiles的核心可测试权力包括皇帝召见/恩赏/冷落、皇后与华妃安排宫务、苏培盛通传和各宫差使宫人；environment只提供4件无角色归属的普通物品，全部initial_context的inventory、access、offers和commitments均为空，未提供可执行的授权、通传、奖惩或资源状态。
+  required_change: 以最小可执行状态建模计划测试所需的关键权限、通传/召见渠道、宫务资源或承诺，并在initial_context中分配符合角色权威与限制的初始值。
+  resolution: 已增加养心殿通传名册、中宫宫务牌和翊坤宫差使牌，并在各initial_context的inventory/access中建模召见通传、宫务学习、宫室差使、奖惩裁决及Player默认拒绝权限；苏培盛另有可执行通传承诺。
+  status: fixed
+
+- item_id: characters.all.source_grounding
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 7份Profile均无逐项来源或事件ID；大量内心动机、秘密、关系判断和权力结论只能回指笼统的全剧来源，无法区分边界前明示事实、合理推断与观众后见信息。最终复核补充：新增source_grounding仍按整组字段笼统列事件，且若干引用不支持对应结论；例如hua_fei的goals_permissions_limits只引ev_009公开讥讽，却据此主张可借宫务和差使宫人压制他人。2026-09-11独立终审补充：虽已增加逐项映射，emperor_yongzheng与shen_meizhuang双向trusting只引ev_005“首次承宠并获准学习宫务”，zhen_huan与皇帝双向trusting只引ev_008“首次承宠”，这些事件本身不建立信任等级；empress_yixiu对皇帝loyal只引中宫宫务权限事实，也不建立忠诚关系。另有多项来源仍是“src_001:第1至第10集……”的十集范围概括，未给可核验场景。2026-09-11独立最终Auditor复核：强关系与整段概括已修复，但沈眉庄Profile仍多处把“受到华妃防备/排挤”写成当前确定事实，source_grounding.guard_against_hua仅引ev_005；该事件只记录沈眉庄承宠和取得宫务学习权限，不记录华妃对她的行动或态度。Frozen的shen_meizhuang_goal_003同样以ev_005支撑“防范华妃施压”。华妃Frozen的hua_fei_goal_002又以只针对甄嬛的ev_009支撑“限制甄嬛与沈眉庄”，均超出所引证据。
+  required_change: 保留已经修复的关系等级与具体场景引用；为沈眉庄受到华妃防备、排挤或施压及华妃限制沈眉庄补充边界前可核验的离散场景来源，或将Profile与Frozen目标收窄为当前证据只支持的风险判断，不得让ev_005或只针对甄嬛的ev_009承担未发生的状态变化。
+  resolution: 已保留华妃—沈眉庄双向neutral及canon:runtime_defaults.relationship来源；沈眉庄Profile中“受到华妃防备、排挤或施压”的既成事实均降级为风险判断，并明确其依据仅为ev_005所示自身受宠/宫务学习状态与ev_009所示华妃公开针对甄嬛，不主张华妃已对沈眉庄行动。shen_meizhuang_goal_003同步改为基于ev_009防范类似风险；hua_fei_goal_002删除“限制沈眉庄”，仅保留ev_009直接支持的限制甄嬛。
+  status: fixed
+
+- item_id: characters.su_peisheng.identity.affiliations
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 苏培盛Profile写“皇帝允礼近前服侍之人”；电视剧中允礼是果郡王、皇帝之弟，苏培盛所近侍的是雍正皇帝，该字段把两个不同人物合并。
+  required_change: 更正苏培盛的直属服侍对象，并回归所有由该错误身份派生的关系、权限和知识描述。
+  resolution: 已把错误的“皇帝允礼”更正为“雍正皇帝”，并以ev_007、ev_011和ev_012回归其直属身份、通传权限、当前知识及运行态来源。
+  status: fixed
+
+- item_id: characters.current_effective_state
+  severity: major
+  rule_id: current_relationship_state
+  evidence: Profile把沈眉庄写作“皇帝新宠”且initial_context对皇帝为trusting，只保留“较早受宠后受排挤”的早期概括；若快照位于甄嬛第一次正式失宠前，沈眉庄此时已经历假孕冤案及复位，对皇帝的信任和处境不能等同早期状态。甄嬛、华妃的Profile与运行态也未反映紧邻失宠前的小产、怨隙和降位后果。最终复核补充：前移快照解决了上述晚期冲突，但安陵容Profile明确写第10集末与甄嬛、沈眉庄“开始产生隔阂感”，Frozen却仍保留双向trusting；an_lingrong_goal_002的主动隐瞒也不是该事件后的已建立目标。2026-09-11独立终审补充：Frozen三方关系和无依据目标已修复，但三份Profile的identity.role/affiliations仍用当前式“姐妹盟友”“亲近”“交好”，与其social及Frozen的neutral冲突，当前有效关系仍有两个答案。
+  required_change: 保留已修复的三方Frozen neutral和目标；同步三份Profile顶层当前身份/阵营描述，区分历史姐妹情分、继续往来目标与当前有隔阂的中立关系。
+  resolution: 已在保留三方Frozen neutral、姐妹往来目标及ev_012知识粒度的基础上，同步甄嬛identity.role/affiliations、安陵容identity.affiliations与沈眉庄identity.role：仅保留历史姐妹名分和当前审慎往来，明确第10集末已有隔阂，不再出现当前“姐妹盟友”“亲近小团体”或“交好”的第二答案。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 24个候选事件没有chapter_order/canon_order或剧集内顺序；canon还明确写“不标注集数”。ev_008之后大量“逐渐/开始/受宠过程中/在……之前”的概括无法恢复唯一先后，不能验证与共享快照的边界关系。
+  required_change: 为每个保留的离散候选事件增加唯一、可核验的正典顺序字段和边界前来源定位，确保后续能恢复总时间线。
+  resolution: 已用12个候选事件重建总时间线；每项均含唯一canon_order及76集版source_locator，顺序从第1集选秀至第10集余氏伏诛，均不越过共享快照。
+  status: fixed
+
+- item_id: anchor_pool.events.event_boundaries
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ev_004、ev_007至ev_011、ev_013至ev_024多数是长期关系、反复职责、人格倾向或局势总结，例如ev_009“苏培盛常在……传递信息”、ev_022“甄嬛仍保持谨慎”、ev_023“后宫局势明显分化”，并非一次可定位、可观察的事件。
+  required_change: 将长期概括移回Profile/背景；候选池仅保留或替换为有明确触发、发生时点、参与者及前后状态的一次性正典事件。
+  resolution: 已移除24项长期概括式材料，替换为12个具备单次触发、具体场景或行动、参与者及前后状态的一次性事件；人格与长期策略保留在Profile中。
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: 多项known_by把内心状态或隐蔽意图直接赋给旁观者：ev_008把皇后“观察后宫争斗”列为甄嬛、沈眉庄、安陵容所知，ev_014把安陵容的依赖与“潜在摇摆”列为甄嬛、沈眉庄、皇后所知，ev_021把皇后“利用安排促使矛盾公开化”的意图列为华妃、甄嬛、苏培盛所知，文件没有披露或证据链支持。最终复核补充：重建后的ev_012仅列安陵容、苏培盛为known_by，并断言甄嬛、沈眉庄当时不知道执行细节；但同集结尾安陵容前去说明时听到二人议论其处置行为，Profile又记为三人开始隔阂，事件存在/行为与具体执行细节的知情范围没有拆开。
+  required_change: 将ev_012的事件存在、安陵容提出执行办法、具体强制执行细节和后续议论分别核定知情者；同步三人的Frozen知识，不得用一个known_by列表把不同粒度事实合并。
+  resolution: 已重写ev_012知情粒度：knowledge_scope分别记录执行结果、安陵容提示与现场执行过程；执行结果包含皇帝，安陵容提示包含安陵容、苏培盛及随后议论此事的甄嬛、沈眉庄，冷宫现场过程仅限安陵容与苏培盛。三人Frozen知识同步，默认Player未获得任何私密细节。
+  status: fixed
+
+- item_id: anchor_pool.events.state_change_cf_edit
+  severity: major
+  rule_id: counterfactual_pairability
+  evidence: 多数state_change只写“更低调”“产生不安”“格局变化”“冲突更加明显”等非离散心理或局势结论；对应cf_edit常直接删除整段长期过程并同时改动关系、活动范围和外部压力，不能隔离一个可由Operation执行的关键原因。
+  required_change: 为每个拟用于后续测试的候选事件明确一个可执行的知识、关系、目标/承诺、权限或资源变化，并把cf_edit收窄为只改变一个证据或原因、能导出不同可观察决定的替代情形。
+  resolution: 每项state_change现均落到身份/居所、知识纠正、目标承诺、关系、权限或口谕履行等离散状态；每项cf_edit只改变一个关键资格、证据、披露、许可、行动或处分，并明确对应可观察差异。
+  status: fixed
+
+- item_id: frozen.all.knowledge.visibility
+  severity: major
+  rule_id: visibility_schema_consistency
+  evidence: 7份initial_context的knowledge.visibility混用private、public、observable、shared、self、zhen_huan、an_lingrong、hua_fei等标量；规范执行语义要求受众列表[npc]或[npc, player]，当前值既未声明Player是否知情，也会把人物ID误当“可见性类型”。
+  required_change: 将全部knowledge.visibility统一为明确受众列表，并依默认Player身份逐项核定[npc]或[npc, player]；需要其他主体知情时使用项目明确支持的数据结构，不复用visibility标量。
+  resolution: 7份initial_context的全部knowledge.visibility已统一为[npc]或[npc, player]列表，并依据默认Player仅知公开事实的语义逐项核定；他人知情不再借visibility标量表达。
+  status: fixed
+
+- item_id: frozen.all.state_provenance
+  severity: major
+  rule_id: state_traceability
+  evidence: 所有relationships、goals和knowledge的basis_event/source_event均统一写generic的initial_state，没有指向canon候选事件或其他可核验来源；Stage 1无法追踪旧状态、触发证据和当前有效状态。最终复核补充：generic值虽已替换，但引用事件不一定支持状态强度，例如安陵容对甄嬛、沈眉庄的trusting及沈眉庄对甄嬛的loyal都只引用ev_001“同批入选”，该事件既未建立这些关系等级，也未覆盖第10集末的最新变化。2026-09-11独立终审补充：三方及甄嬛—沈眉庄来源已修复，但其余无强状态依据的neutral并未全部改引runtime default；例如皇帝对华妃neutral引ev_009（皇帝不在known_by且该事件无皇帝状态变化），甄嬛对苏培盛neutral引ev_007，安陵容对苏培盛neutral引ev_012，沈眉庄对苏培盛neutral引ev_005，均未由对应事件建立该关系等级。多个profile:引用也只指向关系文案而非其底层证据。
+  required_change: 逐项回归全部Frozen relationship basis_event；事件只有在确实建立或更新该方向关系等级时才能作为依据，单纯同场/知情不足以建立neutral。无关系变化证据者统一引用canon:runtime_defaults.relationship；保留能直接建立强关系或第10集末覆盖变化的来源。
+  resolution: 已逐项回归7份Frozen及对应Profile关系来源：只有直接建立/更新关系的ev_009、ev_012、canon_fact_zhen_shen_friendship及皇帝—苏培盛近侍来源继续作为basis；皇帝—甄嬛、皇帝—沈眉庄等无直接证据的强关系已降为neutral。所有仅因同场、知情、承宠、宫务身份或通传而得到的neutral（含皇帝—华妃、甄嬛—苏培盛、安陵容—苏培盛、沈眉庄—苏培盛等）均改引canon:runtime_defaults.relationship；Frozen不再以profile文案代替底层关系证据。
+  status: fixed
+
+- item_id: frozen.emperor_yongzheng.knowledge.emperor_yongzheng_knowledge_004
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: 该项把“皇后……推动部分后宫矛盾公开化”作为皇帝active且observable的确定知识；皇帝Profile同时规定其不能全知私下信息，当前资产未给出皇帝获知皇后幕后推动行为的在场、披露或证据来源。
+  required_change: 若只有公开安排可见，应把知识限定为皇帝实际观察到的表面事实或怀疑；若保留确定结论，补充边界前的明确获知证据。
+  resolution: 已删除皇帝对皇后幕后推动矛盾的确定知识，改为皇帝仅知道甄嬛受宠引起华妃不满、余氏下药口供和自己下达的处分；并明确不知道景仁宫交锋逐句细节及安陵容私下推动执行的细节。
+  status: fixed
+
+- item_id: frozen.goal_status_vocabulary
+  severity: minor
+  rule_id: runtime_schema_consistency
+  evidence: "皇后initial_context的4个goal使用status: ongoing，其余角色均使用active；资产未定义ongoing与active的差异，而当前有效目标需要统一、可判分的运行语义。"
+  required_change: 统一为执行器支持的规范目标状态，或在schema中明确两者差异并验证后续审计与状态题均能一致处理。
+  resolution: "皇后4个当前目标已全部统一为status: active，与其余角色运行态词汇一致。"
+  status: fixed
+
+- item_id: anchor_pool.events.ev_009_hua_punishes.anchor_for
+  severity: major
+  rule_id: candidate_npc_relevance
+  evidence: ev_009_hua_punishes把emperor_yongzheng列入anchor_for，但皇帝不在known_by中，state_change也只更新甄嬛对华妃的关系与皇后的公开秩序行为；当前材料没有给皇帝可获知的证据或任何皇帝状态变化。
+  required_change: 从该事件的anchor_for移除emperor_yongzheng，或补充边界前真实且可追溯的披露/证据及由此产生的皇帝离散状态变化；不得让未知事件直接成为该NPC候选Anchor。
+  resolution: 已从ev_009_hua_punishes.anchor_for移除emperor_yongzheng；未扩大known_by，也未为皇帝虚构该场请安交锋的披露、证据或状态变化。
+  status: fixed
+
+- item_id: characters_and_frozen.future_knowledge
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: 2026-09-11独立终审发现快照后剧情被直接写入运行材料。shen_meizhuang initial_context的shen_meizhuang_knowledge_004把“尚未发生假孕受冤事件”列为active且[npc, player]可见知识；其Profile边界又直接列出未来“失宠、假孕、出宫”和“以后期命运”为对照。emperor_yongzheng Profile也反复写“未来失宠后的结论”“甄嬛即将失宠”。这些并非角色在第10集末可知事实，且Character Profile会进入运行上下文，禁止式措辞仍会把未来剧情提供给模型和Player。2026-09-11独立最终Auditor复核：正文与Frozen知识中的上述泄漏已删除，但7份Character Profile的snapshot字段仍直接写“丽嫔装神弄鬼事件前”。该事件位于共享快照之后，Profile会进入运行上下文，因而仍把一个具体未来事件名称提供给NPC模型；这也不符合resolution所称“全部Profile不再出现具体快照后剧情”。
+  required_change: 保留已完成的正文与Frozen知识清理；将7份运行Profile的snapshot改为只描述已经成立的第10集末边界（例如“第10集余氏伏诛后”），不得在运行材料中用快照后的具体事件名称界定边界。canon.yaml可继续承担全局排除范围。
+  resolution: 已将7份运行Character Profile的snapshot统一改为“第10集余氏伏诛后”，删除“丽嫔装神弄鬼事件前”这一具体未来事件名称；未改canon.yaml中的全局排除边界。此前完成的沈眉庄与皇帝正文、Frozen知识清理均保持不变。
+  status: fixed
+
+- item_id: frozen.emperor_yongzheng.knowledge.emperor_yongzheng_knowledge_003
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: emperor_yongzheng initial_context把“甄嬛首次侍寝后连续受宠，引起华妃明显不满”作为皇帝active私密知识，却只引用ev_008_zhen_first_favor；ev_008仅建立甄嬛首次承宠及公开恩宠，未记录华妃的不满，也没有向皇帝披露该态度。能直接证明华妃不满的ev_009_hua_punishes又未把皇帝列入known_by。当前措辞因此让皇帝无来源地知道华妃内在态度，与其Profile“不能越过近侍和宫规直接获取所有私密信息”的边界冲突。
+  required_change: 将该知识收窄为ev_008直接支持的甄嬛受宠事实；若需保留皇帝知道华妃不满，必须补充共享快照前可核验的在场、奏报、公开迹象或披露来源，并同步source_event，不得仅以皇帝不知道ev_009逐句细节来代替获知依据。
+  resolution: 已将emperor_yongzheng_knowledge_003收窄为皇帝亲历且ev_008直接支持的“甄嬛已经首次侍寝并得到自己公开表现出的明显恩宠”；删除“连续受宠”“华妃明显不满”及以“不知道景仁宫逐句细节”代替获知依据的表述，source_event继续精确引用ev_008，未扩大皇帝对ev_009的知情范围。
+  status: fixed
+
+- item_id: frozen.emperor_yongzheng.knowledge.emperor_yongzheng_knowledge_003.visibility
+  severity: major
+  rule_id: player_visibility_consistency
+  evidence: emperor_yongzheng_knowledge_003现已收窄为ev_008直接支持的“甄嬛已经首次侍寝并得到自己公开表现出的明显恩宠”，但visibility仍为[npc]。同一ev_008事实在anchor_pool中明确写“公开表现出明显恩宠”，在华妃、皇后、安陵容与苏培盛Frozen中也均以[npc, player]暴露甄嬛首次承宠或明显受宠；canon.default_player_semantics又允许默认Player知道公开发生的礼仪性事件。仅皇帝上下文把同一公开事实设为Player不可见，会使Stage 1与Stage 3对默认Player初始知识产生两个答案。
+  required_change: 将emperor_yongzheng_knowledge_003的visibility改为[npc, player]；若坚持[npc]，则必须把content拆分为真正仅皇帝知道的私密部分与另一个Player可见的公开受宠事实，并同步全角色可见性语义。
+  resolution: 已将emperor_yongzheng_knowledge_003的visibility由[npc]改为[npc, player]，与ev_008“公开表现出明显恩宠”、canon.default_player_semantics及其他角色Frozen对同一公开事实的Player可见性保持一致；content与source_event未改。
+  status: fixed
+
+- item_id: frozen.shen_meizhuang.knowledge.shen_meizhuang_knowledge_002.visibility
+  severity: major
+  rule_id: player_visibility_consistency
+  evidence: "全范围复核ev_008公开恩宠时发现，shen_meizhuang_knowledge_002把仅沈眉庄知晓的“甄嬛曾称病避宠”与公开事实“甄嬛后来已经首次承宠”合并在同一knowledge项，并整体标为visibility: [npc]。anchor_pool的ev_008明确将首次承宠和明显恩宠定义为公开事件，canon.default_player_semantics允许默认Player知道公开礼仪性事件，皇帝、华妃、皇后、安陵容与苏培盛Frozen也均以[npc, player]暴露该公开事实；仅沈眉庄上下文会使默认Player无法取得同一公开事实，造成Stage 1唯一答案与Stage 3开局知识不一致。"
+  required_change: 将shen_meizhuang_knowledge_002拆分为两个可独立判定可见性的knowledge项：称病避宠事实保持[npc]，甄嬛首次承宠的公开事实使用[npc, player]并继续引用ev_008_zhen_first_favor；确保ID唯一、source_event准确，且不向Player泄露避宠动机或私密过程。
+  resolution: "已将公开事实独立保留为唯一ID shen_meizhuang_knowledge_006，内容仅为甄嬛首次承宠及皇帝公开恩宠，使用visibility: [npc, player]并精确引用ev_008_zhen_first_favor。进一步复核发现没有沈眉庄获知真实避宠意图的离散来源后，已删除原shen_meizhuang_knowledge_002及其[npc]私密知识，不向Player或沈眉庄赋予无依据的避宠动机知识。"
+  status: fixed
+
+- item_id: frozen.shen_meizhuang.knowledge.shen_meizhuang_knowledge_002.source_event
+  severity: major
+  rule_id: npc_knowledge_grounding
+  evidence: "拆分后的shen_meizhuang_knowledge_002仍断言沈眉庄知道“甄嬛曾称病避宠”，并引用ev_008_zhen_first_favor。该事件的fact仅记录首次承宠与公开恩宠；state_change中的“由称病避宠转为受宠”是甄嬛状态沿革，不是向沈眉庄披露避宠意图的离散证据。真正建立主动避宠计划的ev_004_zhen_avoids_favor明确known_by仅有甄嬛。ev_008把沈眉庄列入known_by只能证明她知道该事件中可观察的首次承宠，不能反向赋予她对先前私密动机的知识。当前source_event因此无法支持[npc]私密知识，Stage 1仍无可追溯唯一答案。"
+  required_change: "补充共享快照前沈眉庄通过甄嬛披露、在场或其他证据得知主动避宠意图的可核验离散来源，并让source_event精确指向该来源；若无此来源，则删除该私密knowledge项，或将content收窄为沈眉庄可观察到的“甄嬛此前曾以患病为由未承宠”，且不得把公开称病现象写成她已知的真实避宠动机。同步复核Profile、anchor_pool的known_by/knowledge_scope与Player visibility，避免通过扩大ev_008的笼统known_by制造私密获知链。"
+  resolution: "未找到共享快照前甄嬛向沈眉庄披露、沈眉庄在场或取得其他证据的离散来源，因此按要求删除shen_meizhuang_knowledge_002及其对ev_008_zhen_first_favor的悬空source_event引用。未扩大ev_004或ev_008的known_by/knowledge_scope；沈眉庄仅通过shen_meizhuang_knowledge_006保留ev_008直接支持且默认Player可见的首次承宠与公开恩宠事实。"
+  status: fixed

@@ -4,52 +4,56 @@ runtime_state:
   relationships:
     xiao_feng:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_016
     xu_zhu:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_016
     wang_yuyan:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: pre_existing_fact:duan_yu_unrequited_devotion_to_wang_yuyan
     murong_fu:
-      level: hostile
-      basis_event: initial_state
+      level: distrustful
+      basis_event: ae_014
     jiumozhi:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_002
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: goal_protect_allies
-    content: 在少室山混战中护住萧峰、虚竹等结义兄弟。
+  - id: g_duan_yu_brothers
+    content: 在少室山事后护住萧峰与虚竹并维持兄弟信义
     status: active
-    basis_event: initial_state
-  - id: goal_resolve_wang_yuyan
-    content: 厘清与王语嫣、慕容复之间的感情纠葛。
-    status: pending
-    basis_event: initial_state
-  - id: goal_avoid_throne
-    content: 避免被大理段氏权力斗争裹挟。
+    basis_event: ae_016
+  - id: g_duan_yu_wang
+    content: 继续关照王语嫣但不强迫其改变对慕容复的感情
     status: active
-    basis_event: initial_state
+    basis_event: ae_017
+  - id: g_duan_yu_no_power
+    content: 避免动用大理权势处理私人江湖恩怨
+    status: active
+    basis_event: pre_existing_fact:duan_yu_rejects_power
   disclosures: []
   knowledge:
-    knowledge_sworn_brothers:
-      content: 萧峰、虚竹与段誉已在少室山并肩对敌，三人有结义情分。
+    k_dy_brothers:
+      content: 萧峰、虚竹已与自己结为兄弟
       status: active
-      visibility: known_to_all
-      source_event: initial_state
-    knowledge_wang_yuyan_feelings:
-      content: 王语嫣仍倾向慕容复，段誉的感情未获回应。
+      visibility:
+      - npc
+      - player
+      source_event: ae_016
+    k_dy_wang:
+      content: 王语嫣仍以慕容复为重，自己的感情尚未得到同等回应
       status: active
-      visibility: known_only_to_duan_yu
-      source_event: initial_state
-    knowledge_six_meridians_unstable:
-      content: 六脉神剑有时无法收发自如，实战中存在失灵风险。
+      visibility:
+      - npc
+      source_event: pre_existing_fact:duan_observes_wang
+    k_dy_sword:
+      content: 自己能使六脉神剑但收发仍不稳定
       status: active
-      visibility: known_only_to_duan_yu
-      source_event: initial_state
+      visibility:
+      - npc
+      source_event: ae_014
 environment:
   health:
     duan_yu: 100
@@ -60,7 +64,13 @@ environment:
   locations:
     duan_yu: shaoshi_mountain
     player: shaoshi_mountain
-  access: {}
+  access:
+    dali_princely_liaison:
+      controllers:
+      - duan_yu
+      subjects:
+        duan_yu: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

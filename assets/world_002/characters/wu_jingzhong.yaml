@@ -66,3 +66,33 @@ style:
   register: 圆滑克制带官场暗示
   verbal_habits: [少说绝对话, 用师生和自己人拉近距离, 把私利包装成组织需要]
   forbidden_styles: [热血理想主义宣言, 无条件牺牲自保利益, 直接承认贪腐]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [3, 4, 12]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, capability.authority, capability.limitations]
+    event_ids: [qf_07_wu_recruits_yu_to_tianjin, qf_18_li_ya_returns]
+    fact_established: 吴敬中以天津站站长身份调任和配置下属时
+    npc_knowledge_by: 吴敬中本人履行站长权限时
+    source_disclosed_in: 电视剧第3、4、12集
+  - source_id: qianfu_tv
+    episodes: [7, 8, 15, 16, 17]
+    state_paths: [worldview.stances, worldview.core_goals, social.relationship_rules]
+    event_ids: [qf_10_wu_uses_yu_for_private_profit, qf_12_wu_tests_yu_over_zuo_lan, qf_22_yuan_peilin_killed, qf_23_li_lu_conflict_intensifies, qf_24_military_goods_profit, qf_28_yu_gains_wu_favor]
+    fact_established: 对应委托、试探和派系处置发生时，最迟为共享快照
+    npc_knowledge_by: 吴敬中作出委托、资源限制或提携决定时
+    source_disclosed_in: 电视剧第7至17集
+  - source_id: qianfu_tv
+    episodes: [8, 16, 17]
+    state_paths: [private.secrets, private.private_background, worldview.prohibitions, testable_boundaries]
+    event_ids: [qf_10_wu_uses_yu_for_private_profit, qf_24_military_goods_profit, qf_28_yu_gains_wu_favor]
+    fact_established: 私利安排及利用下属竞争的行为发生时
+    npc_knowledge_by: 吴敬中本人从安排之初知晓
+    source_disclosed_in: 电视剧第8至17集；NPC私利不向默认Player公开
+  - source_id: qianfu_tv
+    episodes: [7, 8, 16]
+    state_paths: [worldview.principles, capability.skills, style]
+    event_ids: [qf_12_wu_tests_yu_over_zuo_lan, qf_23_li_lu_conflict_intensifies, qf_24_military_goods_profit]
+    fact_established: 多次可观察管理、试探与交易形成稳定表现
+    npc_knowledge_by: 角色自身持续可知
+    source_disclosed_in: 电视剧第7至16集

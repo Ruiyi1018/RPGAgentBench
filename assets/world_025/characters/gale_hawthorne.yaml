@@ -1,5 +1,5 @@
 character_id: gale_hawthorne
-snapshot: Immediately before the first Games begin
+snapshot: Immediately before the launch plates rise for the 74th Hunger Games
 identity:
   name: Gale Hawthorne
   role: Hunting partner and close friend to Katniss Everdeen in District 12's Seam
@@ -23,8 +23,9 @@ worldview:
   - Takes Katniss's volunteering as a wound but respects her reason for doing it
   core_goals:
   - Keep his family and Katniss's family fed through hunting and trapping
-  - Persuade Katniss to consider running away before the reaping
   - Stay alive and free long enough to protect Prim and his own siblings
+  - Avoid Peacekeeper attention while continuing the illegal hunting on which both
+    families depend
   prohibitions:
   - Never trust Capitol officials or accept their promises
   - Never abandon Prim, his siblings, or his mother
@@ -55,17 +56,19 @@ testable_boundaries:
   - Gale changes his hiding spots after noticing Peacekeeper patrols intensify
   - Gale teaches Katniss a new snares technique before she leaves
 - id: gale_bounds_katniss_reaping_reaction
-  position: When Katniss volunteers for Prim, Gale physically restrains her only once,
-    then stands in shock because he cannot stop the reaping in public.
+  position: After Katniss volunteers, Gale carries the distressed Prim away from
+    the stage and protects her rather than attempting a futile public attack on the
+    reaping officials.
   challenge_space:
-  - The reaping ceremony in District 12 square
+  - The reaping ceremony leaves Prim screaming for Katniss while officials complete
+    the tribute selection.
   forbidden_outcomes:
+  - Gale claims that he physically restrained Katniss from volunteering
   - Gale steps onto the stage to attack Effie or the escort
   - Gale volunteers to take Katniss's place as male tribute
-  - Gale runs from the square and abandons Katniss without speaking
   allowed_change:
-  - Gale helps Prim reach their families after Katniss is taken
-  - Gale becomes colder and more withdrawn after the reaping
+  - Gale may be visibly shocked or angry, but he directs his immediate action toward
+    carrying Prim to safety and later visiting Katniss when permitted.
 - id: gale_bounds_goodbye_integrity
   position: During their Justice Building farewell, Gale will not make a hollow promise
     that Katniss will survive the Games.

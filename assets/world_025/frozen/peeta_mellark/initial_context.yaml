@@ -3,59 +3,59 @@ runtime_state:
   commitments: []
   relationships:
     katniss_everdeen:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: background:genuine_feelings_without_mutual_alliance
     haymitch_abernathy:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     effie_trinket:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     gale_hawthorne:
       level: neutral
-      basis_event: initial_state
-    president_snow:
-      level: distrustful
-      basis_event: initial_state
+      basis_event: background:no_direct_contact:gale_hawthorne
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:player_semantics
   goals:
   - id: peeta_g_001
     content: Enter the arena without losing who he is
     status: active
-    basis_event: initial_state
+    basis_event: ae_023
   - id: peeta_g_002
-    content: Protect Katniss as much as the Games allow
+    content: Survive the arena without claiming a pre-decided alliance or sacrifice
+      for Katniss
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: peeta_g_003
-    content: Maintain the star-crossed lovers strategy without becoming a fraud
+    content: Stand by his truthful public confession without pre-deciding an arena
+      alliance or sacrifice
     status: active
-    basis_event: initial_state
+    basis_event: ae_020
   disclosures: []
   knowledge:
     peeta_k_001:
-      content: Katniss volunteered to save Prim, and that choice was genuine
+      content: Katniss publicly volunteered after Prim was selected at the District
+        12 reaping
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_005
     peeta_k_002:
-      content: The Capitol will reward a romance narrative, but it does not guarantee
-        survival
+      content: Haymitch explained that Peeta's confession made Katniss appear desirable
+        and could improve her sponsor prospects
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_022
     peeta_k_003:
-      content: Haymitch is unreliable but knows how to work sponsors
+      content: Haymitch understands how public appeal can affect sponsor prospects
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_022
     peeta_k_004:
       content: His confession of love is both strategic and emotionally real
       status: active
-      visibility: shared_with_katniss
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_020
 environment:
   health:
     peeta_mellark: 100
@@ -64,9 +64,18 @@ environment:
     peeta_mellark: []
     player: []
   locations:
-    peeta_mellark: training_center_gym
-    player: training_center_gym
-  access: {}
+    peeta_mellark: district_12_male_launch_room
+    player: district_12_male_launch_room
+  access:
+    arena_launch_room_presence:
+      controllers: [capitol_arena_officials]
+      subjects: {peeta_mellark: granted, player: granted}
+    tribute_public_strategy_input:
+      controllers: [peeta_mellark, haymitch_abernathy]
+      subjects: {peeta_mellark: granted, player: denied}
+    sponsor_resources:
+      controllers: [haymitch_abernathy, outside_sponsors]
+      subjects: {peeta_mellark: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

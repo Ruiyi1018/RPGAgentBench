@@ -3,74 +3,68 @@ runtime_state:
   commitments: []
   relationships:
     rick_sanchez:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[0]
     beth_smith:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[1]
     jerry_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[2]
     summer_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     birdperson:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_s01e11_01_birdperson_disclosure
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: morty_goal_survive_adventure
     content: Stay alive during the next excursion with Rick.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: morty_goal_avoid_school_trouble
     content: Avoid worsening his grade problems and parental conflict over missing
       school.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[1]
   - id: morty_goal_understand_rick
     content: Understand why Rick keeps choosing him and what Rick actually wants from
       their adventures.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[2]
   disclosures: []
   knowledge:
     morty_knows_rick_travels_dimensions:
       content: Rick has been traveling through other dimensions and returned to the
         Smith house.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[2]
     morty_knows_rick_needs_him:
       content: Rick said he needed Morty's help and took him out of school through
         the garage portal.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e01_01_first_portal_trip
     morty_knows_mega_seeds:
       content: Rick has been collecting mega seeds and has a plan involving them.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e01_01_first_portal_trip
     morty_knows_family_suspects_trouble:
       content: Jerry does not trust Rick and worries about Rick's effect on Morty.
       status: active
-      visibility: private
-      source_event: initial_state
-    morty_knows_interdimensional_cable:
-      content: Rick showed the family an interdimensional cable box that can access
-        television from countless realities.
+      visibility: [npc]
+      source_event: ae_s01e01_02_seed_demonstration
+    morty_knows_replacement_reality:
+      content: Rick and Morty secretly occupy the places of dead counterparts in this
+        replacement reality.
       status: active
-      visibility: private
-      source_event: initial_state
-    morty_knows_parent_teacher_conflict:
-      content: At a parent-teacher conference, his grades caused family tension and
-        Jerry blamed Rick's influence.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e06_01_reality_replacement
 environment:
   health:
     morty_smith: 100

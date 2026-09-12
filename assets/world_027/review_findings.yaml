@@ -1,0 +1,183 @@
+- item_id: canon.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: shared_snapshot_current_state
+  evidence: shared_snapshot已锁定到第一季第13集结尾，但当前态尚未完全统一：characters/amenadiel.yaml的b1.allowed_change仍把“returning Lucifer to Hell”称为其larger goal；characters/dan_espinoza.yaml在Dan已坦白并自首的同一快照仍授予当前案件文件、调查和讯问权限。
+  required_change: 保持现有剧情切点，清除Amenadiel已结束使命和Dan自首前警务权限在当前可执行字段中的残留；历史能力或旧使命只能明确标为历史/暂停状态。
+  resolution: 已保持第一季第13集结尾切点不变；将Amenadiel的送Lucifer回地狱使命明确为已结束且allowed_change仅允许围绕寻找母亲、控制威胁和修复兄弟关系变化；将Dan的侦探能力标为既往经验，并明确其自首在押后无案件文件、证物、调查或正式讯问权限。
+  status: fixed
+
+- item_id: canon.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、初始可见知识、机构权限或场景特定覆盖规则；各Frozen仅把Player放在NPC当前位置并设为空access，无法判断Player为何能在警局、犯罪现场、治疗室或Lux出现及知道什么。
+  required_change: 在canon中定义默认Player语义及场景覆盖方式，并使Frozen的Player可见知识、位置与权限显式遵循该定义。
+  resolution: 已在canon定义非全知平民Player的默认知识、权威、临时共址权限及场景显式覆盖规则；六份Frozen均使用显式可见性和最小Player临时会话权限。
+  status: fixed
+
+- item_id: anchor_pool.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 22个候选事件均无episode_order、chapter_order或其他可恢复顺序；物理顺序也混合身份事实、长期状态和案件事件，无法确认事件相对发生时点或与共享快照的边界。
+  required_change: 为每个离散候选事件补充可验证且唯一的第一季集内/集间顺序字段，并按锁定快照排除尚未发生的事件。
+  resolution: 已以episode_order为16个保留的离散事件建立唯一集间/集内顺序，全部事件位于锁定的第一季第13集结尾快照之前。
+  status: fixed
+
+- item_id: anchor_pool.events.event_boundary_and_state_change
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: ae01、ae02、ae03、ae06、ae07、ae08、ae09、ae14、ae15、ae16、ae17、ae19、ae20、ae22主要是身份、能力或长期状态概括，不是一次可定位事件；其state_change多为“establishes/highlights/grounds”，没有旧状态、触发证据、当前状态路径或可观察决定。
+  required_change: 将静态背景移回Profile，候选池仅保留或替换为可定位的离散事件，并为每项写出可测试的知识、关系、目标/承诺、权限或资源变化及后续可观察后果。
+  resolution: 已移除静态身份、能力与长期概括，将候选池重写为可定位的一次性事件；每项state_change均给出具体知识、关系、目标、承诺、资源或身份状态变化及可观察后果。
+  status: fixed
+
+- item_id: anchor_pool.events.counterfactual_pairability
+  severity: major
+  rule_id: counterfactual_minimal
+  evidence: 多个cf_edit改写角色本体或整套世界前提，而非隔离事件中的单一因果变量，例如ae08把Maze从恶魔改成人类、ae10把Amenadiel从天使改成恶魔、ae12同时把Linda的职业和关系改成警方顾问、ae20把治疗师改成神父。这些改动无法形成受控Stage 2最小对照。
+  required_change: 对保留的离散事件逐项指定单一可操纵原因或证据，并确保反事实只改变该变量且会产生明确不同的状态或决定。
+  resolution: 已逐事件将cf_edit收敛为单一触发、证据或决定变量，并明确该最小变化如何导致不同状态或决定，不再改写角色本体或整个世界前提。
+  status: fixed
+
+- item_id: anchor_pool.events.known_by
+  severity: blocker
+  rule_id: knowledge_visibility
+  evidence: ae08把“Mazikeen is Lucifer's loyal demon ally”标为Chloe、Dan和Linda已知，但第一季这些人并未据此确认Maze的恶魔身份；类似地，多项私下治疗、超自然身份与他人内心立场被整组角色列入known_by，混淆观众真相、参与者知识和可推断信息。
+  required_change: 逐事件按在场、被告知或可验证证据重建known_by；把相信、怀疑、仅知公开身份、结果后知等状态分开，禁止向Player或NPC泄露未获知的超自然及私密事实。
+  resolution: 已按在场、亲自实施、被明确告知或直接获知重建全部known_by；超自然身份、治疗内容、Palmetto细节与内心承诺仅保留给实际知情角色。
+  status: fixed
+
+- item_id: characters.lucifer_morningstar.current_state
+  severity: major
+  rule_id: snapshot_state_consistency
+  evidence: Profile把“拒绝神圣权威”“不会自愿回地狱”写成当前绝对边界，Frozen仍以抵抗Amenadiel和调查一宗谋杀为活跃目标；但第一季结尾Lucifer曾愿意回地狱、与Amenadiel共同处理Malcolm，并向父亲承诺服务以保护Chloe，随后得知需追查逃离地狱的母亲。
+  required_change: 依据锁定切点重写Lucifer的当前立场、目标、承诺和与Amenadiel的关系；将较早的拒绝状态保留为历史而非不允许变化的绝对规则。
+  resolution: 已将Lucifer当前状态更新为对父亲负有追查母亲的服务承诺、与Amenadiel谨慎合作、对Maze信任受损，并把拒绝神圣权威改为可受保护Chloe及明确交易约束的行为边界。
+  status: fixed
+
+- item_id: characters.dan_espinoza.profile_and_initial_context
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: Palmetto、勒索、证物枪、坦白与自首已补入，但Profile的capability.authority仍称Dan当前可访问LAPD案件文件、参与调查并以警探身份讯问；这与同一快照的“submitted to arrest”以及Frozen仅有in_custody_conversation权限冲突。
+  required_change: 保留已补入的Palmetto状态，并将Dan自首前的警务技能与当前可执行权限分开；当前authority须与Frozen的在押状态一致，不得继续授予案件文件、调查或讯问权限。
+  resolution: 已保留Palmetto历史与在押Frozen状态；characters/dan_espinoza.yaml将侦探工作改为既往经验，当前authority仅允许咨询律师、接受调查和配合本人 misconduct inquiry，并显式禁止在押期间访问案件文件、证物、调查资源或以警探身份讯问。
+  status: fixed
+
+- item_id: characters.mazikeen.profile_and_initial_context
+  severity: blocker
+  rule_id: character_source_grounded
+  evidence: Profile把“Never betray Lucifer”“绝不帮助Amenadiel施压Lucifer”“对Lucifer绝对忠诚”写为不可违反边界；第一季中Maze向Amenadiel提供Linda线索并与其合作促使Lucifer回地狱，Lucifer也明确指责她背叛，结尾Maze又用羽毛救Amenadiel后离开。Frozen仍将Lucifer=loyal、Amenadiel=hostile作为无历史的静态当前态。
+  required_change: 把忠诚、背叛、与Amenadiel合作及后续救治/离开建模为有时间顺序的可变关系、目标和知识状态，删除与已发生正典行为矛盾的绝对禁区。
+  resolution: 已将Maze对Lucifer的忠诚建模为经秘密协助Amenadiel而破裂的可变关系，并记录她救治Amenadiel及寻求独立的当前目标；删除与已发生背叛相冲突的绝对禁区。
+  status: fixed
+
+- item_id: characters.amenadiel.profile_and_initial_context
+  severity: blocker
+  rule_id: snapshot_state_consistency
+  evidence: Frozen及Profile主体已更新为Malcolm责任、兄弟合作和Maze救治后的状态，但characters/amenadiel.yaml的b1.allowed_change仍称临时合作可服务于“his larger goal of returning Lucifer to Hell”，与同文件“不再是active mission”及该边界禁止恢复旧使命直接冲突。
+  required_change: 保留已更新的当前状态，删除或明确历史化b1.allowed_change中的送Lucifer回地狱目标，使允许变化只围绕寻找母亲、控制威胁和谨慎修复兄弟关系。
+  resolution: 已仅修正characters/amenadiel.yaml的b1.allowed_change：删除以送Lucifer回地狱为larger goal的残留，允许变化改为合作寻找母亲、控制具体威胁、保留分歧并谨慎修复兄弟关系，且明确不得恢复已结束使命。
+  status: fixed
+
+- item_id: characters.linda_martin.profile_and_initial_context
+  severity: major
+  rule_id: character_source_grounded
+  evidence: Profile把“不与病人发生浪漫关系”和始终维持专业距离写成全季稳定原则，并称第一季不在办公室外与Lucifer社交；正典中Linda早期以性作为Lucifer治疗的交换，之后才终止性关系并转为专业治疗。Profile/Frozen还未记录Amenadiel冒充Dr. Canaan套取Lucifer信息及结尾身份欺骗被揭穿后的当前知识。
+  required_change: 区分Linda早期越界历史与后来建立的当前专业边界，并按锁定切点补入她对Amenadiel欺骗及Lucifer兄弟关系的实际知识，不得把纠正后的状态倒写成整季从未越界。
+  resolution: 已区分Linda早期以性换取治疗的越界历史与当前专业边界，并补入她已知Dr. Canaan实为Amenadiel且该接触具有欺骗性的当前知识。
+  status: fixed
+
+- item_id: frozen.all.knowledge_visibility
+  severity: major
+  rule_id: player_visibility_semantics
+  evidence: 可见性词表已统一，但frozen/lucifer_morningstar/initial_context.yaml的k04把Dan刚向Chloe作出的Palmetto坦白标为[npc, player]；ae10的known_by仅有Dan和Chloe，默认Player又是非全知平民，因此该私密警务事实同时无依据地给了Lucifer和Player。
+  required_change: 保持统一词表，删除Lucifer未获知的k04及其派生关系，或增加快照内明确披露事件并仅按实际知情范围设置visibility；不得把Palmetto坦白自动公开给默认Player。
+  resolution: 已从Lucifer Frozen删除无披露来源的Palmetto坦白k04，未新增虚构披露事件；默认Player不再获得该私密事实，Lucifer对Dan的既有distrustful关系改回由pre_existing.lapd_conflict支撑。
+  status: fixed
+
+- item_id: frozen.all.runtime_resources
+  severity: major
+  rule_id: world_affordances_sufficient
+  evidence: 所有NPC inventory均为空；Maze Profile明确当前携带并隐藏curved blade且environment已有blade，Chloe位于active_crime_scene并具有警探身份却没有badge或可执行的警务/武器资源，Lucifer、Chloe、Dan、Linda的Profile权限也未映射到access。Stage 3只能测试说话风格，不能可靠执行其关键边界。
+  required_change: 依据锁定切点把当前持有的关键物品放入inventory，并用最小可执行access/resource状态表达警务、场所管理、治疗保密等会影响决定的权限；同时补充确需执行但environment缺失的关键物品。
+  resolution: 已补充Chloe的badge与service sidearm、Maze的blade、Lucifer的flask、Linda的notepad，并在六份Frozen中加入最小可执行的警务、Lux管理、临床保密、天使能力或在押权限。
+  status: fixed
+
+- item_id: frozen.all.source_traceability
+  severity: major
+  rule_id: evidence_traceability
+  evidence: 引用格式已改为事件ID或pre_existing，但Lucifer的k04及其对Dan的distrustful关系引用ae10；该事件known_by不含Lucifer，不能作为Lucifer知识或关系变化的可追溯证据。
+  required_change: 保持现有稳定引用格式，并确保每项NPC知识的source_event实际将该NPC列为知情人；关系basis_event也必须包含可支持该方向性变化的参与、披露或证据。
+  resolution: 已删除Lucifer无权引用ae10的知识k04，并将其对Dan的distrustful关系basis_event从Lucifer不知情的ae10改为Profile可追溯的pre_existing.lapd_conflict；其余稳定事件引用保持不变。
+  status: fixed
+
+- item_id: frozen.lucifer_morningstar.palmetto_disclosure_regression
+  severity: blocker
+  rule_id: hidden_information_not_disclosed
+  evidence: ae10_dan_confesses_palmetto.known_by仅列dan_espinoza和chloe_decker，但Lucifer Frozen的k04声称知道Dan坦白并设visibility [npc, player]，对Lucifer及默认非全知Player均无披露来源。
+  required_change: 删除该未获知事实及其派生关系，或在共享快照内加入正典支持的离散披露事件并按实际知情人重建known_by、source_event和visibility。
+  resolution: 已删除Lucifer Frozen中声称知道Dan坦白且向Player可见的k04；未修改ae10的实际知情人、未新增披露事件，并将Lucifer对Dan的关系依据恢复为既有LAPD冲突，消除由私密坦白派生的状态。
+  status: fixed
+
+- item_id: environment.anchor_event_scene_coverage
+  severity: major
+  rule_id: active_scene_location_mapped
+  evidence: 候选池包含Amenadiel在医院复活Malcolm以及Malcolm最终仓库对峙等可定位事件，但environment仅列Lux、顶层公寓、警局、Chloe住所、Linda办公室和泛化active_crime_scene，未为医院和最终仓库场景提供节点或明确映射。
+  required_change: 为候选事件实际发生并可能承载后续测试的医院和最终对峙仓库增加最小地点节点，或在现有节点中写出无歧义映射；保持图连通且双向。
+  resolution: 已新增hospital与final_warehouse两个明确场景节点；hospital与chloe_lapd双向连接，final_warehouse与chloe_lapd及active_crime_scene均双向连接，保留最小图结构且所有连接可回查。
+  status: fixed
+
+- item_id: anchor_pool.events.episode13_discrete_chronology
+  severity: blocker
+  rule_id: chronology_total_order
+  evidence: ae10以单个事件同时描述Dan先在犯罪现场向Chloe坦白、后在警局正式自首，这两个场景之间还发生了兄弟合作、Linda识破Dr. Canaan及第一次仓库对峙；当前却将ae10整体排为13.1、将Linda识破排在Maze救治之后。该复合边界无法获得唯一episode_order，13.1至13.4也不符合实际剧内顺序。
+  required_change: 将ae10拆成犯罪现场坦白与警局正式自首两个离散事件，分别限定其知识、身份/权限变化；按第13集实际顺序重排ae11、ae13、第一次仓库对峙/Maze救治及正式自首，并同步修正所有受影响的source_event、basis_event、state_change与anchor_for。
+  resolution: 已将ae10限定为犯罪现场向Chloe私下坦白，只改变Chloe知识并结束Dan对她的隐瞒；新增ae17第一次仓库对峙与ae18警局正式自首，且仅由ae18建立Dan在押及失去警务权限的状态。第13集顺序现为坦白、兄弟合作、Linda识破、第一次仓库对峙、Maze救治、正式自首、Lucifer许诺、飞机库击倒Malcolm、母亲逃脱揭示；Dan Frozen中在押后的承诺与目标依据已同步到ae18。
+  status: fixed
+
+- item_id: frozen.dan_espinoza.k04.player_visibility
+  severity: blocker
+  rule_id: hidden_information_not_disclosed
+  evidence: Dan Frozen的k04把“Chloe已知其Palmetto责任且未答应保护他”标为visibility [npc, player]，但ae10.known_by仅有Dan与Chloe，默认Player是非全知平民，且当前材料没有向Player披露该私密警务事实的事件或disclosure。
+  required_change: 将k04保持为NPC私有并移除player可见性，或补入快照内正典支持且明确发生的Player披露依据；不得因Player与在押Dan临时共址就预先授予Palmetto坦白知识。
+  resolution: 已将Dan Frozen的k04 visibility从[npc, player]改为[npc]，保留ae10作为Dan亲历坦白的来源；未新增Player披露，临时共址不再预先泄露Palmetto私密事实。
+  status: fixed
+
+- item_id: frozen.amenadiel.relationships.linda_martin
+  severity: major
+  rule_id: relationships_directional
+  evidence: Amenadiel Frozen将其对Linda的关系设为distrustful并引用ae13，但ae13只证明Linda识破Amenadiel的欺骗，因此支撑的是Linda→Amenadiel的不信任；Amenadiel Profile仅写他知道Linda识破伪装，没有其不信任Linda的正典依据。
+  required_change: 将Amenadiel→Linda改为有依据的neutral，或提供快照内能支撑Amenadiel主动不信任Linda的独立正典事件；不得把Linda的单向不信任镜像为双向关系。
+  resolution: 已将Amenadiel Frozen中的Amenadiel→Linda关系由distrustful改为neutral，ae13仅作为双方已有接触及Amenadiel知道伪装被识破的依据；Linda→Amenadiel的distrustful保持不变。
+  status: fixed
+
+- item_id: characters.amenadiel.identity.public_background
+  severity: major
+  rule_id: public_private_separated
+  evidence: Amenadiel Profile在public_background中称其“Presents himself as an angel on a divine mission regarding Lucifer”，但同卡b3及第一季事实均要求他对大多数人隐瞒天使身份；该描述把超自然圈内真相误列为公开背景。
+  required_change: 将天使身份和使命移入private背景；public_background只保留普通人可观察或其对人类使用的公开身份，并与b3的保密边界一致。
+  resolution: 已从Amenadiel的public_background移除天使身份、神圣使命和跨界移动，将公开描述限定为普通人可观察到的、与Lucifer有关联且严肃权威的人类外观身份；天使身份、神圣使命及跨界能力均保留在private背景或能力字段，与b3保密边界一致。
+  status: fixed
+
+- item_id: environment.episode13_and_candidate_scene_coverage
+  severity: major
+  rule_id: active_scene_location_mapped
+  evidence: environment新增的final_warehouse仅能对应Malcolm逃跑前、Amenadiel受伤的仓库/旧酿酒厂对峙；Lucifer向父亲许诺及Chloe最终击倒Malcolm发生在Trixie被扣押的飞机库，当前没有hangar节点或明确映射。ae03中Maze向Amenadiel提供Linda线索的咖啡店场景也没有节点或无歧义映射。
+  required_change: 为最终飞机库和ae03咖啡店增加最小地点节点，或在现有节点中写出明确映射；澄清final_warehouse对应第一次对峙而非最终飞机库，并保持全部连接有效、双向且全图可达。
+  resolution: 已新增final_hangar节点映射Trixie被扣押及Malcolm最终被击倒的飞机库，新增coffee_shop节点映射ae03会面，并将final_warehouse明确为第13集第一次仓库对峙；新增连接均在相邻节点反向登记，且通过chloe_lapd、active_crime_scene、lux和linda_office保持全图可达。
+  status: fixed
+
+- item_id: anchor_pool.events.ae15_known_by
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: ae15把Dan列入Malcolm最终被Chloe击倒这一事件的known_by和anchor_for，但Dan当时已在警局自首并未参加飞机库对峙，当前材料也没有后续向他披露结果的离散事件；该项同时没有为Dan定义独立可观察状态变化。
+  required_change: 从ae15的known_by与anchor_for移除Dan，或增加快照内正典支持的后续披露事件并为Dan定义由该披露触发的实际状态变化；不得以观众全知替代角色获知。
+  resolution: 已从ae15的known_by与anchor_for移除Dan，未新增事后披露或Dan状态变化；该事件仅保留实际参加飞机库对峙的Lucifer与Chloe。
+  status: fixed
+
+- item_id: frozen.chloe_decker.knowledge.k05.visibility
+  severity: blocker
+  rule_id: hidden_information_not_disclosed
+  evidence: Chloe Frozen的k05内容为“Mazikeen works at Lux and is closely associated with Lucifer; Chloe does not know she is a demon”，却标记visibility [npc, player]。canon规定默认Player会获得所有带player可见性的完整knowledge内容，因此该条会直接向非全知平民Player泄露Maze确为恶魔，同时NPC自身又明确不知道该事实。
+  required_change: 将Chloe实际知道的公开事实与她不知道的世界真相拆开；可见knowledge仅保留Maze在Lux工作且与Lucifer关系密切，不得在任何[npc, player]条目中陈述Maze确为恶魔。随后回归所有Frozen条目的完整content，确认Player可见文本不包含NPC或Player未知的超自然真相。
+  resolution: 已将Chloe Frozen的k05收窄为Player与Chloe实际可知的公开事实，仅保留Mazikeen在Lux工作且与Lucifer关系密切；删除了“Mazikeen确为恶魔”及Chloe不知该真相的元叙述。并回归六份Frozen全部Player可见knowledge完整文本，未发现其他把NPC或Player未知超自然身份写入可见内容的类似泄漏；Stage 1唯一可答性与Stage 3非全知交互边界恢复，Stage 2既有因果变量、事件与状态路径未改动。
+  status: fixed

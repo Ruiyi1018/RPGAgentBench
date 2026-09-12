@@ -17,6 +17,9 @@ runtime_state:
     yilin:
       level: neutral
       basis_event: initial_state
+    yang_lianting:
+      level: trusting
+      basis_event: initial_state
     player:
       level: neutral
       basis_event: initial_state
@@ -36,19 +39,24 @@ runtime_state:
   disclosures: []
   knowledge:
     knowledge_001:
-      content: 东方不败已练成葵花宝典并借此掌握日月教。
+      content: 自己先夺取日月教教主之位，后修炼葵花宝典获得极高武力并以此维持统治。
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     knowledge_002:
       content: 任盈盈在教内有圣姑身份，拥有一定旧部影响。
       status: active
-      visibility: shared
+      visibility: [npc, player]
       source_event: initial_state
     knowledge_003:
       content: 黑木崖是日月教权力中心，也是东方不败现居之处。
       status: active
-      visibility: shared
+      visibility: [npc, player]
+      source_event: initial_state
+    knowledge_004:
+      content: 自己私下极看重杨莲亭；若杨莲亭遭受直接致命攻击，自己会优先回护，即使因此暂时暴露战斗破绽。
+      status: active
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -60,7 +68,12 @@ environment:
   locations:
     dongfang_bubai: heimu_ya
     player: heimu_ya
-  access: {}
+  access:
+    sunmoon_orders:
+      controllers: [dongfang_bubai]
+      subjects:
+        dongfang_bubai: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

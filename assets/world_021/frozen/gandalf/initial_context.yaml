@@ -4,19 +4,19 @@ runtime_state:
   relationships:
     frodo_baggins:
       level: loyal
-      basis_event: initial_state
+      basis_event: ae_021_001
     samwise_gamgee:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_002
     aragorn:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_021_004
     legolas:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_005
     gimli:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_006
     boromir:
       level: neutral
       basis_event: initial_state
@@ -27,35 +27,41 @@ runtime_state:
   - id: g_gandalf_001
     content: Find the hidden Doors of Durin on the western wall
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_023
   - id: g_gandalf_002
     content: Keep the Company together through the approach to Moria
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_017
   disclosures: []
   knowledge:
     k_gandalf_001:
-      content: The Redhorn Pass failed because the mountain sent a storm of snow and
-        rock against the Company.
+      content: Severe snow, wind, and falling stones made the Redhorn Pass impassable
+        and forced the Company to retreat; their cause was not established.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_014
     k_gandalf_002:
       content: The West-gate of Moria is hidden in the cliff above the still water.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_024
     k_gandalf_003:
-      content: Gandalf suggests the path through Moria after the Redhorn Gate fails.
+      content: The Company chose the path through Moria after the Redhorn Gate failed.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_017
+    k_gandalf_004:
+      content: Gandalf privately suspects that the Caradhras storm may have involved
+        hostile intent, but he does not know this as a confirmed cause.
+      status: active
+      visibility: [npc]
+      source_event: ae_021_014
 environment:
   health:
     gandalf: 100
     player: 100
   inventories:
-    gandalf: []
+    gandalf: [gandalf_staff, glamdring]
     player: []
   locations:
     gandalf: moria_west_gate_approach

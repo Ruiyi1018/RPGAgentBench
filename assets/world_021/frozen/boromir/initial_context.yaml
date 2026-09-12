@@ -3,8 +3,8 @@ runtime_state:
   commitments: []
   relationships:
     frodo_baggins:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_001
     samwise_gamgee:
       level: neutral
       basis_event: initial_state
@@ -18,8 +18,8 @@ runtime_state:
       level: neutral
       basis_event: initial_state
     gimli:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_021_017
     player:
       level: neutral
       basis_event: initial_state
@@ -27,45 +27,47 @@ runtime_state:
   - id: boromir_goal_001
     content: Return to Minas Tirith with the Company or by the swiftest safe route.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_007
   - id: boromir_goal_002
     content: Keep the Fellowship together through the mountains.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_017
   - id: boromir_goal_003
-    content: Avoid entering Moria if any alternative remains.
+    content: Require a guarded, examined entrance before following the chosen route
+      into Moria.
     status: active
-    basis_event: initial_state
+    basis_event: ae_021_018
   disclosures: []
   knowledge:
     boromir_knowledge_001:
       content: The Company attempted the Redhorn Pass and was driven back by a storm.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_014
     boromir_knowledge_002:
-      content: Gandalf has proposed entering Moria through the hidden West-gate.
+      content: The Company has chosen Moria and Gandalf is searching for its hidden
+        West-gate.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021_017
     boromir_knowledge_003:
       content: The Company has arrived at a dark still water before the cliff where
         the Doors of Durin are hidden.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_021_024
     boromir_knowledge_004:
       content: Frodo carries the One Ring, and the Ring exerts a pull toward using
         it as a weapon for Gondor.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: bg_021_council_company
 environment:
   health:
     boromir: 100
     player: 100
   inventories:
-    boromir: []
+    boromir: [boromir_sword, boromir_shield, horn_of_gondor]
     player: []
   locations:
     boromir: moria_west_gate_approach

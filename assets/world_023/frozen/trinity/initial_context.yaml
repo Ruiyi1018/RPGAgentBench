@@ -2,67 +2,56 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    neo:
-      level: trusting
-      basis_event: initial_state
-    morpheus:
-      level: loyal
-      basis_event: initial_state
-    agent_smith:
-      level: hostile
-      basis_event: initial_state
-    cypher:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    neo: {level: trusting, basis_event: evt_004}
+    morpheus: {level: loyal, basis_event: base_trinity_service}
+    agent_smith: {level: hostile, basis_event: base_agent_conflict}
+    cypher: {level: neutral, basis_event: base_shared_crew_service}
+    player: {level: neutral, basis_event: base_player_role}
   goals:
-  - id: g_001
-    content: Ensure Neo completes his training without being discovered by Agents.
+  - id: g_trinity_001
+    content: Keep Neo safe while the crew prepares for his first post-training Matrix visit.
     status: active
-    basis_event: initial_state
-  - id: g_002
-    content: Maintain operational security on the Nebuchadnezzar.
+    basis_event: base_planned_oracle_visit
+  - id: g_trinity_002
+    content: Maintain operational security aboard the Nebuchadnezzar.
     status: active
-    basis_event: initial_state
-  - id: g_003
-    content: Watch Cypher for signs that his resentment endangers the crew.
-    status: active
-    basis_event: initial_state
+    basis_event: base_trinity_service
   disclosures: []
   knowledge:
-    k_001:
-      content: Neo was released from the Matrix pod and brought aboard the Nebuchadnezzar.
+    k_trinity_001:
+      content: Neo was recovered from the pod field and is training aboard the Nebuchadnezzar.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_002:
-      content: Cypher questions Morpheus's trust in Neo.
+      visibility: [npc]
+      source_event: evt_004
+    k_trinity_002:
+      content: Morpheus plans to take Neo to the Oracle, but the crew has not yet jacked in for the visit.
       status: active
-      visibility: shared
-      source_event: initial_state
-    k_003:
-      content: She has romantic feelings for Neo.
+      visibility: [npc, player]
+      source_event: base_planned_oracle_visit
+    k_trinity_003:
+      content: Trinity privately recognizes personal concern for Neo while keeping mission tasks first.
       status: active
-      visibility: private
-      source_event: initial_state
-    k_004:
-      content: Morpheus plans to take Neo to the Oracle.
+      visibility: [npc]
+      source_event: base_trinity_private_feelings
+    k_trinity_004:
+      content: Trinity has no evidence that Cypher made a secret deal with an Agent.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: base_no_cypher_betrayal_evidence
 environment:
-  health:
-    trinity: 100
-    player: 100
-  inventories:
-    trinity: []
-    player: []
-  locations:
-    trinity: loc_nebuchadnezzar
-    player: loc_nebuchadnezzar
-  access: {}
+  health: {trinity: 100, player: 100}
+  inventories: {trinity: [], player: []}
+  locations: {trinity: loc_nebuchadnezzar, player: loc_nebuchadnezzar}
+  access:
+    matrix_jack:
+      controllers: [morpheus]
+      subjects: {trinity: granted, player: denied}
+    matrix_hardline_exit:
+      controllers: [morpheus]
+      subjects: {trinity: granted, player: denied}
+    ship_field_command:
+      controllers: [morpheus]
+      subjects: {trinity: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

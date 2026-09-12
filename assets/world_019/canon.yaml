@@ -1,7 +1,7 @@
 world_id: world_019
 canon_policy:
-  primary_source: The Big Bang Theory television series (seasons covering all seven
-    main characters active, up to a fixed snapshot range)
+  primary_source: The Big Bang Theory main television series, broadcast episodes
+    S1E01 through S5E23 inclusive
   source_type: television series episodes
   excluded_versions:
   - later seasons beyond the shared snapshot
@@ -11,11 +11,26 @@ canon_policy:
   - behind-the-scenes materials
   - deleted scenes
   - alternate endings
-  shared_snapshot: A fixed episode range after all seven characters are active, with
-    events occurring within that interval only
-  generated_timeline: events are constructed only from broadcast facts within the
-    shared snapshot; no dates invented beyond in-universe references
+  shared_snapshot: Immediately after S5E23 The Launch Acceleration and before S5E24
+    The Countdown Reflection; Howard and Bernadette are engaged but not yet married,
+    Howard is preparing for the ISS mission but has not launched, and Leonard and
+    Penny are dating after restarting their relationship in S5E13.
+  generated_timeline: Events may use broadcast facts from S1E01 through S5E23 inclusive.
+    Current Profile and Frozen fields represent the post-S5E23/pre-S5E24 state.
+    S5E24 and every later episode are future information and excluded.
   quotation_policy: paraphrase all facts; do not copy dialogue verbatim
+  default_player:
+    identity: An unaffiliated visitor present in the listed initial scene
+    prior_knowledge: Only knowledge items whose visibility includes player
+    default_authority: No household, laboratory, employment, relationship, or mission
+      authority unless a scenario explicitly grants it.
+    scenario_override: A scenario may replace Player identity, knowledge, location,
+      inventory, or access only by declaring the override explicitly.
+  visibility_semantics:
+    npc: The evaluated NPC knows the item at trajectory start.
+    player: The default Player knows the item at trajectory start.
+    rule: Visibility is an explicit audience list; world truth alone never implies
+      Player knowledge.
 evaluated_npcs:
 - sheldon_cooper
 - leonard_hofstadter
@@ -34,12 +49,65 @@ event_entities:
 - bernadette_rostenkowski
 sources:
 - id: source_tbbt_001
-  title: The Big Bang Theory episodes (main series, shared snapshot range)
+  title: The Big Bang Theory main-series broadcast episodes S1E01-S5E23
   creator: Chuck Lorre and Bill Prady
-  scope: All broadcast story facts for the seven main characters up to the shared
-    snapshot, no later plot knowledge
+  scope: Broadcast story facts from S1E01 through S5E23 inclusive; S5E24 onward excluded
   authority: primary
   type: television series episodes
+knowledge_evidence:
+- id: ke_s1e05_group_observes_penny_at_work
+  source_episode: S1E05 The Hamburger Postulate
+  acquisition: Leonard and Howard directly encounter Penny working as their waitress
+    at The Cheesecake Factory.
+  known_by:
+  - leonard_hofstadter
+  - howard_wolowitz
+- id: ke_s3e05_bernadette_observes_howard_courtship
+  source_episode: S3E05 The Creepy Candy Coating Corollary
+  acquisition: On their first double date, Bernadette directly observes Howard use
+    exaggerated flirtation and jokes while trying to impress her.
+  known_by:
+  - bernadette_rostenkowski
+- id: ke_s4e20_bernadette_observes_raj_alcohol_condition
+  source_episode: S4E20 The Herb Garden Germination
+  acquisition: At The Cheesecake Factory, Bernadette directly hears Raj explain that
+    liquor has enabled him to speak to her and observes that he speaks only after drinking.
+  known_by:
+  - bernadette_rostenkowski
+- id: ke_s4e24_bernadette_hears_roommate_rules
+  source_episode: S4E24 The Roommate Transmogrification
+  acquisition: During the Apartment 4A gathering, Bernadette and Howard directly hear
+    Sheldon invoke the Roommate Agreement's after-10-p.m. restrictions.
+  known_by:
+  - bernadette_rostenkowski
+  - howard_wolowitz
+- id: ke_s5e10_penny_observes_knock_ritual
+  source_episode: S5E10 The Flaming Spittoon Acquisition
+  acquisition: Penny directly hears Sheldon's repeated triple-knock-and-name sequence
+    at her Apartment 4B door.
+  known_by:
+  - penny
+- id: ke_s5e19_group_relationship_status
+  source_episode: S5E19 The Weekend Vortex
+  acquisition: In Apartment 4A, Amy, Howard, and Raj directly participate in the discussion
+    that treats Leonard and Penny as dating and Amy and Sheldon as girlfriend and boyfriend.
+  known_by:
+  - amy_farrah_fowler
+  - howard_wolowitz
+  - raj_koothrappali
+- id: ke_s5e19_group_gathering
+  source_episode: S5E19 The Weekend Vortex
+  acquisition: Raj and Penny directly participate in the Apartment 4A gathering built
+    around the group's shared gaming and social plans.
+  known_by:
+  - raj_koothrappali
+  - penny
+- id: ke_s5e19_amy_invokes_relationship_notice
+  source_episode: S5E19 The Weekend Vortex
+  acquisition: Amy directly invokes the Relationship Agreement's advance-notice terms
+    when reminding Sheldon of their planned family visit.
+  known_by:
+  - amy_farrah_fowler
 data_constraints:
 - Every event fact must be supported by the primary source within the shared snapshot.
 - No later plot knowledge may be used.
@@ -49,3 +117,6 @@ data_constraints:
 - No uncertain details may be asserted.
 - Every location connection must reference a listed location ID.
 - Anchor events must be sorted chronologically as far as the shared snapshot allows.
+- Current state must match the post-S5E23 and pre-S5E24 boundary.
+- Player knowledge is granted only by an explicit player entry in a visibility list
+  or an explicit scenario override.

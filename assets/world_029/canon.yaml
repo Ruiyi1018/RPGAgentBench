@@ -1,6 +1,6 @@
 world_id: world_029
 canon_policy:
-  primary_source: Rick and Morty Season 1 episodes 1-12
+  primary_source: Rick and Morty Season 1 (Adult Swim original broadcast), S01E01-S01E11
   source_type: animated television series
   excluded_versions:
   - Season 2 and later episodes
@@ -8,10 +8,17 @@ canon_policy:
   - Manga
   - Promotional shorts
   - Video games
-  shared_snapshot: Season 1, episodes 1 through 12, as originally aired
-  generated_timeline: Events ordered by first explicit appearance or implied chronological
-    placement within the Season 1 episode range
+  shared_snapshot: Immediately before Rick activates the time freeze in the final S01E11 scene, after Beth and Jerry have entered the returned but still party-damaged Smith house; Birdperson has already left with Tammy, and no knowledge or state from Season 2 or later applies
+  generated_timeline: Events are ordered by broadcast episode S01E01-S01E11 and then by explicit within-episode event order
   quotation_policy: Paraphrase all dialogue; do not reproduce exact lines
+  player_semantics:
+    identity: An ordinary present-day visitor at the NPC's listed starting location, with no pre-existing personal relationship to the evaluated NPC
+    initial_knowledge: The Player knows only knowledge items whose visibility explicitly includes player; world truth and NPC-only knowledge are not automatically visible
+    capabilities:
+    - Ordinary conversation, observation, and movement through locations where access is explicitly available
+    limitations:
+    - No scientific, combat, portal-travel, institutional, parental, or household authority by default
+    authorization: No access to Rick's devices, private family information, or restricted locations unless runtime state explicitly grants it
 evaluated_npcs:
 - rick_sanchez
 - morty_smith
@@ -27,14 +34,15 @@ sources:
 - id: ram_s01
   title: Rick and Morty Season 1
   creator: Justin Roiland and Dan Harmon
-  scope: Episodes 1 through 12 of the first season
+  version: Adult Swim original broadcast
+  scope: S01E01 Pilot through S01E11 Ricksy Business
   authority: primary
 data_constraints:
-- Only use facts shown or stated within Season 1 episodes 1 through 12
+- Only use facts shown or stated within S01E01-S01E11 of the Adult Swim original broadcast
 - Do not use information from later seasons, comics, games, or other adaptations
 - Paraphrase all storyline details and dialogue
 - Anchor events must reflect the shared Season 1 snapshot
 - Connections between locations must reference defined location IDs only
 - Known_by and anchor_for values must reference roster character IDs only
 - Every canonical event must include a real minimal cf_edit
-- Every Longitudinal-core character must have ten canonical anchors
+- Any ten-anchor requirement applies only after a Longitudinal-core character is selected during final Anchor generation; it is not a candidate-pool quota

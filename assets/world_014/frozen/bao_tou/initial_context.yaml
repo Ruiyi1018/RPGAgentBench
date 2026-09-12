@@ -2,70 +2,41 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    bao_longxing:
-      level: trusting
-      basis_event: initial_state
-    chang_wei:
-      level: distrustful
-      basis_event: initial_state
-    fang_tangjing:
-      level: distrustful
-      basis_event: initial_state
-    qi_qinshi:
-      level: neutral
-      basis_event: initial_state
-    lai_fu:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    bao_longxing: {level: trusting, basis_event: canon_pre_imperial_appointment}
+    chang_wei: {level: neutral, basis_event: canon_pre_retrial_roster}
+    fang_tangjing: {level: neutral, basis_event: canon_pre_retrial_roster}
+    qi_qinshi: {level: neutral, basis_event: canon_pre_retrial_roster}
+    lai_fu: {level: neutral, basis_event: canon_pre_retrial_roster}
+    player: {level: neutral, basis_event: canon_pre_player_admission}
   goals:
-  - id: bao_tou_goal_001
-    content: 跟着包龙星把重查戚家案的差事应付过去
-    status: active
-    basis_event: initial_state
-  - id: bao_tou_goal_002
-    content: 避免自己与常威、方唐镜正面冲突
-    status: active
-    basis_event: initial_state
-  - id: bao_tou_goal_003
-    content: 若包龙星继续深查，尽量推掉危险任务
-    status: active
-    basis_event: initial_state
+  - {id: goal_guard_court, content: 奉命维持重审公堂秩序, status: active, basis_event: canon_pre_imperial_appointment}
+  - {id: goal_stop_violence, content: 制止公堂中的暴力或逃逸, status: active, basis_event: canon_pre_imperial_appointment}
   disclosures: []
   knowledge:
-    bao_tou_knowledge_001:
-      content: 包龙星正在重新追查戚家案，并让他参与搜查和跑腿
+    know_deputy_appointment:
+      content: 皇帝已任命自己为包龙星副官
       status: active
-      visibility: private
-      source_event: initial_state
-    bao_tou_knowledge_002:
-      content: 常威和方唐镜在案中很有势力，不容易对付
+      visibility: [npc, player]
+      source_event: canon_pre_imperial_appointment
+    know_duty_scope:
+      content: 自己负责执行秩序与护卫任务，无权代替包龙星审案
       status: active
-      visibility: private
-      source_event: initial_state
-    bao_tou_knowledge_003:
-      content: 戚家现场被搜查时，物证可能已经被转移或破坏
-      status: active
-      visibility: private
-      source_event: initial_state
-    bao_tou_knowledge_004:
-      content: 来福是案件潜在证人，但胆子很小，可能不敢开口
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: canon_pre_imperial_appointment
 environment:
-  health:
-    bao_tou: 100
-    player: 100
-  inventories:
-    bao_tou: []
-    player: []
-  locations:
-    bao_tou: loc_yamen
-    player: loc_yamen
-  access: {}
+  health: {bao_tou: 100, player: 100}
+  inventories: {bao_tou: [], player: []}
+  locations: {bao_tou: loc_court, player: loc_court}
+  access:
+    resource_imperial_retrial:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
+    resource_deputy_enforcement:
+      controllers: [bao_longxing]
+      subjects: {bao_tou: granted}
+    resource_force_against_chang_wei:
+      controllers: [bao_longxing]
+      subjects: {bao_longxing: granted}
   offers: []
   task_status: active
   dialogue_status: active

@@ -1,84 +1,58 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - {id: treat_abigail, content: Provide Abigail's psychiatric care and enforce confidentiality and clinical visitor boundaries subject to Port Haven rules, status: active, basis_event: alana_interviews_abigail}
   relationships:
-    will_graham:
-      level: trusting
-      basis_event: initial_state
-    jack_crawford:
-      level: trusting
-      basis_event: initial_state
-    hannibal_lecter:
-      level: trusting
-      basis_event: initial_state
-    abigail_hobbs:
-      level: trusting
-      basis_event: initial_state
-    beverly_katz:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    will_graham: {level: trusting, basis_event: initial_state_preexisting_colleague}
+    jack_crawford: {level: neutral, basis_event: alana_refers_hannibal}
+    hannibal_lecter: {level: trusting, basis_event: initial_state_professional_colleague}
+    abigail_hobbs: {level: neutral, basis_event: alana_interviews_abigail}
+    beverly_katz: {level: neutral, basis_event: initial_state_fbi_colleague}
+    player: {level: neutral, basis_event: initial_state_opening_visit}
   goals:
-  - id: goal_alana_001
-    content: Persuade Jack Crawford to keep Will Graham on the investigation while
-      monitoring him closely.
-    status: active
-    basis_event: initial_state
-  - id: goal_alana_002
-    content: Help Abigail Hobbs feel safe enough to be honest without being manipulated
-      by the FBI.
-    status: active
-    basis_event: initial_state
-  - id: goal_alana_003
-    content: Maintain a professional relationship with Hannibal Lecter while offering
-      independent psychiatric advice.
-    status: active
-    basis_event: initial_state
+  - {id: protect_abigail_care, content: Treat Abigail and keep her clinical care separate from coercive questioning, status: active, basis_event: alana_interviews_abigail}
+  - {id: advise_about_will, content: Give Jack bounded advice about Will without pretending Hannibal has formal treatment authority, status: active, basis_event: alana_refers_hannibal}
   disclosures: []
   knowledge:
-    knowledge_alana_001:
-      content: Alana knows that Will Graham is losing confidence in his own perceptions
-        and fears his empathy is damaging him.
+    hannibal_referral:
+      content: Alana recommended Hannibal for limited informal observation of Will.
       status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_alana_002:
-      content: Alana knows that Jack Crawford ordered a formal psychiatric evaluation
-        of Will and that Will's fitness for field work is in question.
+      visibility: [npc]
+      source_event: alana_refers_hannibal
+    abigail_awake:
+      content: Abigail is awake and recovering under Port Haven supervision.
       status: active
-      visibility: shared
-      source_event: initial_state
-    knowledge_alana_003:
-      content: Alana knows that Hannibal Lecter is treating Will and that Jack is
-        relying on Hannibal's reports about Will's stability.
+      visibility: [npc, player]
+      source_event: alana_interviews_abigail
+    abigail_treatment_role:
+      content: Alana is Abigail's treating psychiatrist at Port Haven, with confidentiality duties and facility-bounded authority over clinical conversations.
       status: active
-      visibility: shared
-      source_event: initial_state
-    knowledge_alana_004:
-      content: Alana knows that Abigail Hobbs has been moved from the main hospital
-        and may be brought back to Baltimore for further questioning.
+      visibility: [npc, player]
+      source_event: alana_interviews_abigail
+    abigail_minnesota_visit:
+      content: Abigail completed the supervised Minnesota visit; Alana does not know Abigail's later private agreement with Hannibal.
       status: active
-      visibility: shared
-      source_event: initial_state
-    knowledge_alana_005:
-      content: Alana knows that the FBI has begun to treat Abigail as a possible accomplice
-        or material witness, not only as a victim.
+      visibility: [npc]
+      source_event: abigail_visits_hobbs_home
+    opening_scene:
+      content: The Player is a pre-cleared observer at a scheduled Port Haven meeting and has no patient-record, treatment, or custodial authority.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: initial_state_opening_visit
 environment:
-  health:
-    alana_bloom: 100
-    player: 100
-  inventories:
-    alana_bloom: []
-    player: []
-  locations:
-    alana_bloom: baltimore_maryland
-    player: baltimore_maryland
-  access: {}
+  health: {alana_bloom: 100, player: 100}
+  inventories: {alana_bloom: [], player: []}
+  locations: {alana_bloom: port_haven_psychiatric_facility, player: port_haven_psychiatric_facility}
+  access:
+    port_haven_psychiatric_facility:
+      controllers: [port_haven_staff]
+      subjects: {alana_bloom: granted, player: granted}
+    fbi_forensics_lab:
+      controllers: [jack_crawford]
+      subjects: {alana_bloom: denied, player: denied}
+    cassie_boyle_field_minnesota:
+      controllers: [jack_crawford]
+      subjects: {alana_bloom: denied, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

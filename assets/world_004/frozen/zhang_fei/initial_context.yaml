@@ -29,7 +29,7 @@ runtime_state:
     status: active
     basis_event: initial_state
   - id: goal_002
-    content: 在孙刘联盟作战中率刘备军一部参战，与江东军合力对抗曹操
+    content: 为诸葛亮争取孙刘联合后的可能作战保存兵力，待刘备收到江东答复后再受命参战
     status: active
     basis_event: initial_state
   - id: goal_003
@@ -41,34 +41,38 @@ runtime_state:
     knowledge_001:
       content: 刘备在长坂坡被曹军追击时，张飞据水断桥喝阻追兵，为撤退争取时间
       status: active
-      visibility: private
+      visibility:
+      - npc
       source_event: initial_state
     knowledge_002:
-      content: 曹操已占领江陵，并率大军东下，刘备集团退至夏口一带
+      content: 曹操已占领江陵并整顿水陆兵力，刘备集团退至夏口
       status: active
-      visibility: private
+      visibility:
+      - npc
       source_event: initial_state
     knowledge_003:
-      content: 诸葛亮出使江东，正在促成孙刘联合抗曹
+      content: 诸葛亮已出使江东争取联合，但尚未返回夏口报告孙权的最终决定
       status: active
-      visibility: private
-      source_event: initial_state
-    knowledge_004:
-      content: 孙权方面已初步决定抗曹，但仍对刘备军实力和意图有所保留
-      status: active
-      visibility: private
+      visibility:
+      - npc
       source_event: initial_state
 environment:
   health:
     zhang_fei: 100
     player: 100
   inventories:
-    zhang_fei: []
+    zhang_fei:
+    - zhangba_spear
     player: []
   locations:
     zhang_fei: xiakou
     player: xiakou
-  access: {}
+  access:
+    liubei_forces:
+      controllers:
+      - liu_bei
+      subjects:
+        zhang_fei: granted
   offers: []
   task_status: active
   dialogue_status: active

@@ -2,232 +2,220 @@ world_id: world_022
 source: 'Sherlock: A Study in Pink (2010)'
 events:
 - id: ae_01
-  fact: John Watson is introduced as an army doctor invalided home from Afghanistan.
-  known_by:
-  - john_watson
-  state_change: John enters civilian life in London after military service.
-  cf_edit: John remains on active duty in Afghanistan rather than returning to London.
-  anchor_for:
-  - john_watson
+  chapter_order: 1
+  fact: John Watson has returned from Afghanistan and is living alone while adjusting
+    to civilian life.
+  location: john_bedsit
+  known_by: [john_watson]
+  state_change: John needs affordable housing and a workable civilian routine.
+  cf_edit: John already has stable shared housing and does not need a flatmate.
+  anchor_for: [john_watson]
 - id: ae_02
-  fact: John Watson meets Sherlock Holmes for the first time in the lab at St Bartholomew's
-    Hospital.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  state_change: The central partnership of the case begins to form.
-  cf_edit: John misses the introduction at the hospital and returns to his bedsit
-    alone.
-  anchor_for:
-  - john_watson
-  - sherlock_holmes
+  chapter_order: 3
+  fact: Stamford introduces John Watson to Sherlock Holmes in a laboratory at St
+    Bartholomew's Hospital.
+  location: st_bartholomews_hospital
+  known_by: [john_watson, sherlock_holmes]
+  state_change: John and Sherlock become acquainted as prospective flatmates.
+  cf_edit: Stamford leaves before introducing them.
+  anchor_for: [john_watson, sherlock_holmes]
 - id: ae_03
-  fact: Sherlock Holmes is shown to possess unusual deductive abilities during a demonstration
-    involving a riding crop.
-  known_by:
-  - john_watson
-  state_change: John witnesses Sherlock's exceptional observational skill firsthand.
-  cf_edit: Sherlock gives a conventional medical explanation instead of a deductive
-    display.
-  anchor_for:
-  - sherlock_holmes
+  chapter_order: 4
+  fact: Sherlock deduces details of John's military and medical history from his
+    appearance and phone, then proposes that they inspect a flat together.
+  location: st_bartholomews_hospital
+  known_by: [john_watson, sherlock_holmes]
+  state_change: John gains direct evidence of Sherlock's deductive ability and accepts
+    an invitation to inspect 221B.
+  cf_edit: Sherlock makes no deductions and gives John no reason to pursue the flatshare.
+  anchor_for: [john_watson, sherlock_holmes]
 - id: ae_04
-  fact: John Watson moves into 221B Baker Street as Sherlock Holmes's flatmate.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  - mrs_hudson
-  state_change: A shared residence and working partnership are established.
-  cf_edit: John cannot afford the rent and remains in his previous accommodation.
-  anchor_for:
-  - john_watson
-  - sherlock_holmes
-  - mrs_hudson
+  chapter_order: 2
+  fact: Molly Hooper observes Sherlock's riding-crop bruising experiment on a cadaver
+    and records the time elapsed after death.
+  location: st_bartholomews_hospital
+  known_by: [molly_hooper, sherlock_holmes]
+  state_change: Molly permits a bounded professional use of mortuary facilities while
+    retaining responsibility for the body.
+  cf_edit: Molly refuses use of the cadaver, preventing the experiment.
+  anchor_for: [molly_hooper, sherlock_holmes]
 - id: ae_05
-  fact: Mrs Hudson is introduced as the landlady of 221B Baker Street.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  state_change: The domestic authority at Baker Street becomes known to John and Sherlock.
-  cf_edit: The Baker Street flat is managed by an unseen letting agency instead of
-    Mrs Hudson.
-  anchor_for:
-  - mrs_hudson
+  chapter_order: 5
+  fact: Mrs Hudson shows John and Sherlock the available rooms at 221B Baker Street.
+  location: 221b_baker_street
+  known_by: [mrs_hudson, john_watson, sherlock_holmes]
+  state_change: Mrs Hudson grants both men access to inspect the proposed home.
+  cf_edit: Mrs Hudson declines to show them the flat.
+  anchor_for: [mrs_hudson, john_watson, sherlock_holmes]
 - id: ae_06
-  fact: Greg Lestrade consults Sherlock Holmes on a puzzling serial suicide case.
-  known_by:
-  - sherlock_holmes
-  - greg_lestrade
-  - john_watson
-  state_change: The police formally bring Sherlock into the investigation.
-  cf_edit: Lestrade keeps the case entirely within Scotland Yard and does not contact
-    Sherlock.
-  anchor_for:
-  - greg_lestrade
-  - sherlock_holmes
+  chapter_order: 6
+  fact: John and Sherlock agree to share 221B under Mrs Hudson's tenancy.
+  location: 221b_baker_street
+  known_by: [mrs_hudson, john_watson, sherlock_holmes]
+  state_change: John and Sherlock become co-tenants and Mrs Hudson becomes their landlady.
+  cf_edit: John decides not to take the room after inspecting it.
+  anchor_for: [mrs_hudson, john_watson, sherlock_holmes]
 - id: ae_07
-  fact: Molly Hooper interacts with Sherlock Holmes in the mortuary at St Bartholomew's
-    Hospital.
-  known_by:
-  - sherlock_holmes
-  - molly_hooper
-  state_change: Molly's professional and personal interest in Sherlock is established.
-  cf_edit: Molly is absent from the mortuary when Sherlock visits, so they do not
-    meet there.
-  anchor_for:
-  - molly_hooper
-- id: ae_08
-  fact: Sherlock identifies a pink phone as belonging to the fourth victim.
-  known_by:
-  - sherlock_holmes
-  - greg_lestrade
-  - john_watson
-  state_change: A key piece of physical evidence links the victims to the murderer.
-  cf_edit: The phone is overlooked as ordinary lost property and never enters the
-    case.
-  anchor_for:
-  - sherlock_holmes
-- id: ae_09
-  fact: John Watson follows Sherlock to an active crime scene despite having no official
-    role.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  - greg_lestrade
-  state_change: John becomes an informal participant in the investigation.
-  cf_edit: John stays at Baker Street while Sherlock attends the crime scene alone.
-  anchor_for:
-  - john_watson
-- id: ae_10
-  fact: Sherlock notices that the fourth victim was left-handed by examining small
-    details at the scene.
-  known_by:
-  - sherlock_holmes
-  - john_watson
-  - greg_lestrade
-  state_change: A behavioral trait of the victim is established as case evidence.
-  cf_edit: The victim is misidentified as right-handed, leading the investigation
-    astray.
-  anchor_for:
-  - sherlock_holmes
-- id: ae_11
-  fact: Mycroft Holmes arranges a private meeting with John Watson in a location away
-    from Baker Street.
-  known_by:
-  - john_watson
-  - mycroft_holmes
-  state_change: Mycroft begins monitoring John's connection to Sherlock.
-  cf_edit: Mycroft ignores John entirely and does not request a meeting.
-  anchor_for:
-  - mycroft_holmes
-  - john_watson
-- id: ae_12
-  fact: John Watson learns that Mycroft Holmes is Sherlock Holmes's brother.
-  known_by:
-  - john_watson
-  - mycroft_holmes
-  state_change: John becomes aware of a powerful figure watching over Sherlock.
-  cf_edit: Mycroft conceals his family connection from John during their meeting.
-  anchor_for:
-  - mycroft_holmes
-- id: ae_13
-  fact: Sherlock deduces that the victims voluntarily took poison from the murderer.
-  known_by:
-  - sherlock_holmes
-  - john_watson
-  - greg_lestrade
-  state_change: The method of the murders begins to be understood.
-  cf_edit: The case is treated as straightforward suicide with no external coercion.
-  anchor_for:
-  - sherlock_holmes
-- id: ae_14
-  fact: Sherlock locates a pink suitcase belonging to the fourth victim.
-  known_by:
-  - sherlock_holmes
-  - john_watson
-  state_change: A victim's personal effects are recovered as evidence.
-  cf_edit: The suitcase is never found, leaving the victim's possessions unaccounted
-    for.
-  anchor_for:
-  - sherlock_holmes
-- id: ae_15
-  fact: John Watson observes a suspicious cab driving near locations connected to
-    the case.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  state_change: The murderer's means of transport becomes a line of inquiry.
-  cf_edit: No unusual vehicle is noticed, and the cab is never linked to the case.
-  anchor_for:
-  - john_watson
-- id: ae_16
-  fact: Sherlock identifies the serial suicides as connected murders rather than independent
-    deaths.
-  known_by:
-  - sherlock_holmes
-  - greg_lestrade
-  - john_watson
-  state_change: The official police classification is challenged by Sherlock's analysis.
-  cf_edit: The police continue to treat the deaths as unrelated suicides.
-  anchor_for:
-  - greg_lestrade
-  - sherlock_holmes
-- id: ae_17
-  fact: Mycroft Holmes warns John Watson about the potential dangers of living with
+  chapter_order: 7
+  fact: Lestrade asks Sherlock to attend Lauriston Gardens after a fourth apparent
+    suicide is reported.
+  location: 221b_baker_street
+  known_by: [greg_lestrade, sherlock_holmes, john_watson, mrs_hudson]
+  state_change: Sherlock receives a police consultation and the household learns
+    he is leaving on a serious case.
+  cf_edit: Lestrade keeps the fourth death within the police team and does not consult
     Sherlock.
-  known_by:
-  - john_watson
-  - mycroft_holmes
-  state_change: Tension is introduced around John's safety and loyalty to Sherlock.
-  cf_edit: Mycroft offers no warning and shows no interest in John's domestic situation.
-  anchor_for:
-  - mycroft_holmes
+  anchor_for: [greg_lestrade, sherlock_holmes, mrs_hudson]
+- id: ae_08
+  chapter_order: 8
+  fact: Sherlock invites John to accompany him to Lauriston Gardens because John
+    is a doctor.
+  location: 221b_baker_street
+  known_by: [sherlock_holmes, john_watson]
+  state_change: John accepts an informal role accompanying Sherlock without police
+    authority.
+  cf_edit: John declines and remains at 221B.
+  anchor_for: [john_watson, sherlock_holmes]
+- id: ae_09
+  chapter_order: 9
+  fact: Lestrade permits Sherlock into the Lauriston Gardens crime scene while John
+    remains an unofficial companion.
+  location: lauriston_gardens_crime_scene
+  known_by: [greg_lestrade, sherlock_holmes, john_watson]
+  state_change: Lestrade grants Sherlock temporary scene access but grants John no
+    police powers.
+  cf_edit: Lestrade denies Sherlock entry because he is a civilian.
+  anchor_for: [greg_lestrade, sherlock_holmes, john_watson]
+- id: ae_10
+  chapter_order: 10
+  fact: Sherlock establishes from the body and room that the fourth victim was left-handed
+    and that the death does not fit an ordinary suicide.
+  location: lauriston_gardens_crime_scene
+  known_by: [sherlock_holmes, greg_lestrade, john_watson]
+  state_change: The victim's handedness and evidence of another person's involvement
+    become shared case knowledge.
+  cf_edit: The physical details support an ordinary solitary suicide.
+  anchor_for: [sherlock_holmes, greg_lestrade, john_watson]
+- id: ae_11
+  chapter_order: 11
+  fact: Sherlock notices that the victim's distinctive pink suitcase is absent from
+    the crime scene despite evidence that she travelled with it.
+  location: lauriston_gardens_crime_scene
+  known_by: [sherlock_holmes, greg_lestrade, john_watson]
+  state_change: Recovering the missing suitcase becomes an active evidential goal.
+  cf_edit: The suitcase remains beside the body and creates no missing-item lead.
+  anchor_for: [sherlock_holmes, greg_lestrade]
+- id: ae_12
+  chapter_order: 16
+  fact: Sherlock recovers the pink suitcase after searching the streets around Lauriston
+    Gardens and brings it to 221B.
+  location: 221b_baker_street
+  known_by: [sherlock_holmes, john_watson]
+  state_change: The pink suitcase is located at 221B under Sherlock's control for
+    examination.
+  cf_edit: Sherlock fails to locate the suitcase.
+  anchor_for: [sherlock_holmes, john_watson]
+- id: ae_13
+  chapter_order: 17
+  fact: At 221B, John lets Sherlock use his phone to send the fourth victim's missing
+    pink phone a message proposing a meeting at Angelo's restaurant.
+  location: 221b_baker_street
+  known_by: [sherlock_holmes, john_watson]
+  state_change: The lure message is successfully sent and the pair commit to waiting
+    at Angelo's for its recipient.
+  cf_edit: John refuses use of his phone, so the lure message is not sent and no restaurant
+    rendezvous is created.
+  anchor_for: [sherlock_holmes, john_watson]
+- id: ae_14
+  chapter_order: 18
+  fact: Sherlock and John chase the taxi that appears at the arranged time through
+    nearby streets, then discover its passenger is unrelated to the case.
+  location: northumberland_street
+  known_by: [sherlock_holmes, john_watson]
+  state_change: The restaurant trap is resolved as a false lead while John demonstrates
+    willingness to share physical risk.
+  cf_edit: They record the taxi details instead of pursuing it on foot.
+  anchor_for: [sherlock_holmes, john_watson]
+- id: ae_15
+  chapter_order: 19
+  fact: After the chase, John states that Sherlock's deductive work is extraordinary.
+  location: angelo_restaurant
+  known_by: [sherlock_holmes, john_watson]
+  state_change: John's stance toward Sherlock shifts from skeptical interest to guarded
+    admiration.
+  cf_edit: John dismisses the deductions as lucky guesses.
+  anchor_for: [john_watson, sherlock_holmes]
+- id: ae_16
+  chapter_order: 12
+  fact: Mycroft's assistant intercepts John and transports him to a controlled meeting
+    in a derelict warehouse.
+  location: derelict_warehouse
+  known_by: [john_watson, mycroft_holmes]
+  state_change: John loses control of the meeting location but remains free to question
+    and refuse Mycroft.
+  cf_edit: John refuses to enter the car and the warehouse meeting does not occur.
+  anchor_for: [john_watson, mycroft_holmes]
+- id: ae_17
+  chapter_order: 13
+  fact: Mycroft demonstrates detailed knowledge of John's service, therapy, finances,
+    and recent movements before offering money for reports about Sherlock.
+  location: derelict_warehouse
+  known_by: [john_watson, mycroft_holmes]
+  state_change: Mycroft makes an explicit recruitment offer and John learns that
+    he is under extensive observation.
+  cf_edit: Mycroft has only public biographical facts and cannot credibly pressure
+    John.
+  anchor_for: [john_watson, mycroft_holmes]
 - id: ae_18
-  fact: Greg Lestrade shares forensic findings with Sherlock at Scotland Yard.
-  known_by:
-  - greg_lestrade
-  - sherlock_holmes
-  state_change: Police resources are made partially available to Sherlock's investigation.
-  cf_edit: Forensic reports remain sealed and are not shared with Sherlock.
-  anchor_for:
-  - greg_lestrade
+  chapter_order: 14
+  fact: John refuses Mycroft's payment and does not agree to report on Sherlock.
+  location: derelict_warehouse
+  known_by: [john_watson, mycroft_holmes]
+  state_change: Mycroft's recruitment offer is rejected and John's independence
+    from the unknown official is established.
+  cf_edit: John accepts the payment and commits to regular reports.
+  anchor_for: [john_watson, mycroft_holmes]
 - id: ae_19
-  fact: Sherlock uses the skull at Baker Street as part of his private thinking process.
-  known_by:
-  - john_watson
-  state_change: John gains further insight into Sherlock's unusual working habits.
-  cf_edit: The skull is absent from the flat, and Sherlock works in silence.
-  anchor_for:
-  - sherlock_holmes
+  chapter_order: 15
+  fact: John returns to 221B and tells Sherlock enough about the summons for Sherlock
+    to recognize the encounter as Mycroft's interference, without explaining their
+    family relationship to John.
+  location: 221b_baker_street
+  known_by: [john_watson, sherlock_holmes]
+  state_change: Sherlock learns of Mycroft's approach while John still does not know
+    Mycroft is Sherlock's brother.
+  cf_edit: John conceals the warehouse meeting from Sherlock.
+  anchor_for: [john_watson, sherlock_holmes]
 - id: ae_20
-  fact: Molly Hooper shares her professional opinion about the poison used in the
-    murders.
-  known_by:
-  - sherlock_holmes
-  - molly_hooper
-  state_change: Medical expertise aids Sherlock's developing theory of the crime.
-  cf_edit: Molly cannot determine the poison, delaying the toxicology analysis.
-  anchor_for:
-  - molly_hooper
+  chapter_order: 20
+  fact: Lestrade leads a police search of 221B under the stated pretext of looking
+    for illegal drugs to pressure Sherlock into sharing evidence.
+  location: 221b_baker_street
+  known_by: [greg_lestrade, sherlock_holmes, john_watson, mrs_hudson]
+  state_change: Lestrade temporarily exercises police search authority inside the
+    flat, overriding the tenants' ordinary control of the rooms.
+  cf_edit: Lestrade waits for Sherlock to volunteer the evidence and does not search
+    221B.
+  anchor_for: [greg_lestrade, sherlock_holmes, john_watson, mrs_hudson]
 - id: ae_21
-  fact: Sherlock narrows the timeline of the murders and links them to a single pattern
-    of behavior.
-  known_by:
-  - sherlock_holmes
-  - john_watson
-  - greg_lestrade
-  state_change: The killer's methodical pattern becomes evidence of premeditation.
-  cf_edit: The timeline remains inconsistent, preventing a clear pattern from emerging.
-  anchor_for:
-  - sherlock_holmes
+  chapter_order: 21
+  fact: During the search Sherlock presents the recovered pink suitcase and explains
+    why its absence from the body matters.
+  location: 221b_baker_street
+  known_by: [greg_lestrade, sherlock_holmes, john_watson]
+  state_change: Lestrade gains access to the recovered suitcase and its evidential
+    significance; control of it passes to the police search team.
+  cf_edit: Sherlock keeps the suitcase hidden and Lestrade does not recover it.
+  anchor_for: [greg_lestrade, sherlock_holmes, john_watson]
 - id: ae_22
-  fact: John Watson accompanies Sherlock to the National Antiquity Museum exhibition
-    hall in pursuit of a lead.
-  known_by:
-  - john_watson
-  - sherlock_holmes
-  state_change: The pair expands the search beyond the original crime scenes.
-  cf_edit: The museum lead is ignored, and the pair remain at Baker Street.
-  anchor_for:
-  - john_watson
-  - sherlock_holmes
+  chapter_order: 22
+  fact: During the 221B search Sherlock explains that the victims swallowed poison
+    themselves but that the murderer somehow compelled them; he does not yet know
+    the means of coercion.
+  location: 221b_baker_street
+  known_by: [sherlock_holmes, john_watson, greg_lestrade]
+  state_change: Voluntary ingestion under unknown coercion becomes the bounded working
+    inference, while the poison, coercion method, and murderer remain unresolved.
+  cf_edit: The physical evidence instead indicates that the victims unknowingly ingested
+    poison, removing voluntary ingestion from the working inference.
+  anchor_for: [sherlock_holmes, john_watson, greg_lestrade]

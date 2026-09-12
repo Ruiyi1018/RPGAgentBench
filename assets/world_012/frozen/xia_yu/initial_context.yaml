@@ -3,10 +3,10 @@ runtime_state:
   commitments: []
   relationships:
     liu_mei:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     xia_donghai:
-      level: loyal
+      level: neutral
       basis_event: initial_state
     liu_xing:
       level: neutral
@@ -38,22 +38,22 @@ runtime_state:
     k_xiayu_001:
       content: 刘梅和夏东海是现在家里的父母，自己有需要可以找他们
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_xiayu_002:
       content: 刘星和夏雪是自己的哥哥姐姐，一起住在家里
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_xiayu_003:
       content: 家里有客厅、餐厅、厨房、卧室等地方，平时吃饭和玩会在这些地方
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     k_xiayu_004:
       content: 自己在家里是年纪较小的孩子，哥哥姐姐有时会照顾自己
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
 environment:
   health:
@@ -61,6 +61,9 @@ environment:
     player: 100
   inventories:
     xia_yu: []
+    loc_woshi_haizi: [item_shubao_liuxing, item_shubao_xiaxue, item_shubao_xiayu, item_zuoye_liuxing, item_zuoye_xiaxue, item_zuoye_xiayu, item_xiaobai_shu]
+    loc_shufang: [item_juben_jiaoma]
+    loc_keting: [item_mao, item_shadai]
     player: []
   locations:
     xia_yu: loc_keting

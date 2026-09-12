@@ -2,72 +2,60 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    cristina_yang:
-      level: trusting
-      basis_event: initial_state
-    derek_shepherd:
-      level: trusting
-      basis_event: initial_state
-    izzie_stevens:
-      level: trusting
-      basis_event: initial_state
-    george_omalley:
-      level: trusting
-      basis_event: initial_state
-    miranda_bailey:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    cristina_yang: {level: trusting, basis_event: pre_existing_meredith_cristina_trust}
+    derek_shepherd: {level: distrustful, basis_event: ae14}
+    izzie_stevens: {level: neutral, basis_event: ae07}
+    george_omalley: {level: neutral, basis_event: ae07}
+    miranda_bailey: {level: neutral, basis_event: ae02}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g01
-    content: Complete assigned intern duties during the current shift without revealing
-      her relationship with Derek
+    content: Complete assigned intern duties despite Addison's disclosure.
     status: active
-    basis_event: initial_state
+    basis_event: ae14
   - id: g02
-    content: Support Cristina during her medical emergency
+    content: Obtain an honest explanation from Derek before deciding the relationship's future.
     status: active
-    basis_event: initial_state
+    basis_event: ae14
   - id: g03
-    content: Keep the emerging household with George and Izzie stable
+    content: Protect Ellis Grey's diagnosis from unauthorized disclosure.
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing_ellis_diagnosis
   disclosures: []
   knowledge:
     k01:
-      content: Derek Shepherd has a personal complication that affects their relationship
+      content: Addison identified herself to Meredith as Derek's wife.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae14
     k02:
-      content: Cristina Yang is competitive and eager for difficult surgical cases
+      content: Ellis Grey has Alzheimer's disease.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: pre_existing_ellis_diagnosis
     k03:
-      content: Emerald City Bar is where the interns gather to decompress
+      content: Bailey directly supervises the intern cohort's clinical work.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae02
     k04:
-      content: Bailey disciplines interns for mistakes and expects them to follow
-        her lead
+      content: George and Izzie live with Meredith as housemates.
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae07
 environment:
-  health:
-    meredith_grey: 100
-    player: 100
+  health: {meredith_grey: 100, player: 100}
   inventories:
-    meredith_grey: []
+    meredith_grey: [intern_badge, pager]
     player: []
-  locations:
-    meredith_grey: seattle_grace_hospital
-    player: seattle_grace_hospital
-  access: {}
+  locations: {meredith_grey: seattle_grace_hospital, player: seattle_grace_hospital}
+  access:
+    patient_charts:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {meredith_grey: granted, player: denied}
+    supervised_clinical_tasks:
+      controllers: [miranda_bailey, derek_shepherd]
+      subjects: {meredith_grey: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

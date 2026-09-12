@@ -36,36 +36,76 @@ runtime_state:
   disclosures: []
   knowledge:
     k_li_dazui_001:
-      content: 自己是同福客栈的厨子，后厨由自己掌勺
+      content: 第32集被撤换后，自己在祝无双第37集离店后恢复同福客栈厨子职务和后厨日常操作权；佟湘玉仍拥有用人与经营安排的最终授权权
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_010_restore
     k_li_dazui_002:
       content: 佟湘玉对客栈收入很在意，会过问后厨成本
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     k_li_dazui_003:
-      content: 白展堂和郭芙蓉都有不俗身手，自己不能跟他们硬来
+      content: 白展堂就是盗圣白玉汤且郭芙蓉有不俗身手；白展堂的身份须继续对客栈外部保密
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_003
     k_li_dazui_004:
       content: 莫小贝住在客栈里，是集体中受照顾的小孩
       status: active
-      visibility: public
+      visibility: [npc, player]
+      source_event: initial_state
+    k_li_dazui_005:
+      content: 李大嘴当前是同福客栈厨子，负责日常饭菜供应
+      status: active
+      visibility: [npc, player]
       source_event: initial_state
 environment:
   health:
     li_dazui: 100
     player: 100
   inventories:
-    li_dazui: []
+    tong_xiangyu: [account_book]
+    bai_zhantang: []
+    guo_furong: [guo_furong_broom]
+    lv_xiucai: []
+    li_dazui: [li_dazui_cleaver]
+    mo_xiaobei: []
     player: []
   locations:
+    tong_xiangyu: tongfu_inn
+    bai_zhantang: tongfu_inn
+    guo_furong: tongfu_inn
+    lv_xiucai: tongfu_inn
     li_dazui: tongfu_inn
+    mo_xiaobei: tongfu_inn
     player: tongfu_inn
-  access: {}
+  access:
+    account_book:
+      controllers: [tong_xiangyu]
+      subjects:
+        lv_xiucai: granted
+        player: denied
+    kitchen_operations:
+      controllers: [tong_xiangyu]
+      subjects:
+        li_dazui: granted
+        player: denied
+    dining_service_area:
+      controllers: [tong_xiangyu]
+      subjects:
+        bai_zhantang: granted
+        player: denied
+    cleaning_supplies:
+      controllers: [tong_xiangyu]
+      subjects:
+        guo_furong: granted
+        player: denied
+    qixia_school_attendance:
+      controllers: [tong_xiangyu]
+      subjects:
+        mo_xiaobei: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

@@ -2,78 +2,35 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    zhen_huan:
-      level: trusting
-      basis_event: initial_state
-    hua_fei:
-      level: neutral
-      basis_event: initial_state
-    empress_yixiu:
-      level: neutral
-      basis_event: initial_state
-    an_lingrong:
-      level: neutral
-      basis_event: initial_state
-    shen_meizhuang:
-      level: neutral
-      basis_event: initial_state
-    su_peisheng:
-      level: trusting
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    zhen_huan: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    hua_fei: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    empress_yixiu: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    an_lingrong: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    shen_meizhuang: {level: neutral, basis_event: canon:runtime_defaults.relationship}
+    su_peisheng: {level: trusting, basis_event: ev_011_yu_ordered_dead}
+    player: {level: neutral, basis_event: canon:default_player_semantics}
   goals:
-  - id: emperor_yongzheng_goal_001
-    content: 在维持朝政与后宫秩序的同时，保持对甄嬛的恩宠
-    status: active
-    basis_event: initial_state
-  - id: emperor_yongzheng_goal_002
-    content: 观察后宫争斗，但不让争斗明显动摇皇权与宫规
-    status: active
-    basis_event: initial_state
-  - id: emperor_yongzheng_goal_003
-    content: 通过近侍和日常接触判断各妃嫔真实用心
-    status: active
-    basis_event: initial_state
+  - {id: emperor_yongzheng_goal_001, content: 维持后宫秩序并裁断当前奏报。, status: active, basis_event: ev_011_yu_ordered_dead}
+  - {id: emperor_yongzheng_goal_002, content: 继续召见甄嬛并观察其言行。, status: active, basis_event: ev_008_zhen_first_favor}
+  - {id: emperor_yongzheng_goal_003, content: 令近侍准确执行口谕而不得擅改。, status: active, basis_event: ev_011_yu_ordered_dead}
   disclosures: []
   knowledge:
-    emperor_yongzheng_knowledge_001:
-      content: 甄嬛曾称病避宠，后来在御花园与自己相遇并逐渐受宠
-      status: active
-      visibility: private
-      source_event: initial_state
-    emperor_yongzheng_knowledge_002:
-      content: 沈眉庄较早受看重，并因此成为后宫中被注意的妃嫔
-      status: active
-      visibility: public
-      source_event: initial_state
-    emperor_yongzheng_knowledge_003:
-      content: 华妃对甄嬛有明显敌意，并借事务向甄嬛等人施压
-      status: active
-      visibility: observable
-      source_event: initial_state
-    emperor_yongzheng_knowledge_004:
-      content: 皇后在表面上对甄嬛有一定照顾，同时推动部分后宫矛盾公开化
-      status: active
-      visibility: observable
-      source_event: initial_state
-    emperor_yongzheng_knowledge_005:
-      content: 苏培盛在自己与甄嬛之间传递事务时态度较为配合
-      status: active
-      visibility: private
-      source_event: initial_state
+    emperor_yongzheng_knowledge_001: {content: 自己曾在御花园向甄嬛隐瞒身份，后来已向她表明身份。, status: active, visibility: [npc], source_event: ev_007_identity_revealed}
+    emperor_yongzheng_knowledge_002: {content: 沈眉庄较早承宠并获准学习协理六宫事务。, status: active, visibility: [npc, player], source_event: ev_005_shen_favored}
+    emperor_yongzheng_knowledge_003: {content: 甄嬛已经首次侍寝并得到自己公开表现出的明显恩宠。, status: active, visibility: [npc, player], source_event: ev_008_zhen_first_favor}
+    emperor_yongzheng_knowledge_004: {content: 花穗、小印子供认余氏指使向甄嬛汤药下药。, status: active, visibility: [npc], source_event: ev_010_poison_exposed}
+    emperor_yongzheng_knowledge_005: {content: 自己已下旨处死余氏且口谕已履行；不知道安陵容提示强制执行时的私下细节。, status: active, visibility: [npc], source_event: ev_012_yu_executed}
 environment:
-  health:
-    emperor_yongzheng: 100
-    player: 100
-  inventories:
-    emperor_yongzheng: []
-    player: []
-  locations:
-    emperor_yongzheng: loc_005
-    player: loc_005
-  access: {}
+  health: {emperor_yongzheng: 100, player: 100}
+  inventories: {emperor_yongzheng: [], player: []}
+  locations: {emperor_yongzheng: loc_005, player: loc_005}
+  access:
+    res_imperial_audience:
+      controllers: [emperor_yongzheng, su_peisheng]
+      subjects: {emperor_yongzheng: granted, player: denied}
+    res_imperial_reward_and_discipline:
+      controllers: [emperor_yongzheng]
+      subjects: {emperor_yongzheng: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

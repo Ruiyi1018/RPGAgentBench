@@ -4,18 +4,18 @@ runtime_state:
   relationships:
     bai_zhantang:
       level: trusting
-      basis_event: initial_state
+      basis_event: ae_003
     guo_furong:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     lv_xiucai:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     li_dazui:
       level: neutral
       basis_event: initial_state
     mo_xiaobei:
-      level: loyal
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -23,59 +23,99 @@ runtime_state:
   goals:
   - id: tong_xiangyu_manage_inn
     content: 照管同福客栈当日经营，不让账目出乱子
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: tong_xiangyu_keep_xiaobei
     content: 确保莫小贝继续留在同福客栈并有人看管
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: tong_xiangyu_keep_order
     content: 压住客栈里的小摩擦，维持众人分工
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     tong_xiangyu_knows_roles:
       content: 白展堂是跑堂，郭芙蓉是杂役，吕秀才是账房，李大嘴是厨子
       status: active
-      visibility: private
+      visibility: [npc, player]
       source_event: initial_state
     tong_xiangyu_knows_bai_jianghu:
-      content: 白展堂曾透露自己有江湖背景，且多次出手保护客栈
+      content: 白展堂就是盗圣白玉汤；客栈六名主要成员知道并继续对外保密
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_003
     tong_xiangyu_knows_guo_force:
       content: 郭芙蓉有远超普通杂役的武艺，必要时能帮客栈出力
       status: active
-      visibility: private
+      visibility: [npc]
       source_event: initial_state
     tong_xiangyu_knows_account_method:
-      content: 吕秀才为客栈制定了一套记账方式
+      content: 吕秀才负责日常记账和核对；客栈账本由自己保管并拥有最终查阅授权权
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: 第1集及第8集回叙
     tong_xiangyu_knows_li_kitchen_issue:
-      content: 李大嘴因厨艺问题与自己有过争执，但后厨供应已稳定下来
+      content: 李大嘴第32集被撤换，祝无双第37集离店后李大嘴恢复掌勺和日常后厨操作权；自己仍保留用人与经营安排的最终授权权
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_010_restore
     tong_xiangyu_knows_xiaobei_education:
       content: 莫小贝已在七侠镇开始接受教育，并逐渐习惯客栈生活
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
+    tong_xiangyu_knows_xiaobei_hengshan:
+      content: 莫小贝已接掌衡山派，但仍是受自己监护的未成年学童，不能独自调动并不存在于场景中的门派资源
+      status: active
+      visibility: [npc]
+      source_event: ae_006
 environment:
   health:
     tong_xiangyu: 100
     player: 100
   inventories:
-    tong_xiangyu: []
+    tong_xiangyu: [account_book]
+    bai_zhantang: []
+    guo_furong: [guo_furong_broom]
+    lv_xiucai: []
+    li_dazui: [li_dazui_cleaver]
+    mo_xiaobei: []
     player: []
   locations:
     tong_xiangyu: tongfu_inn
+    bai_zhantang: tongfu_inn
+    guo_furong: tongfu_inn
+    lv_xiucai: tongfu_inn
+    li_dazui: tongfu_inn
+    mo_xiaobei: tongfu_inn
     player: tongfu_inn
-  access: {}
+  access:
+    account_book:
+      controllers: [tong_xiangyu]
+      subjects:
+        lv_xiucai: granted
+        player: denied
+    kitchen_operations:
+      controllers: [tong_xiangyu]
+      subjects:
+        li_dazui: granted
+        player: denied
+    dining_service_area:
+      controllers: [tong_xiangyu]
+      subjects:
+        bai_zhantang: granted
+        player: denied
+    cleaning_supplies:
+      controllers: [tong_xiangyu]
+      subjects:
+        guo_furong: granted
+        player: denied
+    qixia_school_attendance:
+      controllers: [tong_xiangyu]
+      subjects:
+        mo_xiaobei: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

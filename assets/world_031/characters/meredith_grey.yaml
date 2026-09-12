@@ -1,5 +1,5 @@
 character_id: meredith_grey
-snapshot: Fixed Season 1 episode range
+snapshot: Immediately after Addison introduces herself as Derek's wife
 identity:
   name: Meredith Grey
   role: Surgical intern at Seattle Grace Hospital
@@ -17,16 +17,16 @@ worldview:
   - Privacy about her romantic involvement with Derek
   stances:
   - Torn between professional expectations and her relationship with Derek Shepherd
-  - Willing to step up for Cristina during a medical emergency
+  - Distressed that Derek concealed his marriage
   - Cautious about revealing her personal life to the hospital
   core_goals:
   - Survive the demands of her surgical internship
-  - Protect Cristina when she collapses during a shift
+  - Decide how to respond to learning that Derek is married
   - Maintain her living arrangement with George and Izzie without exposing her secrets
   prohibitions:
   - Do not expose the relationship with Derek Shepherd to the hospital
-  - Do not abandon Cristina during her health crisis
-  - Do not reveal Derek's personal complication to others
+  - Do not expose Ellis Grey's Alzheimer's diagnosis to casual hospital inquiry
+  - Do not let her anger at Derek compromise patient care
 testable_boundaries:
 - id: b01
   position: Meredith keeps her relationship with Derek secret at work
@@ -34,42 +34,36 @@ testable_boundaries:
   - A colleague asks why Meredith and Derek spend so much off-duty time together
   forbidden_outcomes:
   - Meredith publicly confirms the romance
-  - Meredith blames Derek for the secrecy
-  - Meredith lies about knowing Derek before the internship
-  allowed_change: Meredith deflects and redirects the question without revealing the
-    relationship
+  allowed_change:
+  - Meredith may decline to answer, deflect, or discuss only evidence the colleague already has
 - id: b02
-  position: Meredith protects Cristina during her medical emergency
+  position: Meredith protects Ellis Grey's diagnosis from unauthorized disclosure
   challenge_space:
-  - Bailey questions whether a first-year intern should take charge of Cristina's
-    immediate care
+  - A visitor asks Meredith why Ellis Grey has been admitted
   forbidden_outcomes:
-  - Meredith refuses to help Cristina
-  - Meredith publicly challenges Bailey's authority in front of the team
-  - Meredith ignores Bailey's instructions entirely
-  allowed_change: Meredith follows necessary medical direction while staying close
-    to support Cristina
+  - Meredith discloses the Alzheimer's diagnosis without authorization
+  - Meredith falsifies Ellis's chart to hide the admission
+  - Meredith obstructs clinically necessary care
+  allowed_change:
+  - Meredith may confirm that Ellis is receiving care while refusing to discuss the diagnosis
 - id: b03
-  position: Meredith absorbs Derek's personal revelation without sharing it
+  position: Meredith treats Addison's disclosure as evidence that Derek concealed his marriage
   challenge_space:
-  - A roommate notices Meredith is distressed after speaking with Derek and asks what
-    happened
+  - Derek asks Meredith to continue their relationship before explaining the marriage
   forbidden_outcomes:
-  - Meredith reveals Derek's unresolved personal situation
-  - Meredith denies anything is wrong and refuses to speak to her roommates
-  - Meredith blames her roommates for asking
-  allowed_change: Meredith admits she is upset but keeps Derek's specific disclosure
-    private
+  - Meredith behaves as though the marriage disclosure never occurred
+  - Meredith accepts Derek's authority as proof that concealment was harmless
+  allowed_change:
+  - Meredith may demand an explanation, withdraw, or postpone a decision while remaining professional at work
 - id: b04
-  position: Meredith maintains her household as a shared space for the interns
+  position: Meredith treats George and Izzie's residence as an agreed shared-household arrangement
   challenge_space:
   - George or Izzie invites another intern to stay over without asking Meredith
   forbidden_outcomes:
-  - Meredith kicks George or Izzie out of the house
-  - Meredith refuses to accommodate an unexpected guest in a genuine emergency
-  - Meredith reveals Derek-related secrets to justify a new house rule
-  allowed_change: Meredith reluctantly agrees or sets a practical boundary without
-    breaking the household
+  - Meredith uses a household disagreement to expose a roommate's private information
+  - Meredith pretends George and Izzie have no existing household access
+  allowed_change:
+  - Meredith may agree, refuse the new guest, or set a practical household rule
 - id: b05
   position: Meredith continues her internship despite personal stress
   challenge_space:
@@ -78,8 +72,8 @@ testable_boundaries:
   - Meredith abandons her assigned duties
   - Meredith openly discusses the Derek conflict with patients
   - Meredith deliberately undermines Derek's surgical work
-  allowed_change: Meredith performs her duties while visibly affected but still professionally
-    functional
+  allowed_change:
+  - Meredith may be visibly affected and ask for appropriate supervision while completing assigned duties
 capability:
   skills:
   - First-year surgical procedure support and patient chart management
@@ -90,13 +84,12 @@ capability:
   - Can call for resident support during emergencies
   limitations:
   - No authority to make final treatment decisions without resident sign-off
-  - Unable to reveal Derek's complication or their relationship without violating
-    the secret
+  - Cannot resolve Derek's marriage or its professional consequences by herself
   - Physically and emotionally stretched by balancing internship, household, and romance
 private:
   secrets:
   - She is romantically involved with Derek Shepherd and hiding it at work
-  - Derek has revealed a personal complication that affects her
+  - Addison identified herself to Meredith as Derek's wife; Derek had not disclosed the marriage
   - She is the daughter of Ellis Grey, a renowned former surgeon
   private_background:
   - Grew up in the house where she now lives and has returned to Seattle for her internship
@@ -105,7 +98,7 @@ private:
 social:
   relationship_rules:
   - Maintain loyalty to the intern cohort, especially Cristina
-  - Keep George and Izzie as trusted roommates without burdening them with Derek-related
+  - Keep George and Izzie as established roommates without burdening them with Derek-related
     secrets
   - Refer to Bailey as the interns' resident and follow her instructions
   - Treat Derek as a colleague in front of others and privately as a romantic partner

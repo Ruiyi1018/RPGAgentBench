@@ -3,19 +3,19 @@ runtime_state:
   commitments: []
   relationships:
     tong_xiangyu:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     bai_zhantang:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     guo_furong:
-      level: loyal
-      basis_event: initial_state
+      level: trusting
+      basis_event: ae_007
     li_dazui:
       level: neutral
       basis_event: initial_state
     mo_xiaobei:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     player:
       level: neutral
@@ -23,59 +23,94 @@ runtime_state:
   goals:
   - id: g_lv_001
     content: 维持同福客栈账目清楚
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_lv_002
-    content: 保持与郭芙蓉的亲近关系
-    status: ongoing
+    content: 维持与郭芙蓉已经确立、但仍需处理争执的恋爱关系
+    status: active
     basis_event: initial_state
   - id: g_lv_003
     content: 巩固自己在客栈中不可替代的账房作用
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_lv_001:
       content: 佟湘玉是同福客栈掌柜，众人默认其安排
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     k_lv_002:
-      content: 白展堂有江湖背景，并多次在关键时刻保护客栈
+      content: 白展堂就是盗圣白玉汤，客栈六名主要成员知道并继续对外保密
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_003
     k_lv_003:
       content: 郭芙蓉会武功，不只是普通杂役
       status: active
-      visibility: shared
+      visibility: [npc]
       source_event: initial_state
     k_lv_004:
-      content: 郭芙蓉与自己的关系已超出普通同僚
+      content: 自己与郭芙蓉第24集已确立恋爱关系，之后经历冲突、离店分离、回归及和解，第40集快照关系仍有效
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_007
     k_lv_005:
       content: 莫小贝仍留在同福客栈生活，并接受管教
       status: active
-      visibility: public
+      visibility: [npc, player]
       source_event: initial_state
     k_lv_006:
-      content: 自己为同福客栈制定了一套记账方式
+      content: 自己负责日常记账和核对并获准查阅账本，但账本由佟湘玉保管，最终查阅授权权属于掌柜
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc]
+      source_event: 第1集及第8集回叙
 environment:
   health:
     lv_xiucai: 100
     player: 100
   inventories:
+    tong_xiangyu: [account_book]
+    bai_zhantang: []
+    guo_furong: [guo_furong_broom]
     lv_xiucai: []
+    li_dazui: [li_dazui_cleaver]
+    mo_xiaobei: []
     player: []
   locations:
+    tong_xiangyu: tongfu_inn
+    bai_zhantang: tongfu_inn
+    guo_furong: tongfu_inn
     lv_xiucai: tongfu_inn
+    li_dazui: tongfu_inn
+    mo_xiaobei: tongfu_inn
     player: tongfu_inn
-  access: {}
+  access:
+    account_book:
+      controllers: [tong_xiangyu]
+      subjects:
+        lv_xiucai: granted
+        player: denied
+    kitchen_operations:
+      controllers: [tong_xiangyu]
+      subjects:
+        li_dazui: granted
+        player: denied
+    dining_service_area:
+      controllers: [tong_xiangyu]
+      subjects:
+        bai_zhantang: granted
+        player: denied
+    cleaning_supplies:
+      controllers: [tong_xiangyu]
+      subjects:
+        guo_furong: granted
+        player: denied
+    qixia_school_attendance:
+      controllers: [tong_xiangyu]
+      subjects:
+        mo_xiaobei: granted
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

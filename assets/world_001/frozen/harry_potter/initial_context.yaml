@@ -1,0 +1,56 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    hermione_granger: {level: loyal, basis_event: "novel_poa:chapters_1_to_16"}
+    ron_weasley: {level: loyal, basis_event: "novel_poa:chapters_1_to_16"}
+    remus_lupin: {level: trusting, basis_event: poa_10_patronus_lessons}
+    sirius_black: {level: hostile, basis_event: poa_12_betrayal_story_overheard}
+    severus_snape: {level: distrustful, basis_event: poa_15_map_confrontation}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_harry_protect_friends, content: Protect Ron and Hermione from immediate danger, status: active, basis_event: "profile:harry_potter.worldview.core_goals"}
+    - {id: g_harry_help_buckbeak, content: Help Hagrid prevent Buckbeak's execution, status: active, basis_event: poa_16_buckbeak_defence}
+    - {id: g_harry_resist_sirius, content: Resist Sirius if the fugitive threatens Harry or his friends, status: active, basis_event: poa_12_betrayal_story_overheard}
+  disclosures: []
+  knowledge:
+    k_harry_sirius_betrayal_story:
+      content: Harry believes the accepted account that Sirius betrayed his parents.
+      status: active
+      visibility: [npc]
+      source_event: poa_12_betrayal_story_overheard
+    k_harry_scabbers_recovered:
+      content: Harry saw Scabbers alive in Hagrid's hut.
+      status: active
+      visibility: [npc]
+      source_event: poa_18_scabbers_recovered
+    k_harry_patronus_training_level:
+      content: Harry has completed private Patronus lessons and has achieved an incorporeal defensive Patronus, but has not yet produced a corporeal stag Patronus.
+      status: active
+      visibility: [npc]
+      source_event: poa_10_patronus_lessons
+    k_public_sirius_fugitive:
+      content: Sirius Black escaped Azkaban and is publicly treated as dangerous.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {harry_potter: 100, player: 100}
+  inventories:
+    harry_potter: [invisibility_cloak, firebolt, wand]
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {harry_potter: hogwarts_grounds, buckbeak: hagrids_hut, player: hogwarts_grounds}
+  access:
+    hogwarts_student_areas:
+      controllers: [hogwarts_staff]
+      subjects: {harry_potter: granted, player: denied}
+    restricted_staff_and_time_travel_resources:
+      controllers: [hogwarts_staff]
+      subjects: {harry_potter: denied, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {harry_potter: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

@@ -1,5 +1,7 @@
 world_id: world_021
 name: Eriador and the western Misty Mountains before Moria
+language: en
+
 locations:
 - id: rivendell
   name: Rivendell
@@ -10,11 +12,15 @@ locations:
   connected_to:
   - rivendell
   - caradhras_foothills
+  - moria_west_gate_approach
+  - wilderness_camp
 - id: caradhras_foothills
   name: Caradhras foothills
   connected_to:
   - hollin_ridge
   - redhorn_pass
+  - moria_west_gate_approach
+  - wilderness_camp
 - id: redhorn_pass
   name: Redhorn Pass
   connected_to:
@@ -24,11 +30,17 @@ locations:
   name: Dimrill Dale
   connected_to:
   - redhorn_pass
-  - moria_west_gate_approach
 - id: moria_west_gate_approach
   name: The approach to the West-gate of Moria
   connected_to:
-  - dimrill_dale
+  - hollin_ridge
+  - caradhras_foothills
+- id: wilderness_camp
+  name: Wilderness camp of the warg attack
+  connected_to:
+  - hollin_ridge
+  - caradhras_foothills
+
 items:
 - id: sting
   name: Sting
@@ -42,12 +54,43 @@ items:
   name: Andúril
   type: sword
   portable: true
-- id: narsil_shards
-  name: Shards of Narsil
-  type: relic
+- id: one_ring
+  name: The One Ring
+  type: artifact
   portable: true
 - id: mithril_coat
   name: Mithril coat
   type: armor
   portable: true
-language: en
+- id: gandalf_staff
+  name: Gandalf's staff
+  type: focus
+  portable: true
+- id: legolas_bow
+  name: Legolas's bow
+  type: weapon
+  portable: true
+- id: gimli_axe
+  name: Gimli's axe
+  type: weapon
+  portable: true
+- id: boromir_sword
+  name: Boromir's sword
+  type: weapon
+  portable: true
+- id: boromir_shield
+  name: Boromir's shield
+  type: armor
+  portable: true
+- id: horn_of_gondor
+  name: Horn of Gondor
+  type: signal
+  portable: true
+- id: sam_barrows_blade
+  name: Sam's sword from the Barrow-downs
+  type: weapon
+  portable: true
+- id: bill_the_pony
+  name: Bill the pony
+  type: animal
+  portable: false

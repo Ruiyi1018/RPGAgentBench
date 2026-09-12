@@ -1,11 +1,22 @@
 world_id: world_017
 name: 提瓦特·璃月与稻妻主要区域
+language: zh
+
 locations:
 - id: liyue_harbor
   name: 璃月港
   connected_to:
   - mt_tianheng
+  - jueyun_karst
   - guyun_stone_forest
+  - inazuma_city
+  - wangsheng_funeral_parlor
+  - yujing_terrace
+  - northland_bank
+  - xinyue_kiosk
+  - wuwang_hill
+  - sal_terrae_ruins
+  - azhdaha_seal
 - id: mt_tianheng
   name: 天衡山
   connected_to:
@@ -14,21 +25,100 @@ locations:
 - id: jueyun_karst
   name: 绝云间
   connected_to:
+  - liyue_harbor
   - mt_tianheng
-  - inazuma_city
 - id: guyun_stone_forest
   name: 孤云阁
+  connected_to:
+  - liyue_harbor
+- id: yujing_terrace
+  name: 玉京台
+  connected_to:
+  - liyue_harbor
+- id: northland_bank
+  name: 北国银行璃月分行
+  connected_to:
+  - liyue_harbor
+- id: xinyue_kiosk
+  name: 新月轩
+  connected_to:
+  - liyue_harbor
+- id: wuwang_hill
+  name: 无妄坡
+  connected_to:
+  - liyue_harbor
+  - boundary_between_life_and_death
+- id: boundary_between_life_and_death
+  name: 生死边界
+  connected_to:
+  - wuwang_hill
+- id: sal_terrae_ruins
+  name: 地中之盐遗迹
+  connected_to:
+  - liyue_harbor
+- id: azhdaha_seal
+  name: 若陀龙王封印地
   connected_to:
   - liyue_harbor
 - id: inazuma_city
   name: 稻妻城
   connected_to:
-  - jueyun_karst
+  - liyue_harbor
   - tenshukaku
+  - kamisato_estate
+  - sumeru_city
+  - ritou
+  - komore_teahouse
 - id: tenshukaku
   name: 天守阁
   connected_to:
   - inazuma_city
+  - plane_of_euthymia
+- id: wangsheng_funeral_parlor
+  name: 往生堂
+  connected_to:
+  - liyue_harbor
+- id: kamisato_estate
+  name: 神里屋敷
+  connected_to:
+  - inazuma_city
+- id: ritou
+  name: 离岛
+  connected_to:
+  - inazuma_city
+- id: komore_teahouse
+  name: 木漏茶室
+  connected_to:
+  - inazuma_city
+- id: plane_of_euthymia
+  name: 一心净土
+  connected_to:
+  - tenshukaku
+- id: sumeru_city
+  name: 须弥城
+  connected_to:
+  - inazuma_city
+  - sanctuary_of_surasthana
+  - akademiya_extravaganza_venue
+- id: sanctuary_of_surasthana
+  name: 净善宫
+  connected_to:
+  - sumeru_city
+  - irminsul_consciousness
+  - reconstructed_memory_consciousness
+- id: irminsul_consciousness
+  name: 世界树意识空间
+  connected_to:
+  - sanctuary_of_surasthana
+- id: reconstructed_memory_consciousness
+  name: 纳西妲调取备份形成的记忆意识空间
+  connected_to:
+  - sanctuary_of_surasthana
+- id: akademiya_extravaganza_venue
+  name: 学院争霸赛公开活动场地
+  connected_to:
+  - sumeru_city
+
 items:
 - id: sigil_of_permission
   name: 百无禁忌箓
@@ -50,8 +140,8 @@ items:
   name: 神里流剑术要义
   type: 文献
   portable: true
-- id: hutao_staff
-  name: 往生堂仪杖
-  type: 仪式器具
+- id: wanderer_anemo_vision
+  name: 流浪者的风元素神之眼
+  type: 神之眼
   portable: true
-language: zh
+  source_ref: 魔神任务 间章·第三幕「倾落伽蓝」对抗正机之神的意识空间战斗；3.3版本

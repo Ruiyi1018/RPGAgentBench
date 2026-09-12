@@ -4,65 +4,57 @@ runtime_state:
   relationships:
     tang_sanzang:
       level: loyal
-      basis_event: initial_state
+      basis_event: canon_disciple_commitment
     sun_wukong:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     zhu_bajie:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     bailongma:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     baigujing:
-      level: hostile
-      basis_event: initial_state
-    heihujing:
-      level: hostile
-      basis_event: initial_state
+      level: neutral
+      basis_event: canon_unidentified_strangers
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: goal_001
     content: 继续挑担随唐僧西行，不因山中变故掉队。
-    status: 进行中
-    basis_event: initial_state
+    status: active
+    basis_event: canon_westward_mission
   - id: goal_002
     content: 在师父与大师兄因两次打死人形而起争执时，避免队伍彻底分裂。
-    status: 进行中
-    basis_event: initial_state
+    status: active
+    basis_event: ae_022
   - id: goal_003
-    content: 对再出现的可疑人物保持提防，不轻易让师父接近。
-    status: 进行中
-    basis_event: initial_state
+    content: 对之后接近队伍的陌生人保持审慎，不在无法分辨时贸然下结论。
+    status: active
+    basis_event: ae_020
   disclosures: []
   knowledge:
     knowledge_001:
-      content: 唐僧师徒四人已进入白虎岭，孙悟空曾在地上画圈并嘱咐不要离开。
+      content: 孙悟空嘱咐唐僧下马坐稳，随后驾云往南山摘桃并暂时离队。
       status: active
-      visibility: self_and_party
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_004
     knowledge_002:
-      content: 村姑和老妇人先后出现，孙悟空两次声称其是妖怪并打死，唐僧与孙悟空因此严重失和。
+      content: 孙悟空再次举棒打中老妇人的人形，使其倒地。
       status: active
-      visibility: self_and_party
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_020
     knowledge_003:
-      content: 猪八戒几次说孙悟空打死的是人，并指其用变化骗师父，唐僧因此念咒，甚至曾要赶走孙悟空。
+      content: 唐僧在第二个人形倒地后再次念紧箍咒，并警告孙悟空若再犯便将其逐走。
       status: active
-      visibility: self_and_party
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_022
     knowledge_004:
       content: 自己无法靠眼力分辨村姑和老妇人是否真是妖怪。
       status: active
-      visibility: self_only
-      source_event: initial_state
-    knowledge_005:
-      content: 山中出现妖怪变化的可能性很高，但第三次变化尚未出现。
-      status: active
-      visibility: self_and_party
-      source_event: initial_state
+      visibility: [npc]
+      source_event: canon_no_spirit_sight
 environment:
   health:
     sha_wujing: 100

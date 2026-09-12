@@ -1,5 +1,6 @@
 world_id: world_030
 name: Storybrooke and Fairytale Realm flashbacks
+language: en
 locations:
 - id: storybrooke
   name: Storybrooke
@@ -8,32 +9,98 @@ locations:
   - sheriffs_station
   - mills_house
   - storybrooke_hospital
+  - fairytale_realm
+  - mr_gold_pawnshop
+  - storybrooke_castle_playground
+  - emmas_boston_apartment
+  - grannys_inn
+  - mary_margarets_apartment
+  - mayors_office
+  - storybrooke_school
+  - storybrooke_bus_stop
+  - storybrooke_town_line
+  - abandoned_mine
+  - storybrooke_graveyard
 - id: grannys_diner
   name: Granny's Diner
   connected_to:
   - storybrooke
+  - sheriffs_station
+  - grannys_inn
+  - mary_margarets_apartment
+- id: grannys_inn
+  name: Granny's Bed and Breakfast
+  connected_to:
+  - storybrooke
+  - grannys_diner
+- id: mary_margarets_apartment
+  name: Mary Margaret's apartment
+  connected_to:
+  - storybrooke
+  - grannys_diner
 - id: sheriffs_station
   name: Sheriff's Station
   connected_to:
   - storybrooke
+  - grannys_diner
 - id: mills_house
   name: Mills House
   connected_to:
   - storybrooke
+  - storybrooke_hospital
+  - storybrooke_castle_playground
+  - mr_gold_pawnshop
+- id: mayors_office
+  name: Regina Mills's mayoral office
+  connected_to:
+  - storybrooke
+- id: storybrooke_school
+  name: Storybrooke school
+  connected_to:
+  - storybrooke
+  - storybrooke_bus_stop
+- id: storybrooke_bus_stop
+  name: Storybrooke school bus stop
+  connected_to:
+  - storybrooke
+  - storybrooke_school
+- id: storybrooke_town_line
+  name: Storybrooke town line
+  connected_to:
+  - storybrooke
+- id: abandoned_mine
+  name: Abandoned mine
+  connected_to:
+  - storybrooke
+- id: storybrooke_graveyard
+  name: Storybrooke graveyard
+  connected_to:
+  - storybrooke
+  - reginas_graveyard_vault
+- id: reginas_graveyard_vault
+  name: Regina's graveyard vault
+  connected_to:
+  - storybrooke_graveyard
 - id: storybrooke_hospital
   name: Storybrooke Hospital
   connected_to:
   - storybrooke
+  - mills_house
 - id: fairytale_realm
   name: Fairytale Realm
   connected_to:
+  - storybrooke
   - royal_castle
   - dwarves_mine
   - dark_forest
+  - fairytale_road
+  - rumplestiltskin_prison_cell
 - id: royal_castle
   name: Royal Castle
   connected_to:
   - fairytale_realm
+  - fairytale_road
+  - rumplestiltskin_prison_cell
 - id: dwarves_mine
   name: Dwarves' Mine
   connected_to:
@@ -42,6 +109,32 @@ locations:
   name: Dark Forest
   connected_to:
   - fairytale_realm
+  - fairytale_road
+- id: mr_gold_pawnshop
+  name: Mr. Gold's pawnshop
+  connected_to:
+  - storybrooke
+  - mills_house
+- id: storybrooke_castle_playground
+  name: Storybrooke castle playground
+  connected_to:
+  - storybrooke
+  - mills_house
+- id: emmas_boston_apartment
+  name: Emma Swan's Boston apartment
+  connected_to:
+  - storybrooke
+- id: fairytale_road
+  name: Fairytale realm carriage road
+  connected_to:
+  - fairytale_realm
+  - royal_castle
+  - dark_forest
+- id: rumplestiltskin_prison_cell
+  name: Rumplestiltskin's prison cell
+  connected_to:
+  - fairytale_realm
+  - royal_castle
 items:
 - id: storybook
   name: Henry's Storybook
@@ -59,4 +152,15 @@ items:
   name: Spool of Gold Thread
   type: material
   portable: true
-language: en
+- id: deputy_badge
+  name: Storybrooke deputy badge
+  type: credential
+  portable: true
+- id: pawnshop_key
+  name: Mr. Gold's pawnshop key
+  type: key
+  portable: true
+- id: royal_sword
+  name: Prince Charming's sword
+  type: weapon
+  portable: true

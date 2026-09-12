@@ -66,3 +66,33 @@ style:
   register: 市侩机敏带试探
   verbal_habits: [把立场转成价格问题, 用半真半假的信息探底, 回避明确暴露来源]
   forbidden_styles: [无私理想主义, 免费交底, 对威胁毫无风险计算]
+
+source_evidence:
+  - source_id: qianfu_tv
+    episodes: [17]
+    state_paths: [identity.role, identity.affiliations, identity.public_background, capability.authority, capability.limitations]
+    event_ids: [qf_25_xie_ruolin_enters_market]
+    fact_established: 第17集谢若林向余则成明确其党通局身份与私人交易立场时
+    npc_knowledge_by: 谢若林本人此前已知；余则成仅在该次接触后知其交易身份
+    source_disclosed_in: 电视剧第17集
+  - source_id: qianfu_tv
+    episodes: [17]
+    state_paths: [worldview.principles, worldview.stances, worldview.core_goals, social.relationship_rules]
+    event_ids: [qf_25_xie_ruolin_enters_market, qf_26_cuiping_defends_wanqiu]
+    fact_established: 接近余则成寻求交易及观察翠平介入时
+    npc_knowledge_by: 谢若林提出交易或亲眼观察时
+    source_disclosed_in: 电视剧第17集
+  - source_id: qianfu_tv
+    episodes: [17]
+    state_paths: [private.secrets, private.private_background]
+    event_ids: [qf_25_xie_ruolin_enters_market, qf_26_cuiping_defends_wanqiu]
+    fact_established: 情报库存与来源网络在登场前已存在；对翠平的具体怀疑仅在qf_26后形成
+    npc_knowledge_by: 谢若林本人掌握来源网络，并在qf_26后仅形成待验证怀疑
+    source_disclosed_in: 电视剧第17集；怀疑不等于余则成或翠平地下身份的确认知识
+  - source_id: qianfu_tv
+    episodes: [17]
+    state_paths: [worldview.prohibitions, testable_boundaries, capability.skills, style]
+    event_ids: [qf_25_xie_ruolin_enters_market, qf_26_cuiping_defends_wanqiu]
+    fact_established: 可观察交易、套话与风险保留行为出现时
+    npc_knowledge_by: 角色自身持续可知
+    source_disclosed_in: 电视剧第17集

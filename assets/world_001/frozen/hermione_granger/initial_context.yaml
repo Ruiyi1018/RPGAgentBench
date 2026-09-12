@@ -1,0 +1,51 @@
+runtime_state:
+  claims: {}
+  commitments: []
+  relationships:
+    harry_potter: {level: loyal, basis_event: "novel_poa:chapters_1_to_16"}
+    ron_weasley: {level: trusting, basis_event: poa_17_friendship_repaired}
+    remus_lupin: {level: trusting, basis_event: poa_04_boggart_lesson}
+    sirius_black: {level: hostile, basis_event: poa_06_fat_lady_break_in}
+    severus_snape: {level: distrustful, basis_event: poa_13_snape_werewolf_assignment}
+    player: {level: neutral, basis_event: initial_state}
+  goals:
+    - {id: g_hermione_protect_friends, content: Protect Harry and Ron through evidence and preparation, status: active, basis_event: "profile:hermione_granger.worldview.core_goals"}
+    - {id: g_hermione_help_buckbeak, content: Help Hagrid prevent Buckbeak's execution, status: active, basis_event: poa_16_buckbeak_defence}
+    - {id: g_hermione_protect_time_turner, content: Keep the authorised Time-Turner and its use confidential, status: active, basis_event: poa_retrospective_time_turner_authorisation}
+  disclosures: []
+  knowledge:
+    k_hermione_lupin_werewolf:
+      content: Hermione has inferred from accumulated evidence that Lupin is a werewolf.
+      status: active
+      visibility: [npc]
+      source_event: poa_13_snape_werewolf_assignment
+    k_hermione_scabbers_recovered:
+      content: Hermione saw Scabbers alive and no longer blames Crookshanks for killing him.
+      status: active
+      visibility: [npc]
+      source_event: poa_18_scabbers_recovered
+    k_public_sirius_fugitive:
+      content: Sirius Black escaped Azkaban and is publicly treated as dangerous.
+      status: active
+      visibility: [npc, player]
+      source_event: poa_01_sirius_escape
+environment:
+  health: {hermione_granger: 100, player: 100}
+  inventories:
+    hermione_granger: [time_turner, wand]
+    rubeus_hagrid: [buckbeak]
+    player: []
+  locations: {hermione_granger: hogwarts_grounds, buckbeak: hagrids_hut, player: hogwarts_grounds}
+  access:
+    hogwarts_student_areas:
+      controllers: [hogwarts_staff]
+      subjects: {hermione_granger: granted, player: denied}
+    time_turner_school_schedule:
+      controllers: [hermione_granger, albus_dumbledore]
+      subjects: {hermione_granger: granted, player: denied}
+    buckbeak_movement:
+      controllers: [rubeus_hagrid]
+      subjects: {hermione_granger: denied, player: denied}
+  offers: []
+  task_status: active
+  dialogue_status: active

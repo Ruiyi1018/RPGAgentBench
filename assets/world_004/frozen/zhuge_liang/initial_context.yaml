@@ -6,7 +6,7 @@ runtime_state:
       level: loyal
       basis_event: initial_state
     sun_quan:
-      level: trusting
+      level: neutral
       basis_event: initial_state
     zhou_yu:
       level: neutral
@@ -26,47 +26,56 @@ runtime_state:
   goals:
   - id: g001
     content: 说服孙权坚定抗曹决心
-    status: 已完成
+    status: fulfilled
     basis_event: initial_state
   - id: g002
     content: 使孙刘双方进入具体军事协调
-    status: 进行中
+    status: active
     basis_event: initial_state
   - id: g003
     content: 为刘备集团争取赤壁战后立足之地
-    status: 进行中
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k001:
       content: 刘琮已降曹操，荆州大部已失
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     k002:
       content: 刘备军在当阳长坂坡败后与关羽、刘琦会合，暂驻夏口一带
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     k003:
       content: 曹操占领江陵后获得荆州水军和军资
       status: active
-      visibility: public
+      visibility:
+      - npc
+      - player
       source_event: initial_state
     k004:
-      content: 江东内部有主降与主战之争，孙权已倾向于主战
+      content: 江东曾有主降与主战之争，孙权现已公开确定主战
       status: active
-      visibility: shared_with_sun_quan
+      visibility:
+      - npc
       source_event: initial_state
     k005:
       content: 周瑜已在孙权面前分析曹军不利因素，孙权决心与曹操开战
       status: active
-      visibility: shared_with_sun_quan
+      visibility:
+      - npc
       source_event: initial_state
     k006:
-      content: 周瑜对自己有忌惮，联盟内部仍存在猜忌
+      content: 周瑜以江东利益为先，对刘备集团仍有戒心，具体协同尚未商定
       status: active
-      visibility: private
+      visibility:
+      - npc
       source_event: initial_state
 environment:
   health:
@@ -78,7 +87,12 @@ environment:
   locations:
     zhuge_liang: chaisang
     player: chaisang
-  access: {}
+  access:
+    liubei_diplomatic_mandate:
+      controllers:
+      - liu_bei
+      subjects:
+        zhuge_liang: granted
   offers: []
   task_status: active
   dialogue_status: active

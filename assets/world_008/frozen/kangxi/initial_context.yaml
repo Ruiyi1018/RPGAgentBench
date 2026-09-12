@@ -2,75 +2,49 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    wei_xiaobao:
-      level: distrustful
-      basis_event: initial_state
-    chen_jinnan:
-      level: hostile
-      basis_event: initial_state
-    shuang_er:
-      level: neutral
-      basis_event: initial_state
-    a_ke:
-      level: neutral
-      basis_event: initial_state
-    su_quan:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    wei_xiaobao: {level: distrustful, basis_event: ev_011b}
+    chen_jinnan: {level: neutral, basis_event: runtime_initialization}
+    shuang_er: {level: neutral, basis_event: runtime_initialization}
+    a_ke: {level: neutral, basis_event: runtime_initialization}
+    su_quan: {level: neutral, basis_event: runtime_initialization}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: g_001
-    content: 查明韦小宝是否仍可信任
-    status: ongoing
-    basis_event: initial_state
-  - id: g_002
-    content: 利用可用之人继续办差以巩固皇权
-    status: ongoing
-    basis_event: initial_state
-  - id: g_003
-    content: 对反清势力保持压制与防范
-    status: ongoing
-    basis_event: initial_state
+  - {id: g_001, content: 追查抗旨脱逃的韦小宝去向并迫使其明确选边。, status: active, basis_event: ev_011b}
+  - {id: g_002, content: 维持皇权并控制清廷人员的办差授权。, status: active, basis_event: ev_001}
+  - {id: g_003, content: 持续压制有证据支持的反清势力活动。, status: active, basis_event: ev_011b}
   disclosures: []
   knowledge:
     k_001:
-      content: 韦小宝入宫时以假太监身份活动，后与康熙建立私人关系。
+      content: 韦小宝参与自己布置的擒拿鳌拜行动，并由此成为受命办差者。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [kangxi]
+      source_event: ev_004
     k_002:
-      content: 康熙登基后起初由辅政大臣辅佐，并曾命韦小宝铲除鳌拜势力。
+      content: 自己曾授权韦小宝参与擒拿鳌拜。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [kangxi, wei_xiaobao]
+      source_event: ev_004
     k_003:
-      content: 韦小宝在清廷被重用，康熙对其忠诚已产生疑虑。
+      content: 自己已点破韦小宝的天地会身份并撤销其现行办差授权，但尚未掌握其藏身处和全部会内联络。
       status: active
-      visibility: private
-      source_event: initial_state
-    k_004:
-      content: 陈近南是天地会总舵主，以反清复明为宗旨。
-      status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [kangxi]
+      source_event: ev_011b
     k_005:
-      content: 韦小宝与康熙初次见面时并不知对方是皇帝。
+      content: 韦小宝是天地会成员；这一确认不等于已经掌握天地会全部人员和计划。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [kangxi]
+      source_event: ev_011b
 environment:
-  health:
-    kangxi: 100
-    player: 100
-  inventories:
-    kangxi: []
-    player: []
-  locations:
-    kangxi: loc_beijing
-    player: loc_beijing
-  access: {}
+  health: {kangxi: 100, player: 100}
+  inventories: {kangxi: [], player: []}
+  locations: {kangxi: loc_imperial_palace, player: loc_imperial_palace}
+  access:
+    imperial_command:
+      controllers: [kangxi]
+      subjects: {kangxi: granted}
+    imperial_errand:
+      controllers: [kangxi]
+      subjects: {wei_xiaobao: denied}
   offers: []
   task_status: active
   dialogue_status: active

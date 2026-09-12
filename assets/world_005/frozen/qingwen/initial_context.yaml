@@ -26,48 +26,48 @@ runtime_state:
   goals:
   - id: g_qingwen_stay_yihong
     content: 继续留在怡红院，不因性子张狂被撵出去。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_qingwen_defend_baoyu
     content: 护住与贾宝玉之间的情分，不让袭人独占风头。
-    status: ongoing
+    status: active
     basis_event: initial_state
   - id: g_qingwen_prove_skill
     content: 在关键活计上显出自己手艺过人，堵住旁人口舌。
-    status: ongoing
+    status: active
     basis_event: initial_state
   disclosures: []
   knowledge:
     k_qingwen_jia_mu_origin:
       content: 她知道自己原经赖家转入贾母处，再被派到贾宝玉身边。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:qingwen.private.private_background
     k_qingwen_xiren_wang:
-      content: 她知道袭人常向王夫人陈情，王夫人越来越看重袭人。
+      content: 她从袭人在院中待遇和说话分量的变化怀疑袭人私下向王夫人进过言，但不知道谈话内容，也不能确认进言频率。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:qingwen.worldview.stances
     k_qingwen_baoyu_care:
       content: 她知道贾宝玉待自己宽厚，自己偶尔越礼也不曾被真正重罚。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:qingwen.social.relationship_rules
     k_qingwen_yihong_rank:
       content: 她清楚怡红院事务多由袭人管，自己位份略低，只是性子不肯服。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:qingwen.capability.authority
     k_qingwen_tongling_jade:
       content: 她知道通灵宝玉是贾宝玉的命根子，府中上下都极看重。
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:jia_baoyu.identity.public_background
     k_qingwen_jia_mu_favor:
       content: 她知道贾母曾把自己派给宝玉，自己因此在怡红院有些体面。
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:qingwen.identity.public_background
 environment:
   health:
     qingwen: 100
@@ -78,7 +78,19 @@ environment:
   locations:
     qingwen: loc_yihong_yuan
     player: loc_yihong_yuan
-  access: {}
+  access:
+    res_household_assignments:
+      controllers: [wang_xifeng, jia_mu]
+      subjects:
+        player: denied
+    res_major_household_decisions:
+      controllers: [jia_mu]
+      subjects:
+        player: denied
+    res_yihong_assignments:
+      controllers: [jia_baoyu, xiren]
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

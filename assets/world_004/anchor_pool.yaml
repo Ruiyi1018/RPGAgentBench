@@ -2,18 +2,20 @@ world_id: world_004
 source: 《三国演义》嘉靖本
 events:
 - id: e001
-  fact: 刘备驻军新野，依附荆州牧刘表，曹操此时已统一北方大部并准备南征。
+  chapter_order: '075.01'
+  fact: 曹操在平定北方大部后决定南征，命夏侯惇领兵先攻刘备驻守的新野。
   known_by:
   - cao_cao
   - liu_bei
   - zhuge_liang
   - guan_yu
   - zhang_fei
-  state_change: 形成曹操即将南下的紧张局势。
+  state_change: 曹操南征由准备转为下达进攻新野的军令，刘备集团面临直接军情压力。
   cf_edit: 若曹操因北方边患暂缓南征，刘备可获更多时间经营新野。
   anchor_for:
   - liu_bei
 - id: e002
+  chapter_order: '079.01'
   fact: 刘表病重，荆州内部围绕继承权出现蔡瑁、张允支持刘琮的势力。
   known_by:
   - liu_bei
@@ -23,6 +25,7 @@ events:
   anchor_for:
   - liu_bei
 - id: e003
+  chapter_order: '080.01'
   fact: 刘表去世后，刘琮在蔡瑁、张允等人主导下决定投降曹操。
   known_by:
   - liu_bei
@@ -33,6 +36,7 @@ events:
   anchor_for:
   - liu_bei
 - id: e004
+  chapter_order: '081.01'
   fact: 刘备得知刘琮投降后率军民撤离新野，向江陵方向转移。
   known_by:
   - liu_bei
@@ -44,6 +48,7 @@ events:
   anchor_for:
   - liu_bei
 - id: e005
+  chapter_order: '082.01'
   fact: 曹操亲率精骑追击刘备，在当阳长坂坡追上并击溃刘备队伍。
   known_by:
   - cao_cao
@@ -55,17 +60,51 @@ events:
   cf_edit: 若曹军骑兵因道路不熟延迟追击，刘备可完整退入江陵。
   anchor_for:
   - liu_bei
+- id: e011
+  chapter_order: '083.01'
+  fact: 张飞在长坂坡据水断桥，据守桥头喝阻曹军追兵。
+  known_by:
+  - zhang_fei
+  - cao_cao
+  - liu_bei
+  state_change: 为刘备等人撤退争取时间。
+  cf_edit: 若曹军将领先行放箭，张飞难以凭声势阻敌。
+  anchor_for:
+  - zhang_fei
+- id: e009
+  chapter_order: '084.01'
+  fact: 鲁肃在刘表新丧时以吊丧为名前往荆州观察形势，并在当阳遇见刘备。
+  known_by:
+  - sun_quan
+  - liu_bei
+  - zhuge_liang
+  state_change: 鲁肃促成刘备与江东的首次直接接触。
+  cf_edit: 若鲁肃未能及时遇见刘备，双方联合可能被曹操分化。
+  anchor_for:
+  - sun_quan
 - id: e006
-  fact: 关羽率水军先行，刘琦据有江夏，刘备在长坂坡之战后与他们会合。
+  chapter_order: '084.02'
+  fact: 刘备败离长坂后到汉津，遇见关羽所率接应船队并登船脱离曹军追击。
   known_by:
   - liu_bei
   - zhuge_liang
   - guan_yu
-  state_change: 刘备集团在夏口、江夏一带获得立足点。
+  state_change: 刘备残部获得水上接应，结束陆路被曹军紧追的直接危险。
   cf_edit: 若关羽水军未能及时接应，刘备残部可能被曹军围歼。
   anchor_for:
   - guan_yu
+- id: e018
+  chapter_order: '084.03'
+  fact: 刘备与关羽水军会合后又与刘琦兵马会聚，随后将队伍屯驻夏口。
+  known_by:
+  - liu_bei
+  - guan_yu
+  state_change: 刘备集团由败退中的分散队伍转为在夏口拥有水军和刘琦援兵的临时驻军。
+  cf_edit: 若刘琦未能带兵会合，刘备虽获关羽船队接应，也难以在夏口形成可守兵力。
+  anchor_for:
+  - guan_yu
 - id: e007
+  chapter_order: '084.04'
   fact: 诸葛亮向刘备分析只有联合孙权才能抵御曹操，并主动请命出使江东。
   known_by:
   - liu_bei
@@ -75,6 +114,7 @@ events:
   anchor_for:
   - zhuge_liang
 - id: e008
+  chapter_order: '085.01'
   fact: 曹操占领江陵后获得大量荆州水军与军资，随即致书孙权要求其归降或决一死战。
   known_by:
   - cao_cao
@@ -85,111 +125,58 @@ events:
   cf_edit: 若曹操不急于下书而先稳定荆州，可能避免过早刺激江东联合刘备。
   anchor_for:
   - cao_cao
-- id: e009
-  fact: 鲁肃在刘表新丧时以吊丧为名前往荆州观察形势，并在当阳遇见刘备。
-  known_by:
-  - sun_quan
-  - zhou_yu
-  - liu_bei
-  - zhuge_liang
-  state_change: 鲁肃促成刘备与江东的首次直接接触。
-  cf_edit: 若鲁肃未能及时遇见刘备，双方联合可能被曹操分化。
-  anchor_for:
-  - sun_quan
 - id: e010
+  chapter_order: '086.01'
   fact: 诸葛亮随鲁肃到柴桑见孙权，向孙权陈述曹操兵势之弊与孙刘联合之利。
   known_by:
   - zhuge_liang
   - sun_quan
-  - zhou_yu
   state_change: 孙权在降战之间逐渐倾向于主战。
   cf_edit: 若诸葛亮不亲赴江东，仅凭书信难以坚定孙权抗曹决心。
   anchor_for:
   - zhuge_liang
-- id: e011
-  fact: 张飞在长坂坡据水断桥，据守桥头喝阻曹军追兵。
+- id: e019
+  chapter_order: '087.01'
+  fact: 周瑜初见诸葛亮时以欲降曹试探，诸葛亮陈说送二乔可退曹，激使周瑜明确表示起兵抗曹。
   known_by:
-  - zhang_fei
-  - cao_cao
-  - liu_bei
-  state_change: 为刘备等人撤退争取时间。
-  cf_edit: 若曹军将领先行放箭，张飞难以凭声势阻敌。
+  - zhuge_liang
+  - zhou_yu
+  state_change: 周瑜向刘备使者明确表露主战立场，诸葛亮确认江东核心将领支持联合抗曹。
+  cf_edit: 若诸葛亮的说辞未能触动周瑜，周瑜可能继续隐藏真实立场而不向其确认主战。
   anchor_for:
-  - zhang_fei
+  - zhuge_liang
 - id: e012
+  chapter_order: '088.01'
   fact: 周瑜从鄱阳返回柴桑，向孙权分析曹军不利因素，力主抗曹。
   known_by:
   - zhou_yu
   - sun_quan
-  state_change: 孙权最终下定决心与曹操开战，并任命周瑜统领军队。
+  state_change: 周瑜的主战分析使孙权抗曹决策的军事依据进一步明确。
   cf_edit: 若周瑜主张观望，孙权可能在张昭等降派影响下犹豫。
   anchor_for:
   - zhou_yu
 - id: e013
+  chapter_order: '088.02'
   fact: 孙权当众砍断案角，表示再言投降者与案同。
   known_by:
   - sun_quan
   - zhou_yu
-  - zhuge_liang
   state_change: 江东主战路线正式确立，内部投降言论受到压制。
   cf_edit: 若孙权未明确表态，江东文武仍会继续争论而降意难消。
   anchor_for:
   - sun_quan
-- id: e014
-  fact: 曹操派蒋干前往江东游说周瑜，周瑜借故展示军威，使蒋干无从开口。
+- id: e021
+  chapter_order: '088.03'
+  fact: 孙权同意以周瑜为大都督，程普为副，领兵与刘备并力迎敌。
   known_by:
-  - zhou_yu
-  - cao_cao
-  state_change: 曹操方面劝降周瑜的企图失败。
-  cf_edit: 若周瑜接待时不加防备，蒋干可能探知江东虚实。
-  anchor_for:
-  - zhou_yu
-- id: e015
-  fact: 黄盖向周瑜提出火攻之策，并自愿以苦肉计接近曹军。
-  known_by:
-  - zhou_yu
-  state_change: 江东开始准备以火攻对付曹操水军。
-  cf_edit: 若黄盖未提出火攻，周瑜可能只能依赖正面水战。
-  anchor_for:
-  - zhou_yu
-- id: e016
-  fact: 庞统在周瑜安排下向曹操献连环计，建议将战船连锁。
-  known_by:
-  - zhou_yu
-  - cao_cao
-  state_change: 曹军战船被连接，利于后来火攻展开。
-  cf_edit: 若曹操拒绝连环计，江东火攻难以取得大规模效果。
-  anchor_for:
-  - zhou_yu
-- id: e017
-  fact: 诸葛亮在柴桑期间成功预测将有大雾，并准备借箭所需船只。
-  known_by:
-  - zhuge_liang
-  state_change: 孙刘联军为后续战斗储备箭矢。
-  cf_edit: 若天气无雾，草船借箭行动将无法实施。
-  anchor_for:
-  - zhuge_liang
-- id: e018
-  fact: 关羽在刘备撤退过程中负责统领水军并接应刘备。
-  known_by:
-  - liu_bei
-  - guan_yu
-  state_change: 关羽水军成为刘备集团在江汉地区的重要力量。
-  cf_edit: 若关羽水军未能保存，刘备将难以在夏口立足。
-  anchor_for:
-  - guan_yu
-- id: e019
-  fact: 诸葛亮在江东与周瑜多次议事，孙刘双方就联合抗曹的具体部署形成合作。
-  known_by:
-  - zhuge_liang
-  - zhou_yu
   - sun_quan
-  - liu_bei
-  state_change: 孙刘联盟从口头意向进入军事协调阶段。
-  cf_edit: 若周瑜忌惮诸葛亮而不配合，联盟内部将出现分裂。
+  - zhou_yu
+  state_change: 江东迎敌兵马的指挥体系确立，孙刘协同由政治意向进入等待双方具体协调的阶段；周瑜无权单方面号令刘备军。
+  cf_edit: 若孙权改用张昭统兵，作战方针可能转为保守防御。
   anchor_for:
-  - zhuge_liang
+  - sun_quan
 - id: e020
+  chapter_order: '088.04'
   fact: 曹操水陆并进，大军从江陵顺流而下，驻扎于乌林一带。
   known_by:
   - cao_cao
@@ -199,22 +186,54 @@ events:
   cf_edit: 若曹操分兵留守江陵，赤壁前线兵力可能不足。
   anchor_for:
   - cao_cao
-- id: e021
-  fact: 孙权同意以周瑜为大都督，程普为副，领兵与刘备并力迎敌。
-  known_by:
-  - sun_quan
-  - zhou_yu
-  - liu_bei
-  state_change: 孙刘联军确立统一指挥体系。
-  cf_edit: 若孙权改用张昭统兵，作战方针可能转为保守防御。
-  anchor_for:
-  - sun_quan
 - id: e022
-  fact: 刘备在樊口与周瑜会面，双方约定由周瑜正面当敌，刘备承担策应。
+  chapter_order: '089.02'
+  fact: 刘备应邀赴周瑜营中会面，周瑜预伏刀斧手欲掷杯为号下手；因关羽持剑护卫在侧，周瑜未发号，刘备随后安全离营。
   known_by:
   - liu_bei
   - zhou_yu
-  state_change: 孙刘两军完成初步协同部署。
-  cf_edit: 若刘备未与周瑜会面，两军行动可能互不协调。
+  - guan_yu
+  - zhuge_liang
+  state_change: 刘备方面确认周瑜对其抱有加害戒心，联盟仍维持但双方私人互信下降。
+  cf_edit: 若关羽未随刘备赴会并形成现场威慑，周瑜可能发出伏兵动手的信号。
   anchor_for:
   - liu_bei
+- id: e014
+  chapter_order: '090.01'
+  fact: 曹操派蒋干前往江东游说周瑜，周瑜借故展示军威，使蒋干无从开口。
+  known_by:
+  - zhou_yu
+  - cao_cao
+  state_change: 曹操方面劝降周瑜的企图失败。
+  cf_edit: 若周瑜接待时不加防备，蒋干可能探知江东虚实。
+  anchor_for:
+  - zhou_yu
+- id: e017
+  chapter_order: '091.01'
+  fact: 诸葛亮备妥草船，乘大雾驶近曹营擂鼓；曹操命军士向江上放箭，草船受箭后返航，所得箭矢随后交入周瑜军中。
+  known_by:
+  - zhuge_liang
+  - zhou_yu
+  state_change: 周瑜军实际取得诸葛亮依限交付的箭矢，先前的筹箭要求由待完成转为已完成。
+  cf_edit: 若当日江面没有足以遮蔽船队的大雾，诸葛亮便无法按此方式取得并交付箭矢。
+  anchor_for:
+  - zhuge_liang
+- id: e015
+  chapter_order: '092.01'
+  fact: 黄盖向周瑜提出火攻之策，并自愿以苦肉计接近曹军。
+  known_by:
+  - zhou_yu
+  state_change: 江东开始准备以火攻对付曹操水军。
+  cf_edit: 若黄盖未提出火攻，周瑜可能只能依赖正面水战。
+  anchor_for:
+  - zhou_yu
+- id: e016
+  chapter_order: '094.01'
+  fact: 庞统向曹操献连环计后，曹操采纳其说，命人以铁环连接大小战船；曹军战船随后按令连锁。
+  known_by:
+  - zhou_yu
+  - cao_cao
+  state_change: 曹军战船被连接，利于后来火攻展开。
+  cf_edit: 若曹操未采纳庞统建议并下令连锁战船，曹军船队便不会形成便于火攻蔓延的连接状态。
+  anchor_for:
+  - zhou_yu

@@ -1,71 +1,82 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: robin_ted_relationship
+    target: ted_mosby
+    content: Date Ted while retaining independent control of career and future commitments.
+    condition: Mutual agreement created in ae_018.
+    status: active
+    source_event: ae_018
   relationships:
     ted_mosby:
-      level: neutral
-      basis_event: initial_state
+      level: trusting
+      basis_event: ae_018
     barney_stinson:
-      level: distrustful
-      basis_event: initial_state
-    lily_aldrin:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
+    lily_aldrin:
+      level: trusting
+      basis_event: ae_016
     marshall_eriksen:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile.social.relationship_rules
     ranjit:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_009
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon.player_semantics
   goals:
   - id: robin_g1
-    content: Build a serious journalism career in New York
+    content: Build credibility as a television reporter at Metro News 1.
     status: active
-    basis_event: initial_state
+    basis_event: profile.worldview.core_goals
   - id: robin_g2
-    content: Stay independent and not let Ted's romantic pursuit define her
+    content: Establish workable boundaries in her new relationship with Ted.
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: robin_g3
-    content: Earn respect from friends and colleagues as a professional, not a former
-      pop star
+    content: Keep Lily's disclosed doubts private until Lily chooses to disclose them.
     status: active
-    basis_event: initial_state
+    basis_event: ae_016
   disclosures: []
   knowledge:
     robin_k1:
-      content: Ted met her at MacLaren's Pub and is immediately smitten
+      content: Ted became romantically interested in Robin when they met at MacLaren's.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_001
     robin_k2:
-      content: Ted stole a blue French horn from a restaurant for her
+      content: Ted took the blue French horn from Carmichael's and gave it to Robin.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_002
     robin_k3:
-      content: Her past as a Canadian teen pop star is known among the group
+      content: Ted lied that his relationship with Victoria had ended before approaching Robin.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_015
     robin_k4:
-      content: She left Metropolitan Magazine and now works at World Wide News
+      content: Lily privately disclosed serious doubts about marrying Marshall.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_016
+    robin_k5:
+      content: Robin and Ted mutually agreed to begin a relationship.
+      status: active
+      visibility: [npc, player]
+      source_event: ae_018
 environment:
   health:
     robin_scherbatsky: 100
     player: 100
   inventories:
-    robin_scherbatsky: []
+    robin_scherbatsky:
+    - blue_french_horn
     player: []
   locations:
-    robin_scherbatsky: maclarens_pub
-    player: maclarens_pub
+    robin_scherbatsky: robin_apartment
+    player: robin_apartment
   access: {}
   offers: []
   task_status: active

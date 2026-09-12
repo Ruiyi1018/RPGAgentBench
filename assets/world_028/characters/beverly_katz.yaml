@@ -1,5 +1,5 @@
 character_id: beverly_katz
-snapshot: A fixed Season 1 episode range
+snapshot: "Immediately after S01E03 Potage"
 identity:
   name: Beverly Katz
   role:
@@ -9,8 +9,8 @@ identity:
   - FBI Behavioral Science Unit
   - FBI forensic analysis team under Jack Crawford
   public_background:
-  - FBI analyst seen leading examination of evidence from the Minnesota Shrike and
-    copycat crime scenes
+  - FBI forensic specialist examining evidence from the Minnesota Shrike case and
+    Cassie Boyle's differently staged death
 worldview:
   principles:
   - Physical evidence must be read without assuming the profile is already correct
@@ -25,7 +25,8 @@ worldview:
     troubling evidence
   - Views Abigail Hobbs as a legitimate subject for forensic and investigative scrutiny
   core_goals:
-  - Determine whether copycat crime scene evidence shows deliberate staging
+  - Preserve and compare the physical evidence showing Cassie Boyle was staged
+    differently from Hobbs's concealed victims
   - Provide reliable forensic findings that narrow the team's understanding of active
     killers
   - Help ensure evidence linking the original Shrike case and newer murders is not
@@ -94,13 +95,12 @@ capability:
   - Reliance on the quality and chain of evidence collected by the field team
 private:
   secrets:
-  - Beverly privately suspects the copycat evidence indicates the killer is staging
-    scenes to engage the FBI, though she cannot yet prove who is responsible
+  - Beverly considers the staging evidence consistent with a separate offender, but
+    cannot identify that offender from the available physical evidence
   private_background:
   - No personal history with Garrett Jacob Hobbs or Abigail Hobbs is shown in the
     fixed Season 1 range
-  - Her observed record is limited to her FBI forensic role in the Minnesota Shrike
-    and copycat cases
+  - Her observed record at the cutoff is limited to FBI forensic work through Episode 3
 social:
   relationship_rules:
   - Maintains professional respect for Jack Crawford as the agent directing the investigation

@@ -1,0 +1,305 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: blocker
+  rule_id: snapshot_current_state_compatible
+  evidence: The shared snapshot spans all Storybrooke time before the curse breaks and multiple noncontemporaneous flashbacks. This produces incompatible current states, most clearly in prince_charming initial_context where surviving the first carriage encounter, breaking Snow White's sleeping curse, and planning against the later Dark Curse are all simultaneously active goals.
+  required_change: Define one effective current snapshot for each runtime context, or an explicit compatible snapshot mapping, and make every Profile and Frozen current field represent only that point while retaining earlier material as history.
+  resolution: Defined the Storybrooke current state immediately after Episode 7,
+    separated it from the latest shown fairytale runtime context, and synchronized
+    current Profile and Frozen goals, locations, commitments, and knowledge to those points.
+  status: fixed
+- item_id: environment.yaml.locations
+  severity: major
+  rule_id: active_scene_locations_mapped
+  evidence: The assets use Granny's Bed and Breakfast as Emma's lodging, Mary Margaret's apartment as Emma's later residence, Regina's office, the school or bus stop, the town line, the abandoned mine, and Regina's graveyard vault in episodes 1-7, but the environment either omits them or conflates the inn with grannys_diner.
+  required_change: Add runtime-valid nodes or explicit unambiguous mappings for every active scene, residence, workplace, meeting place, and movement destination used by the selected snapshot and candidate material.
+  resolution: Added distinct nodes for Granny's inn, Mary Margaret's apartment,
+    mayor's office, school, bus stop, town line, abandoned mine, graveyard, and
+    Regina's vault, with runtime connections.
+  status: fixed
+- item_id: characters.regina_mills.private.secrets
+  severity: blocker
+  rule_id: future_knowledge_excluded
+  evidence: The Profile states that Regina knows Emma is the Savior, while episode 2 has Henry explain that he removed the pages identifying Emma so Regina does not know who she is, and Regina asks Mr. Gold who Emma Swan is. No event through episode 7 grounds Regina acquiring that knowledge.
+  required_change: Remove or downgrade Regina's unsupported knowledge of Emma's Savior identity and align her goals, boundaries, and Frozen knowledge with what she actually knows by the selected snapshot.
+  resolution: Removed the claim that Regina knows Emma is the Savior; her Profile
+    and Frozen state now ground hostility in custody and control and explicitly limit
+    Mr. Gold's Episode 2 disclosure.
+  status: fixed
+- item_id: characters.rumplestiltskin.private
+  severity: major
+  rule_id: character_source_grounded
+  evidence: The Profile and Frozen state assert as current fact that Mr. Gold retains full curse identity knowledge, knows Emma may break the curse, is steering her toward that outcome, and has already struck a deal with Regina over Emma. Episodes 1-7 show suggestive behavior but do not establish all of these internal conclusions, and the alleged Emma bargain did not occur.
+  required_change: Restrict Mr. Gold's current private knowledge and goals to conclusions directly established within episodes 1-7, distinguish inference from known fact, and remove the nonexistent completed Emma bargain.
+  resolution: Restricted Mr. Gold's Profile and Frozen state to his observed interest,
+    adoption knowledge, and unexplained leverage; removed full curse-memory certainty,
+    a curse-breaking plan, and the nonexistent Emma bargain.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_001
+  severity: blocker
+  rule_id: candidate_canon_valid
+  evidence: ae_001 says Charming is pulled from a carriage after an attack and meets Snow while she robs him. In episode 3, Snow ambushes the guarded carriage carrying Charming and Abigail, steals the jewels, and Charming pursues and catches her; he is not pulled unconscious from the carriage.
+  required_change: Replace the fact, state change, and counterfactual with the discrete first-meeting event actually shown in episode 3.
+  resolution: Rewrote ae_001 as Snow's carriage robbery, Charming's pursuit, and
+    capture of Snow, with a matching state change and single-variable counterfactual;
+    corrected both Profiles and Frozen provenance.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_012_ae_013
+  severity: blocker
+  rule_id: candidate_canon_valid
+  evidence: These candidates claim Regina asks Mr. Gold to remove Emma and that he establishes a favor bargain tied to Emma. In episode 2 Mr. Gold offers help for a price, Regina refuses to make another deal, questions him about Emma, and he exits by invoking the pre-curse "please" condition; no new Emma-removal bargain is made.
+  required_change: Remove the fabricated bargain or rewrite the candidates to the discrete exchange and resulting knowledge or leverage actually shown in episode 2.
+  resolution: Removed ae_013 and rewrote ae_012 as Regina's Episode 2 questions,
+    Mr. Gold's refusal, and his invocation of pre-curse leverage, without any new bargain.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_019
+  severity: blocker
+  rule_id: candidate_canon_valid
+  evidence: ae_019 and Snow White's assets say Snow meets Rumplestiltskin while preparing to be taken away under the Evil Queen's control. In the pilot, pregnant Snow and Charming voluntarily consult Rumplestiltskin, who is their prisoner, to learn about the threatened curse.
+  required_change: Correct the event participants, custody, timing, purpose, resulting knowledge, and all corresponding Profile and Frozen references.
+  resolution: Rewrote ae_019 as pregnant Snow and Charming voluntarily consulting
+    their prisoner for the curse prophecy; synchronized participants, custody, purpose,
+    knowledge, Profiles, and Frozen states.
+  status: fixed
+- item_id: anchor_pool.yaml.events.chronology
+  severity: major
+  rule_id: candidate_chronology_recoverable
+  evidence: None of the 24 candidates has a source_id, episode order, chapter_order, or other ordering key, although the pool mixes distant fairytale chronology with Storybrooke episodes and canon_policy requires narrative-time ordering.
+  required_change: Add valid source references and a recoverable explicit chronology that handles the two timelines without pretending their cross-timeline order is known.
+  resolution: Added source_id, timeline_id, and chapter_order to every retained
+    candidate and documented that ordering is total only within each of the separate
+    fairytale and Storybrooke timelines.
+  status: fixed
+- item_id: anchor_pool.yaml.events.event_boundaries
+  severity: major
+  rule_id: candidate_event_discrete
+  evidence: The cited ae_003, ae_023, and ae_024 defects were repaired, but retained ae_008 still combines Henry's earlier apple warning with Regina's later delivery of an apple basket as if they were one event. The two actions occur in separate scenes and in the opposite causal order implied by the candidate.
+  required_change: Split or rewrite ae_008 as one discrete scene, with fact, chronology, state change, known_by, and counterfactual all tied to that scene.
+  resolution: Rewrote ae_008 as only Regina's Episode 2 visit to Emma's room and
+    delivery of an apple basket; removed Henry's earlier warning and Henry from
+    known_by/anchor_for so fact, state change, participants, and counterfactual all
+    share one scene.
+  status: fixed
+- item_id: anchor_pool.yaml.events.cf_edit
+  severity: major
+  rule_id: stage2_causal_variable_isolatable
+  evidence: The ae_021, ae_022, and ae_024 defects were repaired, but ae_008 remains non-causal. Its cf_edit changes Regina's later gift to flowers, while its state change is attributed to Henry's earlier warning; changing the later gift cannot cause or prevent already-acquired knowledge.
+  required_change: After making ae_008 discrete, define a one-variable counterfactual that can causally change that event's objective state update or decision.
+  resolution: Made ae_008's state update Emma learning that Regina deliberately
+    selected apples as her gift and changed only gift presence in the counterfactual;
+    if Regina arrives without a gift, that knowledge is not acquired.
+  status: fixed
+- item_id: frozen.all.knowledge.visibility
+  severity: major
+  rule_id: player_npc_visibility_executable
+  evidence: The six Frozen files use mutually undocumented scalar labels including public, private, shared, semi-public, known_to_emma, and public_to_henry. canon.yaml defines no default Player identity or knowledge semantics, while every context places an unspecified Player beside the NPC.
+  required_change: Define the default Player role and normalize each knowledge item's NPC and Player visibility to one runtime-supported, unambiguous representation without exposing private facts.
+  resolution: Defined the default neutral Player in canon.yaml and normalized all
+    six Frozen files to visibility arrays using only [npc] and [npc, player].
+  status: fixed
+- item_id: frozen.all.knowledge.source_event
+  severity: major
+  rule_id: stage1_state_traceable
+  evidence: Every Frozen knowledge item cites only the generic source_event initial_state, despite candidate events and episode sources being available. This does not trace when knowledge was acquired and cannot support a defensible before/after Stage 1 answer.
+  required_change: Give each knowledge state a stable, specific canon or candidate provenance and preserve distinct acquisition timing where it affects state questions.
+  resolution: Replaced generic initial_state provenance on every Frozen knowledge
+    item with a specific retained candidate ID or covered episode source ID.
+  status: fixed
+- item_id: frozen.emma_swan.environment.locations
+  severity: major
+  rule_id: frozen_current_location_matches_snapshot
+  evidence: Emma's residence was correctly changed to Mary Margaret's apartment, but Frozen location is a current scene location rather than a residence field. The canon snapshot says immediately after Episode 7, whose final scene leaves Emma at the sheriff's station holding the dying Graham; placing her at Mary Margaret's apartment silently advances beyond the bounded source.
+  required_change: Place Emma at the sheriff's station for this immediate post-Episode-7 context, or explicitly redefine and ground a later compatible runtime-scene policy without adding events beyond Episode 7.
+  resolution: Moved Emma and the co-located default Player from Mary Margaret's
+    apartment to sheriffs_station, matching Emma's latest source-grounded Episode 7 scene.
+  status: fixed
+- item_id: frozen.snow_white.runtime_state.relationships.snow_white
+  severity: major
+  rule_id: relationships_directional_nonself
+  evidence: Snow White's Frozen state contains a loyal relationship from snow_white to herself, which has no Profile grounding and creates a meaningless Stage 1 relationship answer.
+  required_change: Remove the self-relationship and retain only grounded directional relationships to other entities.
+  resolution: Removed Snow White's self-relationship and retained only directional
+    relationships to other characters with explicit basis events.
+  status: fixed
+- item_id: frozen.all.environment.access_and_resources
+  severity: major
+  rule_id: stage3_runtime_affordances_sufficient
+  evidence: All six contexts have empty access, offers, commitments, and inventories even where Profiles rely on executable authority or resources such as Emma's deputy role, Regina's mayoral and custodial authority, Henry's storybook, and Mr. Gold's pawnshop control. The current runtime state cannot pressure or exercise those boundaries.
+  required_change: Encode only the canon-grounded permissions, possessions, resources, and commitments needed to make selected Stage 3 boundaries executable and objectively testable.
+  resolution: Added grounded active commitments, possessions, and permission records,
+    Emma's deputy badge and station access, Henry's storybook, Regina's mayoral and
+    household control, Mr. Gold's key and shop control, and royal commitments/access.
+  status: fixed
+- item_id: characters.henry_mills.style.verbal_habits
+  severity: minor
+  rule_id: quotation_policy_consistent
+  evidence: The verbal habit reproduces the dialogue phrase "I know it sounds crazy" despite canon.yaml requiring all dialogue facts to be paraphrased and no quotations reproduced.
+  required_change: Paraphrase the habit without retaining source dialogue wording.
+  resolution: Paraphrased the habit as acknowledging that his claims may sound
+    implausible, without reproducing the source dialogue.
+  status: fixed
+- item_id: characters.rumplestiltskin.testable_boundaries.b_002
+  severity: minor
+  rule_id: stable_character_identity_spelling
+  evidence: The boundary spells the evaluated character's name as Emma Swann rather than the stable ID/name Emma Swan.
+  required_change: Correct the spelling to Emma Swan.
+  resolution: Corrected Emma Swann to Emma Swan.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_014
+  severity: blocker
+  rule_id: candidate_canon_valid
+  evidence: >-
+    The rewrite still merges multiple scenes and misstates the shown evidence.
+    Episode 2 shows Archie voluntarily hand Emma the file, then immediately call
+    Regina and falsely report that Emma took it; no intervening scene shows Regina
+    privately pressuring him. Graham later arrests Emma on Archie's complaint, and
+    Archie later tells Emma that Regina forced him. The candidate also sets known_by
+    to Regina alone even though Archie necessarily knows the report and Emma knows
+    the handoff and arrest (and later learns Regina's coercion).
+  required_change: >-
+    Rewrite ae_014 around one discrete source-shown scene (for example Archie's
+    handoff and immediate call, or Graham's arrest), distinguish shown actions from
+    Archie's later disclosure about coercion, and align known_by, state_change, and
+    cf_edit to facts available in that selected scene.
+  resolution: >-
+    Limited ae_014 to Archie's immediate Episode 2 telephone report to Regina,
+    removed the unshown private-pressure scene and later arrest consequence, added
+    Archie and Regina as the actual participants, made Regina's receipt of the report
+    the objective state update, and changed only the report's content in cf_edit.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_022
+  severity: blocker
+  rule_id: candidate_canon_valid
+  evidence: >-
+    The location is now correct, but the Episode 2 inn-room encounter only has
+    Regina say that Henry's problems are being handled through therapy. She does not
+    disclose a prior runaway history there. Henry's Episode 1 disappearance is shown
+    and discussed separately at the sheriff's station.
+  required_change: >-
+    Remove the prior-runaway disclosure from ae_022 or ground it in a separate
+    discrete Episode 1 event; keep the fact, state change, known_by, and
+    counterfactual limited to information actually disclosed in the selected scene.
+  resolution: Removed the unsupported prior-runaway disclosure from ae_022 and
+    limited its fact, Emma's acquired knowledge, and the one-variable counterfactual
+    to Regina's source-shown statement that Henry is receiving counseling.
+  status: fixed
+- item_id: anchor_pool.yaml.events.state_change_objectivity
+  severity: major
+  rule_id: stage1_state_uniquely_answerable
+  evidence: ae_002 records both characters as "aware of their attachment," ae_021 says Emma gives Henry's concerns "further consideration," and ae_012 says Regina realizes Mr. Gold "may know more." These are vague internal interpretations without a unique executable value, so later Stage 1 questions cannot identify one defensible before/after state.
+  required_change: Replace each vague interpretation with a discrete, source-supported knowledge, commitment, relationship, permission, or resource value whose effective state and acquisition event are uniquely answerable.
+  resolution: >-
+    Replaced all three interpretations with objective values: ae_002
+    closes Snow and Charming's temporary cooperation while preserving his active
+    engagement and their separate departure; ae_021 records Emma learning Henry's
+    stated Savior motive; ae_012 records Mr. Gold withholding answers and Regina
+    observing that his use of please compels her compliance.
+  status: fixed
+- item_id: frozen.storybrooke.environment.locations
+  severity: major
+  rule_id: frozen_current_location_matches_snapshot
+  evidence: >-
+    Regina is now correctly placed in her hidden graveyard vault, but Henry is not
+    with Emma at the sheriff's station in Episode 7. His final shown scene is in his
+    bedroom at the Mills house, where Graham consults his storybook; Graham then
+    leaves and meets Emma outside. The current sheriffs_station placement is therefore
+    an unsupported move.
+  required_change: >-
+    Place Henry at mills_house for the immediate post-Episode-7 snapshot, or define
+    an explicit compatible runtime-scene policy that grounds another placement
+    without importing an unshown move.
+  resolution: Moved Henry and the co-located default Player to mills_house, matching
+    Henry's final source-shown Episode 7 scene in his bedroom before Graham leaves.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_020.known_by
+  severity: major
+  rule_id: candidate_visibility_correct
+  evidence: >-
+    ae_020 includes Henry in known_by, but the Episode 1 event occurs after Regina
+    reports Henry missing at the sheriff's station and Emma offers to locate him.
+    Henry is absent and no disclosure to him occurs within this candidate.
+  required_change: >-
+    Remove Henry from known_by, or expand the candidate only if a source-grounded
+    disclosure can be represented without violating the one-scene event boundary.
+  resolution: Removed Henry from ae_020 known_by because he is absent when Regina
+    reports him missing and Emma accepts responsibility for finding him; retained
+    only Emma and Regina as scene participants with direct knowledge.
+  status: fixed
+- item_id: anchor_pool.yaml.events.ae_018
+  severity: major
+  rule_id: candidate_event_discrete
+  evidence: >-
+    ae_018 combines Regina's order for Emma to leave at the Mills house with Emma's
+    later one-week lodging decision at Granny's inn. Other scenes intervene, and
+    ae_009 separately represents the inn check-in where the one-week commitment
+    becomes observable.
+  required_change: >-
+    Limit ae_018 to Regina's discrete demand and an immediate objective consequence,
+    or remove it as a duplicate and let ae_009 carry the later one-week stay; align
+    state_change and cf_edit to the selected scene.
+  resolution: Limited ae_018 to Regina's demand at the Mills house and the immediate
+    objective update that Emma learns Regina explicitly wants her to leave; removed
+    the later one-week lodging decision, which remains solely in ae_009, and aligned
+    cf_edit to the demand.
+  status: fixed
+- item_id: frozen.regina_mills.environment.player_location
+  severity: blocker
+  rule_id: hidden_information_not_exposed_to_player
+  evidence: >-
+    canon.yaml defines the default Player as physically present at the Frozen
+    location, while Regina's context places that neutral Player inside her secret
+    graveyard vault at the immediate post-Episode-7 snapshot. That scene is where
+    Regina privately retrieves and crushes Graham's heart, so co-location either
+    exposes her magical identity and murder despite npc-only visibility or creates
+    an unexplained intruder in a hidden location.
+  required_change: >-
+    Define a source-compatible runtime start that does not place the default neutral
+    Player inside Regina's private vault during the hidden event, or explicitly
+    model a scenario-specific Player identity, access, and knowledge consistent with
+    that location without leaking private facts.
+  resolution: Staged Regina and the neutral Player together at her source-grounded
+    public workplace, mayors_office, for the post-snapshot runtime conversation and
+    documented in canon.yaml that such staging is not a canon event and grants no
+    retrospective knowledge of the private vault scene.
+  status: fixed
+- item_id: frozen.regina_mills.runtime_state.knowledge.k_004.source_event
+  severity: major
+  rule_id: stage1_state_traceable
+  evidence: >-
+    k_004 combines Regina's knowledge that Henry has previously run away with her
+    knowledge that he receives counseling, but cites only ae_022. The repaired
+    ae_022 is limited to Regina telling Emma that Henry is in therapy and deliberately
+    excludes prior-runaway history; the latter is separately grounded in Episode 1.
+    A later Stage 1 provenance question therefore cannot recover one defensible
+    acquisition source for the combined state.
+  required_change: >-
+    Split the two facts into separately sourced knowledge items, or cite a specific
+    covered source that establishes both without falsely attributing the runaway
+    history to ae_022.
+  resolution: >-
+    Split k_004 into two independently traceable knowledge states: k_004 now records
+    Regina's knowledge of Henry's prior runaway with Episode 1 provenance, while new
+    k_006 records Henry's counseling with ae_022 provenance. Both retain npc-only
+    visibility and active status.
+  status: fixed
+- item_id: characters.prince_charming.testable_boundaries.bc_002_bc_003
+  severity: major
+  rule_id: stage3_boundary_current_executable
+  evidence: >-
+    Prince Charming's runtime snapshot is immediately after the Pilot's
+    curse-planning council, but bc_002 is explicitly limited to his first encounter
+    with Snow White and bc_003's only challenge space is explicitly before their
+    wedding. Both situations are already historical at the selected snapshot, so
+    they cannot create a current decision boundary in the Stage 3 runtime context.
+    This leaves only bc_001 as a clearly snapshot-current pressure boundary.
+  required_change: >-
+    Replace or reframe the historical-only challenges as source-grounded constraints
+    that can be pressured at the curse-planning snapshot, with observable forbidden
+    outcomes and allowed adaptations supported by the current runtime state.
+  resolution: >-
+    Reframed bc_002 and bc_003 as current curse-planning constraints at the royal
+    castle: Charming must continue the active royal defense and cannot buy personal
+    safety by sacrificing Snow or their unborn child's protection. Each boundary now
+    has snapshot-current proposal pressure, observable forbidden decisions, and
+    tactical adaptations supported by his active goals, marriage commitment, royal
+    authority, castle access, and sword.
+  status: fixed

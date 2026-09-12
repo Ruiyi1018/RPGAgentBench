@@ -1,222 +1,198 @@
 world_id: world_007
-source: 金庸《天龙八部》小说通行本
+source: 金庸《天龙八部》三联书店1994年修订版
+timeline_boundary: 三联书店1994年修订版少室山大战结束、萧峰与段誉虚竹结义后，群雄尚未离开少室山区域的叙事切点
 events:
 - id: ae_001
-  fact: 萧峰与段誉在江南相遇并结拜为兄弟
+  chapter_order: 1
+  fact: 段誉在无量山石室取得北冥神功与凌波微步图卷并依图修习
   known_by:
-  - xiao_feng
   - duan_yu
-  state_change: 萧峰与段誉由素不相识变为结义兄弟
-  cf_edit: 段誉未在江南饮酒，而是直接赶回大理，二人错过相遇
+  state_change: 段誉获得北冥神功基础与凌波微步身法知识
+  cf_edit: 若段誉未跌入石室，他在此时不会获得两门武学
   anchor_for:
-  - xiao_feng
   - duan_yu
 - id: ae_002
-  fact: 段誉在曼陀山庄见到王语嫣并倾心
+  chapter_order: 2
+  fact: 鸠摩智到天龙寺要求取得六脉神剑剑谱
   known_by:
+  - jiumozhi
   - duan_yu
-  - wang_yuyan
-  state_change: 段誉对王语嫣产生爱慕，王语嫣首次注意到段誉
-  cf_edit: 王语嫣因慕容复同行而未在曼陀山庄露面
+  state_change: 鸠摩智与大理段氏围绕六脉神剑形成公开冲突
+  cf_edit: 若枯荣等僧同意仅以佛法论辩而不展示剑阵，冲突不会升级为当场武斗
   anchor_for:
+  - jiumozhi
   - duan_yu
-  - wang_yuyan
 - id: ae_003
-  fact: 鸠摩智在燕子坞挑战慕容氏武学
+  chapter_order: 3
+  fact: 段誉在天龙寺危局中习得六脉神剑剑法
   known_by:
+  - duan_yu
   - jiumozhi
-  - murong_fu
-  - wang_yuyan
-  state_change: 鸠摩智与慕容复的武学立场公开对立
-  cf_edit: 鸠摩智改向少林示警，未赴燕子坞
+  state_change: 段誉从不通此技变为能够使出六脉神剑但运用尚不稳定
+  cf_edit: 若段誉未被安排记诵剑谱，他不会在该危局中习得六脉神剑
   anchor_for:
+  - duan_yu
   - jiumozhi
-  - murong_fu
 - id: ae_004
-  fact: 虚竹在擂鼓山破解珍珑棋局
+  chapter_order: 4
+  fact: 段誉在曼陀山庄初见王语嫣并显露倾慕
   known_by:
-  - xu_zhu
-  state_change: 虚竹由少林低辈僧人开始卷入逍遥派传承
-  cf_edit: 段誉抢先落子破解棋局，虚竹未能介入
+  - duan_yu
+  - wang_yuyan
+  state_change: 段誉对王语嫣形成单向爱慕，王语嫣开始认识段誉
+  cf_edit: 若王语嫣当时未出现在曼陀山庄，二人不会在该时点相识
   anchor_for:
-  - xu_zhu
+  - duan_yu
+  - wang_yuyan
 - id: ae_005
-  fact: 虚竹在天山灵鹫宫成为灵鹫宫主
-  known_by:
-  - xu_zhu
-  state_change: 虚竹从少林僧人转变为灵鹫宫之主
-  cf_edit: 天山童姥未传功于虚竹，改传慕容复
-  anchor_for:
-  - xu_zhu
-- id: ae_006
-  fact: 萧峰在聚贤庄与群雄对峙
+  chapter_order: 5
+  fact: 萧峰与段誉在无锡斗酒后结拜
   known_by:
   - xiao_feng
-  state_change: 萧峰与中原武林公开决裂
-  cf_edit: 萧峰未携阿朱赴会，群雄取消围攻
+  - duan_yu
+  state_change: 萧峰与段誉由初识变为结义兄弟
+  cf_edit: 若段誉未接受斗酒同行，二人不会在该次相遇中结拜
+  anchor_for:
+  - xiao_feng
+  - duan_yu
+- id: ae_006
+  chapter_order: 6
+  fact: 杏子林中萧峰的契丹出身被当众揭露并失去丐帮帮主之位
+  known_by:
+  - xiao_feng
+  - duan_yu
+  - wang_yuyan
+  state_change: 萧峰从丐帮帮主变为遭质疑排斥的前帮主，并知晓自身契丹出身
+  cf_edit: 若徐长老未带来汪剑通信物，现场不足以当众坐实其契丹出身与罢黜
   anchor_for:
   - xiao_feng
 - id: ae_007
-  fact: 段誉在大理天龙寺见证六脉神剑传承
+  chapter_order: 7
+  fact: 萧峰在聚贤庄为救阿朱与中原群雄决裂
   known_by:
-  - duan_yu
-  state_change: 段誉习得部分六脉神剑并卷入大理段氏危机
-  cf_edit: 鸠摩智未至天龙寺，段誉未接触六脉神剑
+  - xiao_feng
+  state_change: 萧峰与参与围攻的中原武林人士由敌视升级为公开生死冲突
+  cf_edit: 若游氏兄弟未召集英雄宴围堵萧峰，聚贤庄不会发生该场公开决裂
   anchor_for:
-  - duan_yu
-  - jiumozhi
+  - xiao_feng
 - id: ae_008
-  fact: 鸠摩智在天龙寺强索六脉神剑剑谱
+  chapter_order: 8
+  fact: 虚竹在擂鼓山误打误撞破解珍珑棋局
   known_by:
-  - jiumozhi
+  - xu_zhu
   - duan_yu
-  state_change: 鸠摩智与大理段氏正式敌对
-  cf_edit: 鸠摩智以佛经交换而非强索，冲突未发生
+  - murong_fu
+  - wang_yuyan
+  state_change: 虚竹获得进入无崖子传承密室的资格
+  cf_edit: 若虚竹未替受困棋局者落下关键一子，他不会成为破局者
   anchor_for:
-  - jiumozhi
-  - duan_yu
+  - xu_zhu
 - id: ae_009
-  fact: 慕容复在少室山参与武林大会
+  chapter_order: 9
+  fact: 无崖子废去虚竹原有功力并将逍遥派内力传给他
   known_by:
-  - murong_fu
-  - xiao_feng
   - xu_zhu
-  - duan_yu
-  - jiumozhi
-  state_change: 慕容复图谋武林盟主地位公开暴露
-  cf_edit: 慕容复未赴少室山，转而南下图谋大理
+  state_change: 虚竹由武功低微的少林弟子变为身负逍遥派深厚内力的传人
+  cf_edit: 若无崖子判断虚竹不接受传承并让其离开，虚竹不会获得该内力
   anchor_for:
-  - murong_fu
-  - xiao_feng
+  - xu_zhu
 - id: ae_010
-  fact: 萧峰身世在少室山被公开
+  chapter_order: 10
+  fact: 虚竹在西夏冰窖中得到天山童姥传授逍遥派武功
   known_by:
-  - xiao_feng
-  - murong_fu
   - xu_zhu
-  - duan_yu
-  - jiumozhi
-  state_change: 萧峰由丐帮帮主变为契丹后裔，身份剧变
-  cf_edit: 智光大师未留遗书，萧峰身世继续隐瞒
+  state_change: 虚竹掌握天山六阳掌、天山折梅手等逍遥派武学
+  cf_edit: 若童姥未将虚竹带入冰窖传授武功，虚竹此时不会掌握这些招式
   anchor_for:
-  - xiao_feng
+  - xu_zhu
 - id: ae_011
-  fact: 王语嫣在少室山认出萧峰武功路数
+  chapter_order: 11
+  fact: 虚竹在灵鹫宫获众人承认为灵鹫宫之主
   known_by:
-  - wang_yuyan
-  - xiao_feng
-  - murong_fu
-  state_change: 王语嫣对萧峰武学判断影响战局认知
-  cf_edit: 王语嫣未随慕容复上山，无人点破萧峰招式
+  - xu_zhu
+  state_change: 虚竹取得对灵鹫宫属下的宫主身份与命令权限
+  cf_edit: 若灵鹫宫众人未确认其传承信物与解符能力，虚竹不会在该时点获承认为宫主
   anchor_for:
-  - wang_yuyan
-  - xiao_feng
+  - xu_zhu
 - id: ae_012
-  fact: 虚竹在少室山公开使用逍遥派武功
+  chapter_order: 12
+  fact: 少林寺内虚竹以逍遥派武功击败施展少林绝技的鸠摩智
   known_by:
   - xu_zhu
-  - murong_fu
   - jiumozhi
-  state_change: 虚竹少林身份与逍遥派传承冲突公开化
-  cf_edit: 虚竹严守少林戒律，始终不以逍遥派武功应敌
+  - duan_yu
+  - murong_fu
+  - wang_yuyan
+  state_change: 虚竹的逍遥派武功与高深内力在少林众僧前公开，鸠摩智在少林争胜受挫
+  cf_edit: 若鸠摩智未以少林绝技向少林僧众施压，虚竹不会在该场合出手暴露逍遥派武功
   anchor_for:
   - xu_zhu
+  - jiumozhi
 - id: ae_013
-  fact: 鸠摩智在少室山与慕容复交手
+  chapter_order: 13
+  fact: 少室山上慕容复与庄聚贤、丁春秋一同围攻萧峰
   known_by:
-  - jiumozhi
-  - murong_fu
-  state_change: 鸠摩智与慕容复由潜在盟友转为明面对手
-  cf_edit: 鸠摩智选择旁观，不与慕容复直接冲突
-  anchor_for:
-  - jiumozhi
-  - murong_fu
-- id: ae_014
-  fact: 段誉以六脉神剑对抗慕容复
-  known_by:
-  - duan_yu
-  - murong_fu
-  - wang_yuyan
   - xiao_feng
-  state_change: 段誉武学大成并公开与慕容复对立
-  cf_edit: 段誉六脉神剑失灵，被迫由萧峰出手
-  anchor_for:
   - duan_yu
+  - xu_zhu
   - murong_fu
-- id: ae_015
-  fact: 王语嫣在慕容复失利后仍倾向慕容复
-  known_by:
   - wang_yuyan
-  - duan_yu
-  - murong_fu
-  state_change: 段誉与王语嫣感情线维持单向
-  cf_edit: 王语嫣因段誉多次相救而明确转向段誉
+  state_change: 慕容复为争取武林地位而与庄聚贤、丁春秋临时联手，其与萧峰的对立由声名竞争变为公开围攻
+  cf_edit: 若慕容复拒绝加入庄聚贤与丁春秋的围攻，萧峰在该时点不会面对三人合击
   anchor_for:
-  - wang_yuyan
-  - duan_yu
+  - murong_fu
 - id: ae_016
-  fact: 萧峰与虚竹、段誉在少室山并肩作战
+  chapter_order: 14
+  fact: 萧峰、段誉与虚竹在少室山结拜并共同迎战强敌
   known_by:
   - xiao_feng
-  - xu_zhu
   - duan_yu
-  state_change: 三人正式形成共同对敌的兄弟关系
-  cf_edit: 虚竹未赴少室山，三人联手未成形
+  - xu_zhu
+  - murong_fu
+  - wang_yuyan
+  state_change: 三人由分别相识或结义变为彼此承认的结义兄弟并形成共同对敌关系
+  cf_edit: 若虚竹未响应萧峰与段誉共同对敌，三人不会在该时点完成结拜并肩
   anchor_for:
   - xiao_feng
-  - xu_zhu
   - duan_yu
+  - xu_zhu
+- id: ae_014
+  chapter_order: 15
+  fact: 段誉在少室山以六脉神剑击败慕容复
+  known_by:
+  - duan_yu
+  - murong_fu
+  - wang_yuyan
+  - xiao_feng
+  - xu_zhu
+  state_change: 段誉公开展现可击败慕容复的六脉神剑，但该武功仍非稳定收发
+  cf_edit: 若慕容复未对段誉下杀手，段誉不会在该对决中因急迫而连续使出六脉神剑
+  anchor_for:
+  - duan_yu
+  - murong_fu
 - id: ae_017
-  fact: 慕容复图谋复国计划在少室山后受挫
+  chapter_order: 16
+  fact: 慕容复败于段誉后欲自尽，被王语嫣与段誉阻止
   known_by:
   - murong_fu
-  state_change: 慕容复声望与实力均遭重创
-  cf_edit: 慕容复提前离开，保留实力
-  anchor_for:
-  - murong_fu
-- id: ae_018
-  fact: 段誉继承大理皇位
-  known_by:
-  - duan_yu
   - wang_yuyan
-  state_change: 段誉由世子成为大理皇帝
-  cf_edit: 段正淳未死，段誉继续为世子
-  anchor_for:
   - duan_yu
-- id: ae_019
-  fact: 虚竹还俗并与西夏公主成婚
-  known_by:
-  - xu_zhu
-  state_change: 虚竹彻底脱离少林，成为西夏驸马
-  cf_edit: 虚竹拒绝西夏招亲，返回少林
+  state_change: 慕容复由败后试图自尽转为自尽受阻，段誉与王语嫣形成一次明确的救助经历
+  cf_edit: 若慕容复未在败北后举剑自尽，王语嫣与段誉不会在该时点介入阻止
   anchor_for:
-  - xu_zhu
-- id: ae_020
-  fact: 鸠摩智武功被废后顿悟
-  known_by:
-  - jiumozhi
-  state_change: 鸠摩智从武痴转为潜心佛法
-  cf_edit: 鸠摩智保住武功，继续争霸
-  anchor_for:
-  - jiumozhi
-- id: ae_021
-  fact: 王语嫣最终离开慕容复
-  known_by:
-  - wang_yuyan
   - murong_fu
+  - wang_yuyan
   - duan_yu
-  state_change: 王语嫣结束对慕容复的长期追随
-  cf_edit: 慕容复放弃复国梦，王语嫣留下相伴
-  anchor_for:
-  - wang_yuyan
-  - murong_fu
-- id: ae_022
-  fact: 萧峰阻止辽国南侵
+- id: ae_015
+  chapter_order: 17
+  fact: 少室山上萧远山公开承认自己是萧峰生父并说明当年旧案
   known_by:
   - xiao_feng
   - duan_yu
   - xu_zhu
-  state_change: 宋辽战事被萧峰以性命阻止
-  cf_edit: 萧峰未赴雁门关，辽军长驱直入
+  - murong_fu
+  - wang_yuyan
+  state_change: 萧峰由只知契丹出身变为确认生父身份及雁门关旧案关键真相
+  cf_edit: 若萧远山未在群雄前现身自认，萧峰在该时点仍不能确认生父身份
   anchor_for:
   - xiao_feng

@@ -2,75 +2,60 @@ runtime_state:
   claims: {}
   commitments: []
   relationships:
-    meredith_grey:
-      level: trusting
-      basis_event: initial_state
-    cristina_yang:
-      level: neutral
-      basis_event: initial_state
-    izzie_stevens:
-      level: neutral
-      basis_event: initial_state
-    george_omalley:
-      level: neutral
-      basis_event: initial_state
-    miranda_bailey:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    meredith_grey: {level: neutral, basis_event: ae03}
+    cristina_yang: {level: neutral, basis_event: ae05}
+    izzie_stevens: {level: neutral, basis_event: ae01}
+    george_omalley: {level: neutral, basis_event: ae06}
+    miranda_bailey: {level: neutral, basis_event: pre_existing_hospital_staff}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: g1
-    content: Keep his relationship with Meredith private at Seattle Grace.
+    content: Explain his marriage to Meredith without compromising current patient care.
     status: active
-    basis_event: initial_state
+    basis_event: ae14
   - id: g2
-    content: Maintain his standing among the interns as an exceptionally skilled surgeon.
+    content: Maintain attending-level responsibility for safe neurosurgical decisions.
     status: active
-    basis_event: initial_state
+    basis_event: pre_existing_attending_role
   - id: g3
-    content: Decide when and how much of his personal complication to reveal to Meredith.
-    status: pending
-    basis_event: initial_state
+    content: Keep details of the marriage private from uninvolved hospital visitors and staff.
+    status: active
+    basis_event: ae14
   disclosures: []
   knowledge:
     k1:
-      content: Meredith Grey is a new surgical intern at Seattle Grace.
+      content: Meredith is a surgical intern and Derek is an attending at the same hospital.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae03
     k2:
-      content: He and Meredith met before they knew they were colleagues.
+      content: Derek and Meredith met personally before discovering their workplace roles.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae03
     k3:
-      content: His surgical reputation was reinforced after a complicated procedure.
+      content: Meredith privately disclosed that Ellis Grey has Alzheimer's disease and lives in a nursing home.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae10
     k4:
-      content: His personal complication has the potential to affect Meredith.
+      content: Addison identified herself to Meredith as Derek's wife.
       status: active
-      visibility: private
-      source_event: initial_state
-    k5:
-      content: Meredith wants the nature of their secrecy to change.
-      status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae14
 environment:
-  health:
-    derek_shepherd: 100
-    player: 100
+  health: {derek_shepherd: 100, player: 100}
   inventories:
-    derek_shepherd: []
+    derek_shepherd: [patient_chart]
     player: []
-  locations:
-    derek_shepherd: seattle_grace_hospital
-    player: seattle_grace_hospital
-  access: {}
+  locations: {derek_shepherd: seattle_grace_hospital, player: seattle_grace_hospital}
+  access:
+    patient_charts:
+      controllers: [derek_shepherd]
+      subjects: {derek_shepherd: granted, player: denied}
+    attending_treatment_decisions:
+      controllers: [derek_shepherd]
+      subjects: {derek_shepherd: granted, player: denied}
   offers: []
   task_status: active
   dialogue_status: active

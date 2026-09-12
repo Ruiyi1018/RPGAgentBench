@@ -4,71 +4,63 @@ runtime_state:
   relationships:
     tang_sanzang:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_022
     zhu_bajie:
-      level: hostile
-      basis_event: initial_state
+      level: distrustful
+      basis_event: ae_014
     sha_wujing:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     baigujing:
       level: hostile
-      basis_event: initial_state
-    heihujing:
-      level: hostile
-      basis_event: initial_state
+      basis_event: ae_019
     bailongma:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_party_membership
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon_default_player
   goals:
   - id: g_001
-    content: 提防白骨精再来变化害唐僧
+    content: 根据前两次变化与脱身经历，提防同一妖怪再次接近唐僧
     status: active
-    basis_event: initial_state
+    basis_event: ae_021
   - id: g_002
-    content: 第三次识破妖怪并在不造成更重误解的情况下除妖
+    content: 设法识破并阻止妖怪，同时争取留下普通人可见的证据
     status: active
-    basis_event: initial_state
+    basis_event: ae_022
   - id: g_003
     content: 保护唐僧不被妖怪掳走
     status: active
-    basis_event: initial_state
+    basis_event: ae_001
   disclosures: []
   knowledge:
     k_001:
-      content: 村姑与老妇人都是白骨精变化所化，被金箍棒打后真身化风逃走
+      content: 老妇人变化之身被打中后，白骨精再次留下假尸并让真身脱离现场
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_021
     k_002:
-      content: 唐僧、猪八戒等人不信自己，认为打死的是凡人
+      content: 唐僧因再次见人形倒地而不信自己的识妖判断，并再次念咒警告
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_022
     k_003:
-      content: 白虎岭有妖怪活动，唐僧身处险境
+      content: 唐僧在老妇人人形倒地后再次念紧箍咒，并警告孙悟空若再犯便将其逐走
       status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_022
     k_004:
-      content: 猪八戒在唐僧面前挑拨，加重师徒裂痕
+      content: 猪八戒声称孙悟空怕师父念咒而变化人形骗人，使唐僧更加怀疑孙悟空
       status: active
-      visibility: private_to_self
-      source_event: initial_state
-    k_005:
-      content: 白骨精极可能第三次变化来接近唐僧
-      status: active
-      visibility: private_to_self
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_014
 environment:
   health:
     sun_wukong: 100
     player: 100
   inventories:
-    sun_wukong: []
+    sun_wukong: [jgb]
     player: []
   locations:
     sun_wukong: shandao

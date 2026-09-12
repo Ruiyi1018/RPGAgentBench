@@ -1,61 +1,33 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - {id: shuang_er_guard, content: 随行保护韦小宝并在危险中协助撤离。, status: active, source_event: ev_006}
   relationships:
-    wei_xiaobao:
-      level: loyal
-      basis_event: initial_state
-    kangxi:
-      level: neutral
-      basis_event: initial_state
-    chen_jinnan:
-      level: neutral
-      basis_event: initial_state
-    a_ke:
-      level: neutral
-      basis_event: initial_state
-    su_quan:
-      level: distrustful
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    wei_xiaobao: {level: loyal, basis_event: ev_006}
+    kangxi: {level: neutral, basis_event: runtime_initialization}
+    chen_jinnan: {level: neutral, basis_event: ev_014}
+    a_ke: {level: neutral, basis_event: ev_014}
+    su_quan: {level: neutral, basis_event: ev_012}
+    player: {level: neutral, basis_event: runtime_initialization}
   goals:
-  - id: shuang_er_goal_1
-    content: 紧跟韦小宝，随时准备应对突发威胁
-    status: active
-    basis_event: initial_state
-  - id: shuang_er_goal_2
-    content: 观察周围清廷、天地会与其他角色的动向，判断是否危及韦小宝
-    status: active
-    basis_event: initial_state
+  - {id: shuang_er_goal_1, content: 在通吃岛会面期间贴身保护韦小宝。, status: active, basis_event: ev_014}
+  - {id: shuang_er_goal_2, content: 观察郑氏与天地会来人是否构成即时威胁。, status: active, basis_event: ev_014}
   disclosures: []
   knowledge:
-    shuang_er_knowledge_1:
-      content: 韦小宝眼下同时与清廷和天地会都有关系，行踪需要小心
-      status: active
-      visibility: private
-      source_event: initial_state
     shuang_er_knowledge_2:
-      content: 当前身在可互动的六人共享场景中，苏荃等神龙教相关人物已经出现
+      content: 神龙教内讧已结束，洪安通死亡，苏荃不再拥有教内调动权。
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [shuang_er, wei_xiaobao, su_quan]
+      source_event: ev_012
     shuang_er_knowledge_3:
-      content: 韦小宝常在清廷与天地会之间周旋，因此不能随意暴露身份
+      content: 陈近南已经抵达通吃岛并与韦小宝重逢。
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [shuang_er, player]
+      source_event: ev_014
 environment:
-  health:
-    shuang_er: 100
-    player: 100
-  inventories:
-    shuang_er: []
-    player: []
-  locations:
-    shuang_er: loc_beijing
-    player: loc_beijing
+  health: {shuang_er: 100, player: 100}
+  inventories: {shuang_er: [item_shuang_er_blade], player: []}
+  locations: {shuang_er: loc_tongchi_island, player: loc_tongchi_island}
   access: {}
   offers: []
   task_status: active

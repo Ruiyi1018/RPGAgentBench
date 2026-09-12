@@ -1,0 +1,223 @@
+- item_id: canon.yaml.canon_policy.shared_snapshot
+  severity: major
+  rule_id: snapshot_current_state_unique
+  evidence: shared_snapshot及latest/first边界现已明确，但全角色回归未完成：聚仙楼突袭发生前孔捷早已在李家坡战后调任新二团团长，材料却仍将其设为独立团副团长并置于独立团团部；Frozen亦未完整投影latest_included_event形成的当前知识、承诺和权限状态。
+  required_change: 保留已锁定的剧情边界，按该边界重新回归全部角色的职务、位置、关系、知识、承诺和活跃目标，尤其修正孔捷调任后的当前状态并投影聚仙楼突袭后的有效状态。
+  resolution: "保留既有latest_included_event与first_excluded_event；将孔捷Profile和Frozen统一为李家坡战后已调任的新二团团长及new_second_regiment_hq，新增对应驻地、命令簿、团长权限和友邻边界；按聚仙楼突袭完成后的实际知情链向李云龙、楚云飞投影情报、结果、已履行承诺与楚云飞已撤销访客权限，并避免向赵刚、孔捷倒灌未获通报的行动细节。"
+  status: fixed
+
+- item_id: canon.yaml.canon_policy.player_semantics
+  severity: major
+  rule_id: player_role_bounded
+  evidence: canon未定义默认Player身份、可见知识、所属阵营或临时授权；六份initial_context又把Player直接放在各NPC所在军事驻地，无法判断Player为何可进入、可知道什么及能执行什么。
+  required_change: 定义默认Player语义及场景覆盖规则，明确其初始知识、阵营/身份、地点进入依据和授权边界，并与各initial_context的可见性及位置一致。
+  resolution: "已在canon_policy.player_semantics定义默认Player为获当前驻地许可的一次性临时联络员，明确无预设阵营和指挥权、初始公开知识、排除知识、同地会面含义、授权边界及场景逐项覆盖规则；六份initial_context均通过guest/meeting access显式授予会面区域，同时拒绝命令、部署、情报和跨部队指挥资源。"
+  status: fixed
+
+- item_id: characters.command_roles_and_locations
+  severity: major
+  rule_id: snapshot_role_consistent
+  evidence: 楚云飞358团团长、丁伟新一团团长及对应驻地已一致；孔捷却在Profile和Frozen中仍被设为独立团副团长、位于independent_regiment_hq。正典中孔捷在李家坡战后已调任新二团团长，该变化早于楚云飞观摩和聚仙楼突袭。
+  required_change: 将孔捷当前番号、职务、所属、权限、目标、关系边界和Frozen位置统一修正为新二团团长状态；environment补充可达的新二团驻地，并移除其独立团副职权限。
+  resolution: "将孔捷身份、所属、目标、能力、限制和关系边界改为新二团团长；Frozen当前位置改为new_second_regiment_hq，持有new_second_regiment_order_book并获得新二团团长权限；独立团副团长权限改为revoked、独立团全团指挥及情报权限保持denied。environment新增双向可达的新二团团部及新二团命令簿。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.chronology
+  severity: major
+  rule_id: chronology_total_order
+  evidence: 现有11项均已有唯一chapter_order，但总时间线遗漏了孔捷在李家坡战后调任新二团团长这一快照前人事事件；anchor_006仍把更晚的赵家峪驻扎事件写成孔捷当前位置更新到独立团团部，导致候选顺序与Profile/Frozen当前状态共同建立了错误时间线。
+  required_change: 在赵家峪驻扎前纳入或以可追踪方式明确孔捷调任新二团的事件，并修正其后各事件的参与、位置、权限和known_by；保持chapter_order唯一且与共享快照一致。
+  resolution: "在anchor_005之后新增chapter_order 060的anchor_012，明确李家坡战后孔捷离开独立团并调任新二团团长；将赵家峪驻扎及后续事件顺延为070至120的唯一顺序，anchor_006不再改变孔捷位置，后续独立团观摩、军鞋与聚仙楼事件均移除无依据的孔捷参与和知情。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.event_boundaries
+  severity: major
+  rule_id: discrete_anchor_event
+  evidence: anchor_003至anchor_006、anchor_008至anchor_010、anchor_012至anchor_019、anchor_021至anchor_022等大量条目是“有联系”“同一战区活动”“保持注意”“日常训练或作战准备”“交流过”“维持界线”等长期状态或重复概括，不能定位到一个此前未发生、具有触发证据和生效时点的事件。
+  required_change: 用共享快照范围内可定位的单次正典事件替换长期概括；每项明确事件边界、触发证据、发生顺序和该刻才成立的状态变化，删除仅重复Profile既有状态的条目。
+  resolution: "已删除原池中的长期联系、日常准备、同阶段活动、保持界线等概括条目，改为可定位的袭击、任免、报到、驻地转移、物资交付、到访授权、情报取得、行动决定及行动完成事件；每项均写明该刻新增或失效的状态与单变量反事实后果。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.knowledge_visibility
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: anchor_008和anchor_009把赵刚列为预先获得聚仙楼情报、知晓并参与形成突袭承诺，但正典行动由李云龙、楚云飞在河源县城临时获知并决定，赵刚只能在事后获知结果。anchor_006、anchor_007和anchor_010又因错误的孔捷现职而把独立团驻扎、观摩和行动结果直接赋予孔捷，未给出调任新二团后的转告证据。
+  required_change: 将聚仙楼情报、决定与事后结果分层建模，移除赵刚的事前知情并仅在有事后通报证据时赋予结果知识；按孔捷新二团团长身份重建anchor_006至010的known_by，不得以旧职或熟识自动推导知情。
+  resolution: "anchor_006、anchor_007、anchor_011和anchor_010移除调任后不在场且无转告证据的孔捷；anchor_008与anchor_009移除未参与现场获情报和临时决策的赵刚；anchor_010仅保留亲历行动的李云龙、楚云飞，并在state_change显式禁止未获通报角色自动取得细节或结果知识。相应Frozen仅为李云龙、楚云飞投影聚仙楼情报与结果。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_change_and_cf_edit
+  severity: major
+  rule_id: counterfactual_pairability
+  evidence: 大多数条目已有离散state_path和单变量cf_edit；但anchor_010把目标路径指定为李云龙对楚云飞的relationship变化，反事实后果却只定义承诺cancelled和战果不可确认，没有定义该关系在反事实分支中的不同结果。其前置distrustful状态也未在候选或Frozen中显式存在，无法形成唯一可执行的关系转折。
+  required_change: 为anchor_010补齐可追踪的关系前态，并明确仅改变行动结果时两分支各自的关系状态与可观察决定；若行动结果并不决定关系，则将state_path改为与承诺/战果一致的真实状态路径。
+  resolution: "将anchor_010的state_path从缺少可执行前态的relationship改为runtime_state.commitments.heyuan_joint_raid；主分支明确承诺fulfilled且亲历者可确认完成，反事实只改变目标是否在行动前撤离，对应承诺cancelled且不得确认战果。关系依据另由单次装枪命中并履约赠枪事件anchor_013提供，不再借突袭结果隐式改变关系。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.stage_coverage
+  severity: major
+  rule_id: foundation_stage_coverage
+  evidence: 当前候选池几乎全部落在泛化知识、关系和态势描述，没有可执行的资源转移、权限授予/拒绝或目标/承诺生命周期材料，也没有足以施压角色边界的具体事件后果，不能可靠支撑Stage 1多维状态、Stage 2受控编辑及Stage 3在线决策。
+  required_change: 在候选池整体中补足来源有效、快照内且离散的目标/承诺、关系、知识、资源/权限状态材料，并确保每类都有可执行后果；不要求每个事件覆盖全部阶段。
+  resolution: "候选池现覆盖知识（袭击与聚仙楼情报）、目标/承诺（整顿、防范、联合突袭与物资交付）、关系（共同突袭后李云龙对楚云飞回落为neutral）、资源/权限（团长/政委/副团长权限、访客权限、军鞋转移）及位置变化；环境与Frozen状态已提供对应可执行资源和拒绝边界。"
+  status: fixed
+
+- item_id: frozen.all.initial_context.knowledge.visibility
+  severity: major
+  rule_id: runtime_visibility_vocabulary
+  evidence: 六份initial_context把visibility写成private、shared、internal、known及shared_with_*等字符串；运行时生成约定使用[npc]或[npc, player]列表。现有值无法稳定区分NPC私知、Player已知和其他角色知情，且同义值跨角色不一致。
+  required_change: 将全部初始knowledge.visibility规范为运行时支持的主体列表，通常使用[npc]或[npc, player]；其他角色知情应存在于各自状态或可追踪来源中，不编码为临时字符串词表。
+  resolution: "已将六份initial_context的全部knowledge.visibility统一为主体列表，仅使用[npc]或[npc, player]；公开职务/当前会面可见事实才向默认Player开放，部署、内部协作、地方路线与其他未披露知识均保持[npc]。"
+  status: fixed
+
+- item_id: frozen.zhao_gang_kong_jie_ding_wei.initial_context.goals.status
+  severity: major
+  rule_id: runtime_goal_status
+  evidence: "赵刚、孔捷、丁伟的活跃目标使用status: ongoing，而Fixture的set_goal仅支持active、fulfilled、cancelled、failed；同一世界其他角色使用active，导致后续目标更新和Stage 1答案词表不稳定。"
+  required_change: "将当前仍生效的目标统一为status: active，并确保后续状态操作仅使用运行时支持的目标状态。"
+  resolution: "已将赵刚、孔捷、丁伟全部仍生效目标的status由ongoing改为运行时支持的active，并同时把孔捷、丁伟目标内容同步为锁定快照下的当前职务任务。"
+  status: fixed
+
+- item_id: frozen.initial_context.relationship_grounding
+  severity: major
+  rule_id: directional_relationship_grounding
+  evidence: 孔捷对楚云飞被设为distrustful，但Profile只支持外部观察和战区分界；丁伟对赵刚被设为trusting，而Profile仅写有联系/同级交流，未给出建立强信任的具体正典事件。孔捷、丁伟、赵刚之间若干方向也由概括性anchor直接推成强关系，缺少逐方向依据。
+  required_change: 逐角色逐方向核对关系等级；没有具体正典事件支持的强关系回落为neutral，或补充可追踪的basis_event并使Profile、候选事件与Frozen状态一致。
+  resolution: "已逐方向回归Frozen关系：孔捷对楚云飞、丁伟对赵刚及缺少具体事件支撑的李云龙/孔捷/丁伟强关系均回落为neutral；李云龙对楚云飞的neutral以anchor_010共同突袭为basis_event，秀芹与李云龙/赵刚的trusting以anchor_011具体支前物资交付为basis_event。"
+  status: fixed
+
+- item_id: environment.yaml.runtime_affordances
+  severity: major
+  rule_id: stage3_runtime_support
+  evidence: 所有initial_context的access均为空、角色inventory均为空，环境仅有三件未被当前状态持有的物品；Profiles中的部队调动、情报接触、驻地分界、群众协助等核心边界都只存在于 prose，无法通过权限、资源或任务状态形成可执行的允许/拒绝决定。
+  required_change: 以最小本体补充Stage 3实际会测试的关键资源/权限，并在initial_context中赋予或明确拒绝；将至少一组军令、情报、驻地进入或群众协助边界映射为运行时可执行状态，避免无关扩建。
+  resolution: "已以最小本体新增独立团命令簿、358团部署图、新一团命令簿、赵家峪路线记录和军鞋物资；在相应initial_context中配置实际持有者，并显式建立会面区、全团指挥、政工、副团长权限、部署/情报/路线访问的granted/denied状态，使Player可会面但默认不可调兵、读图、读取命令或情报。"
+  status: fixed
+
+- item_id: frozen.all.initial_context.snapshot_projection
+  severity: major
+  rule_id: snapshot_current_state_projection
+  evidence: 共享快照以anchor_010聚仙楼突袭完成并各自返回驻地为latest_included_event，但六份Frozen均未记录该已完成事件；李云龙与楚云飞没有该行动及结果知识，commitments均为空，赵刚和孔捷也没有与其known_by声明对应的事后知识，楚云飞此前独立团访客权限的revoked状态亦未显式投影。
+  required_change: 按实际知情链把截至latest_included_event的有效知识、已收束承诺和权限状态投影到相关Frozen；不知情角色不得补入，并确保Profile、candidate state_change与当前运行态可逐项追踪。
+  resolution: "在李云龙与楚云飞Frozen中新增anchor_008任务情报、anchor_010亲历结果以及由anchor_009创建并在anchor_010收束为fulfilled的heyuan_joint_raid承诺；两份状态均保持各自返回后的正确地点，并将楚云飞在独立团guest_area的临时权限显式记为revoked。赵刚、孔捷因候选池已移除无依据known_by，不补入聚仙楼事前或结果知识；赵刚、秀芹另投影其实际知晓的军鞋交付状态。"
+  status: fixed
+
+- item_id: characters.xiuqin.identity_and_current_resource
+  severity: major
+  rule_id: character_source_grounded
+  evidence: 快照内秀芹已明确以赵家峪妇救会主任身份送军鞋并通过装枪约定取得楚云飞赠李云龙的勃朗宁手枪；Profile却仅称“地方群众成员/群众工作者”，未写明妇救会主任和已展示的用枪能力，Frozen inventory也没有当前持有的关键手枪。
+  required_change: 将秀芹当前身份锁定为赵家峪妇救会主任，补充快照内已成立且可验证的用枪能力；在environment定义该勃朗宁手枪并由秀芹Frozen持有，同时限定其不因此获得军事指挥或核心情报权限。
+  resolution: "将秀芹Profile身份改为赵家峪妇救会主任，补充组织妇女赶制军鞋及装填、使用手枪并命中目标的快照内能力；environment新增chu_gift_browning_pistol，秀芹Frozen将其列为当前持有物，并以anchor_013记录取得来源。Profile和Frozen同时明确持枪不授予军事指挥、命令或核心情报权限。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.resource_transfer_conservation
+  severity: major
+  rule_id: resource_transfer_conserved
+  evidence: anchor_011声称shoe_supply_batch已从赵家峪妇救会转交独立团，state_path指向environment.inventories.independent_regiment.shoe_supply_batch；但environment没有inventories结构，六份Frozen也没有任何一方持有该批军鞋，无法查询转移后的唯一当前所有者。
+  required_change: 用现有运行时支持的inventory状态表示军鞋转移后的当前持有方，并保证来源移除、目标获得可追踪；state_path必须指向真实存在且可唯一判分的运行态路径。
+  resolution: "将anchor_011的state_path改为实际运行态environment.inventories.independent_regiment；在李云龙、赵刚、秀芹相关Frozen中把shoe_supply_batch唯一列于independent_regiment inventory，并显式保留空的zhaojiayu_womens_association来源inventory，表示交付后来源移除、目标获得；秀芹的交付承诺同步记为fulfilled。"
+  status: fixed
+
+- item_id: frozen.li_yunlong_xiuqin.relationship_grounding
+  severity: major
+  rule_id: directional_relationship_grounding
+  evidence: 秀芹Frozen仅以anchor_011一次军鞋交付为依据，将对李云龙、赵刚均设为trusting；该事件能证明接触和物资交付，却不足以单独证明两个方向的强信任。与此同时李云龙Profile称对秀芹“有信任”，其Frozen却为neutral，形成Profile/Frozen不一致。
+  required_change: 逐方向以快照内具体互动重建关系依据；若保留trusting须引用能建立该等级的离散正典事件并纳入候选/当前状态，否则回落neutral，同时统一李云龙Profile与Frozen的当前有效关系。
+  resolution: "新增单次正典候选anchor_013，记录秀芹完成装枪射击命中、李云龙履约交付勃朗宁手枪及该具体互动形成的方向性信任；李云龙与秀芹Frozen的相互关系均统一为trusting并引用anchor_013。赵刚与秀芹仅有工作接触，双方关系回落为neutral，赵刚和秀芹Profile文字同步区分工作认可与个人强信任。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.state_path_runtime_alignment
+  severity: major
+  rule_id: state_operation_aligned
+  evidence: anchor_001的state_path为runtime_state.knowledge.kong_jie_yamamoto_raid，但孔捷Frozen中的实际知识键是kong_jie_knowledge_5；anchor_008的state_path为runtime_state.knowledge.heyuan_officer_gathering，但李云龙和楚云飞Frozen中的实际键分别为li_yunlong_knowledge_heyuan_intelligence与knowledge_005；anchor_006同时改变李云龙、赵刚位置，却只给出environment.locations.li_yunlong。候选路径无法逐NPC唯一落到当前运行态。
+  required_change: 保留anchor_001、anchor_006、anchor_008已完成的键对齐，并继续为所有多NPC事件补齐逐NPC路径映射：至少anchor_003缺少李云龙目标路径，anchor_004缺少孔捷副团长权限路径，anchor_005缺少李云龙“赵刚到任”知识路径，anchor_007缺少赵刚可落地的访客授权/知情路径；确保每个anchor_for角色的目标路径在其Frozen结构中存在、唯一、可执行，且主分支与反事实分支均可判分。
+  resolution: "保留此前已完成的anchor_001、anchor_006、anchor_008键对齐；为anchor_003/004/005/007/009/010/011/012补齐state_paths_by_npc。任免事件分别映射到丁伟/李云龙/孔捷Frozen中的真实权限或知识键，anchor_007为李云龙和楚云飞映射访客权限、为赵刚新增观摩知情键，军鞋事件逐角色映射现有independent_regiment inventory，联合突袭事件逐角色映射现有heyuan_joint_raid承诺；所有anchor_for目标现均有Frozen中存在且唯一的可执行路径。"
+  status: fixed
+
+- item_id: characters.ding_wei.social.relationship_rules.li_yunlong
+  severity: major
+  rule_id: snapshot_current_state_unique
+  evidence: 丁伟Profile将其对李云龙的当前关系写为“战友式的信任和熟悉”，但丁伟Frozen将li_yunlong设为level=neutral且basis_event=initial_state；当前关系在Profile与运行态之间存在trusting/neutral歧义。
+  required_change: 依据快照内可追踪事实统一该方向关系；若无足以支持强信任的具体依据，将Profile改为熟识但不编码强信任，若保留trusting则同步Frozen并提供可追踪basis_event。
+  resolution: "按当前无具体离散事件支撑强信任的证据边界，已将丁伟Profile中对李云龙的关系改为战友式熟识和正常经验交流，并显式声明按neutral编码；Frozen继续保持li_yunlong.level=neutral及basis_event=initial_state，消除trusting/neutral歧义。"
+  status: fixed
+
+- item_id: frozen.li_yunlong_ding_wei.initial_context.appointment_knowledge_projection
+  severity: major
+  rule_id: snapshot_current_state_projection
+  evidence: anchor_003声明李云龙知道丁伟已被任命为新一团团长，anchor_012声明李云龙和丁伟知道孔捷已调任新二团团长；但李云龙Frozen没有丁伟现职或孔捷调任知识项，丁伟Frozen也没有孔捷调任知识项，仅以initial_state概括彼此有联系。候选known_by、Profile背景与可查询运行态不能逐项追踪。
+  required_change: 在李云龙Frozen投影其已知的丁伟新一团团长任命和孔捷新二团团长调任知识，在丁伟Frozen投影其已知的孔捷调任知识；分别引用anchor_003与anchor_012，使用运行时支持的knowledge结构和正确visibility，并同步相关候选的逐NPC state_paths。
+  resolution: "在李云龙Frozen新增li_yunlong_knowledge_ding_appointment与li_yunlong_knowledge_kong_appointment，分别引用anchor_003和anchor_012；将既有赵刚到任知识的source_event校正为anchor_005。在丁伟Frozen新增knowledge_ding_wei_kong_appointment并引用anchor_012。anchor_003、anchor_005、anchor_012同步新增逐NPC state_paths，分别指向上述知识键与对应角色现有任免权限路径；visibility均保持[npc]，未向默认Player泄露任免知情链。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.chronology_regression
+  severity: blocker
+  rule_id: chronology_total_order
+  evidence: "丁伟接任已正确前置，观摩与后来聚仙楼行动也已拆开；但当前又把anchor_007楚云飞赴独立团观摩排在anchor_012孔捷李家坡战后调任新二团之前。既有已修复材料及正典顺序均把孔捷调任置于李家坡战后、楚云飞观摩前，当前chapter_order 060/070仍形成倒置，原修复未完整通过回归。"
+  required_change: "保留anchor_003前置及观摩/聚仙楼拆分，按电视剧总顺序将anchor_012孔捷调任放到anchor_007楚云飞观摩之前；随后重新编号唯一chapter_order，并逐项回归known_by、state_change、Frozen source_event、关系依据及权限生命周期。"
+  resolution: "保留丁伟接任前置及观摩/聚仙楼拆分，将anchor_012孔捷李家坡战后调任的chapter_order改为060，将anchor_007楚云飞赴独立团观摩改为070；后续赵家峪迁驻、军鞋交付、赠枪、河源获情报、决策及行动完成继续按080至130唯一递增。事件ID未变，逐项复核known_by、state_paths、Frozen source_event、anchor_010关系依据及anchor_007访客权限生命周期均与重排后顺序兼容。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.chu_visit_access_lifecycle
+  severity: major
+  rule_id: operation_preserves_later_state
+  evidence: "anchor_007授予的是楚云飞早期赴独立团观摩的guest_area权限，但anchor_010直到后来聚仙楼行动结束才将该权限revoked，并把撤销与“返回晋绥军驻地”绑定。观摩结束与河源县行动之间还有多个独立剧情阶段；旧访客权限不应跨期保持，更不能由不发生在独立团驻地的聚仙楼事件负责收束。李云龙和楚云飞Frozen因此把错误的权限生命周期投影成当前状态。"
+  required_change: "在观摩离开独立团时就收束anchor_007的临时guest_area权限；河源县会面与聚仙楼行动使用独立的位置/行动承诺状态，不复用或延长独立团观摩权限。同步修正anchor_010 state_change以及李云龙、楚云飞Frozen中的权限来源和可追踪状态。"
+  resolution: "anchor_007现将独立团guest_area权限严格限定为本次观摩到访：楚云飞抵达后临时granted，结束观摩离开时立即revoked，且全程无命令簿、内部部署或指挥权；反事实分支明确从未取得观摩区权限。anchor_010仅收束河源县行动承诺与返驻地位置，显式声明不创建、延长或撤销早期观摩权限；李云龙、楚云飞Frozen保留当前revoked状态并追溯到anchor_007生命周期。"
+  status: fixed
+
+- item_id: frozen.command_appointments.remaining_knowledge_projection
+  severity: major
+  rule_id: snapshot_current_state_projection
+  evidence: "指定的李云龙知晓丁伟、李云龙与丁伟知晓孔捷调任三项已正确投影，但其余任免知情仍以initial_state或错误事件概括：丁伟自己的新一团任命knowledge_ding_wei_002未引用anchor_003；丁伟知晓李云龙任独立团团长被并入knowledge_ding_wei_001且未引用anchor_004；赵刚自己的到任知识ind_regiment_leadership未引用anchor_005；孔捷知晓李云龙接任与赵刚到任分别未以anchor_004/005追踪，其中kong_jie_knowledge_1反而以较晚anchor_012概括李云龙“继续担任”。因此known_by、任免事件和当前可查询知识仍不能逐项一一对应。"
+  required_change: "逐NPC拆分并投影剩余任免知识：丁伟本人的新一团任命引用anchor_003，丁伟知晓李云龙接任引用anchor_004，赵刚本人到任及孔捷知晓赵刚到任引用anchor_005，孔捷知晓李云龙接任引用anchor_004；避免用initial_state或后续anchor_012替代前序任免来源，并为需要作为候选目标的角色补齐唯一state_path。"
+  resolution: "已逐NPC拆分剩余任免知识：丁伟本人接任新一团改引anchor_003，并新增独立的李云龙接任知识指向anchor_004；赵刚本人正式到任政委的知识改引anchor_005；孔捷自身调任仅保留anchor_012，另拆出其知晓李云龙接任(anchor_004)与赵刚到任(anchor_005)。anchor_004/005同步为丁伟、孔捷补齐唯一state_paths_by_npc并纳入相应anchor_for，避免initial_state或后序事件替代任免来源。"
+  status: fixed
+
+- item_id: characters.li_yunlong_chu_yunfei.current_relationship
+  severity: major
+  rule_id: snapshot_current_state_unique
+  evidence: "双方Profile与Frozen现已统一为trusting并以anchor_010为basis_event，阵营和指挥边界也保留；但anchor_010的state_change与state_paths_by_npc仍只收束heyuan_joint_raid承诺，完全没有声明或映射双方关系变化。当前关系把anchor_010作为依据，而候选事件自身又不产生该关系状态，Stage 1状态来源和后续Operation无法唯一追踪。"
+  required_change: "在不改变承诺收束的前提下，为anchor_010显式补充双方方向性关系变化及逐NPC可执行关系路径，或改用另一个确实声明该关系变化的离散事件作为统一basis_event；主分支、反事实及Frozen当前关系必须能逐项对应。"
+  resolution: "保留双方Frozen中trusting及basis_event=anchor_010；在anchor_010的state_change显式加入共同作战完成后双方方向性关系由neutral更新为trusting，并新增relationship_state_paths_by_npc分别映射runtime_state.relationships.chu_yunfei与runtime_state.relationships.li_yunlong。反事实分支明确行动取消时承诺为cancelled且双方关系保持neutral；双方仍不得取得对方部队指挥权。"
+  status: fixed
+
+- item_id: characters.ding_wei.xiuqin_and_zhaojiayu_knowledge
+  severity: major
+  rule_id: knowledge_visibility
+  evidence: "丁伟Profile断言其认识秀芹、知道她是独立团周边群众，并要求不得声称秀芹与独立团无关；Frozen又写入“独立团在赵家峪一带面对日军据点威胁”，但候选known_by未给丁伟任何秀芹、赵家峪驻扎或当地日军威胁的在场、转告或证据来源，相关内容只标为initial_state。材料把世界事实直接投影成丁伟知识。"
+  required_change: "若有快照内明确通报事件，补充离散来源、known_by和Frozen source_event；否则删除丁伟对秀芹及赵家峪具体态势的确定知识和相应Profile边界，仅保留其有来源支持的友邻部队一般联系。"
+  resolution: "当前材料无快照内在场、正式通报或证据来源，故删除丁伟Profile中关于秀芹的专门知识边界及关系规则，并从Frozen删除无来源的赵家峪驻扎/当地日军据点具体态势knowledge_ding_wei_005；不为丁伟补造通报事件，仅保留其有任免来源或一般友邻联系支持的八路军指挥员知识。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.anchor_006.location_runtime_alignment
+  severity: major
+  rule_id: state_operation_aligned
+  evidence: "anchor_006声称团部转移并驻扎赵家峪，主state_path却把李云龙、赵刚写到environment.locations.*=independent_regiment_hq；environment又把independent_regiment_hq与zhaojiayu定义为两个相连但不同的地点。该组织性HQ ID在转移前后均可复用，既不能唯一表示“迁入赵家峪”，也无法执行cf_edit中的“改驻其他村庄”。"
+  required_change: "为赵家峪团部提供唯一物理位置映射，并让anchor_006主分支位置与Frozen当前地点一致指向该映射；同时给反事实的其他村庄保留不同可执行地点值，确保位置变化及其Stage 2分支能产生可判分状态差异。"
+  resolution: "environment新增唯一物理节点independent_regiment_hq_zhaojiayu并命名为“独立团团部（赵家峪驻地）”，同时把旧independent_regiment_hq明确为迁驻前团部；anchor_006主分支显式把李云龙、赵刚位置更新为新节点，反事实位置使用不同且已存在的nearby_village。李云龙、赵刚及各自默认Player的Frozen当前位置同步改为新节点，主分支与最小反事实现在可唯一判分。"
+  status: fixed
+
+- item_id: frozen.li_yunlong_zhao_gang.current_relationship
+  severity: major
+  rule_id: snapshot_current_state_unique
+  evidence: "共享快照已晚于赵刚到任、李家坡及双方多次共同领导独立团，李云龙Profile明确写其已认可赵刚能配合作战，赵刚Profile也写双方已形成稳定协作；但两份Frozen仍把对方关系记为neutral且basis_event=initial_state，候选池没有任何离散事件追踪这段已成立的关系变化。Profile当前态与运行态无法给出唯一答案。"
+  required_change: "依据快照内具体共同事件确定李云龙与赵刚的双向当前关系等级；若为trusting，补充可追踪的离散basis_event及逐NPC关系路径，若坚持neutral，则同步收窄两份Profile中已认可、稳定协作等当前关系表述并说明其不构成强关系。"
+  resolution: "未补造不存在的强关系事件，保留双方Frozen的neutral与basis_event=initial_state；同步收窄两份Profile：共同主持团务、配合作战和争取协作均明确为团长/政委职责性协作，不自动表示个人强信任，并显式声明当前缺少离散事件把任一方向编码为trusting。两份Profile与Frozen现对当前关系给出唯一neutral答案。"
+  status: fixed
+
+- item_id: frozen.command_access.resource_id_consistency
+  severity: major
+  rule_id: runtime_resource_id_stable
+  evidence: "同一项独立团军事指挥权限在李云龙、赵刚、孔捷、秀芹Frozen中使用independent_regiment_full_command，在楚云飞和丁伟Frozen中却使用independent_regiment_command。两个ID没有映射关系，导致Stage 3对同一权限的允许/拒绝结果依赖所加载NPC而改变。"
+  required_change: "六份Frozen统一使用一个独立团军事指挥权限ID，并保持李云龙granted、其他角色及默认Player denied；同步回归候选state_path和所有权限引用，禁止用无声明别名表示同一资源。"
+  resolution: "将楚云飞和丁伟Frozen中的independent_regiment_command统一改为independent_regiment_full_command；六份Frozen现对同一独立团军事指挥权限只使用该唯一ID，李云龙为granted，赵刚、孔捷、楚云飞、丁伟、秀芹及默认Player均为denied。anchor_002/004及全部权限引用已回归，不再存在旧别名。"
+  status: fixed
+
+- item_id: anchor_pool.yaml.events.compound_state_path_alignment
+  severity: major
+  rule_id: state_operation_aligned
+  evidence: "全范围回归发现若干候选在state_change中声明了多个可执行状态变化，却只映射其中一部分：anchor_003声明同时激活丁伟建设新一团的目标，但state_paths_by_npc仅指向新一团指挥权限，丁伟Frozen中的对应目标goal_ding_wei_002仍以initial_state为basis_event；anchor_012声明撤销孔捷独立团副团长权限并更新其位置，却只映射新二团指挥权限；anchor_010声明两人分别返回驻地，但承诺与关系有路径、位置没有路径。因而这些事件的完整主分支无法逐项落到当前运行态，Stage 1来源追踪及Stage 2受控Operation仍存在遗漏。"
+  required_change: "逐项对齐复合state_change与运行态：为anchor_003映射并以anchor_003追踪丁伟被任命后激活的建设目标；为anchor_012补充孔捷旧副团长权限revoked及new_second_regiment_hq位置路径；为anchor_010补充李云龙、楚云飞返驻地的位置路径。若某项并非候选要操作的状态，则从state_change中删除该断言；主分支、反事实及Frozen当前状态必须保持一致且可唯一判分。"
+  resolution: "按状态维度拆分并补齐逐NPC路径：anchor_003新增goal_state_paths_by_npc.ding_wei=runtime_state.goals.goal_ding_wei_002，并将该Frozen目标的basis_event从initial_state改为anchor_003；anchor_012新增revoked_access_state_paths_by_npc.kong_jie指向environment.access.independent_regiment_deputy_command.subjects.kong_jie，并新增location_state_paths_by_npc.kong_jie指向environment.locations.kong_jie；anchor_010新增李云龙、楚云飞各自的location_state_paths_by_npc。三项反事实后果同步明确目标不激活、旧权限不撤销/位置不迁移，以及行动取消后两人各自返驻地，所有路径均逐项对应现有Frozen键和值。"
+  status: fixed

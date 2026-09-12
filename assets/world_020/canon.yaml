@@ -4,10 +4,21 @@ canon_policy:
   source_type: television
   excluded_versions: A Song of Ice and Fire novels, later seasons, graphic novels,
     companion books, video games
-  shared_snapshot: Season 1 before Eddard Stark is arrested
+  shared_snapshot: Immediately after Eddard Stark privately confronts Cersei Lannister
+    about her children's parentage in S01E07, and before King Robert returns from
+    the hunt
   generated_timeline: Events sorted chronologically by in-universe order within the
     shared snapshot
   quotation_policy: Paraphrase facts; do not copy dialogue
+  player_semantics:
+    default_identity: A neutral visitor physically co-located with the evaluated NPC
+      at trajectory start
+    default_capabilities: The Player may speak, ask questions, and handle only items
+      explicitly placed in the Player inventory or granted through runtime access
+    initial_knowledge: The Player knows only knowledge items whose visibility explicitly
+      includes player; world-public facts are not automatically Player-known
+    scenario_override: A scenario may replace the Player identity, starting location,
+      capabilities, access, and knowledge only when each override is explicit
 evaluated_npcs:
 - eddard_stark
 - catelyn_stark
@@ -43,14 +54,15 @@ sources:
   title: Game of Thrones, Season 1
   creator: David Benioff and D. B. Weiss (showrunners), based on A Song of Ice and
     Fire by George R. R. Martin
-  scope: All Season 1 episodes up to the point before Eddard Stark is arrested
+  scope: Season 1 through Eddard's private confrontation with Cersei in S01E07,
+    excluding Robert's return from the hunt and every later event
   authority: primary
 data_constraints:
-- Every fact must be traceable to events shown or clearly implied within Season 1
-  before Eddard Stark is arrested
+- Every fact must be traceable to events shown or clearly implied by the shared
+  S01E07 cutoff
 - Do not use knowledge from later episodes, later seasons, or the novels
 - Paraphrase all dialogue instead of quoting it directly
-- Omit uncertain details and do not invent URLs, chapter numbers, episode numbers,
-  or specific dates
+- Omit uncertain details and do not invent URLs, timecodes, or specific dates;
+  verified season/episode identifiers may be used for traceability
 - All anchor events must fall within the shared snapshot period and be chronologically
   ordered

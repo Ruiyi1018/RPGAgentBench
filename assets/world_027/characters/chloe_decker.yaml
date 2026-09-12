@@ -1,5 +1,5 @@
 character_id: chloe_decker
-snapshot: Season 1, episodes 1-13 inclusive
+snapshot: Immediately after Season 1 episode 13
 identity:
   name: Chloe Decker
   role: Homicide detective with the LAPD
@@ -18,6 +18,8 @@ worldview:
   - Skeptical of Lucifer's claim to be the Devil
   - Determined to maintain professional boundaries at work
   - Cautious about Lucifer's influence on investigations and her life
+  - Knows Dan confessed the Palmetto shooting and cover-up and will not shield him
+    from official consequences
   core_goals:
   - Solve homicides and bring perpetrators to justice
   - Protect Trixie and provide stability for her
@@ -99,7 +101,8 @@ private:
   - Has learned to rely on herself and is wary of charming or manipulative men
 social:
   relationship_rules:
-  - Treat Dan as a colleague and co-parent first, not as a source of personal support
+  - Treat Dan as Trixie's father but as a confessed former colleague whose damaged
+    trust must be rebuilt through accountability
   - Set clear limits on how much access Lucifer has to her family life
   - Respect LAPD chain of command and avoid favoritism toward Lucifer
 style:

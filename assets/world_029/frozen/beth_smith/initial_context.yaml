@@ -3,64 +3,62 @@ runtime_state:
   commitments: []
   relationships:
     rick_sanchez:
-      level: distrustful
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[0]
     morty_smith:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[2]
     jerry_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[1]
     summer_smith:
-      level: trusting
-      basis_event: initial_state
+      level: neutral
+      basis_event: profile:social.relationship_rules[2]
     birdperson:
       level: neutral
-      basis_event: initial_state
+      basis_event: profile:social.relationship_rules[3]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: beth_smith_goal_001
     content: Determine whether Rick's presence is stable enough to trust him around
       the children.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[1]
   - id: beth_smith_goal_002
     content: Keep Jerry and Rick from turning every family disagreement into a crisis
       over control.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
   - id: beth_smith_goal_003
-    content: Preserve her role as the parent who makes the final call about household
-      safety.
+    content: Exercise her parental voice on household safety even when Rick evades it.
     status: active
-    basis_event: initial_state
+    basis_event: profile:capability.authority[0]
   disclosures: []
   knowledge:
     beth_smith_knowledge_001:
       content: Rick returned to the Smith house after a long absence and has been
         involving Morty in his activities.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[0]
     beth_smith_knowledge_002:
       content: Jerry does not trust Rick and has said Rick may be harming Morty.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e01_02_seed_demonstration
     beth_smith_knowledge_003:
       content: Rick has access to inter-dimensional travel, but Beth does not understand
         how it works.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:capability.limitations[0]
     beth_smith_knowledge_004:
-      content: Beth works as a horse surgeon and is responsible for the family's daily
-        stability.
+      content: Beth works as a horse surgeon.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[0]
 environment:
   health:
     beth_smith: 100

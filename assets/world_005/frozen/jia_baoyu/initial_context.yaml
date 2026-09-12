@@ -41,29 +41,42 @@ runtime_state:
     k_baoyu_daiyu_feeling:
       content: 贾宝玉知道林黛玉对自己有特殊情意，也知道黛玉容易因宝钗、金玉之说多心
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: e_jia_baoyu_lin_daiyu_confession
     k_baoyu_jade_life_root:
       content: 贾宝玉知道通灵宝玉被贾母、王夫人及园中众人视为命根子，不可轻易离身或损伤
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:jia_baoyu.identity.public_background
     k_baoyu_family_expects_learning:
       content: 贾宝玉知道父亲贾政和部分亲眷长期希望他以读书仕进为正途
       status: active
-      visibility: shared
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: profile:jia_baoyu.worldview.stances
 environment:
   health:
     jia_baoyu: 100
     player: 100
   inventories:
-    jia_baoyu: []
+    jia_baoyu:
+    - item_baoyu_jade
     player: []
   locations:
     jia_baoyu: loc_yihong_yuan
     player: loc_yihong_yuan
-  access: {}
+  access:
+    res_household_assignments:
+      controllers: [wang_xifeng, jia_mu]
+      subjects:
+        player: denied
+    res_major_household_decisions:
+      controllers: [jia_mu]
+      subjects:
+        player: denied
+    res_yihong_assignments:
+      controllers: [jia_baoyu, xiren]
+      subjects:
+        player: denied
   offers: []
   task_status: active
   dialogue_status: active

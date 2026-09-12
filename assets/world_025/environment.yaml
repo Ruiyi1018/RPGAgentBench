@@ -1,16 +1,21 @@
 world_id: world_025
 name: Panem pre-Games world, District 12 and the Capitol route
+language: en
 locations:
 - id: district_12_seam
   name: District 12, the Seam
   connected_to:
   - district_12_square
   - the_meadow
+  - katniss_house
+  - the_hob
+  - district_12_woods
 - id: district_12_square
   name: District 12 square, reaping site
   connected_to:
   - district_12_seam
   - justice_building
+  - the_meadow
 - id: justice_building
   name: Justice Building
   connected_to:
@@ -31,24 +36,71 @@ locations:
   connected_to:
   - the_trains_car
   - remake_center
+  - city_circle
 - id: remake_center
   name: Remake Center
   connected_to:
   - capitol_train_station
   - tribute_apartment
+  - training_center_gym
+  - city_circle
 - id: tribute_apartment
   name: Tribute apartment in the Training Center
   connected_to:
   - remake_center
   - training_center_gym
+  - training_center_roof
+  - district_12_female_launch_room
+  - district_12_male_launch_room
 - id: training_center_gym
   name: Training Center gym
   connected_to:
   - tribute_apartment
+  - remake_center
+  - training_center_roof
 - id: the_meadow
   name: The Meadow outside District 12
   connected_to:
   - district_12_seam
+  - district_12_square
+  - district_12_woods
+- id: katniss_house
+  name: Katniss's family house in the Seam
+  connected_to:
+  - district_12_seam
+  - the_hob
+  - district_12_woods
+- id: the_hob
+  name: The Hob black market
+  connected_to:
+  - district_12_seam
+  - katniss_house
+  - district_12_woods
+- id: district_12_woods
+  name: Hunting grounds beyond District 12's fence
+  connected_to:
+  - district_12_seam
+  - the_meadow
+  - katniss_house
+  - the_hob
+- id: training_center_roof
+  name: Training Center rooftop
+  connected_to:
+  - tribute_apartment
+  - training_center_gym
+- id: district_12_female_launch_room
+  name: District 12 female tribute launch room beneath the arena
+  connected_to:
+  - tribute_apartment
+- id: district_12_male_launch_room
+  name: District 12 male tribute launch room beneath the arena
+  connected_to:
+  - tribute_apartment
+- id: city_circle
+  name: City Circle, tribute parade and welcome site
+  connected_to:
+  - capitol_train_station
+  - remake_center
 items:
 - id: mockingjay_pin
   name: Mockingjay pin
@@ -58,12 +110,3 @@ items:
   name: Katniss's bow
   type: weapon
   portable: true
-- id: peeta_cookies
-  name: Burnt bread loaves from Peeta
-  type: food
-  portable: true
-- id: tribute_token_district12
-  name: District 12 tribute token
-  type: token
-  portable: true
-language: en

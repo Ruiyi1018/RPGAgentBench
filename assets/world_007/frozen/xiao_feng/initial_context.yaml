@@ -3,58 +3,59 @@ runtime_state:
   commitments: []
   relationships:
     duan_yu:
-      level: trusting
-      basis_event: initial_state
+      level: loyal
+      basis_event: ae_016
     xu_zhu:
-      level: trusting
-      basis_event: initial_state
+      level: loyal
+      basis_event: ae_016
     murong_fu:
       level: distrustful
-      basis_event: initial_state
+      basis_event: ae_013
     wang_yuyan:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:xiao_feng_no_direct_bond_with_wang_yuyan
     jiumozhi:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:xiao_feng_no_direct_bond_with_jiumozhi
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: pre_existing_fact:no_prior_player_relationship
   goals:
-  - id: g_xiao_feng_001
-    content: 查清少室山身世公开背后的真相
+  - id: g_xiao_feng_truth
+    content: 厘清少室山新确认的父辈旧案所带来的责任与后果
     status: active
-    basis_event: initial_state
-  - id: g_xiao_feng_002
-    content: 与段誉、虚竹保持兄弟信义，不令二人因己受累
+    basis_event: ae_015
+  - id: g_xiao_feng_brothers
+    content: 守护与段誉、虚竹新立的兄弟信义
     status: active
-    basis_event: initial_state
-  - id: g_xiao_feng_003
-    content: 避免宋辽之间爆发大规模战事
+    basis_event: ae_016
+  - id: g_xiao_feng_peace
+    content: 在契丹身世与中原旧怨交错时不滥杀无辜
     status: active
-    basis_event: initial_state
+    basis_event: ae_006
   disclosures: []
   knowledge:
-    k_xiao_feng_001:
-      content: 自己的契丹身世已在少室山被公开
+    k_xf_qidan:
+      content: 自己的契丹出身在杏子林已被公开并导致失去丐帮帮主之位
       status: active
-      visibility: public
-      source_event: initial_state
-    k_xiao_feng_002:
-      content: 段誉与自己在江南结拜为兄弟
+      visibility:
+      - npc
+      - player
+      source_event: ae_006
+    k_xf_father:
+      content: 萧远山是自己的生父，少室山上已说明雁门关旧案关键真相
       status: active
-      visibility: private
-      source_event: initial_state
-    k_xiao_feng_003:
-      content: 慕容复在少室山图谋武林盟主地位
+      visibility:
+      - npc
+      - player
+      source_event: ae_015
+    k_xf_brothers:
+      content: 段誉与虚竹已与自己结为兄弟
       status: active
-      visibility: public
-      source_event: initial_state
-    k_xiao_feng_004:
-      content: 聚贤庄一役后自己与中原武林公开决裂
-      status: active
-      visibility: public
-      source_event: initial_state
+      visibility:
+      - npc
+      - player
+      source_event: ae_016
 environment:
   health:
     xiao_feng: 100

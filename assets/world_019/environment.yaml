@@ -1,12 +1,12 @@
 world_id: world_019
 name: Pasadena, California and associated spaces within the shared snapshot
+language: en
 locations:
 - id: apartment_4a
   name: Apartment 4A
   connected_to:
   - apartment_4b
   - stairwell
-  - building_laundry
 - id: apartment_4b
   name: Apartment 4B
   connected_to:
@@ -18,16 +18,16 @@ locations:
   - apartment_4a
   - apartment_4b
   - building_lobby
+  - building_laundry
 - id: building_lobby
   name: Building lobby
   connected_to:
   - stairwell
-  - apartment_4a
-  - apartment_4b
+  - street
 - id: building_laundry
   name: Building laundry room
   connected_to:
-  - apartment_4a
+  - stairwell
 - id: university_cafeteria
   name: University cafeteria
   connected_to:
@@ -38,6 +38,9 @@ locations:
   - university_cafeteria
   - sheldon_office
   - leonard_lab
+  - howard_engineering_lab
+  - raj_astrophysics_workspace
+  - street
 - id: sheldon_office
   name: Sheldon's office
   connected_to:
@@ -46,10 +49,15 @@ locations:
   name: Leonard's lab
   connected_to:
   - university_campus
+- id: howard_engineering_lab
+  name: Howard's engineering lab
+  connected_to:
+  - university_campus
 - id: cheesecake_factory
   name: The Cheesecake Factory restaurant
   connected_to:
   - penny_work_area
+  - street
 - id: penny_work_area
   name: Penny's work area at the restaurant
   connected_to:
@@ -64,6 +72,36 @@ locations:
   - comic_book_store
   - building_lobby
   - cheesecake_factory
+  - university_campus
+  - wolowitz_house
+  - amy_neurobiology_lab
+  - bernadette_pharma_lab
+  - movie_theater
+  - amy_apartment
+- id: wolowitz_house
+  name: Wolowitz family house
+  connected_to:
+  - street
+- id: raj_astrophysics_workspace
+  name: Raj's astrophysics workspace at Caltech
+  connected_to:
+  - university_campus
+- id: amy_neurobiology_lab
+  name: Amy's neurobiology laboratory (institution unnamed in the snapshot)
+  connected_to:
+  - street
+- id: bernadette_pharma_lab
+  name: Bernadette's pharmaceutical-company laboratory
+  connected_to:
+  - street
+- id: movie_theater
+  name: Movie theater used for Amy and Stuart's date in S5E10
+  connected_to:
+  - street
+- id: amy_apartment
+  name: Amy Farrah Fowler's apartment
+  connected_to:
+  - street
 items:
 - id: couch
   name: Couch in Apartment 4A
@@ -105,4 +143,19 @@ items:
   name: Penny's wine glass
   type: drinkware
   portable: true
-language: en
+- id: mission_training_materials
+  name: Howard's ISS mission training materials
+  type: professional document
+  portable: true
+- id: amy_lab_notebook
+  name: Amy's current neurobiology laboratory notebook
+  type: research document
+  portable: true
+- id: bernadette_lab_badge
+  name: Bernadette's pharmaceutical laboratory access badge
+  type: access credential
+  portable: true
+- id: amy_friendship_painting
+  name: Large friendship painting given by Amy to Penny
+  type: artwork
+  portable: true

@@ -1,214 +1,81 @@
 world_id: world_014
-source: 电影《九品芝麻官》
+source: 1994年香港电影《九品芝麻官》
+snapshot: 会审人员已在公堂区域就位、正式开堂在即，终审证人尚未翻供，李连英与黄马褂尚未到堂
 events:
 - id: ae_001
-  fact: 包龙星在衙门重新翻阅戚家案卷
-  known_by:
-  - bao_longxing
-  - fang_tangjing
-  state_change: 包龙星从敷衍审案转向认真调查
-  cf_edit: 案卷被方唐镜提前调换，包龙星最初得到的信息不完整
-  anchor_for:
-  - bao_longxing
+  chapter_order: 1
+  fact: 已在公堂集齐的三堂会审人员就位，包龙星依上谕正式宣告开堂并开始主持重审
+  known_by: [bao_longxing, chang_wei, fang_tangjing, qi_qinshi, lai_fu, bao_tou]
+  state_change: 通过set_goal新增bao_longxing的active目标goal_conduct_retrial，表示正式庭审程序已经启动
+  cf_edit: 包龙星因会审人员未齐而暂缓开堂，不新增goal_conduct_retrial，庭审程序仍未启动
+  anchor_for: [bao_longxing, bao_tou]
 - id: ae_002
-  fact: 包龙星到戚家现场查看
-  known_by:
-  - bao_longxing
-  - qi_qinshi
-  state_change: 包龙星发现与先前审讯不同的线索
-  cf_edit: 戚家已被常威安排人手清理过，现场证据减少
-  anchor_for:
-  - bao_longxing
-  - qi_qinshi
+  chapter_order: 4
+  fact: 包龙星当堂盘问来福关于其与戚秦氏通奸的原审证词
+  known_by: [bao_longxing, chang_wei, fang_tangjing, lai_fu, bao_tou]
+  state_change: 通过set_goal新增bao_longxing的active目标goal_verify_lai_testimony，来福的原审通奸证词进入明确核验
+  cf_edit: 唯一改变包龙星是否传问来福；未传问时不新增goal_verify_lai_testimony，该份证词尚未进入当堂核验
+  anchor_for: [lai_fu, bao_longxing]
 - id: ae_003
-  fact: 戚秦氏向包龙星陈述案发经过
-  known_by:
-  - bao_longxing
-  - qi_qinshi
-  state_change: 包龙星对戚秦氏供词产生新的疑问
-  cf_edit: 戚秦氏因惧怕常威报复而隐瞒了关键细节
-  anchor_for:
-  - qi_qinshi
+  chapter_order: 6
+  fact: 来福以自己已自阉的身体事实证明通奸指控不能成立
+  known_by: [bao_longxing, chang_wei, fang_tangjing, lai_fu, bao_tou]
+  state_change: 通过set_claim将claim_lai_adultery设为reject，并通过set_goal将bao_longxing的goal_verify_lai_testimony设为fulfilled
+  cf_edit: 来福拒绝出示该反证，使通奸主张仍未被排除
+  anchor_for: [lai_fu, qi_qinshi]
 - id: ae_004
-  fact: 包龙星要求提审常威
-  known_by:
-  - bao_longxing
-  - chang_wei
-  - fang_tangjing
-  state_change: 案件重新进入对质阶段
-  cf_edit: 方唐镜以程序问题拖延提审，导致常威有时间串供
-  anchor_for:
-  - chang_wei
+  chapter_order: 5
+  fact: 包龙星继续追问后，来福承认原审证词系受方唐镜收买
+  known_by: [bao_longxing, chang_wei, fang_tangjing, lai_fu, bao_tou]
+  state_change: 通过add_knowledge新增visibility为[npc, player]的know_lai_bribery_public，使来福受方唐镜收买一事从私密知识变为公堂公开
+  cf_edit: 来福只撤回通奸证词但不承认收买者，使方唐镜的参与仍未公开
+  anchor_for: [lai_fu, fang_tangjing, bao_longxing]
 - id: ae_005
-  fact: 常威在堂上否认所有指控
-  known_by:
-  - bao_longxing
-  - chang_wei
-  - fang_tangjing
-  state_change: 案件陷入供词冲突
-  cf_edit: 常威提供不在场证明，包龙星需额外寻找反证
-  anchor_for:
-  - chang_wei
+  chapter_order: 3
+  fact: 原审打更人当堂承认受方唐镜收买，并撤回对戚秦氏不利的原审证词
+  known_by: [bao_longxing, chang_wei, fang_tangjing, lai_fu, bao_tou]
+  state_change: 通过set_claim将claim_watchman_testimony从未裁断设为reject，唯一表示该名打更人的原审不利证词已撤回
+  cf_edit: 原审打更人拒不承认受收买且维持原审证词，使该名证人的不利证词仍被主张有效
+  anchor_for: [bao_longxing, fang_tangjing, qi_qinshi]
 - id: ae_006
-  fact: 方唐镜以讼师身份介入重审
-  known_by:
-  - bao_longxing
-  - fang_tangjing
-  - chang_wei
-  state_change: 方唐镜开始公开为常威辩护
-  cf_edit: 方唐镜利用程序漏洞使部分证据被排除
-  anchor_for:
-  - fang_tangjing
+  chapter_order: 2
+  fact: 李连英携御赐黄马褂到堂并让常威穿上
+  known_by: [bao_longxing, chang_wei, fang_tangjing, qi_qinshi, lai_fu, bao_tou]
+  state_change: 通过set_inventory将item_yellow_jacket加入chang_wei持有物，并通过set_access将resource_force_against_chang_wei对bao_longxing的状态由granted改为revoked
+  cf_edit: 李连英到堂但未带黄马褂，item_yellow_jacket不进入常威持有物，resource_force_against_chang_wei仍为granted
+  anchor_for: [chang_wei, bao_longxing, fang_tangjing]
 - id: ae_007
-  fact: 包龙星到牢中密会来福
-  known_by:
-  - bao_longxing
-  - lai_fu
-  state_change: 来福成为潜在突破口
-  cf_edit: 来福因害怕常威而拒绝开口，包龙星未能立即获得信息
-  anchor_for:
-  - lai_fu
+  chapter_order: 7
+  fact: 在不能用刑且被催促结案时，包龙星安排滴血认亲的骗局继续讯问常威
+  known_by: [bao_longxing, chang_wei, bao_tou]
+  state_change: 通过set_goal新增bao_longxing的active目标goal_induce_chang_detail，以错误亲子结论诱使常威主动反驳并泄露命案细节
+  cf_edit: 唯一改变滴血用水碗是否备妥；未备妥时不新增goal_induce_chang_detail，包龙星继续口头核验证词
+  anchor_for: [bao_longxing, chang_wei]
 - id: ae_008
-  fact: 来福告诉包龙星部分真相
-  known_by:
-  - bao_longxing
-  - lai_fu
-  state_change: 包龙星获得指向常威的关键信息
-  cf_edit: 来福只说出次要细节，核心证据仍被隐瞒
-  anchor_for:
-  - lai_fu
+  chapter_order: 8
+  fact: 常威为反驳滴血认亲结果，当堂说出只有真凶才掌握的戚家命案细节
+  known_by: [bao_longxing, chang_wei, bao_tou]
+  state_change: 通过add_knowledge新增visibility为[npc, player]的know_chang_confession_public，并通过set_goal将bao_longxing的goal_induce_chang_detail设为fulfilled
+  cf_edit: 常威保持沉默而不反驳亲子结论，使其未泄露命案细节
+  anchor_for: [chang_wei, bao_longxing, qi_qinshi]
 - id: ae_009
-  fact: 包龙星带豹头搜查新物证
-  known_by:
-  - bao_longxing
-  - bao_tou
-  state_change: 搜查行动可能改变案情走向
-  cf_edit: 物证已被转移，搜查结果不理想
-  anchor_for:
-  - bao_tou
+  chapter_order: 9
+  fact: 常威劫持李连英并试图逃离公堂
+  known_by: [bao_longxing, chang_wei, bao_tou]
+  state_change: 通过set_goal新增chang_wei的active目标goal_escape_court，唯一表示其已从庭上答辩转入暴力逃逸
+  cf_edit: 唯一改变常威是否劫持李连英并逃逸；若其留在堂上，则不新增goal_escape_court
+  anchor_for: [chang_wei, bao_tou]
 - id: ae_010
-  fact: 豹头在戚家发现隐藏的血衣
-  known_by:
-  - bao_longxing
-  - bao_tou
-  - qi_qinshi
-  state_change: 关键物证出现
-  cf_edit: 血衣被雨水冲刷，血迹模糊难以辨认
-  anchor_for:
-  - bao_tou
-  - qi_qinshi
+  chapter_order: 10
+  fact: 豹子头与常威格斗并将其制服
+  known_by: [bao_longxing, chang_wei, bao_tou]
+  state_change: 通过set_goal将chang_wei的goal_escape_court设为failed，并将bao_tou既有的goal_stop_violence设为fulfilled，唯一表示逃逸已被制止
+  cf_edit: 唯一改变豹子头是否及时拦截；未拦截时goal_escape_court保持active且goal_stop_violence不变
+  anchor_for: [bao_tou, chang_wei]
 - id: ae_011
-  fact: 包龙星将血衣列为呈堂证据
-  known_by:
-  - bao_longxing
-  - fang_tangjing
-  state_change: 案件证据链开始成形
-  cf_edit: 方唐镜质疑血衣来源合法性，要求排除
-  anchor_for:
-  - bao_longxing
-- id: ae_012
-  fact: 方唐镜质疑血衣与案件的关联
-  known_by:
-  - fang_tangjing
-  - bao_longxing
-  - chang_wei
-  state_change: 庭审围绕证据效力展开争辩
-  cf_edit: 方唐镜提交伪证以削弱血衣可信度
-  anchor_for:
-  - fang_tangjing
-- id: ae_013
-  fact: 包龙星再次提审来福作证
-  known_by:
-  - bao_longxing
-  - lai_fu
-  - chang_wei
-  state_change: 来福的证词成为庭审焦点
-  cf_edit: 来福在堂上因恐惧而翻供
-  anchor_for:
-  - lai_fu
-- id: ae_014
-  fact: 常威当堂威胁来福
-  known_by:
-  - chang_wei
-  - lai_fu
-  - bao_longxing
-  state_change: 来福作证受到干扰
-  cf_edit: 常威以家人安危胁迫来福，使来福改变说法
-  anchor_for:
-  - chang_wei
-  - lai_fu
-- id: ae_015
-  fact: 包龙星请求保护来福
-  known_by:
-  - bao_longxing
-  - bao_tou
-  state_change: 豹头被指派保护关键证人
-  cf_edit: 豹头保护不力，来福在开庭前受到惊吓
-  anchor_for:
-  - bao_tou
-- id: ae_016
-  fact: 戚秦氏在堂上指认常威
-  known_by:
-  - qi_qinshi
-  - chang_wei
-  - bao_longxing
-  state_change: 直接指认加强了对常威的指控
-  cf_edit: 戚秦氏因情绪崩溃而无法完成指认
-  anchor_for:
-  - qi_qinshi
-  - chang_wei
-- id: ae_017
-  fact: 方唐镜提出程序异议
-  known_by:
-  - fang_tangjing
-  - bao_longxing
-  state_change: 重审进程被暂时中断
-  cf_edit: 方唐镜成功使案件延期审理
-  anchor_for:
-  - fang_tangjing
-- id: ae_018
-  fact: 包龙星找到新的辅助证据
-  known_by:
-  - bao_longxing
-  - bao_tou
-  state_change: 案件证据进一步充实
-  cf_edit: 新证据与案件关联性较弱，难以单独定案
-  anchor_for:
-  - bao_longxing
-- id: ae_019
-  fact: 豹头押送相关证物到衙门
-  known_by:
-  - bao_tou
-  - bao_longxing
-  state_change: 证物正式进入司法程序
-  cf_edit: 押送途中证物受损，影响证明力
-  anchor_for:
-  - bao_tou
-- id: ae_020
-  fact: 包龙星在堂上质问常威案发时间行踪
-  known_by:
-  - bao_longxing
-  - chang_wei
-  state_change: 常威的陈述出现矛盾
-  cf_edit: 常威提前准备好不在场证人，使矛盾被掩盖
-  anchor_for:
-  - chang_wei
-- id: ae_021
-  fact: 来福最终同意正式作证
-  known_by:
-  - lai_fu
-  - bao_longxing
-  state_change: 关键证词即将正式呈现
-  cf_edit: 来福作证时因紧张遗漏重要细节
-  anchor_for:
-  - lai_fu
-- id: ae_022
-  fact: 方唐镜与包龙星就证据合法性展开辩论
-  known_by:
-  - fang_tangjing
-  - bao_longxing
-  - chang_wei
-  state_change: 法庭进入法律程序攻防阶段
-  cf_edit: 方唐镜引用先例使部分证据被裁定无效
-  anchor_for:
-  - fang_tangjing
+  chapter_order: 11
+  fact: 常威在虎头铡下伏法，戚秦氏的冤案得到昭雪
+  known_by: [bao_longxing, chang_wei, bao_tou]
+  state_change: 通过set_goal将qi_qinshi的goal_retract_false_conviction、bao_longxing的goal_clear_qi_qinshi和goal_punish_chang_wei设为fulfilled，表示原判被推翻、戚秦氏昭雪且真凶伏法
+  cf_edit: 唯一改变常威是否在虎头铡下伏法；若仅继续羁押，则昭雪目标可完成但惩办真凶的goal_punish_chang_wei保持active
+  anchor_for: [qi_qinshi, bao_longxing, chang_wei]

@@ -3,57 +3,67 @@ runtime_state:
   commitments: []
   relationships:
     rick_sanchez:
-      level: loyal
-      basis_event: initial_state
+      level: neutral
+      basis_event: ae_s01e11_01_birdperson_disclosure
     morty_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: ae_s01e11_01_birdperson_disclosure
     beth_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.shared_snapshot
     jerry_smith:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.shared_snapshot
     summer_smith:
       level: neutral
-      basis_event: initial_state
-    birdperson:
-      level: loyal
-      basis_event: initial_state
+      basis_event: canon:canon_policy.shared_snapshot
+    tammy:
+      level: neutral
+      basis_event: profile:identity.public_background[2]
     player:
       level: neutral
-      basis_event: initial_state
+      basis_event: canon:canon_policy.player_semantics
   goals:
   - id: bp_goal_001
-    content: Shelter Rick from the threat that follows him to Birdperson's homeworld.
-    status: active
-    basis_event: initial_state
+    content: Explain Rick's concealed distress to Morty without inventing details.
+    status: fulfilled
+    basis_event: ae_s01e11_01_birdperson_disclosure
   - id: bp_goal_002
-    content: Prevent outsiders from discovering Rick's location while he is being
-      hidden.
-    status: active
-    basis_event: initial_state
+    content: Participate peacefully in Rick's Smith-house party.
+    status: fulfilled
+    basis_event: ae_s01e11_02_house_restored
   - id: bp_goal_003
-    content: Preserve trust with Rick by offering help without bargaining or interrogation.
+    content: Preserve familiar friendship with Rick while speaking more directly than Rick does.
     status: active
-    basis_event: initial_state
+    basis_event: profile:worldview.core_goals[0]
+  - id: bp_goal_004
+    content: Continue accompanying Tammy after leaving the Smith-house party.
+    status: active
+    basis_event: profile:worldview.core_goals[1]
   disclosures: []
   knowledge:
     bp_knowledge_001:
-      content: Rick has come to Birdperson because he is evading a threat.
+      content: Rick's repeated catchphrase expresses deep pain in Birdperson's language.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e11_01_birdperson_disclosure
     bp_knowledge_002:
-      content: Birdperson and Rick share a history from past conflicts.
+      content: Rick needs Morty in his life despite Rick's emotional deflection.
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_s01e11_01_birdperson_disclosure
     bp_knowledge_003:
-      content: Birdperson has a homeworld that can serve as a place of refuge.
+      content: Birdperson attended Rick's S01E11 party as an old friend and left the
+        Smith house with the other guests before the episode ended.
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: profile:identity.public_background[0]
+    bp_knowledge_004:
+      content: After disclosing that a prior soul bond had ended, Birdperson chose
+        to leave the party with Tammy.
+      status: active
+      visibility: [npc]
+      source_event: profile:identity.public_background[2]
 environment:
   health:
     birdperson: 100
@@ -62,8 +72,8 @@ environment:
     birdperson: []
     player: []
   locations:
-    birdperson: birdperson_home
-    player: birdperson_home
+    birdperson: birdperson_post_party_location
+    player: birdperson_post_party_location
   access: {}
   offers: []
   task_status: active

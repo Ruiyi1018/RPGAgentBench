@@ -1,77 +1,72 @@
 runtime_state:
   claims: {}
-  commitments: []
+  commitments:
+  - id: commitment_help_emma
+    target: emma_swan
+    content: Keep helping Emma understand and break the curse
+    status: active
+    basis_event: ae_005
   relationships:
-    emma_swan:
-      level: trusting
-      basis_event: initial_state
-    regina_mills:
-      level: distrustful
-      basis_event: initial_state
-    snow_white:
-      level: neutral
-      basis_event: initial_state
-    prince_charming:
-      level: neutral
-      basis_event: initial_state
-    rumplestiltskin:
-      level: neutral
-      basis_event: initial_state
-    player:
-      level: neutral
-      basis_event: initial_state
+    emma_swan: {level: trusting, basis_event: ae_021}
+    regina_mills: {level: distrustful, basis_event: ae_005}
+    snow_white: {level: neutral, basis_event: initial_state}
+    prince_charming: {level: neutral, basis_event: initial_state}
+    rumplestiltskin: {level: neutral, basis_event: initial_state}
+    player: {level: neutral, basis_event: initial_state}
   goals:
   - id: goal_henry_1
-    content: Convince Emma Swan that the curse is real.
+    content: Convince Emma Swan that the curse is real
     status: active
-    basis_event: initial_state
+    basis_event: ae_005
   - id: goal_henry_2
-    content: Keep Emma in Storybrooke so she can break the curse.
+    content: Keep Emma in Storybrooke so she can break the curse
     status: active
-    basis_event: initial_state
+    basis_event: ae_018
   - id: goal_henry_3
-    content: Protect Emma from Regina Mills.
+    content: Keep his plans and evidence out of Regina's control
     status: active
-    basis_event: initial_state
+    basis_event: ouat_s1_e2
   disclosures: []
   knowledge:
     henry_knows_001:
-      content: Regina is his adoptive mother.
+      content: Regina is his adoptive mother and Emma is his biological mother
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc, player]
+      source_event: ae_004
     henry_knows_002:
-      content: He ran away to Boston and used Regina's credit card to find Emma.
+      content: He traveled to Boston to find Emma and used Regina's credit card
       status: active
-      visibility: public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_004
     henry_knows_003:
-      content: He believes the fairytale characters in his storybook are real people
-        trapped in Storybrooke.
+      content: He believes his storybook identifies Storybrooke residents as cursed
+        fairytale characters
       status: active
-      visibility: semi-public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_005
     henry_knows_004:
-      content: He believes Emma is the Savior who can break the curse.
+      content: He believes Emma is the Savior who can break the curse
       status: active
-      visibility: semi-public
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ouat_s1_e2
     henry_knows_005:
-      content: He believes Regina is the Evil Queen.
+      content: He believes Regina is the Evil Queen
       status: active
-      visibility: private
-      source_event: initial_state
+      visibility: [npc]
+      source_event: ae_005
 environment:
-  health:
-    henry_mills: 100
-    player: 100
+  health: {henry_mills: 100, player: 100}
   inventories:
-    henry_mills: []
+    henry_mills: [storybook]
     player: []
   locations:
-    henry_mills: storybrooke
-    player: storybrooke
-  access: {}
+    henry_mills: mills_house
+    player: mills_house
+  access:
+    storybook:
+      controllers: [henry_mills]
+      subjects:
+        henry_mills: granted
   offers: []
   task_status: active
   dialogue_status: active
